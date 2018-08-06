@@ -1,0 +1,341 @@
+{% extends "_layout.html" %}
+
+{% block title %}Kubernetes{% endblock %}
+{% block description %}Operate the latest Kubernetes, from the experts behind Ubuntu and the Kubernetes community.{% endblock %}
+
+{% block content %}
+<div class="p-strip--image is-dark"
+  style="background-image:url('/static/img/home/juju-suru-blue-background.png')">
+  <div class="row">
+    <div class="u-equal-height">
+      <div class="col-6">
+        <h1>Production Grade Kubernetes<sup>&reg;</sup></h1>
+        <h3>The open-source orchestration system for cloud native infrastructures.</h3>
+        <p>The easiest way to automate the deployment, scaling, lifecycle and management of your applications. Operate the latest Kubernetes, from the experts behind Ubuntu and the Kubernetes community.</p>
+      </div>
+      <div class="col-6 u-vertically-center u-align--center">
+        <img src="/static/img/logos/certified-kubernetes-color.svg" alt="Kubernetes logo" class="u-hide--small" width="230" />
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="p-strip">
+    <div class="row">
+      <div class="col-12">
+        <h2 class="p-muted-heading u-align-text--center">Works anywhere you run Ubuntu</h2>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-12">
+        <ul class="p-inline-images">
+          <li class="p-inline-images__item">
+            <img alt="AWS" src="https://assets.ubuntu.com/v1/39002345-AmazonWebservices_Logo.svg" />
+          </li>
+          <li class="p-inline-images__item">
+            <img alt="Azure" src="https://assets.ubuntu.com/v1/515658c0-microsoft-azure-763dcdb6a8a3facccca6f538a909f1ec.svg" />
+          </li>
+          <li class="p-inline-images__item">
+            <img alt="Google Cloud Platform" src="/static/img/logos/google-cloud-platform-stacked.png" srcset="/static/img/logos/google-cloud-platform-stacked-x2.png 2x" class="inline-logos__image inline-logos__image--gce" />
+          </li>
+          <li class="p-inline-images__item">
+            <img alt="vmware" src="https://assets.ubuntu.com/v1/3006b8c7-vmware.svg" />
+          </li>
+          <li class="p-inline-images__item">
+            <img alt="lxd" src="https://assets.ubuntu.com/v1/fe9b270c-lxd_black-orange_hex_su.svg" />
+          </li>
+          <li class="p-inline-images__item">
+            <img alt="openstack" src="https://assets.ubuntu.com/v1/7934d19b-OpenStack_Logo_Horizontal.svg" />
+          </li>
+          <li class="p-inline-images__item">
+            <img alt="joyent" src="https://assets.ubuntu.com/v1/529822fd-joyent_logo.svg" />
+          </li>
+          <li class="p-inline-images__item">
+            <img alt="maas" src="https://assets.ubuntu.com/v1/1e783fd8-maas_black-orange_hex.svg" />
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+<div class="p-strip--light is-bordered">
+    <div class="row">
+      <div class="col-12">
+        <h2>Best practices across core components</h2>
+      </div>
+    </div>
+    <div class="row p-divider">
+      <div class="col-4 p-divider__block">
+        <div class="p-heading-icon">
+          <div class="p-heading-icon__header">
+            <img class="p-heading-icon__img" src="https://api.jujucharms.com/charmstore/v5/~containers/kubernetes-master/icon.svg">
+            <h3 class="p-heading-icon__title">Latest upstream Kubernetes</h3>
+          </div>
+        </div>
+        <ul>
+          <li class="p-list__item">TLS encryption between machines and clients</li>
+          <li class="p-list__item">High availability and load balanced control plane</li>
+          <li class="p-list__item">In-place upgrades for Kubernetes</li>
+          <li class="p-list__item">Dynamic scaling of masters and nodes</li>
+          <li class="p-list__item">Choice of SDN: flannel, calico, weave</li>
+        </ul>
+      </div>
+      <div class="col-4 p-divider__block">
+        <div class="p-heading-icon">
+          <div class="p-heading-icon__header">
+            <img class="p-heading-icon__img" src="https://api.jujucharms.com/charmstore/v5/~containers/etcd/icon.svg">
+            <h3 class="p-heading-icon__title">etcd</h3>
+          </div>
+        </div>
+        <ul>
+          <li class="p-list__item">Distributed key value store</li>
+          <li class="p-list__item">In-place upgrades</li>
+          <li class="p-list__item">Dynamic scaling</li>
+          <li class="p-list__item">TLS encryption</li>
+        </ul>
+      </div>
+      <div class="col-4 p-divider__block">
+        <div class="p-heading-icon">
+          <div class="p-heading-icon__header">
+            <img class="p-heading-icon__img" src="https://api.jujucharms.com/charmstore/v5/~containers/easyrsa/icon.svg">
+            <h3 class="p-heading-icon__title">EasyRSA</h3>
+          </div>
+        </div>
+        <ul>
+          <li class="p-list__item">Certificate authority</li>
+          <li class="p-list__item">Serves signed certificates to the requesting units of the cluster</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+<div class="p-strip--light">
+  <div class="row">
+    <div class="col-12">
+      <h2>Portable, validated, scalable</h2>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-12">
+      <ul class="p-list is-split">
+        <li class="p-list__item is-ticked">Contains all the operational tooling needed to manage a production cluster &mdash; including upgrades and elastic scaling</li>
+        <li class="p-list__item is-ticked">Upgrade, pause and resume, snapshot and restore your nodes</li>
+        <li class="p-list__item is-ticked">Extensible and self-healing system</li>
+        <li class="p-list__item is-ticked">Tested on a wide range of infrastructures, so you can avoid cloud lock-in and federate workloads between clouds or on-premise</li>
+        <li class="p-list__item is-ticked">Optimised portability across all environments</li>
+        <li class="p-list__item is-ticked">100% validated against the Kubernetes Conformance Tests</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<div class="p-strip">
+  <div class="row">
+    <ol class="p-list-step">
+      <li class="p-list-step__item col-12">
+        <h3 class="p-list-step__title">
+          <span class="p-list-step__bullet">1</span>
+          Pick your cluster from production-grade blueprints
+        </h3>
+        <div class="p-list-step__content">
+          <div class="col-6">
+            <div class="pictogram-bg">
+              <object type="image/svg+xml" data="https://api.jujucharms.com/charmstore/v5/bundle/kubernetes-core-24/diagram.svg" height="300" class="cluster-card__image"></object>
+            </div>
+            <h3><a href="https://jujucharms.com/kubernetes-core/">Staging cluster&nbsp;&rsaquo;</a></h3>
+            <div class="row">
+              <div class="col-4">
+                <p>Start with a Kubernetes cluster of two machines &mdash; one master node and one worker node.</p>
+              </div>
+              <div class="col-2">
+                <a href="https://jujucharms.com/new/?deploy-target=bundle/kubernetes-core" ref="nofollow" class="cluster-card__cta p-button--positive">Deploy</a>
+              </div>
+            </div>
+          </div>
+          <div class="col-6">
+            <div class="pictogram-bg">
+              <object type="image/svg+xml" data="https://api.jujucharms.com/charmstore/v5/bundle/canonical-kubernetes-30/diagram.svg" height="300" class="cluster-card__image"></object>
+            </div>
+            <h3><a href="https://jujucharms.com/canonical-kubernetes/">Production cluster&nbsp;&rsaquo;</a></h3>
+            <div class="row">
+              <div class="col-4">
+                <p>Progress to a highly available Kubernetes cluster &mdash; 2 masters, 3 workers, 3 etc nodes and API load balancer.</p>
+              </div>
+              <div class="col-2">
+                <a href="https://jujucharms.com/new/?deploy-target=bundle/canonical-kubernetes" ref="nofollow" class="cluster-card__cta p-button--positive">Deploy</a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="p-strip--image is-dark"
+          style="padding:1rem;margin:3rem 0;background:url(https://assets.ubuntu.com/v1/6d569be0-deep-learning-cluster.png) #086EE0">
+          <div class="row">
+            <div class="u-equal-height">
+              <div class="col-9">
+                <h3>Deep Learning cluster</h3>
+                <p>Accelerate Deep Learning workloads by adding GPUs at scale, with totally automated deployment.</p>
+                <a href="https://medium.com/intuitionmachine/kubernetes-gpus-tensorflow-8696232862ca" class="p-button--neutral">
+                  Start GPU tutorial
+                </a>
+              </div>
+              <div class="col-3 u-align--center u-vertically-center">
+                <img src="https://assets.ubuntu.com/v1/ed4ca9fa-nvidia-logo-white.svg" alt="Nvidia logo">
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="p-card u-equal-height">
+            <div class="col-8">
+              <h3>Or try it on a single machine</h3>
+              <p>Get Kubernetes up and running on a single system with LXD, or a public cloud such as AWS, GCE or Azure.</p>
+            </div>
+            <div class="col-4 u-align--center u-vertically-center">
+              <a href="http://conjure-up.io/" class="p-button--neutral">conjure-up</a>
+            </div>
+          </div>
+        </div>
+      </li>
+      <li class="p-list-step__item col-12">
+        <h3 class="p-list-step__title">
+          <span class="p-list-step__bullet">2</span>
+          Add extra components
+        </h3>
+        <div class="p-list-step__content">
+          <div class="row">
+            <div class="u-equal-height">
+              <div class="col-4 p-card">
+                <div class="p-heading-icon">
+                  <div class="p-heading-icon__header">
+                    <img class="p-heading-icon__img" src="/static/img/home/prometheus-circle.svg">
+                    <h3 class="p-heading-icon__title">
+                      <a href="https://jujucharms.com/u/prometheus-charmers/prometheus/14">
+                        Prometheus&nbsp;&rsaquo;</h3>
+                      </a>
+                  </div>
+                </div>
+                <p>Monitor, profile and debug your applications.</p>
+              </div>
+              <div class="col-4 p-card">
+                <div class="p-heading-icon">
+                  <div class="p-heading-icon__header">
+                    <img class="p-heading-icon__img" src="https://api.jujucharms.com/charmstore/v5/trusty/elasticsearch/icon.svg">
+                    <h3 class="p-heading-icon__title">
+                      <a href="https://jujucharms.com/elasticsearch/trusty/19">
+                        ElasticSearch&nbsp;&rsaquo;
+                      </a>
+                    </h3>
+                  </div>
+                </div>
+                <p>Centralize all logs and metrics and get awesome dashboards for your cluster.</p>
+              </div>
+              <div class="col-4 p-card">
+                <div class="p-heading-icon">
+                  <div class="p-heading-icon__header">
+                    <img class="p-heading-icon__img" src="https://assets.ubuntu.com/v1/636b94fd-ceph.svg">
+                    <h3 class="p-heading-icon__title">
+                      <a href="https://jujucharms.com/ceph/271">
+                        Ceph&nbsp;&rsaquo;
+                      </a>
+                    </h3>
+                  </div>
+                </div>
+                <p>Run stateful applications on bare metal or private clouds.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </li>
+      <li class="p-list-step__item col-12">
+        <h3 class="p-list-step__title">
+          <span class="p-list-step__bullet">3</span>
+          Put your cluster to work
+        </h3>
+        <div class="p-list-step__content">
+          <div class="row p-divider">
+            <div class="col-4 p-divider__block">
+              <h4><a href="https://medium.com/@samnco/how-we-commoditized-gpus-for-kubernetes-7131f3e9231f" class="p-link--external">The easy way to commoditise GPUs for Kubernetes</a></h4>
+              <p>Setting up your Deep Learning framework is now easier than ever with the new GPU integration of the Canonical Distribution of Kubernetes<a href="#kubernetes-notice"><sup>*</sup></a>. Perfect for production grade, on bare metal or in the cloud.</p>
+            </div>
+            <div class="col-4 p-divider__block">
+              <h4><a href="https://blog.ubuntu.com/2017/03/27/job-concurrency-in-kubernetes-lxd-cpu-pinning-to-the-rescue" class="p-link--external">Build a transcoding platform in minutes</a></h4>
+              <p>The Canonical Distribution of Kubernetes enables automatic discovery of GPU devices. Work as well with LXD to get a fine grain control mechanism to orchestrate video workflows and maximize the throughput of your clusters.</p>
+            </div>
+            <div class="col-4 p-divider__block">
+              <h4><a href="https://github.com/deis/workflow" class="p-link--external">Transform your solution into a private PaaS</a></h4>
+              <p>Kubernetes can be complemented by another layer to transform it into a PaaS, to maximise the proficiency of the development teams. It will provide complete freedom to deploy and manage your applications.</p>
+            </div>
+          </div>
+        </div>
+      </li>
+    </ol>
+  </div>
+</div>
+
+<div class="p-strip--light">
+    <div class="row">
+      <div class="u-equal-height">
+        <div class="col-6 p-card--highlighted">
+          <div class="p-card__header">
+            <h3>
+              Ubuntu Advantage support plans
+            </h3>
+            <p>
+              from <span class="p-heading--two">$200</span>/ year per node
+            </p>
+          </div>
+          <p>
+            Canonical offers three support packages: <strong>Essential, Standard</strong> and <strong>Advanced</strong>.
+          </p>
+          <ul class="p-list">
+            <li class="p-list__item is-ticked">Phone and web ticket for Standard support 8am - 6pm weekdays</li>
+            <li class="p-list__item is-ticked">High availability (HA) support</li>
+            <li class="p-list__item is-ticked">Access to Knowledge Base</li>
+            <li class="p-list__item is-ticked">Livepatch for all <a href="https://assets.ubuntu.com/v1/ac3aa269-DS_Canonical_Livepatch_Service_screen-AW_08.17.pd">compatible</a> kernels</li>
+          </ul>
+          <p><a class="p-link--external" href="https://www.ubuntu.com/support/plans-and-pricing">Price details</a></p>
+        </div>
+        <div class="col-6 p-card--highlighted">
+          <div class="p-card__header">
+            <h3>
+              Kubernetes consulting packages
+            </h3>
+            <p>
+              from <span class="p-heading--two">$15,000</span> on off fee
+            </p>
+          </div>
+          <p>Canonical offers two Kubernetes consulting package: Kubernetes <strong>Explorer</strong> and Kubernetes <strong>Discoverer</strong>.</p>
+          <ul class="p-list">
+            <li class="p-list__item is-ticked">High availability (HA) Kubernetes</li>
+            <li class="p-list__item is-ticked">Hands-on training</li>
+            <li class="p-list__item is-ticked">30 days of phone support</li>
+          </ul>
+          <p><a class="p-link--external" href="https://www.ubuntu.com/support/plans-and-pricing">Price details</a></p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+<div class="p-strip is-bordered">
+    <div class="row">
+      <div class="col-2">
+        <img class="contact__image" src="https://assets.ubuntu.com/v1/6e61dfbc-picto-quote-k8.svg" />
+      </div>
+      <div class="col-10">
+        <h2>Get in touch</h2>
+        <p>To contact us for more information or to discuss your specific needs, email us at <a href="mailto:kubernetes@ubuntu.com">kubernetes@ubuntu.com</a>.</p>
+      </div>
+    </div>
+  </div>
+
+<div class="p-strip is-shallow" id="kubernetes-notice">
+  <div class="row">
+    <div class="col-8">
+      <p><a href="#cluster-work">*</a> Kubernetes® is a registered trademark of The Linux Foundation in the United States and other countries, and is used pursuant to a license from The Linux Foundation.</p>
+    </div>
+  </div>
+</div>
+
+{% endblock content %}

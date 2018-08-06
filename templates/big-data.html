@@ -1,0 +1,178 @@
+{% extends "_layout.html" %}
+
+{% block title %}Juju solutions for big data{% endblock %}
+
+{% block content %}
+<div class="p-strip--image is-dark"
+  style="background-image:url('/static/img/home/juju-suru-blue-background.png')">
+  <div class="row">
+    <div class="u-equal-height">
+      <div class="col-6">
+      <h1 itemprop="name">Juju solutions for big data</h1>
+      <p class="p-heading--four" itemprop="description">The setup and configuration of Big Data tools can be very complex and daunting &mdash; Juju frees you to explore, test and evaluate Big Data solutions to choose the one that works best for you.</p>
+    </div>
+      <div class="col-6 u-hide--small u-align--center u-vertically-center">
+      <img src="/static/img/topics/big-data-hero-image.svg" alt="" itemprop="image" />
+    </div>
+    </div>
+  </div>
+</div>
+
+<div class="p-strip is-bordered">
+  <div class="row">
+    <div class="col-12">
+      <h2>
+        Why use Juju for big data?
+      </h2>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-3">
+      <h4>Speed</h4>
+      <p>Reduce the time to deploy Hadoop and other solutions from days to minutes.</p>
+    </div>
+    <div class="col-3">
+      <h4>Agility</h4>
+      <p>Experiment with different configurations and solutions to choose what works for you.</p>
+    </div>
+    <div class="col-3">
+      <h4>Flexibility</h4>
+      <p>Port your solution from one infrastructure to another quickly and seamlessly.</p>
+    </div>
+    <div class="col-3">
+      <h4>Expertise</h4>
+      <p>Charms encapsulate best practice allowing you to focus on your work.</p>
+    </div>
+  </div>
+</div>
+
+<div class="p-strip is-shallow">
+  <div class="row">
+    <div class="col-8">
+            <h2>Core bundles</h2>
+            <h3>Hadoop Processing</h3>
+            <p>Apache Hadoop is a software framework that supports distributed storage and processing of vast amounts of data.  This bundle provides a core set of proven Hadoop components from Apache Bigtop, coupled with monitoring and logging software to enable cluster observability.</p>
+        </div>
+  </div>
+  <div class="row">
+    <div class="col-12">
+      <div class="juju-card juju-card--internal col" data-id="hadoop-processing"></div>
+    </div>
+  </div>
+</div>
+
+<div class="p-strip is-shallow">
+  <div class="row">
+    <div class="col-8">
+      <h3>Spark Processing</h3>
+      <p>Apache Spark is a fast processing engine for large-scale data processing.  This bundle includes components from Apache Bigtop to provide Spark in standalone HA mode.  Ganglia and rsyslog are included to monitor cluster health and syslog activity.</p>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-12">
+      <div class="juju-card juju-card--internal" data-id="spark-processing"></div>
+    </div>
+  </div>
+</div>
+
+<div class="p-strip is-bordered">
+  <div class="row">
+    <div class="col-8">
+      <h3>Hadoop Spark</h3>
+      <p>This bundle combines the capabilities of the above Hadoop and Spark bundles. This provides users with a flexible solution consisting of HDFS, MapReduce, and Spark that can process a wide variety of workloads.</p>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-12">
+      <div class="juju-card juju-card--internal" data-id="hadoop-spark"></div>
+    </div>
+  </div>
+</div>
+
+<div class="p-strip is-shallow">
+  <div class="row">
+    <div class="col-8">
+      <h2>Key technologies</h2>
+      <h3>Hadoop Kafka</h3>
+      <p>Apache Kafka is an open-source message broker that aims to provide a unified, high-throughput, low-latency platform for handling real-time data feeds.  Combine Kafka with Hadoop for a powerful stream/batch solution.</p>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-8">
+      <div class="juju-card juju-card--internal" data-id="hadoop-kafka"></div>
+    </div>
+    <div class="col-4">
+      <p>Key charms included in the bundle:</p>
+      <p>
+        <div class="juju-card juju-card--internal sidebar__card" data-id="kafka"></div>
+      </p>
+      <p>
+        <div class="juju-card juju-card--internal sidebar__card" data-id="zookeeper"></div>
+      </p>
+    </div>
+  </div>
+</div>
+
+<div class="p-strip is-shallow">
+    <div class="row">
+      <div class="col-8">
+        <h3>Hadoop HBase</h3>
+        <p>Apache HBase is known as the Hadoop database.  Combined, HBase + Hadoop can process enormous tables &mdash; billions of rows by millions of columns &mdash; atop clusters of commodity hardware.</p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-8">
+        <div class="juju-card juju-card--internal" data-id="hadoop-hbase"></div>
+      </div>
+      <div class="col-4">
+        <p>Key charms included in the bundle</p>
+        <p>
+          <div class="juju-card juju-card--internal sidebar__card" data-id="hbase"></div>
+        </p>
+        <p>
+          <div class="juju-card juju-card--internal sidebar__card" data-id="zookeeper"></div>
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <div class="p-strip is-bordered is-shallow">
+    <div class="row">
+      <div class="col-8">
+        <h3>Hadoop Flume Zeppelin</h3>
+        <p>An end-to-end Big Data solution that enables ingestion, processing, and visualization of log data. The ingestion component highlighted here is the Apache Flume service.</p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-8">
+        <div class="juju-card juju-card--internal" data-id="realtime-syslog-analytics"></div>
+      </div>
+      <div class="col-4">
+        <p>Key charms included in the bundle</p>
+        <p>
+          <div class="juju-card juju-card--internal sidebar__card" data-id="zeppelin"></div>
+        </p>
+        <p>
+          <div class="juju-card juju-card--internal sidebar__card" data-id="apache-flume-syslog"></div>
+        </p>
+        <p>
+          <div class="juju-card juju-card--internal sidebar__card" data-id="rsyslog-forwarder-ha"></div>
+        </p>
+      </div>
+    </div>
+  </div>
+
+<div class="p-strip">
+  <div class="row">
+    <div class="u-equal-height">
+      <div class="col-8 u-vertically-center">
+        <p class="p-heading--four">Use the bundles above, alter and extend them or create your own. Get involved and find out more by visiting the <a href="http://bigdata.juju.solutions/getstarted">Big data community</a>.</p>
+      </div>
+      <div class="col-4 u-align--center u-vertically-center">
+        <img src="/static/img/community/community-hero.svg" alt="A gathering of Ubuntu community">
+      </div>
+    </div>
+  </div>
+</div>
+
+{% endblock content %}

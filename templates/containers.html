@@ -1,0 +1,131 @@
+{% extends "_layout.html" %}
+
+{% block title %}Juju solutions for container management{% endblock %}
+
+{% block content %}
+<div class="p-strip--image is-dark"
+  style="background-image:url('/static/img/home/juju-suru-blue-background.png')">
+  <div class="row">
+    <div class="u-equal-height">
+      <div class="col-8">
+        <h1 itemprop="name">Juju solutions for container&nbsp;management</h1>
+        <h4 itemprop="description">When exploring container management solutions, one of the most daunting tasks users face is the setup and configuration of these usually complex tools. Juju makes it easy to deploy container management solutions by provisioning, installing and configuring all the systems in the cluster. Once deployed the cluster can easily scale up with one command to increase the cluster size.</h4>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="p-strip is-bordered">
+  <div class="row">
+    <div class="col-12">
+      <h2>Why use Juju for container management?</h2>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-3">
+      <h3>Speed</h3>
+      <p>Reduce the time to deploy Kubernetes and other solutions from days to minutes.</p>
+    </div>
+    <div class="col-3">
+      <h3>Agility</h3>
+      <p>Experiment with different configurations and solutions to choose what works for you.</p>
+    </div>
+    <div class="col-3">
+      <h3>Flexibility</h3>
+      <p>Port your solution from one infrastructure to another quickly and seamlessly.</p>
+    </div>
+    <div class="col-3">
+      <h3>Expertise</h3>
+      <p>Charms encapsulate best practice allowing you to focus on your work.</p>
+    </div>
+  </div>
+</div>
+
+<div class="p-strip u-no-padding--bottom">
+  <div class="row">
+    <div class="col-8">
+      <h2>Management</h2>
+      <h3>Kubernetes Core</h3>
+      <p>Kubernetes is a container orchestration tool built by Google. The kubernetes-core bundle is pure Kubernetes/etcd cluster with no additional services or add-ons so allows you to get started using the Kubernetes technology quickly.</p>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-12">
+      <div class="juju-card juju-card--internal col" data-id="kubernetes-core"></div>
+    </div>
+  </div>
+</div>
+
+<div class="p-strip u-no-padding--bottom">
+  <div class="row">
+    <div class="col-8">
+      <h3>The Canonical Distribution of Kubernetes</h3>
+      <p>This is kubernetes-core hooked into an Elastic cluster to aggregate all your container workload logs, and mine and visualize your container infrastructure log messaging. This bundle is geared towards full production usage.</p>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-12">
+      <div class="juju-card juju-card--internal" data-id="canonical-kubernetes"></div>
+    </div>
+  </div>
+</div>
+
+<div class="p-strip is-bordered">
+  <div class="row">
+    <div class="col-8">
+      <h3>OpenStack with Nova LXD</h3>
+      <p>nova-lxd extends native OpenStack instance management to use LXD containers. It features live migration between nodes and allows high density container workloads to be deployed natively inside your OpenStack.</p>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-12">
+      <div class="juju-card juju-card--internal" data-id="~openstack-charmers-next/openstack-lxd"></div>
+    </div>
+  </div>
+</div>
+
+<div class="p-strip u-no-padding--bottom">
+  <div class="row">
+    <div class="col-8">
+      <h2>Featured Technologies</h2>
+      <p>Our container solutions heavily leverage the following projects. Due to the pluggable nature of Juju you can scale out these services in the same way as the container management solutions, as well as swap out individual components with ones you prefer, or add your own preferred component(s).</p>
+      <h3>Elastic Stack</h3>
+      <p>The Elastic Stack &mdash; that&rsquo;s Elasticsearch, Logstash, Kibana, and Beats &mdash; are open source projects that help you take data from any source, any format and search, analyze, and visualize it in real time.</p>
+      <p>We use these projects together to monitor and visualize a kubernetes cluster.</p>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-12">
+      <div class="juju-card juju-card--internal" data-id="beats-core"></div>
+    </div>
+  </div>
+</div>
+
+<div class="p-strip is-bordered">
+  <div class="row">
+    <div class="col-8">
+      <h3>Etcd</h3>
+      <p>Etcd is a highly available distributed key value store that provides a reliable way to store data across a cluster of machines. Etcd gracefully handles master elections during network partitions and will tolerate machine failure, including the master.</p>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-12">
+      <div class="juju-card juju-card--internal" data-id="etcd"></div>
+    </div>
+  </div>
+</div>
+
+<div class="p-strip">
+  <div class="row">
+    <div class="u-equal-height">
+      <div class="col-8 u-vertically-center">
+        <p class="p-heading--four">Get involved and find out more by visiting the Special Interest Group <a href="https://github.com/kubernetes/community/blob/master/sig-cluster-ops/README.md">SIG-clusterops</a>, or the <a href="https://groups.google.com/forum/#!forum/kubernetes-users">Kubernetes mailing lists</a>.</p>
+      </div>
+      <div class="col-4 u-align--center u-vertically-center">
+        <img src="/static/img/community/community-hero.svg" alt="A gathering of Ubuntu community">
+      </div>
+    </div>
+  </div>
+</div>
+
+{% endblock content %}
