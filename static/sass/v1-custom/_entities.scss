@@ -1,0 +1,17 @@
+.readme {
+  h1 {
+    @extend %vf-heading-3;
+  }
+
+  h2 {
+    @extend %vf-heading-4;
+  }
+
+  h3 {
+    @extend %vf-heading-5;
+  }
+
+  h4 {
+    @extend %vf-heading-6;
+  }
+}

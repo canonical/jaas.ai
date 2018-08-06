@@ -1,0 +1,9 @@
+<ul class="blog-list no-bullets">
+  {{#each entries}}
+  <li>
+    <h3><a href="{{ links.0.href }}">{{ title_detail.value }}</a></h3>
+    <p class="note">{{ formatDate published '%Y-%m-%d' }} by  {{ author }}</p>
+    {{{ summary_detail.value }}}
+  </li>
+  {{/each}}
+</ul>

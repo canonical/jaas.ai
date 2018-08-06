@@ -1,0 +1,70 @@
+
+body.topics-page {
+    background-image: url("../img/home/juju-suru-blue-background.png");
+    background-size: contain;
+    background-color: $background-default;
+
+    .row-hero {
+        color: $white;
+        background-color: transparent;
+
+        .big-data-hero {
+          max-width: 95%;
+        }
+
+        .openstack-hero {
+          margin-top: 1.6rem;
+        }
+    }
+
+    .wrapper .row {
+        border-bottom: 1px solid $mid-grey;
+    }
+
+    .intro {
+        font-size: 1.125em;
+
+        @media only screen and (min-width :  $page-maxwidth) {
+            font-size: 1.4375em;
+        }
+    }
+
+    .spaced-list {
+        margin: 33px 0 44px 40px;
+
+        a:link,
+        a:visited {
+            word-break: break-all;
+        }
+    }
+
+    .make-things-easier {
+        padding-bottom: 0;
+        background: $dark_aubergine;
+        color: $white;
+
+        h2 {
+            margin-bottom: 26px;
+        }
+
+        a {
+            color: $white;
+        }
+
+        .landscape-autopilot {
+            float: left;
+
+            @media only screen and (min-width : 768px) {
+                margin-top: 23px;
+            }
+        }
+    }
+
+    .col {
+      margin-bottom: 20px;
+    }
+
+    .compose-of .juju-card--internal .charm-card {
+        min-height: 135px !important;
+    }
+}

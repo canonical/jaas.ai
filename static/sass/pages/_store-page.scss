@@ -1,0 +1,114 @@
+.store-page {
+  background-color: #fff;
+  background-image: none;
+
+  .box {
+
+    &--hadoop {
+      @include gradient(#7ccdf7, #40b6f2);
+      padding-bottom: 125px;
+      border: 0 none;
+      color: $white;
+
+      .box__image {
+        width: 50%;
+        max-width: 195px;
+        margin-top: 1.5rem;
+      }
+    }
+
+    &--kubernetes {
+      overflow: hidden;
+      padding-bottom: 125px;
+      background-color: $k8-blue;
+      color: #fff;
+      min-height: 310px;
+    }
+
+    &--openstack {
+      $openstack-brand: #DF2E29;
+      padding-bottom: 125px;
+      border-color:  $openstack-brand;
+      background-color: $openstack-brand;
+      color: $white;
+
+      .box__image {
+          margin-top: $gutter-width;
+      }
+    }
+
+    .button--inline-neutral {
+      background-color: $white;
+
+      &:hover {
+          background-color: $light-grey;
+      }
+    }
+
+    &--mysql {
+      $mysql-brand: #2089B5;
+      border-color:  $mysql-brand;
+      background-color: $mysql-brand;
+      color: $white;
+
+      .button--inline-neutral {
+          color: $cool-grey;
+      }
+    }
+
+    &--nagios,
+    &--realtime-syslog-analytics {
+      background-color: $light-grey;
+    }
+
+    .align-bottom {
+      position: absolute;
+      bottom: 20px;
+      left: 0;
+      right:0;
+    }
+  }
+
+  .row--write-your-own {
+    padding-top: 0;
+    padding-bottom: 0;
+
+    .inner-wrapper {
+      padding-top: 60px;
+      padding-bottom: 40px;
+      background-repeat: no-repeat;
+      background-position: right center;
+    }
+  }
+
+  .row--containers {
+    background: $light-grey url(/static/img/store/kubernetes-promo.png) top right no-repeat;
+    background-size: auto 90%;
+
+    @media only screen and (max-width: $breakpoint-medium) {
+      background-image: none;
+
+      .six-col {
+        margin-bottom: 0;
+      }
+    }
+  }
+
+  .row--write-your-own .inner-wrapper {
+    @media only screen and (min-width: $breakpoint-medium) {
+      background-image: url("../img/home/write-your-own.png");
+      background-size: 50%;
+    }
+  }
+
+  .row--charm-and-bundle {
+    padding-top: 0;
+  }
+
+  .button-wrapper--ruled {
+    &:before,
+    &:after {
+      background: transparent
+    }
+  }
+}

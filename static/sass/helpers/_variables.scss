@@ -1,0 +1,76 @@
+@charset "UTF-8";
+
+/**
+ * Ubuntu Patterns Stylesheet
+ *
+ * The CSS file required by Ubuntu patterns page
+ *
+ * @project     Ubuntu Patterns
+ * @author      Web Team at Canonical Ltd
+ * @copyright   2012 Canonical Ltd
+ *
+ * @see         http://design.ubuntu.com
+ */
+
+$one_col:             6.38297%;
+$two_col:             14.89361%;
+$three_col:           23.40425%;
+$four_col:            31.91489%;
+$five_col:            40.42553%;
+$six_col:             48.93617%;
+$seven_col:           57.4468%;
+$eight_col:           65.95744%;
+$nine_col:            74.46808%;
+$ten_col:             82.97872%;
+$eleven-col:          91.48936%;
+
+/**
+ * standard colors
+ *
+ * @colordef standard colors
+ */
+
+$header_bg:                 #002835; /* header background colour */
+
+$ubuntu_orange:             #dd4814; /* used for text links also on any site except canonical */
+$dark_aubergine:            #2c001e; /* enterprise */
+$brand-color-youtube:       #e52d27; /* Youtubes brand colour */
+$background-default:        #0D303C;
+
+$link-blue:                 #007aa6;
+
+// Vanilla overrides
+$header-link-color:         #333333;
+$brand-color:               #ffffff;
+$warm-grey:                 #666666;
+$color-mid-light:           #cdcdcd;
+
+/* notifications */
+$error:                     #c7162b; /* red */
+$warning:                   #f99b11; /* yellow */
+$success:                   #0e8420; /* green */
+$information:               #335280; /* cyan */
+
+/* colour coded status - from negative to positive (Icon: canonical circle) */
+$status_red:                #c7162b; /* red, for status that require immediate attention */
+$status_grey:               #aea79f; /* grey, for disabled status or ones that don’t require attention */
+$status_yellow:             #f99b11; /* yellow, for status that require attention */
+$status_blue:               #335280; /* blue, for status that don’t require action */
+$status_green:              #0e8420; /* green, for positive status */
+
+/* misc colours */
+$background_color:          #eeeeee;
+$box_solid_grey:            #efefef;
+$transparent:               transparent;
+$light-grey:                #f7f7f7;
+$k8-blue:                   #086EE0;
+
+/* grid variables */
+$base:                      16;
+$hd_base:                   $base;
+$gutter_width:              20px;
+$grid_gutter:               20px;
+$gutter:                    2.12766%;
+$navigation-threshold:      950px;
+$page-maxwidth:             1030px;
+$page-padding:              40px;

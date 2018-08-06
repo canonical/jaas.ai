@@ -1,0 +1,67 @@
+// Homepage promo takeover
+
+.col-4.has-strap {
+  padding-top: 3rem;
+}
+
+.homepage-hero-promos {
+  @media (max-width: $breakpoint-medium) {
+    margin-top: 25vw;
+  }
+
+  .card-wrap {
+    min-height: 96px;
+  }
+
+  h5 {
+    margin-bottom: 2.5rem;
+  }
+}
+
+.homepage-hero-image-wrap {
+  min-height: 16rem;
+  position: relative;
+
+  @media (min-width: $breakpoint-medium) {
+    position: static;
+  }
+}
+
+.homepage-hero-image {
+  position: absolute;
+  right: 0;
+
+  @media (max-width: $breakpoint-medium) {
+    top: -5rem;
+    z-index: 999;
+  }
+
+  @media (min-width: $breakpoint-medium) {
+    max-width: 600px;
+    right: 0;
+    top: 1rem;
+    width: 65vw;
+  }
+
+  @media (min-width: 940px) {
+    max-width: 600px;
+    right: -1rem;
+    top: 0;
+  }
+}
+
+.homepage-hero-card {
+  position: relative;
+
+  @media (max-width: 940px) {
+    z-index: 999;
+  }
+}
+
+.homepage-hero-promos {
+  @media (max-width: $breakpoint-medium) {
+    .col-4 {
+      margin-bottom: 2rem;
+    }
+  }
+}

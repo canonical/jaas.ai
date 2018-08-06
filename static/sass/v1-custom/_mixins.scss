@@ -1,0 +1,7 @@
+/// Takes an underdetermined number of transitions and provides browser prefixes
+/// @group helpers
+/// @example
+///     @include transition(width .2s);
+@mixin transition($args...) {
+  transition: $args;
+}

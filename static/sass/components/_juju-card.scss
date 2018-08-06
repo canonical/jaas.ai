@@ -1,0 +1,53 @@
+.juju-card--internal {
+
+  .bundle-card {
+    &__footer {
+      display: none;
+    }
+
+    &__main {
+      margin-bottom: 0;
+    }
+  }
+
+  /*
+   * Using !important to trump all verbose element query styling from the
+   * juju-cards stylesheet.
+   */
+  .charm-card {
+    padding-bottom: 15px !important;
+    min-height: 75px;
+
+    &:hover {
+        background-color: $light-grey;
+    }
+
+    &__footer,
+    &__main,
+    &__meta-item--series {
+      display: none !important;
+    }
+
+    &__meta-item--by {
+      margin-bottom: 0 !important;
+    }
+
+    &__meta-item--by:after {
+      content: '' !important;
+    }
+
+    &__header {
+      margin-bottom: 0;
+    }
+
+    &__image {
+      width: 75px !important;
+      height: 75px !important;
+    }
+
+    &__title {
+      top: 0 !important;
+      margin-bottom: 10px !important;
+    }
+  }
+}

@@ -1,0 +1,24 @@
+.onboarding-notification {
+  border: 1px solid #19b6ee;
+  padding: 20px;
+  position: relative;
+
+  &__icon {
+    position: relative;
+    top: 4px;
+    float: left;
+    margin-right: 10px;
+  }
+
+  &__message {
+    padding-right: 20px;
+    margin-bottom: 0;
+  }
+
+  &__close {
+    position: absolute;
+    top: 24px;
+    right: 20px;
+    margin-left: 10px;
+  }
+}

@@ -1,0 +1,260 @@
+body.account-page {
+    background: $light-grey;
+
+    #main-content .row-hero {
+        margin-bottom: 20px;
+        padding-top: 20px;
+
+        @media only screen and (max-width: $breakpoint-medium) {
+            padding-left: 10px;
+            padding-right: 10px;
+        }
+
+        .inner-wrapper {
+            overflow: visible;
+        }
+    }
+
+    .profile {
+        border-bottom: 1px solid $mid-grey;
+        // So the sign-out element can be positioned to the bottom right
+        // relative to this element
+        padding-bottom: $gutter-width;
+        position: relative;
+        min-height: 120px;
+
+        &__picture {
+            border-radius: 50%;
+            display: inline-block;
+            float: left;
+            height: 96px;
+            margin-right: 1em;
+            vertical-align: middle;
+            width: 96px;
+        }
+
+        &__name {
+            margin-bottom: .1em;
+        }
+
+        &__stats {
+            margin-bottom: 0;
+        }
+
+        &__sign-out {
+            bottom: $gutter-width;
+            position: absolute;
+            right: 0;
+        }
+    }
+
+    .create-new-button {
+        position: absolute;
+        right: 0;
+        top: -15px;
+
+        @media only screen and (min-width: $breakpoint-medium) {
+            top: -10px;
+        }
+
+
+    }
+
+    .box {
+        border: 0;
+        box-shadow: 0 1px 4.85px .15px rgba(0, 0, 0, .2);
+    }
+
+    .subscriptions {
+        border-bottom: 1px solid $light-mid-grey;
+
+        .list-block__list--item {
+            &:hover {
+                background: $light-grey;
+            }
+        }
+
+        margin-bottom: 0px;
+
+        img {
+            margin-right: 5px;
+        }
+
+        .last-col {
+            text-align: right;
+
+            &:last-child {
+                margin-bottom: 0;
+            }
+        }
+
+        .status-icon {
+            vertical-align: middle;
+        }
+
+        .subscription {
+            margin-bottom: 0px;
+
+            p {
+                color: $warm-grey;
+            }
+        }
+
+        .currency {
+            color: $success
+        }
+    }
+
+    .profile-message {
+        position: relative;
+        padding: 15px 50px 15px 20px;
+        border-width: 1px;
+        border-style: solid;
+        border-color: $light-mid-grey;
+
+        &__body {
+            margin-bottom: 0;
+        }
+
+        &__close {
+            $size: 13px;
+            position: absolute;
+            width: $size;
+            height: $size;
+            top: 50%;
+            right: 20px;
+            margin-top: - ($size / 2);
+            background: transparent url(../img/icons/close_thick.png);
+            text-indent: -99999px;
+        }
+    }
+
+    .title-row {
+        margin-bottom: 30px;
+        padding-bottom: 30px;
+        border-bottom: 1px solid $light-mid-grey;
+    }
+
+    .profile-title {
+
+        @media only screen and (min-width : $breakpoint-medium) {
+            padding-left: 20px;
+        }
+
+        &.empty-title {
+            margin-top: 0;
+        }
+
+        .profile-title--count {
+            color: $warm-grey;
+        }
+    }
+
+    .empty-state {
+        padding-bottom: $gutter-width * 2;
+        text-align: center;
+
+        &__image {
+            margin-bottom: 30px;
+        }
+
+        &__title {
+            margin: 20px 0 40px;
+        }
+    }
+
+    .row {
+        padding-top: 0;
+        background-color: transparent;
+    }
+
+    .align-right {
+        text-align: right;
+    }
+
+    .list-block__list--item {
+        .slideout__toggle {
+            cursor: pointer;
+            overflow: auto;
+        }
+
+        &.open {
+            margin: 20px 0;
+            overflow: visible;
+            background-color: $white;
+            border-radius: 2px;
+            box-shadow: 0 1px 4.85px .15px rgba(0, 0, 0, .2);
+            border-top: 0;
+
+            .deploys__column,
+            .units__column,
+            .owner__column,
+            .charm-logos__column {
+                display: none;
+            }
+
+            .list-block__tags--link {
+                outline: none;
+            }
+
+            .list-block__list--item-details {
+                max-height: 1000px;
+                margin-top: 20px;
+            }
+
+            .dotted-border {
+                border-bottom: 1px dotted $light-mid-grey;
+            }
+
+            .summary-col {
+                padding: 10px 0 0;
+                border-bottom: 1px solid $mid-grey;
+
+                &__view-button {
+                    display: inline;
+                }
+            }
+        }
+
+        &.model {
+            min-height: 40px;
+        }
+
+        .list-block__list--item-details {
+            overflow: hidden;
+            // Use max-height for animations.
+            max-height: 0;
+            // Make the browser use the GPU for this animation.
+            -webkit-transform: translate3d(0, 0, 0);
+            transform: translate3d(0, 0, 0);
+            transition-property: all;
+            transition-duration: .5s;
+            transition-timing-function: cubic-bezier(0, 1, 0.5, 1);
+        }
+
+        .summary-col {
+            margin-bottom: 0;
+
+            &__view-button {
+                display: none;
+                position: relative;
+                top: -10px;
+                z-index: 500;
+            }
+        }
+
+        .bundle-visual {
+            background: transparent url(../img/shared/pattern_tile.png) repeat top left;
+            padding: 20px;
+            border: 1px solid $light-mid-grey;
+        }
+
+        .bundle-visual__image {
+            position: relative;
+            display: block;
+            margin: auto;
+            max-width: 100%;
+            height: 368px;
+        }
+    }
+}

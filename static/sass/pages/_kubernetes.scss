@@ -1,0 +1,392 @@
+.kubernetes-page {
+  @include vf-p-pull-quotes;
+  @include vf-p-card;
+  @include equal-height;
+
+  background-image: none;
+  background-size: contain;
+
+  .row {
+    padding-top: 80px;
+    padding-bottom: 80px;
+
+    @media screen and (max-width: 768px) {
+      padding: 40px;
+    }
+  }
+
+  .row-hero {
+    background-color: transparent;
+    background-image: url("../img/home/juju-suru-blue-background.png");
+    background-position: center right;
+    background-size: cover;
+    background-repeat: no-repeat;
+    position: relative;
+    padding-bottom: 0;
+    z-index: 1;
+    overflow: hidden;
+    padding-bottom: 5rem;
+    color: $white;
+
+    @media screen and (max-width: 1500px) {
+      background-position: 70% center;
+    }
+
+    @media screen and (max-width: 768px) {
+      background-position: bottom left;
+      max-height: 100%;
+      padding-bottom: 0;
+      overflow: hidden;
+    }
+
+    &__title {
+      font-size: 3rem;
+
+      sup {
+        vertical-align: inherit;
+      }
+    }
+
+    &__intro {
+      font-size: 1.4rem;
+      line-height: 1.4;
+    }
+
+    &__image {
+      width: 80%;
+      margin-top: 1rem;
+      max-height: 260px;
+      max-width: 260px;
+    }
+  }
+
+  .row--providers {
+    padding-bottom: 40px;
+
+    @media only screen and (max-width: 768px) {
+      padding-bottom: 0;
+    }
+
+    .muted-heading,{
+      margin-bottom: 0;
+    }
+
+    .inline-logos {
+      &__item {
+        height: 100px;
+        width: 168px;
+        line-height: 110px;
+        margin: 0 20px 20px;
+
+        @media only screen and (max-width: 768px) {
+          height: 70px;
+          width: 100px;
+        }
+      }
+
+      &__image {
+        max-height: 120px;
+        max-width: 178px;
+
+        @media only screen and (max-width: 768px) {
+          max-height: 90px;
+          max-width: 110px;
+        }
+
+        &--gce {
+          height: 90px;
+          @media only screen and (max-width: 768px) {
+            height: auto;
+          }
+        }
+
+        &--maas {
+          height: 40px;
+          @media only screen and (max-width: 768px) {
+            height: auto;
+          }
+        }
+      }
+    }
+  }
+
+  .row--benefits {
+    padding-bottom: 48px;
+
+    .benefits {
+      margin: 2rem 0;
+      padding-bottom: 1.5rem;
+
+      @media only screen and (max-width: 768px) {
+        margin: 0 0 2rem;
+      }
+
+      .benefit {
+        padding-right: 20px;
+
+        @media only screen and (max-width: 768px) {
+          padding-bottom: 20px;
+
+          &:last-child {
+            margin-bottom: 0;
+          }
+        }
+
+        ul {
+          margin-bottom: 0;
+
+          li:last-child {
+            margin-bottom: 0;
+          }
+        }
+
+        @media screen and (max-width: 768px) {
+          &:before {
+            content: ' ';
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 100%;
+            height: 1px;
+            border-bottom: 1px dotted $warm-grey;
+          }
+
+          &:last-child {
+            &:before {
+              display: none;
+            }
+          }
+        }
+
+        @media screen and (min-width: 768px) {
+          &:before {
+            content: ' ';
+            position: absolute;
+            right: 0px;
+            top: 0;
+            height: 100%;
+            width: 1px;
+            border-right: 1px dotted $warm-grey;
+          }
+
+          &:last-child {
+            &:before {
+              display: none;
+            }
+          }
+        }
+
+        &__header {
+          min-height: 62px;
+          display: flex;
+          flex-direction: row;
+          align-items: center;
+          margin-bottom: 1.5rem;
+        }
+
+        &__icon {
+          width: 62px;
+          margin-right: 0.625rem;
+          display: block;
+        }
+
+        &__title {
+          margin-bottom: 0;
+        }
+      }
+
+      &__list {
+        @include tick-list-full;
+      }
+    }
+
+    @media screen and (max-width: 769px) {
+      .six-col {
+        margin-bottom: 0;
+
+        .benefits__list {
+          margin-bottom: 0;
+        }
+
+        &+.six-col {
+          margin-top: 0;
+
+          .benefits__list {
+            margin-top: 0;
+          }
+        }
+      }
+    }
+  }
+
+  .row--deploy {
+    .k8-card {
+      margin: 2rem 0 4rem;
+      background: $k8-blue;
+      border: 0;
+      color: $white;
+      padding: 30px;
+
+      &__cta {
+        margin-top: 1rem;
+      }
+    }
+
+    .card-deep-learning {
+      background-image: url(https://assets.ubuntu.com/v1/6d569be0-deep-learning-cluster.png);
+      background-position: bottom right;
+      background-repeat: no-repeat;
+      max-height: 223px;
+
+      &__image {
+        margin-top: 2.3rem;
+
+        @media screen and (max-width: 768px) {
+          display: none;
+        }
+      }
+    }
+
+    .single-machine-card {
+      &__cta {
+        margin-top: 0.8rem;
+      }
+    }
+  }
+
+  .row--extras {
+    &__card-icon {
+      width: 3rem;
+      height: 3rem;
+      vertical-align: middle;
+      margin-right: .5rem;
+      border-radius: 100px;
+    }
+  }
+
+  .row--work {
+    .external {
+      color: $header-link-color;
+      font-weight: 400;
+    }
+  }
+
+  .row--testimonials {
+
+    .p-pull-quote>p:first-of-type::before,
+    .p-pull-quote>p:last-of-type::after {
+      color: $k8-blue;
+      font-weight: 300;
+    }
+    .p-pull-quote__citation {
+      margin-top: 2rem;
+      font-style: normal;
+    }
+  }
+
+  .row--services {
+    padding-bottom: 50px;
+
+    .inner-wrapper {
+      padding-bottom: 20px;
+    }
+
+    // Until vanillais updated this sorts out sizes within the cards
+    // specifically.
+    .p-card {
+      .heading-2 {
+        font-size: 2.25rem;
+        line-height: 1.167;
+        font-weight: 300;
+      }
+
+      .heading-5 {
+        font-size: 1.25rem;
+        line-height: 1.143;
+        font-weight: 300;
+      }
+
+      .heading-6 {
+        max-width: 35em;
+        font-size: 1rem;
+        font-weight: 400;
+        line-height: 1.412;
+        text-transform: none;
+        letter-spacing: inherit;
+        margin-top: 2rem;
+      }
+
+      & + p {
+        margin-top: 2rem;
+      }
+
+      li a {
+        font-weight: 300;
+        color: $link_blue;
+      }
+    }
+  }
+
+  .row--contact {
+    padding-top: 0;
+
+    .contact__image {
+      float: left;
+      margin-right: 2.4rem;
+
+      &-holder {
+        @media only screen and (max-width: 768px) {
+          float: left;
+          width: 50px;
+        }
+      }
+    }
+  }
+
+  .numbered-header {
+    &--number {
+      border-radius: 100px;
+      margin-top: -.25em;
+      width: 2em;
+      height: 2em;
+      line-height: 2em;
+      border: 1px solid $header-link-color;
+      display: inline-block;
+      margin-right: .5em;
+      vertical-align: middle;
+      text-align: center;
+      font-weight: 100;
+      font-size: 0.75em;
+    }
+  }
+
+  .cluster-card {
+
+    &__image-wrapper {
+      max-height: 300px;
+      padding: 2rem;
+      background: $light-grey;
+      border: 1px solid $color-mid-light;
+      text-align: center;
+      margin-bottom: 1rem;
+    }
+
+    &__image {
+      max-height: 300px - (16px * 4);
+      margin: 0 auto;
+    }
+
+    &__cta {
+      float: right;
+      @media only screen and (max-width: 768px) {
+        margin-top: 1rem;
+        float: none;
+      }
+    }
+  }
+
+  .k8__highlight {
+    color: $header-link-color;
+    font-size: 1.4em;
+  }
+}

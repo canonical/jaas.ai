@@ -1,0 +1,55 @@
+.list--concealed {
+
+    .list-item {
+        display: none;
+    }
+
+    .list-item:first-of-type {
+        display: list-item;
+    }
+
+    &.list--visible-6 {
+        .list-item:nth-child(-n+6) {
+            display: list-item;
+        }
+    }
+
+    &.list--visible-4 {
+        .list-item:nth-child(-n+4) {
+            display: list-item;
+        }
+    }
+
+    &.list--visible-2 {
+        .list-item:nth-child(-n+2) {
+            display: list-item;
+        }
+    }
+
+    a.btn__see--less {
+        display: none;
+    }
+
+    a.btn__see--more {
+        display: block;
+    }
+}
+.list--revealed .list__controls,
+.list--concealed .list__controls {
+    display: block;
+    margin-top: 2em;
+    margin-bottom: 0;
+}
+
+.list--revealed {
+    .list--item {
+        display: list-item;
+    }
+
+    a.btn__see--less {
+        display: block;
+    }
+    a.btn__see--more {
+        display: none;
+    }
+}

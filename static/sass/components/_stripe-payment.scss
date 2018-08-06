@@ -1,0 +1,141 @@
+.stripe-payment {
+    $width: 326px;
+    z-index: 10001;
+    position: fixed;
+    display: none;
+    top: 0;
+    left: 50%;
+    width: $width;
+    margin-left: -(($width + 40px) / 2);
+    padding: 20px 20px 0 20px;
+    background-color: white;
+    border-bottom: 1px solid $light-mid-grey;
+
+    label {
+        padding-left: 10px;
+        font-size: 13px;
+    }
+
+    input[name=cc-cvc] {
+        @include rounded_corners(0 2px 2px 0);
+
+        border-left: 1px solid $light-mid-grey;
+    }
+
+    input[name=cc-month] {
+        @include rounded_corners(2px 0 0 2px);
+
+        border-right: 1px solid $light-mid-grey;
+    }
+
+    input[name=cc-year] {
+        @include rounded_corners(0);
+
+        border-left: none;
+        border-right: none;
+    }
+
+    input[type=number] {
+        margin-bottom: 20px;
+        -moz-appearance: textfield;
+    }
+
+    input[type=number]::-webkit-inner-spin-button,
+    input[type=number]::-webkit-outer-spin-button {
+        -webkit-appearance: none;
+        margin: 0;
+    }
+
+    button.buy-me {
+        background-color: $success;
+        width: 100%;
+
+        &:hover {
+            background-color: darken( $success, 10% );
+        }
+    }
+
+    img {
+        vertical-align: middle;
+    }
+
+    h3.entity-name {
+        display: inline-block;
+        margin-left: 10px;
+    }
+
+    form {
+        margin-top: 20px;
+
+        .form-error {
+            @include rounded_corners(2px);
+            margin-bottom: 20px;
+            padding: 10px;
+            border: 1px solid $error;
+            color: $error;
+        }
+
+        .use-existing {
+            padding-bottom: 20px;
+        }
+    }
+
+    &.opened {
+        display: block;
+    }
+
+    .has-error {
+        border: 1px solid $error;
+    }
+
+    .pricing {
+        margin-top: 10px;
+        color: $warm-grey;
+    }
+
+    .heading-wrapper {
+        padding-bottom: 20px;
+        border-bottom: 1px solid $light-mid-grey;
+
+        .value {
+            color: $success;
+            font-size: 25px;
+        }
+    }
+
+    .note-list ul {
+        margin: 10px 0 0 0;
+        list-style-position: inside;
+    }
+
+    .close-stripe-payment {
+        position: absolute;
+        top: 20px;
+        right: 20px;
+        cursor: pointer;
+        z-index: 5;
+
+        span.close {
+            width : 16px;
+            height : 16px;
+            display : block;
+            background : url("../img/icons/close_16.svg") no-repeat;
+
+            &:hover{
+                background : url("../img/icons/close_hover_16.svg") no-repeat;
+            }
+        }
+    }
+
+    .col-50 {
+        float: left;
+        width: 50%;
+        margin: 0
+    }
+}
+
+@media only screen and (min-width : 768px) {
+    .stripe-payment {
+        top: 110px;
+    }
+}

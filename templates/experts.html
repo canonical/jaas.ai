@@ -1,0 +1,63 @@
+{% extends "_layout.html" %}
+
+{% block content %}
+<div class="p-strip--image is-light u-no-padding--bottom" style="background-image:url('https://assets.ubuntu.com/v1/c883127d-download.svg')">
+  <div class="row">
+    <div class="col-8">
+      <span class="expert__strap">Juju Expert Partners</span>
+      <h1>Managed solutions from Canonical’s partner network</h1>
+      <h4>Canonical partners with selected companies to provide specialised supported solutions.</h4>
+    </div>
+    <div class="col-4 p-card has-strap">
+      <div class="expert__strap">
+        Become a partner
+      </div>
+      <h4 style="padding-top:2rem">We'd love to have you join us as a partner.</h4>
+      <p>If you are an independant software vendor or bundle author, it's easy to apply. You can find out more below.</p>
+      <p>We can't wait to talk.</p>
+      <a href="mailto:juju-experts@canonical.com" class="p-button--positive u-no-margin--bottom">Join us&hellip;</a>
+    </div>
+  </div>
+</div>
+
+<div class="p-strip">
+  <div class="row">
+    <div class="col-12">
+      <h2 class="expert__title">
+        Partners supported
+      </h2>
+    </div>
+  </div>
+  <div class="row">
+    <div class="u-equal-height">
+      <div class="col-4 p-card">
+        <div class="expert__logo-wrap">
+          <a href="/experts/spicule">
+            <img class="expert__card-logo" src="/static/img/logos/spicule.png" alt="Spicule logo" />
+          </a>
+        </div>
+        <hr class="u-sv1">
+        <ul class="p-list">
+          <li class="p-list__item is-ticked">Highly scalable Business Intelligence</li>
+          <li class="p-list__item is-ticked">Reveal patterns, gain insights</li>
+          <li class="p-list__item is-ticked">Apache Drill and Hadoop Spark</li>
+        </ul>
+      </div>
+      <div class="col-4 p-card">
+        <div class="expert__logo-wrap">
+          <a href="/experts/tengu">
+            <img width="200" class="expert__card-logo" src="/static/img/logos/tengu.png" alt="Tengu logo" />
+          </a>
+        </div>
+        <hr class="u-sv1">
+        <ul class="p-list">
+          <li class="p-list__item is-ticked">Your own Big Data workspace</li>
+          <li class="p-list__item is-ticked">Use all juju-charmed technologies</li>
+          <li class="p-list__item is-ticked">Machine Learning, IoT, Microservices</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% endblock content %}

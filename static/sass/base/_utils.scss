@@ -1,0 +1,66 @@
+.not-for-medium {
+    display: none;
+
+    @media only screen and (min-width: 985px) {
+        display: block;
+    }
+}
+
+.inline-list li {
+	margin-right: 0;
+}
+
+.hidden {
+  display: none;
+  visibility: none;
+  height: 0;
+  width: 0;
+}
+
+details.unsupported {
+
+	summary {
+		margin: .5em 0;
+	}
+
+	summary::before {
+		content: "►";
+		transform: rotate(0deg);
+		padding-right: 5px;
+		display: inline-block;
+		position: relative;
+	}
+
+	&:not([open]) * {
+		display: none;
+	}
+
+	> summary:not([open]),
+	> summary:not([open]) * {
+		display: inline-block;
+		cursor: pointer;
+	}
+
+	&[open] {
+		* {
+			display: block;
+		}
+
+		summary::before {
+			transform: rotate(90deg);
+			top: 4px;
+		}
+	}
+}
+
+
+@media only screen and (min-width: $page-maxwidth) {
+	img {
+		max-width: 100%;
+	}
+}
+
+.box {
+	background: #fff;
+  padding: 1.333em 20px;
+}

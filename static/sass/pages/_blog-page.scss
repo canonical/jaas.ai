@@ -1,0 +1,35 @@
+body.blog-page {
+	.row {
+		background-color: transparent;
+	}
+
+	.blog-article {
+		margin-bottom: $gutter_width * 2;
+
+		&:last-of-type {
+			margin-bottom: 0;
+		}
+	}
+
+	.events-list {
+		.event-map {
+			width: 60px;
+			height: 60px;
+		}
+	}
+
+    @media only screen and (max-width : 767px) {
+    	.row,
+    	.inner-wrapper {
+    		padding-left: 0;
+    		padding-right: 0;
+    	}
+    }
+
+
+    @media only screen and (min-width : 769px) {
+		.events-list .event-details-wrapper {
+			padding-left: 80px;
+		}
+	}
+}

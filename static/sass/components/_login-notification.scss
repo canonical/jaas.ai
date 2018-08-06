@@ -1,0 +1,33 @@
+.login-notification {
+  opacity: 0;
+  transition: opacity .2s ease;
+  position: absolute;
+  color: $header-link-color;
+  z-index: 13;
+  background: $white;
+  border: $box_solid_grey;
+  padding: .5rem;
+  font-size: 0.8rem;
+  top: 3.25rem;
+  right: 1rem;
+  border-radius: 2px;
+
+  &:after {
+    width: .5rem;
+    height: .5rem;
+    transform: rotate(-45deg);
+    background: $white;
+    content: ' ';
+    position: absolute;
+    top: -.25rem;
+    right: 1.5rem;
+  }
+
+  &.is-shown {
+    opacity: 1;
+  }
+
+  @media screen and (max-width: $navigation-threshold) {
+    display: none;
+  }
+}

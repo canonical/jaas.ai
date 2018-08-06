@@ -1,0 +1,155 @@
+{% extends "_layout.html" %}
+
+{% block content %}
+<div class="p-strip--image is-dark"
+  style="background-image:url('/static/img/home/juju-suru-blue-background.png')">
+  <div class="row">
+    <div class="u-equal-height">
+      <div class="col-6">
+        <h1>JAAS gives you Juju, as a service</h1>
+        <h4>JAAS is the best way to quickly model and deploy your cloud-based applications. Concentrate on your software and solutions with a fully managed Juju infrastructure.</h4>
+        <div>
+          <a href="/new/" class="p-button--positive" rel="nofollow">Try the beta</a>
+          <a href="/store" class="p-button--neutral" rel="nofollow">Visit the store</a>
+        </div>
+      </div>
+      <div class="col-6 u-vertically-center u-align--center u-hide--small">
+        <img src="/static/img/company_logos/jaas-logos.svg" alt="Cloud based application logos" style="width:100%;max-width:294px;"/>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="p-strip--light">
+  <div class="row">
+    <div class="col-6">
+      <h4>Hosted Juju controllers</h4>
+      <ul class="p-list">
+        <li class="p-list__item is-ticked">Managed by Canonical, the company behind Ubuntu</li>
+        <li class="p-list__item is-ticked">Highly-available, secure, multi-region infrastructure</li>
+        <li class="p-list__item is-ticked">24/7 monitoring and alerting</li>
+      </ul>
+      <h4>Share and collaborate</h4>
+      <ul class="p-list">
+        <li class="p-list__item is-ticked">Identity management across all models</li>
+        <li class="p-list__item is-ticked">Read only mode available</li>
+      </ul>
+      <h4>Deploy to public clouds</h4>
+      <ul class="p-list">
+        <li class="p-list__item is-ticked">Use your existing credentials to deploy to any cloud</li>
+      </ul>
+    </div>
+    <div class="col-6">
+      <h4>Pre-configured open source software</h4>
+      <ul class="p-list">
+        <li class="p-list__item is-ticked">All the ops knowledge required to automate the behaviour of your application</li>
+        <li class="p-list__item is-ticked">Reusable and repeatable workloads</li>
+        <li class="p-list__item is-ticked">Portable solutions across clouds</li>
+      </ul>
+      <h4>One view of all clouds and models</h4>
+      <ul class="p-list">
+        <li class="p-list__item is-ticked">All models shared and owned by you in one place</li>
+        <li class="p-list__item is-ticked">Monitor the status of your models at a glance</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<div class="p-strip is-bordered">
+  <div class="row">
+    <div class="col-12">
+      <h3 id="deploy-kubernetes-in-minutes">Deploy Kubernetes in minutes</h3>
+      <img src="https://assets.ubuntu.com/v1/c45bb1aa-jaas5.gif" alt="Kuberneets overview GIF">
+      <p>In partnership with Google, Canonical delivers a ‘pure K8s’ experience, tested across a wide range of clouds and integrated with modern metrics and monitoring.</p>
+      <p>The <a href="/canonical-kubernetes">Canonical Distribution Of Kubernetes</a> is for full production usage. Start using Kubernetes today.</p>
+      <div>
+        <a href="/kubernetes" class="p-button--neutral">Learn more</a>
+        <a href="/new/?deploy-target=bundle/canonical-kubernetes-21" class="p-button--neutral">Launch Kubernetes</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="p-strip is-bordered">
+  <div class="row">
+    <div class="col-8">
+      <h3>
+        Getting started
+      </h3>
+    </div>
+  </div>
+  <div class="row">
+    <ol class="p-list-step">
+      <li class="p-list-step__item col-8">
+        <h3 class="p-list-step__title">
+          <span class="p-list-step__bullet">1</span>
+          Create an Ubuntu Single Sign On identity
+        </h3>
+        <p class="p-list-step__content">JAAS uses Ubuntu SSO for identity management, so if you don’t already have an account create one at <a href="https://login.ubuntu.com/">https://login.ubuntu.com</a></p>
+      </li>
+      <li class="p-list-step__item col-8">
+        <h3 class="p-list-step__title">
+          <span class="p-list-step__bullet">2</span>
+          Get cloud credentials from your provider
+        </h3>
+        <p class="p-list-step__content">JAAS deploys your workload to your
+        cloud of choice, so you must provide your cloud credentials for JAAS
+        to create and access virtual machines on your behalf. We recommend
+        that users generate a new set of credentials exclusively for use with
+        JAAS via the public cloud’s IAM tools. For instructions on getting
+        your credentials see our <a class="external external-alt" href="https://docs.jujucharms.com/credentials">credentials documentation page.</a></p>
+      </li>
+      <li class="p-list-step__item col-8">
+        <h3 class="p-list-step__title">
+          <span class="p-list-step__bullet">3</span>
+          Start modelling
+        </h3>
+        <h4>On the web</h4>
+        <p>Go to <a href="https://jujucharms.com/new/">https://jujucharms.com/new/</a></p>
+        <h4>On the command line:</h4>
+        <h5>1. Install</h5>
+        <p>If you haven’t installed Juju yet follow <a class="external
+        external-alt" href="https://docs.jujucharms.com/getting-started">these instructions</a> to get it running on your system.</p>
+        <h5>2. Register</h5>
+        <p>Register the JAAS controller with:</p>
+        <p>
+          <pre><code>juju register jimm.jujucharms.com</code></pre>
+        </p>
+        <p>With Juju 2.2 beta and later, registration is not required. Simply:</p>
+        <p>
+          <pre><code>juju login jaas</code></pre>
+        </p>
+      </li>
+      <li class="p-list-step__item col-8">
+        <h3 class="p-list-step__title">
+          <span class="p-list-step__bullet">4</span>
+          Find solutions to deploy
+        </h3>
+        <p class="p-list-step__content">Hundreds of popular cloud-oriented applications such as Kubernetes, Apache Hadoop, Big Data solutions and OpenStack are available in the store as charms and bundles. New ones are added nearly every day and are regularly reviewed and updated.</p>
+      </li>
+    </ol>
+  </div>
+  <div class="row">
+    <div class="u-align-text--center">
+      <a href="/store" class="p-button--neutral">Visit the store</a>
+    </div>
+  </div>
+</div>
+
+<div class="p-strip has-image-bg" style="background: no-repeat top 20% right 0 url('/static/img/jaas/openstack-bundle-background.png')">
+  <div class="row">
+    <dic class="col-6">
+      <h4>Alternatively, you can test and deploy models on your own hardware</h4>
+      <p>Use Juju for private cloud infrastructure or deploying onto bare metal, including:</p>
+      <ul class="p-list">
+        <li class="p-list__item is-ticked">MAAS</li>
+        <li class="p-list__item is-ticked">Openstack</li>
+        <li class="p-list__item is-ticked">LXD</li>
+      </ul>
+      <p>You can also deploy to public clouds including Amazon Web Services, Google Cloud Platform, Microsoft Azure, Digital Ocean and Joyent.</p>
+      <a href="https://docs.jujucharms.com/getting-started" class="p-button--neutral">Install Juju</a>
+    </div>
+  </div>
+</div>
+
+{% endblock content %}

@@ -1,0 +1,339 @@
+{% extends "_layout.html" %}
+
+{% block content %}
+<div class="p-strip--image is-dark"
+  style="background-image:url('/static/img/home/juju-suru-blue-background.png')">
+  <div class="row">
+    <div class="u-equal-height">
+      <div class="col-6">
+        <h1>How it works</h1>
+        <h3>Juju controller: the heart of Juju</h3>
+        <h4>Juju's controller manages all the machines in your running models, responding to the events that are triggered throughout the system.</h4>
+        <p>It also manages scale out, configuration and placement of all your models and applications.</p>
+      </div>
+      <div class="col-6 u-vertically-center u-image-position">
+        <img src="/static/img/how-it-works/how-it-works.png" srcset="/static/img/how-it-works/how-it-works-2x.png" alt="How it works overview pictogram" class="u-image-position--right u-hide--small" />
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="p-strip is-bordered">
+  <div class="row">
+    <div class="col-12">
+      <h2>Application modelling for every cloud</h2>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-8 u-align-text--center">
+      <img src="/static/img/how-it-works/charms-bundles.png" srcset="/static/img/how-it-works/charms-bundles-2x.png" alt="Juju charms/bundles diagram" />
+    </div>
+    <div class="col-4">
+      <div class="p-card">
+        <h3>Charms</h3>
+        <p>Charms are sets of scripts for deploying and operating software. With event handling built in, they can declare interfaces that fit charms for other services, so relationships can be formed.</p>
+        <h3>Bundles</h3>
+        <p>Bundles are collections of charms that link services together, so you can deploy whole chunks of app infrastructure in one go.</p>
+        <h3>What they do:</h3>
+        <ul>
+          <li>Install</li>
+          <li>Configure</li>
+          <li>Connect</li>
+          <li>Upgrade and update</li>
+          <li>Scale out and scale back</li>
+          <li>Perform health checks</li>
+          <li>Undertake operational actions</li>
+          <li>Benchmark</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-12 u-align-text--center">
+      <img src="/static/img/how-it-works/step-arrow.svg" alt="" />
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-8">
+      <img src="/static/img/how-it-works/provision.png" srcset="/static/img/how-it-works/provision-2x.png" alt="Juju provision overview" />
+    </div>
+    <div class="col-4">
+      <div class="p-card">
+        <h3>Provision</h3>
+        <p>Specify the number of machines you want and how you want them to be deployed, or let Juju do it automatically.</p>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-12 u-align-text--center">
+      <img src="/static/img/how-it-works/step-arrow.svg" alt="" />
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-8">
+      <img src="/static/img/how-it-works/deploy.png" srcset="/static/img/how-it-works/deploy-2x.png" alt="Juju deploy diagram" />
+    </div>
+    <div class="col-4">
+      <div class="p-card">
+        <h3>Deploy</h3>
+        <p>Deploy your services with a few clicks of your mouse or re-deploy your entire app infrastructure to another cloud.</p>
+      </div>
+    </div>
+  </div>
+  <div class="row u-no-margin--top">
+    <div class="col-12 u-align-text--center">
+      <img src="/static/img/how-it-works/step-arrow.svg" alt="" />
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-8">
+      <img src="/static/img/how-it-works/monitor-manage.png" srcset="/static/img/how-it-works/monitor-manage-2x.png" alt="" />
+    </div>
+    <div class="col-4">
+      <div class="p-card">
+        <h3>Monitor and manage</h3>
+        <p>The Juju controller will manage:</p>
+        <ul>
+          <li>Multiple models</li>
+          <li>All VMs in all your running models</li>
+          <li>Scale out, config and placement</li>
+          <li>User accounts and identification</li>
+          <li>Sharing and access</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="p-strip">
+  <div class="row">
+    <div class="col-12">
+      <h2>Frequently asked questions</h2>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-6">
+      <div>
+        <h3>What is Juju?</h3>
+        <p>
+          Juju is an open source application modelling tool that allows you
+          to deploy, configure, scale and operate cloud infrastructures
+          quickly and efficiently on public clouds such as AWS, GCE, and
+          Azure along with private ones such as MAAS, OpenStack, and VSphere.
+        </p>
+        <p>
+          Its store allows access to a wide range of best practice solutions
+          which you can deploy with a single command. You can use Juju from
+          the command line or through its powerful graphical representation
+          of the model in the GUI.
+        </p>
+        <p>
+          <a class="external external-alt" href="https://docs.jujucharms.com/getting-started">
+            Visit the docs to install Juju&nbsp;&rsaquo;
+          </a>
+        </p>
+      </div>
+      <div>
+        <h3>What is JAAS?</h3>
+        <p>
+          JAAS is Juju as a Service, managed by Canonical, the makers of
+          Ubuntu. It introduces a common controller that operates all the
+          machines in your running models.
+        </p>
+        <p>
+          JAAS enables you to quickly build, configure, manage and deploy
+          your applications to the public cloud directly from your browser
+          or the command line. It also allows you to share your models and
+          easily collaborate with other users.
+        </p>
+        <p>
+          <a class="external external-alt" href="https://docs.jujucharms.com/getting-started-jaas">
+            Visit the docs to get started with JAAS&nbsp;&rsaquo;
+          </a>
+        </p>
+      </div>
+      <div>
+        <h3>What is the difference between Juju and JAAS?</h3>
+        <p>
+          Juju as a Service (JAAS) is a hosted service for using Juju to
+          operate your applications. JAAS is the fastest way to operate your
+          workloads on supported clouds with the fewest instances required.
+          You can use JAAS alongside your other self-hosted Juju
+          infrastructure with the same CLI and GUI.
+        </p>
+        <p>
+          Juju is a full release. JAAS is currently in public beta.
+        </p>
+        <p>
+          <a href="/new/" rel="nofollow">
+            Try the JAAS beta&nbsp;&rsaquo;
+          </a>
+        </p>
+      </div>
+      <div>
+        <h3>What are charms?</h3>
+        <p>
+          Charms are collections of scripts that contain all the operations
+          necessary to deploy, configure, scale, and maintain cloud
+          applications easily with Juju. Charms encapsulate a single
+          application and all the code and know-how it takes to operate it,
+          such us how to combine and work with other related applications or
+          how to upgrade it.
+        </p>
+        <p>
+          <a class="external external-alt" href="https://docs.jujucharms.com/charms">
+            Learn more about charms&nbsp;&rsaquo;
+          </a>
+        </p>
+      </div>
+      <div>
+        <h3>How do I know charms are safe to use?</h3>
+        <p>
+          Charms deployed from the charm store are community vetted and open
+          source (even though the software they encapsulate may not be).
+        </p>
+        <p>
+          &lsquo;Recommended&rsquo; charms have also met additional criteria
+          and have been vetted by the Juju Charmers team.
+        </p>
+      </div>
+      <div>
+        <h3>Are Juju and JAAS free to use?</h3>
+        <p>
+          Juju is free to use. It is an open source application that you
+          install on your own hardware.
+        </p>
+        <p>
+          JAAS is a hosted service. During the beta period, it is free to use.
+        </p>
+        <p>
+          You will incur a separate fee from your cloud provider for any
+          resources used. Calculators for
+          <a href="https://calculator.s3.amazonaws.com/index.html"
+            class="p-link--external">AWS</a>,
+          <a href="https://cloud.google.com/products/calculator/"
+            class="p-link--external">GCE</a> and
+          <a href="https://azure.microsoft.com/en-gb/pricing/calculator/"
+            class="p-link--external">Azure</a>
+          can help you understand these charges.
+        </p>
+      </div>
+    </div>
+    <div class="col-6">
+      <div>
+        <h3>What are bundles?</h3>
+        <p>
+          Bundles are ready-to-run collections of applications which have
+          been modelled to work together &mdash; this can include particular
+          configurations and relations between the software to be deployed.
+        </p>
+        <p>
+          Bundles may also be optimised for different deployment scenarios
+          of the same software &mdash; for example, a scale-out production
+          ready version like <a href="/canonical-kubernetes/">The Canonical
+          Distribution of Kubernetes</a>, or a development friendly test
+          version like <a href="/kubernetes-core/">Kubernetes Core</a>.
+        </p>
+      </div>
+      <div>
+        <h3>What is application modelling?</h3>
+        <p>
+          Application modelling is a simple way of describing what software
+          should actually do, specified from the top down (services and how
+          they relate) rather than built from the bottom up, making for a
+          clean and portable expression of intent rather than a complicated
+          recipe. Juju delivers the tools to describe your model and then to
+          turn it into reality in a repeatable fashion on any cloud or
+          computing resource.
+        </p>
+        <p>
+          All the operational hard work is automated, connecting your
+          services so they can work together and provision the
+          appropriate machines. You can scale up, scale down, or even
+          re-deploy the same model on another cloud.
+        </p>
+        <p>
+          <a href="https://vimeo.com/206253937/6530fa911d" class="p-link--external">
+            View how to start modelling with Juju as a Service [video]
+          </a>
+        </p>
+      </div>
+      <div>
+        <h3>How does it compare to Puppet and Chef?</h3>
+        <p>Puppet and Chef are great tools for configuration management.</p>
+        <p>
+          Juju provides a higher level of abstraction, supplying the tools
+          to manage the full scope of operations beyond deployment and
+          configuration management, regardless of the machine on which it
+          runs.
+        </p>
+        <p>
+          One of the main advantages of Juju is its dynamic configuration
+          ability, which allows you to re-configure services on the fly,
+          add, remove, or change relationships between services, and scale
+          in or out with ease, sharing the operational knowledge and making
+          the most of the wider community.
+        </p>
+      </div>
+      <div>
+        <h3>What kind of applications can I deploy?</h3>
+        <p>
+          Charms are available for hundreds of common and popular
+          cloud-oriented applications such as Kubernetes, Apache Hadoop,
+          Big Data solutions, OpenStack, or even your own software, with new
+          ones being added every day.
+        </p>
+        <p>
+          <a href="/store">
+            Check out the public charm store for an up to the minute list
+            of charms&nbsp;&rsaquo;
+          </a>
+        </p>
+      </div>
+      <div>
+        <h3>Can I develop a charm for my own software?</h3>
+        <p>
+          Yes! You can integrate your existing Chef, Puppet, Docker or other
+          scripts with custom charms for your own use, or make use of the
+          Juju store and the existing ecosystem of charm developers to
+          package and promote your application to a wider audience. There are
+          tools and documentation to help you get started.
+        </p>
+        <p>
+          <a href="https://docs.jujucharms.com/developer-getting-started">
+            Learn more about writing charms&nbsp;&rsaquo;
+          </a>
+        </p>
+      </div>
+      <div>
+        <h3>Where can I find more detailed information?</h3>
+        <p>
+          For further information, read our more detailed guidance in the
+          <a class="p-link--external" href="https://docs.jujucharms.com/getting-started">documentation</a>. The
+          <a href="https://www.ubuntu.com/cloud/juju" class="p-link--external">Ubuntu
+            website</a> includes an overview of Canonical&rsquo;s cloud
+            products, showing how Juju fits in.
+        </p>
+        <p>
+          The <a href="/community">Juju community pages</a> include
+          documentation with more technical detail on charms and using Juju,
+          written by people using Juju in production environments.
+        </p>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-12">
+    <div class="u-align-text--center">
+      <a href="https://docs.jujucharms.com/getting-started" class="p-button--neutral">
+        Visit the docs to install Juju
+      </a>
+      <a href="/new/" class="p-button--positive" rel="nofollow">
+        Try the beta
+      </a>
+    </div>
+  </div>
+  </div>
+</div>
+
+{% endblock content %}

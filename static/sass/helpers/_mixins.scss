@@ -1,0 +1,420 @@
+/**
+ * mixins
+ *
+ * @section mixins
+ */
+
+@mixin font_size ($size: 16) {
+  font-size: ($size / $base)em;
+  margin-bottom: (12 / $size)em;
+}
+
+@mixin box_sizing ($type: border-box) {
+    -webkit-box-sizing: $type;
+    -moz-box-sizing:    $type;
+    box-sizing:         $type;
+}
+
+@mixin rounded_corners($radius: 4px 4px 4px 4px) {
+  -webkit-border-radius: $radius;
+  -moz-border-radius: $radius;
+  border-radius: $radius;
+}
+
+/// Takes an underdetermined number of transitions and provides browser prefixes
+/// @group helpers
+/// @example
+///     @include transition(width .2s);
+@mixin transition($args...) {
+  -moz-transition: $args;
+  -webkit-transition: $args;
+  transition: $args;
+}
+
+@mixin box_shadow($shadow: 0 2px 2px 0 #c2c2c2) {
+  -moz-box-shadow: $shadow;
+  -webkit-box-shadow: $shadow;
+  box-shadow: $shadow;
+}
+
+@mixin gradient($from, $to) {
+  background-color: $to;
+  background-image: -moz-linear-gradient($from, $to);
+  background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, from($from), to($to));
+  background-image: -webkit-linear-gradient($from, $to);
+  background-image: -o-linear-gradient($from, $to);
+}
+
+@mixin footer($background) {
+  padding: $gutter_width $two_col $gutter_width $four_col;
+  margin-bottom: 0;
+  background: url($background) no-repeat scroll $one_col center #F7F7F7;
+}
+
+@mixin clearfix() {
+  *zoom:1;
+
+  &:before,
+  &:after {
+      content:"";
+      display:table;
+  }
+  &:after {
+      clear:both;
+  }
+}
+
+// CSS3 colunms
+@mixin columns($num: 3, $gap: 20) {
+  -moz-column-count: $num;
+  -moz-column-gap: ($gap / $base)em;
+  -webkit-column-count: $num;
+  -webkit-column-gap: ($gap / $base)em;
+  column-count: $num;
+  column-gap: ($gap / $base)em;
+}
+
+@mixin background_size($size: 100% 100%) {
+  -moz-background-size: $size;
+  -webkit-background-size: $size;
+  -o-background-size: $size;
+  background-size: $size;
+}
+
+/* row mixins */
+@mixin row-expand {
+  padding: 0;
+
+  .inner-wrapper {
+    max-width: $page-maxwidth + $page-padding * 2;
+  }
+}
+
+@mixin feature-block($feature-color) {
+  @include rounded_corners(5px);
+  background-color: $feature-color;
+  background: -moz-linear-gradient(left,  lighten($feature-color, 10%) 0%, $feature-color 100%);
+  background: -webkit-gradient(linear, left top, right top, color-stop(0%,lighten($feature-color, 10%)), color-stop(100%,$feature-color));
+  background: -webkit-linear-gradient(left,  lighten($feature-color, 10%) 0%,$feature-color 100%);
+  background: -o-linear-gradient(left,  lighten($feature-color, 10%) 0%,$feature-color 100%);
+  background: -ms-linear-gradient(left,  lighten($feature-color, 10%) 0%,$feature-color 100%);
+  background: linear-gradient(to right,  lighten($feature-color, 10%) 0%,$feature-color 100%);
+  position: relative;
+  overflow: hidden;
+
+  &:after {
+    content: "";
+    position: absolute;
+    top: -58%;
+    left: -10%;
+    display: block;
+    height: 180%;
+    width: 48%;
+    background: rgba(255, 255, 255, .1);
+    -ms-transform: rotate(35deg);
+    -webkit-transform: rotate(35deg);
+    transform: rotate(35deg);
+  }
+
+  &:before {
+    content: "";
+    position: absolute;
+    top: -40%;
+    left: -1%;
+    display: block;
+    height: 71%;
+    width: 107%;
+    background: rgba(255, 255, 255, .1);
+    -ms-transform: rotate(10deg);
+    -webkit-transform: rotate(10deg);
+    transform: rotate(10deg);
+  }
+
+  &.solutions__feature-link:hover {
+    text-decoration: none;
+    background-color: darken($feature-color, 10%);
+    background: -moz-linear-gradient(left,  $feature-color 0%, darken($feature-color, 10%) 100%);
+    background: -webkit-gradient(linear, left top, right top, color-stop(0%,$feature-color), color-stop(100%,darken($feature-color, 10%)));
+    background: -webkit-linear-gradient(left,  $feature-color 0%, darken($feature-color, 10%) 100%);
+    background: -o-linear-gradient(left,  $feature-color 0%, darken($feature-color, 10%) 100%);
+    background: -ms-linear-gradient(left,  $feature-color 0%, darken($feature-color, 10%) 100%);
+    background: linear-gradient(to right,  $feature-color 0%, darken($feature-color, 10%) 100%);
+  }
+}
+
+%shadow-header {
+  padding-top: 0;
+  background: #fff;
+  color: $cool-grey;
+
+  @media only screen and (min-width: $page-maxwidth) {
+    overflow: hidden;
+  }
+
+  header {
+    $shadow-size: 3px;
+    @include box_shadow(0px 1px $shadow-size 0px rgba(0, 0, 0, 0.35));
+    margin-bottom: $shadow-size;
+    display: block;
+    padding-top: 30px;
+    padding-bottom: 20px;
+  }
+}
+
+// Pull quote styling
+@mixin vf-p-pull-quotes {
+  %quotes {
+    color: $color-mid-light;
+    display: inline-block;
+    font-size: 2rem;
+    font-weight: bold;
+    line-height: 1rem;
+    max-width: 1.25rem;
+  }
+
+  .p-pull-quote {
+    border: 0;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    margin-top: 2rem;
+    padding-left: 2rem;
+    padding-right: 1.25rem;
+    position: relative;
+
+    > p {
+      align-self: flex-start;
+      display: inline-block;
+      font-size: 1rem;
+      font-style: normal;
+      margin: 0 0 auto;
+
+      &:first-of-type::before {
+        @extend %quotes;
+        content: '\201C\2002'; // Unicode for left double quotation mark +  1/2 em space
+        margin-left: -1.5rem;
+        margin-right: .25rem;
+      }
+
+      &:last-of-type {
+        margin-bottom: 0;
+      }
+
+      &:last-of-type::after {
+        @extend %quotes;
+        content: '\2002\201E'; // Unicode for 1/2 em space + low double quotation mark
+        display: inline-block;
+        line-height: 0;
+        margin-left: .5rem;
+        position: absolute;
+        right: 0;
+      }
+    }
+
+    &__image {
+      align-self: center;
+      border-radius: 50%;
+      margin-bottom: 1rem;
+      max-width: 70px;
+    }
+
+    &__citation {
+      align-items: stretch;
+      align-self: flex-end;
+      display: flex;
+      font-size: 1rem;
+      font-style: italic;
+      line-height: 1.4;
+      margin-top: auto;
+      width: 100%;
+    }
+
+    &__logo {
+      align-self: flex-start;
+      margin-right: 1rem;
+      max-height: 2.5rem;
+    }
+
+  }
+}
+
+@mixin jaas-row($float: false) {
+  .row--jaas {
+    padding-bottom: 40px;
+
+    &__clouds {
+      list-style-type: none;
+      margin-left: 0;
+      text-align: center;
+      margin-top: 2.6rem;
+
+      @media screen and (max-width: 768px) {
+        margin-top: 2rem;
+      }
+
+      &-aws {
+        height: 50px;
+        vertical-align: middle;
+      }
+      &-gcp {
+        height: 40px;
+        vertical-align: middle;
+      }
+      &-azure {
+        height: 22px;
+        vertical-align: middle;
+      }
+
+      li {
+        margin-bottom: 1.9rem;
+
+        &:last-child {
+          margin-bottom: 0;
+        }
+      }
+
+      &-local {
+        border-top: 1px solid $color-mid-light;
+        padding-top: 1.3rem;
+        margin-left: 3rem;
+        margin-right: 3rem;
+      }
+
+      img + img {
+        margin-left: 1.5rem;
+      }
+    }
+
+    &__list {
+      list-style-type: none;
+      margin-left: 0;
+      margin-top: 1.6rem;
+      margin-bottom: 1rem;
+
+      &-item {
+        background: url(../img/icons/list-tick.png) left 0.3rem no-repeat;
+        padding-left: 2rem;
+      }
+    }
+
+    &__quick-start {
+      margin-left: 1rem;
+    }
+
+    &__cta {
+      @media screen and (max-width: 768px) {
+        text-align: center;
+      }
+
+      &-prefix {
+        margin-top: 1.5rem;
+        margin-bottom: 0.5rem;
+      }
+
+      a:first-child {
+        margin-right: 0.625rem;
+      }
+
+      .button--inline-neutral {
+        background: $white;
+        border: 0;
+
+        &:hover {
+          background: $light-grey;
+        }
+      }
+    }
+
+    &__learn-more {
+      margin-bottom: 0;
+    }
+
+    .blue-link {
+      color: $link-blue;
+      font-weight: 300;
+    }
+  }
+}
+
+@mixin equal-height {
+  .equal-height {
+    @media only screen and (min-width: $breakpoint-medium) {
+      display: flex;
+    }
+  }
+}
+
+@mixin tick-list {
+  list-style-type: none;
+  margin-left: 0;
+  margin-top: 1.6rem;
+  margin-bottom: 1rem;
+
+  &-item {
+    background: url(../img/icons/list-tick.png) left .3rem no-repeat;
+    background-size: 1rem;
+    padding-left: 1.5rem;
+    margin-bottom: .25rem;
+  }
+}
+
+@mixin tick-list-full {
+  list-style-type: none;
+  margin-left: 0;
+  margin-top: 1.6rem;
+  margin-bottom: 1rem;
+
+  &-item {
+    background: url(../img/icons/list-tick.png) left .3rem no-repeat;
+    background-size: 1.4rem;
+    padding-left: 2.1rem;
+    margin-bottom: .625rem;
+  }
+}
+
+@mixin social-links {
+  .social-list {
+    &__item--google-plus,
+    &__item--twitter,
+    &__item--facebook,
+    &__item--youtube {
+      background-size: 124px;
+      width: 31px;
+      height: 31px;
+      margin-right: 0;
+      margin-left: 10px;
+      background-image: url(https://assets.ubuntu.com/v1/5ae859fb-icon-social.svg);
+
+      &:hover {
+        background-position-y: -30px;
+      }
+    }
+
+    li:first-child a {
+      margin-left: 0;
+    }
+
+    &__item--twitter {
+      background-position: 0 0;
+    }
+
+    &__item--google-plus {
+      background-position: -31px 0;
+    }
+
+    &__item--facebook {
+      background-position: -62px 0;
+    }
+
+    // The base style for youtube doesn't exist in the current vanilla version
+    // so this implements those styles specifically.
+    &__item--youtube {
+      background-position: -93px 0;
+      text-indent: -99999px;
+      float: left;
+      background-repeat: no-repeat;
+      overflow: hidden;
+      display: inline-block;
+    }
+  }
+}

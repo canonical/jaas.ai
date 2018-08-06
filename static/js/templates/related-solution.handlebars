@@ -1,0 +1,23 @@
+<div class="details">
+    <div class="title">
+        {{ name }}
+    </div>
+    <div class="deploys note">
+        {{ deploys }} deploys
+    </div>
+</div>
+<ul class="list__icons clearfix">
+    {{#each charms}}
+    <li>
+        <a href="{{ charm_url }}">
+            <span>
+                <p class="tooltip">
+                    <img height="75" width="75" src="{{ icon_url }}">
+                    <span data-tooltip="{{ charm_name }}" class="tooltip__content"></span>
+                </p>
+            </span>
+        </a>
+
+    </li>
+    {{/each}}
+</ul>
