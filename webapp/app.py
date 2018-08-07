@@ -26,8 +26,6 @@ app = flask.Flask(
     template_folder='../templates',
     static_folder='../static')
 
-app.config.from_object('webapp.config')
-
 app.wsgi_app = ProxyFix(app.wsgi_app)
 if app.debug:
     app.wsgi_app = DebuggedApplication(app.wsgi_app)
@@ -67,22 +65,72 @@ def page_not_found(error):
 def index():
     return render_template('index.html')
 
-@app.route('/experts')
-def experts():
-    return render_template('experts.html')
 
 @app.route('/how-it-works')
 def how_it_works():
     return render_template('how-it-works.html')
 
-@app.route('/community')
-def community():
-    return render_template('community.html')
 
 @app.route('/jaas')
 def jaas():
     return render_template('jaas.html')
 
+
 @app.route('/store')
 def store():
     return render_template('store.html')
+
+
+@app.route('/big-data')
+def big_data():
+    return render_template('big-data.html')
+
+
+@app.route('/containers')
+def containers():
+    return render_template('containers.html')
+
+
+@app.route('/kubernetes')
+def kubernetes():
+    return render_template('kubernetes.html')
+
+
+@app.route('/openstack')
+def openstack():
+    return render_template('openstack.html')
+
+
+@app.route('/experts')
+def experts():
+    return render_template('experts.html')
+
+
+@app.route('/experts/spicule')
+def experts_spicule():
+    return render_template('experts/spicule.html')
+
+
+@app.route('/experts/tengu')
+def experts_tengu():
+    return render_template('experts/tengu.html')
+
+
+@app.route('/community')
+def community():
+    return render_template('community.html')
+
+
+@app.route('/community/cards')
+def community_cards():
+    return render_template('community.html')
+
+
+@app.route('/community/charmers')
+def community_charmers():
+    return render_template('community.html')
+
+
+@app.route('/community/partners')
+def community_partners():
+    return render_template('community.html')

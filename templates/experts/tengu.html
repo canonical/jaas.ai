@@ -1,0 +1,178 @@
+{% extends "_layout.html" %}
+
+{% block title %}Juju expert - Tengu{% endblock %}
+{% block description %}We are a generic and open-source data science hub powered by Juju, offering professionals complete freedom to choose the tools that best suit each of their big data driven applications.{% endblock %}
+
+{% block content %}
+<div class="p-strip--image is-light u-no-padding--bottom" style="background-image:url('https://assets.ubuntu.com/v1/c883127d-download.svg')">
+  <div class="row">
+    <div class="col-8">
+      <span class="expert__strap">Juju Expert Partners</span>
+      <h1>Analyse, reveal patterns, and gain insights</h1>
+      <h4>We are a generic and open-source data science hub powered by Juju, offering professionals complete freedom to choose the tools that best suit each of their big data driven applications.</h4>
+    </div>
+    <div class="col-4">
+      <div class="p-card--highlighted">
+        <h2 class="u-align--center u-vertically-center">
+          <img
+            style="padding-top:1rem"
+            width="155"
+            src="https://assets.ubuntu.com/v1/68b288f6-tengu.png"
+            alt="Tengu logo" />
+        </h2>
+        <hr>
+        <p>Please let us know if you have a question, or would like further information about Tengu.</p>
+        <footer class="p-card__footer">
+          <a href="#_" data-js="show-btn" class="p-button--positive"
+            onclick="dataLayer.push({
+              'event' : 'GAEvent',
+              'eventCategory' : 'Experts',
+              'eventAction' : 'Reveal contact details',
+              'eventLabel' : 'Tengu'
+            });">
+            Show contact details&hellip;
+          </a>
+          <div class="u-hide" data-js="contact-info">
+            <p>
+              <a href="https://tengu.io" class="link p-card__pre-footer">
+                <span>
+                  <img class="p-card__footer-icon" src="https://assets.ubuntu.com/v1/4f94bbf4-icon-web.svg" alt="Email icon">
+                </span>
+                https://tengu.io
+              </a>
+            </p>
+            <p>
+              <a href="mailto:info@tengu.io" class="link p-card__pre-footer">
+                <span>
+                  <img class="p-card__footer-icon" src="https://assets.ubuntu.com/v1/5e815088-icon-email.svg" alt="Email icon">
+                </span>
+                info@tengu.io
+              </a>
+            </p>
+            <p>
+              <span class="link p-card__pre-footer">
+                <span>
+                  <img class="p-card__footer-icon" src="https://assets.ubuntu.com/v1/a52bd3b1-Icon-telephone.svg" alt="Telephone icon">
+                </span>
+                BE <a href="tel:+32478668489">+32 478 66 84 89</a>
+              </span>
+            </p>
+          </div>
+        </footer>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="p-strip u-no-padding--bottom">
+  <div class="row">
+    <div class="col-12">
+      <h2 class="expert__title">Supported</h2>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-6">
+      <h3>Automate Spark Jobs</h3>
+      <p>Deploy a small Spark cluster together with exemplary Python Spark Jobs and an integrated Zeppelin Notebook to ease into big data processing.</p>
+      <div class="p-card">
+        <div class="pictogram-bg">
+          <object data="https://api.jujucharms.com/charmstore/v5/~tengu-team/bundle/automate-spark-jobs-3/diagram.svg" type="image/svg+xml"></object>
+        </div>
+        <ul class="p-list">
+          <li class="p-list__item is-ticked">Small standalone Spark cluster</li>
+          <li class="p-list__item is-ticked">Integrated Python Spark Jobs</li>
+          <li class="p-list__item is-ticked">Integrated Zeppelin Notebook</li>
+        </ul>
+        <div class="expert__actions">
+          <a href="https://jujucharms.com/u/tengu-team/automate-spark-jobs/bundle" class="p-button--positive">Deploy Automate Spark Jobs</a>
+        </div>
+      </div>
+    </div>
+    <div class="col-6">
+      <h3>Create custom data flow</h3>
+      <p>Get started with stream processing in Node-RED. We guide the way with a small example receiving StackOverflow posts and filter them into a MongoDB data store.</p>
+      <div class="p-card u-no-margin--bottom-lrg">
+        <div class="pictogram-bg">
+          <object data="https://api.jujucharms.com/charmstore/v5/~tengu-team/bundle/create-custom-data-flows-3/diagram.svg" type="image/svg+xml"></object>
+        </div>
+        <ul class="p-list">
+          <li class="p-list__item is-ticked">Receive data on ActiveMQ</li>
+          <li class="p-list__item is-ticked">Create custom data flows in Node-RED</li>
+          <li class="p-list__item is-ticked">Store the info in MongoDB</li>
+        </ul>
+        <div class="expert__actions">
+          <a href="https://jujucharms.com/u/tengu-team/create-custom-data-flows/bundle" class="p-button--positive">Deploy Create Custom Data Flows</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="p-strip u-no-padding--bottom">
+  <div class="row">
+    <div class="col-4">
+      <h3 class="expert__title">About us</h3>
+      <p>Thomas &amp; Gregory founded Tengu at Ghent University, Belgium, when working with several data science tools.</p>
+      <p>With Tengu, it’s their mission to make the life of data scientists more focused by automating big data infrastructures and giving them the time to develop better tech applications based on better insights.</p>
+    </div>
+    <div class="col-4">
+      <h3 class="expert__title">Skills</h3>
+      <ul class="p-list">
+        <li class="p-list__item is-ticked">Big Data</li>
+        <li class="p-list__item is-ticked">NoSQL Storage</li>
+        <li class="p-list__item is-ticked">Parallel Processing</li>
+        <li class="p-list__item is-ticked">Scalable Systems Design</li>
+        <li class="p-list__item is-ticked">Cloud Computing</li>
+        <li class="p-list__item is-ticked">Internet of Things</li>
+        <li class="p-list__item is-ticked">Machine Learning</li>
+        <li class="p-list__item is-ticked">Microservices</li>
+      </ul>
+    </div>
+    <div class="col-4">
+      <h3 class="expert__title">People</h3>
+      <div class="p-media-object">
+        <img src="https://assets.ubuntu.com/v1/6c60a008-gregory_van_seghbroeck.jpeg" alt="Gregory Van Seghbroec" class="p-media-object__image is-round">
+        <div class="p-media-object__details">
+          <h3 class="p-media-object__title">
+            Gregory Van Seghbroeck
+          </h3>
+          <p class="p-media-object__content">CTO</p>
+        </div>
+      </div>
+      <div class="p-media-object">
+        <img src="https://assets.ubuntu.com/v1/1bda172b-sarah_facq.jpeg" alt="Sarah Facq" class="p-media-object__image is-round">
+        <div class="p-media-object__details">
+          <h3 class="p-media-object__title">
+            Sarah Facq
+          </h3>
+          <p class="p-media-object__content">Growth Marketer</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="p-strip">
+  <div class="row">
+    <div class="col-8">
+      <span class="expert__strap">Juju Expert Partners</span>
+      <h4>
+        Managed solutions partner network. If you are building your own
+        solutions we would love to have you join us as a partner. We can’t wait
+        to talk.
+      </h4>
+    </div>
+    <div class="col-4">
+      <span class="expert__strap">Become a Partner</span>
+      <div class="expert__actions">
+        <a
+          href="mailto:juju-experts@canonical.com"
+          class="p-button--positive">
+          Join us&hellip;
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% endblock content %}
