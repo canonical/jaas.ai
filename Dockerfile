@@ -18,6 +18,6 @@ RUN echo "${COMMIT_ID}" > version-info.txt
 ENV COMMIT_ID "${COMMIT_ID}"
 
 # Setup commands to run server
-ENTRYPOINT ["./entrypoint.sh"]
+ENTRYPOINT ["./entrypoint"]
 CMD ["0.0.0.0:80"]
 
