@@ -1,7 +1,8 @@
-from flask import Blueprint, render_template, abort, current_app
-from theblues.charmstore import CharmStore
 from pprint import pformat
 
+from flask import Blueprint, abort, render_template
+
+from theblues.charmstore import CharmStore
 
 jaasstore = Blueprint(
   'jaasstore', __name__,

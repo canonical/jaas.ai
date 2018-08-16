@@ -1,10 +1,7 @@
-import flask
 import socket
-from urllib.parse import (
-    unquote,
-    urlparse,
-    urlunparse,
-)
+from urllib.parse import unquote, urlparse, urlunparse
+
+import flask
 
 
 # Global tasks for all requests
