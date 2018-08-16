@@ -1,9 +1,3 @@
-"""
-A Flask application for snapcraft.io.
-
-The web frontend for the snap store.
-"""
-
 import flask
 from werkzeug.contrib.fixers import ProxyFix
 from werkzeug.debug import DebuggedApplication
@@ -11,12 +5,9 @@ from werkzeug.debug import DebuggedApplication
 import prometheus_flask_exporter
 import talisker.flask
 from webapp.extensions import sentry
+from webapp.handlers import add_headers, clear_trailing_slash
 from webapp.jaasai.views import jaasai
 from webapp.store.views import jaasstore
-from webapp.handlers import (
-    add_headers,
-    clear_trailing_slash
-)
 
 
 def create_app(testing=False):
@@ -50,6 +41,7 @@ def create_app(testing=False):
     init_blueprint(app)
 
     return app
+
 
 def init_handler(app):
     @app.errorhandler(404)
