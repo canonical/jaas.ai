@@ -15,7 +15,7 @@ cs = CharmStore("https://api.jujucharms.com/v5")
 def get_charm_or_bundle(name):
     try:
         entity_data = cs.entity(name, True)
-    except Exception:
+    except EntityNotFound:
         return abort(404, "Entity not found {}".format(name))
 
     charm_or_bundle_id = entity_data['Id']
