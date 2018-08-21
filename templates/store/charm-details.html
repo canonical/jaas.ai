@@ -86,7 +86,7 @@
       </p>
       <ul class="p-inline-list u-no-margin--bottom u-equal-height">
         <li class="p-inline-list__item u-vertically-center">
-          Share:
+          <strong>Share:</strong>
         </li>
         <li class="p-inline-list__item">
           <a href="https://twitter.com/intent/tweet?text={{ context.charm.display_name }}%20charm&via=ubuntu_cloud&url={{ request.url | urlencode }}">
@@ -226,7 +226,7 @@
         <div class="p-card" id="relations" style="overflow:visible">
           <h3>
             Relations
-            <span class="p-tooltip p-tooltip--top-right">
+            <span class="p-tooltip p-tooltip--top-right" style="position: relative; top: -2px;">
               <i class="p-icon--question" aria-describedby="tp-right"></i>
               <span class="p-tooltip__message" role="tooltip" id="tp-right">Relations enable services to easily and securely share information with each other.</span>
             </span>
@@ -255,7 +255,7 @@
           Files
         </h3>
         <ul class="p-list-tree files__list" aria-multiselectable="true" role="tablist">
-          {% for filename, file_link in context.charm.files.files.items() %}
+          {% for filename, file_link in context.charm.files.items() %}
             <li class="p-list-tree__item">
               <a href='{{ file_link }}' target='_blank'>{{ filename }}</a>
             </li>
@@ -270,13 +270,15 @@
         <h3>Embed this charm</h3>
         <p>Add this card to your website by copying the code below. <a href="/community/cards">Learn more</a>.</p>
         <textarea rows="2" cols="70" readonly="readonly" wrap="off" class="col">&lt;script src="https://assets.ubuntu.com/v1/juju-cards-v1.6.0.js"&gt;&lt;/script&gt;
-&lt;div class="juju-card" data-id="{{ id }}" data-dd&gt;&lt;/div&gt;</textarea>
+&lt;div class="juju-card" data-id="{{ context.charm.card_id }}" data-dd&gt;&lt;/div&gt;</textarea>
         <h4>Preview</h4>
         <script src="https://assets.ubuntu.com/v1/juju-cards-v1.6.0.js"></script>
-        <div class="juju-card" data-id="{{ id }}" data-dd></div>
+        <div class="juju-card" data-id="{{ context.charm.card_id }}" data-dd></div>
       </div>
     </aside>
   </div>
 </div>
+
+<small>{{ context.charm.ref }}</small>
 
 {% endblock %}

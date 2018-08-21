@@ -21,9 +21,11 @@ def user_details_series_version():
 def user_details_series():
     raise NotImplementedError()
 
+
 @jaasstore.route('/u/<user_name>/<entity_name>/')
 def user_details():
     raise NotImplementedError()
+
 
 @jaasstore.route('/<charm_or_bundle_name>')
 def details(charm_or_bundle_name):
@@ -39,7 +41,3 @@ def details(charm_or_bundle_name):
             'store/bundle-details.html',
             context={'bundle': charm_or_bundle}
         )
-
-
-
-
