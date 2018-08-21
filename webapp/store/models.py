@@ -127,13 +127,6 @@ def _convert_http_to_https(content):
     return content
 
 
-def _bzr_to_launchpad_url(link):
-    if link is not None:
-        return link.replace('lp:', 'http://code.launchpad.net/')
-    else:
-        return None
-
-
 def _extract_from_extrainfo(charm_data, ref):
     extra_info = charm_data.get('extra-info', {})
     revisions = (
