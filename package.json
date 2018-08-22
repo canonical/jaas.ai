@@ -6,7 +6,9 @@
     "serve": "./entrypoint 0.0.0.0:${PORT}",
     "watch": "watch -p 'static/sass/**/*.scss' -p 'static/js/**/*.js' -c 'yarn run build'",
     "watch-scss": "watch -p 'static/sass/**/*.scss' -c 'yarn run build-css'",
-    "clean": "rm -rf node_modules yarn-error.log css static/css *.log *.sqlite _site/ build/ .jekyll-metadata .bundle"
+    "clean": "rm -rf node_modules yarn-error.log css static/css *.log *.sqlite _site/ build/ .jekyll-metadata .bundle",
+    "test": "yarn run python-lint",
+    "python-lint": "flake8 webapp"
   },
   "dependencies": {
     "autoprefixer": "^6.3.1",
