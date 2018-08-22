@@ -1,3 +1,4 @@
+import collections
 import os
 import re
 
@@ -64,6 +65,9 @@ def _parse_charm_or_bundle(entity_data):
 def _get_entity_files(ref, manifest=None):
     try:
         files = cs.files(ref, manifest=manifest) or {}
+        files = collections.OrderedDict(
+            sorted(files.items())
+        )
     except EntityNotFound:
         files = {}
     return files
