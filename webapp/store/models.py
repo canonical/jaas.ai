@@ -6,29 +6,12 @@ from jujubundlelib import references
 from theblues.charmstore import CharmStore
 from theblues.errors import EntityNotFound
 
-
 cs = CharmStore("https://api.jujucharms.com/v5")
 
 
-def get_charm_or_bundle_with_series_version(name, series, version):
+def get_charm_or_bundle(reference):
     try:
-        entity_data = cs.entity(name, True)
-        return _parse_charm_or_bundle(entity_data)
-    except EntityNotFound:
-        return None
-
-
-def get_charm_or_bundle_with_series(name, series):
-    try:
-        entity_data = cs.entity(name, True)
-        return _parse_charm_or_bundle(entity_data)
-    except EntityNotFound:
-        return None
-
-
-def get_charm_or_bundle(name):
-    try:
-        entity_data = cs.entity(name, True)
+        entity_data = cs.entity(reference, True)
         return _parse_charm_or_bundle(entity_data)
     except EntityNotFound:
         return None
