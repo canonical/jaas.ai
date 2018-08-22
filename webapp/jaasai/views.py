@@ -1,9 +1,9 @@
 from flask import Blueprint, render_template
 
-
 jaasai = Blueprint(
   'jaasai', __name__,
   template_folder='/templates', static_folder='/static')
+
 
 @jaasai.route('/')
 def index():

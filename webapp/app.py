@@ -51,6 +51,7 @@ def create_app(testing=False):
 
     return app
 
+
 def init_handler(app):
     @app.errorhandler(404)
     def page_not_found(error):
