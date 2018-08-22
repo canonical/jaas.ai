@@ -43,7 +43,7 @@
           </h1>
           <ul class="p-media-object__meta-list u-no-margin--bottom">
               <li class="p-media-object__meta-list-item u-no-padding--left">
-                <strong>By</strong> <a href="/u/{{ context.charm.entity_data['Meta']['owner']['User'] }}">{{ context.charm.entity_data['Meta']['owner']['User'] }}</a>
+                <strong>By</strong> <a href="https://jujucharms.com/u/{{ context.charm.entity_data['Meta']['owner']['User'] }}">{{ context.charm.entity_data['Meta']['owner']['User'] }}</a>
               </li>
               <li class="p-media-object__meta-list-item u-no-padding--left">
                 {% if context.charm.revision_number != context.charm.latest_revision['id'] %}
@@ -212,7 +212,7 @@
             {% for resourcename, resourcefile in context.charm.resources.items() %}
               <li class="p-list__item">
               {% if resourcefile[1] %}
-                  <a href='{{resourcefile[1]}}' target='_blank'>{{ resourcename }} {% if resourcefile[0] %}({{ resourcefile[0] }}) {% endif %}</a>
+                  <a href='https://jujucharms.com{{resourcefile[1]}}' target='_blank'>{{ resourcename }} {% if resourcefile[0] %}({{ resourcefile[0] }}) {% endif %}</a>
               {% else %}
                   {{ resourcename }} {% if resourcefile[0] %}({{ resourcefile[0] }}) {% endif %}
               {% endif %}

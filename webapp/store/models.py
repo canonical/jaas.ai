@@ -1,23 +1,40 @@
 import os
-
-from flask import abort
-from theblues.charmstore import CharmStore
-from jujubundlelib import references
-from theblues.errors import EntityNotFound
+import re
 
 import gfm
-import re
+from jujubundlelib import references
+from theblues.charmstore import CharmStore
+from theblues.errors import EntityNotFound
 
 
 cs = CharmStore("https://api.jujucharms.com/v5")
 
 
+def get_charm_or_bundle_with_series_version(name, series, version):
+    try:
+        entity_data = cs.entity(name, True)
+        return _parse_charm_or_bundle(entity_data)
+    except EntityNotFound:
+        return None
+
+
+def get_charm_or_bundle_with_series(name, series):
+    try:
+        entity_data = cs.entity(name, True)
+        return _parse_charm_or_bundle(entity_data)
+    except EntityNotFound:
+        return None
+
+
 def get_charm_or_bundle(name):
     try:
         entity_data = cs.entity(name, True)
+        return _parse_charm_or_bundle(entity_data)
     except EntityNotFound:
-        return abort(404, "Entity not found {}".format(name))
+        return None
 
+
+def _parse_charm_or_bundle(entity_data):
     charm_or_bundle_id = entity_data['Id']
     ref = references.Reference.from_string(charm_or_bundle_id)
     meta = entity_data.get('Meta', None)
@@ -71,10 +88,10 @@ def _get_entity_files(ref, manifest=None):
 
 def _extract_resources(ref, resources):
     """Extract data from resources metadata.
-    @param ref The reference of the entity.
-    @param resources the resources metadata associated with the entity.
-    @return a dictionary of resource name and an array containing
-            the file extension, the file link of the resource.
+        :param ref: The reference of the entity.
+        :param resources: the resources metadata associated with the entity.
+        :returns: a dictionary of resource name and an array containing
+                the file extension, the file link of the resource.
     """
     result = {}
     for resource in resources:
@@ -94,10 +111,10 @@ def _extract_resources(ref, resources):
 
 
 def _get_bug_url(name, bugs_url):
-    '''Create a link to the bug tracker on Launchpad.
-    @param name the charm name.
-    @return a URL for the bug tracker.
-    '''
+    """Create a link to the bug tracker on Launchpad.
+        :param name: the charm name.
+        :returns: a URL for the bug tracker.
+    """
     if bugs_url:
         return bugs_url
     return 'https://bugs.launchpad.net/charms/+source/{}'.format(name)
@@ -116,10 +133,10 @@ def _render_markdown(content):
 
 
 def _convert_http_to_https(content):
-    '''Convert any non secure inclusion of assets to secure.
-        @param content the content to parse as a string.
-        @return the parsed content with http replaces with https
-    '''
+    """Convert any non secure inclusion of assets to secure.
+        :param content: the content to parse as a string.
+        :returns: the parsed content with http replaces with https
+    """
     insensitive_link = re.compile(re.escape('src="http:'), re.IGNORECASE)
     content = insensitive_link.sub('src="https:', content)
     insensitive_link = re.compile(re.escape("src='http:"), re.IGNORECASE)
@@ -138,7 +155,6 @@ def _extract_from_extrainfo(charm_data, ref):
 
 
 def _extract_from_commoninfo(bundle_data):
-    # ...and common info...
     common_info = bundle_data.get('common-info', {})
     bugs_url = common_info.get('bugs-url')
     homepage = common_info.get('homepage')
