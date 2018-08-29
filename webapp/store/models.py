@@ -19,9 +19,27 @@ def get_charm_or_bundle(reference):
 
 
 def _parse_charm_or_bundle(entity_data):
-    charm_or_bundle_id = entity_data['Id']
-    ref = references.Reference.from_string(charm_or_bundle_id)
     meta = entity_data.get('Meta', None)
+    is_charm = meta.get('charm-metadata', False)
+    if is_charm:
+        return _parse_charm_data(entity_data)
+    else:
+        return _parse_bundle_data(entity_data)
+
+
+def _parse_bundle_data(bundle_data):
+    bundle = {
+        'bundle_data': bundle_data,
+        'is_charm': False
+    }
+
+    return bundle
+
+
+def _parse_charm_data(charm_data):
+    charm_id = charm_data['Id']
+    ref = references.Reference.from_string(charm_id)
+    meta = charm_data.get('Meta', None)
     bzr_url, revisions = _extract_from_extrainfo(meta, ref)
     bugs_url, homepage = _extract_from_commoninfo(meta)
     revision_list = meta['revision-info'].get('Revisions')
@@ -33,33 +51,33 @@ def _parse_charm_or_bundle(entity_data):
             int(revision_list[0].split('-')[-1])
         )}
 
-    charm_or_bundle = {
+    charm = {
         'archive_url': cs.archive_url(ref),
         'bugs_url': bugs_url,
         'bzr_url': bzr_url,
-        'entity_data': entity_data,
+        'charm_data': charm_data,
         'files': _get_entity_files(ref, meta['manifest']),
         'homepage': homepage,
-        'icon': cs.charm_icon_url(charm_or_bundle_id),
-        'id': charm_or_bundle_id,
+        'icon': cs.charm_icon_url(charm_id),
+        'id': charm_id,
         'card_id': ref.path(),
         'latest_revision': latest_revision,
         'options': meta.get('charm-config', {}).get('Options'),
-        'owner': entity_data.get('owner', {}).get('User'),
+        'owner': charm_data.get('owner', {}).get('User'),
         'provides': meta['charm-metadata'].get('Provides'),
         'requires': meta['charm-metadata'].get('Requires'),
         'resources': _extract_resources(ref, meta.get('resources', {})),
         'readme': _render_markdown(
-            cs.entity_readme_content(charm_or_bundle_id)
+            cs.entity_readme_content(charm_id)
         ),
         'revision_list': revision_list,
         'revision_number': ref.revision,
         'revisions': revisions,
         'series': meta.get('supported-series', {}).get('SupportedSeries'),
-        'is_charm': 'charm-metadata' in meta
+        'is_charm': True
     }
 
-    return charm_or_bundle
+    return charm
 
 
 def _get_entity_files(ref, manifest=None):
