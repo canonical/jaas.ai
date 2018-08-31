@@ -28,12 +28,48 @@ def _parse_charm_or_bundle(entity_data):
 
 
 def _parse_bundle_data(bundle_data):
+    bundle_id = bundle_data['Id']
+    ref = references.Reference.from_string(bundle_id)
+    name = ref.name
+    revision_list = bundle_data['Meta']['revision-info'].get('Revisions')
+    latest_revision = {
+        'id': int(revision_list[0].split('-')[-1]),
+        'full_id': revision_list[0],
+        'url': '{}/{}'.format(
+            ref.name,
+            int(revision_list[0].split('-')[-1])
+        )}
+
     bundle = {
+        'archive_url': cs.archive_url(ref),
         'bundle_data': bundle_data,
+        'bundle_visulisation': getBundleVisualization(ref),
+        'display_name': _get_display_name(name),
+        'revision_number': ref.revision,
+        'files': _get_entity_files(ref, bundle_data['Meta']['manifest']),
+        'latest_revision': latest_revision,
+        'card_id': ref.path(),
+        'readme': _render_markdown(
+            cs.entity_readme_content(bundle_id)
+        ),
+        'services': _parseBundleServices(
+            bundle_data['Meta']['bundle-metadata']['applications']
+        ),
         'is_charm': False
     }
 
     return bundle
+
+
+def _parseBundleServices(services):
+    for k, v in services.items():
+        ref = references.Reference.from_string(v['Charm'])
+        v['Charm'] = ref.path()
+        v['icon'] = cs.charm_icon_url(v['Charm'])
+        v['url'] = ref.jujucharms_id()
+        v['display_name'] = _get_display_name(k)
+
+    return services
 
 
 def _parse_charm_data(charm_data):
@@ -91,6 +127,20 @@ def _get_entity_files(ref, manifest=None):
     return files
 
 
+def getBundleVisualization(ref, fetch=False):
+    """Get the url for the bundle visualization, or the actual svg.
+        :param ref The reference of the bundle to get the visualization for.
+        :param fetch Whether or not to get the actual svg.
+        :returns the URL or the SVG for the bundle visualisation
+    """
+    if not fetch:
+        return cs.bundle_visualization_url(ref)
+    try:
+        return cs.bundle_visualization(ref)
+    except EntityNotFound:
+        return None
+
+
 def _extract_resources(ref, resources):
     """Extract data from resources metadata.
         :param ref: The reference of the entity.
@@ -113,6 +163,14 @@ def _extract_resources(ref, resources):
         ]
 
     return result
+
+
+def _get_display_name(name):
+    """Clean the name of the charm for readability.
+        :param name the charm/bundle name.
+        :return a cleaned name for display.
+    """
+    return name.replace('-', ' ')
 
 
 def _get_bug_url(name, bugs_url):

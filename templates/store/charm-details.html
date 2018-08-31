@@ -25,8 +25,6 @@
 
 {% block content %}
 
-<small>{{ charm }}</small>
-
 <div class="p-strip--light is-bordered is-shallow" data-js="sticky-header">
   <header class="row">
     <div class="col-8">
@@ -269,7 +267,7 @@
       <div class="p-card" id="juju-card-embed">
         <h3>Embed this charm</h3>
         <p>Add this card to your website by copying the code below. <a href="/community/cards">Learn more</a>.</p>
-        <textarea rows="2" cols="70" readonly="readonly" wrap="off" class="col">&lt;script src="https://assets.ubuntu.com/v1/juju-cards-v1.6.0.js"&gt;&lt;/script&gt;
+        <textarea rows="2" cols="70" readonly="readonly" wrap="off" style="color:#666">&lt;script src="https://assets.ubuntu.com/v1/juju-cards-v1.6.0.js"&gt;&lt;/script&gt;
 &lt;div class="juju-card" data-id="{{ context.charm.card_id }}" data-dd&gt;&lt;/div&gt;</textarea>
         <h4>Preview</h4>
         <script src="https://assets.ubuntu.com/v1/juju-cards-v1.6.0.js"></script>
@@ -279,9 +277,9 @@
   </div>
 </div>
 
-<script src="https://jujucharms.com/static/js/build/app/treefilelist.js"></script>
+<script src="/static/js/treefilelist.js"></script>
 <script>
-  window.Jujucharms.treeifyFileList();
+  window.app.treeifyFileList();
 </script>
 
 {% endblock %}

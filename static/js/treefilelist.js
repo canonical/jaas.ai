@@ -1,7 +1,7 @@
 /**
   Converts a DOM list by splitting the text by '/' into a nested tree list.
 **/
-window.Jujucharms.treeifyFileList = () => {
+window.app.treeifyFileList = () => {
   /**
     Loop through the list a files passing the file title and children.
     Skipping the rootAttribute object.
