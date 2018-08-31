@@ -20,7 +20,9 @@ def user_details():
 
 
 @jaasstore.route('/<charm_or_bundle_name>')
-def details(charm_or_bundle_name):
+@jaasstore.route('/<charm_or_bundle_name>/<series_or_version>')
+@jaasstore.route('/<charm_or_bundle_name>/<series_or_version>/<version>')
+def details(charm_or_bundle_name, series_or_version=None, version=None):
     reference = references.Reference.from_jujucharms_url(request.path[1:])
     charm_or_bundle = models.get_charm_or_bundle(reference)
 
