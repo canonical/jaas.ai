@@ -3,7 +3,7 @@ gunicorn[gevent]
 prometheus-flask-exporter==0.2.0
 raven[flask]==6.5.0
 statsd<3.3.0
-talisker==0.9.8
+talisker==0.9.14
 theblues==0.3.8
 jujubundlelib==0.5.2
 Markdown==2.6.1

@@ -73,3 +73,10 @@ def community_charmers():
 @jaasai.route('/community/partners')
 def community_partners():
     return render_template('jaasai/community/partners.html')
+
+
+@jaasai.route('/_status/check')
+def health_check():
+    """ Health check end point used by Talisker.
+    """
+    return ('', 200)
