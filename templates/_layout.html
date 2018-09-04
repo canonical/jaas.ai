@@ -34,28 +34,7 @@
   <!-- stylesheets -->
   <link rel="stylesheet" type="text/css" media="screen" href="/static/css/styles-vanilla-v1.css" />
 
-  <script>window.Jujucharms = {utils: {}};</script>
-
-  <script src="/static/js/plugins/handlebars.runtime-v2.0.0+prism+templates.js"></script>
-  <script src="/static/js/plugins/js-cookie.js"></script>
-  <script src="/static/js/app/utils-v1.js"></script>
-  <script src="/static/js/app/cli-typer.js"></script>
-  <script src="/static/js/app/feeds-v1.js"></script>
-  <script src="/static/js/app/helpers.js"></script>
-  <script src="/static/js/app/lightbox.js"></script>
-  <script src="/static/js/app/cookie-policy.js"></script>
-  <script src="/static/js/app/onboarding-notification.js"></script>
-  <script src="/static/js/app/slideout.js"></script>
-  <script src="/static/js/app/treefilelist-v1.js"></script>
-  <script src="/static/js/app/sticky-header.js"></script>
-  <script src="/static/js/app/entity-details.js"></script>
-  <script src="/static/js/app/show-contact-details.js"></script>
-  <script src="/static/js/app/copy-snippet.js"></script>
-
-  <!-- provide charmstore url -->
-  <script type="text/javascript">
-  window.csUrl = "https://api.jujucharms.com/charmstore/v5";
-  </script>
+  <script>window.app = {utils: {}};</script>
 
   <meta name="twitter:card" content="summary">
   <meta name="twitter:site" content="@ubuntucloud">
@@ -106,7 +85,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     <span class="u-off-screen">
       <a href="#main-content">Jump to main content</a>
     </span>
-    
+
     <ul class="p-navigation__links" role="menu">
       <li class="p-navigation__link" role="menuitem"><a href="/store">Store</a></li>
       <li class="p-navigation__link" role="menuitem"><a href="/how-it-works">How it works</a></li>
@@ -201,37 +180,5 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     </div>
   </div>
 </footer>
-
-<script>
-window.Jujucharms.cookieNotification('#cookie-warning-template');
-const notification = document.querySelector('.login-notification');
-const loginLink = document.querySelector('.js-menu-login');
-
-if (loginLink && notification) {
-  loginLink.addEventListener('mouseenter', () => {
-    notification.classList.add('is-shown');
-  });
-  loginLink.addEventListener('mouseleave', () => {
-    notification.classList.remove('is-shown');
-  });
-}
-window.Jujucharms.utils.setupSearch();
-</script>
-
-
-<script>
-  window.Jujucharms.fetchEventsFeed('#js-events-feed', 2);
-  window.Jujucharms.cliTyper(
-    document.querySelector('.js-cli'),
-    document.querySelector('.js-cli-comments')
-  );
-</script>
-<script type="text/javascript" src="/static/js/plugins/buttons.js"></script>
-
-
-<script type="application/javascript">
-  window.Jujucharms.registerHelpers();
-</script>
-
 </body>
 </html>

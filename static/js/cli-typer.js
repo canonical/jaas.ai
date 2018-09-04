@@ -3,7 +3,7 @@
   @param {HTMLElement} container The main container to type in
   @param {HTMLElement} commentContainer the container to add comments
 */
-window.Jujucharms.cliTyper = function(container, commentContainer) {
+window.app.cliTyper = function(container, commentContainer) {
   var cli = [
     'juju clouds',
     'juju add-credential aws-personal',
@@ -215,6 +215,5 @@ window.Jujucharms.cliTyper = function(container, commentContainer) {
   }
 
   var changes = flattenArray(changeList);
-
   typeIt(changes.slice(0), changes);
 };

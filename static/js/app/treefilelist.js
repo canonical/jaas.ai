@@ -2,7 +2,7 @@
   Converts a DOM list by splitting the text by '/' into a nested tree list.
   *copied from old detail-view.js*
 **/
-window.Jujucharms.treeifyFileList = () => {
+window.app.treeifyFileList = () => {
   /**
     Loop through the list a files passing the file title and children.
     Skipping the rootAttribute object.
@@ -60,12 +60,13 @@ window.Jujucharms.treeifyFileList = () => {
   **/
   function addItem(key, folder) {
     if (isEmpty(folder)) {
-      renderedList += '<li class="files__list--item">';
+      renderedList += '<li class="p-list-tree__item">';
       renderedList += '<a href="'+fileUrl+folder[rootAttribute]+'" target="_blank">'+key+'</a>';
       renderedList += '</li>';
     } else {
-      renderedList += '<li class="files__list--item-folder is-closed">/'+key+'</li>';
-      renderedList += '<ul class="files__list">';
+      renderedList += '<li class="p-list-tree__item p-list-tree__item--group">';
+      renderedList += '<button class="p-list-tree__toggle" id="sub-1-btn" role="tab" aria-controls="sub-1" aria-expanded="false">/'+key+'</button>';
+      renderedList += '<ul class="p-list-tree" id="sub-1" role="tabpanel" aria-hidden="true" aria-labelledby="sub-1-btn">';
       addList(folder);
       renderedList += '</ul>';
     }
