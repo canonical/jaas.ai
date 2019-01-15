@@ -11,12 +11,12 @@
     "python-lint": "flake8 webapp"
   },
   "dependencies": {
-    "autoprefixer": "^6.3.1",
+    "autoprefixer": "^9.4.5",
     "cssnano": "^3.10.0",
-    "node-sass": "^4.5.3",
+    "node-sass": "^4.11.0",
     "postcss-cli": "^4.1.0",
-    "sass-lint": "^1.10.2",
-    "vanilla-framework": "1.7.0",
-    "watch-cli": "^0.2.2"
+    "sass-lint": "^1.12.1",
+    "vanilla-framework": "1.8.0",
+    "watch-cli": "^0.2.3"
   }
 }
