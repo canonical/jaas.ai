@@ -309,3 +309,9 @@ p:empty {
 div.p-accordion__tab[aria-expanded] {
   background: none;
 }
+
+// Override neccessary until this bug is resolved upstream
+// https://github.com/canonical-websites/vanillaframework.io/pull/171#issuecomment-424717215
+.homepage-logos .p-inline-images__item {
+  margin: 0;
+}
