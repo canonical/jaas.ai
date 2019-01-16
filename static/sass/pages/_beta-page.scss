@@ -1,82 +1,82 @@
 .beta-page {
-    .list-ticks {
-        li {
-            border-bottom: 0;
-            background-image: url('../img/icons/list-tick.png');
-            padding-left: 30px;
-        }
+  .list-ticks {
+    li {
+      border-bottom: 0;
+      background-image: url('../img/icons/list-tick.png');
+      padding-left: 30px;
+    }
+  }
+
+  .sign-up {
+    margin-top: 40px;
+
+    &__input,
+    &__button {
+      float: left;
+      display: inline;
+      width: auto;
+      font-size: 16px;
     }
 
-    .sign-up {
-        margin-top: 40px;
-
-        &__input,
-        &__button {
-            float: left;
-            display: inline;
-            width: auto;
-            font-size: 16px;
-        }
-
-        &__button {
-            height: 42px;
-        }
-
-        &__input {
-            margin-right: 20px;
-            width: 50%;
-        }
-
-        @media only screen and (max-width: $breakpoint-medium) {
-            &__button,
-            &__input {
-                width: 100%;
-                margin-bottom: 10px;
-            }
-        }
+    &__button {
+      height: 42px;
     }
 
-    &__numbered-list {
-        list-style: none;
-        margin-left: 40px;
-
-        &-item {
-            counter-increment: step-counter;
-            margin: 40px 0;
-        }
-
-        &-item:before {
-            content: counter(step-counter);
-            background: $white;
-            border-radius: 50%;
-            border: 1px solid $mid-grey;
-            padding: 4px 8px;
-            margin-left: -40px;
-            margin-right: 9px;
-        }
+    &__input {
+      margin-right: 20px;
+      width: 50%;
     }
 
-    @media only screen and (min-width: $breakpoint-medium) {
-      .inline-logos__image {
-        min-height: 30px;
-        max-width: none;
-      }
-
-      .inline-logos__item {
-        height: auto;
-        width: auto;
-
-        &:first-of-type {
-          .inline-logos__image {
-            min-height: 70px;
-          }
-        }
-
-        &:nth-child(2n) {
-          .inline-logos__image {
-            min-height: 45px;
-          }
-        }
+    @media only screen and (max-width: $breakpoint-medium) {
+      &__button,
+      &__input {
+        width: 100%;
+        margin-bottom: 10px;
       }
     }
+  }
+
+  &__numbered-list {
+    list-style: none;
+    margin-left: 40px;
+
+    &-item {
+      counter-increment: step-counter;
+      margin: 40px 0;
+    }
+
+    &-item:before {
+      content: counter(step-counter);
+      background: $white;
+      border-radius: 50%;
+      border: 1px solid $mid-grey;
+      padding: 4px 8px;
+      margin-left: -40px;
+      margin-right: 9px;
+    }
+  }
+
+  @media only screen and (min-width: $breakpoint-medium) {
+    .inline-logos__image {
+      min-height: 30px;
+      max-width: none;
+    }
+
+    .inline-logos__item {
+      height: auto;
+      width: auto;
+
+      &:first-of-type {
+        .inline-logos__image {
+          min-height: 70px;
+        }
+      }
+
+      &:nth-child(2n) {
+        .inline-logos__image {
+          min-height: 45px;
+        }
+      }
+    }
+  }
 }

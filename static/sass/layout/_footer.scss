@@ -1,72 +1,70 @@
-
 /* @section footer
 -------------------------------------------------------------- */
 
 footer.global {
-
   @include social-links;
 
   box-shadow: none;
   border-top: 1px solid $color-mid-light;
 
-    .row {
-        padding: 10px 0 0;
-    }
+  .row {
+    padding: 10px 0 0;
+  }
 
-    .start-modelling-button {
-        position: relative;
-        top: -10px;
-
-        @media only screen and (max-width: $breakpoint-medium) {
-          display: none;
-        }
-    }
-
-    .top-link {
-        margin-bottom: 10px;
-        padding-top: 20px;
-        font-size: 1em;
-
-        @media only screen and (min-width: $breakpoint-medium) {
-            display: none;
-        }
-    }
-
-    @media only screen and (min-width: $breakpoint-medium) {
-        padding-top: 40px;
-        padding-bottom: 40px;
-
-        li {
-            display: inline;
-            float: left;
-        }
-
-        ul.no-bullets li {
-            padding-right: 15px;
-            padding-left: 15px;
-
-            &:last-child {
-                border-right: none;
-            }
-
-            &:first-child {
-                padding-left: 0px;
-            }
-
-            a:link,
-            a:visited {
-              color: $link-blue;
-            }
-        }
-
-        .legal {
-            margin-top: 70px;
-        }
-    }
+  .start-modelling-button {
+    position: relative;
+    top: -10px;
 
     @media only screen and (max-width: $breakpoint-medium) {
-        .right {
-          float: none;
-        }
+      display: none;
     }
+  }
+
+  .top-link {
+    margin-bottom: 10px;
+    padding-top: 20px;
+    font-size: 1em;
+
+    @media only screen and (min-width: $breakpoint-medium) {
+      display: none;
+    }
+  }
+
+  @media only screen and (min-width: $breakpoint-medium) {
+    padding-top: 40px;
+    padding-bottom: 40px;
+
+    li {
+      display: inline;
+      float: left;
+    }
+
+    ul.no-bullets li {
+      padding-right: 15px;
+      padding-left: 15px;
+
+      &:last-child {
+        border-right: none;
+      }
+
+      &:first-child {
+        padding-left: 0px;
+      }
+
+      a:link,
+      a:visited {
+        color: $link-blue;
+      }
+    }
+
+    .legal {
+      margin-top: 70px;
+    }
+  }
+
+  @media only screen and (max-width: $breakpoint-medium) {
+    .right {
+      float: none;
+    }
+  }
 }

@@ -1,31 +1,31 @@
 %notification {
-    padding: 15px;
-    width: 100%;
-    display: block;
-    text-align: center;
+  padding: 15px;
+  width: 100%;
+  display: block;
+  text-align: center;
 }
 
 .notification {
-    &--banner {
-        @extend %notification;
-        background-color: $white;
-        border-bottom: 1px solid $light-mid-grey;
-    }
+  &--banner {
+    @extend %notification;
+    background-color: $white;
+    border-bottom: 1px solid $light-mid-grey;
+  }
 
-    &--error {
-        @extend %notification;
-        background-color: $error;
-        color: $white;
-    }
+  &--error {
+    @extend %notification;
+    background-color: $error;
+    color: $white;
+  }
 
-    &--warning {
-        @extend %notification;
-        background-color: $warning;
-    }
+  &--warning {
+    @extend %notification;
+    background-color: $warning;
+  }
 
-    &--success {
-        @extend %notification;
-        background-color: $success;
-        color: $white;
-    }
+  &--success {
+    @extend %notification;
+    background-color: $success;
+    color: $white;
+  }
 }

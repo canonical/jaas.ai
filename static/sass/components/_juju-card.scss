@@ -1,5 +1,4 @@
 .juju-card--internal {
-
   .bundle-card {
     &__footer {
       display: none;
@@ -19,7 +18,7 @@
     min-height: 75px;
 
     &:hover {
-        background-color: $light-grey;
+      background-color: $light-grey;
     }
 
     &__footer,

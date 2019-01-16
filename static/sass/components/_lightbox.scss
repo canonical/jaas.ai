@@ -1,5 +1,5 @@
 .lightbox {
-  background: rgba(0,0,0,.8);
+  background: rgba(0, 0, 0, 0.8);
   z-index: 10;
   position: fixed;
   top: 0;
@@ -10,9 +10,9 @@
   &__close {
     position: absolute;
     top: 10%;
-    margin-top: -.5rem;
+    margin-top: -0.5rem;
     right: 5%;
-    padding: .5rem;
+    padding: 0.5rem;
     background: transparent;
     border: none;
     width: auto;
