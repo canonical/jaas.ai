@@ -17,7 +17,7 @@ window.Jujucharms.fetchBlogFeed = function(selector, numberOfItems) {
     request.onreadystatechange = function() {
       if (request.readyState === 4 && request.status === 200) {
         var feed = JSON.parse(request.responseText);
-        var data = { entries: feed.entries.slice(0, numberOfItems) };
+        var data = {entries: feed.entries.slice(0, numberOfItems)};
         container.innerHTML = Handlebars.templates['blog-feed-v1'](data);
       }
     };

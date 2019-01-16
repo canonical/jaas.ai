@@ -6,12 +6,12 @@ window.Jujucharms.onboardingNotification = (containerSelector, templateSelector)
     if (!Cookies.get(cookieName)) {
       container.insertAdjacentHTML('beforeend', templateElement.innerText);
     }
-    document
-      .querySelector('.onboarding-notification__close')
-      .addEventListener('click', e => {
-        e.preventDefault();
-        Cookies.set(cookieName, 'true', {expires: new Date('January 12, 2050')});
-        document.querySelector(containerSelector).remove();
+    document.querySelector('.onboarding-notification__close').addEventListener('click', e => {
+      e.preventDefault();
+      Cookies.set(cookieName, 'true', {
+        expires: new Date('January 12, 2050')
       });
+      document.querySelector(containerSelector).remove();
+    });
   }
 };

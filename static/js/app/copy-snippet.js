@@ -8,9 +8,7 @@ window.Jujucharms.copyCodeSnippets = () => {
     @static
   **/
   const instantiateCopyButtons = () => {
-    var codeSnippetActions = document.querySelectorAll(
-      '.p-code-snippet__action'
-    );
+    var codeSnippetActions = document.querySelectorAll('.p-code-snippet__action');
     for (var codeSnippetAction of codeSnippetActions) {
       codeSnippetAction.addEventListener(
         'click',

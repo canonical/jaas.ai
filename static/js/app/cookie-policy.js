@@ -5,13 +5,12 @@ window.Jujucharms.cookieNotification = templateSelector => {
       return;
     }
     document.querySelector('body').insertAdjacentHTML('beforeend', templateElement.innerText);
-    document
-      .querySelector('.cookie-policy .link-cta')
-      .addEventListener('click', e => {
-        e.preventDefault();
-        Cookies.set(
-          '_cookies_accepted', 'true', {expires: new Date('January 12, 2050')});
-        document.querySelector('.cookie-policy').remove();
+    document.querySelector('.cookie-policy .link-cta').addEventListener('click', e => {
+      e.preventDefault();
+      Cookies.set('_cookies_accepted', 'true', {
+        expires: new Date('January 12, 2050')
       });
+      document.querySelector('.cookie-policy').remove();
+    });
   }
 };

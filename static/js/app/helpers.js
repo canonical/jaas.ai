@@ -9,18 +9,23 @@ window.Jujucharms._HBSformatDate = function(date, format) {
   Format a date to human readable form.
  */
 window.Jujucharms._HBSeveryNth = function(context, every, options) {
-  var fn = options.fn, inverse = options.inverse;
+  var fn = options.fn,
+    inverse = options.inverse;
   var ret = '';
-  if(context && context.length > 0) {
-    for(var i=0, j=context.length; i<j; i+=1) {
+  if (context && context.length > 0) {
+    for (var i = 0, j = context.length; i < j; i += 1) {
       var modZero = i % every === 0;
       var modLast = ((i + 1) / every) % 1 === 0;
-      ret = ret + fn(Object.assign({}, context[i], {
-        isModZero: modZero,
-        isModLast: modLast,
-        isModZeroNotFirst: modZero && i > 0,
-        isLast: i === context.length - 1
-      }));
+      ret =
+        ret +
+        fn(
+          Object.assign({}, context[i], {
+            isModZero: modZero,
+            isModLast: modLast,
+            isModZeroNotFirst: modZero && i > 0,
+            isLast: i === context.length - 1
+          })
+        );
     }
   } else {
     ret = inverse(this);

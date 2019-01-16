@@ -23,15 +23,16 @@ window.app.cliTyper = function(container, commentContainer) {
     'juju add-unit jenkins-slave -n 3',
     'juju add-user sarah',
     'juju grant sarah read prod-california',
-    'juju add-cloud mystack mystack-config.yaml'];
+    'juju add-cloud mystack mystack-config.yaml'
+  ];
 
   // For future decorations of the CLI
   var comments = [
     'Choose a cloud to work with',
     'Juju manages multiple cloud credentials',
     false,
-    'Let\'s set up a controller on a public cloud',
-    'What\'s happening?',
+    "Let's set up a controller on a public cloud",
+    "What's happening?",
     'Juju deploys applications with a single command',
     'Need more power?',
     'Tune the application',
@@ -125,7 +126,7 @@ window.app.cliTyper = function(container, commentContainer) {
     var speed = BASE_SPEED + Math.ceil(Math.random() * SPEED_MODIFIER);
     var currentText = current;
     if (typeof change === 'string' && change.indexOf('#') === 0) {
-      comment(true, false, function () {
+      comment(true, false, function() {
         comment(false, change.substr(1));
       });
     } else if (change === -1) {
@@ -143,10 +144,10 @@ window.app.cliTyper = function(container, commentContainer) {
 
     cliEle.innerHTML = html;
 
-    var next = (function () {
+    var next = (function() {
       var _changes = changes;
 
-      return function () {
+      return function() {
         typeIt(_changes, original);
       };
     })();
@@ -170,7 +171,7 @@ window.app.cliTyper = function(container, commentContainer) {
     var current;
     var previous;
 
-    for(i = 0, ii = arr.length; i < ii; i += 1) {
+    for (i = 0, ii = arr.length; i < ii; i += 1) {
       current = arr[i];
       previous = arr[i - 1] || '';
 
@@ -203,7 +204,6 @@ window.app.cliTyper = function(container, commentContainer) {
 
     return newArr;
   }
-
 
   var changeList = changesInArray(cli, true);
 

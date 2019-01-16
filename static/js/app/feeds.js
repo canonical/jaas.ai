@@ -9,12 +9,12 @@
 window.Jujucharms.fetchBlogFeed = function(selector, numberOfItems) {
   numberOfItems = numberOfItems || 5;
   var request = new XMLHttpRequest(),
-      feedURL = '/community/blog/feed',
-      container = document.querySelector(selector);
+    feedURL = '/community/blog/feed',
+    container = document.querySelector(selector);
 
   if (container) {
     request.open('GET', feedURL, true);
-    request.onreadystatechange = function () {
+    request.onreadystatechange = function() {
       if (request.readyState === 4 && request.status === 200) {
         var feed = JSON.parse(request.responseText);
         var data = {entries: feed.entries.slice(0, numberOfItems)};
@@ -36,15 +36,15 @@ window.Jujucharms.fetchBlogFeed = function(selector, numberOfItems) {
 window.Jujucharms.fetchVideosFeed = function(selector, numberOfItems) {
   numberOfItems = numberOfItems || 5;
   var request = new XMLHttpRequest(),
-      feedURL = '/videos/feed/' + numberOfItems,
-      container = document.querySelector(selector);
+    feedURL = '/videos/feed/' + numberOfItems,
+    container = document.querySelector(selector);
 
   if (container) {
     request.open('GET', feedURL, true);
-    request.onreadystatechange = function () {
+    request.onreadystatechange = function() {
       if (request.readyState === 4 && request.status === 200) {
         var feed = JSON.parse(request.responseText);
-        container.innerHTML =  Handlebars.templates['video-feed'](feed);
+        container.innerHTML = Handlebars.templates['video-feed'](feed);
       }
     };
     request.send();
@@ -61,12 +61,12 @@ window.Jujucharms.fetchVideosFeed = function(selector, numberOfItems) {
 window.Jujucharms.fetchEventsFeed = function(selector, numberOfItems) {
   numberOfItems = numberOfItems || 5;
   var request = new XMLHttpRequest(),
-      feedURL = '/events/feed/' + numberOfItems,
-      container = document.querySelector(selector);
+    feedURL = '/events/feed/' + numberOfItems,
+    container = document.querySelector(selector);
 
   if (container) {
     request.open('GET', feedURL, true);
-    request.onreadystatechange = function () {
+    request.onreadystatechange = function() {
       if (request.readyState === 4 && request.status === 200) {
         var feed = JSON.parse(request.responseText);
         container.innerHTML = Handlebars.templates['event-feed'](feed);

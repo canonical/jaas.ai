@@ -20,10 +20,10 @@ window.app.treeifyFileList = () => {
   }
 
   var files = {},
-      DOMList = document.querySelector('#files .files__list'),
-      rootAttribute = '_root',
-      renderedList = '',
-      fileUrl = '';
+    DOMList = document.querySelector('#files .files__list'),
+    rootAttribute = '_root',
+    renderedList = '',
+    fileUrl = '';
 
   if (DOMList) {
     fileUrl = DOMList.querySelector('a').href;
@@ -61,12 +61,17 @@ window.app.treeifyFileList = () => {
   function addItem(key, folder) {
     if (isEmpty(folder)) {
       renderedList += '<li class="p-list-tree__item">';
-      renderedList += '<a href="'+fileUrl+folder[rootAttribute]+'" target="_blank">'+key+'</a>';
+      renderedList +=
+        '<a href="' + fileUrl + folder[rootAttribute] + '" target="_blank">' + key + '</a>';
       renderedList += '</li>';
     } else {
       renderedList += '<li class="p-list-tree__item p-list-tree__item--group">';
-      renderedList += '<button class="p-list-tree__toggle" id="sub-1-btn" role="tab" aria-controls="sub-1" aria-expanded="false">/'+key+'</button>';
-      renderedList += '<ul class="p-list-tree" id="sub-1" role="tabpanel" aria-hidden="true" aria-labelledby="sub-1-btn">';
+      renderedList +=
+        '<button class="p-list-tree__toggle" id="sub-1-btn" role="tab" aria-controls="sub-1" aria-expanded="false">/' +
+        key +
+        '</button>';
+      renderedList +=
+        '<ul class="p-list-tree" id="sub-1" role="tabpanel" aria-hidden="true" aria-labelledby="sub-1-btn">';
       addList(folder);
       renderedList += '</ul>';
     }

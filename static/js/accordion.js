@@ -16,9 +16,7 @@ window.app.accordion = accordionList => {
     */
     const toggle = (element, show) => {
       element.setAttribute('aria-expanded', show);
-      ariaControls = document.querySelector(
-        element.getAttribute('aria-controls')
-      );
+      ariaControls = document.querySelector(element.getAttribute('aria-controls'));
 
       if (ariaControls) {
         ariaControls.setAttribute('aria-hidden', !show);
@@ -26,17 +24,15 @@ window.app.accordion = accordionList => {
     };
     // Set up an event listener on the container so that panels can be added
     // and removed and events do not need to be managed separately.
-    document
-      .querySelector(accordionContainerSelector)
-      .addEventListener('click', e => {
-        const target = e.target;
-        panelAlreadyOpen = e.target.getAttribute('aria-expanded');
-        if (panelAlreadyOpen === 'false') {
-          toggle(target, true);
-        } else {
-          toggle(target, false);
-        }
-      });
+    document.querySelector(accordionContainerSelector).addEventListener('click', e => {
+      const target = e.target;
+      panelAlreadyOpen = e.target.getAttribute('aria-expanded');
+      if (panelAlreadyOpen === 'false') {
+        toggle(target, true);
+      } else {
+        toggle(target, false);
+      }
+    });
   }
 
   setupAccordionListener(accordionList);
