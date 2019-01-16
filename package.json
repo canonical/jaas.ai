@@ -18,5 +18,8 @@
     "sass-lint": "^1.12.1",
     "vanilla-framework": "1.8.0",
     "watch-cli": "^0.2.3"
+  },
+  "devDependencies": {
+    "prettier": "1.15.3"
   }
 }
