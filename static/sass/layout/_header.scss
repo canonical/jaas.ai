@@ -1,8 +1,7 @@
-
 /* @section header
 -------------------------------------------------------------- */
 header.banner {
-  $border-color: rgba($brand-color, .2);
+  $border-color: rgba($brand-color, 0.2);
   background: $header_bg;
   z-index: 12;
   box-shadow: none;
@@ -28,374 +27,373 @@ header.banner {
   }
 
   @media only screen and (max-width: $navigation-threshold) {
-      height: 60px;
+    height: 60px;
 
-      #nav.nav-primary {
-        .nav-toggle:hover .nav-toggle__image path {
-          fill: #888;
-        }
-
-        &:hover {
-
-          ul {
-            display: none;
-          }
-
-          .nav-toggle__link {
-
-            &.open {
-              display: block;
-            }
-            &.close {
-              display: none;
-            }
-          }
-        }
-
-        @media only screen and (max-width: $navigation-threshold) {
-          border: 0 none;
-        }
+    #nav.nav-primary {
+      .nav-toggle:hover .nav-toggle__image path {
+        fill: #888;
       }
 
-      #nav.nav-primary.nav-open {
+      &:hover {
         ul {
-          display: block;
+          display: none;
         }
 
         .nav-toggle__link {
-
           &.open {
-            display: none;
-          }
-          &.close {
             display: block;
           }
+          &.close {
+            display: none;
+          }
         }
       }
+
+      @media only screen and (max-width: $navigation-threshold) {
+        border: 0 none;
+      }
+    }
+
+    #nav.nav-primary.nav-open {
+      ul {
+        display: block;
+      }
+
+      .nav-toggle__link {
+        &.open {
+          display: none;
+        }
+        &.close {
+          display: block;
+        }
+      }
+    }
   }
 
-  @media only screen and (min-width : $navigation-threshold) {
-      display: flex;
+  @media only screen and (min-width: $navigation-threshold) {
+    display: flex;
 
-      .nav-primary {
-        ul li {
-          border-left: 1px solid $border-color;
+    .nav-primary {
+      ul li {
+        border-left: 1px solid $border-color;
 
-          &:last-child {
-            border-right: 1px solid $border-color;
-          }
-
-           a,
-           a:link,
-           a:visited {
-            color: $white;
-            border: 0;
-            border-left: 0;
-            padding: 19px 14px;
-
-            @media only screen and (min-width: $navigation-threshold + 100) {
-              padding: 19px 19px;
-            }
-
-            &:hover,
-            &:active,
-            &:focus,
-            &.active {
-              background-color: rgba(0, 0, 0, .1);
-            }
-
-            &.try-beta {
-              @include rounded_corners(2px);
-              border: 1px solid $success;
-              padding: 9px 16px 8px;
-              margin: 10px 0 8px 19px;
-            }
-          }
+        &:last-child {
+          border-right: 1px solid $border-color;
         }
 
-        ul:not(.user-nav) li {
-          border-right: 0 none;
+        a,
+        a:link,
+        a:visited {
+          color: $white;
+          border: 0;
+          border-left: 0;
+          padding: 19px 14px;
+
+          @media only screen and (min-width: $navigation-threshold + 100) {
+            padding: 19px 19px;
+          }
+
+          &:hover,
+          &:active,
+          &:focus,
+          &.active {
+            background-color: rgba(0, 0, 0, 0.1);
+          }
+
+          &.try-beta {
+            @include rounded_corners(2px);
+            border: 1px solid $success;
+            padding: 9px 16px 8px;
+            margin: 10px 0 8px 19px;
+          }
         }
       }
+
+      ul:not(.user-nav) li {
+        border-right: 0 none;
+      }
+    }
   }
 
   nav.nav-primary {
-      overflow: visible;
+    overflow: visible;
 
-      @media only screen and (min-width: $navigation-threshold) {
-        .user-nav {
-          position: absolute;
-          top: 0;
-          right: 10px;
-        }
+    @media only screen and (min-width: $navigation-threshold) {
+      .user-nav {
+        position: absolute;
+        top: 0;
+        right: 10px;
+      }
+    }
+
+    @media only screen and (min-width: $page-maxwidth) {
+      width: auto;
+      min-width: 700px;
+      margin: 0;
+      display: inline-block;
+      flex: 4;
+    }
+
+    @media only screen and (max-width: $navigation-threshold) {
+      border-bottom: 1px solid $light-mid-grey;
+
+      ul {
+        border-top: 0;
       }
 
-      @media only screen and (min-width : $page-maxwidth) {
-          width: auto;
-          min-width: 700px;
-          margin: 0;
-          display: inline-block;
-          flex: 4;
+      .user-nav {
+        border-top: 0;
       }
-
-      @media only screen and (max-width : $navigation-threshold) {
-          border-bottom: 1px solid $light-mid-grey;
-
-          ul {
-              border-top: 0;
-          }
-
-          .user-nav {
-              border-top: 0;
-          }
-      }
+    }
   }
 
   @media only screen and (max-width: $navigation-threshold) {
+    .nav-primary ul li:nth-child(2n + 2) {
+      border-right: 1px solid #d4d7d4;
+    }
+    .nav-toggle {
+      position: absolute;
+      float: right;
+      background-image: none;
+      text-indent: 0;
+      top: 6px;
+      right: 6px;
 
-      .nav-primary ul li:nth-child(2n+2) {
-          border-right: 1px solid #d4d7d4;
-      }
-      .nav-toggle {
-          position: absolute;
-          float: right;
-          background-image: none;
-          text-indent: 0;
-          top: 6px;
-          right: 6px;
-
-          .nav-toggle__image {
-              display: block;
-              position: relative;
-              top: 7px;
-              left: 8px;
-          }
-
-          .close .nav-toggle__image {
-              top: 14px;
-              left: 14px;
-          }
-
-          &:hover .nav-toggle__image path {
-              fill: $cool-grey;
-          }
-
-          &.active {
-              .nav-toggle__image-close {
-                  display: block;
-              }
-
-              .nav-toggle__image {
-                  display: none;
-              }
-          }
+      .nav-toggle__image {
+        display: block;
+        position: relative;
+        top: 7px;
+        left: 8px;
       }
 
-      #nav:target .nav-toggle {
-          .nav-toggle__link.open {
-              display: none;
-          }
-          .nav-toggle__link.close {
-              display: block;
-          }
+      .close .nav-toggle__image {
+        top: 14px;
+        left: 14px;
       }
+
+      &:hover .nav-toggle__image path {
+        fill: $cool-grey;
+      }
+
+      &.active {
+        .nav-toggle__image-close {
+          display: block;
+        }
+
+        .nav-toggle__image {
+          display: none;
+        }
+      }
+    }
+
+    #nav:target .nav-toggle {
+      .nav-toggle__link.open {
+        display: none;
+      }
+      .nav-toggle__link.close {
+        display: block;
+      }
+    }
   }
 
   // Search close styling
   // The close icon that appears when in focus on the search input
   .search-close {
-      @include transition(visibility 0s linear .1s, opacity 0s linear .1s);
-      @include rounded_corners(0 3px 3px 0);
-      visibility: hidden;
-      opacity: 0;
-      position: absolute;
-      right: 11px;
-      top: 11px;
-      border-left: 1px solid $mid-grey;
-      padding: 11px 10px 8px;
-      background-color: $white;
+    @include transition(visibility 0s linear 0.1s, opacity 0s linear 0.1s);
+    @include rounded_corners(0 3px 3px 0);
+    visibility: hidden;
+    opacity: 0;
+    position: absolute;
+    right: 11px;
+    top: 11px;
+    border-left: 1px solid $mid-grey;
+    padding: 11px 10px 8px;
+    background-color: $white;
   }
 
   // Search for styling
   .search-container {
-      overflow: hidden;
-      flex: 1;
-      margin-right: 60px;
+    overflow: hidden;
+    flex: 1;
+    margin-right: 60px;
 
-      @media only screen and (min-width: $navigation-threshold) {
-          margin-right: 88px;
-      }
+    @media only screen and (min-width: $navigation-threshold) {
+      margin-right: 88px;
+    }
   }
 
   // Search for styling
   form.search-form {
-      @include transition(background-color .3s, width .3s);
-      background: none;
-      float: right;
-      position: relative;
-      width: 100%;
-      box-sizing: border-box;
-      padding: 0 10px;
-      max-width: none;
-      display: block;
-      margin: 0;
+    @include transition(background-color 0.3s, width 0.3s);
+    background: none;
+    float: right;
+    position: relative;
+    width: 100%;
+    box-sizing: border-box;
+    padding: 0 10px;
+    max-width: none;
+    display: block;
+    margin: 0;
 
-      // XXX ant 16 Feb 2016, hack reset the opacity for placeholder.
-      // https://github.com/ubuntudesign/vanilla-framework/issues/298
-      ::-webkit-input-placeholder {
-          opacity: 1;
-          color: $white;
-      }
-      :-moz-placeholder {
-          opacity: 1;
-          color: $white;
-      }
-      ::-moz-placeholder {
-          opacity: 1;
-          color: $white;
-      }
-      :-ms-input-placeholder {
-          opacity: 1;
-          color: $white;
+    // XXX ant 16 Feb 2016, hack reset the opacity for placeholder.
+    // https://github.com/ubuntudesign/vanilla-framework/issues/298
+    ::-webkit-input-placeholder {
+      opacity: 1;
+      color: $white;
+    }
+    :-moz-placeholder {
+      opacity: 1;
+      color: $white;
+    }
+    ::-moz-placeholder {
+      opacity: 1;
+      color: $white;
+    }
+    :-ms-input-placeholder {
+      opacity: 1;
+      color: $white;
+    }
+
+    @media only screen and (min-width: $breakpoint-medium) {
+      max-width: 266px;
+    }
+
+    @media only screen and (max-width: $breakpoint-medium) {
+      margin-left: 10px;
+    }
+
+    .form-text {
+      @include rounded_corners(2);
+      @include box_shadow(none);
+      border: 1px solid $border-color;
+      font-size: 0.875em;
+      padding: 11px 38px 11px 35px;
+      height: auto;
+      margin: 10px 0 9px 0;
+      background-color: transparent;
+      -webkit-appearance: none;
+      color: $white;
+    }
+
+    button[type='submit'] {
+      path {
+        fill: #878787;
       }
 
-      @media only screen and (min-width : $breakpoint-medium) {
-        max-width: 266px;
+      ellipse {
+        stroke: #878787;
       }
+    }
 
-      @media only screen and (max-width: $breakpoint-medium) {
-        margin-left: 10px;
-      }
+    button[type='submit'],
+    button[type='submit']:hover {
+      position: absolute;
+      top: 14px;
+      left: 13px;
+      height: 30px;
+      width: 30px;
+      padding: 0;
+      -webkit-appearance: none;
+      background: transparent;
+      margin-left: 0;
 
-      .form-text {
-          @include rounded_corners(2);
-          @include box_shadow(none);
-          border: 1px solid $border-color;
-          font-size: .875em;
-          padding: 11px 38px 11px 35px;
-          height: auto;
-          margin: 10px 0 9px 0;
-          background-color: transparent;
-          -webkit-appearance: none;
-          color: $white;
-      }
-
-      button[type=submit] {
+      &:hover .search-icon__image {
         path {
-          fill: #878787;
+          fill: $white;
         }
-
         ellipse {
-          stroke: #878787;
+          stroke: $white;
         }
       }
-
-      button[type=submit],
-      button[type=submit]:hover {
-          position: absolute;
-          top: 14px;
-          left: 13px;
-          height: 30px;
-          width: 30px;
-          padding: 0;
-          -webkit-appearance: none;
-          background: transparent;
-          margin-left: 0;
-
-          &:hover .search-icon__image {
-              path { fill: $white; };
-              ellipse { stroke: $white; };
-          }
-      }
+    }
   }
-
 
   // Search panel styling
   // When the search is active the search panel is revealed
   .search-panel {
-      @include box_shadow(0px 1px 4.95px .05px rgba(51, 51, 51, .2));
-      @include transition(all .15s .1s, opacity .15s .1s);
-      visibility: hidden;
-      opacity: 0;
-      position: absolute;
-      left: 0;
-      top: 59px;
-      z-index: 4;
-      overflow: hidden;
-      width: 100%;
+    @include box_shadow(0px 1px 4.95px 0.05px rgba(51, 51, 51, 0.2));
+    @include transition(all 0.15s 0.1s, opacity 0.15s 0.1s);
+    visibility: hidden;
+    opacity: 0;
+    position: absolute;
+    left: 0;
+    top: 59px;
+    z-index: 4;
+    overflow: hidden;
+    width: 100%;
 
-      @media only screen and (max-width: $breakpoint-medium) {
-          display: none;
-      }
+    @media only screen and (max-width: $breakpoint-medium) {
+      display: none;
+    }
 
-      .row {
-          background: $white;
-          padding-top: 25px;
-          padding-bottom: 15px;
-      }
+    .row {
+      background: $white;
+      padding-top: 25px;
+      padding-bottom: 15px;
+    }
 
-      .row-footer {
-          padding-top: 0;
-
-          .search-panel__list-item {
-              font-size: .875em;
-          }
-
-          .search-panel__item-count {
-              color: $warm-grey;
-          }
-      }
-
-      .search-panel__heading {
-          font-size: 1em;
-          margin-bottom: 1.5em;
-      }
+    .row-footer {
+      padding-top: 0;
 
       .search-panel__list-item {
-          line-height: 1;
+        font-size: 0.875em;
       }
 
-      .search-panel__featured-charm {
-          @include rounded_corners(2px);
-          border: 1px solid transparent;
-
-          &:hover {
-              border-color: $mid-grey;
-          }
+      .search-panel__item-count {
+        color: $warm-grey;
       }
+    }
 
-      .search-panel__featured-image {
-          width: 61px;
-          height: 61px;
-          margin-bottom: .7em;
+    .search-panel__heading {
+      font-size: 1em;
+      margin-bottom: 1.5em;
+    }
+
+    .search-panel__list-item {
+      line-height: 1;
+    }
+
+    .search-panel__featured-charm {
+      @include rounded_corners(2px);
+      border: 1px solid transparent;
+
+      &:hover {
+        border-color: $mid-grey;
       }
+    }
 
-      .search-panel__list-item a:link,
-      .search-panel__list-item a:visited,
-      .search-panel__feature-link,
-      .p-search-panel__featured-name {
-          color: $cool-grey;
+    .search-panel__featured-image {
+      width: 61px;
+      height: 61px;
+      margin-bottom: 0.7em;
+    }
 
-          &:hover {
-              text-decoration: none;
-              color: $ubuntu_orange;
-          }
+    .search-panel__list-item a:link,
+    .search-panel__list-item a:visited,
+    .search-panel__feature-link,
+    .p-search-panel__featured-name {
+      color: $cool-grey;
+
+      &:hover {
+        text-decoration: none;
+        color: $ubuntu_orange;
       }
+    }
 
-      .search-panel__featured-link {
-          @include box_sizing;
-          padding: $gutter-width;
-          display: block;
-          position: relative;
-          top: 0;
-          left: 0;
-          width: 100%;
-          height: 100%;
+    .search-panel__featured-link {
+      @include box_sizing;
+      padding: $gutter-width;
+      display: block;
+      position: relative;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
 
-          &:hover {
-              text-decoration: none;
-          }
+      &:hover {
+        text-decoration: none;
       }
+    }
   }
 
   .inline-list li {
@@ -405,56 +403,60 @@ header.banner {
   // Search active styles
   // The overriding styles when the search field is active
   &.search-active {
-      @media only screen and (min-width : $breakpoint-medium) {
-        .search-panel {
-            visibility: visible;
-            opacity: 1;
-            transform: translateY(0px);
-        }
+    @media only screen and (min-width: $breakpoint-medium) {
+      .search-panel {
+        visibility: visible;
+        opacity: 1;
+        transform: translateY(0px);
+      }
+    }
+
+    form.search-form {
+      background: $white;
+      position: relative;
+      z-index: 5;
+      box-sizing: border-box;
+
+      @media only screen and (min-width: $breakpoint-medium) {
+        box-shadow: 0px 1px 4.95px 0.05px rgba(51, 51, 51, 0.2);
       }
 
-      form.search-form {
-        background: $white;
-        position: relative;
-        z-index: 5;
-        box-sizing: border-box;
+      .search-close {
+        visibility: visible;
+        opacity: 1;
 
-        @media only screen and (min-width : $breakpoint-medium) {
-          box-shadow: 0px 1px 4.95px .05px rgba(51, 51, 51, .2);
+        &:hover .search-close__image path {
+          stroke: $cool-grey;
         }
+      }
+      .form-text {
+        color: $cool-grey;
+        margin-right: 0;
+        border: 1px solid lighten($mobile-nav, 60%) !important;
+      }
 
-        .search-close {
-          visibility: visible;
-          opacity: 1;
+      button[type='submit'] {
+        .search-icon__image {
+          path {
+            fill: darken($brand-color, 60%);
+          }
 
-          &:hover .search-close__image path {
-            stroke: $cool-grey;
+          ellipse {
+            stroke: darken($brand-color, 60%);
           }
         }
-        .form-text {
-          color: $cool-grey;
-          margin-right: 0;
-          border: 1px solid lighten($mobile-nav, 60%) !important;
-        }
 
-        button[type=submit] {
+        &:hover {
           .search-icon__image {
             path {
-              fill: darken($brand-color, 60%);
+              fill: $cool-grey;
             }
-
             ellipse {
-              stroke: darken($brand-color, 60%);
-            }
-          }
-
-          &:hover {
-            .search-icon__image {
-              path { fill: $cool-grey; };
-              ellipse { stroke: $cool-grey; };
+              stroke: $cool-grey;
             }
           }
         }
       }
+    }
   }
 }

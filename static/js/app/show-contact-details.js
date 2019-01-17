@@ -4,9 +4,7 @@ window.Jujucharms.showContactDetails = () => {
     button.addEventListener('click', e => {
       e.preventDefault();
       button.classList.add('u-hide');
-      document
-        .querySelector('[data-js="contact-info"]')
-        .classList.remove('u-hide');
+      document.querySelector('[data-js="contact-info"]').classList.remove('u-hide');
     });
   }
 };

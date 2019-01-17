@@ -23,10 +23,9 @@
 
   &--positive,
   &--inline-positive {
-
     .external {
       padding-right: 1em;
-      background-image: url("../img/icons/external-link-white.svg");
+      background-image: url('../img/icons/external-link-white.svg');
       background-repeat: no-repeat;
       background-size: 11px;
       background-position: right top;
@@ -39,11 +38,11 @@
 }
 
 .link {
-    cursor: pointer;
+  cursor: pointer;
 }
 
 .external {
-    background-image: url('../img/icons/external-link-dark.svg');
+  background-image: url('../img/icons/external-link-dark.svg');
 }
 
 .external-alt {
@@ -57,7 +56,7 @@
   justify-content: space-between;
   align-items: center;
 
-  [class*="button"] {
+  [class*='button'] {
     white-space: nowrap;
     margin: 10px 20px;
   }

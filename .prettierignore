@@ -1,0 +1,7 @@
+**/*.yml
+**/*.txt
+**/*.html
+Dockerfile
+run
+entrypoint
+yarn.lock

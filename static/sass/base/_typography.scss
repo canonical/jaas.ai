@@ -4,38 +4,38 @@
 body,
 a:link,
 a:visited {
-	-webkit-font-smoothing: antialiased;
+  -webkit-font-smoothing: antialiased;
 }
 
 ::-webkit-input-placeholder {
-	color: $cool-grey;
-	font-size: 1em;
+  color: $cool-grey;
+  font-size: 1em;
   opacity: 1;
 }
 :-moz-placeholder {
-	color: $cool-grey;
-	opacity: 1;
-	font-size: 1em;
+  color: $cool-grey;
+  opacity: 1;
+  font-size: 1em;
 }
 ::-moz-placeholder {
-	color: $cool-grey;
-	opacity: 1;
-	font-size: 1em;
+  color: $cool-grey;
+  opacity: 1;
+  font-size: 1em;
 }
 :-ms-input-placeholder {
-	color: $cool-grey;
-	font-size: 1em;
+  color: $cool-grey;
+  font-size: 1em;
   opacity: 1;
 }
 
 input {
   @extend %input-elements;
-  @include box_shadow(inset 0 1px 2px 0 rgba(0, 0, 0, .12));
+  @include box_shadow(inset 0 1px 2px 0 rgba(0, 0, 0, 0.12));
 }
 
 select {
-	font-size: 1em;
-	font-weight: 300;
+  font-size: 1em;
+  font-weight: 300;
 }
 
 textarea {
@@ -48,23 +48,23 @@ code,
 pre,
 p,
 dd {
-    line-height: 1.6;
+  line-height: 1.6;
 
-		@media screen and (max-width: $breakpoint-medium) {
-				font-size: .875rem;
-		}
+  @media screen and (max-width: $breakpoint-medium) {
+    font-size: 0.875rem;
+  }
 }
 
 pre {
-    background-color: $light-grey;
-    color: $cool-grey;
-    border: 1px solid $mid-grey;
+  background-color: $light-grey;
+  color: $cool-grey;
+  border: 1px solid $mid-grey;
 }
 
 @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
-    body {
-        font-size: $hd_base + px;
-    }
+  body {
+    font-size: $hd_base + px;
+  }
 }
 
 /// Default form input element styles
@@ -73,12 +73,12 @@ pre {
   -webkit-appearance: textfield;
   border-radius: 2px;
   border: 1px solid $mid-grey;
-  box-shadow: inset 0 1px 2px rgba(0, 0, 0, .12);
+  box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.12);
   box-sizing: border-box;
   font-size: 16px;
   margin: 0;
   outline: none;
-  padding: .6956522em .869565em;
+  padding: 0.6956522em 0.869565em;
   vertical-align: baseline;
   font-weight: 300;
 

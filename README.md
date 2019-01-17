@@ -6,10 +6,8 @@ A prototype for what may become the new JAAS storefront, jaas.ai.
 
 After [installing Docker](https://docs.docker.com/install/):
 
-``` bash
+```bash
 ./run
 ```
 
 Now browse to http://localhost:8029.
-
-

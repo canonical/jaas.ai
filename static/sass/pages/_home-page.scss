@@ -4,12 +4,12 @@ body.home {
   @include vf-p-card;
   @include social-links;
 
-  background-image: url("../img/home/juju-suru-blue-background.png");
+  background-image: url('../img/home/juju-suru-blue-background.png');
   background-size: contain;
   background-color: $background-default;
 
   .muted-heading {
-    font-size: .875rem;
+    font-size: 0.875rem;
   }
 
   .row {
@@ -27,7 +27,7 @@ body.home {
   }
 
   .logo__text {
-      fill: $white;
+    fill: $white;
   }
 
   .inline-logos__item {
@@ -50,161 +50,160 @@ body.home {
   }
 
   .row-hero {
-      background-color: transparent;
-      position: relative;
+    background-color: transparent;
+    position: relative;
+    padding-bottom: 0;
+    z-index: 1;
+    border-bottom: 3px solid $success;
+    overflow: hidden;
+
+    @media screen and (max-width: 767px) {
+      max-height: 100%;
       padding-bottom: 0;
-      z-index: 1;
-      border-bottom: 3px solid $success;
       overflow: hidden;
+    }
 
-      @media screen and (max-width: 767px) {
-        max-height: 100%;
-        padding-bottom: 0;
-        overflow: hidden;
+    .logo__text {
+      fill: $white;
+    }
+
+    hr {
+      border-color: $light-grey;
+      background: $light-grey;
+
+      @media screen and (min-width: 768px) {
+        margin: 2.5rem -2.5rem;
       }
+    }
 
-      .logo__text {
-          fill: $white;
+    .extra-padding {
+      @media screen and (min-width: 768px) {
+        margin-bottom: 2rem;
       }
+    }
 
-      hr {
-        border-color: $light-grey;
-        background: $light-grey;
-
-        @media screen and (min-width: 768px) {
-          margin: 2.5rem -2.5rem;
-        }
+    .box {
+      @media screen and (min-width: 768px) {
+        padding: 2.5rem;
       }
+    }
 
-      .extra-padding {
-        @media screen and (min-width: 768px) {
-          margin-bottom: 2rem;
-        }
+    .animated-gif {
+      border: 1px solid $color-mid-light;
+    }
+
+    .button--inline-positive {
+      position: relative;
+
+      @media screen and (max-width: 768px) {
+        float: none;
+        top: 0;
+        margin-bottom: 1rem;
       }
+    }
 
-      .box {
-        @media screen and (min-width: 768px) {
-          padding: 2.5rem;
-        }
+    &__info {
+      font-size: 1.4rem;
+
+      @media screen and (max-width: $navigation-threshold) and (min-width: 768px) {
+        width: 200%;
       }
+    }
 
-      .animated-gif {
-        border: 1px solid $color-mid-light;
-      }
-
-      .button--inline-positive {
-        position: relative;
-
-        @media screen and (max-width: 768px) {
-          float: none;
-          top: 0;
-          margin-bottom: 1rem;
-        }
-      }
-
-      &__info {
-        font-size: 1.4rem;
-
-        @media screen and (max-width: $navigation-threshold) and (min-width: 768px) {
-          width: 200%;
-        }
-      }
-
-      &__info-sub {
-        font-size: 1.25rem;
-
-        .link {
-          font-weight: 400;
-        }
-      }
+    &__info-sub {
+      font-size: 1.25rem;
 
       .link {
-        color: $white;
+        font-weight: 400;
       }
+    }
 
-      .row--jaas__cta {
-        margin-top: 2.5rem;
-        margin-bottom: 2.5rem;
+    .link {
+      color: $white;
+    }
 
-        a {
-          @media screen and (max-width: 760px) {
-            width: 100%;
-            margin-left: 0;
-          }
+    .row--jaas__cta {
+      margin-top: 2.5rem;
+      margin-bottom: 2.5rem;
 
-          &:first-child {
-            margin-top: 0;
-          }
-        }
-      }
-
-      &__cta-button {
-          font-size: 1.25em;
+      a {
+        @media screen and (max-width: 760px) {
           width: 100%;
-      }
-
-      &__images {
-        position: relative;
-        margin-bottom: 0;
-      }
-
-      &__discover {
-        position: absolute;
-        bottom: 2rem;
-        left: 0;
-        right: 0;
-        color: $white;
-        text-align: center;
-        z-index: 1;
-
-        @media screen and (max-width: 767px) {
-          bottom: .4rem;
-        }
-
-        &-icon {
-          vertical-align: middle;
-          margin-left: .5rem;
-        }
-      }
-
-      &__laptop {
-        position: relative;
-        width: 1010px;
-        height: 430px;
-        margin-left: -5rem;
-        text-align: center;
-        top: 0rem;
-
-        img {
-          width: 100%;
-          max-width: auto;
-        }
-
-        @media screen and (max-width: $navigation-threshold) {
-          width: 110%;
           margin-left: 0;
         }
 
-        @media screen and (max-width: 768px) {
-          width: 136%;
-          height: auto;
-          margin-top: 1rem;
+        &:first-child {
+          margin-top: 0;
         }
       }
+    }
 
+    &__cta-button {
+      font-size: 1.25em;
+      width: 100%;
+    }
+
+    &__images {
+      position: relative;
+      margin-bottom: 0;
+    }
+
+    &__discover {
+      position: absolute;
+      bottom: 2rem;
+      left: 0;
+      right: 0;
+      color: $white;
+      text-align: center;
+      z-index: 1;
+
+      @media screen and (max-width: 767px) {
+        bottom: 0.4rem;
+      }
+
+      &-icon {
+        vertical-align: middle;
+        margin-left: 0.5rem;
+      }
+    }
+
+    &__laptop {
+      position: relative;
+      width: 1010px;
+      height: 430px;
+      margin-left: -5rem;
+      text-align: center;
+      top: 0rem;
+
+      img {
+        width: 100%;
+        max-width: auto;
+      }
+
+      @media screen and (max-width: $navigation-threshold) {
+        width: 110%;
+        margin-left: 0;
+      }
+
+      @media screen and (max-width: 768px) {
+        width: 136%;
+        height: auto;
+        margin-top: 1rem;
+      }
+    }
+
+    &__phone {
+      display: none;
+    }
+
+    @media screen and (min-width: $navigation-threshold) {
       &__phone {
-        display: none;
+        display: block;
+        position: absolute;
+        right: 4rem;
+        bottom: -5rem;
       }
-
-      @media screen and (min-width: $navigation-threshold) {
-
-        &__phone {
-          display: block;
-          position: absolute;
-          right: 4rem;
-          bottom: -5rem;
-        }
-      }
+    }
   }
 
   .row--get-started {
@@ -225,7 +224,7 @@ body.home {
         float: left;
         font-size: 1rem;
 
-        &+a {
+        & + a {
           display: block;
           float: left;
           clear: left;
@@ -320,7 +319,7 @@ body.home {
       width: 100px;
       height: 100px;
       margin-left: 1rem;
-      margin-top: .9rem;
+      margin-top: 0.9rem;
     }
   }
 
@@ -329,9 +328,9 @@ body.home {
       @include rounded_corners(2px);
       border: 1px solid $color-mid-light;
       background: $box_solid_grey;
-      padding: 1rem .5rem;
+      padding: 1rem 0.5rem;
       font-size: 1rem;
-      font-family: "Ubuntu Mono", monospace;
+      font-family: 'Ubuntu Mono', monospace;
       color: $header-link-color;
       line-height: 1rem;
       white-space: nowrap;
@@ -340,7 +339,7 @@ body.home {
 
       @media screen and (min-width: 767px) {
         font-size: 1.4rem;
-        padding: 1.4rem .9rem;
+        padding: 1.4rem 0.9rem;
       }
 
       @media only screen and (min-width: 1030px) {
@@ -354,7 +353,7 @@ body.home {
         position: relative;
 
         @media screen and (max-width: 767px) {
-          margin-left: .25rem;
+          margin-left: 0.25rem;
         }
 
         &:after {
@@ -373,7 +372,6 @@ body.home {
           @media only screen and (min-width: 1030px) {
             height: 2rem;
           }
-
         }
 
         span + span {
@@ -392,7 +390,7 @@ body.home {
       margin-top: 1rem;
       height: 1rem;
       opacity: 0;
-      transition: opacity .3s ease;
+      transition: opacity 0.3s ease;
 
       &.fade-in {
         opacity: 1;
@@ -405,14 +403,12 @@ body.home {
   }
 
   @media only screen and (min-width: 950px) {
-
-      .row--juju-is {
-          padding-top: 180px;
-      }
+    .row--juju-is {
+      padding-top: 180px;
+    }
   }
 
   .row--juju-why {
-
     &__cta {
       margin-top: 1rem;
       text-align: center;
@@ -440,10 +436,10 @@ body.home {
       height: 3rem;
       display: block;
       float: left;
-      margin: -.2rem 1rem 0 0;
+      margin: -0.2rem 1rem 0 0;
 
       @media screen and (max-width: 767px) {
-        margin-top: -.5rem;
+        margin-top: -0.5rem;
       }
     }
 
@@ -471,10 +467,10 @@ body.home {
         border-radius: $bundle-charm-size;
         float: left;
         overflow: hidden;
-        margin: 0 ($bundle-charm-size * .2) ($bundle-charm-size * .2) 0;
+        margin: 0 ($bundle-charm-size * 0.2) ($bundle-charm-size * 0.2) 0;
         line-height: $bundle-charm-size;
         text-align: center;
-        font-size: $bundle-charm-size * .6;
+        font-size: $bundle-charm-size * 0.6;
 
         &:nth-child(2),
         &:nth-child(4) {
@@ -505,8 +501,8 @@ body.home {
       list-style-type: none;
       float: left;
       margin: 0 1rem 0 0;
-      border-radius: ($bundle-charm-size * 2) + ($bundle-charm-size * .2);
-      width: ($bundle-charm-size * 2) + ($bundle-charm-size * .2);
+      border-radius: ($bundle-charm-size * 2) + ($bundle-charm-size * 0.2);
+      width: ($bundle-charm-size * 2) + ($bundle-charm-size * 0.2);
     }
 
     &__cta {
@@ -529,10 +525,10 @@ body.home {
     }
     .github-logo {
       vertical-align: middle;
-      margin-right: .5rem;
+      margin-right: 0.5rem;
     }
     .github-badge {
-      margin-bottom: .5rem;
+      margin-bottom: 0.5rem;
 
       + .github-badge + .github-badge {
         margin-bottom: 2rem;
@@ -545,7 +541,6 @@ body.home {
   }
 
   .row--testimonials {
-
     padding-bottom: 0;
 
     .equal-height--vertical-divider {
@@ -571,7 +566,7 @@ body.home {
     .p-pull-quote {
       margin-top: 8rem;
 
-      >p {
+      > p {
         margin: 0 0 1rem;
       }
 
@@ -593,11 +588,11 @@ body.home {
   }
 
   .intro {
-      font-size: 3rem;
-      margin-bottom: 30px;
+    font-size: 3rem;
+    margin-bottom: 30px;
 
-      @media screen and (max-width: 768px) {
-        font-size: 2rem;
-      }
+    @media screen and (max-width: 768px) {
+      font-size: 2rem;
+    }
   }
 }

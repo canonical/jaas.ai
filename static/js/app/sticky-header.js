@@ -23,9 +23,9 @@ window.Jujucharms.stickyHeader = () => {
 
   if (header) {
     var headerHeight = header.offsetHeight,
-        headerYPos = header.getBoundingClientRect().y,
-        triggerOffset = 60,
-        triggerSticky = (headerYPos + headerHeight) - triggerOffset;
+      headerYPos = header.getBoundingClientRect().y,
+      triggerOffset = 60,
+      triggerSticky = headerYPos + headerHeight - triggerOffset;
 
     if (window.scrollY > triggerSticky && !enabled) {
       setSticky();
@@ -39,7 +39,6 @@ window.Jujucharms.stickyHeader = () => {
       window.Jujucharms._scrollToHeader(e.target.attributes.href.value);
     });
   }
-
 };
 
 /**

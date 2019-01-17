@@ -1,7 +1,7 @@
 body.how-it-works {
   @include jaas-row;
 
-  background-image: url("../img/home/juju-suru-blue-background.png");
+  background-image: url('../img/home/juju-suru-blue-background.png');
   background-size: contain;
   background-color: $background-default;
   font-size: 16px;
@@ -29,7 +29,6 @@ body.how-it-works {
       margin-bottom: 4rem;
     }
     &__arrow {
-
       @media screen and (min-width: 768px) and (max-width: $page-maxwidth) {
         display: none;
       }

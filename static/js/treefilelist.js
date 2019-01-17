@@ -37,8 +37,7 @@ window.app.treeifyFileList = () => {
       listTreeToggle[i].addEventListener('click', function(e) {
         e.preventDefault();
         var listTree = this.nextElementSibling;
-        var expand =
-          this.getAttribute('aria-expanded') === 'true' ? false : true;
+        var expand = this.getAttribute('aria-expanded') === 'true' ? false : true;
         this.setAttribute('aria-expanded', expand);
         listTree.setAttribute('aria-hidden', !expand);
       });
@@ -73,12 +72,7 @@ window.app.treeifyFileList = () => {
     if (isEmpty(folder)) {
       renderedList += '<li class="p-list-tree__item">';
       renderedList +=
-        '<a href="' +
-        fileUrl +
-        folder[rootAttribute] +
-        '" target="_blank">' +
-        key +
-        '</a>';
+        '<a href="' + fileUrl + folder[rootAttribute] + '" target="_blank">' + key + '</a>';
       renderedList += '</li>';
     } else {
       renderedList +=

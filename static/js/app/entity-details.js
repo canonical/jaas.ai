@@ -34,7 +34,7 @@ window.Jujucharms.entityDetailsSetup = () => {
       ancestor.classList.remove('list--concealed');
       ancestor.classList.add('list--revealed');
     } else {
-      const ancestor = target.closest('.list--revealed')
+      const ancestor = target.closest('.list--revealed');
       ancestor.classList.remove('list--revealed');
       ancestor.classList.add('list--concealed');
     }

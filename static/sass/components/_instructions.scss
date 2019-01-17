@@ -1,11 +1,10 @@
-
 /// Instructions
 
 .instruction {
   padding: 0 10px;
   border-top: 1px dotted $grey;
 
-  @media only screen and (min-width : $breakpoint-medium) {
+  @media only screen and (min-width: $breakpoint-medium) {
     padding: 0 20px;
   }
 
@@ -16,7 +15,7 @@
   .instruction__bullet {
     z-index: 1;
 
-    @media only screen and (min-width : $breakpoint-medium) {
+    @media only screen and (min-width: $breakpoint-medium) {
       padding-left: 0;
     }
 
@@ -42,7 +41,7 @@
     background-color: $silver;
     font-size: 1.6em;
 
-    @media only screen and (min-width : $site-max-width) {
+    @media only screen and (min-width: $site-max-width) {
       $size: 50px;
       width: $size;
       height: $size;
@@ -55,7 +54,7 @@
     background: none;
     padding: 30px 10px;
 
-    @media only screen and (min-width : $breakpoint-medium) {
+    @media only screen and (min-width: $breakpoint-medium) {
       padding: 70px 0 60px 40px;
     }
 

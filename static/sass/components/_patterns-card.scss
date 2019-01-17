@@ -6,10 +6,10 @@
 
   .p-card__header {
     border-bottom: 1px solid $color-mid-light;
-    margin-bottom: .75rem;
-    padding-bottom: .75rem;
+    margin-bottom: 0.75rem;
+    padding-bottom: 0.75rem;
 
-    >.p-link--soft {
+    > .p-link--soft {
       //prevent height collapse due to display: inline
       display: inline-block;
       //include child margins into height
@@ -28,7 +28,7 @@
 
 %p-card--highlighted {
   @extend %p-card;
-  box-shadow: 0 1px 5px 1px transparentize($black, .8);
+  box-shadow: 0 1px 5px 1px transparentize($black, 0.8);
 }
 
 @mixin vf-p-card {
@@ -59,7 +59,7 @@
 @mixin vf-p-card-overlay {
   .p-card--overlay {
     @extend %p-card;
-    background: transparentize($white, .15);
+    background: transparentize($white, 0.15);
     border-radius: 0;
   }
 }

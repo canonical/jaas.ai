@@ -4,15 +4,15 @@
  * @section mixins
  */
 
-@mixin font_size ($size: 16) {
-  font-size: ($size / $base)em;
-  margin-bottom: (12 / $size)em;
+@mixin font_size($size: 16) {
+  font-size: ($size / $base) em;
+  margin-bottom: (12 / $size) em;
 }
 
-@mixin box_sizing ($type: border-box) {
-    -webkit-box-sizing: $type;
-    -moz-box-sizing:    $type;
-    box-sizing:         $type;
+@mixin box_sizing($type: border-box) {
+  -webkit-box-sizing: $type;
+  -moz-box-sizing: $type;
+  box-sizing: $type;
 }
 
 @mixin rounded_corners($radius: 4px 4px 4px 4px) {
@@ -48,30 +48,30 @@
 @mixin footer($background) {
   padding: $gutter_width $two_col $gutter_width $four_col;
   margin-bottom: 0;
-  background: url($background) no-repeat scroll $one_col center #F7F7F7;
+  background: url($background) no-repeat scroll $one_col center #f7f7f7;
 }
 
 @mixin clearfix() {
-  *zoom:1;
+  *zoom: 1;
 
   &:before,
   &:after {
-      content:"";
-      display:table;
+    content: '';
+    display: table;
   }
   &:after {
-      clear:both;
+    clear: both;
   }
 }
 
 // CSS3 colunms
 @mixin columns($num: 3, $gap: 20) {
   -moz-column-count: $num;
-  -moz-column-gap: ($gap / $base)em;
+  -moz-column-gap: ($gap / $base) em;
   -webkit-column-count: $num;
-  -webkit-column-gap: ($gap / $base)em;
+  -webkit-column-gap: ($gap / $base) em;
   column-count: $num;
-  column-gap: ($gap / $base)em;
+  column-gap: ($gap / $base) em;
 }
 
 @mixin background_size($size: 100% 100%) {
@@ -93,38 +93,48 @@
 @mixin feature-block($feature-color) {
   @include rounded_corners(5px);
   background-color: $feature-color;
-  background: -moz-linear-gradient(left,  lighten($feature-color, 10%) 0%, $feature-color 100%);
-  background: -webkit-gradient(linear, left top, right top, color-stop(0%,lighten($feature-color, 10%)), color-stop(100%,$feature-color));
-  background: -webkit-linear-gradient(left,  lighten($feature-color, 10%) 0%,$feature-color 100%);
-  background: -o-linear-gradient(left,  lighten($feature-color, 10%) 0%,$feature-color 100%);
-  background: -ms-linear-gradient(left,  lighten($feature-color, 10%) 0%,$feature-color 100%);
-  background: linear-gradient(to right,  lighten($feature-color, 10%) 0%,$feature-color 100%);
+  background: -moz-linear-gradient(left, lighten($feature-color, 10%) 0%, $feature-color 100%);
+  background: -webkit-gradient(
+    linear,
+    left top,
+    right top,
+    color-stop(0%, lighten($feature-color, 10%)),
+    color-stop(100%, $feature-color)
+  );
+  background: -webkit-linear-gradient(
+    left,
+    lighten($feature-color, 10%) 0%,
+    $feature-color 100%
+  );
+  background: -o-linear-gradient(left, lighten($feature-color, 10%) 0%, $feature-color 100%);
+  background: -ms-linear-gradient(left, lighten($feature-color, 10%) 0%, $feature-color 100%);
+  background: linear-gradient(to right, lighten($feature-color, 10%) 0%, $feature-color 100%);
   position: relative;
   overflow: hidden;
 
   &:after {
-    content: "";
+    content: '';
     position: absolute;
     top: -58%;
     left: -10%;
     display: block;
     height: 180%;
     width: 48%;
-    background: rgba(255, 255, 255, .1);
+    background: rgba(255, 255, 255, 0.1);
     -ms-transform: rotate(35deg);
     -webkit-transform: rotate(35deg);
     transform: rotate(35deg);
   }
 
   &:before {
-    content: "";
+    content: '';
     position: absolute;
     top: -40%;
     left: -1%;
     display: block;
     height: 71%;
     width: 107%;
-    background: rgba(255, 255, 255, .1);
+    background: rgba(255, 255, 255, 0.1);
     -ms-transform: rotate(10deg);
     -webkit-transform: rotate(10deg);
     transform: rotate(10deg);
@@ -133,12 +143,26 @@
   &.solutions__feature-link:hover {
     text-decoration: none;
     background-color: darken($feature-color, 10%);
-    background: -moz-linear-gradient(left,  $feature-color 0%, darken($feature-color, 10%) 100%);
-    background: -webkit-gradient(linear, left top, right top, color-stop(0%,$feature-color), color-stop(100%,darken($feature-color, 10%)));
-    background: -webkit-linear-gradient(left,  $feature-color 0%, darken($feature-color, 10%) 100%);
-    background: -o-linear-gradient(left,  $feature-color 0%, darken($feature-color, 10%) 100%);
-    background: -ms-linear-gradient(left,  $feature-color 0%, darken($feature-color, 10%) 100%);
-    background: linear-gradient(to right,  $feature-color 0%, darken($feature-color, 10%) 100%);
+    background: -moz-linear-gradient(
+      left,
+      $feature-color 0%,
+      darken($feature-color, 10%) 100%
+    );
+    background: -webkit-gradient(
+      linear,
+      left top,
+      right top,
+      color-stop(0%, $feature-color),
+      color-stop(100%, darken($feature-color, 10%))
+    );
+    background: -webkit-linear-gradient(
+      left,
+      $feature-color 0%,
+      darken($feature-color, 10%) 100%
+    );
+    background: -o-linear-gradient(left, $feature-color 0%, darken($feature-color, 10%) 100%);
+    background: -ms-linear-gradient(left, $feature-color 0%, darken($feature-color, 10%) 100%);
+    background: linear-gradient(to right, $feature-color 0%, darken($feature-color, 10%) 100%);
   }
 }
 
@@ -193,7 +217,7 @@
         @extend %quotes;
         content: '\201C\2002'; // Unicode for left double quotation mark +  1/2 em space
         margin-left: -1.5rem;
-        margin-right: .25rem;
+        margin-right: 0.25rem;
       }
 
       &:last-of-type {
@@ -205,7 +229,7 @@
         content: '\2002\201E'; // Unicode for 1/2 em space + low double quotation mark
         display: inline-block;
         line-height: 0;
-        margin-left: .5rem;
+        margin-left: 0.5rem;
         position: absolute;
         right: 0;
       }
@@ -234,7 +258,6 @@
       margin-right: 1rem;
       max-height: 2.5rem;
     }
-
   }
 }
 
@@ -351,10 +374,10 @@
   margin-bottom: 1rem;
 
   &-item {
-    background: url(../img/icons/list-tick.png) left .3rem no-repeat;
+    background: url(../img/icons/list-tick.png) left 0.3rem no-repeat;
     background-size: 1rem;
     padding-left: 1.5rem;
-    margin-bottom: .25rem;
+    margin-bottom: 0.25rem;
   }
 }
 
@@ -365,10 +388,10 @@
   margin-bottom: 1rem;
 
   &-item {
-    background: url(../img/icons/list-tick.png) left .3rem no-repeat;
+    background: url(../img/icons/list-tick.png) left 0.3rem no-repeat;
     background-size: 1.4rem;
     padding-left: 2.1rem;
-    margin-bottom: .625rem;
+    margin-bottom: 0.625rem;
   }
 }
 

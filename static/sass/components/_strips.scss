@@ -6,16 +6,20 @@
 
 /// NodeJS styled row
 .strip-green {
-    background-image: linear-gradient(to right, #6fad23 0%, #7cc227 100%);
-    overflow: hidden;
-    color: #fff;
+  background-image: linear-gradient(to right, #6fad23 0%, #7cc227 100%);
+  overflow: hidden;
+  color: #fff;
 }
 
 /// MySQL styled row
 .strip-blue {
-    background-image: linear-gradient(to right, rgba(16,118,162,1) 0%, rgba(53,159,205,1) 100%);
-    overflow: hidden;
-    color: #fff;
+  background-image: linear-gradient(
+    to right,
+    rgba(16, 118, 162, 1) 0%,
+    rgba(53, 159, 205, 1) 100%
+  );
+  overflow: hidden;
+  color: #fff;
 }
 
 .strip-grey {
