@@ -25,26 +25,24 @@ window.Jujucharms.utils = {
     }
     return '/' + owner + entity + series + revision;
   },
+
   /**
     Sets up the search handler.
   */
   setupSearch: function() {
-    const form = document.querySelector('.search-form'),
-      input = document.querySelector('.search-form .form-text'),
-      header = document.querySelector('header.banner'),
-      searchClose = document.querySelector('.search-close');
+    const form = document.querySelector('[data-js="search-form"]'),
+      input = document.querySelector('[data-js="form-text"]'),
+      header = document.querySelector('[data-js="navigation"]'),
+      searchClose = document.querySelector('[data-js="search-close"]');
 
     input.addEventListener('focus', e => {
       header.classList.add('search-active');
     });
 
-    input.addEventListener('blur', e => {
-      header.classList.remove('search-active');
-    });
-
     if (searchClose !== null) {
       searchClose.addEventListener('click', e => {
         e.preventDefault();
+        header.classList.remove('search-active');
         input.value = '';
       });
     }
