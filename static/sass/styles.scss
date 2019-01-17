@@ -17,12 +17,12 @@ $mid-grey: $color-mid-light;
 @import 'plugins/prism-overrides';
 
 // Custom snowflake code for bespoke components
-@import 'v1-custom/row-cli';
-@import 'v1-custom/search-box';
-@import 'v1-custom/store-promos';
-@import 'v1-custom/minimal-juju-cards';
-@import 'v1-custom/entities';
-@import 'v1-custom/homepage-hero-promo';
+@import 'custom/row-cli';
+@import 'custom/search-box';
+@import 'custom/store-promos';
+@import 'custom/minimal-juju-cards';
+@import 'custom/entities';
+@import 'custom/homepage-hero-promo';
 
 // temp header styling
 $color-nav-border: #33535d;
