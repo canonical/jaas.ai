@@ -1,0 +1,35 @@
+.p-modal {
+  opacity: 1;
+  visibility: visible;
+  transition: visibility 0s, opacity 0.25s linear;
+}
+
+.p-modal--hidden {
+  opacity: 0;
+  visibility: hidden;
+}
+
+.modal__contact-list {
+  list-style: none;
+  margin-left: 0;
+
+  li {
+    margin-bottom: 0.25rem;
+
+    a {
+      padding-left: 0.5rem;
+    }
+  }
+}
+
+.modal__website:before {
+  content: '\1F4BB';
+}
+
+.modal__email:before {
+  content: '\1F4E7';
+}
+
+.modal__tel:before {
+  content: '\1F4De';
+}

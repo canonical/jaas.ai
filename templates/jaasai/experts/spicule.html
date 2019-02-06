@@ -23,46 +23,9 @@
         <hr>
         <p>Please let us know if you have a question, or would like further information about Spicule.</p>
         <footer class="p-card__footer">
-          <a href="#_" data-js="show-btn" class="p-button--positive"
-            onclick="dataLayer.push({
-              'event' : 'GAEvent',
-              'eventCategory' : 'Experts',
-              'eventAction' : 'Reveal contact details',
-              'eventLabel' : 'Spicule'
-            });">
-            Show contact details&hellip;
-          </a>
-          <div class="u-hide" data-js="contact-info">
-            <p>
-              <a href="https://spicule.co.uk" class="link p-card__pre-footer">
-                <span>
-                  <img class="p-card__footer-icon" src="https://assets.ubuntu.com/v1/4f94bbf4-icon-web.svg" alt="Email icon">
-                </span>
-                https://spicule.co.uk
-              </a>
-            </p>
-            <p>
-              <a href="mailto:info@spicule.co.uk" class="link p-card__pre-footer">
-                <span>
-                  <img class="p-card__footer-icon" src="https://assets.ubuntu.com/v1/5e815088-icon-email.svg" alt="Email icon">
-                </span>
-                info@spicule.co.uk
-              </a>
-            </p>
-            <p>
-              <span class="link p-card__pre-footer">
-                <span>
-                  <img class="p-card__footer-icon" src="https://assets.ubuntu.com/v1/a52bd3b1-Icon-telephone.svg" alt="Telephone icon">
-                </span>
-                <span>
-                  UK <a href="tel:+441603327762">+44 (0)1603 327762</a>
-                </span>
-                <span style="display:inline-block;margin-left:1.5rem">
-                  US <a href="tel:+18448141689">+1 8448141689</a>
-                </span>
-              </span>
-            </p>
-          </div>
+          <button data-js="modalTrigger" class="p-button--positive">
+            Get in touch
+          </button>
         </footer>
       </div>
     </div>
@@ -187,5 +150,44 @@
     </div>
   </div>
 </div>
+<div data-js="contact-form" class="contact-form">
+  <div class="p-modal u-hide p-modal--hidden" id="modal">
+    <div class="p-modal__dialog" role="dialog" aria-labelledby="modal-title" aria-describedby="modal-description">
+      <header class="p-modal__header">
+        <h2 class="p-modal__title" id="modal-title">Get in touch with Spicule</h2>
+        <button class="p-modal__close" aria-label="Close active modal" data-js="modalClose">Close</button>
+      </header>
+      <ul class="modal__contact-list">
+        <li class="modal__website"><a href="https://spicule.co.uk">https://spicule.co.uk</a></li>
+        <li class="modal__email"><a href="mailto:info@spicule.co.uk">info@spicule.co.uk</a></li>
+        <li class="modal__tel"><a rel="tel" href="tel:+441603327762">+44 (0) 1603 327762</a> (UK)</li>
+        <li class="modal__tel"><a rel="tel" href="tel:+18448141689">+1 (0) 8448 141689</a> (USA)</li>
+      </ul>
+      <hr />
+      <form>
+        <div class="modal-form-field">
+          <label for="name-company">Name / company</label>
+          <input type="text" id="name-company" />
+        </div>
+        <div class="modal-form-field">
+          <label for="email">Your email address</label>
+          <input type="email" id="email" />
+        </div>
+        <div class="modal-form-field">
+          <label for="message">How can we help you?</label>
+          <textarea type="text" id="message"></textarea>
+        </div>
+        <p>
+          <small>In submitting this form, I confirm that I have read and agree to Canonical's <a href="https://www.ubuntu.com/legal/data-privacy">Data Privacy Notice</a>.</small>
+        </p>
+        <button type="submit" class="p-button--positive">Send message</button>
+      </form>
+    </div>
+  </div>
+</div>
+<script src="/static/js/app/modal.js"></script>
+<script>
+  window.app.modal();
+</script>
 
 {% endblock content %}
