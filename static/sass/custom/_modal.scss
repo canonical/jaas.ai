@@ -20,16 +20,17 @@
       padding-left: 0.5rem;
     }
   }
+
+  img {
+    display: block;
+    padding-top: 0.25rem;
+  }
 }
 
-.modal__website:before {
-  content: '\1F4BB';
-}
+.modal__button {
+  display: flex;
 
-.modal__email:before {
-  content: '\1F4E7';
-}
-
-.modal__tel:before {
-  content: '\1F4De';
+  button {
+    margin-left: auto;
+  }
 }

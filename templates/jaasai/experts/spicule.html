@@ -158,10 +158,28 @@
         <button class="p-modal__close" aria-label="Close active modal" data-js="modalClose">Close</button>
       </header>
       <ul class="modal__contact-list">
-        <li class="modal__website"><a href="https://spicule.co.uk">https://spicule.co.uk</a></li>
-        <li class="modal__email"><a href="mailto:info@spicule.co.uk">info@spicule.co.uk</a></li>
-        <li class="modal__tel"><a rel="tel" href="tel:+441603327762">+44 (0) 1603 327762</a> (UK)</li>
-        <li class="modal__tel"><a rel="tel" href="tel:+18448141689">+1 (0) 8448 141689</a> (USA)</li>
+        <li class="modal__website">
+          <span>
+            <img src="https://assets.ubuntu.com/v1/4f94bbf4-icon-web.svg" alt="Email icon">
+          </span>
+          <a href="https://spicule.co.uk">https://spicule.co.uk</a>
+        </li>
+        <li class="modal__email">
+          <span>
+            <img src="https://assets.ubuntu.com/v1/5e815088-icon-email.svg" alt="Email icon">
+          </span>
+          <a href="mailto:info@spicule.co.uk">info@spicule.co.uk</a>
+        </li>
+        <li class="modal__tel">
+          <span>
+            <img src="https://assets.ubuntu.com/v1/a52bd3b1-Icon-telephone.svg" alt="Email icon">
+          </span>
+          <a rel="tel" href="tel:+441603327762">+44 (0) 1603 327762</a> (UK)</li>
+        <li class="modal__tel">
+          <span>
+            <img src="https://assets.ubuntu.com/v1/a52bd3b1-Icon-telephone.svg" alt="Telephone icon">
+          </span>
+          <a rel="tel" href="tel:+18448141689">+1 (0) 8448 141689</a> (USA)</li>
       </ul>
       <hr />
       <form>
@@ -180,7 +198,9 @@
         <p>
           <small>In submitting this form, I confirm that I have read and agree to Canonical's <a href="https://www.ubuntu.com/legal/data-privacy">Data Privacy Notice</a>.</small>
         </p>
-        <button type="submit" class="p-button--positive">Send message</button>
+        <div class="modal__button">
+          <button type="submit" class="p-button--positive">Send message</button>
+        </div>
       </form>
     </div>
   </div>
