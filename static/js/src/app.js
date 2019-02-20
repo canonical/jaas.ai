@@ -1,4 +1,5 @@
-import createNav from 'global-nav';
+// import modules
+import showContactDetails from './modules/show-contact-details';
 
-// Great global nav
-createNav();
+// Instantiate modules
+showContactDetails();

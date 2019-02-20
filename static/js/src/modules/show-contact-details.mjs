@@ -1,5 +1,5 @@
-window.Jujucharms.showContactDetails = () => {
-  button = document.querySelector('[data-js="show-btn"]');
+const showContactDetails = () => {
+  const button = document.querySelector('[data-js="show-btn"]');
   if (button) {
     button.addEventListener('click', e => {
       e.preventDefault();
@@ -8,3 +8,5 @@ window.Jujucharms.showContactDetails = () => {
     });
   }
 };
+
+export default showContactDetails;
