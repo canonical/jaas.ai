@@ -1,15 +1,15 @@
 {
   "scripts": {
-    "lint-scss": "sass-lint static/**/*.scss --verbose --no-exit",
     "build": "node-sass --include-path node_modules static/sass --output static/css && postcss --use autoprefixer --replace 'static/css/**/*.css' && postcss --use cssnano --dir static/minified 'static/css/**/*.css'",
     "build-css": "node-sass --include-path node_modules static/sass --output static/css && postcss --use autoprefixer --replace 'static/css/**/*.css' && postcss --use cssnano --dir static/minified 'static/css/**/*.css'",
     "build-js": "webpack --mode production ./static/js/src/app.js --output ./static/js/app.js --module-bind js=babel-loader",
-    "serve": "./entrypoint 0.0.0.0:${PORT}",
-    "watch": "watch -p 'static/sass/**/*.scss' -c 'yarn run build'",
-    "watch-scss": "watch -p 'static/sass/**/*.scss' -c 'yarn run build-css'",
     "clean": "rm -rf node_modules yarn-error.log css static/css *.log *.sqlite _site/ build/ .jekyll-metadata .bundle",
+    "lint-scss": "sass-lint static/**/*.scss --verbose --no-exit",
+    "python-lint": "flake8 webapp",
+    "serve": "./entrypoint 0.0.0.0:${PORT}",
     "test": "sass-lint static/**/*.scss --verbose --no-exit",
-    "python-lint": "flake8 webapp"
+    "watch": "watch -p 'static/sass/**/*.scss' -c 'yarn run build'",
+    "watch-scss": "watch -p 'static/sass/**/*.scss' -c 'yarn run build-css'"
   },
   "dependencies": {
     "autoprefixer": "^6.3.1",
