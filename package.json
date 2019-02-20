@@ -3,7 +3,7 @@
     "lint-scss": "sass-lint static/**/*.scss --verbose --no-exit",
     "build": "yarn run build-css",
     "build-css": "node-sass --include-path node_modules static/sass --output static/css && postcss --use autoprefixer --replace 'static/css/**/*.css' && postcss --use cssnano --dir static/minified 'static/css/**/*.css'",
-    "build-js": "webpack --mode production ./static/js/src/app.js --output ./static/js/app.js",
+    "build-js": "webpack --mode production ./static/js/src/app.js --output ./static/js/app.js --module-bind js=babel-loader",
     "serve": "./entrypoint 0.0.0.0:${PORT}",
     "watch": "watch -p 'static/sass/**/*.scss' -p 'static/js/**/*.js' -c 'yarn run build'",
     "watch-scss": "watch -p 'static/sass/**/*.scss' -c 'yarn run build-css'",
@@ -23,6 +23,9 @@
     "webpack": "^4.29.5"
   },
   "devDependencies": {
+    "@babel/core": "^7.3.3",
+    "@babel/preset-env": "^7.3.1",
+    "babel-loader": "^8.0.5",
     "husky": "^1.3.1",
     "prettier": "1.15.3",
     "pretty-quick": "^1.8.1",
