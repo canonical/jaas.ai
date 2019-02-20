@@ -2,7 +2,8 @@
   "scripts": {
     "lint-scss": "sass-lint static/**/*.scss --verbose --no-exit",
     "build": "yarn run build-css",
-    "build-css": "node-sass --include-path node_modules static/sass --output static/css --output-style compressed && postcss --use autoprefixer --replace 'static/css/**/*.css' --no-map",
+    "build-css": "node-sass --include-path node_modules static/sass --output static/css && postcss --use autoprefixer --replace 'static/css/**/*.css' && postcss --use cssnano --dir static/minified 'static/css/**/*.css'",
+    "build-js": "webpack --mode production ./static/js/src/app.js --output ./static/js/app.js",
     "serve": "./entrypoint 0.0.0.0:${PORT}",
     "watch": "watch -p 'static/sass/**/*.scss' -p 'static/js/**/*.js' -c 'yarn run build'",
     "watch-scss": "watch -p 'static/sass/**/*.scss' -c 'yarn run build-css'",
@@ -11,17 +12,21 @@
     "python-lint": "flake8 webapp"
   },
   "dependencies": {
-    "autoprefixer": "9.4.8",
+    "autoprefixer": "^9.4.5",
+    "cssnano": "^3.10.0",
+    "global-nav": "^2.0.1",
     "node-sass": "^4.11.0",
     "postcss-cli": "^4.1.0",
     "sass-lint": "^1.12.1",
-    "vanilla-framework": "1.8.1",
-    "watch-cli": "^0.2.3"
+    "vanilla-framework": "1.8.0",
+    "watch-cli": "^0.2.3",
+    "webpack": "^4.29.5"
   },
   "devDependencies": {
     "husky": "^1.3.1",
-    "prettier": "1.16.4",
-    "pretty-quick": "^1.8.1"
+    "prettier": "1.15.3",
+    "pretty-quick": "^1.8.1",
+    "webpack-cli": "^3.2.3"
   },
   "husky": {
     "hooks": {
