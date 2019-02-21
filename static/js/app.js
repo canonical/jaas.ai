@@ -112,7 +112,7 @@
       /***/ function(module, __webpack_exports__, __webpack_require__) {
         'use strict';
         eval(
-          '__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _modules_show_contact_details__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./modules/show-contact-details */ "./static/js/src/modules/show-contact-details.mjs");\n// imports\n // Instaniate\n\nconsole.log(\'test2\');\nObject(_modules_show_contact_details__WEBPACK_IMPORTED_MODULE_0__["default"])();\n\n//# sourceURL=webpack:///./static/js/src/app.js?'
+          '__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _modules_show_contact_details__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./modules/show-contact-details */ "./static/js/src/modules/show-contact-details.mjs");\n// import modules\n // Instantiate modules\n\nObject(_modules_show_contact_details__WEBPACK_IMPORTED_MODULE_0__["default"])();\n\n//# sourceURL=webpack:///./static/js/src/app.js?'
         );
 
         /***/
