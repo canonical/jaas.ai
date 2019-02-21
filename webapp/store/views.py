@@ -14,8 +14,27 @@ def store():
     return render_template('store/store.html')
 
 
-@jaasstore.route('/u/<user_name>/<entity_name>/')
-def user_details():
+@jaasstore.route('/u/<username>/')
+def user_details(username):
+    entities = models.get_user_entities(username)
+    if len(entities['charms']) > 0 and len(entities['bundles']) > 0:
+        return render_template(
+            'store/user-details.html',
+            context={
+                'bundles_count': len(entities['bundles']),
+                'bundles': entities['bundles'],
+                'charms_count': len(entities['charms']),
+                'charms': entities['charms'],
+                'entities': entities,
+                'username': username
+            }
+        )
+    else:
+        return abort(404, "User not found: {}".format(username))
+
+
+@jaasstore.route('/u/<username>/<entity_name>/')
+def user_entity(username, entity_name):
     raise NotImplementedError()
 
 

@@ -1,0 +1,110 @@
+{% extends "_layout.html" %}
+
+{% block title %}{{ context.username }}{% endblock %}
+
+{% block content %}
+
+<div class="p-strip--light is-bordered is-shallow" data-js="sticky-header">
+  <header class="row">
+    <div class="p-media-object--large u-no-margin--bottom">
+      <div class="p-media-object__details">
+        <h1 itemprop="name" class="p-media-object__title u-no-margin--bottom u-sv2" style="text-transform:capitalize">
+          <span>
+            {{ context.username }}
+          </span>
+        </h1>
+        <ul class="p-inline-list">
+          <li class="p-inline-list__item">
+            <a href="#bundles">{{ context.bundles_count }} bundle{{ context.bundles_count|pluralize }}</a>
+          </li>
+          <li class="p-inline-list__item">
+            <a href="#charms">{{ context.charms_count }} charm{{ context.charms_count|pluralize }}</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </header>
+</div>
+
+{% if context.bundles %}
+   <div class="p-strip">
+     <div class="row">
+       <div class="col-12">
+         <h3 id="bundles" class="profile-title">
+             Bundles
+             <span class="profile-title--count">
+               ({{ context.bundles_count }})
+             </span>
+         </h3>
+       </div>
+         {% if context.bundles_count > 0 %}
+           <table class="search-results-table">
+             <thead>
+               <tr>
+                 <th scope="col">Name</th>
+                 <th scope="col">&nbsp;</th>
+                 <th scope="col" class="u-hide--small">Charms</th>
+                 <th scope="col" class="u-align-text--center">Units</th>
+                 <th scope="col" class="u-align-text--center">Owner</th>
+               </tr>
+             </thead>
+             <tbody>
+             {% for entity in context.bundles %}
+               <tr class="{{ entity.type }} u-no-padding--top">
+                 {% with %}
+                   {% set outerloop = loop %}
+                   {% include "store/_search_row.html" %}
+                 {% endwith %}
+               </tr>
+             {% endfor %}
+             </tbody>
+           </table>
+         {% endif %}
+       </div>
+     </div>
+   </div>
+ {% endif %}
+
+ {% if context.charms %}
+   <div class="p-strip">
+     <div class="row">
+       <div class="col-12">
+         <h3 id="charms" class="profile-title">
+         Charms
+         <span class="profile-title--count">
+           ({{ context.charms_count }})
+         </span>
+         </h3>
+       </div>
+     </div>
+     <div class="row">
+       <div class="col-12">
+         {% if context.charms_count > 0 %}
+           <table class="search-results-table">
+             <thead>
+               <tr>
+                 <th scope="col">Name</th>
+                 <th scope="col">Series</th>
+                 <th scope="col">&nbsp;</th>
+                 <th scope="col" class="u-hide--small">&nbsp;</th>
+                 <th scope="col" class="u-align-text--center">Owner</th>
+               </tr>
+             </thead>
+             <tbody>
+               {% for entity in context.charms %}
+                 <tr class="{{ entity.type }} u-no-padding--top">
+                   {% with %}
+                     {% set outerloop = loop %}
+                     {% include "store/_search_row.html" %}
+                   {% endwith %}
+                 </tr>
+               {% endfor %}
+             </tbody>
+           </table>
+         {% endif %}
+       </div>
+     </div>
+   </div>
+ {% endif %}
+
+{% endblock %}

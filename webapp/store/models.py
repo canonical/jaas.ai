@@ -5,9 +5,31 @@ import re
 import gfm
 from jujubundlelib import references
 from theblues.charmstore import CharmStore
+from theblues.identity_manager import IdentityManager
 from theblues.errors import EntityNotFound
 
-cs = CharmStore("https://api.jujucharms.com/v5")
+cs = CharmStore('https://api.jujucharms.com/v5')
+
+
+
+def get_user_entities(username):
+    includes = [
+        'charm-metadata',
+        'bundle-metadata',
+        'owner',
+        'bundle-unit-count',
+        'bundle-machine-count',
+        'stats',
+        'supported-series',
+        'published',
+    ]
+    try:
+        entities = cs.list(includes=includes, owner=username)
+        print(entities)
+        parsed = _parse_list(entities)
+        return _group_entities(parsed)
+    except EntityNotFound:
+        return None
 
 
 def get_charm_or_bundle(reference):
@@ -16,6 +38,19 @@ def get_charm_or_bundle(reference):
         return _parse_charm_or_bundle(entity_data)
     except EntityNotFound:
         return None
+
+
+def _parse_list(entities):
+    return [_parse_charm_or_bundle(entity) for entity in entities]
+
+
+def _group_entities(entities):
+    groups = {
+        'bundles': [],
+        'charms': []
+    }
+    [groups['charms' if entity['is_charm'] else 'bundles'].append(entity) for entity in entities]
+    return groups
 
 
 def _parse_charm_or_bundle(entity_data):
@@ -31,8 +66,9 @@ def _parse_bundle_data(bundle_data):
     bundle_id = bundle_data['Id']
     ref = references.Reference.from_string(bundle_id)
     name = ref.name
-    revision_list = bundle_data['Meta']['revision-info'].get('Revisions')
-    latest_revision = {
+    meta = bundle_data['Meta']
+    revision_list = meta.get('revision-info', {}).get('Revisions')
+    latest_revision = revision_list and {
         'id': int(revision_list[0].split('-')[-1]),
         'full_id': revision_list[0],
         'url': '{}/{}'.format(
@@ -44,18 +80,20 @@ def _parse_bundle_data(bundle_data):
         'archive_url': cs.archive_url(ref),
         'bundle_data': bundle_data,
         'bundle_visulisation': getBundleVisualization(ref),
-        'display_name': _get_display_name(name),
-        'revision_number': ref.revision,
-        'files': _get_entity_files(ref, bundle_data['Meta']['manifest']),
-        'latest_revision': latest_revision,
         'card_id': ref.path(),
+        'display_name': _get_display_name(name),
+        'files': _get_entity_files(ref, meta.get('manifest')),
+        'is_charm': False,
+        'latest_revision': latest_revision,
+        'owner': meta.get('owner', {}).get('User'),
+        'revision_number': ref.revision,
         'readme': _render_markdown(
             cs.entity_readme_content(bundle_id)
         ),
         'services': _parseBundleServices(
-            bundle_data['Meta']['bundle-metadata']['applications']
+            meta['bundle-metadata']['applications']
         ),
-        'is_charm': False
+        'units': meta.get('bundle-unit-count', {}).get('Count', '')
     }
 
     return bundle
@@ -78,12 +116,13 @@ def _parse_charm_data(charm_data):
     meta = charm_data.get('Meta', None)
     bzr_url, revisions = _extract_from_extrainfo(meta, ref)
     bugs_url, homepage = _extract_from_commoninfo(meta)
-    revision_list = meta['revision-info'].get('Revisions')
-    latest_revision = {
+    name = meta['charm-metadata']['Name']
+    revision_list = meta.get('revision-info', {}).get('Revisions')
+    latest_revision = revision_list and {
         'id': int(revision_list[0].split('-')[-1]),
         'full_id': revision_list[0],
         'url': '{}/{}'.format(
-            meta['charm-metadata']['Name'],
+            name,
             int(revision_list[0].split('-')[-1])
         )}
 
@@ -92,14 +131,15 @@ def _parse_charm_data(charm_data):
         'bugs_url': bugs_url,
         'bzr_url': bzr_url,
         'charm_data': charm_data,
-        'files': _get_entity_files(ref, meta['manifest']),
+        'display_name': _get_display_name(name),
+        'files': _get_entity_files(ref, meta.get('manifest')),
         'homepage': homepage,
         'icon': cs.charm_icon_url(charm_id),
         'id': charm_id,
         'card_id': ref.path(),
         'latest_revision': latest_revision,
         'options': meta.get('charm-config', {}).get('Options'),
-        'owner': charm_data.get('owner', {}).get('User'),
+        'owner': meta.get('owner', {}).get('User'),
         'provides': meta['charm-metadata'].get('Provides'),
         'requires': meta['charm-metadata'].get('Requires'),
         'resources': _extract_resources(ref, meta.get('resources', {})),
@@ -110,6 +150,7 @@ def _parse_charm_data(charm_data):
         'revision_number': ref.revision,
         'revisions': revisions,
         'series': meta.get('supported-series', {}).get('SupportedSeries'),
+        'tags': meta.get('Tags') or meta['charm-metadata'].get('Categories'),
         'is_charm': True
     }
 
