@@ -17,7 +17,7 @@
     "autoprefixer": "^9.4.8",
     "babel-loader": "8.0.5",
     "node-sass": "4.11.0",
-    "postcss-cli": "6.1.1",
+    "postcss-cli": "4.1.0",
     "vanilla-framework": "1.8.1",
     "watch-cli": "0.2.3",
     "webpack": "4.29.5",
