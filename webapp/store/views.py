@@ -17,7 +17,7 @@ def store():
 @jaasstore.route('/u/<username>/')
 def user_details(username):
     entities = models.get_user_entities(username)
-    if len(entities['charms']) > 0 and len(entities['bundles']) > 0:
+    if len(entities['charms']) > 0 or len(entities['bundles']) > 0:
         return render_template(
             'store/user-details.html',
             context={

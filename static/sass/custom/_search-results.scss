@@ -1,3 +1,26 @@
+.search-results {
+  &__entity-name {
+    font-size: 1rem;
+    text-transform: capitalize;
+  }
+
+  &-table {
+    tr {
+      display: flex;
+      padding-top: 1rem;
+    }
+
+    th,
+    td {
+      flex: 1;
+
+      &:first-child {
+        flex: 2;
+      }
+    }
+  }
+}
+
 .entity-icon {
   border-radius: 50%;
 }
