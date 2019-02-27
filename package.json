@@ -2,7 +2,7 @@
   "scripts": {
     "lint-scss": "sass-lint static/**/*.scss --verbose --no-exit",
     "build": "yarn run build-css",
-    "build-css": "node-sass --include-path node_modules static/sass --output static/css && postcss --use autoprefixer --replace 'static/css/**/*.css' && postcss --use cssnano --dir static/minified 'static/css/**/*.css'",
+    "build-css": "node-sass --include-path node_modules static/sass --output static/css --output-style compressed && postcss --use autoprefixer --replace 'static/css/**/*.css' --no-map",
     "serve": "./entrypoint 0.0.0.0:${PORT}",
     "watch": "watch -p 'static/sass/**/*.scss' -p 'static/js/**/*.js' -c 'yarn run build'",
     "watch-scss": "watch -p 'static/sass/**/*.scss' -c 'yarn run build-css'",
@@ -12,7 +12,6 @@
   },
   "dependencies": {
     "autoprefixer": "9.4.8",
-    "cssnano": "^3.10.0",
     "node-sass": "^4.11.0",
     "postcss-cli": "^4.1.0",
     "sass-lint": "^1.12.1",
