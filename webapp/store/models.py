@@ -8,8 +8,7 @@ from theblues.charmstore import CharmStore
 from theblues.identity_manager import IdentityManager
 from theblues.errors import EntityNotFound
 
-cs = CharmStore('https://api.jujucharms.com/v5')
-
+cs = CharmStore("https://api.jujucharms.com/v5")
 
 
 def get_user_entities(username):
@@ -25,7 +24,6 @@ def get_user_entities(username):
     ]
     try:
         entities = cs.list(includes=includes, owner=username)
-        print(entities)
         parsed = _parse_list(entities)
         return _group_entities(parsed)
     except EntityNotFound:

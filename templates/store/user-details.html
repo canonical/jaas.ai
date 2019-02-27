@@ -4,25 +4,21 @@
 
 {% block content %}
 
-<div class="p-strip--light is-bordered is-shallow" data-js="sticky-header">
+<div class="p-strip--light is-bordered is-shallow">
   <header class="row">
-    <div class="p-media-object--large u-no-margin--bottom">
-      <div class="p-media-object__details">
-        <h1 itemprop="name" class="p-media-object__title u-no-margin--bottom u-sv2" style="text-transform:capitalize">
-          <span>
-            {{ context.username }}
-          </span>
-        </h1>
-        <ul class="p-inline-list">
-          <li class="p-inline-list__item">
-            <a href="#bundles">{{ context.bundles_count }} bundle{{ context.bundles_count|pluralize }}</a>
-          </li>
-          <li class="p-inline-list__item">
-            <a href="#charms">{{ context.charms_count }} charm{{ context.charms_count|pluralize }}</a>
-          </li>
-        </ul>
-      </div>
-    </div>
+    <h1 itemprop="name" style="text-transform:capitalize">
+      <span>
+        {{ context.username }}
+      </span>
+    </h1>
+    <ul class="p-inline-list">
+      <li class="p-inline-list__item">
+        <a href="#bundles">{{ context.bundles_count }} bundle{{ context.bundles_count|pluralize }}</a>
+      </li>
+      <li class="p-inline-list__item">
+        <a href="#charms">{{ context.charms_count }} charm{{ context.charms_count|pluralize }}</a>
+      </li>
+    </ul>
   </header>
 </div>
 
@@ -30,11 +26,8 @@
    <div class="p-strip">
      <div class="row">
        <div class="col-12">
-         <h3 id="bundles" class="profile-title">
-             Bundles
-             <span class="profile-title--count">
-               ({{ context.bundles_count }})
-             </span>
+         <h3 id="bundles">
+             Bundles ({{ context.bundles_count }})
          </h3>
        </div>
          {% if context.bundles_count > 0 %}
@@ -69,11 +62,8 @@
    <div class="p-strip">
      <div class="row">
        <div class="col-12">
-         <h3 id="charms" class="profile-title">
-         Charms
-         <span class="profile-title--count">
-           ({{ context.charms_count }})
-         </span>
+         <h3 id="charms">
+         Charms ({{ context.charms_count }})
          </h3>
        </div>
      </div>
