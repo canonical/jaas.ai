@@ -5,7 +5,6 @@ import re
 import gfm
 from jujubundlelib import references
 from theblues.charmstore import CharmStore
-from theblues.identity_manager import IdentityManager
 from theblues.errors import EntityNotFound
 
 cs = CharmStore("https://api.jujucharms.com/v5")
@@ -47,7 +46,8 @@ def _group_entities(entities):
         'bundles': [],
         'charms': []
     }
-    [groups['charms' if entity['is_charm'] else 'bundles'].append(entity) for entity in entities]
+    [groups['charms' if entity['is_charm'] else 'bundles']
+        .append(entity) for entity in entities]
     return groups
 
 
