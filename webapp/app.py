@@ -40,6 +40,12 @@ def create_app(testing=False):
     init_handler(app)
     init_blueprint(app)
 
+    @app.template_filter('pluralize')
+    def pluralize(count):
+        if count != 1:
+            return 's'
+        return ''
+
     return app
 
 
