@@ -294,12 +294,6 @@ p:empty {
   }
 }
 
-.expert-card__contact-info {
-  img {
-    padding-right: 0.5rem;
-  }
-}
-
 // Accordion title
 .p-accordion__title {
   left: 5px;
@@ -307,7 +301,7 @@ p:empty {
   top: -13px;
 }
 
-div.p-accordion__tab[aria-expanded] {
+div .p-accordion__tab[aria-expanded] {
   background: none;
 }
 
@@ -315,4 +309,5 @@ div.p-accordion__tab[aria-expanded] {
 // https://github.com/canonical-websites/vanillaframework.io/pull/171#issuecomment-424717215
 .homepage-logos .p-inline-images__item {
   margin: 0;
+  padding-right: 0.5rem;
 }
