@@ -2273,6 +2273,10 @@ global-modules@^1.0.0:
     is-windows "^1.0.1"
     resolve-dir "^1.0.0"
 
+global-nav@2.0.3:
+  version "2.0.3"
+  resolved "https://registry.yarnpkg.com/global-nav/-/global-nav-2.0.3.tgz#c56e9014fba3af0ffd2b65dd0f49176b2ef7b55a"
+
 global-prefix@^1.0.1:
   version "1.0.2"
   resolved "https://registry.yarnpkg.com/global-prefix/-/global-prefix-1.0.2.tgz#dbf743c6c14992593c655568cb66ed32c0122ebe"
