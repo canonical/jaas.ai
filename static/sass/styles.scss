@@ -36,6 +36,12 @@ $color-nav-border: #33535d;
   }
 
   @media (min-width: $breakpoint-medium) {
+    &__logo {
+      margin-left: 0;
+    }
+  }
+
+  @media (min-width: $breakpoint-medium) {
     & &__links .p-navigation__link {
       border-left: 1px solid $color-nav-border;
 
