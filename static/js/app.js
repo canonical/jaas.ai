@@ -126,7 +126,7 @@
       /***/ function(module, __webpack_exports__, __webpack_require__) {
         'use strict';
         eval(
-          '__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _modules_show_contact_details__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./modules/show-contact-details */ "./static/js/src/modules/show-contact-details.mjs");\n/* harmony import */ var global_nav__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! global-nav */ "./node_modules/global-nav/dist/module.js");\n// import modules\n\n // Instantiate modules\n\nObject(_modules_show_contact_details__WEBPACK_IMPORTED_MODULE_0__["default"])();\nObject(global_nav__WEBPACK_IMPORTED_MODULE_1__["createNav"])();\n\n//# sourceURL=webpack:///./static/js/src/app.js?'
+          '__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _modules_show_contact_details__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./modules/show-contact-details */ "./static/js/src/modules/show-contact-details.mjs");\n/* harmony import */ var global_nav__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! global-nav */ "./node_modules/global-nav/dist/module.js");\n// import modules\n\n // Instantiate modules\n\nObject(_modules_show_contact_details__WEBPACK_IMPORTED_MODULE_0__["default"])();\nObject(global_nav__WEBPACK_IMPORTED_MODULE_1__["createNav"])({\n  maxWidth: \'64.875rem\'\n});\n\n//# sourceURL=webpack:///./static/js/src/app.js?'
         );
 
         /***/

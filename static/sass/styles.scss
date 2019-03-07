@@ -31,6 +31,10 @@ $color-nav-border: #33535d;
 .p-navigation {
   border-bottom: 1px solid $color-nav-border;
 
+  .row {
+    padding: 0 1.5rem;
+  }
+
   &__logo {
     padding-top: 0.5rem;
   }

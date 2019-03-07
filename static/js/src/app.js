@@ -4,4 +4,4 @@ import {createNav} from 'global-nav';
 
 // Instantiate modules
 showContactDetails();
-createNav();
+createNav({maxWidth: '64.875rem'});
