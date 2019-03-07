@@ -8,14 +8,16 @@
     "python-lint": "flake8 webapp",
     "serve": "./entrypoint 0.0.0.0:${PORT}",
     "test": "sass-lint static/**/*.scss --verbose --no-exit",
-    "watch": "watch -p 'static/sass/**/*.scss' -c 'yarn run build'",
-    "watch-scss": "watch -p 'static/sass/**/*.scss' -c 'yarn run build-css'"
+    "watch": "concurrently \"npm run watch-scss\" \"npm run watch-js\"",
+    "watch-scss": "watch -p 'static/sass/**/*.scss' -c 'yarn run build-css'",
+    "watch-js": "watch -p 'static/js/**/*.js' -c 'yarn run build-js'"
   },
   "dependencies": {
     "@babel/core": "7.3.4",
     "@babel/preset-env": "7.3.4",
     "autoprefixer": "9.4.9",
     "babel-loader": "8.0.5",
+    "concurrently": "^4.1.0",
     "global-nav": "2.0.3",
     "node-sass": "4.11.0",
     "postcss-cli": "4.1.1",
