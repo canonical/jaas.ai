@@ -526,7 +526,7 @@
     lodash "^4.17.11"
     to-fast-properties "^2.0.0"
 
-"@canonical/global-nav@^2.0.3":
+"@canonical/global-nav@2.0.3":
   version "2.0.3"
   resolved "https://registry.yarnpkg.com/@canonical/global-nav/-/global-nav-2.0.3.tgz#32ec9883057c5f2c4528a111011aacaad971a780"
 
