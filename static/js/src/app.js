@@ -1,6 +1,6 @@
 // import modules
 import showContactDetails from './modules/show-contact-details';
-import {createNav} from 'global-nav';
+import {createNav} from '@canonical/global-nav';
 
 // Instantiate modules
 showContactDetails();
