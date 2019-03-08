@@ -3,7 +3,7 @@
 $asset-path: '/static/';
 
 // Override local variables
-$color-navigation-background: #022935;
+$color-navigation-background: #333;
 
 // Import Vanilla Framework
 @import 'vanilla-framework/scss/vanilla';
@@ -31,8 +31,22 @@ $color-nav-border: #33535d;
 .p-navigation {
   border-bottom: 1px solid $color-nav-border;
 
+  .row {
+    padding: 0 1.5rem;
+  }
+
+  &__logo {
+    padding-top: 0.5rem;
+  }
+
   &__logo &__link {
     height: 32px;
+  }
+
+  @media (min-width: $breakpoint-medium) {
+    &__logo {
+      margin-left: 0;
+    }
   }
 
   @media (min-width: $breakpoint-medium) {
