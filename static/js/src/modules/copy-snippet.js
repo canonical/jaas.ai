@@ -1,7 +1,7 @@
 /**
   Allows users to click button on code snippet pattern to copy contents to clipboard
 **/
-window.Jujucharms.copyCodeSnippets = () => {
+const copySnippet = () => {
   /**
     Activate copy button on code snippets
     @method copyCodeSnippets.instantiateCopyButtons
@@ -22,8 +22,7 @@ window.Jujucharms.copyCodeSnippets = () => {
   };
 
   /**
-    Copys string to clipboard
-
+    Copies string to clipboard
     @method copyCodeSnippets.copyToClipboard
     @param str {String} String to be copied to clipboard
     @static
@@ -56,3 +55,5 @@ window.Jujucharms.copyCodeSnippets = () => {
     instantiateCopyButtons();
   }
 };
+
+export default copySnippet;
