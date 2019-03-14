@@ -14,6 +14,22 @@ def store():
     return render_template('store/store.html')
 
 
+@jaasstore.route('/q/<query>/')
+def search(query):
+    results = models.search_entities(query)
+    if len(results['recommended']) > 0 or len(results['community']) > 0:
+        return render_template(
+            'store/search.html',
+            context={
+                'results': results,
+                'results_count': len(results['recommended']) + len(results['community']),
+                'query': query
+            }
+        )
+    else:
+        return abort(404, "User not found: {}".format(username))
+
+
 @jaasstore.route('/u/<username>/')
 def user_details(username):
     entities = models.get_user_entities(username)
