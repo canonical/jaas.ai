@@ -73,6 +73,12 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         <li class="p-navigation__link" role="menuitem"><a class="p-link--external" href="https://discourse.jujucharms.com/">Discourse</a></li>
         <li class="p-navigation__link" role="menuitem"><a class="p-link--external" href="https://docs.jujucharms.com">Docs</a></li>
       </ul>
+      <form data-js="search-form" action="/q" method="GET" class="p-search-form">
+        <input data-js="search-form-text" type="search" name="text" placeholder="Search store" class="p-search-form__input" value="{% if context and context.results %}{{ context.query }}{% endif %}"/>
+        <button class="p-search-form__submit" type="submit">
+          <img src="https://assets.ubuntu.com/v1/a2ab4b7d-search.svg" alt="Search icon" class="p-search-form__submit-icon">
+        </button>
+      </form>
     </nav>
   </div>
 </header>
