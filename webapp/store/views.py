@@ -22,12 +22,13 @@ def search(query):
             'store/search.html',
             context={
                 'results': results,
-                'results_count': len(results['recommended']) + len(results['community']),
+                'results_count':
+                    len(results['recommended']) + len(results['community']),
                 'query': query
             }
         )
     else:
-        return abort(404, "User not found: {}".format(username))
+        return abort(404, "No results found for: {}".format(query))
 
 
 @jaasstore.route('/u/<username>/')
@@ -50,10 +51,14 @@ def user_details(username):
 
 
 @jaasstore.route('/u/<username>/<charm_or_bundle_name>')
-@jaasstore.route('/u/<username>/<charm_or_bundle_name>/<series_or_version>')
-@jaasstore.route('/u/<username>/<charm_or_bundle_name>/<series_or_version>/<version>')
-def user_entity(username, charm_or_bundle_name, series_or_version=None, version=None):
-    return details(charm_or_bundle_name, series_or_version=series_or_version, version=version)
+@jaasstore.route(
+    '/u/<username>/<charm_or_bundle_name>/<series_or_version>')
+@jaasstore.route(
+    '/u/<username>/<charm_or_bundle_name>/<series_or_version>/<version>')
+def user_entity(username, charm_or_bundle_name, series_or_version=None,
+                version=None):
+    return details(charm_or_bundle_name, series_or_version=series_or_version,
+                   version=version)
 
 
 @jaasstore.route('/<charm_or_bundle_name>')
