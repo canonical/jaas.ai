@@ -18,7 +18,8 @@ def store():
 def search(query):
     query = query.replace('/', ' ')
     results = models.search_entities(query)
-    if results and (len(results['recommended']) > 0 or len(results['community']) > 0):
+    if results and (len(results['recommended']) > 0 or
+                    len(results['community']) > 0):
         return render_template(
             'store/search.html',
             context={
