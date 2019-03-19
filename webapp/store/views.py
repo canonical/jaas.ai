@@ -14,9 +14,9 @@ def store():
     return render_template('store/store.html')
 
 
-@jaasstore.route('/q/<path:query>/')
-def search(query):
-    query = query.replace('/', ' ')
+@jaasstore.route('/q/')
+def search():
+    query = request.args.get('search').replace('/', ' ')
     results = models.search_entities(query)
     if results and (len(results['recommended']) > 0 or
                     len(results['community']) > 0):
