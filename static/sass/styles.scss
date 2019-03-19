@@ -5,6 +5,10 @@ $asset-path: '/static/';
 // Override local variables
 $color-navigation-background: #333;
 
+// Set the mobile nav breakpoint to handle the large number of nav items.
+@import 'vanilla-framework/scss/settings_breakpoints';
+$breakpoint-navigation-threshold: $breakpoint-large;
+
 // Import Vanilla Framework
 @import 'vanilla-framework/scss/vanilla';
 
