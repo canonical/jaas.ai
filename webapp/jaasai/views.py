@@ -15,6 +15,7 @@ def how_it_works():
     return render_template('jaasai/how-it-works.html')
 
 
+@jaasai.route('/getting-started')
 @jaasai.route('/jaas')
 def jaas():
     return render_template('jaasai/jaas.html')
