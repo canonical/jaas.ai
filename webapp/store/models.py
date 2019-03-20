@@ -49,7 +49,7 @@ def get_user_entities(username):
 def get_charm_or_bundle(reference):
     try:
         entity_data = cs.entity(reference, True)
-        return _parse_charm_or_bundle(entity_data)
+        return _parse_charm_or_bundle(entity_data, include_files=True)
     except EntityNotFound:
         return None
 
@@ -68,16 +68,16 @@ def _group_entities(entities):
     return groups
 
 
-def _parse_charm_or_bundle(entity_data):
+def _parse_charm_or_bundle(entity_data, include_files=False):
     meta = entity_data.get('Meta', None)
     is_charm = meta.get('charm-metadata', False)
     if is_charm:
-        return _parse_charm_data(entity_data)
+        return _parse_charm_data(entity_data, include_files)
     else:
-        return _parse_bundle_data(entity_data)
+        return _parse_bundle_data(entity_data, include_files)
 
 
-def _parse_bundle_data(bundle_data):
+def _parse_bundle_data(bundle_data, include_files=False):
     bundle_id = bundle_data['Id']
     ref = references.Reference.from_string(bundle_id)
     name = ref.name
@@ -97,20 +97,21 @@ def _parse_bundle_data(bundle_data):
         'bundle_visulisation': getBundleVisualization(ref),
         'card_id': ref.path(),
         'display_name': _get_display_name(name),
-        'files': _get_entity_files(ref, meta.get('manifest')),
         'is_charm': False,
         'latest_revision': latest_revision,
         'owner': meta.get('owner', {}).get('User'),
         'revision_number': ref.revision,
-        'readme': _render_markdown(
-            cs.entity_readme_content(bundle_id)
-        ),
         'services': _parseBundleServices(
             meta['bundle-metadata']['applications']
         ),
         'units': meta.get('bundle-unit-count', {}).get('Count', ''),
         'url': ref.jujucharms_id()
     }
+    if include_files:
+        bundle['files'] = _get_entity_files(ref, meta.get('manifest'))
+        bundle['readme'] = _render_markdown(
+            cs.entity_readme_content(bundle_id)
+        )
 
     return bundle
 
@@ -126,7 +127,7 @@ def _parseBundleServices(services):
     return services
 
 
-def _parse_charm_data(charm_data):
+def _parse_charm_data(charm_data, include_files=False):
     charm_id = charm_data['Id']
     ref = references.Reference.from_string(charm_id)
     meta = charm_data.get('Meta', None)
@@ -148,7 +149,7 @@ def _parse_charm_data(charm_data):
         'bzr_url': bzr_url,
         'charm_data': charm_data,
         'display_name': _get_display_name(name),
-        'files': _get_entity_files(ref, meta.get('manifest')),
+        # 'files': _get_entity_files(ref, meta.get('manifest')),
         'homepage': homepage,
         'icon': cs.charm_icon_url(charm_id),
         'id': charm_id,
@@ -159,9 +160,6 @@ def _parse_charm_data(charm_data):
         'provides': meta['charm-metadata'].get('Provides'),
         'requires': meta['charm-metadata'].get('Requires'),
         'resources': _extract_resources(ref, meta.get('resources', {})),
-        'readme': _render_markdown(
-            cs.entity_readme_content(charm_id)
-        ),
         'revision_list': revision_list,
         'revision_number': ref.revision,
         'revisions': revisions,
@@ -170,6 +168,12 @@ def _parse_charm_data(charm_data):
         'url': ref.jujucharms_id(),
         'is_charm': True
     }
+
+    if include_files:
+        charm['files'] = _get_entity_files(ref, meta.get('manifest'))
+        charm['readme'] = _render_markdown(
+            cs.entity_readme_content(charm_id)
+        )
 
     return charm
 
