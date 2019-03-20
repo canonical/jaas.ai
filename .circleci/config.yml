@@ -1,5 +1,4 @@
 ---
-
 defaults: &defaults
   docker:
     - image: canonicalwebteam/dev
@@ -17,7 +16,7 @@ jobs:
           command: pip3 install flake8
       - run:
           name: Lint webapp with Flake8
-          command: flake8 webapp
+          command: flake8 --max-line-length 95 webapp
   scss-lint:
     <<: *defaults
     steps:
