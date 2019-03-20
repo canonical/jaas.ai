@@ -1,0 +1,77 @@
+<div class="p-strip--light is-bordered is-shallow">
+  <header class="row">
+    <div class="col-8">
+      <div class="p-media-object--large u-no-margin--bottom">
+        <div class="p-media-object__details">
+          <h1 itemprop="name" class="p-media-object__title u-no-margin--bottom u-sv2" style="text-transform:capitalize">
+            <span>
+              {{ context.bundle.display_name }}
+            </span>
+            <sup class="p-heading--three">
+              #{{ context.bundle.revision_number }}
+            </sup>
+          </h1>
+          <ul class="p-media-object__meta-list u-no-margin--bottom">
+            <li class="p-media-object__meta-list-item u-no-padding--left">
+              <strong>By</strong> <a
+                href="https://jujucharms.com/u/{{ context.bundle.bundle_data.Meta.owner.User }}">{{ context.bundle.bundle_data.Meta.owner.User }}</a>
+            </li>
+            <li class="p-media-object__meta-list-item u-no-padding--left">
+              {% if context.bundle.revision_number != context.bundle.latest_revision['id'] %}
+              <a href="https://jujucharms.com/{{ context.bundle.latest_revision['url'] }}" onclick="dataLayer.push({
+                    'event' : 'GAEvent',
+                    'eventCategory' : 'Bundle Details Link',
+                    'eventAction' : 'Goto latest version',
+                    'eventLabel' : 'Latest version (#ID)',
+                    'eventValue' : '{{ context.bundle.latest_revision['full_id'] }}'
+                  });"><strong>Latest version</strong> (#{{ context.bundle.latest_revision['id'] }})
+              </a>
+              {% else %}
+              <strong>Latest version</strong> (#{{ context.bundle.latest_revision['id'] }})
+              {% endif %}
+            </li>
+            <li class="p-media-object__meta-list-item u-no-padding--left">
+              <strong>Series:</strong> {{ context.bundle.bundle_data.Meta['bundle-metadata'].Series }}
+            </li>
+            <li class="p-media-object__meta-list-item u-no-padding--left">
+              <strong>Channels:</strong>
+              {% for channel_details in context.bundle.bundle_data['Meta']['published']['Info'] %}
+              {{ channel_details['Channel'] }},
+              {% endfor %}
+            </li>
+            <li class="p-media-object__meta-list-item u-no-padding--left">
+              <strong>Machines count:</strong> {{ context.bundle.bundle_data['Meta']['bundle-machine-count']['Count'] }}
+            </li>
+            <li class="p-media-object__meta-list-item u-no-padding--left">
+              <strong>Units count:</strong> {{ context.bundle.bundle_data['Meta']['bundle-unit-count']['Count'] }}
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="col-4">
+      <div class="p-code-snippet">
+        <input class="p-code-snippet__input deploy-command__field" value="{{ context.bundle.bundle_data['Id'] }}"
+          readonly="readonly">
+        <button class="p-code-snippet__action">Copy to clipboard</button>
+      </div>
+      <p>
+        <a href="https://jujucharms.com/new/?deploy-target=bundle/{{ context.bundle.bundle_data['Id'] }}"
+          class="p-button--positive row" rel="nofollow">
+          Add to new model
+        </a>
+      </p>
+      <ul class="p-inline-list u-no-margin--bottom u-equal-height">
+        <li class="p-inline-list__item u-vertically-center">
+          <strong>Share:</strong>
+        </li>
+        <li class="p-inline-list__item">
+          <a
+            href="https://twitter.com/intent/tweet?text={{ context.bundle.display_name }}%20charm&via=ubuntu_cloud&url={{ request.url | urlencode }}">
+            <i class="p-icon--twitter"></i>
+          </a>
+        </li>
+      </ul>
+    </div>
+  </header>
+</div>
