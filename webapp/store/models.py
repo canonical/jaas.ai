@@ -16,7 +16,6 @@ def search_entities(query):
         'bundle-metadata',
         'owner',
         'bundle-unit-count',
-        'stats',
         'supported-series'
     ]
     try:
@@ -36,7 +35,6 @@ def get_user_entities(username):
         'owner',
         'bundle-unit-count',
         'bundle-machine-count',
-        'stats',
         'supported-series',
         'published',
     ]
