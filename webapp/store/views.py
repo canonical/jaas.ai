@@ -14,6 +14,25 @@ def store():
     return render_template('store/store.html')
 
 
+@jaasstore.route('/search/')
+def search():
+    query = request.args.get('q').replace('/', ' ')
+    results = models.search_entities(query)
+    if results and (len(results['recommended']) > 0 or
+                    len(results['community']) > 0):
+        return render_template(
+            'store/search.html',
+            context={
+                'results': results,
+                'results_count':
+                    len(results['recommended']) + len(results['community']),
+                'query': query
+            }
+        )
+    else:
+        return abort(404, "No results found for: {}".format(query))
+
+
 @jaasstore.route('/u/<username>/')
 def user_details(username):
     entities = models.get_user_entities(username)
@@ -33,9 +52,15 @@ def user_details(username):
         return abort(404, "User not found: {}".format(username))
 
 
-@jaasstore.route('/u/<username>/<entity_name>/')
-def user_entity(username, entity_name):
-    raise NotImplementedError()
+@jaasstore.route('/u/<username>/<charm_or_bundle_name>')
+@jaasstore.route(
+    '/u/<username>/<charm_or_bundle_name>/<series_or_version>')
+@jaasstore.route(
+    '/u/<username>/<charm_or_bundle_name>/<series_or_version>/<version>')
+def user_entity(username, charm_or_bundle_name, series_or_version=None,
+                version=None):
+    return details(charm_or_bundle_name, series_or_version=series_or_version,
+                   version=version)
 
 
 @jaasstore.route('/<charm_or_bundle_name>')

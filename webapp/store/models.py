@@ -10,6 +10,24 @@ from theblues.errors import EntityNotFound
 cs = CharmStore("https://api.jujucharms.com/v5")
 
 
+def search_entities(query):
+    includes = [
+        'charm-metadata',
+        'bundle-metadata',
+        'owner',
+        'bundle-unit-count',
+        'supported-series'
+    ]
+    try:
+        entities = cs.search(query, includes=includes)
+        return {
+            'community': [],
+            'recommended': _parse_list(entities),
+        }
+    except EntityNotFound:
+        return None
+
+
 def get_user_entities(username):
     includes = [
         'charm-metadata',
@@ -17,7 +35,6 @@ def get_user_entities(username):
         'owner',
         'bundle-unit-count',
         'bundle-machine-count',
-        'stats',
         'supported-series',
         'published',
     ]
@@ -91,7 +108,8 @@ def _parse_bundle_data(bundle_data):
         'services': _parseBundleServices(
             meta['bundle-metadata']['applications']
         ),
-        'units': meta.get('bundle-unit-count', {}).get('Count', '')
+        'units': meta.get('bundle-unit-count', {}).get('Count', ''),
+        'url': ref.jujucharms_id()
     }
 
     return bundle
@@ -149,6 +167,7 @@ def _parse_charm_data(charm_data):
         'revisions': revisions,
         'series': meta.get('supported-series', {}).get('SupportedSeries'),
         'tags': meta.get('Tags') or meta['charm-metadata'].get('Categories'),
+        'url': ref.jujucharms_id(),
         'is_charm': True
     }
 
