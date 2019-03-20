@@ -149,7 +149,6 @@ def _parse_charm_data(charm_data, include_files=False):
         'bzr_url': bzr_url,
         'charm_data': charm_data,
         'display_name': _get_display_name(name),
-        # 'files': _get_entity_files(ref, meta.get('manifest')),
         'homepage': homepage,
         'icon': cs.charm_icon_url(charm_id),
         'id': charm_id,
