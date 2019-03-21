@@ -9,7 +9,8 @@ class TestStoreModels(unittest.TestCase):
     @patch('theblues.charmstore.CharmStore.files')
     @patch('theblues.charmstore.CharmStore.entity_readme_content')
     @patch('theblues.charmstore.CharmStore.search')
-    def test_search_entities(self, mock_search, mock_entity_readme_content, mock_files):
+    def test_search_entities(self, mock_search, mock_entity_readme_content,
+                             mock_files):
         mock_entity_readme_content.return_value = ''
         mock_files.return_value = ''
         mock_search.return_value = search_data
@@ -20,7 +21,8 @@ class TestStoreModels(unittest.TestCase):
     @patch('theblues.charmstore.CharmStore.files')
     @patch('theblues.charmstore.CharmStore.entity_readme_content')
     @patch('theblues.charmstore.CharmStore.search')
-    def test_search_entities_none(self, mock_search, mock_entity_readme_content, mock_files):
+    def test_search_entities_none(self, mock_search,
+                                  mock_entity_readme_content, mock_files):
         mock_entity_readme_content.return_value = ''
         mock_files.return_value = ''
         mock_search.return_value = []

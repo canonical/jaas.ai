@@ -1,7 +1,7 @@
-from flask import Flask
 from flask_testing import TestCase
 from unittest.mock import patch
 from webapp.app import create_app
+
 
 class StoreViews(TestCase):
     render_templates = False
