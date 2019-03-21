@@ -29,7 +29,7 @@ def search_entities(query):
             group = 'recommended' if entity['promulgated'] else 'community'
             results[group].append(entity)
         return results
-    except EntityNotFound:
+    except:
         return None
 
 

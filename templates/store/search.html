@@ -50,6 +50,7 @@
     <div class="col-12">
       <h4>Community <span class="count">({{ context.results.community|length }})</span></h4>
       <table class="search-results-table">
+        <tbody>
           {% for entity in context.results.community %}
           <tr class="{{ entity.type }} u-no-padding--top">
             {% with %}
