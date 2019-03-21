@@ -21,6 +21,53 @@
   }
 }
 
+.filter-row {
+  margin: 1rem auto;
+
+  .list-block__filters--selects {
+    &-item {
+      float: left;
+      margin-left: 0;
+      width: 50%;
+    }
+
+    label {
+      padding-right: 1rem;
+      text-align: right;
+
+      @media (min-width: $breakpoint-medium) {
+        padding-right: 2rem;
+        padding-top: 0;
+      }
+    }
+  }
+
+  .p-inline-list__item {
+    cursor: pointer;
+  }
+
+  @media (min-width: $breakpoint-medium) {
+    select {
+      margin-left: -1.5rem;
+      margin-top: -0.5rem;
+    }
+
+    .is-selected {
+      position: relative;
+
+      &::after {
+        background: $color-mid-dark;
+        bottom: -0.25rem;
+        content: ' ';
+        height: 3px;
+        left: 0;
+        position: absolute;
+        width: 100%;
+      }
+    }
+  }
+}
+
 .entity-icon {
   border-radius: 50%;
 }
