@@ -1,7 +1,7 @@
-from flask import Flask
 from flask_testing import TestCase
 from unittest.mock import patch
 from webapp.app import create_app
+
 
 class StoreViews(TestCase):
     render_templates = False
@@ -9,6 +9,26 @@ class StoreViews(TestCase):
     def create_app(self):
         app = create_app(testing=True)
         return app
+
+    @patch('webapp.store.models.search_entities')
+    def test_search(self, mock_search_entities):
+        mock_search_entities.return_value = {
+            'recommended': [{}, {}],
+            'community': [{}, {}]
+        }
+        response = self.client.get('/search?q=k8s')
+        self.assertEqual(response.status_code, 200)
+        context = self.get_context_variable('context')
+        self.assertEqual(context['results_count'], 4)
+
+    @patch('webapp.store.models.search_entities')
+    def test_search_none(self, mock_search_entities):
+        mock_search_entities.return_value = {
+            'recommended': [],
+            'community': []
+        }
+        response = self.client.get('/search?q=k8s')
+        self.assertEqual(response.status_code, 404)
 
     @patch('webapp.store.models.get_user_entities')
     def test_user_details(self, mock_get_user_entities):
