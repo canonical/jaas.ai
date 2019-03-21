@@ -30,9 +30,9 @@ def search():
     elif requires:
         results = models.fetch_requires(requires)
     else:
-        results = models.search_entities(query, entity_type=entity_type, tags=tags,
-                                     sort=sort, series=series,
-                                     promulgated_only=False)
+        results = models.search_entities(query, entity_type=entity_type,
+                                         tags=tags, sort=sort, series=series,
+                                         promulgated_only=False)
     return render_template(
         'store/search.html',
         context={

@@ -44,7 +44,7 @@
     <div class="p-strip">
       <div class="row">
         <div class="col-12 search-results__overview">
-          Your search for <strong>&lsquo;{{ context.query }}&rsquo;</strong> returned
+          Your search {% if context.query %}for <strong>&lsquo;{{ context.query }}&rsquo;</strong>{% endif %} returned
           {{ context.results_count }} result{{ context.results_count|pluralize }}.
         </div>
       </div>
