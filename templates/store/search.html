@@ -12,24 +12,70 @@
     </div>
   </div>
 </div>
-<div class="row">
-  <h4>
-    Recommended
-    <span class="count">
-      ({{ context.results.recommended|length }})
-    </span>
-  </h4>
-  <table class="search-results-table">
-    <tbody>
-      {% for entity in context.results.recommended %}
-        <tr class="{{ entity.type }} u-no-padding--top">
-          {% with %}
-            {% set outerloop = loop %}
-            {% include "store/_search_row.html" %}
-          {% endwith %}
-        </tr>
-      {% endfor %}
-    </tbody>
-  </table>
-</div>
+
+{% if context.results.recommended %}
+  <div class="row">
+    <h4>
+      Recommended
+      <span class="count">
+        ({{ context.results.recommended|length }})
+      </span>
+    </h4>
+    <table class="search-results-table">
+      <tbody>
+        {% for entity in context.results.recommended %}
+          <tr class="{{ entity.type }} u-no-padding--top">
+            {% with %}
+              {% set outerloop = loop %}
+              {% include "store/_search_row.html" %}
+            {% endwith %}
+          </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+{% endif %}
+
+{% if context.results.community %}
+  {% if context.results.recommended %}
+    <div class="row">
+      <div class="col-12 u-align--center">
+        <button class="p-button--neutral js-show-community-results">
+          Show {{ context.results.community|length }} community results
+        </button>
+      </div>
+    </div>
+  {% endif %}
+  <div class="row {% if context.results.recommended %}u-hide community-results{% endif %}">
+    <div class="col-12">
+      <h4>Community <span class="count">({{ context.results.community|length }})</span></h4>
+      <table class="search-results-table">
+          {% for entity in context.results.community %}
+          <tr class="{{ entity.type }} u-no-padding--top">
+            {% with %}
+              {% set outerloop = loop %}
+              {% include "store/_search_row.html" %}
+            {% endwith %}
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+    {% if context.results.recommended %}
+      <script type="text/javascript">
+        var button = document.querySelector('.js-show-community-results');
+        var results = document.querySelector('.community-results');
+        button.addEventListener('click', function (e) {
+          results.classList.toggle('u-hide');
+          if (results.classList.contains('u-hide')) {
+            button.innerText = 'Show {{ context.results.community|length }} community results';
+          } else {
+            button.innerText = 'Hide community results';
+          }
+        });
+      </script>
+    {% endif %}
+  </div>
+{% endif %}
+
 {% endblock %}

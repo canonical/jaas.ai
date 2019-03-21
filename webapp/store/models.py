@@ -16,14 +16,19 @@ def search_entities(query):
         'bundle-metadata',
         'owner',
         'bundle-unit-count',
+        'promulgated',
         'supported-series'
     ]
     try:
         entities = cs.search(query, includes=includes)
-        return {
+        results = {
             'community': [],
-            'recommended': _parse_list(entities),
+            'recommended': [],
         }
+        for entity in _parse_list(entities):
+            group = 'recommended' if entity['promulgated'] else 'community'
+            results[group].append(entity)
+        return results
     except EntityNotFound:
         return None
 
@@ -101,6 +106,7 @@ def _parse_bundle_data(bundle_data):
         'is_charm': False,
         'latest_revision': latest_revision,
         'owner': meta.get('owner', {}).get('User'),
+        'promulgated': meta.get('promulgated', {}).get('Promulgated'),
         'revision_number': ref.revision,
         'readme': _render_markdown(
             cs.entity_readme_content(bundle_id)
@@ -156,6 +162,7 @@ def _parse_charm_data(charm_data):
         'latest_revision': latest_revision,
         'options': meta.get('charm-config', {}).get('Options'),
         'owner': meta.get('owner', {}).get('User'),
+        'promulgated': meta.get('promulgated', {}).get('Promulgated'),
         'provides': meta['charm-metadata'].get('Provides'),
         'requires': meta['charm-metadata'].get('Requires'),
         'resources': _extract_resources(ref, meta.get('resources', {})),
