@@ -2,61 +2,61 @@
   <header class="row">
     <div class="col-8">
       <div class="p-media-object--large u-no-margin--bottom">
+        <img src="{{ context.entity.icon }}" alt="" width="96" id="the-icon" class="p-media-object__image is-round" />
         <div class="p-media-object__details">
           <h1 itemprop="name" class="p-media-object__title u-no-margin--bottom entity__title">
             <span>
-              {{ context.bundle.display_name }}
+              {{ context.entity.display_name }}
             </span>
             <sup class="p-heading--three entity__version">
-              #{{ context.bundle.revision_number }}
+              #{{ context.entity.revision_number }}
             </sup>
           </h1>
           <ul class="p-media-object__meta-list u-no-margin--bottom">
             <li class="p-media-object__meta-list-item u-no-padding--left">
               <strong>By</strong> <a
-                href="https://jujucharms.com/u/{{ context.bundle.bundle_data.Meta.owner.User }}">{{ context.bundle.bundle_data.Meta.owner.User }}</a>
+                href="/u/{{ context.entity.user }}">{{ context.entity.user }}</a>
             </li>
             <li class="p-media-object__meta-list-item u-no-padding--left">
-              {% if context.bundle.revision_number != context.bundle.latest_revision['id'] %}
-              <a href="https://jujucharms.com/{{ context.bundle.latest_revision['url'] }}" onclick="dataLayer.push({
+              {% if context.entity.revision_number != context.entity.latest_revision['id'] %}
+              <a href="/{{ context.entity.latest_revision['url'] }}" onclick="dataLayer.push({
                     'event' : 'GAEvent',
                     'eventCategory' : 'Bundle Details Link',
                     'eventAction' : 'Goto latest version',
                     'eventLabel' : 'Latest version (#ID)',
-                    'eventValue' : '{{ context.bundle.latest_revision['full_id'] }}'
-                  });"><strong>Latest version</strong> (#{{ context.bundle.latest_revision['id'] }})
+                    'eventValue' : '{{ context.entity.latest_revision['full_id'] }}'
+                  });"><strong>Latest version</strong> (#{{ context.entity.latest_revision['id'] }})
               </a>
               {% else %}
-              <strong>Latest version</strong> (#{{ context.bundle.latest_revision['id'] }})
+              <strong>Latest version</strong> (#{{ context.entity.latest_revision['id'] }})
               {% endif %}
             </li>
-            <li class="p-media-object__meta-list-item u-no-padding--left">
-              <strong>Series:</strong> {{ context.bundle.bundle_data.Meta['bundle-metadata'].Series }}
-            </li>
-            <li class="p-media-object__meta-list-item u-no-padding--left">
-              <strong>Channels:</strong>
-              {% for channel_details in context.bundle.bundle_data['Meta']['published']['Info'] %}
-              {{ channel_details['Channel'] }},
-              {% endfor %}
-            </li>
-            <li class="p-media-object__meta-list-item u-no-padding--left">
-              <strong>Machines count:</strong> {{ context.bundle.bundle_data['Meta']['bundle-machine-count']['Count'] }}
-            </li>
-            <li class="p-media-object__meta-list-item u-no-padding--left">
-              <strong>Units count:</strong> {{ context.bundle.bundle_data['Meta']['bundle-unit-count']['Count'] }}
-            </li>
+            {% if context.entity.series %}
+              <li class="p-media-object__meta-list-item u-no-padding--left">
+                <strong>Series:</strong> {{ context.entity.series|join(', ') }}
+              </li>
+            {% endif %}
+            {% if context.entity.meta_published_info %}
+              <li class="p-media-object__meta-list-item u-no-padding--left">
+                <strong>Channels:</strong>
+                {% for meta_info in context.entity.meta_published_info %}
+                  {{ meta_info['Channel'] }},
+                {% endfor %}
+              </li>
+            {% endif %}
           </ul>
         </div>
       </div>
     </div>
     <div class="col-4">
       <div class="p-code-snippet">
-        <input class="p-code-snippet__input deploy-command__field" value="{{ context.bundle.bundle_data['Id'] }}"
+        <input class="p-code-snippet__input deploy-command__field" value="{{ context.entity.id }}"
           readonly="readonly">
         <button class="p-code-snippet__action">Copy to clipboard</button>
       </div>
       <p>
-        <a href="https://jujucharms.com/new/?deploy-target=bundle/{{ context.bundle.bundle_data['Id'] }}"
+        {% set new_model_url = "/new/?deploy-target=" + context.entity.id %}
+        <a href="https://jujucharms.com{{ new_model_url }}"
           class="p-button--positive row" rel="nofollow">
           Add to new model
         </a>

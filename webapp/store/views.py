@@ -3,7 +3,6 @@ from webapp.store import models
 
 from jujubundlelib import references
 
-
 jaasstore = Blueprint(
     "jaasstore", __name__, template_folder="/templates", static_folder="/static"
 )
@@ -89,12 +88,26 @@ def user_entity(username, entity_name):
 
     if entity:
         if entity["is_charm"]:
+            # entity["display_name"] = ""
+            # entity["revision_number"] = ""
+            # entity["user"] = ""
+            # entity["latest_revision_id"] = ""
+            # entity["series"] = ""
+            # entity["channel_details"] = ""
             return render_template(
-                "store/charm-details.html", context={"charm": entity}
+                "store/charm-details.html", context={"entity": entity}
             )
         else:
+            entity["user"] = entity["bundle_data"]["Meta"]["owner"]["User"]
+            entity["id"] = entity["bundle_data"]["Id"]
+            entity["series"] = entity["bundle_data"]["Meta"]["bundle-metadata"][
+                "Series"
+            ]
+            entity["meta_published_info"] = entity["bundle_data"]["Meta"]["published"][
+                "Info"
+            ]
             return render_template(
-                "store/bundle-details.html", context={"bundle": entity}
+                "store/bundle-details.html", context={"entity": entity}
             )
     else:
         return abort(404, "Entity not found {}".format())
@@ -109,12 +122,23 @@ def details(charm_or_bundle_name, series_or_version=None, version=None):
 
     if entity:
         if entity["is_charm"]:
+            entity["meta_published_info"] = entity["charm_data"]["Meta"]["published"][
+                "Info"
+            ]
             return render_template(
-                "store/charm-details.html", context={"charm": entity}
+                "store/charm-details.html", context={"entity": entity}
             )
         else:
+            entity["user"] = entity["charm_data"]["Meta"]["owner"]["User"]
+            entity["id"] = entity["bundle_data"]["Id"]
+            entity["series"] = entity["bundle_data"]["Meta"]["bundle-metadata"][
+                "Series"
+            ]
+            entity["meta_published_info"] = entity["bundle_data"]["Meta"]["published"][
+                "Info"
+            ]
             return render_template(
-                "store/bundle-details.html", context={"bundle": entity}
+                "store/bundle-details.html", context={"entity": entity}
             )
     else:
         return abort(404, "Entity not found {}".format(charm_or_bundle_name))
