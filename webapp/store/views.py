@@ -11,10 +11,10 @@ jaasstore = Blueprint(
 
 @jaasstore.route("/store")
 def store():
-    return render_template('store/store.html')
+    return render_template("store/store.html")
 
 
-@jaasstore.route('/search/')
+@jaasstore.route("/search/")
 def search():
     query = request.args.get('q', '').replace('/', ' ')
     entity_type = request.args.get('type', None)
@@ -63,7 +63,7 @@ def search_redirect(path=None):
     return redirect('/search?{}'.format('&'.join(query_string)), code=302)
 
 
-@jaasstore.route('/u/<username>/')
+@jaasstore.route("/u/<username>/")
 def user_details(username):
     entities = models.get_user_entities(username)
     if len(entities["charms"]) > 0 or len(entities["bundles"]) > 0:
@@ -85,16 +85,16 @@ def user_details(username):
 @jaasstore.route("/u/<username>/<entity_name>/")
 def user_entity(username, entity_name):
     reference = references.Reference.from_jujucharms_url(request.path[1:])
-    charm_or_bundle = models.get_charm_or_bundle(reference)
+    entity = models.get_charm_or_bundle(reference)
 
-    if charm_or_bundle:
-        if charm_or_bundle["is_charm"]:
+    if entity:
+        if entity["is_charm"]:
             return render_template(
-                "store/charm-details.html", context={"charm": charm_or_bundle}
+                "store/charm-details.html", context={"charm": entity}
             )
         else:
             return render_template(
-                "store/bundle-details.html", context={"bundle": charm_or_bundle}
+                "store/bundle-details.html", context={"bundle": entity}
             )
     else:
         return abort(404, "Entity not found {}".format())
@@ -105,16 +105,16 @@ def user_entity(username, entity_name):
 @jaasstore.route("/<charm_or_bundle_name>/<series_or_version>/<version>")
 def details(charm_or_bundle_name, series_or_version=None, version=None):
     reference = references.Reference.from_jujucharms_url(request.path[1:])
-    charm_or_bundle = models.get_charm_or_bundle(reference)
+    entity = models.get_charm_or_bundle(reference)
 
-    if charm_or_bundle:
-        if charm_or_bundle["is_charm"]:
+    if entity:
+        if entity["is_charm"]:
             return render_template(
-                "store/charm-details.html", context={"charm": charm_or_bundle}
+                "store/charm-details.html", context={"charm": entity}
             )
         else:
             return render_template(
-                "store/bundle-details.html", context={"bundle": charm_or_bundle}
+                "store/bundle-details.html", context={"bundle": entity}
             )
     else:
         return abort(404, "Entity not found {}".format(charm_or_bundle_name))
