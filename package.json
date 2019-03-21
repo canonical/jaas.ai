@@ -7,7 +7,7 @@
     "lint-scss": "sass-lint static/**/*.scss --verbose --no-exit",
     "python-lint": "flake8 webapp tests",
     "serve": "./entrypoint 0.0.0.0:${PORT}",
-    "test": "npm run test-python && sass-lint static/**/*.scss --verbose --no-exit",
+    "test": "npm run python-lint && npm run test-python && sass-lint static/**/*.scss --verbose --no-exit",
     "test-python": "python3 -m unittest discover tests",
     "watch": "concurrently \"npm run watch-scss\" \"npm run watch-js\"",
     "watch-scss": "watch -p 'static/sass/**/*.scss' -c 'yarn run build-css'",
