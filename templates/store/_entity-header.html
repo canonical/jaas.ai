@@ -23,7 +23,7 @@
               {% if context.entity.revision_number != context.entity.latest_revision['id'] %}
               <a href="/{{ context.entity.latest_revision['url'] }}" onclick="dataLayer.push({
                     'event' : 'GAEvent',
-                    'eventCategory' : 'Bundle Details Link',
+                    'eventCategory' : 'Entity Details Link',
                     'eventAction' : 'Goto latest version',
                     'eventLabel' : 'Latest version (#ID)',
                     'eventValue' : '{{ context.entity.latest_revision['full_id'] }}'
