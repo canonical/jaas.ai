@@ -10,7 +10,8 @@ from theblues.errors import EntityNotFound
 cs = CharmStore("https://api.jujucharms.com/v5")
 
 
-def search_entities(query):
+def search_entities(query, entity_type=None, tags=None, sort=None, series=None,
+                    promulgated_only=None):
     includes = [
         'charm-metadata',
         'bundle-metadata',
@@ -20,7 +21,9 @@ def search_entities(query):
         'supported-series'
     ]
     try:
-        entities = cs.search(query, includes=includes)
+        entities = cs.search(query, doc_type=entity_type, tags=tags, sort=sort,
+                             series=series, includes=includes,
+                             promulgated_only=False)
         results = {
             'community': [],
             'recommended': [],
@@ -31,6 +34,27 @@ def search_entities(query):
         return results
     except EntityNotFound:
         return None
+
+
+def _group_status(entities):
+    results = {
+        'community': [],
+        'recommended': [],
+    }
+    for entity in _parse_list(entities):
+        group = 'recommended' if entity.get('promulgated') else 'community'
+        results[group].append(entity)
+    return results
+
+
+def fetch_provides(id):
+    results = cs.fetch_interfaces(id, 'provides')
+    return _group_status(list(results)[2])
+
+
+def fetch_requires(id):
+    results = cs.fetch_interfaces(id, 'requires')
+    return _group_status(list(results)[2])
 
 
 def get_user_entities(username):
