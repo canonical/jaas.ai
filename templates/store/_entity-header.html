@@ -1,26 +1,31 @@
 <div class="p-strip--light is-bordered is-shallow">
   <header class="row">
     <div class="col-8">
-      <div class="p-media-object--large u-no-margin--bottom">
+      <div class="entity__title-wrap">
         {% if context.entity.icon %}
           <img src="{{ context.entity.icon }}" alt="" width="96" id="the-icon" class="p-media-object__image is-round" />
         {% endif %}
-        <div class="p-media-object__details">
-          <h1 itemprop="name" class="p-media-object__title u-no-margin--bottom entity__title">
-            <span>
-              {{ context.entity.display_name }}
-            </span>
-            <sup class="p-heading--three entity__version">
-              #{{ context.entity.revision_number }}
-            </sup>
-          </h1>
-          <ul class="p-media-object__meta-list u-no-margin--bottom">
-            <li class="p-media-object__meta-list-item u-no-padding--left">
-              <strong>By</strong> <a
+        <h1 itemprop="name" class="p-media-object__title u-no-margin--bottom entity__title">
+          <span>
+            {{ context.entity.display_name }}
+          </span>
+          <sup class="p-heading--three entity__version">
+            #{{ context.entity.revision_number }}
+          </sup>
+        </h1>
+      </div>
+      <ul class="entity__meta p-inline-list--middot">
+        {% if context.entity.user %}
+          <li class="p-inline-list__item">
+            <span class="entity__user">
+              By <a
                 href="/u/{{ context.entity.user }}">{{ context.entity.user }}</a>
-            </li>
-            <li class="p-media-object__meta-list-item u-no-padding--left">
-              {% if context.entity.latest_revision and context.entity.revision_number != context.entity.latest_revision %}
+            </span>
+          </li>
+        {% endif %}
+        {% if context.entity.latest_revision and context.entity.revision_number != context.entity.latest_revision %}
+          <li class="p-inline-list__item">
+            <span class="entity__latest-version">
               <a href="/{{ context.entity.latest_revision['url'] }}" onclick="dataLayer.push({
                     'event' : 'GAEvent',
                     'eventCategory' : 'Entity Details Link',
@@ -29,23 +34,25 @@
                     'eventValue' : '{{ context.entity.latest_revision['full_id'] }}'
                   });"><strong>Latest version</strong> (#{{ context.entity.latest_revision }})
               </a>
-              {% endif %}
-            </li>
-            {% if context.entity.meta_published_info %}
-              <li class="p-media-object__meta-list-item u-no-padding--left">
-                {% for meta_info in context.entity.meta_published_info %}
-                <span>{{ meta_info['Channel'] }}</span>
-                {% endfor %}
-              </li>
-            {% endif %}
-            {% if context.entity.series %}
-              <li class="p-media-object__meta-list-item u-no-padding--left">
-                  <strong>Supports:</strong> {{ context.entity.series|join(', ') }}
-              </li>
-            {% endif %}
-          </ul>
-        </div>
-      </div>
+            </span>
+          </li>
+        {% endif %}
+        {% if context.entity.meta_published_info %}
+          <li class="p-inline-list__item">
+            <span class="entity__channel">
+              {% for meta_info in context.entity.meta_published_info %}
+              <span>{{ meta_info['Channel'] }}</span>
+              {% endfor %}
+            </span>
+          </li>
+        {% endif %}
+      </ul>
+      {% if context.entity.series %}
+      Supports:
+        {% for supported_release in context.entity.series %}
+          <span class="entity__supported-release {{ supported_release }}">{{ supported_release }}</span>
+        {% endfor %}
+      {% endif %}
     </div>
     <div class="col-4">
       <div class="p-code-snippet">
