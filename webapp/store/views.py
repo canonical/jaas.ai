@@ -104,9 +104,6 @@ def user_entity(username, entity_name):
         else:
             entity["user"] = entity["bundle_data"]["Meta"]["owner"]["User"]
             entity["id"] = entity["bundle_data"]["Id"]
-            entity["series"] = entity["bundle_data"]["Meta"]["bundle-metadata"][
-                "series"
-            ]
             entity["meta_published_info"] = entity["bundle_data"]["Meta"]["published"][
                 "Info"
             ]
