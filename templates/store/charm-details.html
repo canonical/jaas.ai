@@ -30,9 +30,9 @@
 <div class="p-strip is-shallow">
   <div class="row">
     <div class="col-8">
-      {% if context.entity.charm_data['Meta']['charm-metadata']['Description'] != '' %}
+      {% if context.entity.description %}
         <h3>Description</h3>
-        <p>{{ context.entity.charm_data['Meta']['charm-metadata']['Description']|safe }}</p>
+        <p>{{ context.entity.description|safe }}</p>
       {% endif %}
       <hr />
       {% if context.entity.series and context.entity.series|length > 1 %}

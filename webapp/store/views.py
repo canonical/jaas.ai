@@ -94,6 +94,9 @@ def user_entity(username, entity_name):
             # entity["latest_revision_id"] = ""
             # entity["series"] = ""
             # entity["channel_details"] = ""
+            entity["description"] = entity["charm_data"]["Meta"]["charm-metadata"][
+                "Description"
+            ]
             return render_template(
                 "store/charm-details.html", context={"entity": entity}
             )
@@ -124,6 +127,9 @@ def details(charm_or_bundle_name, series_or_version=None, version=None):
         if entity["is_charm"]:
             entity["meta_published_info"] = entity["charm_data"]["Meta"]["published"][
                 "Info"
+            ]
+            entity["description"] = entity["charm_data"]["Meta"]["charm-metadata"][
+                "Description"
             ]
             return render_template(
                 "store/charm-details.html", context={"entity": entity}
