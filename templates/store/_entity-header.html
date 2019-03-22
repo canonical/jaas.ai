@@ -20,34 +20,27 @@
                 href="/u/{{ context.entity.user }}">{{ context.entity.user }}</a>
             </li>
             <li class="p-media-object__meta-list-item u-no-padding--left">
-              {% if context.entity.revision_number != context.entity.latest_revision['id'] %}
+              {% if context.entity.latest_revision and context.entity.revision_number != context.entity.latest_revision %}
               <a href="/{{ context.entity.latest_revision['url'] }}" onclick="dataLayer.push({
                     'event' : 'GAEvent',
                     'eventCategory' : 'Entity Details Link',
                     'eventAction' : 'Goto latest version',
                     'eventLabel' : 'Latest version (#ID)',
                     'eventValue' : '{{ context.entity.latest_revision['full_id'] }}'
-                  });"><strong>Latest version</strong> (#{{ context.entity.latest_revision['id'] }})
+                  });"><strong>Latest version</strong> (#{{ context.entity.latest_revision }})
               </a>
-              {% else %}
-              <strong>Latest version</strong> (#{{ context.entity.latest_revision['id'] }})
               {% endif %}
             </li>
-            {% if context.entity.series %}
-              <li class="p-media-object__meta-list-item u-no-padding--left">
-                {% if context.entity.series|length > 1 %}
-                  <strong>series:</strong> {{ context.entity.series|join(', ') }}
-                {% else %}
-                  <strong>series:</strong> {{ context.entity.series|join('') }}
-                {% endif %}
-              </li>
-            {% endif %}
             {% if context.entity.meta_published_info %}
               <li class="p-media-object__meta-list-item u-no-padding--left">
-                <strong>Channels:</strong>
                 {% for meta_info in context.entity.meta_published_info %}
-                  <span>{{ meta_info['Channel'] }}</span>
+                <span>{{ meta_info['Channel'] }}</span>
                 {% endfor %}
+              </li>
+            {% endif %}
+            {% if context.entity.series %}
+              <li class="p-media-object__meta-list-item u-no-padding--left">
+                  <strong>Supports:</strong> {{ context.entity.series|join(', ') }}
               </li>
             {% endif %}
           </ul>
