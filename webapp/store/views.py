@@ -97,6 +97,7 @@ def user_entity(username, entity_name):
             entity["description"] = entity["charm_data"]["Meta"]["charm-metadata"][
                 "Description"
             ]
+            entity["user"] = entity["charm_data"]["Meta"]["owner"]["User"]
             return render_template(
                 "store/charm-details.html", context={"entity": entity}
             )
