@@ -18,19 +18,15 @@ def store():
 def search():
     query = request.args.get('q').replace('/', ' ')
     results = models.search_entities(query)
-    if results and (len(results['recommended']) > 0 or
-                    len(results['community']) > 0):
-        return render_template(
-            'store/search.html',
-            context={
-                'results': results,
-                'results_count':
-                    len(results['recommended']) + len(results['community']),
-                'query': query
-            }
-        )
-    else:
-        return abort(404, "No results found for: {}".format(query))
+    return render_template(
+        'store/search.html',
+        context={
+            'results': results,
+            'results_count':
+                len(results['recommended']) + len(results['community']),
+            'query': query
+        }
+    )
 
 
 @jaasstore.route('/u/<username>/')

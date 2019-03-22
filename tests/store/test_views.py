@@ -28,7 +28,7 @@ class StoreViews(TestCase):
             'community': []
         }
         response = self.client.get('/search?q=k8s')
-        self.assertEqual(response.status_code, 404)
+        self.assertEqual(response.status_code, 200)
 
     @patch('webapp.store.models.get_user_entities')
     def test_user_details(self, mock_get_user_entities):
