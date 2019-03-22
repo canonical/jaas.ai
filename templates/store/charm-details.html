@@ -1,11 +1,11 @@
 {% extends "_layout.html" %}
 
-{% block title %}{{ context.entity.charm_data['Meta']['charm-metadata']['Name'] }}{% endblock %}
-{% block meta_description %}Deploy {{ context.entity.charm_data['Meta']['charm-metadata']['Name'] }} to bare metal and public or private clouds using the Juju GUI or command line.{% endblock %}
+{% block title %}{{ context.entity.display_name }}{% endblock %}
+{% block meta_description %}Deploy {{ context.entity.display_name }} to bare metal and public or private clouds using the Juju GUI or command line.{% endblock %}
 
 
 {% block meta_tags %}
-  <meta property="og:title" content="{{ context.entity.charm_data['Meta']['charm-metadata']['Name'] }}" />
+  <meta property="og:title" content="{{ context.entity.display_name }}" />
   <meta property="og:url" content="{{ request.current_route_url() }}" />
   {% if description != '' %}
     <meta property="og:description" content="{{ context.entity.description|striptags }}" />
@@ -17,9 +17,9 @@
   <meta name="twitter:card" content="summary">
   <meta name="twitter:site" content="@ubuntucloud">
   <meta name="twitter:creator" content="@ubuntucloud">
-  <meta name="twitter:title" content="{{ context.entity.charm_data['Meta']['charm-metadata']['Name'] }} - Juju charm">
+  <meta name="twitter:title" content="{{ context.entity.display_name }} - Juju charm">
   <meta name="twitter:image" content="{{ request.route_url('icon-proxy-resize', entity_name=name, size=120, file_type='png') }}">
-  <meta name="twitter:description" content="{% if description %}{{ description|striptags }}{% else %}Deploy {{ context.entity.charm_data['Meta']['charm-metadata']['Name'] }} to public or private clouds or even bare metal using the Juju GUI or command line.{% endif %}">
+  <meta name="twitter:description" content="{% if description %}{{ description|striptags }}{% else %}Deploy {{ context.entity.display_name }} to public or private clouds or even bare metal using the Juju GUI or command line.{% endif %}">
   <link rel="canonical" href="{{ canonical_url }}" />
 {% endblock %}
 
