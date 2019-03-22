@@ -35,14 +35,18 @@
             </li>
             {% if context.entity.series %}
               <li class="p-media-object__meta-list-item u-no-padding--left">
-                <strong>Series:</strong> {{ context.entity.series|join(', ') }}
+                {% if context.entity.series|length > 1 %}
+                  <strong>series:</strong> {{ context.entity.series|join(', ') }}
+                {% else %}
+                  <strong>series:</strong> {{ context.entity.series|join('') }}
+                {% endif %}
               </li>
             {% endif %}
             {% if context.entity.meta_published_info %}
               <li class="p-media-object__meta-list-item u-no-padding--left">
                 <strong>Channels:</strong>
                 {% for meta_info in context.entity.meta_published_info %}
-                  {{ meta_info['Channel'] }},
+                  <span>{{ meta_info['Channel'] }}</span>
                 {% endfor %}
               </li>
             {% endif %}
