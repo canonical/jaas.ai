@@ -105,7 +105,7 @@ def user_entity(username, entity_name):
             entity["user"] = entity["bundle_data"]["Meta"]["owner"]["User"]
             entity["id"] = entity["bundle_data"]["Id"]
             entity["series"] = entity["bundle_data"]["Meta"]["bundle-metadata"][
-                "Series"
+                "series"
             ]
             entity["meta_published_info"] = entity["bundle_data"]["Meta"]["published"][
                 "Info"
@@ -139,7 +139,7 @@ def details(charm_or_bundle_name, series_or_version=None, version=None):
             entity["user"] = entity["charm_data"]["Meta"]["owner"]["User"]
             entity["id"] = entity["bundle_data"]["Id"]
             entity["series"] = entity["bundle_data"]["Meta"]["bundle-metadata"][
-                "Series"
+                "series"
             ]
             entity["meta_published_info"] = entity["bundle_data"]["Meta"]["published"][
                 "Info"
