@@ -15,39 +15,43 @@ def store():
 
 @jaasstore.route("/search/")
 def search():
-    query = request.args.get('q', '').replace('/', ' ')
-    entity_type = request.args.get('type', None)
-    if entity_type not in ['charm', 'bundle']:
+    query = request.args.get("q", "").replace("/", " ")
+    entity_type = request.args.get("type", None)
+    if entity_type not in ["charm", "bundle"]:
         entity_type = None
-    series = request.args.get('series', None)
-    tags = request.args.get('tags', None)
-    sort = request.args.get('sort', None)
-    provides = request.args.get('provides', None)
-    requires = request.args.get('requires', None)
+    series = request.args.get("series", None)
+    tags = request.args.get("tags", None)
+    sort = request.args.get("sort", None)
+    provides = request.args.get("provides", None)
+    requires = request.args.get("requires", None)
     if provides:
         results = models.fetch_provides(provides)
     elif requires:
         results = models.fetch_requires(requires)
     else:
-        results = models.search_entities(query, entity_type=entity_type,
-                                         tags=tags, sort=sort, series=series,
-                                         promulgated_only=False)
+        results = models.search_entities(
+            query,
+            entity_type=entity_type,
+            tags=tags,
+            sort=sort,
+            series=series,
+            promulgated_only=False,
+        )
     return render_template(
-        'store/search.html',
+        "store/search.html",
         context={
-            'current_series': series,
-            'current_sort': sort,
-            'current_type': entity_type,
-            'results': results,
-            'results_count':
-                len(results['recommended']) + len(results['community']),
-            'query': query
-        }
+            "current_series": series,
+            "current_sort": sort,
+            "current_type": entity_type,
+            "results": results,
+            "results_count": len(results["recommended"]) + len(results["community"]),
+            "query": query,
+        },
     )
 
 
-@jaasstore.route('/q/')
-@jaasstore.route('/q/<path:path>')
+@jaasstore.route("/q/")
+@jaasstore.route("/q/<path:path>")
 def search_redirect(path=None):
     """
     Handle redirects from jujucharms.com search URLS to the jaas.ai format.
@@ -56,10 +60,10 @@ def search_redirect(path=None):
     """
     query_string = []
     if path:
-        query_string.append('q={}'.format(path.replace('/', '+')))
+        query_string.append("q={}".format(path.replace("/", "+")))
     if request.query_string:
-        query_string.append(str(request.query_string, 'utf-8'))
-    return redirect('/search?{}'.format('&'.join(query_string)), code=302)
+        query_string.append(str(request.query_string, "utf-8"))
+    return redirect("/search?{}".format("&".join(query_string)), code=302)
 
 
 @jaasstore.route("/u/<username>/")
