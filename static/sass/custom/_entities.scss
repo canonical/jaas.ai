@@ -56,5 +56,10 @@
     padding: 0.15rem;
     margin-right: 0.25rem;
     text-transform: capitalize;
+
+    &.kubernetes {
+      border-color: #1f86ea;
+      color: #1f86ea;
+    }
   }
 }
