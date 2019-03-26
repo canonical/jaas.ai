@@ -5,13 +5,13 @@
         {% if context.entity.icon %}
           <img src="{{ context.entity.icon }}" alt="" width="96" id="the-icon" class="p-media-object__image is-round" />
         {% endif %}
-        <h1 itemprop="name" class="p-media-object__title u-no-margin--bottom entity__title">
+        <h1 itemprop="name" class="u-no-margin--bottom entity__title">
           <span>
             {{ context.entity.display_name }}
+            <sup class="p-heading--three entity__version">
+              #{{ context.entity.revision_number }}
+            </sup>
           </span>
-          <sup class="p-heading--three entity__version">
-            #{{ context.entity.revision_number }}
-          </sup>
         </h1>
       </div>
       <ul class="entity__meta p-inline-list--middot">
@@ -41,7 +41,7 @@
           <li class="p-inline-list__item">
             <span class="entity__channel">
               {% for meta_info in context.entity.meta_published_info %}
-              <span>{{ meta_info['Channel'] }}</span>
+              <span>{{ meta_info['Channel'] }}</span>{% if not loop.last %},{% endif %}
               {% endfor %}
             </span>
           </li>
@@ -50,7 +50,9 @@
       {% if context.entity.series %}
       Supports:
         {% for supported_release in context.entity.series %}
-          <span class="entity__supported-release {{ supported_release }}">{{ supported_release }}</span>
+          <span class="entity__supported-release {{ supported_release }}">
+            {{ supported_release }}
+          </span>
         {% endfor %}
       {% endif %}
     </div>
