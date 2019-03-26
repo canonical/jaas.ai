@@ -5093,6 +5093,10 @@ vanilla-framework@1.8.1:
   version "1.8.1"
   resolved "https://registry.yarnpkg.com/vanilla-framework/-/vanilla-framework-1.8.1.tgz#0d7f5885cdbd1355a9f9d42d7596f9a1258b27ea"
 
+vanilla-lazyload@11.0.6:
+  version "11.0.6"
+  resolved "https://registry.yarnpkg.com/vanilla-lazyload/-/vanilla-lazyload-11.0.6.tgz#76a13ece6c256d5f6451bc0687038c485441ca11"
+
 verbalize@^0.1.2:
   version "0.1.2"
   resolved "https://registry.yarnpkg.com/verbalize/-/verbalize-0.1.2.tgz#165fda4640331548f8e990b1d7e14395eb720207"
