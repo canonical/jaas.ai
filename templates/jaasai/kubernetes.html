@@ -68,7 +68,7 @@
       <div class="col-4 p-divider__block">
         <div class="p-heading-icon">
           <div class="p-heading-icon__header">
-            <img class="p-heading-icon__img" src="https://api.jujucharms.com/charmstore/v5/~containers/kubernetes-master/icon.svg">
+            <img class="p-heading-icon__img" src="{{ external_urls.api }}~containers/kubernetes-master/icon.svg">
             <h3 class="p-heading-icon__title">Latest upstream Kubernetes</h3>
           </div>
         </div>
@@ -83,7 +83,7 @@
       <div class="col-4 p-divider__block">
         <div class="p-heading-icon">
           <div class="p-heading-icon__header">
-            <img class="p-heading-icon__img" src="https://api.jujucharms.com/charmstore/v5/~containers/etcd/icon.svg">
+            <img class="p-heading-icon__img" src="{{ external_urls.api }}~containers/etcd/icon.svg">
             <h3 class="p-heading-icon__title">etcd</h3>
           </div>
         </div>
@@ -97,7 +97,7 @@
       <div class="col-4 p-divider__block">
         <div class="p-heading-icon">
           <div class="p-heading-icon__header">
-            <img class="p-heading-icon__img" src="https://api.jujucharms.com/charmstore/v5/~containers/easyrsa/icon.svg">
+            <img class="p-heading-icon__img" src="{{ external_urls.api }}~containers/easyrsa/icon.svg">
             <h3 class="p-heading-icon__title">EasyRSA</h3>
           </div>
         </div>
@@ -140,7 +140,7 @@
         <div class="p-list-step__content">
           <div class="col-6">
             <div class="pictogram-bg">
-              <object type="image/svg+xml" data="https://api.jujucharms.com/charmstore/v5/bundle/kubernetes-core-24/diagram.svg" height="300" class="cluster-card__image"></object>
+              <object type="image/svg+xml" data="{{ external_urls.api }}bundle/kubernetes-core-24/diagram.svg" height="300" class="cluster-card__image"></object>
             </div>
             <h3><a href="https://jujucharms.com/kubernetes-core/">Staging cluster&nbsp;&rsaquo;</a></h3>
             <div class="row">
@@ -148,13 +148,13 @@
                 <p>Start with a Kubernetes cluster of two machines &mdash; one master node and one worker node.</p>
               </div>
               <div class="col-2">
-                <a href="https://jujucharms.com/new/?deploy-target=bundle/kubernetes-core" ref="nofollow" class="cluster-card__cta p-button--positive">Deploy</a>
+                <a href="{{ external_urls.gui }}?deploy-target=bundle/kubernetes-core" ref="nofollow" class="cluster-card__cta p-button--positive">Deploy</a>
               </div>
             </div>
           </div>
           <div class="col-6">
             <div class="pictogram-bg">
-              <object type="image/svg+xml" data="https://api.jujucharms.com/charmstore/v5/bundle/canonical-kubernetes-30/diagram.svg" height="300" class="cluster-card__image"></object>
+              <object type="image/svg+xml" data="{{ external_urls.api }}bundle/canonical-kubernetes-30/diagram.svg" height="300" class="cluster-card__image"></object>
             </div>
             <h3><a href="https://jujucharms.com/canonical-kubernetes/">Production cluster&nbsp;&rsaquo;</a></h3>
             <div class="row">
@@ -162,7 +162,7 @@
                 <p>Progress to a highly available Kubernetes cluster &mdash; 2 masters, 3 workers, 3 etc nodes and API load balancer.</p>
               </div>
               <div class="col-2">
-                <a href="https://jujucharms.com/new/?deploy-target=bundle/canonical-kubernetes" ref="nofollow" class="cluster-card__cta p-button--positive">Deploy</a>
+                <a href="{{ external_urls.gui }}?deploy-target=bundle/canonical-kubernetes" ref="nofollow" class="cluster-card__cta p-button--positive">Deploy</a>
               </div>
             </div>
           </div>
@@ -221,7 +221,7 @@
               <div class="col-4 p-card">
                 <div class="p-heading-icon">
                   <div class="p-heading-icon__header">
-                    <img class="p-heading-icon__img" src="https://api.jujucharms.com/charmstore/v5/trusty/elasticsearch/icon.svg">
+                    <img class="p-heading-icon__img" src="{{ external_urls.api }}trusty/elasticsearch/icon.svg">
                     <h3 class="p-heading-icon__title">
                       <a href="https://jujucharms.com/elasticsearch/trusty/19">
                         ElasticSearch&nbsp;&rsaquo;

@@ -19,7 +19,7 @@
           <li class="p-inline-list__item">
             <span class="entity__user">
               By <a
-                href="/u/{{ context.entity.user }}">{{ context.entity.user }}</a>
+                href="{{ url_for('jaasstore.user_details', username=context.entity.user) }}">{{ context.entity.user }}</a>
             </span>
           </li>
         {% endif %}
