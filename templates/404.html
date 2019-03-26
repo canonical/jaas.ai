@@ -8,8 +8,8 @@
     <nav>
       <ul class="p-inline-list">
         <li class="p-inline-list__item"><a href="/store" class="p-button--positive">Browse the store</a></li>
-        <li class="p-inline-list__item"><a href="https://jujucharms.com/q/?type=bundle">All bundles</a></li>
-        <li class="p-inline-list__item"><a href="https://jujucharms.com/q/?type=charm">All charms</a></li>
+        <li class="p-inline-list__item"><a href="{{ url_for('jaasstore.search') }}?type=bundle">All bundles</a></li>
+        <li class="p-inline-list__item"><a href="{{ url_for('jaasstore.search') }}?type=charm">All charms</a></li>
         <li class="p-inline-list__item"><a href="{{ external_urls.issues }}" class="p-link--external">Submit a bug</a></li>
       </ul>
     </nav>

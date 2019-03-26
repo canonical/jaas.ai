@@ -50,6 +50,7 @@ def create_app(testing=False):
     def inject_external_urls():
         return dict(external_urls={
             'api': 'https://api.jujucharms.com/charmstore/v5/',
+            'askubuntu': 'https://askubuntu.com/questions/tagged/juju',
             'discourse': 'https://discourse.jujucharms.com/',
             'docs': 'https://docs.jujucharms.com/',
             'gui': 'https://jujucharms.com/new/',
