@@ -111,6 +111,7 @@ def _parse_bundle_data(bundle_data, include_files=False):
     ref = references.Reference.from_string(bundle_id)
     name = ref.name
     meta = bundle_data['Meta']
+    bundle_metadata = meta['bundle-metadata']
     revision_list = meta.get('revision-info', {}).get('Revisions')
     latest_revision = revision_list and {
         'id': int(revision_list[0].split('-')[-1]),
@@ -132,8 +133,9 @@ def _parse_bundle_data(bundle_data, include_files=False):
         'promulgated': meta.get('promulgated', {}).get('Promulgated'),
         'revision_number': ref.revision,
         'services': _parseBundleServices(
-            meta['bundle-metadata']['applications']
+            bundle_metadata['applications']
         ),
+        'tags': bundle_metadata.get('Tags'),
         'units': meta.get('bundle-unit-count', {}).get('Count', ''),
         'url': ref.jujucharms_id()
     }
@@ -195,6 +197,8 @@ def _parse_charm_data(charm_data, include_files=False):
         'revision_number': ref.revision,
         'revisions': revisions,
         'series': meta.get('supported-series', {}).get('SupportedSeries'),
+        # Some charms do not have tags, so fall back to categories if they
+        # exist (mostly on older charms).
         'tags': charm_metadata.get('Tags') or charm_metadata.get('Categories'),
         'url': ref.jujucharms_id(),
         'is_charm': True
