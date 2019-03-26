@@ -22,4 +22,4 @@ class TestStoreModels(unittest.TestCase):
 
     def test_parse_charm_data_tags(self):
         charm = models._parse_charm_data(charm_data)
-        self.assertEqual(charm['tags'], ['app-servers', 'proxy'])
+        self.assertEqual(charm['tags'], ['app-servers'])
