@@ -1,3 +1,6 @@
+// remove 'no-js' class from body
+document.querySelector('html').classList.remove('no-js');
+
 // import modules
 import {createNav} from '@canonical/global-nav';
 import showContactDetails from './modules/show-contact-details';
