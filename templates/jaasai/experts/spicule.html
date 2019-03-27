@@ -23,46 +23,9 @@
         <hr>
         <p>Please let us know if you have a question, or would like further information about Spicule.</p>
         <footer class="p-card__footer">
-          <a href="#_" data-js="show-btn" class="p-button--positive"
-            onclick="dataLayer.push({
-              'event' : 'GAEvent',
-              'eventCategory' : 'Experts',
-              'eventAction' : 'Reveal contact details',
-              'eventLabel' : 'Spicule'
-            });">
-            Show contact details&hellip;
-          </a>
-          <div class="u-hide" data-js="contact-info">
-            <p>
-              <a href="https://spicule.co.uk" class="link p-card__pre-footer">
-                <span>
-                  <img class="p-card__footer-icon" src="https://assets.ubuntu.com/v1/4f94bbf4-icon-web.svg" alt="Email icon">
-                </span>
-                https://spicule.co.uk
-              </a>
-            </p>
-            <p>
-              <a href="mailto:info@spicule.co.uk" class="link p-card__pre-footer">
-                <span>
-                  <img class="p-card__footer-icon" src="https://assets.ubuntu.com/v1/5e815088-icon-email.svg" alt="Email icon">
-                </span>
-                info@spicule.co.uk
-              </a>
-            </p>
-            <p>
-              <span class="link p-card__pre-footer">
-                <span>
-                  <img class="p-card__footer-icon" src="https://assets.ubuntu.com/v1/a52bd3b1-Icon-telephone.svg" alt="Telephone icon">
-                </span>
-                <span>
-                  UK <a href="tel:+441603327762">+44 (0)1603 327762</a>
-                </span>
-                <span style="display:inline-block;margin-left:1.5rem">
-                  US <a href="tel:+18448141689">+1 8448141689</a>
-                </span>
-              </span>
-            </p>
-          </div>
+          <button data-js="leadGenerationModalTrigger" class="p-button--positive">
+            Get in touch
+          </button>
         </footer>
       </div>
     </div>
@@ -187,5 +150,9 @@
     </div>
   </div>
 </div>
+{% include "shared/_spicule_lead-gen-form.html" %}
+<script>
+  window.app.modal('leadGenerationModal');
+</script>
 
 {% endblock content %}
