@@ -31,7 +31,7 @@
             </div>
             <div class="row">
               <div class="col-3">
-                <a href="https://jujucharms.com/canonical-kubernetes/" class="p-button--positive">Deploy Kubernetes</a>
+                <a href="{{ url_for('jaasstore.details', charm_or_bundle_name='canonical-kubernetes') }}" class="p-button--positive">Deploy Kubernetes</a>
               </div>
               <div class="col-3">
                 <a href="{{ url_for('jaasai.jaas') }}#deploy-kubernetes-in-minutes">Or watch the video
@@ -121,7 +121,7 @@
           <p><b>Bundles</b> are collections of charms that link services together, so you can deploy whole chunks of infrastructure in one go.</p>
           <ul class="p-list icon-list">
             <li class="p-list__item">
-              <a href="https://jujucharms.com/openstack-base/">
+              <a href="{{ url_for('jaasstore.details', charm_or_bundle_name='openstack-base') }}">
                 <img src="{{ url_for('static', filename='img/home/openstack-base.svg') }}" alt="Openstack Base icon" />
                 <span class="icon-list__title">
                   OpenStack Base&nbsp;&rsaquo;
@@ -129,7 +129,7 @@
               </a>
             </li>
             <li class="p-list__item">
-              <a href="https://jujucharms.com/canonical-kubernetes/">
+              <a href="{{ url_for('jaasstore.details', charm_or_bundle_name='canonical-kubernetes') }}">
                 <img src="{{ url_for('static', filename='img/home/canonical-kubernetes.svg') }}" alt="Canonical Kubernetes icon" />
                 <span class="icon-list__title">
                   Canonical Kubernetes&nbsp;&rsaquo;
@@ -137,7 +137,7 @@
               </a>
             </li>
             <li class="p-list__item">
-              <a href="https://jujucharms.com/hadoop-spark/">
+              <a href="{{ url_for('jaasstore.details', charm_or_bundle_name='hadoop-spark') }}">
                 <img src="{{ url_for('static', filename='img/home/hadoop-spark.svg') }}" alt="Hadoop Spark icon" />
                 <span class="icon-list__title">
                   Hadoop Spark&nbsp;&rsaquo;
@@ -148,7 +148,7 @@
           <p><b>Charms</b> contain scripts that simplify the deployment and management of a service.</p>
           <ul class="p-list icon-list">
             <li class="p-list__item">
-              <a href="https://jujucharms.com/postgresql/">
+              <a href="{{ url_for('jaasstore.details', charm_or_bundle_name='postgresql') }}">
                 <img width="52" src="{{ url_for('static', filename='img/home/postgresql-circle.svg') }}" alt="Postgresql icon" />
                 <span class="icon-list__title">
                   Postgresql&nbsp;&rsaquo;
@@ -164,7 +164,7 @@
               </a>
             </li>
             <li class="p-list__item">
-              <a href="https://jujucharms.com/elasticsearch/">
+              <a href="{{ url_for('jaasstore.details', charm_or_bundle_name='elasticsearch') }}">
                 <img width="52" src="{{ url_for('static', filename='img/home/elasticsearch-icon.svg') }}" alt="Elasticsearch" />
                 <span class="icon-list__title">
                   Elasticsearch&nbsp;&rsaquo;
