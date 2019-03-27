@@ -107,7 +107,7 @@
   </div>
 </div>
 
-<div class="p-strip">
+<div class="p-strip" id="frequently-asked-questions">
   <div class="row">
     <div class="col-12">
       <h2>Frequently asked questions</h2>
@@ -286,7 +286,7 @@
           ones being added every day.
         </p>
         <p>
-          <a href="/store">
+          <a href="{{ url_for('jaasstore.store') }}">
             Check out the public charm store for an up to the minute list
             of charms&nbsp;&rsaquo;
           </a>
@@ -317,7 +317,7 @@
             products, showing how Juju fits in.
         </p>
         <p>
-          The <a href="/community">Juju community pages</a> include
+          The <a href="{{ url_for('jaasai.community') }}">Juju community pages</a> include
           documentation with more technical detail on charms and using Juju,
           written by people using Juju in production environments.
         </p>

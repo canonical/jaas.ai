@@ -9,7 +9,7 @@
     <div class="col-6">
       <h1 itemprop="name">Community</h1>
       <p class="p-heading--four" itemprop="description">Pioneers in service modelling. Deploy your solution, charm your software, or discuss your ideas. Contribute to the community and help push the line.</p>
-      <p><a href="/community/charmers">Contribute&nbsp;&rsaquo;</a></p>
+      <p><a href="{{ url_for('jaasai.community_charmers') }}">Contribute&nbsp;&rsaquo;</a></p>
     </div>
     <div class="col-6 u-hide--small u-align--center">
       <img src="{{ url_for('static', filename='img/community/community-hero.svg') }}" alt="Pictogram">
@@ -31,7 +31,7 @@
             <p class="p-media-object__content">Affiliation: Canonical Ltd</p>
           </div>
         </div>
-        <p>James is one of the first Juju charmers in the community and was the original author of the <a href="/openstack">OpenStack charms</a>. His charms allow an initial deployment of a base cloud and allows users to add metering and Landscape afterwards. James is currently working on adding high-availability bundles to this, and resides in Norwich, UK.</p>
+        <p>James is one of the first Juju charmers in the community and was the original author of the <a href="{{ url_for('jaasai.openstack') }}">OpenStack charms</a>. His charms allow an initial deployment of a base cloud and allows users to add metering and Landscape afterwards. James is currently working on adding high-availability bundles to this, and resides in Norwich, UK.</p>
         <a href="https://github.com/openstack-charmers/openstack-bundles" class="p-button--positive is-external">Contribute</a>
       </div>
       <div class="p-card">
@@ -100,7 +100,7 @@
     <div class="col-6">
       <h2>Charm and bundle cards</h2>
       <p class="intro">Generate cards for your charms and bundles and embedded them into blog posts and websites with a single line of code.</p>
-      <p><a href="/community/cards" class="p-link--inverted">Create card&nbsp;&rsaquo;</a></p>
+      <p><a href="{{ url_for('jaasai.community_cards') }}" class="p-link--inverted">Create card&nbsp;&rsaquo;</a></p>
     </div>
     <div class="col-6">
       <img src="https://assets.ubuntu.com/v1/73fe9909-Card.png" alt="mysql charm and apache mapreduce bundle cards" />
@@ -113,7 +113,7 @@
     <div class="col-12">
       <h2>Charm Partner Programmes</h2>
       <p>The Charm Partner Programme will help you to get your solution into the Charm Store, giving new benefits to your current customers, as well as accessing new potential users.</p>
-      <p><a href="/community/partners">Learn more&nbsp;&rsaquo;</a></p>
+      <p><a href="{{ url_for('jaasai.community_partners') }}">Learn more&nbsp;&rsaquo;</a></p>
     </div>
   </div>
 </div>
@@ -132,7 +132,7 @@
     <div class="col-4">
       <h5>Ask Ubuntu</h5>
       <p>Find out more, get help or ask any question at <a class="p-link--external" href="{{ external_urls.askubuntu }}">Ask Ubuntu</a>.</p>
-    </div>blog-fee
+    </div>
     <div class="col-4">
       <h5>Social</h5>
       <ul class="p-inline-list">

@@ -13,7 +13,7 @@
         <div class="u-align--center">
           <img width="150" src="https://assets.ubuntu.com/v1/dba11aee-kubernetes.svg" alt="Kubernetes logo">
           <h2>Kubernetes</h2>
-          <a href="/kubernetes" class="p-button--neutral">Find out more</a>
+          <a href="{{ url_for('jaasai.kubernetes') }}" class="p-button--neutral">Find out more</a>
         </div>
       </div>
 
@@ -22,7 +22,7 @@
         <div class="u-align--center">
           <img width="195" src="https://assets.ubuntu.com/v1/883e4977-hadoop-elephant.png" alt="Hadoop logo">
           <h2>Big data</h2>
-          <a href="/big-data" class="p-button--neutral">Find out more</a>
+          <a href="{{ url_for('jaasai.big_data') }}" class="p-button--neutral">Find out more</a>
         </div>
       </div>
 
@@ -231,7 +231,7 @@
     <div class="col-6">
       <h2>Container management</h2>
       <p>Juju makes it easy to deploy container management solutions by provisioning, installing and configuring all the systems in the cluster.</p>
-      <p><a href="/containers" class="p-button--neutral">View bundles</a></p>
+      <p><a href="{{ url_for('jaasai.containers') }} class="p-button--neutral">View bundles</a></p>
     </div>
     <div class="col-6">
         <img src="{{ url_for('static', filename='img/store/kubernetes-promo.png') }}" alt="Kubernetes promo pictogram">
