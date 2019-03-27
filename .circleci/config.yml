@@ -16,7 +16,7 @@ jobs:
           command: pip3 install flake8
       - run:
           name: Lint webapp with Flake8
-          command: flake8 --max-line-length 95 webapp
+          command: yarn run python-lint
   scss-lint:
     <<: *defaults
     steps:
