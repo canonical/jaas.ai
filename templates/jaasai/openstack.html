@@ -4,7 +4,7 @@
 
 {% block content %}
   <div class="p-strip--image is-dark"
-    style="background-image:url('/static/img/home/juju-suru-blue-background.png')">
+    style="background-image:url('{{ url_for('static', filename='img/home/juju-suru-blue-background.png') }}')">
     <div class="row">
       <div class="u-equal-height">
         <div class="col-6">
@@ -13,7 +13,7 @@
           <h4>Benefit from a fully integrated and optimised combination of the latest release of Ubuntu Server and the latest release of OpenStack</h4>
         </div>
         <div class="col-6 u-align--center u-vertically-center u-hide--small">
-          <img src="/static/img/topics/openstack-hero.svg" alt="Openstack pictogram" />
+          <img src="{{ url_for('static', filename='img/topics/openstack-hero.svg') }}" alt="Openstack pictogram" />
         </div>
       </div>
     </div>
@@ -189,7 +189,7 @@
     <div class="p-strip is-shallow">
       <div class="row">
       <div class="col-12 u-align--center">
-        <img src="/static/img/topics/openstack-landscape-autopilot.png" alt="Landscape managing OpenStack screenshot" />
+        <img src="{{ url_for('static', filename='img/topics/openstack-landscape-autopilot.png') }}" alt="Landscape managing OpenStack screenshot" />
       </div>
     </div>
     </div>

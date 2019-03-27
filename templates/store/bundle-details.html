@@ -143,8 +143,8 @@
   </div>
 </div>
 
-<script src="/static/js/accordion.js"></script>
-<script src="/static/js/treefilelist.js"></script>
+<script src="{{ url_for('static', filename='js/accordion.js') }}"></script>
+<script src="{{ url_for('static', filename='js/treefilelist.js') }}"></script>
 <script>
   window.app.accordion('.p-accordion__list');
   window.app.treeifyFileList();

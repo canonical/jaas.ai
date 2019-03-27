@@ -4,7 +4,7 @@
 
 {% block content %}
 <div class="p-strip--image is-dark"
-  style="background-image:url('/static/img/home/juju-suru-blue-background.png')">
+  style="background-image:url('{{ url_for('static', filename='img/home/juju-suru-blue-background.png') }}')">
   <div class="row">
     <div class="u-equal-height">
       <div class="col-6">
@@ -14,7 +14,7 @@
         <p>It also manages scale out, configuration and placement of all your models and applications.</p>
       </div>
       <div class="col-6 u-vertically-center u-image-position">
-        <img src="/static/img/how-it-works/how-it-works.png" srcset="/static/img/how-it-works/how-it-works-2x.png" alt="How it works overview pictogram" class="u-image-position--right u-hide--small" />
+        <img src="{{ url_for('static', filename='img/how-it-works/how-it-works.png') }}" srcset="{{ url_for('static', filename='img/how-it-works/how-it-works-2x.png') }}" alt="How it works overview pictogram" class="u-image-position--right u-hide--small" />
       </div>
     </div>
   </div>
@@ -28,7 +28,7 @@
   </div>
   <div class="row">
     <div class="col-8 u-align-text--center">
-      <img src="/static/img/how-it-works/charms-bundles.png" srcset="/static/img/how-it-works/charms-bundles-2x.png" alt="Juju charms/bundles diagram" />
+      <img src="{{ url_for('static', filename='img/how-it-works/charms-bundles.png') }}" srcset="{{ url_for('static', filename='img/how-it-works/charms-bundles-2x.png') }}" alt="Juju charms/bundles diagram" />
     </div>
     <div class="col-4">
       <div class="p-card">
@@ -52,12 +52,12 @@
   </div>
   <div class="row">
     <div class="col-12 u-align-text--center">
-      <img src="/static/img/how-it-works/step-arrow.svg" alt="" />
+      <img src="{{ url_for('static', filename='img/how-it-works/step-arrow.svg') }}" alt="" />
     </div>
   </div>
   <div class="row">
     <div class="col-8">
-      <img src="/static/img/how-it-works/provision.png" srcset="/static/img/how-it-works/provision-2x.png" alt="Juju provision overview" />
+      <img src="{{ url_for('static', filename='img/how-it-works/provision.png') }}" srcset="{{ url_for('static', filename='img/how-it-works/provision-2x.png') }}" alt="Juju provision overview" />
     </div>
     <div class="col-4">
       <div class="p-card">
@@ -68,12 +68,12 @@
   </div>
   <div class="row">
     <div class="col-12 u-align-text--center">
-      <img src="/static/img/how-it-works/step-arrow.svg" alt="" />
+      <img src="{{ url_for('static', filename='img/how-it-works/step-arrow.svg') }}" alt="" />
     </div>
   </div>
   <div class="row">
     <div class="col-8">
-      <img src="/static/img/how-it-works/deploy.png" srcset="/static/img/how-it-works/deploy-2x.png" alt="Juju deploy diagram" />
+      <img src="{{ url_for('static', filename='img/how-it-works/deploy.png') }}" srcset="{{ url_for('static', filename='img/how-it-works/deploy-2x.png') }}" alt="Juju deploy diagram" />
     </div>
     <div class="col-4">
       <div class="p-card">
@@ -84,12 +84,12 @@
   </div>
   <div class="row u-no-margin--top">
     <div class="col-12 u-align-text--center">
-      <img src="/static/img/how-it-works/step-arrow.svg" alt="" />
+      <img src="{{ url_for('static', filename='img/how-it-works/step-arrow.svg') }}" alt="" />
     </div>
   </div>
   <div class="row">
     <div class="col-8">
-      <img src="/static/img/how-it-works/monitor-manage.png" srcset="/static/img/how-it-works/monitor-manage-2x.png" alt="" />
+      <img src="{{ url_for('static', filename='img/how-it-works/monitor-manage.png') }}" srcset="{{ url_for('static', filename='img/how-it-works/monitor-manage-2x.png') }}" alt="" />
     </div>
     <div class="col-4">
       <div class="p-card">

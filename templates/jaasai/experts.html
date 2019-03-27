@@ -36,7 +36,7 @@
       <div class="col-4 p-card">
         <div class="expert__logo-wrap">
           <a href="{{ url_for('jaasai.experts_spicule') }}">
-            <img class="expert__card-logo" src="/static/img/logos/spicule.png" alt="Spicule logo" />
+            <img class="expert__card-logo" src="{{ url_for('static', filename='img/logos/spicule.png') }}" alt="Spicule logo" />
           </a>
         </div>
         <hr class="u-sv1">
@@ -49,7 +49,7 @@
       <div class="col-4 p-card">
         <div class="expert__logo-wrap">
           <a href="{{ url_for('jaasai.experts_tengu') }}">
-            <img width="200" class="expert__card-logo" src="/static/img/logos/tengu.png" alt="Tengu logo" />
+            <img width="200" class="expert__card-logo" src="{{ url_for('static', filename='img/logos/tengu.png') }}" alt="Tengu logo" />
           </a>
         </div>
         <hr class="u-sv1">

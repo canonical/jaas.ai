@@ -5,7 +5,7 @@
 
 {% block content %}
 
-  <div class="p-strip--image is-light" style="position:relative;background-image:url('https://assets.ubuntu.com/v1/f1511329-Background.svg')">
+  <div class="p-strip--image is-light" style="position:relative;background-image:url('https://assets.ubuntu.com/v1/f1511329-Background.svg') }}')">
     <div class="row" style="position:relative">
       <div class="col-6">
         <div class="p-strip is-shallow u-no-padding--top u-no-padding--bottom">
@@ -35,7 +35,7 @@
               </div>
               <div class="col-3">
                 <a href="/jaas#deploy-kubernetes-in-minutes">Or watch the video
-                  <img class="p-icon" src="/static/img/home/play-icon.svg" alt="Play icon">
+                  <img class="p-icon" src="{{ url_for('static', filename='img/home/play-icon.svg') }}" alt="Play icon">
                 </a>
               </div>
             </div>
@@ -44,7 +44,7 @@
       </div>
       <div class="col-6 u-vertically-center homepage-hero-image-wrap">
         <img
-          src="/static/img/home/home-promo-bundle.svg"
+          src="{{ url_for('static', filename='img/home/home-promo-bundle.svg') }}"
           alt="Pictogram of bundle"
           class="homepage-hero-image"
         />
@@ -62,7 +62,7 @@
             <p>Spicule's <a class="p-link--strong" href="https://jujucharms.com/u/spiculecharms/saiku-drill/">Saiku solution</a> can solve your Big Data challenge.</p>
             <div class="p-card card-wrap u-align--center u-vertically-center">
               <a href="{{ url_for('jaasai.experts_spicule') }}">
-                <img style="padding:1rem 0" src="/static/img/logos/spicule.png" alt="Spicule logo" width="160" />
+                <img style="padding:1rem 0" src="{{ url_for('static', filename='img/logos/spicule.png') }}" alt="Spicule logo" width="160" />
               </a>
             </div>
             <a href="https://jujucharms.com/u/spiculecharms/saiku-drill/" class="p-button--positive">
@@ -74,7 +74,7 @@
           <h5 class="u-no-padding--top">Or build it yourself</h5>
           <p>Create your own solution in the GUI or browse the store to get started</p>
           <div class="card-wrap">
-            <img src="/static/img/home/build-yourself.png" alt="Build it yourself example">
+            <img src="{{ url_for('static', filename='img/home/build-yourself.png') }}" alt="Build it yourself example">
           </div>
           <p><a href="{{ external_urls.gui }}" class="p-button--neutral" style="margin-top:5px">Start a new model</a></p>
         </div>
@@ -83,7 +83,7 @@
           <h5 class="u-no-padding--top">JAAS is Juju as a service</h5>
           <p>Managed Juju infrastructure, hosted by Canonical, the makers of Ubuntu.</p>
           <div class="p-card u-align--center">
-            <img style="padding:1rem 0" src="/static/img/home/jaas-black-orange-hz-hex.svg" alt="JAAS logo">
+            <img style="padding:1rem 0" src="{{ url_for('static', filename='img/home/jaas-black-orange-hz-hex.svg') }}" alt="JAAS logo">
           </div>
           <a href="/jaas" class="p-button--neutral" style="margin-top:-6px">About JAAS</a>
         </div>
@@ -106,7 +106,7 @@
     </div>
   </div>
 
-  <script src="/static/js/cli-typer.js"></script>
+  <script src="{{ url_for('static', filename='js/cli-typer.js') }}"></script>
   <script>
     window.app.cliTyper(
       document.querySelector('.js-cli'),
@@ -122,7 +122,7 @@
           <ul class="p-list icon-list">
             <li class="p-list__item">
               <a href="https://jujucharms.com/openstack-base/">
-                <img src="/static/img/home/openstack-base.svg" alt="Openstack Base icon" />
+                <img src="{{ url_for('static', filename='img/home/openstack-base.svg') }}" alt="Openstack Base icon" />
                 <span class="icon-list__title">
                   OpenStack Base&nbsp;&rsaquo;
                 </span>
@@ -130,7 +130,7 @@
             </li>
             <li class="p-list__item">
               <a href="https://jujucharms.com/canonical-kubernetes/">
-                <img src="/static/img/home/canonical-kubernetes.svg" alt="Canonical Kubernetes icon" />
+                <img src="{{ url_for('static', filename='img/home/canonical-kubernetes.svg') }}" alt="Canonical Kubernetes icon" />
                 <span class="icon-list__title">
                   Canonical Kubernetes&nbsp;&rsaquo;
                 </span>
@@ -138,7 +138,7 @@
             </li>
             <li class="p-list__item">
               <a href="https://jujucharms.com/hadoop-spark/">
-                <img src="/static/img/home/hadoop-spark.svg" alt="Hadoop Spark icon" />
+                <img src="{{ url_for('static', filename='img/home/hadoop-spark.svg') }}" alt="Hadoop Spark icon" />
                 <span class="icon-list__title">
                   Hadoop Spark&nbsp;&rsaquo;
                 </span>
@@ -149,7 +149,7 @@
           <ul class="p-list icon-list">
             <li class="p-list__item">
               <a href="https://jujucharms.com/postgresql/">
-                <img width="52" src="/static/img/home/postgresql-circle.svg" alt="Postgresql icon" />
+                <img width="52" src="{{ url_for('static', filename='img/home/postgresql-circle.svg') }}" alt="Postgresql icon" />
                 <span class="icon-list__title">
                   Postgresql&nbsp;&rsaquo;
                 </span>
@@ -157,7 +157,7 @@
             </li>
             <li class="p-list__item">
               <a href="https://jujucharms.com/u/prometheus-charmers/prometheus/">
-                <img width="52" src="/static/img/home/prometheus-circle.svg" alt="Prometheus" />
+                <img width="52" src="{{ url_for('static', filename='img/home/prometheus-circle.svg') }}" alt="Prometheus" />
                 <span class="icon-list__title">
                   Prometheus&nbsp;&rsaquo;
                 </span>
@@ -165,7 +165,7 @@
             </li>
             <li class="p-list__item">
               <a href="https://jujucharms.com/elasticsearch/">
-                <img width="52" src="/static/img/home/elasticsearch-icon.svg" alt="Elasticsearch" />
+                <img width="52" src="{{ url_for('static', filename='img/home/elasticsearch-icon.svg') }}" alt="Elasticsearch" />
                 <span class="icon-list__title">
                   Elasticsearch&nbsp;&rsaquo;
                 </span>
@@ -176,16 +176,16 @@
         <div class="col-4 p-divider__block">
           <h2 class="row--stages__title">Model</h2>
           <p>With Juju, relationships between linked charms are formed automatically.</p>
-          <p class="align-center"><img src="/static/img/home/model-canvas.png" alt="" srcset="/static/img/home/model-canvas-2x.png 2x" /></p>
+          <p class="align-center"><img src="{{ url_for('static', filename='img/home/model-canvas.png') }}" alt="" srcset="{{ url_for('static', filename='img/home/model-canvas-2x.png') }} 2x" /></p>
           <p>Easily configure charms via the inspector.</p>
-          <p class="align-center"><img src="/static/img/home/model-config.png" alt="" srcset="/static/img/home/model-config-2x.png 2x" /></p>
+          <p class="align-center"><img src="{{ url_for('static', filename='img/home/model-config.png') }}" alt="" srcset="{{ url_for('static', filename='img/home/model-config-2x.png') }} 2x" /></p>
         </div>
         <div class="col-4 p-divider__block">
           <h2 class="row--stages__title">Deploy</h2>
           <p>Deploy and redeploy to all major public clouds or locally on your own hardware.</p>
-          <p class="align-center"><img src="/static/img/home/deploy-logos.png" alt="" srcset="/static/img/home/deploy-logos-2x.png 2x" /></p>
+          <p class="align-center"><img src="{{ url_for('static', filename='img/home/deploy-logos.png') }}" alt="" srcset="{{ url_for('static', filename='img/home/deploy-logos-2x.png') }} 2x" /></p>
           <p>Monitor, maintain and scale on demand.</p>
-          <p class="align-center"><img src="/static/img/home/deploy-new-units.png" alt="" srcset="/static/img/home/deploy-new-units-2x.png 2x" /></p>
+          <p class="align-center"><img src="{{ url_for('static', filename='img/home/deploy-new-units.png') }}" alt="" srcset="{{ url_for('static', filename='img/home/deploy-new-units-2x.png') }} 2x" /></p>
         </div>
       </div>
       <div class="row">
@@ -203,10 +203,10 @@
     </div>
     <div class="row">
       <div class="col-6 u-align-text--center">
-        <img src="/static/img/home/why-use-juju-diagram-left.svg" />
+        <img src="{{ url_for('static', filename='img/home/why-use-juju-diagram-left.svg') }}" />
       </div>
       <div class="col-6 u-align-text--center">
-        <img src="/static/img/home/why-use-juju-diagram-right.svg" />
+        <img src="{{ url_for('static', filename='img/home/why-use-juju-diagram-right.svg') }}" />
       </div>
     </div>
     <div class="row">
@@ -238,7 +238,7 @@
       <div>
         <div class="p-heading-icon">
           <div class="p-heading-icon__header">
-            <img class="p-heading-icon__img" src="/static/img/logos/github-logo.svg" alt="Github logo">
+            <img class="p-heading-icon__img" src="{{ url_for('static', filename='img/logos/github-logo.svg') }}" alt="Github logo">
             <h3 class="p-heading-icon__title">
               <a href="https://github.com/juju">
                 Juju on Github
@@ -266,7 +266,7 @@
   <div class="p-strip is-shallow">
     <div class="row">
       <div class="col-2">
-        <img src="/static/img/logos/spicule.png" alt="Spicule logo" />
+        <img src="{{ url_for('static', filename='img/logos/spicule.png') }}" alt="Spicule logo" />
       </div>
       <div class="col-10">
         <blockquote class="p-pull-quote">
@@ -281,7 +281,7 @@
   <div class="p-strip is-shallow">
     <div class="row">
       <div class="col-2">
-        <img src="/static/img/logos/ghent-logo.svg" alt="Ghent logo" />
+        <img src="{{ url_for('static', filename='img/logos/ghent-logo.svg') }}" alt="Ghent logo" />
       </div>
       <div class="col-10">
         <blockquote class="p-pull-quote">
@@ -298,7 +298,7 @@
   <div class="p-strip is-shallow is-bordered">
     <div class="row">
       <div class="col-2">
-        <img src="/static/img/logos/epam.svg" alt="Epam logo" />
+        <img src="{{ url_for('static', filename='img/logos/epam.svg') }}" alt="Epam logo" />
       </div>
       <div class="col-10">
         <blockquote class="p-pull-quote">
@@ -319,37 +319,37 @@
       <h2 class="p-muted-heading u-align-text--center">Users and contributors</h2>
       <ul class="p-inline-images homepage-logos">
         <li class="p-inline-images__item">
-          <img alt="ubuntu" src="https://assets.ubuntu.com/v1/9c911225-2018-logo-ubuntu.svg">
+          <img alt="ubuntu" src="https://assets.ubuntu.com/v1/9c911225-2018-logo-ubuntu.svg') }}">
         </li>
         <li class="p-inline-images__item">
-          <img alt="Deutsche Telekom" src="https://assets.ubuntu.com/v1/d199354d-2018-logo-deutsche-telekom.svg">
+          <img alt="Deutsche Telekom" src="https://assets.ubuntu.com/v1/d199354d-2018-logo-deutsche-telekom.svg') }}">
         </li>
         <li class="p-inline-images__item">
-          <img alt="IBM" src="https://assets.ubuntu.com/v1/9b1fe97b-2018-logo-IBM.svg">
+          <img alt="IBM" src="https://assets.ubuntu.com/v1/9b1fe97b-2018-logo-IBM.svg') }}">
         </li>
         <li class="p-inline-images__item">
-          <img alt="Intel" src="https://assets.ubuntu.com/v1/94ea495b-2018-logo-Intel.svg">
+          <img alt="Intel" src="https://assets.ubuntu.com/v1/94ea495b-2018-logo-Intel.svg') }}">
         </li>
         <li class="p-inline-images__item">
-          <img alt="Microsoft" src="https://assets.ubuntu.com/v1/6d027c12-2018-logo-Microsoft-Azure.svg">
+          <img alt="Microsoft" src="https://assets.ubuntu.com/v1/6d027c12-2018-logo-Microsoft-Azure.svg') }}">
         </li>
         <li class="p-inline-images__item">
-          <img alt="Cisco" src="https://assets.ubuntu.com/v1/8a4d26de-2018-logo-cisco.svg">
+          <img alt="Cisco" src="https://assets.ubuntu.com/v1/8a4d26de-2018-logo-cisco.svg') }}">
         </li>
         <li class="p-inline-images__item">
-          <img alt="China Telecom" src="https://assets.ubuntu.com/v1/34a1f30e-2018-logo-china-telecom.svg">
+          <img alt="China Telecom" src="https://assets.ubuntu.com/v1/34a1f30e-2018-logo-china-telecom.svg') }}">
         </li>
         <li class="p-inline-images__item">
-          <img alt="NEC" src="https://assets.ubuntu.com/v1/df2082a4-2018-logo-NEC.svg">
+          <img alt="NEC" src="https://assets.ubuntu.com/v1/df2082a4-2018-logo-NEC.svg') }}">
         </li>
         <li class="p-inline-images__item">
-          <img alt="HP" src="https://assets.ubuntu.com/v1/7ccf63c3-2018-logo-hp.svg">
+          <img alt="HP" src="https://assets.ubuntu.com/v1/7ccf63c3-2018-logo-hp.svg') }}">
         </li>
         <li class="p-inline-images__item">
-          <img alt="Yahoo Japan" src="https://assets.ubuntu.com/v1/cf17b55e-2018-logo-yahoo-japan.svg">
+          <img alt="Yahoo Japan" src="https://assets.ubuntu.com/v1/cf17b55e-2018-logo-yahoo-japan.svg') }}">
         </li>
         <li class="p-inline-images__item">
-          <img alt="Verizon" src="https://assets.ubuntu.com/v1/198d7b96-2018-logo-verizon.svg">
+          <img alt="Verizon" src="https://assets.ubuntu.com/v1/198d7b96-2018-logo-verizon.svg') }}">
         </li>
       </ul>
     </div>

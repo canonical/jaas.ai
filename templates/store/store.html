@@ -7,36 +7,36 @@
 <div class="p-strip u-no-padding--bottom">
   <div class="row">
     <div class="u-equal-height">
-      
+
         <div class="col-4 p-card store-promo--k8">
-      
+
         <div class="u-align--center">
           <img width="150" src="https://assets.ubuntu.com/v1/dba11aee-kubernetes.svg" alt="Kubernetes logo">
           <h2>Kubernetes</h2>
           <a href="/kubernetes" class="p-button--neutral">Find out more</a>
         </div>
       </div>
-      
+
         <div class="col-4 p-card store-promo--hadoop">
-      
+
         <div class="u-align--center">
           <img width="195" src="https://assets.ubuntu.com/v1/883e4977-hadoop-elephant.png" alt="Hadoop logo">
           <h2>Big data</h2>
           <a href="/big-data" class="p-button--neutral">Find out more</a>
         </div>
       </div>
-      
-        
+
+
         <div class="col-4 has-strap">
           <div class="expert__strap">
             Juju expert partners
           </div>
-        
+
           <div class="p-card-heading" style="padding:0.5rem 0 0.5rem">
             <p>Spicule&rsquo;s <a class="p-link--strong" href="https://jujucharms.com/u/spiculecharms/saiku-drill/">Saiku solution</a> can solve your Big Data challenge.</p>
           </div>
           <div class="p-card u-align--center u-vertically-center" style="min-height:96px">
-            <img src="/static/img/logos/spicule.png" alt="Spicule logo" />
+            <img src="{{ url_for('static', filename='img/logos/spicule.png') }}" alt="Spicule logo" width="160" style="padding:1rem 0" />
           </div>
           <footer class="p-card__footer">
             <hr class="u-sv1">
@@ -44,9 +44,9 @@
               Business Intelligence now
             </a>
           </footer>
-         
+
          </div>
-       
+
 
     </div>
   </div>
@@ -57,7 +57,7 @@
     <div class="u-equal-height">
       <div class="col-6 p-card">
       <div class="col-2 u-align--center">
-        <img src="/static/img/store/charm-icon.png" alt="Illustration of a Charm pictogram">
+        <img src="{{ url_for('static', filename='img/store/charm-icon.png') }}" alt="Illustration of a Charm pictogram">
       </div>
       <div class="col-4 u-no-margin--left">
         <p>Charms are sets of scripts that simplify the deployment and management tasks of a service. They are regularly reviewed and updated.</p>
@@ -66,7 +66,7 @@
     </div>
       <div class="col-6 p-card">
       <div class="col-2 u-align--center">
-        <img src="/static/img/store/bundle-icon.png" alt="Illustration of a Bundle pictogram">
+        <img src="{{ url_for('static', filename='img/store/bundle-icon.png') }}" alt="Illustration of a Bundle pictogram">
       </div>
       <div class="col-4 u-no-margin--left">
         <p>Bundles are collections of charms that link applications together, so you can deploy whole chunks of infrastructure in one go.</p>
@@ -106,7 +106,7 @@
       <div class="p-card pictogram-bg">
         <div class="u-equal-height entity-cards">
           <div class="col-6 u-align--center u-vertically-center">
-            <img src="/static/img/store/nagios-promo.png" alt="Nagios promo">
+            <img src="{{ url_for('static', filename='img/store/nagios-promo.png') }}" alt="Nagios promo">
           </div>
           <div class="col-3">
             <h4>Nagios</h4>
@@ -234,7 +234,7 @@
       <p><a href="/containers" class="p-button--neutral">View bundles</a></p>
     </div>
     <div class="col-6">
-        <img src="/static/img/store/kubernetes-promo.png" alt="Kubernetes promo pictogram">
+        <img src="{{ url_for('static', filename='img/store/kubernetes-promo.png') }}" alt="Kubernetes promo pictogram">
     </div>
   </div>
 </div>
@@ -322,7 +322,7 @@
       <h3>Databases</h3>
       <div class="p-strip--dark u-clearfix" style="background:#2089B5;padding:1rem">
         <div class="col-6 u-align--center">
-          <img src="/static/img/store/mysql-promo.png" alt="">
+          <img src="{{ url_for('static', filename='img/store/mysql-promo.png') }}" alt="">
         </div>
         <div class="col-6">
           <h4>MySQL</h4>
@@ -454,7 +454,7 @@
       </div>
     </div>
     <div class="col-6 u-hide--small">
-      <img src="/static/img/home/write-your-own.png" alt="Pictogram of world map">
+      <img src="{{ url_for('static', filename='img/home/write-your-own.png') }}" alt="Pictogram of world map">
     </div>
   </div>
 </div>
