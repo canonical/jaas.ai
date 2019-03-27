@@ -37,7 +37,7 @@
       <hr />
       {% if context.entity.series and context.entity.series|length > 1 %}
         <ul class="p-inline-list">
-          <li class="p-inline-list__item"><strong>series:</strong></li>
+          <li class="p-inline-list__item"><strong>Series:</strong></li>
           {% for s in context.entity.series %}
             <li class="p-inline-list__item"><a href="?series={{ s }}">{{ s }}&nbsp;&rsaquo;</a></li>
           {% endfor %}
