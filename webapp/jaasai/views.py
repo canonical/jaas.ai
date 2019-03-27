@@ -20,6 +20,7 @@ def how_it_works():
 def getting_started():
     return render_template('jaasai/jaas.html')
 
+
 @jaasai.route('/jaas')
 def jaas():
     return render_template('jaasai/jaas.html')
