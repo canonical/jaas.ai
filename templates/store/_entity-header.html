@@ -63,8 +63,7 @@
         <button class="p-code-snippet__action">Copy to clipboard</button>
       </div>
       <p>
-        {% set new_model_url = "/new/?deploy-target=" + context.entity.id %}
-        <a href="https://jujucharms.com{{ new_model_url }}"
+        <a href="https://jujucharms.com/new/?deploy-target={{ context.entity.id }}"
           class="p-button--positive row" rel="nofollow">
           Add to new model
         </a>
