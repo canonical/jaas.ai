@@ -60,9 +60,11 @@ def experts_spicule():
 def experts_tengu():
     return render_template('jaasai/experts/tengu.html')
 
+
 @jaasai.route('/experts/thanks')
 def experts_thanks():
     return render_template('jaasai/experts/thanks.html')
+
 
 @jaasai.route('/community')
 def community():
