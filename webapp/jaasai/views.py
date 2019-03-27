@@ -1,4 +1,5 @@
 from flask import Blueprint, render_template
+import os
 
 jaasai = Blueprint(
   'jaasai', __name__,
@@ -48,12 +49,21 @@ def experts():
 
 @jaasai.route('/experts/spicule')
 def experts_spicule():
-    return render_template('jaasai/experts/spicule.html')
+    EXPERTS_RETURN = os.environ.get("EXPERTS_RETURN", default="https://jaas.ai")
+    return render_template(
+      'jaasai/experts/spicule.html',
+      expertThanksPage=EXPERTS_RETURN
+    )
 
 
 @jaasai.route('/experts/tengu')
 def experts_tengu():
     return render_template('jaasai/experts/tengu.html')
+
+
+@jaasai.route('/experts/thanks')
+def experts_thanks():
+    return render_template('jaasai/experts/thanks.html')
 
 
 @jaasai.route('/community')

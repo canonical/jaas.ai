@@ -99,6 +99,41 @@
 
     </div>
     <div class="col-4">
+      {% if context.bundle.owner == "spiculecharms" or context.bundle.owner == "yellow" %}
+        <div class="p-card expert-card has-strap expert-card--contact-shown">
+          <div class="expert__strap">
+            Juju expert partners
+          </div>
+          <div class="expert__card-logo">
+            <img src="/static/img/logos/spicule.png" alt=" logo">
+          </div>
+          <div class="expert-card__initial">
+            <ul class="p-list">
+              <li class="p-list__item is-ticked">
+                Machine learning
+              </li>
+              <li class="p-list__item is-ticked">
+                Data service deployments
+              </li>
+              <li class="p-list__item is-ticked">
+                Container orchestration
+              </li>
+            </ul>
+            <button class="p-button--positive"
+              onclick="document.querySelector('.expert-card').classList.toggle('expert-card--contact-shown')">Show contact
+              details…</button>
+          </div>
+          <div class="expert-card__contact-info">
+            <p>Please let us know if you have a question, or would like further information about Spicule.</p>
+            <footer class="p-card__footer">
+              <button data-js="leadGenerationModalTrigger" class="p-button--positive u-show">
+                Get in touch
+              </button>
+            </footer>
+          </div>
+        </div>
+      {% endif %}
+
       {% if context.bundle.bundle_data.Meta['common-info'] %}
         <div class="p-card">
           <h4 class="p-card__title">Contribute</h4>
@@ -187,5 +222,9 @@
   window.app.accordion('.p-accordion__list');
   window.app.treeifyFileList();
 </script>
+
+{% if context.bundle.owner == "spiculecharms" or context.bundle.owner == "yellow" %}
+  {% include "shared/_spicule_lead-gen-form.html" %}
+{% endif %}
 
 {% endblock %}
