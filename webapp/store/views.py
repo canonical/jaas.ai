@@ -92,12 +92,6 @@ def user_entity(username, entity_name):
 
     if entity:
         if entity["is_charm"]:
-            # entity["display_name"] = ""
-            # entity["revision_number"] = ""
-            # entity["user"] = ""
-            # entity["latest_revision_id"] = ""
-            # entity["series"] = ""
-            # entity["channel_details"] = ""
             entity["description"] = entity["charm_data"]["Meta"]["charm-metadata"][
                 "Description"
             ]
