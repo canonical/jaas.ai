@@ -1,3 +1,7 @@
+/*
+@param { String } modalId
+The DOM id of the element you'd like to turn into a modal.
+*/
 window.app.modal = function(modalId) {
   const modal = document.querySelector(`#${modalId}`);
   const modalTrigger = document.querySelector(`[data-js=${modalId}Trigger]`);
