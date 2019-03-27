@@ -59,13 +59,13 @@
             <div class="expert__strap is-inline">
               Juju expert partners
             </div>
-            <p>Spicule's <a class="p-link--strong" href="https://jujucharms.com/u/spiculecharms/saiku-drill/">Saiku solution</a> can solve your Big Data challenge.</p>
+            <p>Spicule's <a class="p-link--strong" href="{{ url_for('jaasstore.user_entity', username='spiculecharms', charm_or_bundle_name='saiku-drill') }}">Saiku solution</a> can solve your Big Data challenge.</p>
             <div class="p-card card-wrap u-align--center u-vertically-center">
               <a href="{{ url_for('jaasai.experts_spicule') }}">
                 <img style="padding:1rem 0" src="{{ url_for('static', filename='img/logos/spicule.png') }}" alt="Spicule logo" width="160" />
               </a>
             </div>
-            <a href="https://jujucharms.com/u/spiculecharms/saiku-drill/" class="p-button--positive">
+            <a href="{{ url_for('jaasstore.user_entity', username='spiculecharms', charm_or_bundle_name='saiku-drill') }}" class="p-button--positive">
               Business intelligence now
             </a>
           </div>
@@ -156,7 +156,7 @@
               </a>
             </li>
             <li class="p-list__item">
-              <a href="https://jujucharms.com/u/prometheus-charmers/prometheus/">
+              <a href="{{ url_for('jaasstore.user_entity', username='prometheus-charmers', charm_or_bundle_name='prometheus') }}">
                 <img width="52" src="{{ url_for('static', filename='img/home/prometheus-circle.svg') }}" alt="Prometheus" />
                 <span class="icon-list__title">
                   Prometheus&nbsp;&rsaquo;

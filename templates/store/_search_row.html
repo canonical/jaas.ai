@@ -88,7 +88,7 @@
 </td>
 <td class="u-align--center u-vertically-center">
   {% if entity.owner %}
-    <a class="p-link--soft" href="/u/{{ entity.owner }}">{{ entity.owner }}</a>
+    <a class="p-link--soft" href="{{ url_for('jaasstore.user_details', username=entity.owner) }}">{{ entity.owner }}</a>
   {% else %}
     No owner
   {% endif %}
