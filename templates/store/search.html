@@ -40,16 +40,14 @@
     {% endif %}
   {%- endmacro %}
 
-  {% if context.query %}
-    <div class="p-strip">
-      <div class="row">
-        <div class="col-12 search-results__overview">
-          Your search {% if context.query %}for <strong>&lsquo;{{ context.query }}&rsquo;</strong>{% endif %} returned
-          {{ context.results_count }} result{{ context.results_count|pluralize }}.
-        </div>
+  <div class="p-strip">
+    <div class="row">
+      <div class="col-12 search-results__overview">
+        Your search {% if context.query %}for <strong>&lsquo;{{ context.query }}&rsquo;</strong>{% endif %} returned
+        {{ context.results_count }} result{{ context.results_count|pluralize }}.
       </div>
     </div>
-  {% endif %}
+  </div>
   <div class="row filter-row">
      <div class="col-4">
        <ul class="p-inline-list entitity-search-selector">

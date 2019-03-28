@@ -111,6 +111,7 @@ def _parse_bundle_data(bundle_data, include_files=False):
     ref = references.Reference.from_string(bundle_id)
     name = ref.name
     meta = bundle_data['Meta']
+    bundle_metadata = meta['bundle-metadata']
     revision_list = meta.get('revision-info', {}).get('Revisions')
     latest_revision = revision_list and {
         'id': int(revision_list[0].split('-')[-1]),
@@ -132,8 +133,9 @@ def _parse_bundle_data(bundle_data, include_files=False):
         'promulgated': meta.get('promulgated', {}).get('Promulgated'),
         'revision_number': ref.revision,
         'services': _parseBundleServices(
-            meta['bundle-metadata']['applications']
+            bundle_metadata['applications']
         ),
+        'tags': bundle_metadata.get('Tags'),
         'units': meta.get('bundle-unit-count', {}).get('Count', ''),
         'url': ref.jujucharms_id()
     }
@@ -161,9 +163,10 @@ def _parse_charm_data(charm_data, include_files=False):
     charm_id = charm_data['Id']
     ref = references.Reference.from_string(charm_id)
     meta = charm_data.get('Meta', None)
+    charm_metadata = meta['charm-metadata']
     bzr_url, revisions = _extract_from_extrainfo(meta, ref)
     bugs_url, homepage = _extract_from_commoninfo(meta)
-    name = meta['charm-metadata']['Name']
+    name = charm_metadata['Name']
     revision_list = meta.get('revision-info', {}).get('Revisions')
     latest_revision = revision_list and {
         'id': int(revision_list[0].split('-')[-1]),
@@ -187,14 +190,16 @@ def _parse_charm_data(charm_data, include_files=False):
         'options': meta.get('charm-config', {}).get('Options'),
         'owner': meta.get('owner', {}).get('User'),
         'promulgated': meta.get('promulgated', {}).get('Promulgated'),
-        'provides': meta['charm-metadata'].get('Provides'),
-        'requires': meta['charm-metadata'].get('Requires'),
+        'provides': charm_metadata.get('Provides'),
+        'requires': charm_metadata.get('Requires'),
         'resources': _extract_resources(ref, meta.get('resources', {})),
         'revision_list': revision_list,
         'revision_number': ref.revision,
         'revisions': revisions,
         'series': meta.get('supported-series', {}).get('SupportedSeries'),
-        'tags': meta.get('Tags') or meta['charm-metadata'].get('Categories'),
+        # Some charms do not have tags, so fall back to categories if they
+        # exist (mostly on older charms).
+        'tags': charm_metadata.get('Tags') or charm_metadata.get('Categories'),
         'url': ref.jujucharms_id(),
         'is_charm': True
     }
