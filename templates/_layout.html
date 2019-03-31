@@ -75,8 +75,8 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       </ul>
       <div class="p-search-form" data-js="search-form">
         <form class="p-search-box" action="/search/">
-          <input type="search" class="p-search-box__input" name="q" placeholder="Search the store" required="" data-js="form-text">
-          <button type="reset" class="p-search-box__reset" alt="reset"><i class="p-icon--close"></i></button>
+          <input type="search" class="p-search-box__input" name="q" placeholder="Search the store" required="" data-js="form-text" value="{{ context.query }}">
+          <button type="reset" class="p-search-box__reset" alt="reset" data-js="search-reset"><i class="p-icon--close"></i></button>
           <button type="submit" class="p-search-box__button" alt="search"><i class="p-icon--search"></i></button>
         </form>
       </div>

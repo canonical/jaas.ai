@@ -5,7 +5,8 @@ const searchPanel = () => {
   const form = document.querySelector('[data-js="search-form"]'),
     input = document.querySelector('[data-js="form-text"]'),
     header = document.querySelector('[data-js="navigation"]'),
-    searchClose = document.querySelector('[data-js="search-close"]');
+    searchClose = document.querySelector('[data-js="search-close"]'),
+    searchReset = document.querySelector('[data-js="search-reset"]');
 
   input.addEventListener('focus', e => {
     header.classList.add('search-active');
@@ -15,25 +16,17 @@ const searchPanel = () => {
     searchClose.addEventListener('click', e => {
       e.preventDefault();
       header.classList.remove('search-active');
+    });
+  }
+
+  if (searchReset !== null) {
+    searchReset.addEventListener('click', e => {
+      e.preventDefault();
       input.value = '';
     });
   }
 
-  window.addEventListener('keydown', e => {
-    if (e.keyCode === 27) {
-      input.blur();
-    }
-  });
-
-  form.addEventListener('submit', e => {
-    e.preventDefault();
-    const text = document.querySelector('input[name="text"]').value;
-    const re = new RegExp(' ', 'g');
-    const url = '/q/' + text.replace(re, '/');
-    window.location.pathname = url;
-  });
-
-  // Close search panel is anywhere outside header and search panel area is clicked
+  // Close search panel if anywhere outside header and search panel area is clicked.
   const html = document.querySelector('html');
   html.addEventListener('click', event => {
     if (!header.contains(event.target)) {
