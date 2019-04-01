@@ -23,6 +23,7 @@ $mid-grey: $color-mid-light;
 
 // Custom snowflake code for bespoke components
 @import 'custom/row-cli';
+@import 'custom/search-panel';
 @import 'custom/search-results';
 @import 'custom/store-promos';
 @import 'custom/minimal-juju-cards';
@@ -32,6 +33,7 @@ $mid-grey: $color-mid-light;
 
 // temp header styling
 $color-nav-border: #33535d;
+$white: #fff;
 
 .p-navigation {
   border-bottom: 1px solid $color-nav-border;
@@ -46,6 +48,17 @@ $color-nav-border: #33535d;
 
   &__logo &__link {
     height: 32px;
+  }
+
+  .p-search-box {
+    margin-left: 0.5rem;
+    margin-right: 0.5rem;
+  }
+
+  &.search-active .p-search-form {
+    background: $white;
+    position: relative;
+    z-index: 99999;
   }
 
   @media (min-width: $breakpoint-medium) {

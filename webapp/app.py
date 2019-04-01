@@ -46,6 +46,12 @@ def create_app(testing=False):
             return 's'
         return ''
 
+    @app.context_processor
+    def inject_external_urls():
+        return dict(external_urls={
+            'charmstore': 'https://api.jujucharms.com/charmstore/v5/'
+        })
+
     return app
 
 
