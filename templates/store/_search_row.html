@@ -5,7 +5,7 @@
   {% if entity.tags %}
     <div class="entity-tags">
       {% for tag in entity.tags %}
-        <a class="p-link--soft" href="{{ url_for('jaasstore.search') }}?tags={{ tag }}">{{ tag }}{{ "," if not loop.last }}</a>
+        <a class="p-link--soft" href="{{ url_for('jaasstore.search', tags=tag) }}">{{ tag }}{{ "," if not loop.last }}</a>
       {% endfor %}
     </div>
   {% endif %}
