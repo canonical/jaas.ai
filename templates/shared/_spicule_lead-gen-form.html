@@ -47,8 +47,8 @@
           </li>
           <li class="mktFormReq mktField" id="comments">
             <label for="Comments_from_lead__c" class="mktoLabel ">
-              {% if context and context.bundle.display_name %}
-                How can we help with <strong>{{ context.bundle.display_name }}</strong>?
+              {% if context and context.entity.display_name %}
+                How can we help with <strong>{{ context.entity.display_name }}</strong>?
               {% else %}
                 How can we help?
               {% endif %}

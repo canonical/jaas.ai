@@ -26,7 +26,7 @@
 
     </div>
     <div class="col-4">
-      {% if context.bundle.owner == "spiculecharms" or context.bundle.owner == "yellow" %}
+      {% if context.entity.owner == "spiculecharms" or context.entity.owner == "yellow" %}
         <div class="p-card expert-card has-strap expert-card--contact-shown">
           <div class="expert__strap">
             Juju expert partners
@@ -61,7 +61,7 @@
         </div>
       {% endif %}
 
-      {% if context.bundle.bundle_data.Meta['common-info'] %}
+      {% if context.entity.bundle_data.Meta['common-info'] %}
         <div class="p-card">
           <h4 class="p-card__title">Contribute</h4>
           {% if context.entity.bundle_data.Meta['common-info']['homepage'] %}
@@ -150,7 +150,7 @@
   window.app.treeifyFileList();
 </script>
 
-{% if context.bundle.owner == "spiculecharms" or context.bundle.owner == "yellow" %}
+{% if context.entity.owner == "spiculecharms" or context.entity.owner == "yellow" %}
   {% include "shared/_spicule_lead-gen-form.html" %}
 {% endif %}
 
