@@ -31,6 +31,7 @@ $mid-grey: $color-mid-light;
 
 // temp header styling
 $color-nav-border: #33535d;
+$white: #fff;
 
 .p-navigation {
   border-bottom: 1px solid $color-nav-border;
@@ -53,7 +54,7 @@ $color-nav-border: #33535d;
   }
 
   &.search-active .p-search-form {
-    background: #fff;
+    background: $white;
     position: relative;
     z-index: 99999;
   }

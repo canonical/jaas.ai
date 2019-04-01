@@ -75,7 +75,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       </ul>
       <div class="p-search-form" data-js="search-form">
         <form class="p-search-box" action="/search/">
-          <input type="search" class="p-search-box__input" name="q" placeholder="Search the store" required="" data-js="form-text" value="{{ context.query }}">
+          <input type="search" class="p-search-box__input" name="q" placeholder="Search the store" required="" data-js="form-text" value="{{ context and context.query }}">
           <button type="reset" class="p-search-box__reset" alt="reset" data-js="search-reset"><i class="p-icon--close"></i></button>
           <button type="submit" class="p-search-box__button" alt="search"><i class="p-icon--search"></i></button>
         </form>
@@ -89,43 +89,43 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
             <div class="p-search-panel__inner">
               <div class="p-search-panel__main">
                 <a href="{{ url_for('jaasstore.details', charm_or_bundle_name='canonical-kubernetes') }}" class="p-search-panel__featured-link">
-                  <img src="{{ external_urls.api }}/~containers/kubernetes-master/icon.svg" alt="" class="search-panel__featured-image" />
+                  <img src="{{ external_urls.charmstore }}~containers/kubernetes-master/icon.svg" alt="" class="search-panel__featured-image" />
                   <p class="p-search-panel__featured-name">kubernetes</p>
                 </a>
                 <a href="{{ url_for('jaasstore.details', charm_or_bundle_name='elasticsearch') }}" class="p-search-panel__featured-link">
-                  <img src="{{ external_urls.api }}/elasticsearch/icon.svg" alt="" class="search-panel__featured-image" />
+                  <img src="{{ external_urls.charmstore }}elasticsearch/icon.svg" alt="" class="search-panel__featured-image" />
                   <p class="p-search-panel__featured-name">elasticsearch</p>
                 </a>
                 <a href="{{ url_for('jaasstore.details', charm_or_bundle_name='kafka') }}" class="p-search-panel__featured-link">
-                  <img src="{{ external_urls.api }}/kafka/icon.svg" alt="" class="search-panel__featured-image" />
+                  <img src="{{ external_urls.charmstore }}kafka/icon.svg" alt="" class="search-panel__featured-image" />
                   <p class="p-search-panel__featured-name">kafka</p>
                 </a>
                 <a href="{{ url_for('jaasstore.details', charm_or_bundle_name='zookeeper') }}" class="p-search-panel__featured-link">
-                  <img src="{{ external_urls.api }}/zookeeper/icon.svg" alt="" class="search-panel__featured-image" />
+                  <img src="{{ external_urls.charmstore }}zookeeper/icon.svg" alt="" class="search-panel__featured-image" />
                   <p class="p-search-panel__featured-name">zookeeper</p>
                 </a>
                 <a href="{{ url_for('jaasstore.details', charm_or_bundle_name='ceph') }}" class="p-search-panel__featured-link">
-                  <img src="{{ external_urls.api }}/ceph/icon.svg" alt="" class="search-panel__featured-image" />
+                  <img src="{{ external_urls.charmstore }}ceph/icon.svg" alt="" class="search-panel__featured-image" />
                   <p class="p-search-panel__featured-name">ceph</p>
                 </a>
                 <a href="{{ url_for('jaasstore.details', charm_or_bundle_name='cassandra') }}" class="p-search-panel__featured-link">
-                  <img src="{{ external_urls.api }}/cassandra/icon.svg" alt="" class="search-panel__featured-image" />
+                  <img src="{{ external_urls.charmstore }}cassandra/icon.svg" alt="" class="search-panel__featured-image" />
                   <p class="p-search-panel__featured-name">cassandra</p>
                 </a>
                 <a href="{{ url_for('jaasstore.details', charm_or_bundle_name='percona-cluster') }}" class="p-search-panel__featured-link">
-                  <img src="{{ external_urls.api }}/percona-cluster/icon.svg" alt="" class="search-panel__featured-image" />
+                  <img src="{{ external_urls.charmstore }}percona-cluster/icon.svg" alt="" class="search-panel__featured-image" />
                   <p class="p-search-panel__featured-name">percona-cluster</p>
                 </a>
                 <a href="{{ url_for('jaasstore.details', charm_or_bundle_name='glance') }}" class="p-search-panel__featured-link">
-                  <img src="{{ external_urls.api }}/glance/icon.svg" alt="" class="search-panel__featured-image" />
+                  <img src="{{ external_urls.charmstore }}glance/icon.svg" alt="" class="search-panel__featured-image" />
                   <p class="p-search-panel__featured-name">glance</p>
                 </a>
                 <a href="{{ url_for('jaasstore.details', charm_or_bundle_name='mariadb') }}" class="p-search-panel__featured-link">
-                  <img src="{{ external_urls.api }}/mariadb/icon.svg" alt="" class="search-panel__featured-image" />
+                  <img src="{{ external_urls.charmstore }}mariadb/icon.svg" alt="" class="search-panel__featured-image" />
                   <p class="p-search-panel__featured-name">mariadb</p>
                 </a>
                 <a href="{{ url_for('jaasstore.details', charm_or_bundle_name='spark') }}" class="p-search-panel__featured-link">
-                  <img src="{{ external_urls.api }}/spark/icon.svg" alt="" class="search-panel__featured-image" />
+                  <img src="{{ external_urls.charmstore }}spark/icon.svg" alt="" class="search-panel__featured-image" />
                   <p class="p-search-panel__featured-name">spark</p>
                 </a>
               </div>
