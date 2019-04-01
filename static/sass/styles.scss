@@ -4,6 +4,7 @@ $asset-path: '/static/';
 
 // Override local variables
 $color-navigation-background: #333;
+$color-kubernetes: #2e69ea;
 
 // Set the mobile nav breakpoint to handle the large number of nav items.
 @import 'vanilla-framework/scss/settings_breakpoints';

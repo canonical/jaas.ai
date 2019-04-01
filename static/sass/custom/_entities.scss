@@ -15,3 +15,51 @@
     @extend %vf-heading-6;
   }
 }
+
+.entity {
+  &__title-wrap {
+    align-items: center;
+    display: flex;
+    margin: 0.5rem 0 1rem;
+  }
+
+  &__meta {
+    margin-bottom: 1rem;
+  }
+
+  &__title {
+    text-transform: capitalize;
+  }
+
+  &__version {
+    color: $color-mid-dark;
+    top: 0 !important;
+  }
+
+  &__channel {
+    span {
+      text-transform: capitalize;
+    }
+  }
+
+  &__supported-release {
+    display: inline-block;
+    border: 1px solid $color-mid-dark;
+    border-radius: 4px;
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: $color-mid-dark;
+    padding: 0 0.5rem;
+    margin-right: 0.25rem;
+    text-transform: capitalize;
+
+    &.kubernetes {
+      border-color: $color-kubernetes;
+      color: $color-kubernetes;
+    }
+
+    &:first-of-type {
+      margin-left: 0.5rem;
+    }
+  }
+}
