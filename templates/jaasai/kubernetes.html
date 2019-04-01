@@ -68,7 +68,7 @@
       <div class="col-4 p-divider__block">
         <div class="p-heading-icon">
           <div class="p-heading-icon__header">
-            <img class="p-heading-icon__img" src="{{ external_urls.api }}~containers/kubernetes-master/icon.svg">
+            <img class="p-heading-icon__img" src="{{ external_urls.charmstore }}~containers/kubernetes-master/icon.svg">
             <h3 class="p-heading-icon__title">Latest upstream Kubernetes</h3>
           </div>
         </div>
@@ -83,7 +83,7 @@
       <div class="col-4 p-divider__block">
         <div class="p-heading-icon">
           <div class="p-heading-icon__header">
-            <img class="p-heading-icon__img" src="{{ external_urls.api }}~containers/etcd/icon.svg">
+            <img class="p-heading-icon__img" src="{{ external_urls.charmstore }}~containers/etcd/icon.svg">
             <h3 class="p-heading-icon__title">etcd</h3>
           </div>
         </div>
@@ -97,7 +97,7 @@
       <div class="col-4 p-divider__block">
         <div class="p-heading-icon">
           <div class="p-heading-icon__header">
-            <img class="p-heading-icon__img" src="{{ external_urls.api }}~containers/easyrsa/icon.svg">
+            <img class="p-heading-icon__img" src="{{ external_urls.charmstore }}~containers/easyrsa/icon.svg">
             <h3 class="p-heading-icon__title">EasyRSA</h3>
           </div>
         </div>
@@ -140,7 +140,7 @@
         <div class="p-list-step__content">
           <div class="col-6">
             <div class="pictogram-bg">
-              <object type="image/svg+xml" data="{{ external_urls.api }}bundle/kubernetes-core-24/diagram.svg" height="300" class="cluster-card__image"></object>
+              <object type="image/svg+xml" data="{{ external_urls.charmstore }}bundle/kubernetes-core-24/diagram.svg" height="300" class="cluster-card__image"></object>
             </div>
             <h3><a href="{{ url_for('jaasstore.details', charm_or_bundle_name='kubernetes-core') }}">Staging cluster&nbsp;&rsaquo;</a></h3>
             <div class="row">
@@ -154,7 +154,7 @@
           </div>
           <div class="col-6">
             <div class="pictogram-bg">
-              <object type="image/svg+xml" data="{{ external_urls.api }}bundle/canonical-kubernetes-30/diagram.svg" height="300" class="cluster-card__image"></object>
+              <object type="image/svg+xml" data="{{ external_urls.charmstore }}bundle/canonical-kubernetes-30/diagram.svg" height="300" class="cluster-card__image"></object>
             </div>
             <h3><a href="{{ url_for('jaasstore.details', charm_or_bundle_name='canonical-kubernetes') }}">Production cluster&nbsp;&rsaquo;</a></h3>
             <div class="row">
@@ -222,7 +222,7 @@
               <div class="col-4 p-card">
                 <div class="p-heading-icon">
                   <div class="p-heading-icon__header">
-                    <img class="p-heading-icon__img" src="{{ external_urls.api }}trusty/elasticsearch/icon.svg">
+                    <img class="p-heading-icon__img" src="{{ external_urls.charmstore }}trusty/elasticsearch/icon.svg">
                     <h3 class="p-heading-icon__title">
                       <a href="{{ url_for('jaasstore.details', charm_or_bundle_name='elasticsearch', series_or_version='trusty', version=19) }}">
                         ElasticSearch&nbsp;&rsaquo;
