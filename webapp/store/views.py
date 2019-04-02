@@ -116,11 +116,18 @@ def user_entity(username, entity_name):
 @jaasstore.route("/<charm_or_bundle_name>/<series_or_version>")
 @jaasstore.route("/<charm_or_bundle_name>/<series_or_version>/<version>")
 def details(charm_or_bundle_name, series_or_version=None, version=None):
-    reference = references.Reference.from_jujucharms_url(request.path[1:])
-    entity = models.get_charm_or_bundle(reference)
+    reference = None
+    try:
+        reference = references.Reference.from_jujucharms_url(request.path[1:])
+    except ValueError:
+        pass
+
+    entity = None
+    if reference:
+        entity = models.get_charm_or_bundle(reference)
 
     if entity:
-        if entity["is_charm"]:
+        if entity['is_charm']:
             entity["meta_published_info"] = entity["charm_data"]["Meta"]["published"][
                 "Info"
             ]
@@ -131,11 +138,11 @@ def details(charm_or_bundle_name, series_or_version=None, version=None):
                 "store/charm-details.html", context={"entity": entity}
             )
         else:
-            entity["user"] = entity["charm_data"]["Meta"]["owner"]["User"]
+            entity["user"] = entity["bundle_data"]["Meta"]["owner"]["User"]
             entity["id"] = entity["bundle_data"]["Id"]
-            entity["series"] = entity["bundle_data"]["Meta"]["bundle-metadata"][
+            entity["series"] = entity["bundle_data"]["Meta"]["bundle-metadata"].get(
                 "series"
-            ]
+            )
             entity["meta_published_info"] = entity["bundle_data"]["Meta"]["published"][
                 "Info"
             ]

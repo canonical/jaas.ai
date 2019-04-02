@@ -7,46 +7,46 @@
 <div class="p-strip u-no-padding--bottom">
   <div class="row">
     <div class="u-equal-height">
-      
+
         <div class="col-4 p-card store-promo--k8">
-      
+
         <div class="u-align--center">
           <img width="150" src="https://assets.ubuntu.com/v1/dba11aee-kubernetes.svg" alt="Kubernetes logo">
           <h2>Kubernetes</h2>
-          <a href="/kubernetes" class="p-button--neutral">Find out more</a>
+          <a href="{{ url_for('jaasai.kubernetes') }}" class="p-button--neutral">Find out more</a>
         </div>
       </div>
-      
+
         <div class="col-4 p-card store-promo--hadoop">
-      
+
         <div class="u-align--center">
           <img width="195" src="https://assets.ubuntu.com/v1/883e4977-hadoop-elephant.png" alt="Hadoop logo">
           <h2>Big data</h2>
-          <a href="/big-data" class="p-button--neutral">Find out more</a>
+          <a href="{{ url_for('jaasai.big_data') }}" class="p-button--neutral">Find out more</a>
         </div>
       </div>
-      
-        
+
+
         <div class="col-4 has-strap">
           <div class="expert__strap">
             Juju expert partners
           </div>
-        
+
           <div class="p-card-heading" style="padding:0.5rem 0 0.5rem">
-            <p>Spicule&rsquo;s <a class="p-link--strong" href="https://jujucharms.com/u/spiculecharms/saiku-drill/">Saiku solution</a> can solve your Big Data challenge.</p>
+            <p>Spicule&rsquo;s <a class="p-link--strong" href="{{ url_for('jaasstore.user_entity', username='spiculecharms', charm_or_bundle_name='saiku-drill') }}">Saiku solution</a> can solve your Big Data challenge.</p>
           </div>
           <div class="p-card u-align--center u-vertically-center" style="min-height:96px">
-            <img src="/static/img/logos/spicule.png" alt="Spicule logo" />
+            <img src="{{ url_for('static', filename='img/logos/spicule.png') }}" alt="Spicule logo" width="160" style="padding:1rem 0" />
           </div>
           <footer class="p-card__footer">
             <hr class="u-sv1">
-            <a href="https://jujucharms.com/u/spiculecharms/saiku-drill/" class="p-button--positive">
+            <a href="{{ url_for('jaasstore.user_entity', username='spiculecharms', charm_or_bundle_name='saiku-drill') }}" class="p-button--positive">
               Business Intelligence now
             </a>
           </footer>
-         
+
          </div>
-       
+
 
     </div>
   </div>
@@ -57,20 +57,20 @@
     <div class="u-equal-height">
       <div class="col-6 p-card">
       <div class="col-2 u-align--center">
-        <img src="/static/img/store/charm-icon.png" alt="Illustration of a Charm pictogram">
+        <img src="{{ url_for('static', filename='img/store/charm-icon.png') }}" alt="Illustration of a Charm pictogram">
       </div>
       <div class="col-4 u-no-margin--left">
         <p>Charms are sets of scripts that simplify the deployment and management tasks of a service. They are regularly reviewed and updated.</p>
-        <a href="https://jujucharms.com/q/?type=charm" class="p-button--neutral">View all the charms</a>
+        <a href="{{ url_for('jaasstore.search', type='charm') }}" class="p-button--neutral">View all the charms</a>
       </div>
     </div>
       <div class="col-6 p-card">
       <div class="col-2 u-align--center">
-        <img src="/static/img/store/bundle-icon.png" alt="Illustration of a Bundle pictogram">
+        <img src="{{ url_for('static', filename='img/store/bundle-icon.png') }}" alt="Illustration of a Bundle pictogram">
       </div>
       <div class="col-4 u-no-margin--left">
         <p>Bundles are collections of charms that link applications together, so you can deploy whole chunks of infrastructure in one go.</p>
-        <a href="https://jujucharms.com/q/?type=bundle" class="p-button--neutral">View all the bundles</a>
+        <a href="{{ url_for('jaasstore.search', type='bundle') }}" class="p-button--neutral">View all the bundles</a>
       </div>
     </div>
     </div>
@@ -81,19 +81,19 @@
   <div class="row">
     <div class="col-12 prefix-1 suffix-1 u-align--center">
       <ul class="p-inline-list">
-        <li class="p-inline-list__item"><a class="p-link--strong" href="https://jujucharms.com/q/?text=databases">databases</a> (19),</li>
-        <li class="p-inline-list__item"><a class="p-link--strong" href="https://jujucharms.com/q/?text=app-servers">app-servers</a> (19),</li>
-        <li class="p-inline-list__item"><a class="p-link--strong" href="https://jujucharms.com/q/?text=file-servers">file-servers</a> (16),</li>
-        <li class="p-inline-list__item"><a class="p-link--strong" href="https://jujucharms.com/q/?text=monitoring">monitoring</a> (14),</li>
-        <li class="p-inline-list__item"><a class="p-link--strong" href="https://jujucharms.com/q/?text=ops">ops</a> (9),</li>
-        <li class="p-inline-list__item"><a class="p-link--strong" href="https://jujucharms.com/q/?text=openstack">openstack</a> (51),</li>
-        <li class="p-inline-list__item"><a class="p-link--strong" href="https://jujucharms.com/q/?text=applications">applications</a> (75),</li>
-        <li class="p-inline-list__item"><a class="p-link--strong" href="https://jujucharms.com/q/?text=misc">misc</a> (63),</li>
-        <li class="p-inline-list__item"><a class="p-link--strong" href="https://jujucharms.com/q/?text=network">network</a> (11),</li>
-        <li class="p-inline-list__item"><a class="p-link--strong" href="https://jujucharms.com/q/?text=analytics">analytics</a> (7),</li>
-        <li class="p-inline-list__item"><a class="p-link--strong" href="https://jujucharms.com/q/?text=apache">apache</a> (38),</li>
-        <li class="p-inline-list__item"><a class="p-link--strong" href="https://jujucharms.com/q/?text=security">security</a> (4),</li>
-        <li class="p-inline-list__item"><a class="p-link--strong" href="https://jujucharms.com/q/?text=storage">storage</a> (17),</li>
+        <li class="p-inline-list__item"><a class="p-link--strong" href="{{ url_for('jaasstore.search', text='databases') }}">databases</a> (19),</li>
+        <li class="p-inline-list__item"><a class="p-link--strong" href="{{ url_for('jaasstore.search', text='app-servers') }}">app-servers</a> (19),</li>
+        <li class="p-inline-list__item"><a class="p-link--strong" href="{{ url_for('jaasstore.search', text='file-servers') }}">file-servers</a> (16),</li>
+        <li class="p-inline-list__item"><a class="p-link--strong" href="{{ url_for('jaasstore.search', text='monitoring') }}">monitoring</a> (14),</li>
+        <li class="p-inline-list__item"><a class="p-link--strong" href="{{ url_for('jaasstore.search', text='ops') }}">ops</a> (9),</li>
+        <li class="p-inline-list__item"><a class="p-link--strong" href="{{ url_for('jaasstore.search', text='openstack') }}">openstack</a> (51),</li>
+        <li class="p-inline-list__item"><a class="p-link--strong" href="{{ url_for('jaasstore.search', text='applications') }}">applications</a> (75),</li>
+        <li class="p-inline-list__item"><a class="p-link--strong" href="{{ url_for('jaasstore.search', text='misc') }}">misc</a> (63),</li>
+        <li class="p-inline-list__item"><a class="p-link--strong" href="{{ url_for('jaasstore.search', text='network') }}">network</a> (11),</li>
+        <li class="p-inline-list__item"><a class="p-link--strong" href="{{ url_for('jaasstore.search', text='analytics') }}">analytics</a> (7),</li>
+        <li class="p-inline-list__item"><a class="p-link--strong" href="{{ url_for('jaasstore.search', text='apache') }}">apache</a> (38),</li>
+        <li class="p-inline-list__item"><a class="p-link--strong" href="{{ url_for('jaasstore.search', text='security') }}">security</a> (4),</li>
+        <li class="p-inline-list__item"><a class="p-link--strong" href="{{ url_for('jaasstore.search', text='storage') }}">storage</a> (17),</li>
       </ul>
     </div>
   </div>
@@ -106,13 +106,13 @@
       <div class="p-card pictogram-bg">
         <div class="u-equal-height entity-cards">
           <div class="col-6 u-align--center u-vertically-center">
-            <img src="/static/img/store/nagios-promo.png" alt="Nagios promo">
+            <img src="{{ url_for('static', filename='img/store/nagios-promo.png') }}" alt="Nagios promo">
           </div>
           <div class="col-3">
             <h4>Nagios</h4>
-            <p>By <a href="https://jujucharms.com/u/charmers">charmers</a></p>
+            <p>By <a href="{{ url_for('jaasstore.user_details', username='charmers') }}">charmers</a></p>
             <p>Nagios offers complete monitoring, management and alerting of any service from the charm store that is related to it.</p>
-            <a href="https://jujucharms.com/nagios" class="p-button--neutral">View the charm</a>
+            <a href="{{ url_for('jaasstore.details', charm_or_bundle_name='nagios') }}" class="p-button--neutral">View the charm</a>
           </div>
         </div>
       </div>
@@ -125,10 +125,10 @@
     <div class="u-equal-height entity-cards">
       <div class="col-3 p-card">
         <div class="p-media-object charm-object u-no-margin--bottom">
-          <img src="https://api.jujucharms.com/charmstore/v5/kibana/icon.svg" alt="Kibana icon" class="p-media-object__image is-round">
+          <img src="{{ external_urls.charmstore }}kibana/icon.svg" alt="Kibana icon" class="p-media-object__image is-round">
           <div class="p-media-object__details">
             <h3 class="p-media-object__title">
-              <a href="https://jujucharms.com/kibana">Kibana</a>
+              <a href="{{ url_for('jaasstore.details', charm_or_bundle_name='kibana') }}">Kibana</a>
             </h3>
             <p class="p-media-object__content">by containers</p>
           </div>
@@ -136,10 +136,10 @@
       </div>
       <div class="col-3 p-card">
         <div class="p-media-object charm-object u-no-margin--bottom">
-          <img width="60" src="https://api.jujucharms.com/charmstore/v5/logstash/icon.svg" alt="Logstash icon" class="p-media-object__image is-round">
+          <img width="60" src="{{ external_urls.charmstore }}logstash/icon.svg" alt="Logstash icon" class="p-media-object__image is-round">
           <div class="p-media-object__details">
             <h3 class="p-media-object__title">
-              <a href="https://jujucharms.com/logstash">Logstash</a>
+              <a href="{{ url_for('jaasstore.details', charm_or_bundle_name='logstash') }}">Logstash</a>
             </h3>
             <p class="p-media-object__content">by containers</p>
           </div>
@@ -147,10 +147,10 @@
       </div>
       <div class="col-3 p-card">
         <div class="p-media-object charm-object u-no-margin--bottom">
-          <img width="60" src="https://api.jujucharms.com/charmstore/v5/elasticsearch/icon.svg" alt="Elasticsearch icon" class="p-media-object__image is-round">
+          <img width="60" src="{{ external_urls.charmstore }}elasticsearch/icon.svg" alt="Elasticsearch icon" class="p-media-object__image is-round">
           <div class="p-media-object__details">
             <h3 class="p-media-object__title">
-              <a href="https://jujucharms.com/elasticsearch">Elasticsearch</a>
+              <a href="{{ url_for('jaasstore.details', charm_or_bundle_name='elasticsearch') }}">Elasticsearch</a>
             </h3>
             <p class="p-media-object__content">by onlineservices-charmers</p>
           </div>
@@ -158,10 +158,10 @@
       </div>
       <div class="col-3 p-card">
         <div class="p-media-object charm-object u-no-margin--bottom">
-          <img width="60" src="https://api.jujucharms.com/charmstore/v5/prometheus/icon.svg" alt="Prometheus icon" class="p-media-object__image is-round">
+          <img width="60" src="{{ external_urls.charmstore }}prometheus/icon.svg" alt="Prometheus icon" class="p-media-object__image is-round">
           <div class="p-media-object__details">
             <h3 class="p-media-object__title">
-              <a href="https://jujucharms.com/prometheus">Prometheus</a>
+              <a href="{{ url_for('jaasstore.details', charm_or_bundle_name='prometheus') }}">Prometheus</a>
             </h3>
             <p class="p-media-object__content">by prometheus-charmers</p>
           </div>
@@ -173,10 +173,10 @@
     <div class="u-equal-height entity-cards">
       <div class="col-3 p-card">
         <div class="p-media-object charm-object u-no-margin--bottom">
-          <img src="https://api.jujucharms.com/charmstore/v5/munin/icon.svg" alt="Munin icon" class="p-media-object__image is-round">
+          <img src="{{ external_urls.charmstore }}munin/icon.svg" alt="Munin icon" class="p-media-object__image is-round">
           <div class="p-media-object__details">
             <h3 class="p-media-object__title">
-              <a href="https://jujucharms.com/munin">Munin</a>
+              <a href="{{ url_for('jaasstore.details', charm_or_bundle_name='munin') }}">Munin</a>
             </h3>
             <p class="p-media-object__content">by charmers</p>
           </div>
@@ -184,10 +184,10 @@
       </div>
       <div class="col-3 p-card">
         <div class="p-media-object charm-object u-no-margin--bottom">
-          <img src="https://api.jujucharms.com/charmstore/v5/rsyslog/icon.svg" alt="Rsyslog icon" class="p-media-object__image is-round">
+          <img src="{{ external_urls.charmstore }}rsyslog/icon.svg" alt="Rsyslog icon" class="p-media-object__image is-round">
           <div class="p-media-object__details">
             <h3 class="p-media-object__title">
-              <a href="https://jujucharms.com/rsyslog">Rsyslog</a>
+              <a href="{{ url_for('jaasstore.details', charm_or_bundle_name='rsyslog') }}">Rsyslog</a>
             </h3>
             <p class="p-media-object__content">by charmers</p>
           </div>
@@ -195,10 +195,10 @@
       </div>
       <div class="col-3 p-card">
         <div class="p-media-object charm-object u-no-margin--bottom">
-          <img src="https://api.jujucharms.com/charmstore/v5/zabbix-server/icon.svg" alt="Zabbix Server icon" class="p-media-object__image is-round">
+          <img src="{{ external_urls.charmstore }}zabbix-server/icon.svg" alt="Zabbix Server icon" class="p-media-object__image is-round">
           <div class="p-media-object__details">
             <h3 class="p-media-object__title">
-              <a href="https://jujucharms.com/zabbix-server">Zabbix Server</a>
+              <a href="{{ url_for('jaasstore.details', charm_or_bundle_name='zabbix-server') }}">Zabbix Server</a>
             </h3>
             <p class="p-media-object__content">by charmers</p>
           </div>
@@ -206,10 +206,10 @@
       </div>
       <div class="col-3 p-card">
         <div class="p-media-object charm-object u-no-margin--bottom">
-          <img src="https://api.jujucharms.com/charmstore/v5/~ricardokirkner/sentry/icon.svg" alt="Sentry icon" class="p-media-object__image is-round">
+          <img src="{{ external_urls.charmstore }}~ricardokirkner/sentry/icon.svg" alt="Sentry icon" class="p-media-object__image is-round">
           <div class="p-media-object__details">
             <h3 class="p-media-object__title">
-              <a href="https://jujucharms.com/sentry">Sentry</a>
+              <a href="{{ url_for('jaasstore.details', charm_or_bundle_name='sentry') }}">Sentry</a>
             </h3>
             <p class="p-media-object__content">by ricardokirkner</p>
           </div>
@@ -220,7 +220,7 @@
   <div class="row">
     <div class="col-12">
       <p>
-        <a href="https://jujucharms.com/q/?text=ops">View all operations&nbsp;&rsaquo;</a>
+        <a href="{{ url_for('jaasstore.search', text='ops') }}">View all operations&nbsp;&rsaquo;</a>
       </p>
     </div>
   </div>
@@ -231,10 +231,10 @@
     <div class="col-6">
       <h2>Container management</h2>
       <p>Juju makes it easy to deploy container management solutions by provisioning, installing and configuring all the systems in the cluster.</p>
-      <p><a href="/containers" class="p-button--neutral">View bundles</a></p>
+      <p><a href="{{ url_for('jaasai.containers') }} class="p-button--neutral">View bundles</a></p>
     </div>
     <div class="col-6">
-        <img src="/static/img/store/kubernetes-promo.png" alt="Kubernetes promo pictogram">
+        <img src="{{ url_for('static', filename='img/store/kubernetes-promo.png') }}" alt="Kubernetes promo pictogram">
     </div>
   </div>
 </div>
@@ -245,13 +245,13 @@
       <h3>Analytics</h3>
       <div class="p-card pictogram-bg">
         <div class="col-6 u-align--center">
-          <object wmode="transparent" width="100%" type="image/svg+xml" data="https://api.jujucharms.com/charmstore/v5/bundle/realtime-syslog-analytics/diagram.svg"></object>
+          <object wmode="transparent" width="100%" type="image/svg+xml" data="{{ external_urls.charmstore }}bundle/realtime-syslog-analytics/diagram.svg"></object>
         </div>
         <div class="col-6">
           <h4>Realtime Syslog Analytics</h4>
-          <p>By <a href="https://jujucharms.com/u/bigdata-charmers">bigdata-charmers</a></p>
+          <p>By <a href="{{ url_for('jaasstore.user_details', username='bigdata-charmers') }}">bigdata-charmers</a></p>
           <p>This bundle provides a big data environment for analysing syslog events. Built around Apache Hadoop components, it offers a repeatable and reliable way to setup complex software across multiple substrates.</p>
-          <a href="https://jujucharms.com/realtime-syslog-analytics" class="p-button--neutral">View the bundle</a>
+          <a href="{{ url_for('jaasstore.details', charm_or_bundle_name='realtime-syslog-analytics') }}" class="p-button--neutral">View the bundle</a>
         </div>
       </div>
     </div>
@@ -263,10 +263,10 @@
     <div class="u-equal-height entity-cards">
       <div class="col-3 p-card">
         <div class="p-media-object charm-object u-no-margin--bottom">
-          <img src="https://api.jujucharms.com/charmstore/v5/hive/icon.svg" alt="Hive icon" class="p-media-object__image is-round">
+          <img src="{{ external_urls.charmstore }}hive/icon.svg" alt="Hive icon" class="p-media-object__image is-round">
           <div class="p-media-object__details">
             <h3 class="p-media-object__title">
-              <a href="https://jujucharms.com/hive">Hive</a>
+              <a href="{{ url_for('jaasstore.details', charm_or_bundle_name='hive') }}">Hive</a>
             </h3>
             <p class="p-media-object__content">by bigdata-charmers</p>
           </div>
@@ -274,10 +274,10 @@
       </div>
       <div class="col-3 p-card">
         <div class="p-media-object charm-object u-no-margin--bottom">
-          <img width="60" src="https://api.jujucharms.com/charmstore/v5/spark/icon.svg" alt="Spark icon" class="p-media-object__image is-round">
+          <img width="60" src="{{ external_urls.charmstore }}spark/icon.svg" alt="Spark icon" class="p-media-object__image is-round">
           <div class="p-media-object__details">
             <h3 class="p-media-object__title">
-              <a href="https://jujucharms.com/spark">Spark</a>
+              <a href="{{ url_for('jaasstore.details', charm_or_bundle_name='spark') }}">Spark</a>
             </h3>
             <p class="p-media-object__content">by containers</p>
           </div>
@@ -285,10 +285,10 @@
       </div>
       <div class="col-3 p-card">
         <div class="p-media-object charm-object u-no-margin--bottom">
-          <img width="60" src="https://api.jujucharms.com/charmstore/v5/zeppelin/icon.svg" alt="Zeppelin icon" class="p-media-object__image is-round">
+          <img width="60" src="{{ external_urls.charmstore }}zeppelin/icon.svg" alt="Zeppelin icon" class="p-media-object__image is-round">
           <div class="p-media-object__details">
             <h3 class="p-media-object__title">
-              <a href="https://jujucharms.com/zeppelin">Zeppelin</a>
+              <a href="{{ url_for('jaasstore.details', charm_or_bundle_name='zeppelin') }}">Zeppelin</a>
             </h3>
             <p class="p-media-object__content">by bigdata-charmers</p>
           </div>
@@ -296,10 +296,10 @@
       </div>
       <div class="col-3 p-card">
         <div class="p-media-object charm-object u-no-margin--bottom">
-          <img width="60" src="https://api.jujucharms.com/charmstore/v5/elasticsearch/icon.svg" alt="Elasticsearch cluster icon" class="p-media-object__image is-round">
+          <img width="60" src="{{ external_urls.charmstore }}elasticsearch/icon.svg" alt="Elasticsearch cluster icon" class="p-media-object__image is-round">
           <div class="p-media-object__details">
             <h3 class="p-media-object__title">
-              <a href="https://jujucharms.com/elasticsearch-cluster/">Elasticsearch cluster</a>
+              <a href="{{ url_for('jaasstore.details', charm_or_bundle_name='elasticsearch-cluster') }}">Elasticsearch cluster</a>
             </h3>
             <p class="p-media-object__content">by charmers</p>
           </div>
@@ -310,7 +310,7 @@
   <div class="row">
     <div class="col-12">
       <p>
-        <a href="https://jujucharms.com/q/?text=analytics">View all analytics&nbsp;&rsaquo;</a>
+        <a href="{{ url_for('jaasstore.search', text='analytics') }}">View all analytics&nbsp;&rsaquo;</a>
       </p>
     </div>
   </div>
@@ -322,13 +322,13 @@
       <h3>Databases</h3>
       <div class="p-strip--dark u-clearfix" style="background:#2089B5;padding:1rem">
         <div class="col-6 u-align--center">
-          <img src="/static/img/store/mysql-promo.png" alt="">
+          <img src="{{ url_for('static', filename='img/store/mysql-promo.png') }}" alt="">
         </div>
         <div class="col-6">
           <h4>MySQL</h4>
-          <p>By <a href="https://jujucharms.com/u/mysql-charmers" class="p-link--strong">mysql-charmers</a></p>
+          <p>By <a href="{{ url_for('jaasstore.user_details', username='mysql-charmers') }}" class="p-link--strong">mysql-charmers</a></p>
           <p>MySQL is a fast, stable and true multi-user, multi-threaded SQL database server. Its main goals are speed, robustness and ease of use.</p>
-          <a href="https://jujucharms.com/mysql" class="p-button--neutral">View the charm</a>
+          <a href="{{ url_for('jaasstore.details', charm_or_bundle_name='mysql') }}" class="p-button--neutral">View the charm</a>
         </div>
       </div>
     </div>
@@ -339,10 +339,10 @@
     <div class="u-equal-height entity-cards">
       <div class="col-3 p-card">
         <div class="p-media-object charm-object u-no-margin--bottom">
-          <img src="https://api.jujucharms.com/charmstore/v5/cassandra/icon.svg" alt="Cassandra icon" class="p-media-object__image is-round">
+          <img src="{{ external_urls.charmstore }}cassandra/icon.svg" alt="Cassandra icon" class="p-media-object__image is-round">
           <div class="p-media-object__details">
             <h3 class="p-media-object__title">
-              <a href="https://jujucharms.com/cassandra">Cassandra</a>
+              <a href="{{ url_for('jaasstore.details', charm_or_bundle_name='cassandra') }}">Cassandra</a>
             </h3>
             <p class="p-media-object__content">by Cassandra-charmers</p>
           </div>
@@ -351,10 +351,10 @@
 
       <div class="col-3 p-card">
         <div class="p-media-object charm-object u-no-margin--bottom">
-          <img width="60" src="https://api.jujucharms.com/charmstore/v5/spark/icon.svg" alt="Mariadb icon" class="p-media-object__image is-round">
+          <img width="60" src="{{ external_urls.charmstore }}spark/icon.svg" alt="Mariadb icon" class="p-media-object__image is-round">
           <div class="p-media-object__details">
             <h3 class="p-media-object__title">
-              <a href="https://jujucharms.com/mariadb">Mariadb</a>
+              <a href="{{ url_for('jaasstore.details', charm_or_bundle_name='mariadb') }}">Mariadb</a>
             </h3>
             <p class="p-media-object__content">by mariadb-charmers</p>
           </div>
@@ -363,10 +363,10 @@
 
       <div class="col-3 p-card">
         <div class="p-media-object charm-object u-no-margin--bottom">
-          <img width="60" src="https://api.jujucharms.com/charmstore/v5/mongodb/icon.svg" alt="mongodb icon" class="p-media-object__image is-round">
+          <img width="60" src="{{ external_urls.charmstore }}mongodb/icon.svg" alt="mongodb icon" class="p-media-object__image is-round">
           <div class="p-media-object__details">
             <h3 class="p-media-object__title">
-              <a href="https://jujucharms.com/mongodb">Mongodb</a>
+              <a href="{{ url_for('jaasstore.details', charm_or_bundle_name='mongodb') }}">Mongodb</a>
             </h3>
             <p class="p-media-object__content">by charmers</p>
           </div>
@@ -375,10 +375,10 @@
 
       <div class="col-3 p-card">
         <div class="p-media-object charm-object u-no-margin--bottom">
-          <img width="60" src="https://api.jujucharms.com/charmstore/v5/redis/icon.svg" alt="Redis icon" class="p-media-object__image is-round">
+          <img width="60" src="{{ external_urls.charmstore }}redis/icon.svg" alt="Redis icon" class="p-media-object__image is-round">
           <div class="p-media-object__details">
             <h3 class="p-media-object__title">
-              <a href="https://jujucharms.com/redis">Redis</a>
+              <a href="{{ url_for('jaasstore.details', charm_or_bundle_name='redis') }}">Redis</a>
             </h3>
             <p class="p-media-object__content">by charmers</p>
           </div>
@@ -390,10 +390,10 @@
     <div class="u-equal-height entity-cards">
       <div class="col-3 p-card">
         <div class="p-media-object charm-object u-no-margin--bottom">
-          <img src="https://api.jujucharms.com/charmstore/v5/postgresql/icon.svg" alt="Postgresql icon" class="p-media-object__image is-round">
+          <img src="{{ external_urls.charmstore }}postgresql/icon.svg" alt="Postgresql icon" class="p-media-object__image is-round">
           <div class="p-media-object__details">
             <h3 class="p-media-object__title">
-              <a href="https://jujucharms.com/postgresql">Postgresql</a>
+              <a href="{{ url_for('jaasstore.details', charm_or_bundle_name='postgresql') }}">Postgresql</a>
             </h3>
             <p class="p-media-object__content">by postgresql-charmers</p>
           </div>
@@ -404,7 +404,7 @@
   <div class="row">
     <div class="col-12">
       <p>
-        <a href="https://jujucharms.com/q/?text=databases">View all databases&nbsp;&rsaquo;</a>
+        <a href="{{ url_for('jaasstore.search', text='databases') }}">View all databases&nbsp;&rsaquo;</a>
       </p>
     </div>
   </div>
@@ -420,10 +420,10 @@
     <div class="u-equal-height entity-cards">
       <div class="col-3 p-card">
       <div class="p-media-object charm-object u-no-margin--bottom">
-        <img src="https://api.jujucharms.com/charmstore/v5/gitlab/icon.svg" alt="Gitlab icon" class="p-media-object__image is-round">
+        <img src="{{ external_urls.charmstore }}gitlab/icon.svg" alt="Gitlab icon" class="p-media-object__image is-round">
         <div class="p-media-object__details">
           <h3 class="p-media-object__title">
-            <a href="https://jujucharms.com/gitlab">Gitlab</a>
+            <a href="{{ url_for('jaasstore.details', charm_or_bundle_name='gitlab') }}">Gitlab</a>
           </h3>
           <p class="p-media-object__content">by charmers</p>
         </div>
@@ -431,10 +431,10 @@
     </div>
       <div class="col-3 p-card">
       <div class="p-media-object charm-object u-no-margin--bottom">
-        <img src="https://api.jujucharms.com/charmstore/v5/jenkins/icon.svg" alt="Jenkins icon" class="p-media-object__image is-round">
+        <img src="{{ external_urls.charmstore }}jenkins/icon.svg" alt="Jenkins icon" class="p-media-object__image is-round">
         <div class="p-media-object__details">
           <h3 class="p-media-object__title">
-            <a href="https://jujucharms.com/jenkins">Jenkins</a>
+            <a href="{{ url_for('jaasstore.details', charm_or_bundle_name='jenkins') }}">Jenkins</a>
           </h3>
           <p class="p-media-object__content">by Creative</p>
         </div>
@@ -450,11 +450,11 @@
       <div>
         <h2>Write a charm and join the ecosystem</h2>
         <p>Creating new charms it easy. Charms can be written in your choice of language and adapting existing scripts is straightforward. You can keep new charms private, or share them back with the community.</p>
-        <a class="p-link--external" href="https://docs.jujucharms.com/authors-charm-writing">Learn more about writing charms</a>
+        <a class="p-link--external" href="{{ external_urls.docs }}authors-charm-writing">Learn more about writing charms</a>
       </div>
     </div>
     <div class="col-6 u-hide--small">
-      <img src="/static/img/home/write-your-own.png" alt="Pictogram of world map">
+      <img src="{{ url_for('static', filename='img/home/write-your-own.png') }}" alt="Pictogram of world map">
     </div>
   </div>
 </div>

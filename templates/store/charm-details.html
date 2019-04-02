@@ -47,7 +47,7 @@
         <ul class="p-inline-list">
           <li class="p-inline-list__item"><strong>Tags:</strong></li>
           {% for tag in context.entity.charm_data['Meta']['charm-metadata']['Tags'] %}
-            <li class="p-inline-list__item"><a href="https://jujucharms.com/q?tags={{ tag }}">{{ tag }}&nbsp;&rsaquo;</a></li>
+            <li class="p-inline-list__item"><a href="{{ url_for('jaasstore.search', tags=tag) }}">{{ tag }}&nbsp;&rsaquo;</a></li>
           {% endfor %}
         </ul>
       {% endif %}
@@ -136,7 +136,7 @@
             {% for resourcename, resourcefile in context.entity.resources.items() %}
               <li class="p-list__item">
               {% if resourcefile[1] %}
-                  <a href='/{{resourcefile[1]}}' target='_blank'>{{ resourcename }} {% if resourcefile[0] %}({{ resourcefile[0] }}) {% endif %}</a>
+                  <a href='{{resourcefile[1]}}' target='_blank'>{{ resourcename }} {% if resourcefile[0] %}({{ resourcefile[0] }}) {% endif %}</a>
               {% else %}
                   {{ resourcename }} {% if resourcefile[0] %}({{ resourcefile[0] }}) {% endif %}
               {% endif %}
@@ -159,14 +159,14 @@
             {% if context.entity.requires %}
               {% for name, value in context.entity.requires.items() %}
                 <li class="p-list__item">
-                  <a target="_blank" href="/search/?provides={{ value.Interface }}" >{{ name }}: {{ value.Interface }}</a>
+                  <a href="{{ url_for('jaasstore.search', provides=value.Interface) }}" >{{ name }}: {{ value.Interface }}</a>
                 </li>
               {% endfor %}
             {% endif %}
             {% if context.entity.provides %}
               {% for name, value in context.entity.provides.items() %}
                 <li class="p-list__item">
-                  <a target="_blank" href="/search?requires={{ value.Interface }}" >{{ name }}: {{ value.Interface }}</a>
+                  <a href="{{ url_for('jaasstore.search', requires=value.Interface) }}" >{{ name }}: {{ value.Interface }}</a>
                 </li>
               {% endfor %}
             {% endif %}
@@ -192,7 +192,7 @@
 
       <div class="p-card" id="juju-card-embed">
         <h3>Embed this charm</h3>
-        <p>Add this card to your website by copying the code below. <a href="/community/cards">Learn more</a>.</p>
+        <p>Add this card to your website by copying the code below. <a href="{{ url_for('jaasai.community_cards') }}">Learn more</a>.</p>
         <textarea rows="2" cols="70" readonly="readonly" wrap="off" style="color:#666">&lt;script src="https://assets.ubuntu.com/v1/juju-cards-v1.6.0.js"&gt;&lt;/script&gt;
 &lt;div class="juju-card" data-id="{{ context.entity.card_id }}" data-dd&gt;&lt;/div&gt;</textarea>
         <h4>Preview</h4>
@@ -203,7 +203,7 @@
   </div>
 </div>
 
-<script src="/static/js/treefilelist.js"></script>
+<script src="{{ url_for('static', filename='js/treefilelist.js') }}"></script>
 <script>
   window.app.treeifyFileList();
 </script>

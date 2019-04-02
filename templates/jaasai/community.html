@@ -9,10 +9,10 @@
     <div class="col-6">
       <h1 itemprop="name">Community</h1>
       <p class="p-heading--four" itemprop="description">Pioneers in service modelling. Deploy your solution, charm your software, or discuss your ideas. Contribute to the community and help push the line.</p>
-      <p><a href="/community/charmers">Contribute&nbsp;&rsaquo;</a></p>
+      <p><a href="{{ url_for('jaasai.community_charmers') }}">Contribute&nbsp;&rsaquo;</a></p>
     </div>
     <div class="col-6 u-hide--small u-align--center">
-      <img src="/static/img/community/community-hero.svg" alt="Pictogram">
+      <img src="{{ url_for('static', filename='img/community/community-hero.svg') }}" alt="Pictogram">
     </div>
   </div>
 </div>
@@ -23,7 +23,7 @@
       <div class="p-card">
         <h2>OpenStack solutions</h2>
         <div class="p-media-object">
-          <img src="/static/img/community/james-page.jpg" alt="James Page's profile picture" class="p-media-object__image is-round">
+          <img src="{{ url_for('static', filename='img/community/james-page.jpg') }}" alt="James Page's profile picture" class="p-media-object__image is-round">
           <div class="p-media-object__details">
             <h3 class="p-media-object__title">
               James Page
@@ -31,13 +31,13 @@
             <p class="p-media-object__content">Affiliation: Canonical Ltd</p>
           </div>
         </div>
-        <p>James is one of the first Juju charmers in the community and was the original author of the <a href="/openstack">OpenStack charms</a>. His charms allow an initial deployment of a base cloud and allows users to add metering and Landscape afterwards. James is currently working on adding high-availability bundles to this, and resides in Norwich, UK.</p>
+        <p>James is one of the first Juju charmers in the community and was the original author of the <a href="{{ url_for('jaasai.openstack') }}">OpenStack charms</a>. His charms allow an initial deployment of a base cloud and allows users to add metering and Landscape afterwards. James is currently working on adding high-availability bundles to this, and resides in Norwich, UK.</p>
         <a href="https://github.com/openstack-charmers/openstack-bundles" class="p-button--positive is-external">Contribute</a>
       </div>
       <div class="p-card">
         <h2>PaaS Solutions</h2>
         <div class="p-media-object">
-          <img src="/static/img/community/chris-donati.jpg" alt="Chris Donati's profile picture" class="p-media-object__image is-round">
+          <img src="{{ url_for('static', filename='img/community/chris-donati.jpg') }}" alt="Chris Donati's profile picture" class="p-media-object__image is-round">
           <div class="p-media-object__details">
             <h3 class="p-media-object__title">
               Chris Donati
@@ -45,15 +45,15 @@
             <p class="p-media-object__content">Affiliation: AppScale</p>
           </div>
         </div>
-        <p>Chris Donati has been working on improving the <a href="https://jujucharms.com/appscale/precise/1">AppScale platform</a>, which lets you deploy your Google App Engine application on any cloud, public or private. He lives in Santa Barbara, California, where he&rsquo;s been trying to get better at the game of Go.</p>
-        <a href="https://jujucharms.com/appscale/precise/1" class="p-button--positive is-external">Contribute</a>
+        <p>Chris Donati has been working on improving the <a href="{{ url_for('jaasstore.details', charm_or_bundle_name='appscale', series_or_version='precise', version=1) }}">AppScale platform</a>, which lets you deploy your Google App Engine application on any cloud, public or private. He lives in Santa Barbara, California, where he&rsquo;s been trying to get better at the game of Go.</p>
+        <a href="{{ url_for('jaasstore.details', charm_or_bundle_name='appscale', series_or_version='precise', version=1) }}" class="p-button--positive is-external">Contribute</a>
       </div>
     </div>
     <div class="col-6">
       <div class="p-card">
         <h2>Benchmarking solutions</h2>
         <div class="p-media-object">
-          <img src="/static/img/community/adam-israel.jpg" alt="Adam Israel's profile picture" class="p-media-object__image is-round">
+          <img src="{{ url_for('static', filename='img/community/adam-israel.jpg') }}" alt="Adam Israel's profile picture" class="p-media-object__image is-round">
           <div class="p-media-object__details">
             <h3 class="p-media-object__title">
               Adam Israel
@@ -67,7 +67,7 @@
       <div class="p-card">
         <h2>Database Solutions</h2>
         <div class="p-media-object">
-          <img src="/static/img/community/philip-stoev.jpg" alt="Philip Stoev's profile picture" class="p-media-object__image is-round">
+          <img src="{{ url_for('static', filename='img/community/philip-stoev.jpg') }}" alt="Philip Stoev's profile picture" class="p-media-object__image is-round">
           <div class="p-media-object__details">
             <h3 class="p-media-object__title">
               Philip Stoev
@@ -75,8 +75,8 @@
             <p class="p-media-object__content">Affiliation: Galera Cluster</p>
           </div>
         </div>
-        <p>Philip Stoev is a QA and Release Manager with <a href="https://jujucharms.com/galera-cluster/trusty/0">Galera Cluster</a>. He's worked for more than a decade at Oracle, MariaDB &amp; NuoDB. His database testing framework, the RQG, is widely used in the MySQL ecosystem and won the Application of the Year MySQL Community Award in 2014.</p>
-        <a href="https://jujucharms.com/galera-cluster/trusty/0" class="p-button--positive is-external">Contribute</a>
+        <p>Philip Stoev is a QA and Release Manager with <a href="{{ url_for('jaasstore.details', charm_or_bundle_name='galera-cluster', series_or_version='trusty', version=0) }}">Galera Cluster</a>. He's worked for more than a decade at Oracle, MariaDB &amp; NuoDB. His database testing framework, the RQG, is widely used in the MySQL ecosystem and won the Application of the Year MySQL Community Award in 2014.</p>
+        <a href="{{ url_for('jaasstore.details', charm_or_bundle_name='galera-cluster', series_or_version='trusty', version=0) }}" class="p-button--positive is-external">Contribute</a>
       </div>
     </div>
   </div>
@@ -89,7 +89,7 @@
       <p><a href="mailto:jorge.castro@canonical.com">Get in touch&nbsp;&rsaquo;</a></p>
     </div>
     <div class="col-4 u-hide--small u-align--center">
-      <img src="/static/img/community/picto-community.svg" alt="" />
+      <img src="{{ url_for('static', filename='img/community/picto-community.svg') }}" alt="" />
     </div>
   </div>
 
@@ -100,7 +100,7 @@
     <div class="col-6">
       <h2>Charm and bundle cards</h2>
       <p class="intro">Generate cards for your charms and bundles and embedded them into blog posts and websites with a single line of code.</p>
-      <p><a href="/community/cards" class="p-link--inverted">Create card&nbsp;&rsaquo;</a></p>
+      <p><a href="{{ url_for('jaasai.community_cards') }}" class="p-link--inverted">Create card&nbsp;&rsaquo;</a></p>
     </div>
     <div class="col-6">
       <img src="https://assets.ubuntu.com/v1/73fe9909-Card.png" alt="mysql charm and apache mapreduce bundle cards" />
@@ -113,7 +113,7 @@
     <div class="col-12">
       <h2>Charm Partner Programmes</h2>
       <p>The Charm Partner Programme will help you to get your solution into the Charm Store, giving new benefits to your current customers, as well as accessing new potential users.</p>
-      <p><a href="/community/partners">Learn more&nbsp;&rsaquo;</a></p>
+      <p><a href="{{ url_for('jaasai.community_partners') }}">Learn more&nbsp;&rsaquo;</a></p>
     </div>
   </div>
 </div>
@@ -127,12 +127,12 @@
   <div class="row">
     <div class="col-4">
       <h5>Discourse</h5>
-      <p>Join the Juju community on our <a href="https://discourse.jujucharms.com">Discours forum</a>.</p>
+      <p>Join the Juju community on our <a href="{{ external_urls.discourse }}">Discourse forum</a>.</p>
     </div>
     <div class="col-4">
       <h5>Ask Ubuntu</h5>
-      <p>Find out more, get help or ask any question at <a class="p-link--external" href="https://askubuntu.com/questions/tagged/juju">Ask Ubuntu</a>.</p>
-    </div>blog-fee
+      <p>Find out more, get help or ask any question at <a class="p-link--external" href="{{ external_urls.askubuntu }}">Ask Ubuntu</a>.</p>
+    </div>
     <div class="col-4">
       <h5>Social</h5>
       <ul class="p-inline-list">

@@ -5,7 +5,7 @@
 
 {% block content %}
 
-  <div class="p-strip--image is-light" style="position:relative;background-image:url('https://assets.ubuntu.com/v1/f1511329-Background.svg')">
+  <div class="p-strip--image is-light" style="position:relative;background-image:url('https://assets.ubuntu.com/v1/f1511329-Background.svg') }}')">
     <div class="row" style="position:relative">
       <div class="col-6">
         <div class="p-strip is-shallow u-no-padding--top u-no-padding--bottom">
@@ -31,11 +31,11 @@
             </div>
             <div class="row">
               <div class="col-3">
-                <a href="https://jujucharms.com/canonical-kubernetes/" class="p-button--positive">Deploy Kubernetes</a>
+                <a href="{{ url_for('jaasstore.details', charm_or_bundle_name='canonical-kubernetes') }}" class="p-button--positive">Deploy Kubernetes</a>
               </div>
               <div class="col-3">
-                <a href="/jaas#deploy-kubernetes-in-minutes">Or watch the video
-                  <img class="p-icon" src="/static/img/home/play-icon.svg" alt="Play icon">
+                <a href="{{ url_for('jaasai.jaas') }}#deploy-kubernetes-in-minutes">Or watch the video
+                  <img class="p-icon" src="{{ url_for('static', filename='img/home/play-icon.svg') }}" alt="Play icon">
                 </a>
               </div>
             </div>
@@ -44,7 +44,7 @@
       </div>
       <div class="col-6 u-vertically-center homepage-hero-image-wrap">
         <img
-          src="/static/img/home/home-promo-bundle.svg"
+          src="{{ url_for('static', filename='img/home/home-promo-bundle.svg') }}"
           alt="Pictogram of bundle"
           class="homepage-hero-image"
         />
@@ -59,13 +59,13 @@
             <div class="expert__strap is-inline">
               Juju expert partners
             </div>
-            <p>Spicule's <a class="p-link--strong" href="https://jujucharms.com/u/spiculecharms/saiku-drill/">Saiku solution</a> can solve your Big Data challenge.</p>
+            <p>Spicule's <a class="p-link--strong" href="{{ url_for('jaasstore.user_entity', username='spiculecharms', charm_or_bundle_name='saiku-drill') }}">Saiku solution</a> can solve your Big Data challenge.</p>
             <div class="p-card card-wrap u-align--center u-vertically-center">
-              <a href="/experts/spicule">
-                <img style="padding:1rem 0" src="/static/img/logos/spicule.png" alt="Spicule logo" width="160" />
+              <a href="{{ url_for('jaasai.experts_spicule') }}">
+                <img style="padding:1rem 0" src="{{ url_for('static', filename='img/logos/spicule.png') }}" alt="Spicule logo" width="160" />
               </a>
             </div>
-            <a href="https://jujucharms.com/u/spiculecharms/saiku-drill/" class="p-button--positive">
+            <a href="{{ url_for('jaasstore.user_entity', username='spiculecharms', charm_or_bundle_name='saiku-drill') }}" class="p-button--positive">
               Business intelligence now
             </a>
           </div>
@@ -74,18 +74,18 @@
           <h5 class="u-no-padding--top">Or build it yourself</h5>
           <p>Create your own solution in the GUI or browse the store to get started</p>
           <div class="card-wrap">
-            <img src="/static/img/home/build-yourself.png" alt="Build it yourself example">
+            <img src="{{ url_for('static', filename='img/home/build-yourself.png') }}" alt="Build it yourself example">
           </div>
-          <p><a href="https://jujucharms.com/new" class="p-button--neutral" style="margin-top:5px">Start a new model</a></p>
+          <p><a href="{{ external_urls.gui }}" class="p-button--neutral" style="margin-top:5px">Start a new model</a></p>
         </div>
 
         <div class="col-4">
           <h5 class="u-no-padding--top">JAAS is Juju as a service</h5>
           <p>Managed Juju infrastructure, hosted by Canonical, the makers of Ubuntu.</p>
           <div class="p-card u-align--center">
-            <img style="padding:1rem 0" src="/static/img/home/jaas-black-orange-hz-hex.svg" alt="JAAS logo">
+            <img style="padding:1rem 0" src="{{ url_for('static', filename='img/home/jaas-black-orange-hz-hex.svg') }}" alt="JAAS logo">
           </div>
-          <a href="/jaas" class="p-button--neutral" style="margin-top:-6px">About JAAS</a>
+          <a href="{{ url_for('jaasai.jaas') }}" class="p-button--neutral" style="margin-top:-6px">About JAAS</a>
         </div>
 
       </div>
@@ -106,7 +106,7 @@
     </div>
   </div>
 
-  <script src="/static/js/cli-typer.js"></script>
+  <script src="{{ url_for('static', filename='js/cli-typer.js') }}"></script>
   <script>
     window.app.cliTyper(
       document.querySelector('.js-cli'),
@@ -121,24 +121,24 @@
           <p><b>Bundles</b> are collections of charms that link services together, so you can deploy whole chunks of infrastructure in one go.</p>
           <ul class="p-list icon-list">
             <li class="p-list__item">
-              <a href="https://jujucharms.com/openstack-base/">
-                <img src="/static/img/home/openstack-base.svg" alt="Openstack Base icon" />
+              <a href="{{ url_for('jaasstore.details', charm_or_bundle_name='openstack-base') }}">
+                <img src="{{ url_for('static', filename='img/home/openstack-base.svg') }}" alt="Openstack Base icon" />
                 <span class="icon-list__title">
                   OpenStack Base&nbsp;&rsaquo;
                 </span>
               </a>
             </li>
             <li class="p-list__item">
-              <a href="https://jujucharms.com/canonical-kubernetes/">
-                <img src="/static/img/home/canonical-kubernetes.svg" alt="Canonical Kubernetes icon" />
+              <a href="{{ url_for('jaasstore.details', charm_or_bundle_name='canonical-kubernetes') }}">
+                <img src="{{ url_for('static', filename='img/home/canonical-kubernetes.svg') }}" alt="Canonical Kubernetes icon" />
                 <span class="icon-list__title">
                   Canonical Kubernetes&nbsp;&rsaquo;
                 </span>
               </a>
             </li>
             <li class="p-list__item">
-              <a href="https://jujucharms.com/hadoop-spark/">
-                <img src="/static/img/home/hadoop-spark.svg" alt="Hadoop Spark icon" />
+              <a href="{{ url_for('jaasstore.details', charm_or_bundle_name='hadoop-spark') }}">
+                <img src="{{ url_for('static', filename='img/home/hadoop-spark.svg') }}" alt="Hadoop Spark icon" />
                 <span class="icon-list__title">
                   Hadoop Spark&nbsp;&rsaquo;
                 </span>
@@ -148,24 +148,24 @@
           <p><b>Charms</b> contain scripts that simplify the deployment and management of a service.</p>
           <ul class="p-list icon-list">
             <li class="p-list__item">
-              <a href="https://jujucharms.com/postgresql/">
-                <img width="52" src="/static/img/home/postgresql-circle.svg" alt="Postgresql icon" />
+              <a href="{{ url_for('jaasstore.details', charm_or_bundle_name='postgresql') }}">
+                <img width="52" src="{{ url_for('static', filename='img/home/postgresql-circle.svg') }}" alt="Postgresql icon" />
                 <span class="icon-list__title">
                   Postgresql&nbsp;&rsaquo;
                 </span>
               </a>
             </li>
             <li class="p-list__item">
-              <a href="https://jujucharms.com/u/prometheus-charmers/prometheus/">
-                <img width="52" src="/static/img/home/prometheus-circle.svg" alt="Prometheus" />
+              <a href="{{ url_for('jaasstore.user_entity', username='prometheus-charmers', charm_or_bundle_name='prometheus') }}">
+                <img width="52" src="{{ url_for('static', filename='img/home/prometheus-circle.svg') }}" alt="Prometheus" />
                 <span class="icon-list__title">
                   Prometheus&nbsp;&rsaquo;
                 </span>
               </a>
             </li>
             <li class="p-list__item">
-              <a href="https://jujucharms.com/elasticsearch/">
-                <img width="52" src="/static/img/home/elasticsearch-icon.svg" alt="Elasticsearch" />
+              <a href="{{ url_for('jaasstore.details', charm_or_bundle_name='elasticsearch') }}">
+                <img width="52" src="{{ url_for('static', filename='img/home/elasticsearch-icon.svg') }}" alt="Elasticsearch" />
                 <span class="icon-list__title">
                   Elasticsearch&nbsp;&rsaquo;
                 </span>
@@ -176,21 +176,21 @@
         <div class="col-4 p-divider__block">
           <h2 class="row--stages__title">Model</h2>
           <p>With Juju, relationships between linked charms are formed automatically.</p>
-          <p class="align-center"><img src="/static/img/home/model-canvas.png" alt="" srcset="/static/img/home/model-canvas-2x.png 2x" /></p>
+          <p class="align-center"><img src="{{ url_for('static', filename='img/home/model-canvas.png') }}" alt="" srcset="{{ url_for('static', filename='img/home/model-canvas-2x.png') }} 2x" /></p>
           <p>Easily configure charms via the inspector.</p>
-          <p class="align-center"><img src="/static/img/home/model-config.png" alt="" srcset="/static/img/home/model-config-2x.png 2x" /></p>
+          <p class="align-center"><img src="{{ url_for('static', filename='img/home/model-config.png') }}" alt="" srcset="{{ url_for('static', filename='img/home/model-config-2x.png') }} 2x" /></p>
         </div>
         <div class="col-4 p-divider__block">
           <h2 class="row--stages__title">Deploy</h2>
           <p>Deploy and redeploy to all major public clouds or locally on your own hardware.</p>
-          <p class="align-center"><img src="/static/img/home/deploy-logos.png" alt="" srcset="/static/img/home/deploy-logos-2x.png 2x" /></p>
+          <p class="align-center"><img src="{{ url_for('static', filename='img/home/deploy-logos.png') }}" alt="" srcset="{{ url_for('static', filename='img/home/deploy-logos-2x.png') }} 2x" /></p>
           <p>Monitor, maintain and scale on demand.</p>
-          <p class="align-center"><img src="/static/img/home/deploy-new-units.png" alt="" srcset="/static/img/home/deploy-new-units-2x.png 2x" /></p>
+          <p class="align-center"><img src="{{ url_for('static', filename='img/home/deploy-new-units.png') }}" alt="" srcset="{{ url_for('static', filename='img/home/deploy-new-units-2x.png') }} 2x" /></p>
         </div>
       </div>
       <div class="row">
         <div class="col-12">
-          <p class="u-align-text--center"><a href="/store" class="p-button--neutral">Browse the store</a></p>
+          <p class="u-align-text--center"><a href="{{ url_for('jaasstore.store') }}" class="p-button--neutral">Browse the store</a></p>
         </div>
       </div>
     </div>
@@ -203,21 +203,21 @@
     </div>
     <div class="row">
       <div class="col-6 u-align-text--center">
-        <img src="/static/img/home/why-use-juju-diagram-left.svg" />
+        <img src="{{ url_for('static', filename='img/home/why-use-juju-diagram-left.svg') }}" />
       </div>
       <div class="col-6 u-align-text--center">
-        <img src="/static/img/home/why-use-juju-diagram-right.svg" />
+        <img src="{{ url_for('static', filename='img/home/why-use-juju-diagram-right.svg') }}" />
       </div>
     </div>
     <div class="row">
       <div class="col-8">
-        <p>Whether it involves <a href="/kubernetes">deep learning</a>, <a href="/containers">container orchestration</a>, <a href="/big-data">real-time big data</a> or <a href="/openstack">stream processing</a>, big software needs operations to be open source and automated.</p>
+        <p>Whether it involves <a href="{{ url_for('jaasai.kubernetes') }}">deep learning</a>, <a href="{{ url_for('jaasai.containers') }}">container orchestration</a>, <a href="{{ url_for('jaasai.big_data') }}">real-time big data</a> or <a href="{{ url_for('jaasai.openstack') }}">stream processing</a>, big software needs operations to be open source and automated.</p>
         <p>Juju is the best way to encapsulate all the ops knowledge required to automate the behaviour of your application.</p>
       </div>
     </div>
     <div class="row">
       <div class="col-12">
-        <p class="u-align-text--center"><a href="/how-it-works" class="p-button--neutral">How it works</a></p>
+        <p class="u-align-text--center"><a href="{{ url_for('jaasai.how_it_works') }}" class="p-button--neutral">How it works</a></p>
       </div>
     </div>
   </div>
@@ -231,14 +231,14 @@
   <div class="row p-divider">
     <div class="col-4 p-divider__block">
       <h3>Connect</h3>
-      <p>Join the Juju community on our <a href="https://discourse.jujucharms.com">Discourse forum</a>.</p>
+      <p>Join the Juju community on our <a href="{{ external_urls.discourse }}">Discourse forum</a>.</p>
     </div>
     <div class="col-4 p-divider__block">
       <h3>Collaborate</h3>
       <div>
         <div class="p-heading-icon">
           <div class="p-heading-icon__header">
-            <img class="p-heading-icon__img" src="/static/img/logos/github-logo.svg" alt="Github logo">
+            <img class="p-heading-icon__img" src="{{ url_for('static', filename='img/logos/github-logo.svg') }}" alt="Github logo">
             <h3 class="p-heading-icon__title">
               <a href="https://github.com/juju">
                 Juju on Github
@@ -250,7 +250,7 @@
     </div>
     <div class="col-4 p-divider__block">
       <h3>Ask the community</h3>
-      <p>Find out more, get help or ask any question at <a class="p-link--external" href="https://askubuntu.com/questions/tagged/juju">Ask Ubuntu</a></p>
+      <p>Find out more, get help or ask any question at <a class="p-link--external" href="{{ external_urls.askubuntu }}">Ask Ubuntu</a></p>
     </div>
   </div>
 </div>
@@ -266,7 +266,7 @@
   <div class="p-strip is-shallow">
     <div class="row">
       <div class="col-2">
-        <img src="/static/img/logos/spicule.png" alt="Spicule logo" />
+        <img src="{{ url_for('static', filename='img/logos/spicule.png') }}" alt="Spicule logo" />
       </div>
       <div class="col-10">
         <blockquote class="p-pull-quote">
@@ -281,7 +281,7 @@
   <div class="p-strip is-shallow">
     <div class="row">
       <div class="col-2">
-        <img src="/static/img/logos/ghent-logo.svg" alt="Ghent logo" />
+        <img src="{{ url_for('static', filename='img/logos/ghent-logo.svg') }}" alt="Ghent logo" />
       </div>
       <div class="col-10">
         <blockquote class="p-pull-quote">
@@ -298,7 +298,7 @@
   <div class="p-strip is-shallow is-bordered">
     <div class="row">
       <div class="col-2">
-        <img src="/static/img/logos/epam.svg" alt="Epam logo" />
+        <img src="{{ url_for('static', filename='img/logos/epam.svg') }}" alt="Epam logo" />
       </div>
       <div class="col-10">
         <blockquote class="p-pull-quote">

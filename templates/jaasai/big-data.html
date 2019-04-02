@@ -4,16 +4,16 @@
 
 {% block content %}
 <div class="p-strip--image is-dark"
-  style="background-image:url('/static/img/home/juju-suru-blue-background.png')">
+  style="background-image:url('{{ url_for('static', filename='img/home/juju-suru-blue-background.png') }}')">
   <div class="row">
     <div class="u-equal-height">
       <div class="col-6">
-      <h1 itemprop="name">Juju solutions for big data</h1>
-      <p class="p-heading--four" itemprop="description">The setup and configuration of Big Data tools can be very complex and daunting &mdash; Juju frees you to explore, test and evaluate Big Data solutions to choose the one that works best for you.</p>
-    </div>
+        <h1 itemprop="name">Juju solutions for big data</h1>
+        <p class="p-heading--four" itemprop="description">The setup and configuration of Big Data tools can be very complex and daunting &mdash; Juju frees you to explore, test and evaluate Big Data solutions to choose the one that works best for you.</p>
+      </div>
       <div class="col-6 u-hide--small u-align--center u-vertically-center">
-      <img src="/static/img/topics/big-data-hero-image.svg" alt="" itemprop="image" />
-    </div>
+        <img src="{{ url_for('static', filename='img/topics/big-data-hero-image.svg') }}" alt="" itemprop="image" />
+      </div>
     </div>
   </div>
 </div>
@@ -169,7 +169,7 @@
         <p class="p-heading--four">Use the bundles above, alter and extend them or create your own. Get involved and find out more by visiting the <a href="http://bigdata.juju.solutions/getstarted">Big data community</a>.</p>
       </div>
       <div class="col-4 u-align--center u-vertically-center">
-        <img src="/static/img/community/community-hero.svg" alt="A gathering of Ubuntu community">
+        <img src="{{ url_for('static', filename='img/community/community-hero.svg') }}" alt="A gathering of Ubuntu community">
       </div>
     </div>
   </div>

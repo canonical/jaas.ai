@@ -44,7 +44,7 @@
       <p>Combining Saiku Analytics with the scalable power of Apache Drill, we enable users to query a multitude of data sources. Apache Drill &amp; Saiku are a perfect combination for enterprise scale data discovery.</p>
       <div class="p-card">
         <div class="pictogram-bg">
-          <object data="https://api.jujucharms.com/charmstore/v5/~spiculecharms/saiku-drill/diagram.svg" type="image/svg+xml"></object>
+          <object data="{{ external_urls.charmstore }}~spiculecharms/saiku-drill/diagram.svg" type="image/svg+xml"></object>
         </div>
         <ul class="p-list">
           <li class="p-list__item is-ticked">Data from SQL databases, CSV, JSON, or Hadoop</li>
@@ -52,7 +52,7 @@
           <li class="p-list__item is-ticked">Saiku Dashboard Designer – reporting without code.</li>
         </ul>
         <div class="expert__actions">
-          <a href="https://jujucharms.com/u/spiculecharms/saiku-drill/" class="p-button--positive">Deploy Saiku Drill</a>
+          <a href="{{ url_for('jaasstore.user_entity', username='spiculecharms', charm_or_bundle_name='saiku-drill') }}" class="p-button--positive">Deploy Saiku Drill</a>
         </div>
       </div>
     </div>
@@ -61,7 +61,7 @@
       <p>Processing data at scale can be a trick proposition to execute successfully. But using the Drill and Hadoop bundle, it becomes easy to deploy Hadoop at scale, and connect your favourite BI tool to the platform.</p>
       <div class="p-card u-no-margin--bottom-lrg">
         <div class="pictogram-bg">
-          <object data="https://api.jujucharms.com/charmstore/v5/~spiculecharms/saiku-drill-hadoop/diagram.svg" type="image/svg+xml"></object>
+          <object data="{{ external_urls.charmstore }}~spiculecharms/saiku-drill-hadoop/diagram.svg" type="image/svg+xml"></object>
         </div>
         <ul class="p-list">
           <li class="p-list__item is-ticked">JDBC and ODBC interfaces</li>
@@ -69,7 +69,7 @@
           <li class="p-list__item is-ticked">Highly scalable</li>
         </ul>
         <div class="expert__actions">
-          <a href="https://jujucharms.com/u/spiculecharms/saiku-drill-hadoop/" class="p-button--positive">Deploy Drill Hadoop</a>
+          <a href="{{ url_for('jaasstore.user_entity', username='spiculecharms', charm_or_bundle_name='saiku-drill-hadoop') }}" class="p-button--positive">Deploy Drill Hadoop</a>
         </div>
       </div>
     </div>

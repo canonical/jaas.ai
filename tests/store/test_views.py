@@ -1,6 +1,8 @@
 from flask_testing import TestCase
 from unittest.mock import patch
+
 from webapp.app import create_app
+from tests.store.testdata import bundle_data, charm_data
 
 
 class StoreViews(TestCase):
@@ -82,27 +84,21 @@ class StoreViews(TestCase):
         response = self.client.get('/u/user-name')
         self.assertEqual(response.status_code, 404)
 
-    @patch('webapp.store.models.get_charm_or_bundle')
-    def test_details_charm(self, mock_get_charm_or_bundle):
-        entity = {
-            'is_charm': True
-        }
-        mock_get_charm_or_bundle.return_value = entity
+    @patch('theblues.charmstore.CharmStore.entity')
+    def test_details_charm(self, mock_entity):
+        mock_entity.return_value = charm_data
         response = self.client.get('/apache2')
         self.assertEqual(response.status_code, 200)
         context = self.get_context_variable('context')
-        self.assertEqual(context['charm'], entity)
+        self.assertIsNotNone(context['entity'])
 
-    @patch('webapp.store.models.get_charm_or_bundle')
-    def test_details_bundle(self, mock_get_charm_or_bundle):
-        entity = {
-            'is_charm': False
-        }
-        mock_get_charm_or_bundle.return_value = entity
+    @patch('theblues.charmstore.CharmStore.entity')
+    def test_details_bundle(self, mock_entity):
+        mock_entity.return_value = bundle_data
         response = self.client.get('/k8s-bundle')
         self.assertEqual(response.status_code, 200)
         context = self.get_context_variable('context')
-        self.assertEqual(context['bundle'], entity)
+        self.assertIsNotNone(context['entity'])
 
     @patch('webapp.store.models.get_charm_or_bundle')
     def test_details_404(self, mock_get_charm_or_bundle):
