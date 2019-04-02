@@ -15,10 +15,8 @@ def clear_trailing_slash():
     parsed_url = urlparse(unquote(flask.request.url))
     path = parsed_url.path
 
-    if path != '/' and path.endswith('/'):
-        new_uri = urlunparse(
-            parsed_url._replace(path=path[:-1])
-        )
+    if path != "/" and path.endswith("/"):
+        new_uri = urlunparse(parsed_url._replace(path=path[:-1]))
 
         return flask.redirect(new_uri)
 
@@ -35,14 +33,11 @@ def add_headers(response):
 
     if response.status_code == 200:
         if flask.session:
-            response.headers['Cache-Control'] = 'private'
+            response.headers["Cache-Control"] = "private"
         else:
             # Only add caching headers to successful responses
-            response.headers['Cache-Control'] = ', '.join({
-                'public',
-                'max-age=61',
-                'stale-while-revalidate=300',
-                'stale-if-error=86400',
-            })
+            response.headers["Cache-Control"] = ", ".join(
+                {"public", "max-age=61", "stale-while-revalidate=300", "stale-if-error=86400"}
+            )
 
     return response

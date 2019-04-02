@@ -10,26 +10,30 @@ from theblues.errors import EntityNotFound
 cs = CharmStore("https://api.jujucharms.com/v5")
 
 
-def search_entities(query, entity_type=None, tags=None, sort=None, series=None,
-                    promulgated_only=None):
+def search_entities(
+    query, entity_type=None, tags=None, sort=None, series=None, promulgated_only=None
+):
     includes = [
-        'charm-metadata',
-        'bundle-metadata',
-        'owner',
-        'bundle-unit-count',
-        'promulgated',
-        'supported-series'
+        "charm-metadata",
+        "bundle-metadata",
+        "owner",
+        "bundle-unit-count",
+        "promulgated",
+        "supported-series",
     ]
     try:
-        entities = cs.search(query, doc_type=entity_type, tags=tags, sort=sort,
-                             series=series, includes=includes,
-                             promulgated_only=False)
-        results = {
-            'community': [],
-            'recommended': [],
-        }
+        entities = cs.search(
+            query,
+            doc_type=entity_type,
+            tags=tags,
+            sort=sort,
+            series=series,
+            includes=includes,
+            promulgated_only=False,
+        )
+        results = {"community": [], "recommended": []}
         for entity in _parse_list(entities):
-            group = 'recommended' if entity['promulgated'] else 'community'
+            group = "recommended" if entity["promulgated"] else "community"
             results[group].append(entity)
         return results
     except EntityNotFound:
@@ -37,35 +41,32 @@ def search_entities(query, entity_type=None, tags=None, sort=None, series=None,
 
 
 def _group_status(entities):
-    results = {
-        'community': [],
-        'recommended': [],
-    }
+    results = {"community": [], "recommended": []}
     for entity in _parse_list(entities):
-        group = 'recommended' if entity.get('promulgated') else 'community'
+        group = "recommended" if entity.get("promulgated") else "community"
         results[group].append(entity)
     return results
 
 
 def fetch_provides(id):
-    results = cs.fetch_interfaces(id, 'provides')
+    results = cs.fetch_interfaces(id, "provides")
     return _group_status(list(results)[2])
 
 
 def fetch_requires(id):
-    results = cs.fetch_interfaces(id, 'requires')
+    results = cs.fetch_interfaces(id, "requires")
     return _group_status(list(results)[2])
 
 
 def get_user_entities(username):
     includes = [
-        'charm-metadata',
-        'bundle-metadata',
-        'owner',
-        'bundle-unit-count',
-        'bundle-machine-count',
-        'supported-series',
-        'published',
+        "charm-metadata",
+        "bundle-metadata",
+        "owner",
+        "bundle-unit-count",
+        "bundle-machine-count",
+        "supported-series",
+        "published",
     ]
     try:
         entities = cs.list(includes=includes, owner=username)
@@ -88,18 +89,17 @@ def _parse_list(entities):
 
 
 def _group_entities(entities):
-    groups = {
-        'bundles': [],
-        'charms': []
-    }
-    [groups['charms' if entity['is_charm'] else 'bundles']
-        .append(entity) for entity in entities]
+    groups = {"bundles": [], "charms": []}
+    [
+        groups["charms" if entity["is_charm"] else "bundles"].append(entity)
+        for entity in entities
+    ]
     return groups
 
 
 def _parse_charm_or_bundle(entity_data, include_files=False):
-    meta = entity_data.get('Meta', None)
-    is_charm = meta.get('charm-metadata', False)
+    meta = entity_data.get("Meta", None)
+    is_charm = meta.get("charm-metadata", False)
     if is_charm:
         return _parse_charm_data(entity_data, include_files)
     else:
@@ -107,108 +107,98 @@ def _parse_charm_or_bundle(entity_data, include_files=False):
 
 
 def _parse_bundle_data(bundle_data, include_files=False):
-    bundle_id = bundle_data['Id']
+    bundle_id = bundle_data["Id"]
     ref = references.Reference.from_string(bundle_id)
     name = ref.name
-    meta = bundle_data['Meta']
-    bundle_metadata = meta['bundle-metadata']
-    revision_list = meta.get('revision-info', {}).get('Revisions')
+    meta = bundle_data["Meta"]
+    bundle_metadata = meta["bundle-metadata"]
+    revision_list = meta.get("revision-info", {}).get("Revisions")
     latest_revision = revision_list and {
-        'id': int(revision_list[0].split('-')[-1]),
-        'full_id': revision_list[0],
-        'url': '{}/{}'.format(
-            ref.name,
-            int(revision_list[0].split('-')[-1])
-        )}
+        "id": int(revision_list[0].split("-")[-1]),
+        "full_id": revision_list[0],
+        "url": "{}/{}".format(ref.name, int(revision_list[0].split("-")[-1])),
+    }
 
     bundle = {
-        'archive_url': cs.archive_url(ref),
-        'bundle_data': bundle_data,
-        'bundle_visulisation': getBundleVisualization(ref),
-        'card_id': ref.path(),
-        'display_name': _get_display_name(name),
-        'is_charm': False,
-        'latest_revision': latest_revision,
-        'owner': meta.get('owner', {}).get('User'),
-        'promulgated': meta.get('promulgated', {}).get('Promulgated'),
-        'revision_number': ref.revision,
-        'services': _parseBundleServices(
-            bundle_metadata['applications']
-        ),
-        'tags': bundle_metadata.get('Tags'),
-        'units': meta.get('bundle-unit-count', {}).get('Count', ''),
-        'url': ref.jujucharms_id()
+        "archive_url": cs.archive_url(ref),
+        "bundle_data": bundle_data,
+        "bundle_visulisation": getBundleVisualization(ref),
+        "card_id": ref.path(),
+        "display_name": _get_display_name(name),
+        "is_charm": False,
+        "latest_revision": latest_revision,
+        "owner": meta.get("owner", {}).get("User"),
+        "promulgated": meta.get("promulgated", {}).get("Promulgated"),
+        "revision_number": ref.revision,
+        "services": _parseBundleServices(bundle_metadata["applications"]),
+        "tags": bundle_metadata.get("Tags"),
+        "units": meta.get("bundle-unit-count", {}).get("Count", ""),
+        "url": ref.jujucharms_id(),
     }
     if include_files:
-        bundle['files'] = _get_entity_files(ref, meta.get('manifest'))
-        bundle['readme'] = _render_markdown(
-            cs.entity_readme_content(bundle_id)
-        )
+        bundle["files"] = _get_entity_files(ref, meta.get("manifest"))
+        bundle["readme"] = _render_markdown(cs.entity_readme_content(bundle_id))
 
     return bundle
 
 
 def _parseBundleServices(services):
     for k, v in services.items():
-        ref = references.Reference.from_string(v['Charm'])
-        v['Charm'] = ref.path()
-        v['icon'] = cs.charm_icon_url(v['Charm'])
-        v['url'] = ref.jujucharms_id()
-        v['display_name'] = _get_display_name(k)
+        ref = references.Reference.from_string(v["Charm"])
+        v["Charm"] = ref.path()
+        v["icon"] = cs.charm_icon_url(v["Charm"])
+        v["url"] = ref.jujucharms_id()
+        v["display_name"] = _get_display_name(k)
 
     return services
 
 
 def _parse_charm_data(charm_data, include_files=False):
-    charm_id = charm_data['Id']
+    charm_id = charm_data["Id"]
     ref = references.Reference.from_string(charm_id)
-    meta = charm_data.get('Meta', None)
-    charm_metadata = meta['charm-metadata']
+    meta = charm_data.get("Meta", None)
+    charm_metadata = meta["charm-metadata"]
     bzr_url, revisions = _extract_from_extrainfo(meta, ref)
     bugs_url, homepage = _extract_from_commoninfo(meta)
-    name = charm_metadata['Name']
-    revision_list = meta.get('revision-info', {}).get('Revisions')
+    name = charm_metadata["Name"]
+    revision_list = meta.get("revision-info", {}).get("Revisions")
     latest_revision = revision_list and {
-        'id': int(revision_list[0].split('-')[-1]),
-        'full_id': revision_list[0],
-        'url': '{}/{}'.format(
-            name,
-            int(revision_list[0].split('-')[-1])
-        )}
+        "id": int(revision_list[0].split("-")[-1]),
+        "full_id": revision_list[0],
+        "url": "{}/{}".format(name, int(revision_list[0].split("-")[-1])),
+    }
 
     charm = {
-        'archive_url': cs.archive_url(ref),
-        'bugs_url': bugs_url,
-        'bzr_url': bzr_url,
-        'charm_data': charm_data,
-        'display_name': _get_display_name(name),
-        'homepage': homepage,
-        'icon': cs.charm_icon_url(charm_id),
-        'id': charm_id,
-        'card_id': ref.path(),
-        'latest_revision': latest_revision,
-        'options': meta.get('charm-config', {}).get('Options'),
-        'owner': meta.get('owner', {}).get('User'),
-        'promulgated': meta.get('promulgated', {}).get('Promulgated'),
-        'provides': charm_metadata.get('Provides'),
-        'requires': charm_metadata.get('Requires'),
-        'resources': _extract_resources(ref, meta.get('resources', {})),
-        'revision_list': revision_list,
-        'revision_number': ref.revision,
-        'revisions': revisions,
-        'series': meta.get('supported-series', {}).get('SupportedSeries'),
+        "archive_url": cs.archive_url(ref),
+        "bugs_url": bugs_url,
+        "bzr_url": bzr_url,
+        "charm_data": charm_data,
+        "display_name": _get_display_name(name),
+        "homepage": homepage,
+        "icon": cs.charm_icon_url(charm_id),
+        "id": charm_id,
+        "card_id": ref.path(),
+        "latest_revision": latest_revision,
+        "options": meta.get("charm-config", {}).get("Options"),
+        "owner": meta.get("owner", {}).get("User"),
+        "promulgated": meta.get("promulgated", {}).get("Promulgated"),
+        "provides": charm_metadata.get("Provides"),
+        "requires": charm_metadata.get("Requires"),
+        "resources": _extract_resources(ref, meta.get("resources", {})),
+        "revision_list": revision_list,
+        "revision_number": ref.revision,
+        "revisions": revisions,
+        "series": meta.get("supported-series", {}).get("SupportedSeries"),
         # Some charms do not have tags, so fall back to categories if they
         # exist (mostly on older charms).
-        'tags': charm_metadata.get('Tags') or charm_metadata.get('Categories'),
-        'url': ref.jujucharms_id(),
-        'is_charm': True
+        "tags": charm_metadata.get("Tags") or charm_metadata.get("Categories"),
+        "url": ref.jujucharms_id(),
+        "is_charm": True,
     }
 
     if include_files:
-        charm['files'] = _get_entity_files(ref, meta.get('manifest'))
-        charm['readme'] = _render_markdown(
-            cs.entity_readme_content(charm_id)
-        )
+        charm["files"] = _get_entity_files(ref, meta.get("manifest"))
+        charm["readme"] = _render_markdown(cs.entity_readme_content(charm_id))
 
     return charm
 
@@ -216,9 +206,7 @@ def _parse_charm_data(charm_data, include_files=False):
 def _get_entity_files(ref, manifest=None):
     try:
         files = cs.files(ref, manifest=manifest) or {}
-        files = collections.OrderedDict(
-            sorted(files.items())
-        )
+        files = collections.OrderedDict(sorted(files.items()))
     except EntityNotFound:
         files = {}
     return files
@@ -248,16 +236,9 @@ def _extract_resources(ref, resources):
     result = {}
     for resource in resources:
         resource_url = ""
-        if resource['Revision'] >= 0:
-            resource_url = cs.resource_url(
-                ref,
-                resource['Name'],
-                resource['Revision']
-            )
-        result[resource['Name']] = [
-            os.path.splitext(resource['Path'])[1],
-            resource_url
-        ]
+        if resource["Revision"] >= 0:
+            resource_url = cs.resource_url(ref, resource["Name"], resource["Revision"])
+        result[resource["Name"]] = [os.path.splitext(resource["Path"])[1], resource_url]
 
     return result
 
@@ -267,7 +248,7 @@ def _get_display_name(name):
         :param name the charm/bundle name.
         :return a cleaned name for display.
     """
-    return name.replace('-', ' ')
+    return name.replace("-", " ")
 
 
 def _get_bug_url(name, bugs_url):
@@ -277,7 +258,7 @@ def _get_bug_url(name, bugs_url):
     """
     if bugs_url:
         return bugs_url
-    return 'https://bugs.launchpad.net/charms/+source/{}'.format(name)
+    return "https://bugs.launchpad.net/charms/+source/{}".format(name)
 
 
 def _render_markdown(content):
@@ -305,17 +286,14 @@ def _convert_http_to_https(content):
 
 
 def _extract_from_extrainfo(charm_data, ref):
-    extra_info = charm_data.get('extra-info', {})
-    revisions = (
-        extra_info.get('bzr-revisions') or
-        extra_info.get('vcs-revisions')
-    )
-    bzr_url = extra_info.get('bzr-url')
+    extra_info = charm_data.get("extra-info", {})
+    revisions = extra_info.get("bzr-revisions") or extra_info.get("vcs-revisions")
+    bzr_url = extra_info.get("bzr-url")
     return bzr_url, revisions
 
 
 def _extract_from_commoninfo(bundle_data):
-    common_info = bundle_data.get('common-info', {})
-    bugs_url = common_info.get('bugs-url')
-    homepage = common_info.get('homepage')
+    common_info = bundle_data.get("common-info", {})
+    bugs_url = common_info.get("bugs-url")
+    homepage = common_info.get("homepage")
     return bugs_url, homepage

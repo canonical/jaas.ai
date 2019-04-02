@@ -5,7 +5,7 @@
     "build-js": "webpack --mode development ./static/js/src/app.js --output ./static/js/dist/app.js --module-bind js=babel-loader",
     "clean": "rm -rf node_modules yarn-error.log css static/css *.log *.sqlite _site/ build/ .jekyll-metadata .bundle",
     "lint-scss": "sass-lint static/**/*.scss --verbose --no-exit",
-    "python-lint": "flake8 --max-line-length 95 webapp tests",
+    "python-lint": "flake8 --max-line-length 95 webapp tests && black --check --line-length 95 tests webapp",
     "serve": "./entrypoint 0.0.0.0:${PORT}",
     "test": "npm run python-lint && npm run test-python && sass-lint static/**/*.scss --verbose --no-exit",
     "test-python": "python3 -m unittest discover tests",
