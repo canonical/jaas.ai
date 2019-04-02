@@ -12,7 +12,8 @@ from webapp.store.views import jaasstore
 
 def create_app(testing=False):
     app = flask.Flask(
-        __name__, template_folder='../templates', static_folder='../static')
+        __name__, template_folder="../templates", static_folder="../static"
+    )
 
     app.testing = testing
 
@@ -29,7 +30,7 @@ def create_app(testing=False):
             app,
             group_by_endpoint=True,
             buckets=[0.25, 0.5, 0.75, 1, 2],
-            path=None
+            path=None,
         )
 
         init_extensions(app)
@@ -40,22 +41,26 @@ def create_app(testing=False):
     init_handler(app)
     init_blueprint(app)
 
-    @app.template_filter('pluralize')
+    @app.template_filter("pluralize")
     def pluralize(count):
         if count != 1:
-            return 's'
-        return ''
+            return "s"
+        return ""
 
     @app.context_processor
     def inject_external_urls():
-        return dict(external_urls={
-            'askubuntu': 'https://askubuntu.com/questions/tagged/juju',
-            'charmstore': 'https://api.jujucharms.com/charmstore/v5/',
-            'discourse': 'https://discourse.jujucharms.com/',
-            'docs': 'https://docs.jujucharms.com/',
-            'gui': 'https://jujucharms.com/new/',
-            'issues': 'https://github.com/canonical-websites/jaas.ai/issues'
-        })
+        return dict(
+            external_urls={
+                "askubuntu": "https://askubuntu.com/questions/tagged/juju",
+                "charmstore": "https://api.jujucharms.com/charmstore/v5/",
+                "discourse": "https://discourse.jujucharms.com/",
+                "docs": "https://docs.jujucharms.com/",
+                "gui": "https://jujucharms.com/new/",
+                "issues": (
+                    "https://github.com/canonical-websites/jaas.ai/issues"
+                ),
+            }
+        )
 
     return app
 
@@ -68,9 +73,7 @@ def init_handler(app):
         passing through the error description.
         """
 
-        return flask.render_template(
-            '404.html', error=error.description
-        ), 404
+        return flask.render_template("404.html", error=error.description), 404
 
 
 def init_blueprint(app):

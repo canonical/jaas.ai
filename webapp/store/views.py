@@ -4,7 +4,10 @@ from webapp.store import models
 from jujubundlelib import references
 
 jaasstore = Blueprint(
-    "jaasstore", __name__, template_folder="/templates", static_folder="/static"
+    "jaasstore",
+    __name__,
+    template_folder="/templates",
+    static_folder="/static",
 )
 
 
@@ -44,7 +47,8 @@ def search():
             "current_sort": sort,
             "current_type": entity_type,
             "results": results,
-            "results_count": len(results["recommended"]) + len(results["community"]),
+            "results_count": len(results["recommended"])
+            + len(results["community"]),
             "query": query,
         },
     )
@@ -92,9 +96,9 @@ def user_entity(username, entity_name):
 
     if entity:
         if entity["is_charm"]:
-            entity["description"] = entity["charm_data"]["Meta"]["charm-metadata"][
-                "Description"
-            ]
+            entity["description"] = entity["charm_data"]["Meta"][
+                "charm-metadata"
+            ]["Description"]
             entity["user"] = entity["charm_data"]["Meta"]["owner"]["User"]
             return render_template(
                 "store/charm-details.html", context={"entity": entity}
@@ -102,9 +106,9 @@ def user_entity(username, entity_name):
         else:
             entity["user"] = entity["bundle_data"]["Meta"]["owner"]["User"]
             entity["id"] = entity["bundle_data"]["Id"]
-            entity["meta_published_info"] = entity["bundle_data"]["Meta"]["published"][
-                "Info"
-            ]
+            entity["meta_published_info"] = entity["bundle_data"]["Meta"][
+                "published"
+            ]["Info"]
             return render_template(
                 "store/bundle-details.html", context={"entity": entity}
             )
@@ -127,25 +131,25 @@ def details(charm_or_bundle_name, series_or_version=None, version=None):
         entity = models.get_charm_or_bundle(reference)
 
     if entity:
-        if entity['is_charm']:
-            entity["meta_published_info"] = entity["charm_data"]["Meta"]["published"][
-                "Info"
-            ]
-            entity["description"] = entity["charm_data"]["Meta"]["charm-metadata"][
-                "Description"
-            ]
+        if entity["is_charm"]:
+            entity["meta_published_info"] = entity["charm_data"]["Meta"][
+                "published"
+            ]["Info"]
+            entity["description"] = entity["charm_data"]["Meta"][
+                "charm-metadata"
+            ]["Description"]
             return render_template(
                 "store/charm-details.html", context={"entity": entity}
             )
         else:
             entity["user"] = entity["bundle_data"]["Meta"]["owner"]["User"]
             entity["id"] = entity["bundle_data"]["Id"]
-            entity["series"] = entity["bundle_data"]["Meta"]["bundle-metadata"].get(
-                "series"
-            )
-            entity["meta_published_info"] = entity["bundle_data"]["Meta"]["published"][
-                "Info"
-            ]
+            entity["series"] = entity["bundle_data"]["Meta"][
+                "bundle-metadata"
+            ].get("series")
+            entity["meta_published_info"] = entity["bundle_data"]["Meta"][
+                "published"
+            ]["Info"]
             return render_template(
                 "store/bundle-details.html", context={"entity": entity}
             )
