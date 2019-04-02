@@ -84,13 +84,13 @@ class StoreViews(TestCase):
         response = self.client.get("/u/user-name")
         self.assertEqual(response.status_code, 404)
 
-    """Check that a provided URL renders an entity page.
-
-    :param unittest.mock.MagicMock mock_entity: A mocked entity method.
-    :param str entity_type: Whether this entity is a charm or bundle.
-    :param str url: The URL to test.
-    """
     def check_entity(self, mock_entity, entity_type, url):
+        """Check that a provided URL renders an entity page.
+
+        :param unittest.mock.MagicMock mock_entity: A mocked entity method.
+        :param str entity_type: Whether this entity is a charm or bundle.
+        :param str url: The URL to test.
+        """
         return_value = charm_data if entity_type == "charm" else bundle_data
         mock_entity.return_value = return_value
         response = self.client.get(url)
