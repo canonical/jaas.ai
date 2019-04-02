@@ -11,7 +11,9 @@ from webapp.store.views import jaasstore
 
 
 def create_app(testing=False):
-    app = flask.Flask(__name__, template_folder="../templates", static_folder="../static")
+    app = flask.Flask(
+        __name__, template_folder="../templates", static_folder="../static"
+    )
 
     app.testing = testing
 
@@ -25,7 +27,10 @@ def create_app(testing=False):
         talisker.flask.register(app)
 
         prometheus_flask_exporter.PrometheusMetrics(
-            app, group_by_endpoint=True, buckets=[0.25, 0.5, 0.75, 1, 2], path=None
+            app,
+            group_by_endpoint=True,
+            buckets=[0.25, 0.5, 0.75, 1, 2],
+            path=None,
         )
 
         init_extensions(app)

@@ -37,7 +37,12 @@ def add_headers(response):
         else:
             # Only add caching headers to successful responses
             response.headers["Cache-Control"] = ", ".join(
-                {"public", "max-age=61", "stale-while-revalidate=300", "stale-if-error=86400"}
+                {
+                    "public",
+                    "max-age=61",
+                    "stale-while-revalidate=300",
+                    "stale-if-error=86400",
+                }
             )
 
     return response

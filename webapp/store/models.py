@@ -11,7 +11,12 @@ cs = CharmStore("https://api.jujucharms.com/v5")
 
 
 def search_entities(
-    query, entity_type=None, tags=None, sort=None, series=None, promulgated_only=None
+    query,
+    entity_type=None,
+    tags=None,
+    sort=None,
+    series=None,
+    promulgated_only=None,
 ):
     includes = [
         "charm-metadata",
@@ -137,7 +142,9 @@ def _parse_bundle_data(bundle_data, include_files=False):
     }
     if include_files:
         bundle["files"] = _get_entity_files(ref, meta.get("manifest"))
-        bundle["readme"] = _render_markdown(cs.entity_readme_content(bundle_id))
+        bundle["readme"] = _render_markdown(
+            cs.entity_readme_content(bundle_id)
+        )
 
     return bundle
 
@@ -237,8 +244,13 @@ def _extract_resources(ref, resources):
     for resource in resources:
         resource_url = ""
         if resource["Revision"] >= 0:
-            resource_url = cs.resource_url(ref, resource["Name"], resource["Revision"])
-        result[resource["Name"]] = [os.path.splitext(resource["Path"])[1], resource_url]
+            resource_url = cs.resource_url(
+                ref, resource["Name"], resource["Revision"]
+            )
+        result[resource["Name"]] = [
+            os.path.splitext(resource["Path"])[1],
+            resource_url,
+        ]
 
     return result
 
@@ -287,7 +299,9 @@ def _convert_http_to_https(content):
 
 def _extract_from_extrainfo(charm_data, ref):
     extra_info = charm_data.get("extra-info", {})
-    revisions = extra_info.get("bzr-revisions") or extra_info.get("vcs-revisions")
+    revisions = extra_info.get("bzr-revisions") or extra_info.get(
+        "vcs-revisions"
+    )
     bzr_url = extra_info.get("bzr-url")
     return bzr_url, revisions
 
