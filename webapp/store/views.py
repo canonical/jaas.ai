@@ -13,7 +13,7 @@ def store():
     return render_template("store/store.html")
 
 
-@jaasstore.route("/search/")
+@jaasstore.route("/search")
 def search():
     query = request.args.get("q", "").replace("/", " ")
     entity_type = request.args.get("type", None)
