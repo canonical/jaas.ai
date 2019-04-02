@@ -15,11 +15,11 @@
         </h1>
       </div>
       <ul class="entity__meta p-inline-list--middot">
-        {% if context.entity.user %}
+        {% if context.entity.owner %}
           <li class="p-inline-list__item">
             <span class="entity__user">
               By <a
-                href="{{ url_for('jaasstore.user_details', username=context.entity.user) }}">{{ context.entity.user }}</a>
+                href="{{ url_for('jaasstore.user_details', username=context.entity.owner) }}">{{ context.entity.owner }}</a>
             </span>
           </li>
         {% endif %}

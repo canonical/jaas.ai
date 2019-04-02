@@ -143,7 +143,6 @@ def _parse_bundle_data(bundle_data, include_files=False):
         "services": _parseBundleServices(bundle_metadata["applications"]),
         "tags": bundle_metadata.get("Tags"),
         "units": meta.get("bundle-unit-count", {}).get("Count", ""),
-        "user": meta.get("owner", {}).get("User"),
         "url": ref.jujucharms_id(),
     }
     if include_files:
@@ -185,6 +184,7 @@ def _parse_charm_data(charm_data, include_files=False):
         "archive_url": cs.archive_url(ref),
         "bugs_url": bugs_url,
         "bzr_url": bzr_url,
+        "card_id": ref.path(),
         "channels": meta.get("published", {}).get("Info"),
         "charm_data": charm_data,
         "description": charm_metadata.get("Description"),
@@ -192,7 +192,6 @@ def _parse_charm_data(charm_data, include_files=False):
         "homepage": homepage,
         "icon": cs.charm_icon_url(charm_id),
         "id": charm_id,
-        "card_id": ref.path(),
         "latest_revision": latest_revision,
         "options": meta.get("charm-config", {}).get("Options"),
         "owner": meta.get("owner", {}).get("User"),
@@ -206,10 +205,9 @@ def _parse_charm_data(charm_data, include_files=False):
         "series": meta.get("supported-series", {}).get("SupportedSeries"),
         # Some charms do not have tags, so fall back to categories if they
         # exist (mostly on older charms).
-        "tags": charm_metadata.get("Tags") or charm_metadata.get("Categories"),
-        "user": meta.get("owner", {}).get("User"),
-        "url": ref.jujucharms_id(),
         "is_charm": True,
+        "tags": charm_metadata.get("Tags") or charm_metadata.get("Categories"),
+        "url": ref.jujucharms_id(),
     }
 
     if include_files:
