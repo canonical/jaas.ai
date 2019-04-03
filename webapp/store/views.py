@@ -94,9 +94,13 @@ def user_details(username):
 @jaasstore.route(
     "/u/<username>/<charm_or_bundle_name>/<series_or_version>/<version>"
 )
-def user_entity(username, charm_or_bundle_name, series_or_version=None, version=None):
+def user_entity(
+    username, charm_or_bundle_name, series_or_version=None, version=None
+):
     return details(
-        charm_or_bundle_name, series_or_version=series_or_version, version=version
+        charm_or_bundle_name,
+        series_or_version=series_or_version,
+        version=version,
     )
 
 
