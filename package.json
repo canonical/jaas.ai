@@ -4,6 +4,7 @@
     "build-css": "node-sass --include-path node_modules static/sass --output static/css && postcss --use autoprefixer --replace 'static/css/**/*.css' --dir static/minified 'static/css/**/*.css'",
     "build-js": "webpack --mode development ./static/js/src/app.js --output ./static/js/dist/app.js --module-bind js=babel-loader",
     "clean": "rm -rf node_modules yarn-error.log css static/css *.log *.sqlite _site/ build/ .jekyll-metadata .bundle",
+    "format-python": "black --line-length 79 tests webapp",
     "lint-scss": "sass-lint static/**/*.scss --verbose --no-exit",
     "python-lint": "flake8 webapp tests && black --check --line-length 79 tests webapp",
     "serve": "./entrypoint 0.0.0.0:${PORT}",

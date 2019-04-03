@@ -90,30 +90,18 @@ def user_details(username):
 
 
 @jaasstore.route("/u/<username>/<charm_or_bundle_name>/")
-def user_entity(username, charm_or_bundle_name):
-    reference = references.Reference.from_jujucharms_url(request.path[1:])
-    entity = models.get_charm_or_bundle(reference)
-
-    if entity:
-        if entity["is_charm"]:
-            entity["description"] = entity["charm_data"]["Meta"][
-                "charm-metadata"
-            ]["Description"]
-            entity["user"] = entity["charm_data"]["Meta"]["owner"]["User"]
-            return render_template(
-                "store/charm-details.html", context={"entity": entity}
-            )
-        else:
-            entity["user"] = entity["bundle_data"]["Meta"]["owner"]["User"]
-            entity["id"] = entity["bundle_data"]["Id"]
-            entity["meta_published_info"] = entity["bundle_data"]["Meta"][
-                "published"
-            ]["Info"]
-            return render_template(
-                "store/bundle-details.html", context={"entity": entity}
-            )
-    else:
-        return abort(404, "Entity not found {}".format())
+@jaasstore.route("/u/<username>/<charm_or_bundle_name>/<series_or_version>")
+@jaasstore.route(
+    "/u/<username>/<charm_or_bundle_name>/<series_or_version>/<version>"
+)
+def user_entity(
+    username, charm_or_bundle_name, series_or_version=None, version=None
+):
+    return details(
+        charm_or_bundle_name,
+        series_or_version=series_or_version,
+        version=version,
+    )
 
 
 @jaasstore.route("/<charm_or_bundle_name>")
@@ -138,6 +126,7 @@ def details(charm_or_bundle_name, series_or_version=None, version=None):
             entity["description"] = entity["charm_data"]["Meta"][
                 "charm-metadata"
             ]["Description"]
+            entity["user"] = entity["charm_data"]["Meta"]["owner"]["User"]
             return render_template(
                 "store/charm-details.html", context={"entity": entity}
             )
