@@ -89,8 +89,8 @@ def user_details(username):
         return abort(404, "User not found: {}".format(username))
 
 
-@jaasstore.route("/u/<username>/<entity_name>/")
-def user_entity(username, entity_name):
+@jaasstore.route("/u/<username>/<charm_or_bundle_name>/")
+def user_entity(username, charm_or_bundle_name):
     reference = references.Reference.from_jujucharms_url(request.path[1:])
     entity = models.get_charm_or_bundle(reference)
 
