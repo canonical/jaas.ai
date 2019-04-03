@@ -120,25 +120,10 @@ def details(charm_or_bundle_name, series_or_version=None, version=None):
 
     if entity:
         if entity["is_charm"]:
-            entity["meta_published_info"] = entity["charm_data"]["Meta"][
-                "published"
-            ]["Info"]
-            entity["description"] = entity["charm_data"]["Meta"][
-                "charm-metadata"
-            ]["Description"]
-            entity["user"] = entity["charm_data"]["Meta"]["owner"]["User"]
             return render_template(
                 "store/charm-details.html", context={"entity": entity}
             )
         else:
-            entity["user"] = entity["bundle_data"]["Meta"]["owner"]["User"]
-            entity["id"] = entity["bundle_data"]["Id"]
-            entity["series"] = entity["bundle_data"]["Meta"][
-                "bundle-metadata"
-            ].get("series")
-            entity["meta_published_info"] = entity["bundle_data"]["Meta"][
-                "published"
-            ]["Info"]
             return render_template(
                 "store/bundle-details.html", context={"entity": entity}
             )

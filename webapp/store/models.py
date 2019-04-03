@@ -129,12 +129,17 @@ def _parse_bundle_data(bundle_data, include_files=False):
         "bundle_data": bundle_data,
         "bundle_visulisation": getBundleVisualization(ref),
         "card_id": ref.path(),
+        "channels": meta.get("published", {}).get("Info"),
+        "description": bundle_metadata.get("Description"),
         "display_name": _get_display_name(name),
+        "id": bundle_data.get("Id"),
         "is_charm": False,
         "latest_revision": latest_revision,
         "owner": meta.get("owner", {}).get("User"),
         "promulgated": meta.get("promulgated", {}).get("Promulgated"),
         "revision_number": ref.revision,
+        # The series is an array to match the charm data.
+        "series": [bundle_metadata.get("Series")],
         "services": _parseBundleServices(bundle_metadata["applications"]),
         "tags": bundle_metadata.get("Tags"),
         "units": meta.get("bundle-unit-count", {}).get("Count", ""),
@@ -179,12 +184,14 @@ def _parse_charm_data(charm_data, include_files=False):
         "archive_url": cs.archive_url(ref),
         "bugs_url": bugs_url,
         "bzr_url": bzr_url,
+        "card_id": ref.path(),
+        "channels": meta.get("published", {}).get("Info"),
         "charm_data": charm_data,
+        "description": charm_metadata.get("Description"),
         "display_name": _get_display_name(name),
         "homepage": homepage,
         "icon": cs.charm_icon_url(charm_id),
         "id": charm_id,
-        "card_id": ref.path(),
         "latest_revision": latest_revision,
         "options": meta.get("charm-config", {}).get("Options"),
         "owner": meta.get("owner", {}).get("User"),
@@ -198,9 +205,9 @@ def _parse_charm_data(charm_data, include_files=False):
         "series": meta.get("supported-series", {}).get("SupportedSeries"),
         # Some charms do not have tags, so fall back to categories if they
         # exist (mostly on older charms).
+        "is_charm": True,
         "tags": charm_metadata.get("Tags") or charm_metadata.get("Categories"),
         "url": ref.jujucharms_id(),
-        "is_charm": True,
     }
 
     if include_files:
