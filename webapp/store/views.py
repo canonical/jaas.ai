@@ -89,22 +89,19 @@ def user_details(username):
         return abort(404, "User not found: {}".format(username))
 
 
-@jaasstore.route("/u/<username>/<entity_name>/")
-def user_entity(username, entity_name):
-    reference = references.Reference.from_jujucharms_url(request.path[1:])
-    entity = models.get_charm_or_bundle(reference)
-
-    if entity:
-        if entity["is_charm"]:
-            return render_template(
-                "store/charm-details.html", context={"entity": entity}
-            )
-        else:
-            return render_template(
-                "store/bundle-details.html", context={"entity": entity}
-            )
-    else:
-        return abort(404, "Entity not found {}".format())
+@jaasstore.route("/u/<username>/<charm_or_bundle_name>/")
+@jaasstore.route("/u/<username>/<charm_or_bundle_name>/<series_or_version>")
+@jaasstore.route(
+    "/u/<username>/<charm_or_bundle_name>/<series_or_version>/<version>"
+)
+def user_entity(
+    username, charm_or_bundle_name, series_or_version=None, version=None
+):
+    return details(
+        charm_or_bundle_name,
+        series_or_version=series_or_version,
+        version=version,
+    )
 
 
 @jaasstore.route("/<charm_or_bundle_name>")
