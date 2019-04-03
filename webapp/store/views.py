@@ -89,9 +89,9 @@ def user_details(username):
         return abort(404, "User not found: {}".format(username))
 
 
-@jaasstore.route("/u/<username>/<entity_name>/")
-@jaasstore.route("/u/<username>/<entity_name>/<series_or_version>")
-@jaasstore.route("/u/<username>/<entity_name>/<series_or_version>/<version>")
+@jaasstore.route("/u/<username>/<charm_or_bundle_name>/")
+@jaasstore.route("/u/<username>/<charm_or_bundle_name>/<series_or_version>")
+@jaasstore.route("/u/<username>/<charm_or_bundle_name>/<series_or_version>/<version>")
 def user_entity(username, entity_name, series_or_version=None, version=None):
     return details(
         entity_name, series_or_version=series_or_version, version=version
