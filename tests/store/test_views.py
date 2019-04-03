@@ -6,10 +6,11 @@ from tests.store.testdata import bundle_data, charm_data
 
 
 class StoreViews(TestCase):
-    render_templates = False
+    render_templates = True
 
     def create_app(self):
         app = create_app(testing=True)
+        app.config["PRESERVE_CONTEXT_ON_EXCEPTION"] = False
         return app
 
     @patch("webapp.store.models.search_entities")
