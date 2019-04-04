@@ -17,7 +17,6 @@ class WebappViews(TestCase):
             "/big-data",
             "/community",
             "/community/cards",
-            "/community/charmers",
             "/community/partners",
             "/containers",
             "/experts",

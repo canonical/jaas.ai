@@ -81,11 +81,6 @@ def community_cards():
     return render_template("jaasai/community/cards.html")
 
 
-@jaasai.route("/community/charmers")
-def community_charmers():
-    return render_template("jaasai/community/charmers.html")
-
-
 @jaasai.route("/community/partners")
 def community_partners():
     return render_template("jaasai/community/partners.html")
