@@ -16,7 +16,7 @@ def store():
     return render_template("store/store.html")
 
 
-@jaasstore.route("/search/")
+@jaasstore.route("/search")
 def search():
     query = request.args.get("q", "").replace("/", " ")
     entity_type = request.args.get("type", None)
@@ -70,7 +70,7 @@ def search_redirect(path=None):
     return redirect("/search?{}".format("&".join(query_string)), code=302)
 
 
-@jaasstore.route("/u/<username>/")
+@jaasstore.route("/u/<username>")
 def user_details(username):
     entities = models.get_user_entities(username)
     if len(entities["charms"]) > 0 or len(entities["bundles"]) > 0:
@@ -89,7 +89,7 @@ def user_details(username):
         return abort(404, "User not found: {}".format(username))
 
 
-@jaasstore.route("/u/<username>/<charm_or_bundle_name>/")
+@jaasstore.route("/u/<username>/<charm_or_bundle_name>")
 @jaasstore.route("/u/<username>/<charm_or_bundle_name>/<series_or_version>")
 @jaasstore.route(
     "/u/<username>/<charm_or_bundle_name>/<series_or_version>/<version>"
