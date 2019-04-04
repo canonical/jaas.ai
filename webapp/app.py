@@ -7,6 +7,7 @@ import talisker.flask
 from webapp.extensions import sentry
 from webapp.handlers import add_headers, clear_trailing_slash
 from webapp.jaasai.views import jaasai
+from webapp.redirects.views import jaasredirects
 from webapp.store.views import jaasstore
 
 
@@ -78,6 +79,7 @@ def init_handler(app):
 
 def init_blueprint(app):
     app.register_blueprint(jaasai)
+    app.register_blueprint(jaasredirects)
     app.register_blueprint(jaasstore)
 
 
