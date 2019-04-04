@@ -1,3 +1,4 @@
+from flask import url_for
 from flask_testing import TestCase
 from unittest.mock import patch
 
@@ -19,7 +20,7 @@ class StoreViews(TestCase):
             "recommended": [{}, {}],
             "community": [{}, {}],
         }
-        response = self.client.get("/search?q=k8s")
+        response = self.client.get(url_for("jaasstore.search", q="k8s"))
         self.assertEqual(response.status_code, 200)
         context = self.get_context_variable("context")
         self.assertEqual(context["results_count"], 4)
@@ -30,7 +31,7 @@ class StoreViews(TestCase):
             "recommended": [],
             "community": [],
         }
-        response = self.client.get("/search?q=k8s")
+        response = self.client.get(url_for("jaasstore.search", q="k8s"))
         self.assertEqual(response.status_code, 200)
 
     @patch("webapp.store.models.search_entities")
@@ -38,7 +39,10 @@ class StoreViews(TestCase):
         mock_search_entities.return_value = []
         response = self.client.get("/q/k8s")
         self.assertEqual(response.status_code, 302)
-        self.assertEqual(response.location, "http://localhost/search?q=k8s")
+        self.assertEqual(
+            response.location,
+            "http://localhost{}".format(url_for("jaasstore.search", q="k8s")),
+        )
 
     @patch("webapp.store.models.search_entities")
     def test_search_redirect_multi_word(self, mock_search_entities):
@@ -46,7 +50,10 @@ class StoreViews(TestCase):
         response = self.client.get("/q/k8s/demo")
         self.assertEqual(response.status_code, 302)
         self.assertEqual(
-            response.location, "http://localhost/search?q=k8s+demo"
+            response.location,
+            "http://localhost{}".format(
+                url_for("jaasstore.search", q="k8s demo")
+            ),
         )
 
     @patch("webapp.store.models.search_entities")
@@ -56,7 +63,11 @@ class StoreViews(TestCase):
         self.assertEqual(response.status_code, 302)
         self.assertEqual(
             response.location,
-            "http://localhost/search?q=k8s&sort=name&series=xenial",
+            "http://localhost{}".format(
+                url_for(
+                    "jaasstore.search", q="k8s", sort="name", series="xenial"
+                )
+            ),
         )
 
     @patch("webapp.store.models.search_entities")
@@ -65,7 +76,10 @@ class StoreViews(TestCase):
         response = self.client.get("/q?tags=proxy")
         self.assertEqual(response.status_code, 302)
         self.assertEqual(
-            response.location, "http://localhost/search?tags=proxy"
+            response.location,
+            "http://localhost{}".format(
+                url_for("jaasstore.search", tags="proxy")
+            ),
         )
 
     @patch("webapp.store.models.get_user_entities")
@@ -74,15 +88,19 @@ class StoreViews(TestCase):
             "bundles": [{}, {}],
             "charms": [{}, {}],
         }
-        response = self.client.get("/u/user-name")
+        response = self.client.get(
+            url_for("jaasstore.user_details", username="user-name")
+        )
         self.assertEqual(response.status_code, 200)
         context = self.get_context_variable("context")
         self.assertEqual(context["username"], "user-name")
 
     @patch("webapp.store.models.get_user_entities")
-    def test_user_404(self, mock_get_user_entities):
+    def test_user_details_404(self, mock_get_user_entities):
         mock_get_user_entities.return_value = {"bundles": [], "charms": []}
-        response = self.client.get("/u/user-name")
+        response = self.client.get(
+            url_for("jaasstore.user_details", username="user-name")
+        )
         self.assertEqual(response.status_code, 404)
 
     def check_entity(self, mock_entity, entity_type, url):
@@ -101,35 +119,93 @@ class StoreViews(TestCase):
 
     @patch("theblues.charmstore.CharmStore.entity")
     def test_details_charm(self, mock_entity):
-        self.check_entity(mock_entity, "charm", "/apache2")
+        self.check_entity(
+            mock_entity,
+            "charm",
+            url_for("jaasstore.details", charm_or_bundle_name="apache2"),
+        )
 
     @patch("theblues.charmstore.CharmStore.entity")
     def test_details_charm_version(self, mock_entity):
-        self.check_entity(mock_entity, "charm", "/apache2/14")
+        self.check_entity(
+            mock_entity,
+            "charm",
+            url_for(
+                "jaasstore.details",
+                charm_or_bundle_name="apache2",
+                series_or_version=14,
+            ),
+        )
 
     @patch("theblues.charmstore.CharmStore.entity")
     def test_details_charm_series(self, mock_entity):
-        self.check_entity(mock_entity, "charm", "/apache2/wily")
+        self.check_entity(
+            mock_entity,
+            "charm",
+            url_for(
+                "jaasstore.details",
+                charm_or_bundle_name="apache2",
+                series_or_version="wily",
+            ),
+        )
 
     @patch("theblues.charmstore.CharmStore.entity")
     def test_details_charm_series_version(self, mock_entity):
-        self.check_entity(mock_entity, "charm", "/apache2/wily/14")
+        self.check_entity(
+            mock_entity,
+            "charm",
+            url_for(
+                "jaasstore.details",
+                charm_or_bundle_name="apache2",
+                series_or_version="wily",
+                version=14,
+            ),
+        )
 
     @patch("theblues.charmstore.CharmStore.entity")
     def test_details_bundle(self, mock_entity):
-        self.check_entity(mock_entity, "bundle", "/k8s-bundle")
+        self.check_entity(
+            mock_entity,
+            "bundle",
+            url_for("jaasstore.details", charm_or_bundle_name="k8s-bundle"),
+        )
 
     @patch("theblues.charmstore.CharmStore.entity")
     def test_details_bundle_version(self, mock_entity):
-        self.check_entity(mock_entity, "bundle", "/k8s-bundle/14")
+        self.check_entity(
+            mock_entity,
+            "bundle",
+            url_for(
+                "jaasstore.details",
+                charm_or_bundle_name="k8s-bundle",
+                series_or_version=14,
+            ),
+        )
 
     @patch("theblues.charmstore.CharmStore.entity")
     def test_details_bundle_series(self, mock_entity):
-        self.check_entity(mock_entity, "bundle", "/k8s-bundle/wily")
+        self.check_entity(
+            mock_entity,
+            "bundle",
+            url_for(
+                "jaasstore.details",
+                charm_or_bundle_name="k8s-bundle",
+                series_or_version="wily",
+            ),
+        )
 
     @patch("theblues.charmstore.CharmStore.entity")
     def test_details_bundle_series_version(self, mock_entity):
-        self.check_entity(mock_entity, "bundle", "/k8s-bundle/wily/14")
+        self.check_entity(
+            mock_entity,
+            "bundle",
+            url_for(
+                "jaasstore.details",
+                charm_or_bundle_name="k8s-bundle",
+                series_or_version="wily",
+                version=14,
+            ),
+        )
 
     @patch("webapp.store.models.get_charm_or_bundle")
     def test_details_404(self, mock_get_charm_or_bundle):
@@ -145,36 +221,104 @@ class StoreViews(TestCase):
 
     @patch("theblues.charmstore.CharmStore.entity")
     def test_user_entity_charm(self, mock_entity):
-        self.check_entity(mock_entity, "charm", "/u/user-name/apache2")
+        self.check_entity(
+            mock_entity,
+            "charm",
+            url_for(
+                "jaasstore.user_entity",
+                username="user-name",
+                charm_or_bundle_name="apache2",
+            ),
+        )
 
     @patch("theblues.charmstore.CharmStore.entity")
     def test_user_entity_charm_version(self, mock_entity):
-        self.check_entity(mock_entity, "charm", "/u/user-name/apache2/14")
+        self.check_entity(
+            mock_entity,
+            "charm",
+            url_for(
+                "jaasstore.user_entity",
+                username="user-name",
+                charm_or_bundle_name="apache2",
+                series_or_version=14,
+            ),
+        )
 
     @patch("theblues.charmstore.CharmStore.entity")
     def test_user_entity_charm_series(self, mock_entity):
-        self.check_entity(mock_entity, "charm", "/u/user-name/apache2/wily")
+        self.check_entity(
+            mock_entity,
+            "charm",
+            url_for(
+                "jaasstore.user_entity",
+                username="user-name",
+                charm_or_bundle_name="apache2",
+                series_or_version="wily",
+            ),
+        )
 
     @patch("theblues.charmstore.CharmStore.entity")
     def test_user_entity_charm_series_version(self, mock_entity):
-        self.check_entity(mock_entity, "charm", "/u/user-name/apache2/wily/14")
+        self.check_entity(
+            mock_entity,
+            "charm",
+            url_for(
+                "jaasstore.user_entity",
+                username="user-name",
+                charm_or_bundle_name="apache2",
+                series_or_version="wily",
+                version=14,
+            ),
+        )
 
     @patch("theblues.charmstore.CharmStore.entity")
     def test_user_entity_bundle(self, mock_entity):
-        self.check_entity(mock_entity, "bundle", "/u/user-name/k8s-bundle")
+        self.check_entity(
+            mock_entity,
+            "bundle",
+            url_for(
+                "jaasstore.user_entity",
+                username="user-name",
+                charm_or_bundle_name="k8s-bundle",
+            ),
+        )
 
     @patch("theblues.charmstore.CharmStore.entity")
     def test_user_entity_bundle_version(self, mock_entity):
-        self.check_entity(mock_entity, "bundle", "/u/user-name/k8s-bundle/14")
+        self.check_entity(
+            mock_entity,
+            "bundle",
+            url_for(
+                "jaasstore.user_entity",
+                username="user-name",
+                charm_or_bundle_name="k8s-bundle",
+                series_or_version=14,
+            ),
+        )
 
     @patch("theblues.charmstore.CharmStore.entity")
     def test_user_entity_bundle_series(self, mock_entity):
         self.check_entity(
-            mock_entity, "bundle", "/u/user-name/k8s-bundle/wily"
+            mock_entity,
+            "bundle",
+            url_for(
+                "jaasstore.user_entity",
+                username="user-name",
+                charm_or_bundle_name="k8s-bundle",
+                series_or_version="wily",
+            ),
         )
 
     @patch("theblues.charmstore.CharmStore.entity")
     def test_user_entity_bundle_series_version(self, mock_entity):
         self.check_entity(
-            mock_entity, "bundle", "/u/user-name/k8s-bundle/wily/14"
+            mock_entity,
+            "bundle",
+            url_for(
+                "jaasstore.user_entity",
+                username="user-name",
+                charm_or_bundle_name="k8s-bundle",
+                series_or_version="wily",
+                version=14,
+            ),
         )

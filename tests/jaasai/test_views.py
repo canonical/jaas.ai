@@ -1,3 +1,4 @@
+from flask import url_for
 from flask_testing import TestCase
 
 from webapp.app import create_app
@@ -13,24 +14,25 @@ class WebappViews(TestCase):
 
     def test_static_pages(self):
         pages = [
-            "/",
-            "/big-data",
-            "/community",
-            "/community/cards",
-            "/community/partners",
-            "/containers",
-            "/experts",
-            "/experts/spicule",
-            "/experts/tengu",
-            "/experts/thanks",
-            "/getting-started",
-            "/how-it-works",
-            "/jaas",
-            "/kubernetes",
-            "/openstack",
+            "big_data",
+            "community_cards",
+            "community_partners",
+            "community",
+            "containers",
+            "experts_spicule",
+            "experts_tengu",
+            "experts_thanks",
+            "experts",
+            "getting_started",
+            "how_it_works",
+            "index",
+            "jaas",
+            "kubernetes",
+            "openstack",
         ]
         for page in pages:
-            response = self.client.get(page)
+            url = url_for("jaasai.{}".format(page))
+            response = self.client.get(url)
             self.assertEqual(
-                response.status_code, 200, "For page: {}".format(page)
+                response.status_code, 200, "For page: {}".format(url)
             )
