@@ -76,6 +76,15 @@ def init_handler(app):
 
         return flask.render_template("404.html", error=error.description), 404
 
+    @app.errorhandler(500)
+    def internal_server_error(error):
+        """
+        For 500 pages, display the 500.html template,
+        passing through the error.
+        """
+
+        return flask.render_template("500.html", error=error), 500
+
 
 def init_blueprint(app):
     app.register_blueprint(jaasai)
