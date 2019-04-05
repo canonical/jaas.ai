@@ -19,7 +19,7 @@ window.app.cliTyper = function(container, commentContainer) {
     'juju deploy jenkins',
     'juju deploy',
     'juju deploy jenkins-slave',
-    'juju add-relation jenkins jenkins-slave',
+    'juju relate jenkins jenkins-slave',
     'juju add-unit jenkins-slave -n 3',
     'juju add-user sarah',
     'juju grant sarah read prod-california',
