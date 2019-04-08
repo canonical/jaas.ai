@@ -267,7 +267,12 @@ def _get_display_name(name):
         :param name the charm/bundle name.
         :return a cleaned name for display.
     """
-    return name.replace("-", " ")
+    name = name.replace("-", " ")
+    # Hack to rename 'canonical kubernetes'. To be removed when display
+    # name has been implemented.
+    if name == "canonical kubernetes":
+        name = "The Charmed Distribution of Kubernetes"
+    return name
 
 
 def _get_bug_url(name, bugs_url):

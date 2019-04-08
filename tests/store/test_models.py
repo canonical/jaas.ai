@@ -122,7 +122,9 @@ class TestStoreModels(unittest.TestCase):
             bundle["description"],
             "A highly-available, production-grade Kubernetes cluster.",
         )
-        self.assertEqual(bundle["display_name"], "canonical kubernetes")
+        self.assertEqual(
+            bundle["display_name"], "The Charmed Distribution of Kubernetes"
+        )
         self.assertEqual(bundle["id"], "cs:bundle/canonical-kubernetes-466")
         self.assertFalse(bundle["is_charm"])
         self.assertIsNone(bundle["latest_revision"])
