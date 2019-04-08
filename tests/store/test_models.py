@@ -120,7 +120,7 @@ class TestStoreModels(unittest.TestCase):
         )
         self.assertEqual(
             bundle["description"],
-            "A highly-available, production-grade Kubernetes cluster.",
+            "<p>A highly-available, production-grade Kubernetes cluster.</p>",
         )
         self.assertEqual(
             bundle["display_name"], "The Charmed Distribution of Kubernetes"
