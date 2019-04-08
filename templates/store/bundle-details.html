@@ -12,7 +12,7 @@
       {% if context.entity.description %}
         <div id="description" itemprop="description">
           <h3>Description</h3>
-          <p>{{ context.entity.description }}</p>
+          <p>{{ context.entity.description|safe }}</p>
         </div>
       {% endif %}
       <div class="p-card--highlighted">
