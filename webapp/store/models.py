@@ -270,8 +270,8 @@ def _get_display_name(name):
     name = name.replace("-", " ")
     # Hack to rename 'canonical kubernetes'. To be removed when display
     # name has been implemented.
-    if name == 'canonical kubernetes':
-        name = 'the charmed distribution of kubernetes'
+    if name == "canonical kubernetes":
+        name = "The Charmed Distribution of Kubernetes"
     return name
 
 
