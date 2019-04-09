@@ -55,20 +55,9 @@
   <div class="p-strip is-bordered homepage-hero-promos">
     <div class="row">
       <div class="u-equal-height">
-          <div class="col-4 has-strap">
-            <div class="expert__strap is-inline">
-              Juju expert partners
-            </div>
-            <p>Spicule's <a class="p-link--strong" href="{{ url_for('jaasstore.user_entity', username='spiculecharms', charm_or_bundle_name='saiku-drill') }}">Saiku solution</a> can solve your Big Data challenge.</p>
-            <div class="p-card card-wrap u-align--center u-vertically-center">
-              <a href="{{ url_for('jaasai.experts_spicule') }}">
-                <img style="padding:1rem 0" src="{{ url_for('static', filename='img/logos/spicule.png') }}" alt="Spicule logo" width="160" />
-              </a>
-            </div>
-            <a href="{{ url_for('jaasstore.user_entity', username='spiculecharms', charm_or_bundle_name='saiku-drill') }}" class="p-button--positive">
-              Business intelligence now
-            </a>
-          </div>
+        <div class="col-4 has-strap">
+          {% include "shared/_spicule-card.html" %}
+        </div>
 
         <div class="col-4 is-flex">
           <h5 class="u-no-padding--top">Or build it yourself</h5>

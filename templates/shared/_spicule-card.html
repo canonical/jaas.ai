@@ -1,0 +1,20 @@
+{% if not spicule_card %}
+  {% set spicule_card = {} %}
+{% endif %}
+<div class="expert__strap">
+  Juju expert partners
+</div>
+<div class="p-card-heading" style="{{ spicule_card.heading_style }}">
+  <p>Spicule&rsquo;s solutions can solve your Big Data challenge.</p>
+</div>
+<div class="p-card u-align--center u-vertically-center" style="min-height:96px">
+  <img src="{{ url_for('static', filename='img/logos/spicule.png') }}" alt="Spicule logo" width="160" style="padding:1rem 0" />
+</div>
+<footer class="p-card__footer">
+  {% if spicule_card.show_footer_rule %}
+    <hr class="u-sv1">
+  {% endif %}
+  <a href="{{ url_for('jaasai.experts_spicule') }}" class="p-button--positive">
+    Big data experts
+  </a>
+</footer>

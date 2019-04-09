@@ -7,47 +7,24 @@
 <div class="p-strip u-no-padding--bottom">
   <div class="row">
     <div class="u-equal-height">
-
         <div class="col-4 p-card store-promo--k8">
-
-        <div class="u-align--center">
-          <img width="150" src="https://assets.ubuntu.com/v1/dba11aee-kubernetes.svg" alt="Kubernetes logo">
-          <h2>Kubernetes</h2>
-          <a href="{{ url_for('jaasai.kubernetes') }}" class="p-button--neutral">Find out more</a>
+          <div class="u-align--center">
+            <img width="150" src="https://assets.ubuntu.com/v1/dba11aee-kubernetes.svg" alt="Kubernetes logo">
+            <h2>Kubernetes</h2>
+            <a href="{{ url_for('jaasai.kubernetes') }}" class="p-button--neutral">Find out more</a>
+          </div>
         </div>
-      </div>
-
         <div class="col-4 p-card store-promo--hadoop">
-
-        <div class="u-align--center">
-          <img width="195" src="https://assets.ubuntu.com/v1/883e4977-hadoop-elephant.png" alt="Hadoop logo">
-          <h2>Big data</h2>
-          <a href="{{ url_for('jaasai.big_data') }}" class="p-button--neutral">Find out more</a>
+          <div class="u-align--center">
+            <img width="195" src="https://assets.ubuntu.com/v1/883e4977-hadoop-elephant.png" alt="Hadoop logo">
+            <h2>Big data</h2>
+            <a href="{{ url_for('jaasai.big_data') }}" class="p-button--neutral">Find out more</a>
+          </div>
         </div>
-      </div>
-
-
         <div class="col-4 has-strap">
-          <div class="expert__strap">
-            Juju expert partners
-          </div>
-
-          <div class="p-card-heading" style="padding:0.5rem 0 0.5rem">
-            <p>Spicule&rsquo;s <a class="p-link--strong" href="{{ url_for('jaasstore.user_entity', username='spiculecharms', charm_or_bundle_name='saiku-drill') }}">Saiku solution</a> can solve your Big Data challenge.</p>
-          </div>
-          <div class="p-card u-align--center u-vertically-center" style="min-height:96px">
-            <img src="{{ url_for('static', filename='img/logos/spicule.png') }}" alt="Spicule logo" width="160" style="padding:1rem 0" />
-          </div>
-          <footer class="p-card__footer">
-            <hr class="u-sv1">
-            <a href="{{ url_for('jaasstore.user_entity', username='spiculecharms', charm_or_bundle_name='saiku-drill') }}" class="p-button--positive">
-              Business Intelligence now
-            </a>
-          </footer>
-
-         </div>
-
-
+          {% set spicule_card = {'show_footer_rule': True, 'heading_style': 'padding:0.5rem 0 0.5rem'} %}
+          {% include "shared/_spicule-card.html" %}
+       </div>
     </div>
   </div>
 </div>
