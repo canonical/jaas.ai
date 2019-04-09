@@ -67,7 +67,7 @@ $white: #fff;
     }
   }
 
-  @media (min-width: $breakpoint-medium) {
+  @media (min-width: $breakpoint-navigation-threshold) {
     & &__links .p-navigation__link {
       border-left: 1px solid $color-nav-border;
 
