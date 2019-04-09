@@ -3,7 +3,7 @@ from flask_testing import TestCase
 from unittest.mock import patch
 
 from webapp.app import create_app
-from tests.store.testdata import bundle_data, charm_data
+from tests.store.testdata import bundle_data, charm_data, user_entities_data
 
 
 class StoreViews(TestCase):
@@ -34,18 +34,17 @@ class StoreViews(TestCase):
         response = self.client.get(url_for("jaasstore.search", q="k8s"))
         self.assertEqual(response.status_code, 200)
 
-    @patch("webapp.store.models.get_user_entities")
-    def test_user_details(self, mock_get_user_entities):
-        mock_get_user_entities.return_value = {
-            "bundles": [{}, {}],
-            "charms": [{}, {}],
-        }
+    @patch("theblues.charmstore.CharmStore.list")
+    def test_user_details(self, mock_list):
+        mock_list.return_value = user_entities_data
         response = self.client.get(
             url_for("jaasstore.user_details", username="user-name")
         )
         self.assertEqual(response.status_code, 200)
         context = self.get_context_variable("context")
         self.assertEqual(context["username"], "user-name")
+        self.assertEqual(context["bundles_count"], 1)
+        self.assertEqual(context["charms_count"], 4)
 
     @patch("webapp.store.models.get_user_entities")
     def test_user_details_404(self, mock_get_user_entities):
