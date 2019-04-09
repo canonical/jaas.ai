@@ -123,6 +123,7 @@ def _parse_bundle_data(bundle_data, include_files=False):
         "full_id": revision_list[0],
         "url": "{}/{}".format(ref.name, int(revision_list[0].split("-")[-1])),
     }
+    description = bundle_metadata.get("Description")
 
     bundle = {
         "archive_url": cs.archive_url(ref),
@@ -130,7 +131,9 @@ def _parse_bundle_data(bundle_data, include_files=False):
         "bundle_visulisation": getBundleVisualization(ref),
         "card_id": ref.path(),
         "channels": meta.get("published", {}).get("Info"),
-        "description": _render_markdown(bundle_metadata.get("Description")),
+        # Some bundles don't have descriptions, so first check that the
+        # description exists before trying to render the Markdown.
+        "description": _render_markdown(description) if description else None,
         "display_name": _get_display_name(name),
         "id": bundle_data.get("Id"),
         "is_charm": False,
@@ -179,6 +182,7 @@ def _parse_charm_data(charm_data, include_files=False):
         "full_id": revision_list[0],
         "url": "{}/{}".format(name, int(revision_list[0].split("-")[-1])),
     }
+    description = charm_metadata.get("Description")
 
     charm = {
         "archive_url": cs.archive_url(ref),
@@ -187,7 +191,9 @@ def _parse_charm_data(charm_data, include_files=False):
         "card_id": ref.path(),
         "channels": meta.get("published", {}).get("Info"),
         "charm_data": charm_data,
-        "description": _render_markdown(charm_metadata.get("Description")),
+        # Some charms don't have descriptions, so first check that the
+        # description exists before trying to render the Markdown.
+        "description": _render_markdown(description) if description else None,
         "display_name": _get_display_name(name),
         "homepage": homepage,
         "icon": cs.charm_icon_url(charm_id),

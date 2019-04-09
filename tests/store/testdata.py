@@ -22,4 +22,5 @@ with open(os.path.join(test_dir, "json/bundle.json"), "r") as json_file:
 
 user_entities_data = None
 with open(os.path.join(test_dir, "json/user-entities.json"), "r") as json_file:
-    user_entities_data = json.loads(json_file.read())
+    data = json.loads(json_file.read())
+    user_entities_data = data["Results"]
