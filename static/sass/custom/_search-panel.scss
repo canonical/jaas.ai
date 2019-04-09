@@ -7,7 +7,7 @@
   opacity: 0;
   padding: $sp-medium;
   position: absolute;
-  top: 3rem;
+  top: 4.85rem;
   transition: opacity 0.25s;
   width: 100%;
   z-index: -1;
@@ -82,7 +82,6 @@
     padding: $sp-medium;
     text-align: center;
     width: 20%;
-
 
     &:hover {
       border: 1px solid $color-mid-light;
