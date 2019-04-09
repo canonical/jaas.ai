@@ -40,36 +40,36 @@
   </div>
   <div class="row">
     <div class="col-6">
-      <h3>Saiku Drill</h3>
-      <p>Combining Saiku Analytics with the scalable power of Apache Drill, we enable users to query a multitude of data sources. Apache Drill &amp; Saiku are a perfect combination for enterprise scale data discovery.</p>
-      <div class="p-card">
-        <div class="pictogram-bg">
-          <object data="{{ external_urls.charmstore }}~spiculecharms/saiku-drill/diagram.svg" type="image/svg+xml"></object>
-        </div>
-        <ul class="p-list">
-          <li class="p-list__item is-ticked">Data from SQL databases, CSV, JSON, or Hadoop</li>
-          <li class="p-list__item is-ticked">Combine in a single view</li>
-          <li class="p-list__item is-ticked">Saiku Dashboard Designer – reporting without code.</li>
-        </ul>
-        <div class="expert__actions">
-          <a href="{{ url_for('jaasstore.user_entity', username='spiculecharms', charm_or_bundle_name='saiku-drill') }}" class="p-button--positive">Deploy Saiku Drill</a>
-        </div>
+      <h3><a href="{{ url_for('jaasstore.user_entity', username='spiculecharms', charm_or_bundle_name='anssr-data-engine') }}">Anssr Data-Engine</a></h3>
+      <p>The reference implementation of the Anssr Data Platform, developed by the Juju experts at Spicule.</p>
+      <a href="{{ external_urls.gui }}?dd=~spiculecharms/bundle/anssr-data-engine" class="p-button--positive">Deploy Anssr</a>
+    </div>
+    <div class="col-6 u-hide--small">
+      <div class="pictogram-bg">
+        <object data="{{ external_urls.charmstore }}~spiculecharms/anssr-data-engine/diagram.svg" type="image/svg+xml" style="min-height:280px"></object>
       </div>
     </div>
+  </div>
+  <div class="row">
     <div class="col-6">
-      <h3>Drill Hadoop</h3>
-      <p>Processing data at scale can be a trick proposition to execute successfully. But using the Drill and Hadoop bundle, it becomes easy to deploy Hadoop at scale, and connect your favourite BI tool to the platform.</p>
-      <div class="p-card u-no-margin--bottom-lrg">
+      <h3><a href="{{ url_for('jaasstore.user_entity', username='spiculecharms', charm_or_bundle_name='druid-hadoop') }}">Druid Hadoop</a></h3>
+      <p>Running interactive analytics at scale can be a challenge. The supported Druid Hadoop bundle from Spicule allows companies to investigate data both in real time and over huge amounts of historical data, by levering the power of Apache Druid.</p>
+      <ul class="p-inline-list">
+        <li class="p-inline-list__item">
+          <a href="{{ url_for('jaasstore.user_entity', username='spiculecharms', charm_or_bundle_name='druid-hadoop') }}" class="p-button--positive">Deploy Druid Hadoop</a>
+        </li>
+        <li class="p-inline-list__item">
+          <span class="play-video-cta">
+            <a href="https://www.youtube.com/watch?v=qzeGk_5BCMs" target="_blank">
+              Or watch the video
+            </a>
+          </span>
+        </li>
+      </ul>
+    </div>
+    <div class="col-6 u-hide--small">
         <div class="pictogram-bg">
-          <object data="{{ external_urls.charmstore }}~spiculecharms/saiku-drill-hadoop/diagram.svg" type="image/svg+xml"></object>
-        </div>
-        <ul class="p-list">
-          <li class="p-list__item is-ticked">JDBC and ODBC interfaces</li>
-          <li class="p-list__item is-ticked">SQL compliant</li>
-          <li class="p-list__item is-ticked">Highly scalable</li>
-        </ul>
-        <div class="expert__actions">
-          <a href="{{ url_for('jaasstore.user_entity', username='spiculecharms', charm_or_bundle_name='saiku-drill-hadoop') }}" class="p-button--positive">Deploy Drill Hadoop</a>
+          <object data="{{ external_urls.charmstore }}~spiculecharms/druid-hadoop/diagram.svg" type="image/svg+xml" style="min-height:280px"></object>
         </div>
       </div>
     </div>

@@ -343,3 +343,23 @@ div .p-accordion__tab[aria-expanded] {
   margin: 0;
   padding-right: 0.5rem;
 }
+
+
+.play-video-cta {
+  display: inline-block;
+  position: relative;
+
+  a {
+    padding-right: 2rem;
+  }
+
+  &:after { // sass-lint:disable-line pseudo-element
+    content: url('https://assets.ubuntu.com/v1/0d85260e-play-icon.svg'); // sass-lint:disable-line no-url-protocols no-url-domains
+    display: inline-block;
+    height: 16px;
+    position: absolute;
+    right: 0.5rem;
+    top: 0.15rem;
+    width: 16px;
+  }
+}
