@@ -55,7 +55,9 @@ def create_app(testing=False):
                 "askubuntu": "https://askubuntu.com/questions/tagged/juju",
                 "charmstore": "https://api.jujucharms.com/charmstore/v5/",
                 "discourse": "https://discourse.jujucharms.com/",
-                "gettingStarted": "https://docs.jujucharms.com/2.5/en/getting-started",
+                "gettingStarted": (
+                    "https://docs.jujucharms.com/2.5/en/getting-started"
+                ),
                 "docs": "https://docs.jujucharms.com/",
                 "gui": "https://jujucharms.com/new/",
                 "issues": (
