@@ -10,7 +10,7 @@ $color--background: #333333;
   &__inner {
     display: flex;
     flex-direction: column;
-    padding: 0 1rem;
+    padding: 0 1.5rem;
     margin: auto;
     max-width: 64.875rem;
   }
@@ -143,7 +143,7 @@ $color--background: #333333;
 
     &__logo {
       margin-bottom: 0;
-      margin-left: 0;
+      margin-left: -1rem;
       order: 1;
     }
 
@@ -185,6 +185,7 @@ $color--background: #333333;
 
     .p-header__search {
       padding: 0.25rem;
+      padding-right: 0;
       top: 1px;
 
       @at-root {
