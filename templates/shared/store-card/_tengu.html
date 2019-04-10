@@ -1,0 +1,10 @@
+{% if not expert_card %}
+  {% set expert_card = {} %}
+{% endif %}
+{% do expert_card.update({'heading': 'Big Data in minutes. Get started fast, with Tengu&rsquo;s <a href="' + url_for('jaasstore.user_entity', username='tengu-team', charm_or_bundle_name='automate-spark-jobs') + '">Python Spark cluster</a>'}) %}
+{% do expert_card.update({'logo_src': url_for('static', filename='img/logos/tengu.png')}) %}
+{% do expert_card.update({'logo_alt': 'Tengu logo'}) %}
+{% do expert_card.update({'button_url': url_for('jaasai.experts_tengu')}) %}
+{% do expert_card.update({'button_label': 'Big data now'}) %}
+
+{% include "shared/store-card/_card.html" %}
