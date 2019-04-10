@@ -3,7 +3,6 @@
 $breakpoint-navigation: 920px;
 
 $color--background: #333333;
-$color--border: #33535d;
 
 .p-header {
   background: $color--background;
@@ -131,7 +130,6 @@ $color--border: #33535d;
   }
 
   .p-header {
-    border-bottom: 1px solid $color--border;
     padding: 0;
 
     &__inner {
@@ -151,13 +149,8 @@ $color--border: #33535d;
 
       &-item {
         align-items: center;
-        border-right: 1px solid $color--border;
         display: flex;
         justify-items: center;
-
-        &:first-child {
-          border-left: 1px solid $color--border;
-        }
 
         .is-selected {
           border-bottom: 3px solid;
@@ -172,7 +165,6 @@ $color--border: #33535d;
       order: 3;
 
       &-item {
-        border-right: 1px solid $color--border;
         display: flex;
         padding: 0.25rem 0.75rem;
 
