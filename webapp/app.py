@@ -63,6 +63,8 @@ def create_app(testing=False):
             }
         )
 
+    app.jinja_env.add_extension("jinja2.ext.do")
+
     return app
 
 

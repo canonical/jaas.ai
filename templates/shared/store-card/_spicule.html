@@ -1,0 +1,10 @@
+{% if not expert_card %}
+  {% set expert_card = {} %}
+{% endif %}
+{% do expert_card.update({'heading': 'Spicule&rsquo;s solutions can solve your Big Data challenge.'}) %}
+{% do expert_card.update({'logo_src': url_for('static', filename='img/logos/spicule.png')}) %}
+{% do expert_card.update({'logo_alt': 'Spicule logo'}) %}
+{% do expert_card.update({'button_url': url_for('jaasai.experts_spicule')}) %}
+{% do expert_card.update({'button_label': 'Big data experts'}) %}
+
+{% include "shared/store-card/_card.html" %}
