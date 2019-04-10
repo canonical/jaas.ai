@@ -29,6 +29,7 @@ class WebappViews(TestCase):
             "jaas",
             "kubernetes",
             "openstack",
+            "support",
         ]
         for page in pages:
             url = url_for("jaasai.{}".format(page))
