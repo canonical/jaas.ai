@@ -64,13 +64,17 @@ $color--background: #333333;
       > a {
         color: $color-x-light;
         display: flex;
-        padding: 0.5rem;
+        padding: 0.5rem 1rem;
         text-decoration: none;
 
         @media (min-width: $breakpoint-medium) {
           &:hover {
-            background: darken($color--background, 2.5%);
+            color: $color-mid-light;
           }
+        }
+
+        &:after {
+          padding-right: 0.85em;
         }
       }
     }
