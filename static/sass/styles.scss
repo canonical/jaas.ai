@@ -32,68 +32,6 @@ $mid-grey: $color-mid-light;
 @import 'custom/modal';
 @import 'custom/header';
 
-// temp header styling
-$color-nav-border: #33535d;
-$white: #fff;
-
-.p-navigation {
-  border-bottom: 1px solid $color-nav-border;
-
-  .row {
-    padding: 0 1.5rem;
-  }
-
-  &__logo {
-    padding-top: 0.5rem;
-  }
-
-  &__logo &__link {
-    height: 32px;
-  }
-
-  .p-search-box {
-    margin-left: 0.5rem;
-    margin-right: 0.5rem;
-  }
-
-  &.search-active .p-search-form {
-    background: $white;
-    position: relative;
-    z-index: 99999;
-  }
-
-  @media (min-width: $breakpoint-medium) {
-    &__logo {
-      margin-left: 0;
-    }
-  }
-
-  @media (min-width: $breakpoint-navigation-threshold) {
-    & &__links .p-navigation__link {
-      border-left: 1px solid $color-nav-border;
-
-      &.is-login {
-        @media (max-width: 800px) {
-          border-left: 0;
-        }
-      }
-
-      a {
-        color: $color-x-light;
-      }
-
-      &:hover {
-        background: darken($color-navigation-background, 10%) !important;
-      }
-    }
-
-    &__link.is-login {
-      position: absolute;
-      right: 0;
-    }
-  }
-}
-
 // github component homepage
 .github-actions {
   display: flex;
