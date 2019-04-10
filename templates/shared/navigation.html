@@ -1,10 +1,12 @@
 <div class="p-header__nav-item" role="menuitem">
-  <a href="{{ url_for('jaasstore.store') }}">
+  <a href="{{ url_for('jaasstore.store') }}"
+    class="{% if active_section == 'store' %}active{% endif %}">
     Store
   </a>
 </div>
 <div class="p-header__nav-item" role="menuitem">
-  <a href="{{ url_for('jaasai.jaas') }}">
+  <a href="{{ url_for('jaasai.jaas') }}"
+    class="{% if active_section == 'about' %}active{% endif %}">
     About
   </a>
 </div>

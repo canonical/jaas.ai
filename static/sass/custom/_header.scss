@@ -68,7 +68,8 @@ $color--background: #333333;
         text-decoration: none;
 
         @media (min-width: $breakpoint-medium) {
-          &:hover {
+          &:hover,
+          &.active {
             color: $color-mid-dark;
           }
         }
