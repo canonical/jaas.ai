@@ -1,0 +1,117 @@
+<div class="p-search-panel">
+  <a class="p-search-panel__close js-search-panel__close" data-js="search-close" href="#_">
+    <i class="p-icon--close"></i>
+  </a>
+  <div class="row">
+    <div class="col-12">
+      <div class="p-search-panel__inner">
+        <div class="p-search-panel__main">
+          <a href="{{ url_for('jaasstore.details', charm_or_bundle_name='canonical-kubernetes') }}"
+            class="p-search-panel__featured-link">
+            <img src="{{ external_urls.charmstore }}~containers/kubernetes-master/icon.svg" alt=""
+              class="search-panel__featured-image" />
+            <p class="p-search-panel__featured-name">kubernetes</p>
+          </a>
+          <a href="{{ url_for('jaasstore.details', charm_or_bundle_name='elasticsearch') }}"
+            class="p-search-panel__featured-link">
+            <img src="{{ external_urls.charmstore }}elasticsearch/icon.svg" alt="" class="search-panel__featured-image" />
+            <p class="p-search-panel__featured-name">elasticsearch</p>
+          </a>
+          <a href="{{ url_for('jaasstore.details', charm_or_bundle_name='kafka') }}" class="p-search-panel__featured-link">
+            <img src="{{ external_urls.charmstore }}kafka/icon.svg" alt="" class="search-panel__featured-image" />
+            <p class="p-search-panel__featured-name">kafka</p>
+          </a>
+          <a href="{{ url_for('jaasstore.details', charm_or_bundle_name='zookeeper') }}"
+            class="p-search-panel__featured-link">
+            <img src="{{ external_urls.charmstore }}zookeeper/icon.svg" alt="" class="search-panel__featured-image" />
+            <p class="p-search-panel__featured-name">zookeeper</p>
+          </a>
+          <a href="{{ url_for('jaasstore.details', charm_or_bundle_name='ceph') }}" class="p-search-panel__featured-link">
+            <img src="{{ external_urls.charmstore }}ceph/icon.svg" alt="" class="search-panel__featured-image" />
+            <p class="p-search-panel__featured-name">ceph</p>
+          </a>
+          <a href="{{ url_for('jaasstore.details', charm_or_bundle_name='cassandra') }}"
+            class="p-search-panel__featured-link">
+            <img src="{{ external_urls.charmstore }}cassandra/icon.svg" alt="" class="search-panel__featured-image" />
+            <p class="p-search-panel__featured-name">cassandra</p>
+          </a>
+          <a href="{{ url_for('jaasstore.details', charm_or_bundle_name='percona-cluster') }}"
+            class="p-search-panel__featured-link">
+            <img src="{{ external_urls.charmstore }}percona-cluster/icon.svg" alt="" class="search-panel__featured-image" />
+            <p class="p-search-panel__featured-name">percona-cluster</p>
+          </a>
+          <a href="{{ url_for('jaasstore.details', charm_or_bundle_name='glance') }}" class="p-search-panel__featured-link">
+            <img src="{{ external_urls.charmstore }}glance/icon.svg" alt="" class="search-panel__featured-image" />
+            <p class="p-search-panel__featured-name">glance</p>
+          </a>
+          <a href="{{ url_for('jaasstore.details', charm_or_bundle_name='mariadb') }}" class="p-search-panel__featured-link">
+            <img src="{{ external_urls.charmstore }}mariadb/icon.svg" alt="" class="search-panel__featured-image" />
+            <p class="p-search-panel__featured-name">mariadb</p>
+          </a>
+          <a href="{{ url_for('jaasstore.details', charm_or_bundle_name='spark') }}" class="p-search-panel__featured-link">
+            <img src="{{ external_urls.charmstore }}spark/icon.svg" alt="" class="search-panel__featured-image" />
+            <p class="p-search-panel__featured-name">spark</p>
+          </a>
+        </div>
+        <div class="p-search-panel__sidebar">
+          <h4 class="p-search-panel__heading">Popular searches</h4>
+          <ul class="p-list">
+            <li class="p-search-panel__list-item"><a href="{{ url_for('jaasstore.search') }}?q=openstack">openstack</a></li>
+            <li class="p-search-panel__list-item"><a href="{{ url_for('jaasstore.search') }}?q=ceph">ceph</a></li>
+            <li class="p-search-panel__list-item"><a href="{{ url_for('jaasstore.search') }}?q=mysql">mysql</a></li>
+            <li class="p-search-panel__list-item"><a href="{{ url_for('jaasstore.search') }}?q=analytics">analytics</a></li>
+            <li class="p-search-panel__list-item"><a href="{{ url_for('jaasstore.search') }}?q=spark">spark</a></li>
+            <li class="p-search-panel__list-item"><a href="{{ url_for('jaasstore.search') }}?q=nginx">nginx</a></li>
+            <li class="p-search-panel__list-item"><a href="{{ url_for('jaasstore.search') }}?q=redis">redis</a></li>
+            <li class="p-search-panel__list-item"><a href="{{ url_for('jaasstore.search') }}?q=jenkins">jenkins</a></li>
+            <li class="p-search-panel__list-item"><a href="{{ url_for('jaasstore.search') }}?q=logstash">logstash</a></li>
+          </ul>
+        </div>
+        <div class="p-search-panel__footer">
+          <ul class="p-inline-list">
+            <li class="p-inline-list__item">
+              <a href="{{ url_for('jaasstore.search') }}?tags=openstack">openstack
+                <span class="p-search-panel__item-count">(108)</span>
+              </a>
+            </li>
+            <li class="p-inline-list__item">
+              <a href="{{ url_for('jaasstore.search') }}?tags=applications">applications
+                <span class="p-search-panel__item-count">(248)</span>
+              </a>
+            </li>
+            <li class="p-inline-list__item">
+              <a href="{{ url_for('jaasstore.search') }}?tags=databases">databases
+                <span class="p-search-panel__item-count">(71)</span>
+              </a>
+            </li>
+            <li class="p-inline-list__item">
+              <a href="{{ url_for('jaasstore.search') }}?tags=app-servers">app-servers
+                <span class="p-search-panel__item-count">(75)</span>
+              </a>
+            </li>
+            <li class="p-inline-list__item">
+              <a href="{{ url_for('jaasstore.search') }}?tags=file-servers">file-servers
+                <span class="p-search-panel__item-count">(48)</span>
+              </a>
+            </li>
+            <li class="p-inline-list__item">
+              <a href="{{ url_for('jaasstore.search') }}?tags=monitoring">monitoring
+                <span class="p-search-panel__item-count">(28)</span>
+              </a>
+            </li>
+            <li class="p-inline-list__item">
+              <a href="{{ url_for('jaasstore.search') }}?tags=misc">misc
+                <span class="p-search-panel__item-count">(279)</span>
+              </a>
+            </li>
+            <li class="p-inline-list__item">
+              <a href="{{ url_for('jaasstore.search') }}?tags=ops">ops
+                <span class="p-search-panel__item-count">(22)</span>
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

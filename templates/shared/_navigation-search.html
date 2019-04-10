@@ -1,0 +1,7 @@
+<form data-js="search-form" action="/q" method="GET">
+  <input type="search" name="text" data-js="form-text" placeholder="Search the store" class="p-header__search-input" value="{% if results %}{{ text }}{% endif %}"
+  />
+  <button class="p-header__search-submit" type="submit">
+    <img src="https://assets.ubuntu.com/v1/a2ab4b7d-search.svg" alt="Search icon">
+  </button>
+</form>

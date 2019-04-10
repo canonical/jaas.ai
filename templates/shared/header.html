@@ -1,0 +1,23 @@
+<header class="p-header" id="header" data-js="navigation">
+  <div class="p-header__inner">
+    <span class="u-off-screen">
+      <a href="#main-content">Jump to main content</a>
+    </span>
+    <a href="#header" class="p-header__toggle--open" title="Menu">Menu</a>
+    <a href="#header-closed" class="p-header__toggle--close" title="Close menu">Close menu</a>
+    <a href="/">
+      <div class="p-header__logo">
+        <img width="105" height="31" src="https://assets.ubuntu.com/v1/a9e0ed4a-jaas-logo1.svg" alt="JAAS logo" />
+      </div>
+    </a>
+    <nav class="p-header__nav">
+      {% include "shared/navigation.html" %}
+    </nav>
+    <div class="p-header__actions">
+      <div class="p-header__actions-item p-header__search">
+        {% include "shared/_navigation-search.html" %}
+      </div>
+    </div>
+  </div>
+  {% include "shared/search-panel.html" %}
+</header>
