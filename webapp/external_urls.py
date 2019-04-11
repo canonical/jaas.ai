@@ -5,7 +5,5 @@ external_urls = {
     "discourse": "https://discourse.jujucharms.com/",
     "docs": "https://docs.jujucharms.com/",
     "gui": "https://jujucharms.com/new/",
-    "issues": (
-        "https://github.com/canonical-websites/jaas.ai/issues"
-    ),
+    "issues": "https://github.com/canonical-websites/jaas.ai/issues",
 }
