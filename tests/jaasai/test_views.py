@@ -42,26 +42,15 @@ class WebappViews(TestCase):
 
     @patch("feedparser.parse")
     def test_blog_feed(self, mock_parse):
-        mock_parse.return_value = MagicMock(
-            bozo=0, entries=[{"title": "A blog post"}]
-        )
+        entries = [{"title": "A blog post"}]
+        mock_parse.return_value = MagicMock(bozo=0, entries=entries)
         response = self.client.get(url_for("jaasai.blog_feed"))
-        self.assertEqual(
-            response.data, b'[\n  {\n    "title": "A blog post"\n  }\n]\n'
-        )
+        self.assertEqual(json.loads(response.data), entries)
 
     @patch("feedparser.parse")
     def test_blog_feed_only_5(self, mock_parse):
         mock_parse.return_value = MagicMock(
-            bozo=0,
-            entries=[
-                {"title": 1},
-                {"title": 2},
-                {"title": 3},
-                {"title": 4},
-                {"title": 5},
-                {"title": 6},
-            ],
+            bozo=0, entries=[{"title": 1}, {"title": 2}, {"title": 3}]
         )
         response = self.client.get(url_for("jaasai.blog_feed"))
         self.assertEqual(len(json.loads(response.data)), 2)
@@ -76,4 +65,4 @@ class WebappViews(TestCase):
         )
         mock_parse.return_value = feed
         response = self.client.get(url_for("jaasai.blog_feed"))
-        self.assertEqual(response.data, b'{\n  "error": "Syntax error"\n}\n')
+        self.assertEqual(json.loads(response.data), {"error": "Syntax error"})
