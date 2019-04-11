@@ -52,17 +52,12 @@
           {% endfor %}
         </ul>
       {% endif %}
-      {% if context.entity.charm_data.Meta.terms %}
+      {% if context.entity.term_ids %}
         <h4>Software &amp; terms:</h4>
         <ul class="p-inline-list">
-          {% for term in context.entity.charm_data.Meta.terms %}
-            {% set term_name = term.split('/')[0] %}
-            {% set term_revision = None %}
-            {% if term.split('/')|length == 2 %}
-              {% set term_revision = term.split('/')[1] %}
-            {% endif %}
+          {% for term in context.entity.term_ids %}
             <li class="p-inline-list__item">
-              <a target="_blank" href="{{ url_for('jaasstore.terms', name=term_name, revision=term_revision) }}">{{ term_name }}&nbsp;&rsaquo;</a>
+              <a target="_blank" href="{{ url_for('jaasstore.terms', name=term.name, revision=term.revision) }}">{{ term.name }}&nbsp;&rsaquo;</a>
             </li>
           {% endfor %}
         </ul>

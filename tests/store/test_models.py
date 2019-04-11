@@ -92,6 +92,25 @@ class TestStoreModels(unittest.TestCase):
         self.assertEqual(charm["tags"], ["app-servers"])
         self.assertEqual(charm["url"], "apache2/26")
 
+    def test_parse_charm_data_terms(self):
+        charm_data["Meta"]["terms"] = ["special-term/99", "another-term"]
+        charm = models._parse_charm_data(charm_data)
+        self.assertEqual(
+            charm["term_ids"],
+            [
+                {
+                    "id": "special-term/99",
+                    "name": "special-term",
+                    "revision": 99,
+                },
+                {
+                    "id": "another-term",
+                    "name": "another-term",
+                    "revision": None,
+                },
+            ],
+        )
+
     def test_parse_bundle_data(self):
         bundle = models._parse_bundle_data(bundle_data)
         self.assertEqual(

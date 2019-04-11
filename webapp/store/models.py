@@ -224,6 +224,7 @@ def _parse_charm_data(charm_data, include_files=False):
         # exist (mostly on older charms).
         "is_charm": True,
         "tags": charm_metadata.get("Tags") or charm_metadata.get("Categories"),
+        "term_ids": _parse_term_ids(meta.get("terms")),
         "url": ref.jujucharms_id(),
     }
 
@@ -232,6 +233,26 @@ def _parse_charm_data(charm_data, include_files=False):
         charm["readme"] = _render_markdown(cs.entity_readme_content(charm_id))
 
     return charm
+
+
+def _parse_term_ids(term_ids):
+    """Extract the term names and revisions.
+        :param term_ids: A list of term ids.
+        :returns: a collection of term ids, names and revisions.
+    """
+    if term_ids is None:
+        return None
+    terms = []
+    for term in term_ids:
+        parts = term.split("/")
+        terms.append(
+            {
+                "id": term,
+                "name": parts[0],
+                "revision": int(parts[1]) if len(parts) == 2 else None,
+            }
+        )
+    return terms
 
 
 def _get_entity_files(ref, manifest=None):
