@@ -32,4 +32,4 @@ def blog_redirect():
     """
     Redirect the blog page that existed on jujucharms.com.
     """
-    return redirect(external_urls['blog'], code=302)
+    return redirect(external_urls["blog"], code=302)

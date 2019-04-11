@@ -51,9 +51,7 @@ def create_app(testing=False):
 
     @app.context_processor
     def inject_external_urls():
-        return dict(
-            external_urls=external_urls
-        )
+        return dict(external_urls=external_urls)
 
     app.jinja_env.add_extension("jinja2.ext.do")
 
