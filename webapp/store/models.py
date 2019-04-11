@@ -92,10 +92,10 @@ def get_charm_or_bundle(reference):
         return None
 
 
-def get_terms(name, revision):
+def get_terms(name, revision=None):
     try:
         terms_data = terms.get_terms(name, revision)
-        return terms_data.get("content")
+        return terms_data.content
     except ServerError:
         return None
 

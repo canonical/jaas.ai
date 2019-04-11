@@ -1,6 +1,6 @@
 from flask import url_for
 from flask_testing import TestCase
-from unittest.mock import patch
+from unittest.mock import MagicMock, patch
 
 from tests.store.testdata import bundle_data, charm_data, user_entities_data
 from theblues.errors import ServerError
@@ -277,7 +277,14 @@ class StoreViews(TestCase):
 
     @patch("theblues.terms.Terms.get_terms")
     def test_terms(self, mock_terms):
-        mock_terms.return_value = {"content": "Special terms"}
+        mock_terms.return_value = MagicMock(content="Special terms")
+        response = self.client.get(url_for("jaasstore.terms", name="myterm"))
+        self.assertEqual(response.status_code, 200)
+        self.assertEqual(response.data, b"Special terms")
+
+    @patch("theblues.terms.Terms.get_terms")
+    def test_terms_with_revision(self, mock_terms):
+        mock_terms.return_value = MagicMock(content="Special terms")
         response = self.client.get(
             url_for("jaasstore.terms", name="myterm", revision=99)
         )
@@ -287,7 +294,5 @@ class StoreViews(TestCase):
     @patch("theblues.terms.Terms.get_terms")
     def test_terms_none(self, mock_terms):
         mock_terms.side_effect = ServerError
-        response = self.client.get(
-            url_for("jaasstore.terms", name="myterm", revision=99)
-        )
+        response = self.client.get(url_for("jaasstore.terms", name="myterm"))
         self.assertEqual(response.status_code, 404)
