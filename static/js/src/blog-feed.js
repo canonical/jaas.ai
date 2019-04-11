@@ -1,5 +1,5 @@
-function renderFeed() {
-  const container = document.querySelector('#blog-feed');
+function renderFeed(selector) {
+  const container = document.querySelector(selector);
   if (container) {
     const feed = JSON.parse(this.responseText);
     let posts = feed.map(post => `
@@ -15,8 +15,13 @@ function renderFeed() {
     `);
     container.innerHTML = `<ul class="p-list">${posts.join('')}</ul>`;
   }
-};
-const request = new XMLHttpRequest();
-request.addEventListener("load", renderFeed);
-request.open("GET", "/blog/feed");
-request.send();
+}
+
+function loadFeed(url, selector) {
+  const request = new XMLHttpRequest();
+  request.addEventListener('load', renderFeed.bind(request, selector));
+  request.open('GET', url);
+  request.send();
+}
+
+loadFeed('/blog/feed', '#blog-feed');
