@@ -2,8 +2,9 @@ from flask import url_for
 from flask_testing import TestCase
 from unittest.mock import patch
 
-from webapp.app import create_app
 from tests.store.testdata import bundle_data, charm_data, user_entities_data
+from theblues.errors import ServerError
+from webapp.app import create_app
 
 
 class StoreViews(TestCase):
@@ -273,3 +274,20 @@ class StoreViews(TestCase):
                 version=14,
             ),
         )
+
+    @patch("theblues.terms.Terms.get_terms")
+    def test_terms(self, mock_terms):
+        mock_terms.return_value = {"content": "Special terms"}
+        response = self.client.get(
+            url_for("jaasstore.terms", name="myterm", revision=99)
+        )
+        self.assertEqual(response.status_code, 200)
+        self.assertEqual(response.data, b"Special terms")
+
+    @patch("theblues.terms.Terms.get_terms")
+    def test_terms_none(self, mock_terms):
+        mock_terms.side_effect = ServerError
+        response = self.client.get(
+            url_for("jaasstore.terms", name="myterm", revision=99)
+        )
+        self.assertEqual(response.status_code, 404)

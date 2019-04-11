@@ -5,9 +5,12 @@ import re
 import gfm
 from jujubundlelib import references
 from theblues.charmstore import CharmStore
-from theblues.errors import EntityNotFound
+from theblues.errors import EntityNotFound, ServerError
+from theblues.terms import Terms
+
 
 cs = CharmStore("https://api.jujucharms.com/v5")
+terms = Terms("https://api.jujucharms.com/terms/")
 
 
 def search_entities(
@@ -86,6 +89,14 @@ def get_charm_or_bundle(reference):
         entity_data = cs.entity(reference, True)
         return _parse_charm_or_bundle(entity_data, include_files=True)
     except EntityNotFound:
+        return None
+
+
+def get_terms(name, revision):
+    try:
+        terms_data = terms.get_terms(name, revision)
+        return terms_data.get("content")
+    except ServerError:
         return None
 
 
