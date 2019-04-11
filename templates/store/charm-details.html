@@ -52,16 +52,15 @@
           {% endfor %}
         </ul>
       {% endif %}
-      {% if context.entity.terms %}
+      {% if context.entity.term_ids %}
         <h4>Software &amp; terms:</h4>
-        {% for name, term in context.entity.terms.iteritems() %}
-          {% if term.revision %}
-            {% set term_url = '/terms/' + name + '/' + term.revision|string %}
-          {% else %}
-            {% set term_url = '/terms/' + name %}
-          {% endif %}
-          <a target="_blank" href="{{ term_url }}">{{ name }}&nbsp;&rsaquo;</a>
-        {% endfor %}
+        <ul class="p-inline-list">
+          {% for term in context.entity.term_ids %}
+            <li class="p-inline-list__item">
+              <a target="_blank" href="{{ url_for('jaasstore.terms', name=term.name, revision=term.revision) }}">{{ term.name }}&nbsp;&rsaquo;</a>
+            </li>
+          {% endfor %}
+        </ul>
       {% endif %}
       {% if context.entity.readme != '' %}
         <div id="readme" class="readme">

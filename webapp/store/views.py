@@ -1,4 +1,4 @@
-from flask import Blueprint, abort, request, render_template
+from flask import Blueprint, abort, request, render_template, Response
 from webapp.store import models
 
 from jujubundlelib import references
@@ -113,3 +113,13 @@ def details(charm_or_bundle_name, series_or_version=None, version=None):
             )
     else:
         return abort(404, "Entity not found {}".format(charm_or_bundle_name))
+
+
+@jaasstore.route("/terms/<string:name>")
+@jaasstore.route("/terms/<string:name>/<int:revision>")
+def terms(name, revision=None):
+    terms = models.get_terms(name, revision)
+    if terms:
+        return Response(terms, mimetype="text/plain")
+    else:
+        return abort(404, "Terms not found {}".format(name))
