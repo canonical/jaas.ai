@@ -5,6 +5,7 @@ from werkzeug.debug import DebuggedApplication
 import prometheus_flask_exporter
 import talisker.flask
 from webapp.extensions import sentry
+from webapp.external_urls import external_urls
 from webapp.handlers import add_headers, clear_trailing_slash
 from webapp.jaasai.views import jaasai
 from webapp.redirects.views import jaasredirects
@@ -51,17 +52,7 @@ def create_app(testing=False):
     @app.context_processor
     def inject_external_urls():
         return dict(
-            external_urls={
-                "askubuntu": "https://askubuntu.com/questions/tagged/juju",
-                "charmstore": "https://api.jujucharms.com/charmstore/v5/",
-                "discourse": "https://discourse.jujucharms.com/",
-                "gettingStarted": "https://jujucharms.com/new/",
-                "docs": "https://docs.jujucharms.com/",
-                "gui": "https://jujucharms.com/new/",
-                "issues": (
-                    "https://github.com/canonical-websites/jaas.ai/issues"
-                ),
-            }
+            external_urls=external_urls
         )
 
     app.jinja_env.add_extension("jinja2.ext.do")
