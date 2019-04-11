@@ -1,6 +1,7 @@
 module.exports = {
   entry: {
     app: './static/js/src/app.js',
+    'blog-feed': './static/js/src/blog-feed.js',
   },
   mode: process.env.ENVIRONMENT === "devel" ? "development" : "production",
   output: {

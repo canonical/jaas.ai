@@ -13,7 +13,7 @@
     "update-test-json": "python3 scripts/update_test_json.py",
     "watch": "concurrently \"npm run watch-scss\" \"npm run watch-js\"",
     "watch-scss": "watch -p 'static/sass/**/*.scss' -c 'yarn run build-css'",
-    "watch-js": "watch -p 'static/js/**/*.js' -c 'yarn run build-js'"
+    "watch-js": "watch -p 'static/js/src/**/*.js' -c 'yarn run build-js'"
   },
   "dependencies": {
     "@babel/core": "7.4.3",

@@ -64,7 +64,7 @@ class WebappViews(TestCase):
             ],
         )
         response = self.client.get(url_for("jaasai.blog_feed"))
-        self.assertEqual(len(json.loads(response.data)), 5)
+        self.assertEqual(len(json.loads(response.data)), 2)
 
     @patch("feedparser.parse")
     def test_blog_feed_invalid(self, mock_parse):

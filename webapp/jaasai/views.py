@@ -100,7 +100,7 @@ def blog_feed():
     if feed.bozo == 1:
         response = {"error": feed.bozo_exception.getMessage()}
     else:
-        response = feed.entries[:5]
+        response = feed.entries[:2]
     return jsonify(response)
 
 
