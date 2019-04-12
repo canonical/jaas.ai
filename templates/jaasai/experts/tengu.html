@@ -17,7 +17,7 @@
           <img
             style="padding-top:1rem"
             width="155"
-            src="https://assets.ubuntu.com/v1/68b288f6-tengu.png"
+            src="{{ context.expert.logo }}"
             alt="Tengu logo" />
         </h2>
         <hr>
@@ -34,28 +34,30 @@
           </a>
           <div class="u-hide" data-js="contact-info">
             <p>
-              <a href="https://tengu.io" class="link p-card__pre-footer">
+              <a href="{{ context.expert.website }}" class="link p-card__pre-footer">
                 <span>
                   <img class="p-card__footer-icon" src="https://assets.ubuntu.com/v1/4f94bbf4-icon-web.svg" alt="Email icon">
                 </span>
-                https://tengu.io
+                {{ context.expert.website }}
               </a>
             </p>
             <p>
-              <a href="mailto:info@tengu.io" class="link p-card__pre-footer">
+              <a href="mailto:{{ context.expert.email }}" class="link p-card__pre-footer">
                 <span>
                   <img class="p-card__footer-icon" src="https://assets.ubuntu.com/v1/5e815088-icon-email.svg" alt="Email icon">
                 </span>
-                info@tengu.io
+                {{ context.expert.email }}
               </a>
             </p>
             <p>
-              <span class="link p-card__pre-footer">
-                <span>
-                  <img class="p-card__footer-icon" src="https://assets.ubuntu.com/v1/a52bd3b1-Icon-telephone.svg" alt="Telephone icon">
+              {% for phone in context.expert.phone_numbers %}
+                <span class="link p-card__pre-footer">
+                  <span>
+                    <img class="p-card__footer-icon" src="https://assets.ubuntu.com/v1/a52bd3b1-Icon-telephone.svg" alt="Telephone icon">
+                  </span>
+                  {{ phone.location }} <a href="tel:{{ phone.number }}">{{ phone.display }}</a>
                 </span>
-                BE <a href="tel:+32478668489">+32 478 66 84 89</a>
-              </span>
+              {% endfor %}
             </p>
           </div>
         </footer>

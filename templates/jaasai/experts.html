@@ -33,32 +33,21 @@
   </div>
   <div class="row">
     <div class="u-equal-height">
-      <div class="col-4 p-card">
-        <div class="expert__logo-wrap">
-          <a href="{{ url_for('jaasai.experts_spicule') }}">
-            <img class="expert__card-logo" src="{{ url_for('static', filename='img/logos/spicule.png') }}" alt="Spicule logo" />
-          </a>
+      {% for expert_id, expert in context.experts.items() %}
+        <div class="col-4 p-card">
+          <div class="expert__logo-wrap">
+            <a href="{{ expert.page_url }}">
+              <img class="expert__card-logo" src="{{ expert.logo }}" alt="{{ expert.name }} logo" />
+            </a>
+          </div>
+          <hr class="u-sv1">
+          <ul class="p-list">
+            {% for highlight in expert.highlights %}
+              <li class="p-list__item is-ticked">{{ highlight|safe }}</li>
+            {% endfor %}
+          </ul>
         </div>
-        <hr class="u-sv1">
-        <ul class="p-list">
-          <li class="p-list__item is-ticked">Spicule&rsquo;s solutions can solve your Big Data challenges</li>
-          <li class="p-list__item is-ticked">Supported analytics</li>
-          <li class="p-list__item is-ticked">Streaming data platforms</li>
-        </ul>
-      </div>
-      <div class="col-4 p-card">
-        <div class="expert__logo-wrap">
-          <a href="{{ url_for('jaasai.experts_tengu') }}">
-            <img width="200" class="expert__card-logo" src="{{ url_for('static', filename='img/logos/tengu.png') }}" alt="Tengu logo" />
-          </a>
-        </div>
-        <hr class="u-sv1">
-        <ul class="p-list">
-          <li class="p-list__item is-ticked">Your own Big Data workspace</li>
-          <li class="p-list__item is-ticked">Use all juju-charmed technologies</li>
-          <li class="p-list__item is-ticked">Machine Learning, IoT, Microservices</li>
-        </ul>
-      </div>
+      {% endfor %}
     </div>
   </div>
 </div>

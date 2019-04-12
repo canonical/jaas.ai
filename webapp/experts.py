@@ -12,27 +12,42 @@ def get_experts(expert=None):
     experts = {
         "spiculecharms": {
             "name": "Spicule",
+            "page_url": url_for("jaasai.experts_spicule"),
             "logo": url_for("static", filename="img/logos/spicule.png"),
             "highlights": [
-                "Machine learning",
-                "Data service deployments",
-                "Container orchestration",
+                "Spicule&rsquo;s solutions can solve your Big Data challenges",
+                "Supported analytics",
+                "Streaming data platforms",
             ],
             "contactDescription": (
-                "Please let us know if you have a question, or would like further "
-                "information about Spicule."
+                "Please let us know if you have a question, or would like "
+                "further information about Spicule."
             ),
-            "website": "www.spicule.co.uk",
-            "email": "juju-partners@spicule.co.uk",
-            "phoneNumbers": ["UK +44 (0)1603 327762", "US +1 8448141689"],
+            "website": "http://www.spicule.co.uk",
+            "email": "info@spicule.co.uk",
+            "phone_numbers": [
+                {
+                    "number": "+441603327762",
+                    "display": "+44 (0) 1603 327762",
+                    "location": "UK",
+                },
+                {
+                    "number": "+18448141689",
+                    "display": "+1 (0) 8448 141689",
+                    "location": "USA",
+                },
+            ],
             "store_card": {
-                "heading": "Spicule&rsquo;s solutions can solve your Big Data challenge.",
-                "button_url": url_for("jaasai.experts_spicule"),
+                "heading": (
+                    "Spicule&rsquo;s solutions can solve your Big Data "
+                    "challenge."
+                ),
                 "button_label": "Big data experts",
             },
         },
         "tengu-team": {
             "name": "Tengu",
+            "page_url": url_for("jaasai.experts_tengu"),
             "logo": url_for("static", filename="img/logos/tengu.png"),
             "highlights": [
                 "Your own Big Data workspace",
@@ -40,15 +55,29 @@ def get_experts(expert=None):
                 "Machine Learning, IoT, Microservices",
             ],
             "contactDescription": (
-                "Please let us know if you have a question, or would like further "
-                "information about Tengu."
+                "Please let us know if you have a question, or would like "
+                "further information about Tengu."
             ),
             "website": "https://tengu.io",
             "email": "info@tengu.io",
-            "phoneNumbers": ["BE +32 478 66 84 89"],
+            "phone_numbers": [
+                {
+                    "number": "+32478668489",
+                    "display": "+32 478 66 84 89",
+                    "location": "BE",
+                }
+            ],
             "store_card": {
-                "heading": 'Big Data in minutes. Get started fast, with Tengu&rsquo;s <a href="{}">Python Spark cluster</a>'.format(url_for('jaasstore.user_entity', username='tengu-team', charm_or_bundle_name='automate-spark-jobs')),
-                "button_url": url_for("jaasai.experts_tengu"),
+                "heading": (
+                    "Big Data in minutes. Get started fast, with "
+                    'Tengu&rsquo;s <a href="{}">Python Spark cluster</a>'
+                ).format(
+                    url_for(
+                        "jaasstore.user_entity",
+                        username="tengu-team",
+                        charm_or_bundle_name="automate-spark-jobs",
+                    )
+                ),
                 "button_label": "Big data now",
             },
         },

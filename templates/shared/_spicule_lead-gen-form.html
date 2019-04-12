@@ -9,23 +9,22 @@
           <span>
             <img src="https://assets.ubuntu.com/v1/4f94bbf4-icon-web.svg" alt="Email icon">
           </span>
-          <a href="https://spicule.co.uk">https://spicule.co.uk</a>
+          <a href="{{ context.expert.website }}">{{ context.expert.website }}</a>
         </li>
         <li class="modal__email">
           <span>
             <img src="https://assets.ubuntu.com/v1/5e815088-icon-email.svg" alt="Email icon">
           </span>
-          <a href="mailto:info@spicule.co.uk">info@spicule.co.uk</a>
+          <a href="mailto:{{ context.expert.email }}">{{ context.expert.email }}</a>
         </li>
+        {% for phone in context.expert.phone_numbers %}
         <li class="modal__tel">
           <span>
             <img src="https://assets.ubuntu.com/v1/a52bd3b1-Icon-telephone.svg" alt="Email icon">
           </span>
-          <a class="modal__tel-link" rel="tel" href="tel:+441603327762">+44 (0) 1603 327762</a>(UK)</li>
-        <li class="modal__tel">
-          <span class="icon-placeholder">
-          </span>
-          <a class="modal__tel-link" rel="tel" href="tel:+18448141689">+1 (0) 8448 141689</a>(USA)</li>
+          <a class="modal__tel-link" rel="tel" href="tel:{{ phone.number }}">{{ phone.display }}</a>({{ phone.location }})
+        </li>
+        {% endfor %}
       </ul>
       <hr class="modal__divider" />
       <!-- MARKETO FORM -->
@@ -47,7 +46,7 @@
           </li>
           <li class="mktFormReq mktField" id="comments">
             <label for="Comments_from_lead__c" class="mktoLabel ">
-              {% if context and context.entity.display_name %}
+              {% if context and context.entity and context.entity.display_name %}
                 How can we help with <strong>{{ context.entity.display_name }}</strong>?
               {% else %}
                 How can we help?
@@ -75,7 +74,7 @@
             <input type="hidden" name="Consent_to_Processing__c" class="mktoField  mktoFormCol" value="Yes">
           </li>
           <li class="mktField submit-wrapper" style="display:flex;margin-top:1rem;">
-            <button type="submit" class="mktoButton submit-wrapper__button">Send message</button></span><input type="hidden" name="formid"
+            <button type="submit" class="mktoButton submit-wrapper__button">Send message</button><input type="hidden" name="formid"
               class="mktoField " value="3359"><input type="hidden" name="lpId" class="mktoField " value=""><input
               type="hidden" name="subId" class="mktoField " value=""><input type="hidden" name="munchkinId"
               class="mktoField " value=""><input type="hidden" name="lpurl" class="mktoField " value=""><input

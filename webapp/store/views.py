@@ -15,7 +15,7 @@ jaasstore = Blueprint(
 @jaasstore.route("/store")
 def store():
     return render_template(
-        "store/store.html", context={'experts': get_experts()}
+        "store/store.html", context={"experts": get_experts()}
     )
 
 
