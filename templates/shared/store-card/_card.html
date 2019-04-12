@@ -1,17 +1,20 @@
+{% if not expert_card %}
+  {% set expert_card = {} %}
+{% endif %}
 <div class="expert__strap">
   Juju expert partners
 </div>
 <div class="p-card-heading" style="{{ expert_card.heading_style }}">
-  <p>{{ expert_card.heading|safe }}</p>
+  <p>{{ expert.store_card.heading|safe }}</p>
 </div>
 <div class="p-card u-align--center u-vertically-center" style="min-height:96px">
-  <img src="{{ expert_card.logo_src }}" alt="{{ expert_card.logo_alt }}" width="160" style="padding:1rem 0" />
+  <img src="{{ expert.logo }}" alt="{{ expert.name }} logo" width="160" style="padding:1rem 0" />
 </div>
 <footer class="p-card__footer">
   {% if expert_card.show_footer_rule %}
     <hr class="u-sv1">
   {% endif %}
-  <a href="{{ expert_card.button_url }}" class="p-button--positive">
-    {{ expert_card.button_label }}
+  <a href="{{ expert.store_card.button_url }}" class="p-button--positive">
+    {{ expert.store_card.button_label }}
   </a>
 </footer>

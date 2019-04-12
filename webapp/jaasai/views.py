@@ -12,7 +12,7 @@ jaasai = Blueprint(
 @jaasai.route("/")
 def index():
     return render_template(
-        "jaasai/index.html", context={experts: get_experts()}
+        "jaasai/index.html", context={'experts': get_experts()}
     )
 
 
@@ -53,7 +53,7 @@ def openstack():
 
 @jaasai.route("/experts")
 def experts():
-    return render_template("jaasai/experts.html", context={experts: EXPERTS})
+    return render_template("jaasai/experts.html", context={'experts': EXPERTS})
 
 
 @jaasai.route("/experts/spicule")
@@ -64,7 +64,7 @@ def experts_spicule():
     return render_template(
         "jaasai/experts/spicule.html",
         expertThanksPage=EXPERTS_RETURN,
-        context={expert: get_experts("spiculecharms")},
+        context={'expert': get_experts("spiculecharms")},
     )
 
 
@@ -73,7 +73,7 @@ def experts_tengu():
     EXPERTS = get_experts()
     return render_template(
         "jaasai/experts/tengu.html",
-        context={expert: get_experts("tengu-team")},
+        context={'expert': get_experts("tengu-team")},
     )
 
 

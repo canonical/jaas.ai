@@ -27,7 +27,7 @@ def get_experts(expert=None):
             "phoneNumbers": ["UK +44 (0)1603 327762", "US +1 8448141689"],
             "store_card": {
                 "heading": "Spicule&rsquo;s solutions can solve your Big Data challenge.",
-                "button_view": "jaasai.experts_spicule",
+                "button_url": url_for("jaasai.experts_spicule"),
                 "button_label": "Big data experts",
             },
         },
@@ -47,9 +47,9 @@ def get_experts(expert=None):
             "email": "info@tengu.io",
             "phoneNumbers": ["BE +32 478 66 84 89"],
             "store_card": {
-                "heading": "Spicule&rsquo;s solutions can solve your Big Data challenge.",
-                "button_view": "jaasai.experts_spicule",
-                "button_label": "Big data experts",
+                "heading": 'Big Data in minutes. Get started fast, with Tengu&rsquo;s <a href="{}">Python Spark cluster</a>'.format(url_for('jaasstore.user_entity', username='tengu-team', charm_or_bundle_name='automate-spark-jobs')),
+                "button_url": url_for("jaasai.experts_tengu"),
+                "button_label": "Big data now",
             },
         },
     }
