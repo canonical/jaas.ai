@@ -2,6 +2,8 @@ import feedparser
 import os
 from flask import Blueprint, jsonify, render_template
 
+from webapp.experts import get_experts
+
 jaasai = Blueprint(
     "jaasai", __name__, template_folder="/templates", static_folder="/static"
 )
@@ -9,7 +11,9 @@ jaasai = Blueprint(
 
 @jaasai.route("/")
 def index():
-    return render_template("jaasai/index.html")
+    return render_template(
+        "jaasai/index.html", context={experts: get_experts()}
+    )
 
 
 @jaasai.route("/how-it-works")
@@ -49,7 +53,7 @@ def openstack():
 
 @jaasai.route("/experts")
 def experts():
-    return render_template("jaasai/experts.html")
+    return render_template("jaasai/experts.html", context={experts: EXPERTS})
 
 
 @jaasai.route("/experts/spicule")
@@ -58,13 +62,19 @@ def experts_spicule():
         "EXPERTS_RETURN", default="https://jaas.ai"
     )
     return render_template(
-        "jaasai/experts/spicule.html", expertThanksPage=EXPERTS_RETURN
+        "jaasai/experts/spicule.html",
+        expertThanksPage=EXPERTS_RETURN,
+        context={expert: get_experts("spiculecharms")},
     )
 
 
 @jaasai.route("/experts/tengu")
 def experts_tengu():
-    return render_template("jaasai/experts/tengu.html")
+    EXPERTS = get_experts()
+    return render_template(
+        "jaasai/experts/tengu.html",
+        context={expert: get_experts("tengu-team")},
+    )
 
 
 @jaasai.route("/experts/thanks")

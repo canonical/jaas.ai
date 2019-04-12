@@ -1,7 +1,8 @@
 from flask import Blueprint, abort, request, render_template, Response
-from webapp.store import models
-
 from jujubundlelib import references
+
+from webapp.experts import get_experts
+from webapp.store import models
 
 jaasstore = Blueprint(
     "jaasstore",
@@ -13,7 +14,9 @@ jaasstore = Blueprint(
 
 @jaasstore.route("/store")
 def store():
-    return render_template("store/store.html")
+    return render_template(
+        "store/store.html", context={experts: get_experts()}
+    )
 
 
 @jaasstore.route("/search")
