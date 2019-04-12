@@ -1,5 +1,7 @@
 from flask import Blueprint, redirect, request
 
+from webapp.external_urls import external_urls
+
 
 jaasredirects = Blueprint(
     "jaasredirects",
@@ -30,4 +32,4 @@ def blog_redirect():
     """
     Redirect the blog page that existed on jujucharms.com.
     """
-    return redirect("https://blog.ubuntu.com/topics/juju", code=302)
+    return redirect(external_urls["blog"], code=302)

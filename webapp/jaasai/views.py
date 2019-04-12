@@ -1,5 +1,6 @@
-from flask import Blueprint, render_template
+import feedparser
 import os
+from flask import Blueprint, jsonify, render_template
 
 jaasai = Blueprint(
     "jaasai", __name__, template_folder="/templates", static_folder="/static"
@@ -89,6 +90,18 @@ def community_partners():
 @jaasai.route("/support")
 def support():
     return render_template("jaasai/support.html")
+
+
+@jaasai.route("/blog/feed")
+def blog_feed():
+    feed_url = "https://admin.insights.ubuntu.com/tag/juju/feed"
+    feed = feedparser.parse(feed_url)
+    response = None
+    if feed.bozo == 1:
+        response = {"error": feed.bozo_exception.getMessage()}
+    else:
+        response = feed.entries[:2]
+    return jsonify(response)
 
 
 @jaasai.route("/_status/check")

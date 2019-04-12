@@ -93,7 +93,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
               <a class="p-footer__link" href="{{ url_for('jaasai.community') }}">Community</a>
             </li>
             <li class="p-footer__item">
-              <a class="p-footer__link p-link--external" href="https://blog.ubuntu.com/topics/juju">Blog</a>
+              <a class="p-footer__link p-link--external" href="{{ external_urls.blog }}">Blog</a>
             </li>
             <li class="p-footer__item">
               <a class="p-footer__link p-link--external" href="{{ external_urls.docs }}en/reference-install">Install Juju</a>
@@ -125,6 +125,6 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     </div>
   </div>
 </footer>
-<script src="{{ url_for('static', filename='js/dist/app.js') }}"></script>
+<script src="{{ url_for('static', filename='js/dist/app.min.js') }}"></script>
 </body>
 </html>
