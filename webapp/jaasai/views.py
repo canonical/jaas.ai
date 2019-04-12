@@ -94,7 +94,7 @@ def support():
 
 @jaasai.route("/blog/feed")
 def blog_feed():
-    feed_url = "https://blog.ubuntu.com/tag/juju/feed"
+    feed_url = "https://admin.insights.ubuntu.com/tag/juju/feed"
     feed = feedparser.parse(feed_url)
     response = None
     if feed.bozo == 1:
