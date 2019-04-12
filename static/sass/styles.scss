@@ -250,21 +250,6 @@ p:empty {
   display: none;
 }
 
-// Experts card CTA hide/Show
-.expert-card__contact-info {
-  display: none;
-
-  .expert-card--contact-shown & {
-    display: block;
-  }
-}
-
-.expert-card--contact-shown {
-  .p-button--positive {
-    display: none;
-  }
-}
-
 // Accordion title
 .p-accordion__title {
   left: 5px;

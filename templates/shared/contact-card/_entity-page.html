@@ -1,0 +1,13 @@
+{% extends "shared/contact-card/_card.html" %}
+
+{% block initial %}
+  <ul class="p-list">
+    {% for highlight in context.expert.highlights %}
+      <li class="p-list__item is-ticked">{{ highlight|safe }}</li>
+    {% endfor %}
+  </ul>
+{% endblock %}
+
+{% block contact_description %}
+  <p>Please let us know if you have a question, or would like further information about {{ context.expert.name }}.</p>
+{% endblock %}

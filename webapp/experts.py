@@ -4,7 +4,7 @@ from flask import url_for
 def get_experts(expert=None):
     """Generate the expert definitions. This needs to be done in a function so
         that it can be called when the app context is available. This is so
-        that the url_for methods work.
+        that the url_for() methods work.
         :param expert: A optional expert. If provided this method will only
             return that expert.
         :returns: One or all experts.
@@ -12,6 +12,7 @@ def get_experts(expert=None):
     experts = {
         "spiculecharms": {
             "name": "Spicule",
+            "username": "spiculecharms",
             "page_url": url_for("jaasai.experts_spicule"),
             "logo": url_for("static", filename="img/logos/spicule.png"),
             "highlights": [
@@ -19,10 +20,6 @@ def get_experts(expert=None):
                 "Supported analytics",
                 "Streaming data platforms",
             ],
-            "contactDescription": (
-                "Please let us know if you have a question, or would like "
-                "further information about Spicule."
-            ),
             "website": "http://www.spicule.co.uk",
             "email": "info@spicule.co.uk",
             "phone_numbers": [
@@ -47,6 +44,7 @@ def get_experts(expert=None):
         },
         "tengu-team": {
             "name": "Tengu",
+            "username": "tengu-team",
             "page_url": url_for("jaasai.experts_tengu"),
             "logo": url_for("static", filename="img/logos/tengu.png"),
             "highlights": [
@@ -54,10 +52,6 @@ def get_experts(expert=None):
                 "Use all Juju-charmed technologies",
                 "Machine Learning, IoT, Microservices",
             ],
-            "contactDescription": (
-                "Please let us know if you have a question, or would like "
-                "further information about Tengu."
-            ),
             "website": "https://tengu.io",
             "email": "info@tengu.io",
             "phone_numbers": [
