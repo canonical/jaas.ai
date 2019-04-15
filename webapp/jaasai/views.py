@@ -115,6 +115,7 @@ def support():
 @jaasai.route("/blog/feed")
 def blog_feed():
     feed_url = "https://admin.insights.ubuntu.com/tag/juju/feed"
+    # Timeout after 3 seconds if there is no response.
     response = cached_session.get(feed_url, timeout=3)
     feed = feedparser.parse(response.text)
     response = None
