@@ -5,7 +5,7 @@
 
 {% block content %}
 <div class="p-strip--image is-dark"
-  style="background-image:url('{{ url_for('static', filename='img/home/juju-suru-blue-background.png') }}')">
+  style="background-image:url('{{ static_url('img/home/juju-suru-blue-background.png') }}')">
   <div class="row">
     <div class="u-equal-height">
       <div class="col-6">
@@ -14,7 +14,7 @@
         <p>The easiest way to automate the deployment, scaling, lifecycle and management of your applications. Operate the latest Kubernetes, from the experts behind Ubuntu and the Kubernetes community.</p>
       </div>
       <div class="col-6 u-vertically-center u-align--center">
-        <img src="{{ url_for('static', filename='img/logos/certified-kubernetes-color.svg') }}" alt="Kubernetes logo" class="u-hide--small" width="230" />
+        <img src="{{ static_url('img/logos/certified-kubernetes-color.svg') }}" alt="Kubernetes logo" class="u-hide--small" width="230" />
       </div>
     </div>
   </div>
@@ -36,7 +36,7 @@
             <img alt="Azure" src="https://assets.ubuntu.com/v1/515658c0-microsoft-azure-763dcdb6a8a3facccca6f538a909f1ec.svg" />
           </li>
           <li class="p-inline-images__item">
-            <img alt="Google Cloud Platform" src="{{ url_for('static', filename='img/logos/google-cloud-platform-stacked.png') }}" srcset="{{ url_for('static', filename='img/logos/google-cloud-platform-stacked-x2.png') }} 2x" class="inline-logos__image inline-logos__image--gce" />
+            <img alt="Google Cloud Platform" src="{{ static_url('img/logos/google-cloud-platform-stacked.png') }}" srcset="{{ static_url('img/logos/google-cloud-platform-stacked-x2.png') }} 2x" class="inline-logos__image inline-logos__image--gce" />
           </li>
           <li class="p-inline-images__item">
             <img alt="vmware" src="https://assets.ubuntu.com/v1/3006b8c7-vmware.svg" />
@@ -209,7 +209,7 @@
               <div class="col-4 p-card">
                 <div class="p-heading-icon">
                   <div class="p-heading-icon__header">
-                    <img class="p-heading-icon__img" src="{{ url_for('static', filename='img/home/prometheus-circle.svg') }}">
+                    <img class="p-heading-icon__img" src="{{ static_url('img/home/prometheus-circle.svg') }}">
                     <h3 class="p-heading-icon__title">
                       <a href="{{ url_for('jaasstore.user_entity', username='prometheus-charmers', charm_or_bundle_name='prometheus', series_or_version=14) }}">
                         Prometheus&nbsp;&rsaquo;
