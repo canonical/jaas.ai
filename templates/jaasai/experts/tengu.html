@@ -13,52 +13,7 @@
     </div>
     <div class="col-4">
       <div class="p-card--highlighted">
-        <h2 class="u-align--center u-vertically-center">
-          <img
-            style="padding-top:1rem"
-            width="155"
-            src="https://assets.ubuntu.com/v1/68b288f6-tengu.png"
-            alt="Tengu logo" />
-        </h2>
-        <hr>
-        <p>Please let us know if you have a question, or would like further information about Tengu.</p>
-        <footer class="p-card__footer">
-          <a href="#_" data-js="show-btn" class="p-button--positive"
-            onclick="dataLayer.push({
-              'event' : 'GAEvent',
-              'eventCategory' : 'Experts',
-              'eventAction' : 'Reveal contact details',
-              'eventLabel' : 'Tengu'
-            });">
-            Show contact details&hellip;
-          </a>
-          <div class="u-hide" data-js="contact-info">
-            <p>
-              <a href="https://tengu.io" class="link p-card__pre-footer">
-                <span>
-                  <img class="p-card__footer-icon" src="https://assets.ubuntu.com/v1/4f94bbf4-icon-web.svg" alt="Email icon">
-                </span>
-                https://tengu.io
-              </a>
-            </p>
-            <p>
-              <a href="mailto:info@tengu.io" class="link p-card__pre-footer">
-                <span>
-                  <img class="p-card__footer-icon" src="https://assets.ubuntu.com/v1/5e815088-icon-email.svg" alt="Email icon">
-                </span>
-                info@tengu.io
-              </a>
-            </p>
-            <p>
-              <span class="link p-card__pre-footer">
-                <span>
-                  <img class="p-card__footer-icon" src="https://assets.ubuntu.com/v1/a52bd3b1-Icon-telephone.svg" alt="Telephone icon">
-                </span>
-                BE <a href="tel:+32478668489">+32 478 66 84 89</a>
-              </span>
-            </p>
-          </div>
-        </footer>
+        {% include "shared/contact-card/_expert-page.html" %}
       </div>
     </div>
   </div>

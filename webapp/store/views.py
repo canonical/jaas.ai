@@ -1,7 +1,8 @@
 from flask import Blueprint, abort, request, render_template, Response
-from webapp.store import models
-
 from jujubundlelib import references
+
+from webapp.experts import get_experts
+from webapp.store import models
 
 jaasstore = Blueprint(
     "jaasstore",
@@ -13,7 +14,9 @@ jaasstore = Blueprint(
 
 @jaasstore.route("/store")
 def store():
-    return render_template("store/store.html")
+    return render_template(
+        "store/store.html", context={"experts": get_experts()}
+    )
 
 
 @jaasstore.route("/search")
@@ -103,14 +106,13 @@ def details(charm_or_bundle_name, series_or_version=None, version=None):
         entity = models.get_charm_or_bundle(reference)
 
     if entity:
-        if entity["is_charm"]:
-            return render_template(
-                "store/charm-details.html", context={"entity": entity}
-            )
-        else:
-            return render_template(
-                "store/bundle-details.html", context={"entity": entity}
-            )
+        template = "store/{}-details.html".format(
+            "charm" if entity["is_charm"] else "bundle"
+        )
+        return render_template(
+            template,
+            context={"entity": entity, "expert": get_experts(entity["owner"])},
+        )
     else:
         return abort(404, "Entity not found {}".format(charm_or_bundle_name))
 

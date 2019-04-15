@@ -97,6 +97,14 @@
       {% endif %}
     </div>
     <aside class="col-4">
+      {% if context.expert %}
+        <div class="p-card expert-card has-strap">
+          <div class="expert__strap">
+            Juju expert partners
+          </div>
+          {% include "shared/contact-card/_entity-page.html" %}
+        </div>
+      {% endif %}
       {% if context.entity.code_url or context.entity.bug_url or context.entity.homepage %}
         <div class="p-card">
           <h3>Contribute</h3>

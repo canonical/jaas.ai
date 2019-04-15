@@ -1,0 +1,55 @@
+<div class="expert__card-logo">
+  <img src="{{ context.expert.logo }}" alt="{{ context.expert.name }} logo">
+</div>
+<div class="expert-card__initial">
+  {% block initial %}{% endblock %}
+</div>
+<div class="expert-card__contact-info">
+  <footer class="p-card__footer">
+    {% if context.expert.username == "spiculecharms" %}
+      <button data-js="leadGenerationModalTrigger" class="p-button--positive">
+        Get in touch
+      </button>
+      {% include "shared/_spicule_lead-gen-form.html" %}
+    {% else %}
+      <a href="#_" data-js="show-btn" class="p-button--positive"
+        onclick="dataLayer.push({
+          'event' : 'GAEvent',
+          'eventCategory' : 'Experts',
+          'eventAction' : 'Reveal contact details',
+          'eventLabel' : '{{ context.expert.name }}'
+        });">
+        Show contact details&hellip;
+      </a>
+      <div class="u-hide" data-js="contact-info">
+        {% block contact_description %}{% endblock %}
+        <p>
+          <a href="{{ context.expert.website }}" class="link p-card__pre-footer">
+            <span>
+              <img class="p-card__footer-icon" src="https://assets.ubuntu.com/v1/4f94bbf4-icon-web.svg" alt="Email icon">
+            </span>
+            {{ context.expert.website }}
+          </a>
+        </p>
+        <p>
+          <a href="mailto:{{ context.expert.email }}" class="link p-card__pre-footer">
+            <span>
+              <img class="p-card__footer-icon" src="https://assets.ubuntu.com/v1/5e815088-icon-email.svg" alt="Email icon">
+            </span>
+            {{ context.expert.email }}
+          </a>
+        </p>
+        <p>
+          {% for phone in context.expert.phone_numbers %}
+            <span class="link p-card__pre-footer">
+              <span>
+                <img class="p-card__footer-icon" src="https://assets.ubuntu.com/v1/a52bd3b1-Icon-telephone.svg" alt="Telephone icon">
+              </span>
+              {{ phone.location }} <a href="tel:{{ phone.number }}">{{ phone.display }}</a>
+            </span>
+          {% endfor %}
+        </p>
+      </div>
+    {% endif %}
+  </footer>
+</div>

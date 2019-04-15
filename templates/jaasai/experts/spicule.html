@@ -13,21 +13,8 @@
     </div>
     <div class="col-4">
       <div class="p-card--highlighted">
-        <h2 class="u-align--center u-vertically-center">
-          <img
-            style="padding-top:1rem"
-            width="160"
-            src="{{ url_for('static', filename='img/logos/spicule.png') }}"
-            alt="Spicule logo" />
-        </h2>
-        <hr>
-        <p>Please let us know if you have a question, or would like further information about Spicule.</p>
-        <footer class="p-card__footer">
-          <button data-js="leadGenerationModalTrigger" class="p-button--positive">
-            Get in touch
-          </button>
-        </footer>
-      </div>
+        {% include "shared/contact-card/_expert-page.html" %}
+      </div
     </div>
   </div>
 </div>
@@ -83,7 +70,7 @@
       <p>Spicule is an industry-leading Big Data consultancy by providing agile Big Data platforms for enterprises of all sizes.</p>
       <p>Spicule have developed Anssr, a collection of Big Data applications that provide an architecture for businesses to process, analyse, reveal patterns and gain insights into their company data.</p>
       <p><a class="p-link--external" href="https://anssr.io/docs/deploying-an-anssr-bundle.html">Getting started with Anssr</a></p>
-      <p><a class="p-link--external" href="https://spicule.co.uk">Spicule home</a></p>
+      <p><a class="p-link--external" href="{{ context.expert.website }}">Spicule home</a></p>
     </div>
     <div class="col-4">
       <h3 class="expert__title">Skills</h3>
@@ -151,6 +138,5 @@
     </div>
   </div>
 </div>
-{% include "shared/_spicule_lead-gen-form.html" %}
 
 {% endblock content %}
