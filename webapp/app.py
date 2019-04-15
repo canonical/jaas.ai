@@ -1,6 +1,4 @@
 import flask
-import hashlib
-import os
 import prometheus_flask_exporter
 import talisker.flask
 from werkzeug.debug import DebuggedApplication
@@ -12,6 +10,7 @@ from webapp.handlers import add_headers, clear_trailing_slash
 from webapp.jaasai.views import jaasai
 from webapp.redirects.views import jaasredirects
 from webapp.store.views import jaasstore
+from webapp.template_utils import static_url
 
 
 def create_app(testing=False):
@@ -50,25 +49,6 @@ def create_app(testing=False):
         if count != 1:
             return "s"
         return ""
-
-    def static_url(filename):
-        """Template function for generating URLs to static assets:
-            Given the path for a static file, output a url path
-            with a hex hash as a query string for versioning.
-            :param string: A file name.
-            :returns: A file name with appended hash.
-        """
-        filepath = os.path.join("static", filename)
-        url = flask.url_for("static", filename=filename)
-        if not os.path.isfile(filepath):
-            # Could not find static file.
-            return url
-        # Use MD5 as we care about speed a lot and not security in this case.
-        file_hash = hashlib.md5()
-        with open(filepath, "rb") as file_contents:
-            for chunk in iter(lambda: file_contents.read(4096), b""):
-                file_hash.update(chunk)
-        return "{}?v={}".format(url, file_hash.hexdigest()[:7])
 
     @app.context_processor
     def inject_utilities():

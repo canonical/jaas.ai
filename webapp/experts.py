@@ -1,5 +1,7 @@
 from flask import url_for
 
+from webapp.template_utils import static_url
+
 
 def get_experts(expert=None):
     """Generate the expert definitions. This needs to be done in a function so
@@ -14,7 +16,7 @@ def get_experts(expert=None):
             "name": "Spicule",
             "username": "spiculecharms",
             "page_url": url_for("jaasai.experts_spicule"),
-            "logo": url_for("static", filename="img/logos/spicule.png"),
+            "logo": static_url("img/logos/spicule.png"),
             "highlights": [
                 "Spicule&rsquo;s solutions can solve your Big Data challenges",
                 "Supported analytics",
@@ -46,7 +48,7 @@ def get_experts(expert=None):
             "name": "Tengu",
             "username": "tengu-team",
             "page_url": url_for("jaasai.experts_tengu"),
-            "logo": url_for("static", filename="img/logos/tengu.png"),
+            "logo": static_url("img/logos/tengu.png"),
             "highlights": [
                 "Your own Big Data workspace",
                 "Use all Juju-charmed technologies",
