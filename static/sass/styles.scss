@@ -277,8 +277,7 @@ div .p-accordion__tab[aria-expanded] {
     padding-right: 2rem;
   }
 
-  &:after {
-    // sass-lint:disable-line pseudo-element
+  &::after {
     content: url('https://assets.ubuntu.com/v1/0d85260e-play-icon.svg'); // sass-lint:disable-line no-url-protocols no-url-domains
     display: inline-block;
     height: 1rem;
