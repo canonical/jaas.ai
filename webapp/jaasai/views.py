@@ -2,7 +2,14 @@ import datetime
 import feedparser
 import os
 import requests_cache
-from flask import Blueprint, jsonify, render_template
+from flask import (
+    Blueprint,
+    current_app,
+    jsonify,
+    render_template,
+    request,
+    send_from_directory,
+)
 
 from webapp.experts import get_experts
 
@@ -124,6 +131,11 @@ def blog_feed():
     else:
         response = feed.entries[:2]
     return jsonify(response)
+
+
+@jaasai.route("/robots.txt")
+def static_from_root():
+    return send_from_directory(current_app.static_folder, request.path[1:])
 
 
 @jaasai.route("/_status/check")
