@@ -21,7 +21,8 @@ def store():
 
 @jaasstore.route("/search")
 def search():
-    query = request.args.get("q", "").replace("/", " ")
+    query = request.args.get("q", "")
+    search_terms = query.replace("/", " ").replace("-", " ")
     entity_type = request.args.get("type", None)
     if entity_type not in ["charm", "bundle"]:
         entity_type = None
@@ -36,7 +37,7 @@ def search():
         results = models.fetch_requires(requires)
     else:
         results = models.search_entities(
-            query,
+            search_terms,
             entity_type=entity_type,
             tags=tags,
             sort=sort,
