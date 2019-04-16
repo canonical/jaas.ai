@@ -1,11 +1,20 @@
+import datetime
 import feedparser
 import os
+import requests_cache
 from flask import Blueprint, jsonify, render_template
 
 from webapp.experts import get_experts
 
 jaasai = Blueprint(
     "jaasai", __name__, template_folder="/templates", static_folder="/static"
+)
+
+cached_session = requests_cache.CachedSession(
+    name="hour-cache",
+    expire_after=datetime.timedelta(hours=1),
+    backend="memory",
+    old_data_on_error=True,
 )
 
 
@@ -106,7 +115,9 @@ def support():
 @jaasai.route("/blog/feed")
 def blog_feed():
     feed_url = "https://admin.insights.ubuntu.com/tag/juju/feed"
-    feed = feedparser.parse(feed_url)
+    # Timeout after 3 seconds if there is no response.
+    response = cached_session.get(feed_url, timeout=3)
+    feed = feedparser.parse(response.text)
     response = None
     if feed.bozo == 1:
         response = {"error": feed.bozo_exception.getMessage()}
