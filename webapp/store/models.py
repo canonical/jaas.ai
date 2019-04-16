@@ -4,7 +4,7 @@ import re
 
 import gfm
 from jujubundlelib import references
-from theblues.charmstore import CharmStore
+from theblues.charmstore import CharmStore, DEFAULT_INCLUDES
 from theblues.errors import EntityNotFound, ServerError
 from theblues.terms import Terms
 
@@ -85,8 +85,10 @@ def get_user_entities(username):
 
 
 def get_charm_or_bundle(reference):
+    includes = DEFAULT_INCLUDES[:]
+    includes.append("revision-info")
     try:
-        entity_data = cs.entity(reference, True)
+        entity_data = cs.entity(reference, True, includes=includes)
         return _parse_charm_or_bundle(entity_data, include_files=True)
     except EntityNotFound:
         return None
