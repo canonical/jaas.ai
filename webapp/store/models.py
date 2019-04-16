@@ -214,7 +214,7 @@ def _parse_charm_data(charm_data, include_files=False):
     if commercial:
         try:
             entity_plans = parse_prices(plans.get_plans(ref))
-        except ServerError as err:
+        except ServerError:
             pass
     return {
         "archive_url": cs.archive_url(ref),
