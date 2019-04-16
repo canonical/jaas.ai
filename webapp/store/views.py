@@ -44,6 +44,15 @@ def search():
             series=series,
             promulgated_only=False,
         )
+    if len(results["recommended"]) + len(results["community"]) == 0:
+        # If there are no results then check to see if this string could be a
+        # bundle/charm id and do another search. This is something the
+        # charmstore should handle internally, but until it does, do it here.
+        reference = models.get_reference(query)
+        if reference is not None:
+            results = models.search_entities(
+                reference.name, owner=reference.user
+            )
     return render_template(
         "store/search.html",
         context={

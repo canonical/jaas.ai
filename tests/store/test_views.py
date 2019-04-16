@@ -1,6 +1,6 @@
 from flask import url_for
 from flask_testing import TestCase
-from unittest.mock import MagicMock, patch
+from unittest.mock import call, MagicMock, patch
 
 from tests.store.testdata import bundle_data, charm_data, user_entities_data
 from theblues.errors import ServerError
@@ -34,6 +34,21 @@ class StoreViews(TestCase):
         }
         response = self.client.get(url_for("jaasstore.search", q="k8s"))
         self.assertEqual(response.status_code, 200)
+
+    @patch("webapp.store.models.search_entities")
+    def test_search_entity(self, mock_search_entities):
+        mock_search_entities.return_value = {
+            "recommended": [],
+            "community": [],
+        }
+        response = self.client.get(
+            url_for("jaasstore.search", q="cs:~wombat/k8s")
+        )
+        self.assertEqual(response.status_code, 200)
+        self.assertEqual(mock_search_entities.call_count, 2)
+        self.assertEqual(
+            mock_search_entities.call_args_list[1], call("k8s", owner="wombat")
+        )
 
     @patch("theblues.charmstore.CharmStore.list")
     def test_user_details(self, mock_list):
