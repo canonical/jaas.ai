@@ -97,7 +97,7 @@
       {% endif %}
     </div>
     <aside class="col-4">
-      {% if context.expert %}
+      {% if context.expert and context.entity.plans %}
         <div class="p-card expert-card has-strap">
           <div class="expert__strap">
             Juju expert partners
