@@ -1,15 +1,17 @@
 import collections
+import gfm
 import os
 import re
 
-import gfm
 from jujubundlelib import references
 from theblues.charmstore import CharmStore
 from theblues.errors import EntityNotFound, ServerError
+from theblues.plans import Plans
 from theblues.terms import Terms
 
 
 cs = CharmStore("https://api.jujucharms.com/v5")
+plans = Plans("https://api.jujucharms.com/omnibus/")
 terms = Terms("https://api.jujucharms.com/terms/")
 
 
@@ -135,8 +137,19 @@ def _parse_bundle_data(bundle_data, include_files=False):
         "url": "{}/{}".format(ref.name, int(revision_list[0].split("-")[-1])),
     }
     description = bundle_metadata.get("Description")
-
-    bundle = {
+    files = None
+    readme = None
+    if include_files:
+        files = _get_entity_files(ref, meta.get("manifest"))
+        readme = _render_markdown(cs.entity_readme_content(bundle_id))
+    commercial = is_commercial(files)
+    entity_plans = None
+    if commercial:
+        try:
+            entity_plans = parse_prices(plans.get_plans(ref))
+        except ServerError as err:
+            pass
+    return {
         "archive_url": cs.archive_url(ref),
         "bundle_data": bundle_data,
         "bundle_visulisation": getBundleVisualization(ref),
@@ -146,11 +159,15 @@ def _parse_bundle_data(bundle_data, include_files=False):
         # description exists before trying to render the Markdown.
         "description": _render_markdown(description) if description else None,
         "display_name": _get_display_name(name),
+        "files": files,
         "id": bundle_data.get("Id"),
         "is_charm": False,
+        "is_commercial": commercial,
         "latest_revision": latest_revision,
         "owner": meta.get("owner", {}).get("User"),
+        "plans": entity_plans,
         "promulgated": meta.get("promulgated", {}).get("Promulgated"),
+        "readme": readme,
         "revision_number": ref.revision,
         # The series is an array to match the charm data.
         "series": [bundle_metadata.get("Series")],
@@ -159,13 +176,6 @@ def _parse_bundle_data(bundle_data, include_files=False):
         "units": meta.get("bundle-unit-count", {}).get("Count", ""),
         "url": ref.jujucharms_id(),
     }
-    if include_files:
-        bundle["files"] = _get_entity_files(ref, meta.get("manifest"))
-        bundle["readme"] = _render_markdown(
-            cs.entity_readme_content(bundle_id)
-        )
-
-    return bundle
 
 
 def _parseBundleServices(services):
@@ -194,8 +204,19 @@ def _parse_charm_data(charm_data, include_files=False):
         "url": "{}/{}".format(name, int(revision_list[0].split("-")[-1])),
     }
     description = charm_metadata.get("Description")
-
-    charm = {
+    files = None
+    readme = None
+    if include_files:
+        files = _get_entity_files(ref, meta.get("manifest"))
+        readme = _render_markdown(cs.entity_readme_content(charm_id))
+    commercial = is_commercial(files)
+    entity_plans = None
+    if commercial:
+        try:
+            entity_plans = parse_prices(plans.get_plans(ref))
+        except ServerError as err:
+            pass
+    return {
         "archive_url": cs.archive_url(ref),
         "bugs_url": bugs_url,
         "bzr_url": bzr_url,
@@ -206,14 +227,18 @@ def _parse_charm_data(charm_data, include_files=False):
         # description exists before trying to render the Markdown.
         "description": _render_markdown(description) if description else None,
         "display_name": _get_display_name(name),
+        "files": files,
         "homepage": homepage,
         "icon": cs.charm_icon_url(charm_id),
         "id": charm_id,
+        "is_commercial": commercial,
         "latest_revision": latest_revision,
         "options": meta.get("charm-config", {}).get("Options"),
         "owner": meta.get("owner", {}).get("User"),
+        "plans": entity_plans,
         "promulgated": meta.get("promulgated", {}).get("Promulgated"),
         "provides": charm_metadata.get("Provides"),
+        "readme": readme,
         "requires": charm_metadata.get("Requires"),
         "resources": _extract_resources(ref, meta.get("resources", {})),
         "revision_list": revision_list,
@@ -228,11 +253,61 @@ def _parse_charm_data(charm_data, include_files=False):
         "url": ref.jujucharms_id(),
     }
 
-    if include_files:
-        charm["files"] = _get_entity_files(ref, meta.get("manifest"))
-        charm["readme"] = _render_markdown(cs.entity_readme_content(charm_id))
 
-    return charm
+def is_commercial(files):
+    """Matches what is happening on the GUI side; right now we're just
+        checking to see if there's a metrics file. In the future this
+        commercial check will change probably by checking the commercial
+        flag.
+        :param files: the files for an entity.
+        :returns: A boolean for whether the entity is commercial.
+    """
+    files = files or {}
+    return "metrics.yaml" in files
+
+
+def parse_prices(plans):
+    """Price is a simple string; we need to parse out:
+        1) Multiple prices.
+        2) Break each price down into an amount and quantity.
+        Parsing the prices allows us to display a nicer UI.
+        :param plans: iterable plans attached to the entity.
+        :returns: a list of plans with the parsed prices.
+    """
+    formatted_plans = []
+    for plan in plans:
+        price = plan.price
+        if not price:
+            continue
+        # We know that multiple prices use ';' as a delimiter:
+        # that is setup programmatically in omnibus and should be
+        # dependable. The only caveat is that end users can't use
+        # a ';' in their price string.
+        prices = price.split(";")
+        formatted_prices = []
+        for p in prices:
+            # Though the string is free-form text, we're defining
+            # a convention here: {price}/{quantity}. If there is no
+            # '/', then treat the entire string as the amount.
+            # For example, a price of 'Free' becomes
+            # {amount: 'Free', quantity: None}
+            try:
+                amount, quantity = p.split("/", 1)
+            except ValueError:
+                amount = p
+                quantity = None
+            formatted_prices.append(dict(amount=amount, quantity=quantity))
+        # We drop the following fields because they're currently
+        # not used in the UI: plan (the underlying yaml) and
+        # created_on.
+        formatted_plans.append(
+            dict(
+                url=plan.url,
+                description=plan.description,
+                prices=formatted_prices,
+            )
+        )
+    return formatted_plans
 
 
 def _parse_term_ids(term_ids):

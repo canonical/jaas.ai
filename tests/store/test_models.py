@@ -1,7 +1,9 @@
+import datetime
 import unittest
-
 from tests.store.testdata import bundle_data, charm_data, search_data
 from unittest.mock import patch
+
+from theblues.plans import Plan
 from webapp.store import models
 
 
@@ -111,6 +113,43 @@ class TestStoreModels(unittest.TestCase):
             ],
         )
 
+    @patch("theblues.charmstore.CharmStore.files")
+    @patch("theblues.plans.Plans.get_plans")
+    def test_parse_charm_data_plans(self, mock_get_plans, mock_files):
+        mock_files.return_value = {"metrics.yaml": "metrics.yaml"}
+        mock_get_plans.return_value = (
+            Plan(
+                "http://example.com/plan1",
+                (),
+                datetime.datetime.utcnow(),
+                "The first test plan.",
+                "0.50/support",
+            ),
+            Plan(
+                "http://example.com/plan2",
+                (),
+                datetime.datetime.utcnow(),
+                "The second test plan.",
+                "Free",
+            ),
+        )
+        charm = models._parse_charm_data(charm_data, include_files=True)
+        self.assertEqual(
+            charm.get("plans"),
+            [
+                {
+                    "url": "http://example.com/plan1",
+                    "description": "The first test plan.",
+                    "prices": [{"amount": "0.50", "quantity": "support"}],
+                },
+                {
+                    "url": "http://example.com/plan2",
+                    "description": "The second test plan.",
+                    "prices": [{"amount": "Free", "quantity": None}],
+                },
+            ],
+        )
+
     def test_parse_bundle_data(self):
         bundle = models._parse_bundle_data(bundle_data)
         self.assertEqual(
@@ -154,3 +193,40 @@ class TestStoreModels(unittest.TestCase):
         self.assertIsNone(bundle["tags"])
         self.assertEqual(bundle["units"], 10)
         self.assertEqual(bundle["url"], "canonical-kubernetes/bundle/466")
+
+    @patch("theblues.charmstore.CharmStore.files")
+    @patch("theblues.plans.Plans.get_plans")
+    def test_parse_bundle_data_plans(self, mock_get_plans, mock_files):
+        mock_files.return_value = {"metrics.yaml": "metrics.yaml"}
+        mock_get_plans.return_value = (
+            Plan(
+                "http://example.com/plan1",
+                (),
+                datetime.datetime.utcnow(),
+                "The first test plan.",
+                "0.50/support",
+            ),
+            Plan(
+                "http://example.com/plan2",
+                (),
+                datetime.datetime.utcnow(),
+                "The second test plan.",
+                "Free",
+            ),
+        )
+        bundle = models._parse_bundle_data(bundle_data, include_files=True)
+        self.assertEqual(
+            bundle.get("plans"),
+            [
+                {
+                    "url": "http://example.com/plan1",
+                    "description": "The first test plan.",
+                    "prices": [{"amount": "0.50", "quantity": "support"}],
+                },
+                {
+                    "url": "http://example.com/plan2",
+                    "description": "The second test plan.",
+                    "prices": [{"amount": "Free", "quantity": None}],
+                },
+            ],
+        )
