@@ -5,6 +5,7 @@ $asset-path: '/static/';
 // Override local variables
 $color-navigation-background: #333;
 $color-kubernetes: #2e69ea;
+$grid-max-width: 72rem;
 
 // Set the mobile nav breakpoint to handle the large number of nav items.
 @import 'vanilla-framework/scss/settings_breakpoints';
@@ -276,7 +277,7 @@ div .p-accordion__tab[aria-expanded] {
     padding-right: 2rem;
   }
 
-  &:after { // sass-lint:disable-line pseudo-element
+  &::after {
     content: url('https://assets.ubuntu.com/v1/0d85260e-play-icon.svg'); // sass-lint:disable-line no-url-protocols no-url-domains
     display: inline-block;
     height: 1rem;

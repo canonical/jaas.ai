@@ -5,7 +5,7 @@ import showContactDetails from './modules/show-contact-details';
 import copySnippet from './modules/copy-snippet';
 
 // Instantiate modules
-createNav({maxWidth: '64.875rem', showLogins: false});
+createNav({maxWidth: '72rem', showLogins: false});
 showContactDetails();
 copySnippet();
 searchPanel();
