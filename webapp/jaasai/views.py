@@ -10,8 +10,10 @@ from flask import (
     request,
     send_from_directory,
 )
+from jujubundlelib import references
 
 from webapp.experts import get_experts
+from webapp.store.models import cs
 
 jaasai = Blueprint(
     "jaasai", __name__, template_folder="/templates", static_folder="/static"
@@ -136,6 +138,51 @@ def blog_feed():
 @jaasai.route("/robots.txt")
 def static_from_root():
     return send_from_directory(current_app.static_folder, request.path[1:])
+
+
+@jaasai.route("/sitemap.xml")
+def sitemap():
+    return render_template("sitemaps/sitemap.xml")
+
+
+@jaasai.route("/sitemap-base.xml")
+def sitemap_base():
+    return render_template(
+        "sitemaps/sitemap-base.xml",
+        context={
+            "pages": [
+                "jaasai.big_data",
+                "jaasai.community_cards",
+                "jaasai.community_partners",
+                "jaasai.community",
+                "jaasai.containers",
+                "jaasai.experts_spicule",
+                "jaasai.experts_tengu",
+                "jaasai.experts_thanks",
+                "jaasai.experts",
+                "jaasai.getting_started",
+                "jaasai.how_it_works",
+                "jaasai.jaas",
+                "jaasai.kubernetes",
+                "jaasai.openstack",
+                "jaasai.support",
+                "jaasstore.store",
+                "jaasstore.search",
+            ]
+        },
+    )
+
+
+@jaasai.route("/sitemap-store.xml")
+def sitemap_store():
+    results = cs.search("", limit=1000)
+    entities = []
+    for entity in results:
+        ref = references.Reference.from_string(entity.get("Id"))
+        entities.append(ref.jujucharms_id())
+    return render_template(
+        "sitemaps/sitemap-store.xml", context={"entities": entities}
+    )
 
 
 @jaasai.route("/_status/check")

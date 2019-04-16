@@ -12,6 +12,8 @@ from theblues.terms import Terms
 cs = CharmStore("https://api.jujucharms.com/v5")
 terms = Terms("https://api.jujucharms.com/terms/")
 
+SEARCH_LIMIT = 400
+
 
 def search_entities(
     query,
@@ -33,11 +35,12 @@ def search_entities(
         entities = cs.search(
             query,
             doc_type=entity_type,
-            tags=tags,
-            sort=sort,
-            series=series,
             includes=includes,
+            limit=SEARCH_LIMIT,
             promulgated_only=False,
+            series=series,
+            sort=sort,
+            tags=tags,
         )
         results = {"community": [], "recommended": []}
         for entity in _parse_list(entities):
