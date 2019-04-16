@@ -1,15 +1,16 @@
 import flask
-from werkzeug.middleware.proxy_fix import ProxyFix
-from werkzeug.debug import DebuggedApplication
-
 import prometheus_flask_exporter
 import talisker.flask
+from werkzeug.debug import DebuggedApplication
+from werkzeug.middleware.proxy_fix import ProxyFix
+
 from webapp.extensions import sentry
 from webapp.external_urls import external_urls
 from webapp.handlers import add_headers, clear_trailing_slash
 from webapp.jaasai.views import jaasai
 from webapp.redirects.views import jaasredirects
 from webapp.store.views import jaasstore
+from webapp.template_utils import static_url
 
 
 def create_app(testing=False):
@@ -50,8 +51,8 @@ def create_app(testing=False):
         return ""
 
     @app.context_processor
-    def inject_external_urls():
-        return dict(external_urls=external_urls)
+    def inject_utilities():
+        return {"external_urls": external_urls, "static_url": static_url}
 
     app.jinja_env.add_extension("jinja2.ext.do")
 

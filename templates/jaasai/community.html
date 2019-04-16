@@ -12,7 +12,7 @@
       <p><a href="{{ external_urls.discourse }}">Join us in Discourse&nbsp;&rsaquo;</a></p>
     </div>
     <div class="col-6 u-hide--small u-align--center">
-      <img src="{{ url_for('static', filename='img/community/community-hero.svg') }}" alt="Pictogram">
+      <img src="{{ static_url('img/community/community-hero.svg') }}" alt="Pictogram">
     </div>
   </div>
 </div>
@@ -23,7 +23,7 @@
       <div class="p-card">
         <h2>OpenStack solutions</h2>
         <div class="p-media-object">
-          <img src="{{ url_for('static', filename='img/community/james-page.jpg') }}" alt="James Page's profile picture" class="p-media-object__image is-round">
+          <img src="{{ static_url('img/community/james-page.jpg') }}" alt="James Page's profile picture" class="p-media-object__image is-round">
           <div class="p-media-object__details">
             <h3 class="p-media-object__title">
               James Page
@@ -37,7 +37,7 @@
       <div class="p-card">
         <h2>PaaS Solutions</h2>
         <div class="p-media-object">
-          <img src="{{ url_for('static', filename='img/community/chris-donati.jpg') }}" alt="Chris Donati's profile picture" class="p-media-object__image is-round">
+          <img src="{{ static_url('img/community/chris-donati.jpg') }}" alt="Chris Donati's profile picture" class="p-media-object__image is-round">
           <div class="p-media-object__details">
             <h3 class="p-media-object__title">
               Chris Donati
@@ -53,7 +53,7 @@
       <div class="p-card">
         <h2>Benchmarking solutions</h2>
         <div class="p-media-object">
-          <img src="{{ url_for('static', filename='img/community/adam-israel.jpg') }}" alt="Adam Israel's profile picture" class="p-media-object__image is-round">
+          <img src="{{ static_url('img/community/adam-israel.jpg') }}" alt="Adam Israel's profile picture" class="p-media-object__image is-round">
           <div class="p-media-object__details">
             <h3 class="p-media-object__title">
               Adam Israel
@@ -67,7 +67,7 @@
       <div class="p-card">
         <h2>Database Solutions</h2>
         <div class="p-media-object">
-          <img src="{{ url_for('static', filename='img/community/philip-stoev.jpg') }}" alt="Philip Stoev's profile picture" class="p-media-object__image is-round">
+          <img src="{{ static_url('img/community/philip-stoev.jpg') }}" alt="Philip Stoev's profile picture" class="p-media-object__image is-round">
           <div class="p-media-object__details">
             <h3 class="p-media-object__title">
               Philip Stoev
@@ -89,7 +89,7 @@
       <p><a href="https://discourse.jujucharms.com/">Join us in Discourse&nbsp;&rsaquo;</a></p>
     </div>
     <div class="col-4 u-hide--small u-align--center">
-      <img src="{{ url_for('static', filename='img/community/picto-community.svg') }}" alt="" />
+      <img src="{{ static_url('img/community/picto-community.svg') }}" alt="" />
     </div>
   </div>
 
@@ -151,5 +151,5 @@
   </div>
 </div>
 
-<script src="{{ url_for('static', filename='js/dist/blog-feed.min.js') }}"></script>
+<script src="{{ static_url('js/dist/blog-feed.min.js') }}"></script>
 {% endblock content %}

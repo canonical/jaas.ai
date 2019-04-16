@@ -7,7 +7,7 @@
 
 {% block content %}
 <div class="p-strip--image is-dark"
-  style="background-image:url('{{ url_for('static', filename='img/home/juju-suru-blue-background.png') }}')">
+  style="background-image:url('{{ static_url('img/home/juju-suru-blue-background.png') }}')">
   <div class="row">
     <div class="u-equal-height">
       <div class="col-6">
@@ -19,7 +19,7 @@
         </div>
       </div>
       <div class="col-6 u-vertically-center u-align--center u-hide--small">
-        <img src="{{ url_for('static', filename='img/logos/jaas-logos.svg') }}" alt="Cloud based application logos" style="width:100%;max-width:294px;"/>
+        <img src="{{ static_url('img/logos/jaas-logos.svg') }}" alt="Cloud based application logos" style="width:100%;max-width:294px;"/>
       </div>
     </div>
   </div>
@@ -141,7 +141,7 @@
   </div>
 </div>
 
-<div class="p-strip has-image-bg" style="background: no-repeat top 20% right 0 url('{{ url_for('static', filename='img/jaas/openstack-bundle-background.png') }}')">
+<div class="p-strip has-image-bg" style="background: no-repeat top 20% right 0 url('{{ static_url('img/jaas/openstack-bundle-background.png') }}')">
   <div class="row">
     <dic class="col-6">
       <h4>Alternatively, you can test and deploy models on your own hardware</h4>
