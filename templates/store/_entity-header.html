@@ -46,6 +46,11 @@
             </span>
           </li>
         {% endif %}
+        {% if context.entity.plans %}
+          <li class="p-inline-list__item">
+            <a href="#plans">{{ context.entity.plans|length }} plan{{ context.entity.plans|length|pluralize }} available</a>
+          </li>
+        {% endif %}
       </ul>
       {% if context.entity.series %}
       Supports:
