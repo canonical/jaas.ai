@@ -4,19 +4,19 @@
     Store
   </a>
 </div>
-<div class="p-header__nav-item" role="menuitem">
+<div class="p-header__nav-item is-secondary-link" role="menuitem">
   <a href="{{ url_for('jaasai.jaas') }}"
     class="{% if active_section == 'about' %}active{% endif %}">
     About
   </a>
 </div>
-<div class="p-header__nav-item" role="menuitem">
+<div class="p-header__nav-item is-secondary-link" role="menuitem">
   <a href="{{ url_for('jaasai.how_it_works') }}"
     class="{% if active_section == 'how-it-works' %}active{% endif %}">
     How it works
   </a>
 </div>
-<div class="p-header__nav-item is-secondary-link" role="menuitem">
+<div class="p-header__nav-item" role="menuitem">
   <a class="p-link--external" href="{{ external_urls.discourse }}">
     Discourse
   </a>
