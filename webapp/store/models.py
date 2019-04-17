@@ -170,7 +170,8 @@ def _parse_bundle_data(bundle_data, include_files=False):
         "series": [bundle_metadata.get("Series")],
         "supported": supported,
         "supported_price": supported_price,
-        "supported_description": supported_description and _render_markdown(supported_description),
+        "supported_description": supported_description
+        and _render_markdown(supported_description),
         "services": _parseBundleServices(bundle_metadata["applications"]),
         "tags": bundle_metadata.get("Tags"),
         "units": meta.get("bundle-unit-count", {}).get("Count", ""),
@@ -244,7 +245,8 @@ def _parse_charm_data(charm_data, include_files=False):
         "series": meta.get("supported-series", {}).get("SupportedSeries"),
         "supported": supported,
         "supported_price": supported_price,
-        "supported_description": supported_description and _render_markdown(supported_description),
+        "supported_description": supported_description
+        and _render_markdown(supported_description),
         # Some charms do not have tags, so fall back to categories if they
         # exist (mostly on older charms).
         "is_charm": True,

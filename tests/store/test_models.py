@@ -1,4 +1,3 @@
-import datetime
 import unittest
 from tests.store.testdata import bundle_data, charm_data, search_data
 from unittest.mock import patch
@@ -122,7 +121,8 @@ class TestStoreModels(unittest.TestCase):
         self.assertTrue(charm["supported"])
         self.assertEqual(charm["supported_price"], "99")
         self.assertEqual(
-            charm["supported_description"], "<p>Great ol' charm<br />\nthis one</p>"
+            charm["supported_description"],
+            "<p>Great ol' charm<br />\nthis one</p>",
         )
 
     def test_parse_bundle_data(self):
@@ -179,5 +179,6 @@ class TestStoreModels(unittest.TestCase):
         self.assertTrue(bundle["supported"])
         self.assertEqual(bundle["supported_price"], "99")
         self.assertEqual(
-            bundle["supported_description"], "<p>Great ol' bundle<br />\nthis one</p>"
+            bundle["supported_description"],
+            "<p>Great ol' bundle<br />\nthis one</p>",
         )
