@@ -63,12 +63,13 @@
 <td>
   {% if entity.series %}
     {% for series in entity.series %}
-        {% if series.url%}
-          <a class="p-link--soft" href="/{{ series.url }}">{{ series.name }}</a>
-        {% else %}
-          {{ series }}
-        {% endif %}
-        {{ "," if not loop.last }}
+    <span class="series-tag series-tag--{{ series }}">
+      {% if series.url%}
+        <a class="p-link--soft" href="/{{ series.url }}">{{ series.name }}</a>
+      {% else %}
+        {{ series }}
+      {% endif %}
+    </span>
     {% endfor %}
   {% endif %}
 </td>
