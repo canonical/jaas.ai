@@ -97,27 +97,7 @@
       {% endif %}
     </div>
     <aside class="col-4">
-      {% if context.entity.plans %}
-        <div class="p-card expert-card has-strap">
-          <div class="expert__strap">
-            Managed solution
-          </div>
-          {% for plan in context.entity.plans %}
-            <h3 style="margin-top:2rem">
-              {% for price in plan.prices %}
-                {{ price.amount }}
-                {% if price.quantity %}
-                  / {{ price.quantity }}
-                {% endif %}
-              {% endfor %}
-            </h3>
-            <hr />
-            <p><strong>{{ plan.url }}</strong></p>
-            <p>{{ plan.description }}</p>
-          {% endfor %}
-        </div>
-      {% endif %}
-      {% if context.expert and context.entity.plans %}
+      {% if context.expert %}
         <div class="p-card expert-card has-strap">
           <div class="expert__strap">
             Juju expert partners
