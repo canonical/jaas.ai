@@ -117,12 +117,12 @@ class TestStoreModels(unittest.TestCase):
         charm_data["Meta"]["extra-info"]["price"] = "99"
         charm_data["Meta"]["extra-info"][
             "description"
-        ] = "Great ol' charm this one"
+        ] = "Great ol' charm\nthis one"
         charm = models._parse_charm_data(charm_data)
         self.assertTrue(charm["supported"])
         self.assertEqual(charm["supported_price"], "99")
         self.assertEqual(
-            charm["supported_description"], "Great ol' charm this one"
+            charm["supported_description"], "<p>Great ol' charm<br />\nthis one</p>"
         )
 
     def test_parse_bundle_data(self):
@@ -174,10 +174,10 @@ class TestStoreModels(unittest.TestCase):
         bundle_data["Meta"]["extra-info"]["price"] = "99"
         bundle_data["Meta"]["extra-info"][
             "description"
-        ] = "Great ol' bundle this one"
+        ] = "Great ol' bundle\nthis one"
         bundle = models._parse_bundle_data(bundle_data)
         self.assertTrue(bundle["supported"])
         self.assertEqual(bundle["supported_price"], "99")
         self.assertEqual(
-            bundle["supported_description"], "Great ol' bundle this one"
+            bundle["supported_description"], "<p>Great ol' bundle<br />\nthis one</p>"
         )
