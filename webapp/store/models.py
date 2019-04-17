@@ -1,8 +1,8 @@
 import collections
+import gfm
 import os
 import re
 
-import gfm
 from jujubundlelib import references
 from theblues.charmstore import CharmStore, DEFAULT_INCLUDES
 from theblues.errors import EntityNotFound, ServerError
@@ -70,6 +70,7 @@ def get_user_entities(username):
     includes = [
         "charm-metadata",
         "bundle-metadata",
+        "extra-info",
         "owner",
         "bundle-unit-count",
         "bundle-machine-count",
@@ -131,14 +132,25 @@ def _parse_bundle_data(bundle_data, include_files=False):
     meta = bundle_data["Meta"]
     bundle_metadata = meta["bundle-metadata"]
     revision_list = meta.get("revision-info", {}).get("Revisions")
+    (
+        _,
+        _,
+        supported,
+        supported_price,
+        supported_description,
+    ) = _extract_from_extrainfo(meta, ref)
     latest_revision = revision_list and {
         "id": int(revision_list[0].split("-")[-1]),
         "full_id": revision_list[0],
         "url": "{}/{}".format(ref.name, int(revision_list[0].split("-")[-1])),
     }
     description = bundle_metadata.get("Description")
-
-    bundle = {
+    files = None
+    readme = None
+    if include_files:
+        files = _get_entity_files(ref, meta.get("manifest"))
+        readme = _render_markdown(cs.entity_readme_content(bundle_id))
+    return {
         "archive_url": cs.archive_url(ref),
         "bundle_data": bundle_data,
         "bundle_visulisation": getBundleVisualization(ref),
@@ -148,26 +160,25 @@ def _parse_bundle_data(bundle_data, include_files=False):
         # description exists before trying to render the Markdown.
         "description": _render_markdown(description) if description else None,
         "display_name": _get_display_name(name),
+        "files": files,
         "id": bundle_data.get("Id"),
         "is_charm": False,
         "latest_revision": latest_revision,
         "owner": meta.get("owner", {}).get("User"),
         "promulgated": meta.get("promulgated", {}).get("Promulgated"),
+        "readme": readme,
         "revision_number": ref.revision,
         # The series is an array to match the charm data.
         "series": [bundle_metadata.get("Series")],
+        "supported": supported,
+        "supported_price": supported_price,
+        "supported_description": supported_description
+        and _render_markdown(supported_description),
         "services": _parseBundleServices(bundle_metadata["applications"]),
         "tags": bundle_metadata.get("Tags"),
         "units": meta.get("bundle-unit-count", {}).get("Count", ""),
         "url": ref.jujucharms_id(),
     }
-    if include_files:
-        bundle["files"] = _get_entity_files(ref, meta.get("manifest"))
-        bundle["readme"] = _render_markdown(
-            cs.entity_readme_content(bundle_id)
-        )
-
-    return bundle
 
 
 def _parseBundleServices(services):
@@ -186,7 +197,13 @@ def _parse_charm_data(charm_data, include_files=False):
     ref = references.Reference.from_string(charm_id)
     meta = charm_data.get("Meta", None)
     charm_metadata = meta["charm-metadata"]
-    bzr_url, revisions = _extract_from_extrainfo(meta, ref)
+    (
+        bzr_url,
+        revisions,
+        supported,
+        supported_price,
+        supported_description,
+    ) = _extract_from_extrainfo(meta, ref)
     bugs_url, homepage = _extract_from_commoninfo(meta)
     name = charm_metadata["Name"]
     revision_list = meta.get("revision-info", {}).get("Revisions")
@@ -196,8 +213,12 @@ def _parse_charm_data(charm_data, include_files=False):
         "url": "{}/{}".format(name, int(revision_list[0].split("-")[-1])),
     }
     description = charm_metadata.get("Description")
-
-    charm = {
+    files = None
+    readme = None
+    if include_files:
+        files = _get_entity_files(ref, meta.get("manifest"))
+        readme = _render_markdown(cs.entity_readme_content(charm_id))
+    return {
         "archive_url": cs.archive_url(ref),
         "bugs_url": bugs_url,
         "bzr_url": bzr_url,
@@ -208,6 +229,7 @@ def _parse_charm_data(charm_data, include_files=False):
         # description exists before trying to render the Markdown.
         "description": _render_markdown(description) if description else None,
         "display_name": _get_display_name(name),
+        "files": files,
         "homepage": homepage,
         "icon": cs.charm_icon_url(charm_id),
         "id": charm_id,
@@ -216,12 +238,17 @@ def _parse_charm_data(charm_data, include_files=False):
         "owner": meta.get("owner", {}).get("User"),
         "promulgated": meta.get("promulgated", {}).get("Promulgated"),
         "provides": charm_metadata.get("Provides"),
+        "readme": readme,
         "requires": charm_metadata.get("Requires"),
         "resources": _extract_resources(ref, meta.get("resources", {})),
         "revision_list": revision_list,
         "revision_number": ref.revision,
         "revisions": revisions,
         "series": meta.get("supported-series", {}).get("SupportedSeries"),
+        "supported": supported,
+        "supported_price": supported_price,
+        "supported_description": supported_description
+        and _render_markdown(supported_description),
         # Some charms do not have tags, so fall back to categories if they
         # exist (mostly on older charms).
         "is_charm": True,
@@ -229,12 +256,6 @@ def _parse_charm_data(charm_data, include_files=False):
         "term_ids": _parse_term_ids(meta.get("terms")),
         "url": ref.jujucharms_id(),
     }
-
-    if include_files:
-        charm["files"] = _get_entity_files(ref, meta.get("manifest"))
-        charm["readme"] = _render_markdown(cs.entity_readme_content(charm_id))
-
-    return charm
 
 
 def _parse_term_ids(term_ids):
@@ -355,7 +376,16 @@ def _extract_from_extrainfo(charm_data, ref):
         "vcs-revisions"
     )
     bzr_url = extra_info.get("bzr-url")
-    return bzr_url, revisions
+    supported = bool(extra_info.get("supported", False))
+    supported_price = extra_info.get("price")
+    supported_description = extra_info.get("description")
+    return (
+        bzr_url,
+        revisions,
+        supported,
+        supported_price,
+        supported_description,
+    )
 
 
 def _extract_from_commoninfo(bundle_data):

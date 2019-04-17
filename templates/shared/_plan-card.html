@@ -1,0 +1,13 @@
+<div class="p-card expert-card has-strap">
+  <div class="expert__strap">
+    Managed solution
+  </div>
+  <h3 style="margin-top:2rem">Approx ${{ context.entity.supported_price }}\m</h3>
+  <h4>Default plan with standard support</h4>
+  <hr>
+  <p>{{ context.entity.supported_description|safe }}</p>
+  <a href="{{ external_urls.gui }}?deploy-target={{ context.entity.id }}" class="p-button--positive" rel="nofollow">
+    Deploy {{ context.entity.display_name }}
+  </a>
+  <p><a href="{{ context.expert.page_url }}">Learn more about <span style="text-transform:capitalize">{{ context.expert.name }}</span> support</a></p>
+</div>

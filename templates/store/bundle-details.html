@@ -29,6 +29,9 @@
     </div>
     <div class="col-4">
       {% if context.expert %}
+        {% if context.entity.supported %}
+          {% include "shared/_plan-card.html" %}
+        {% endif %}
         <div class="p-card expert-card has-strap">
           <div class="expert__strap">
             Juju expert partners
