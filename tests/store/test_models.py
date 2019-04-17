@@ -3,7 +3,6 @@ import unittest
 from tests.store.testdata import bundle_data, charm_data, search_data
 from unittest.mock import patch
 
-from theblues.plans import Plan
 from webapp.store import models
 
 
@@ -113,6 +112,18 @@ class TestStoreModels(unittest.TestCase):
             ],
         )
 
+    def test_parse_charm_data_supported(self):
+        charm_data["Meta"]["extra-info"]["supported"] = "true"
+        charm_data["Meta"]["extra-info"]["price"] = "99"
+        charm_data["Meta"]["extra-info"][
+            "description"
+        ] = "Great ol' charm this one"
+        charm = models._parse_charm_data(charm_data)
+        self.assertTrue(charm["supported"])
+        self.assertEqual(charm["supported_price"], "99")
+        self.assertEqual(
+            charm["supported_description"], "Great ol' charm this one"
+        )
 
     def test_parse_bundle_data(self):
         bundle = models._parse_bundle_data(bundle_data)
@@ -157,3 +168,16 @@ class TestStoreModels(unittest.TestCase):
         self.assertIsNone(bundle["tags"])
         self.assertEqual(bundle["units"], 10)
         self.assertEqual(bundle["url"], "canonical-kubernetes/bundle/466")
+
+    def test_parse_bundle_data_supported(self):
+        bundle_data["Meta"]["extra-info"]["supported"] = "true"
+        bundle_data["Meta"]["extra-info"]["price"] = "99"
+        bundle_data["Meta"]["extra-info"][
+            "description"
+        ] = "Great ol' bundle this one"
+        bundle = models._parse_bundle_data(bundle_data)
+        self.assertTrue(bundle["supported"])
+        self.assertEqual(bundle["supported_price"], "99")
+        self.assertEqual(
+            bundle["supported_description"], "Great ol' bundle this one"
+        )

@@ -9,7 +9,7 @@ from theblues.errors import EntityNotFound, ServerError
 from theblues.terms import Terms
 
 
-cs = CharmStore("https://api.staging.jujucharms.com/v5")
+cs = CharmStore("https://api.jujucharms.com/v5")
 terms = Terms("https://api.jujucharms.com/terms/")
 
 
@@ -70,6 +70,7 @@ def get_user_entities(username):
     includes = [
         "charm-metadata",
         "bundle-metadata",
+        "extra-info",
         "owner",
         "bundle-unit-count",
         "bundle-machine-count",
@@ -129,6 +130,13 @@ def _parse_bundle_data(bundle_data, include_files=False):
     meta = bundle_data["Meta"]
     bundle_metadata = meta["bundle-metadata"]
     revision_list = meta.get("revision-info", {}).get("Revisions")
+    (
+        _,
+        _,
+        supported,
+        supported_price,
+        supported_description,
+    ) = _extract_from_extrainfo(meta, ref)
     latest_revision = revision_list and {
         "id": int(revision_list[0].split("-")[-1]),
         "full_id": revision_list[0],
@@ -160,6 +168,9 @@ def _parse_bundle_data(bundle_data, include_files=False):
         "revision_number": ref.revision,
         # The series is an array to match the charm data.
         "series": [bundle_metadata.get("Series")],
+        "supported": supported,
+        "supported_price": supported_price,
+        "supported_description": supported_description,
         "services": _parseBundleServices(bundle_metadata["applications"]),
         "tags": bundle_metadata.get("Tags"),
         "units": meta.get("bundle-unit-count", {}).get("Count", ""),
@@ -183,6 +194,13 @@ def _parse_charm_data(charm_data, include_files=False):
     ref = references.Reference.from_string(charm_id)
     meta = charm_data.get("Meta", None)
     charm_metadata = meta["charm-metadata"]
+    (
+        bzr_url,
+        revisions,
+        supported,
+        supported_price,
+        supported_description,
+    ) = _extract_from_extrainfo(meta, ref)
     bugs_url, homepage = _extract_from_commoninfo(meta)
     name = charm_metadata["Name"]
     revision_list = meta.get("revision-info", {}).get("Revisions")
@@ -224,6 +242,9 @@ def _parse_charm_data(charm_data, include_files=False):
         "revision_number": ref.revision,
         "revisions": revisions,
         "series": meta.get("supported-series", {}).get("SupportedSeries"),
+        "supported": supported,
+        "supported_price": supported_price,
+        "supported_description": supported_description,
         # Some charms do not have tags, so fall back to categories if they
         # exist (mostly on older charms).
         "is_charm": True,
@@ -351,7 +372,16 @@ def _extract_from_extrainfo(charm_data, ref):
         "vcs-revisions"
     )
     bzr_url = extra_info.get("bzr-url")
-    return bzr_url, revisions
+    supported = bool(extra_info.get("supported", False))
+    supported_price = extra_info.get("price")
+    supported_description = extra_info.get("description")
+    return (
+        bzr_url,
+        revisions,
+        supported,
+        supported_price,
+        supported_description,
+    )
 
 
 def _extract_from_commoninfo(bundle_data):
