@@ -68,58 +68,58 @@
        </ul>
      </div>
      <div class="col-8">
-       <div class="list-block__filters--selects u-clearfix">
-         <form>
-           <div class="col-4">
-             <div class="list-block__filters--selects-item">
-               <label for="sort-select">
-                 Sort by:
-               </label>
-             </div>
-             <div class="list-block__filters--selects-item">
-               <select name="sort-select" class="js-sort-select">
-               <option value="-downloads" {% if context.current_sort == '-downloads' %}selected="selected"{% endif %}>
-                 Most popular
-               </option>
-               <option value="downloads" {% if context.current_sort == 'downloads' %}selected="selected"{% endif %}>
-                 Least popular
-               </option>
-               <option value="name" {% if context.current_sort == 'name' %}selected="selected"{% endif %}>
-                 Name (a-z)
-               </option>
-               <option value="-name" {% if context.current_sort == '-name' %}selected="selected"{% endif %}>
-                 Name (z-a)
-               </option>
-               <option value="owner" {% if context.current_sort == 'owner' %}selected="selected"{% endif %}>
-                 Author (a-z)
-               </option>
-               <option value="-owner" {% if context.current_sort == '-owner' %}selected="selected"{% endif %}>
-                 Author (z-a)
-               </option>
-             </select>
-             </div>
-           </div>
-           <div class="col-4">
-             <div class="list-block__filters--selects-item">
-               <label for="series-select">
-                 Series:
-               </label>
-             </div>
-             <div class="list-block__filters--selects-item">
-               <select class="js-series-select">
-               {# The series list has been limited to sane options, full list is here:
-               https://github.com/juju/charmstore/blob/v5-unstable/internal/router/router.go#L33  #}
-               {% for series in ['all', 'precise', 'trusty', 'xenial', 'bionic', 'centos7'] %}
-                 <option value="{{ series }}"
-                   {% if context.current_series == series %}selected="selected"{% endif %}>
-                   {{ full_series(series) }}
-                 </option>
-               {% endfor %}
-             </select>
-             </div>
-           </div>
-         </form>
-       </div>
+       <form>
+          <div class="list-block__filters--selects u-clearfix">
+            <div class="list-block__filter">
+              <div class="list-block__filters--selects-item u-vertically-center">
+                <label for="sort-select">
+                  Sort by:
+                </label>
+              </div>
+              <div class="list-block__filters--selects-item">
+                <select name="sort-select" class="js-sort-select">
+                <option value="-downloads" {% if context.current_sort == '-downloads' %}selected="selected"{% endif %}>
+                  Most popular
+                </option>
+                <option value="downloads" {% if context.current_sort == 'downloads' %}selected="selected"{% endif %}>
+                  Least popular
+                </option>
+                <option value="name" {% if context.current_sort == 'name' %}selected="selected"{% endif %}>
+                  Name (a-z)
+                </option>
+                <option value="-name" {% if context.current_sort == '-name' %}selected="selected"{% endif %}>
+                  Name (z-a)
+                </option>
+                <option value="owner" {% if context.current_sort == 'owner' %}selected="selected"{% endif %}>
+                  Author (a-z)
+                </option>
+                <option value="-owner" {% if context.current_sort == '-owner' %}selected="selected"{% endif %}>
+                  Author (z-a)
+                </option>
+              </select>
+              </div>
+            </div>
+            <div class="list-block__filter">
+              <div class="list-block__filters--selects-item u-vertically-center">
+                <label for="series-select">
+                  Series:
+                </label>
+              </div>
+              <div class="list-block__filters--selects-item">
+                <select class="js-series-select">
+                {# The series list has been limited to sane options, full list is here:
+                https://github.com/juju/charmstore/blob/v5-unstable/internal/router/router.go#L33  #}
+                {% for series in ['all', 'precise', 'trusty', 'xenial', 'bionic', 'centos7'] %}
+                  <option value="{{ series }}"
+                    {% if context.current_series == series %}selected="selected"{% endif %}>
+                    {{ full_series(series) }}
+                  </option>
+                {% endfor %}
+              </select>
+              </div>
+            </div>
+          </div>
+        </form>
      </div>
    </div>
    {% if context.results.recommended %}
@@ -131,6 +131,14 @@
          </span>
        </h4>
        <table class="search-results-table">
+        <thead>
+          <tr>
+            <th></th>
+            <th scope="col">Name/Tags</th>
+            <th scope="col">Supports</th>
+            <th scope="col">Publisher</th>
+          </tr>
+        </thead>
          <tbody>
            {% for entity in context.results.recommended %}
              <tr class="{{ entity.type }} u-no-padding--top">

@@ -15,7 +15,7 @@
       flex: 1;
 
       &:first-child {
-        flex: 2;
+        flex: 0.5;
       }
     }
   }
@@ -24,19 +24,37 @@
 .filter-row {
   margin: 1rem auto;
 
+  .list-block__filter {
+    display: flex;
+    margin-right: 1rem;
+  }
+
   .list-block__filters--selects {
+    float: right;
+
+    .list-block__filter {
+      margin-bottom: 1rem;
+    }
+
+    @media (min-width: 400px) {
+      display: flex;
+    }
+
     &-item {
-      float: left;
       margin-left: 0;
-      width: 50%;
+      margin-right: 0.5rem;
+
+      select {
+        margin: 0;
+      }
     }
 
     label {
-      padding-right: 1rem;
       text-align: right;
+      width: 100%;
+      min-width: 55px;
 
       @media (min-width: $breakpoint-medium) {
-        padding-right: 2rem;
         padding-top: 0;
       }
     }
@@ -46,28 +64,40 @@
     cursor: pointer;
   }
 
+  .is-selected {
+    position: relative;
+
+    &::after {
+      background: $color-mid-dark;
+      bottom: -2px;
+      content: ' ';
+      height: 2px;
+      left: 0;
+      position: absolute;
+      width: 100%;
+    }
+  }
+
   @media (min-width: $breakpoint-medium) {
     select {
       margin-left: -1.5rem;
       margin-top: -0.5rem;
-    }
-
-    .is-selected {
-      position: relative;
-
-      &::after {
-        background: $color-mid-dark;
-        bottom: -0.25rem;
-        content: ' ';
-        height: 3px;
-        left: 0;
-        position: absolute;
-        width: 100%;
-      }
     }
   }
 }
 
 .entity-icon {
   border-radius: 50%;
+}
+
+.entitity-search-selector {
+  border-bottom: 2px solid #ccc;
+  display: flex;
+
+  li {
+    flex: 1;
+    text-align: center;
+    margin-right: 0;
+    padding-bottom: 1rem;
+  }
 }
