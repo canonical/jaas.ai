@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="https://www.sitemaps.org/schemas/sitemap/0.9"
+    xmlns:mobile="https://www.google.com/schemas/sitemap-mobile/1.0">
+    {% for entity in context.entities %}
+        <url>
+            <loc>{{ request.url_root }}{{ entity }}</loc>
+        </url>
+    {% endfor %}
+</urlset>
