@@ -7,14 +7,11 @@
   color: $color-mid-dark;
   padding: 0 0.5rem;
   margin-right: 0.25rem;
+  margin-bottom: 0.25rem;
   text-transform: capitalize;
 
   &--kubernetes {
     border-color: $color-kubernetes;
     color: $color-kubernetes;
-  }
-
-  &:first-of-type {
-    margin-left: 0.5rem;
   }
 }

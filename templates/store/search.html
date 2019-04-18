@@ -167,6 +167,14 @@
        <div class="col-12">
          <h4>Community <span class="count">({{ context.results.community|length }})</span></h4>
          <table class="search-results-table">
+          <thead>
+            <tr>
+              <th></th>
+              <th scope="col">Name/Tags</th>
+              <th scope="col">Supports</th>
+              <th scope="col">Publisher</th>
+            </tr>
+          </thead>
            <tbody>
              {% for entity in context.results.community %}
              <tr class="{{ entity.type }} u-no-padding--top">
