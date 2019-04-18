@@ -1,4 +1,4 @@
-<td class="u-hide--small">
+<td class="u-hide--small u-vertically-center">
   <ul class="p-inline-list u-no-margin--bottom">
     {% if entity.services %}
     {% for name, charm in entity.services.items() %}
@@ -47,20 +47,22 @@
   </ul>
 </td>
 
-<td>
-  <a href="/{{ entity.url }}">
-    <h4 class="search-results__entity-name u-no-margin--bottom">{{ entity.display_name }}</h4>
-  </a>
-  {% if entity.tags %}
-    <div class="entity-tags">
-      {% for tag in entity.tags %}
-        <a class="p-link--soft" href="{{ url_for('jaasstore.search', tags=tag) }}">{{ tag }}{{ "," if not loop.last }}</a>
-      {% endfor %}
-    </div>
-  {% endif %}
+<td class="u-vertically-center">
+  <div>
+    <a href="/{{ entity.url }}">
+      <h4 class="search-results__entity-name u-no-margin--bottom">{{ entity.display_name }}</h4>
+    </a>
+    {% if entity.tags %}
+      <div class="entity-tags">
+        {% for tag in entity.tags %}
+          <a class="p-link--soft" href="{{ url_for('jaasstore.search', tags=tag) }}">{{ tag }}{{ "," if not loop.last }}</a>
+        {% endfor %}
+      </div>
+    {% endif %}
+  </div>
 </td>
 
-<td>
+<td class="u-vertically-center">
   {% if entity.series %}
     {% for series in entity.series %}
     <span class="series-tag series-tag--{{ series }}">
@@ -73,8 +75,6 @@
     {% endfor %}
   {% endif %}
 </td>
-
-
 
 <td class="u-vertically-center">
   {% if entity.owner %}
