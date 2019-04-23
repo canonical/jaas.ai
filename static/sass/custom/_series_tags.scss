@@ -1,4 +1,4 @@
-.series-tag {
+%series-tag {
   display: inline-block;
   border: 1px solid $color-mid-dark;
   border-radius: 4px;
@@ -9,9 +9,14 @@
   margin-right: 0.25rem;
   margin-bottom: 0.25rem;
   text-transform: capitalize;
+}
 
-  &--kubernetes {
-    border-color: $color-kubernetes;
-    color: $color-kubernetes;
-  }
+.series-tag {
+  @extend %series-tag;
+}
+
+.series-tag--kubernetes {
+  @extend %series-tag;
+  border-color: $color-kubernetes;
+  color: $color-kubernetes;
 }
