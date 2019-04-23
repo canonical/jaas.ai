@@ -90,14 +90,20 @@
   border-radius: 50%;
 }
 
-.entitity-search-selector {
-  border-bottom: 2px solid #ccc;
+.p-tabs:before {
+  display: none;
+}
+
+.entity-search-selector {
   display: flex;
 
   li {
     flex: 1;
     text-align: center;
-    margin-right: 0;
-    padding-bottom: 1rem;
+
+    a {
+      display: inline-block;
+      width: 100%;
+    }
   }
 }
