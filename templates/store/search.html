@@ -210,7 +210,6 @@
      * @param {String} value the new filter value.
      */
     function _searchChangeFilter(type, value) {
-      console.log(value);
       const url = window.location.href.split('?')[0];
       const queries = {};
       window.location.search.substr(1).split('&').forEach(ele => {
@@ -221,7 +220,6 @@
       })
       // No need to change the url if the filter value is already selected.
       if (value !== queries[type]) {
-        console.log('no change');
         if ((type === 'series' || type === 'type') && value === 'all') {
           delete queries[type];
         } else {
