@@ -94,8 +94,13 @@
   display: none;
 }
 
+.p-tabs__item:last-child {
+  margin: 0;
+}
+
 .entity-search-selector {
   display: flex;
+  overflow-x: unset;
 
   li {
     flex: 1;
