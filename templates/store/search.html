@@ -105,7 +105,7 @@
                 </label>
               </div>
               <div class="list-block__filters--selects-item">
-                <select class="js-series-select">
+                <select class="js-series-select" name="series-select">
                 {# The series list has been limited to sane options, full list is here:
                 https://github.com/juju/charmstore/blob/v5-unstable/internal/router/router.go#L33  #}
                 {% for series in ['all', 'precise', 'trusty', 'xenial', 'bionic', 'centos7'] %}
