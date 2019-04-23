@@ -18,7 +18,7 @@
         {% endif %}
         <img src="{% if charm.icon %}{{ charm.icon }}{% else %}{{ STATIC_URL }}img/icons/default-charm.svg{% endif %}"
           class="entity-icon" alt="{{ charm.display_name }} icon" width="24" />
-        <span class="p-tooltip__message" role="tooltip" id="tp-cntr">{{ charm.display_name }}</span>
+        <span class="p-tooltip__message" role="tooltip">{{ charm.display_name }}</span>
       </a>
     </li>
     {% endfor %}
@@ -39,7 +39,7 @@
             src="{% if entity.icon %}{{ entity.icon }}{% else %}{{ STATIC_URL }}img/icons/default-charm.svg{% endif %}"
             class="entity-icon" alt="{{ entity.display_name }} icon" width="24" />
           {% endif %}
-          <span class="p-tooltip__message" role="tooltip" id="tp-cntr">{{ entity.display_name }}</span>
+          <span class="p-tooltip__message" role="tooltip">{{ entity.display_name }}</span>
         </span>
       </a>
     </li>
