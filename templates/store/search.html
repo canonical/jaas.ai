@@ -55,13 +55,13 @@
       <nav class="p-tabs">
         <ul class="p-tabs__list entity-search-selector" role="tablist">
           <li class="p-tabs__item" role="button">
-            <a href="#_" class="p-tabs__link" tabindex="0" role="button" aria-selected="{% if context.current_type == None %}true{% endif %}" data-type="all">All</a>
+            <a href="#_" class="p-tabs__link" tabindex="0" role="button" {% if context.current_type == None %}aria-selected="true"{% endif %} data-type="all">All</a>
           </li>
           <li class="p-tabs__item" role="button">
-            <a href="#_" class="p-tabs__link" tabindex="-1" role="button" aria-selected="{% if context.current_type == 'charm' %}true{% endif %}" data-type="charm">Charms</a>
+            <a href="#_" class="p-tabs__link" tabindex="-1" role="button" {% if context.current_type == 'charm' %}aria-selected="true"{% endif %} data-type="charm">Charms</a>
           </li>
           <li class="p-tabs__item" role="button">
-            <a href="#_" class="p-tabs__link" tabindex="-1" role="button" aria-selected="{% if context.current_type == 'bundle' %}true{% endif %}" data-type="bundle">Bundles</a>
+            <a href="#_" class="p-tabs__link" tabindex="-1" role="button" {% if context.current_type == 'bundle' %}aria-selected="true"{% endif %} data-type="bundle">Bundles</a>
           </li>
         </ul>
       </nav>
