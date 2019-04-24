@@ -1,5 +1,6 @@
 .search-results {
   &__entity-name {
+    line-height: 1.5rem;
     font-size: 1rem;
     text-transform: capitalize;
   }
@@ -25,18 +26,19 @@
   margin: 1rem auto;
 
   .list-block__filter {
-    display: flex;
     margin-right: 1rem;
+    @media (min-width: 600px) {
+      display: flex;
+    }
   }
 
   .list-block__filters--selects {
-    float: right;
-
     .list-block__filter {
       margin-bottom: 1rem;
     }
 
-    @media (min-width: 400px) {
+    @media (min-width: 480px) {
+      float: right;
       display: flex;
     }
 
@@ -50,9 +52,12 @@
     }
 
     label {
-      text-align: right;
       width: 100%;
       min-width: 55px;
+
+      @media (min-width: 480px) {
+        text-align: right;
+      }
 
       @media (min-width: $breakpoint-medium) {
         padding-top: 0;
