@@ -95,6 +95,11 @@
   border-radius: 50%;
 }
 
+@media (min-width: 600px) {
+  .p-tabs__list {
+    width: auto;
+  }
+}
 .p-tabs:before {
   display: none;
 }
@@ -106,6 +111,10 @@
 .entity-search-selector {
   display: flex;
   overflow-x: unset;
+
+  @media (min-width: 600px) {
+    display: inline-flex;
+  }
 
   li {
     flex: 1;
