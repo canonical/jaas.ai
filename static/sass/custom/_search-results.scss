@@ -27,7 +27,7 @@
 
   .list-block__filter {
     margin-right: 1rem;
-    @media (min-width: 600px) {
+    @media (min-width: $breakpoint-small) {
       display: flex;
     }
   }
@@ -37,7 +37,7 @@
       margin-bottom: 1rem;
     }
 
-    @media (min-width: 480px) {
+    @media (min-width: $breakpoint-x-small) {
       float: right;
       display: flex;
     }
@@ -55,7 +55,7 @@
       width: 100%;
       min-width: 55px;
 
-      @media (min-width: 480px) {
+      @media (min-width: $breakpoint-x-small) {
         text-align: right;
       }
 
@@ -95,7 +95,7 @@
   border-radius: 50%;
 }
 
-@media (min-width: 600px) {
+@media (min-width: $breakpoint-small) {
   .p-tabs__list {
     width: auto;
   }
@@ -112,7 +112,7 @@
   display: flex;
   overflow-x: unset;
 
-  @media (min-width: 600px) {
+  @media (min-width: $breakpoint-small) {
     display: inline-flex;
   }
 
