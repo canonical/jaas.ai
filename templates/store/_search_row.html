@@ -1,94 +1,84 @@
-<td>
-  <a href="/{{ entity.url }}">
-    <h4 class="search-results__entity-name u-no-margin--bottom">{{ entity.display_name }}</h4>
-  </a>
-  {% if entity.tags %}
-    <div class="entity-tags">
-      {% for tag in entity.tags %}
-        <a class="p-link--soft" href="{{ url_for('jaasstore.search', tags=tag) }}">{{ tag }}{{ "," if not loop.last }}</a>
-      {% endfor %}
-    </div>
-  {% endif %}
-</td>
-<td>
-  {% if entity.series %}
-    {% for series in entity.series %}
-        {% if series.url%}
-          <a class="p-link--soft" href="/{{ series.url }}">{{ series.name }}</a>
-        {% else %}
-          {{ series }}
-        {% endif %}
-        {{ "," if not loop.last }}
-    {% endfor %}
-  {% endif %}
-</td>
-<td class="u-hide--small">
+<td class="u-hide--small u-vertically-center">
   <ul class="p-inline-list u-no-margin--bottom">
     {% if entity.services %}
-      {% for name, charm in entity.services.items() %}
-        <li class="p-inline-list__item">
-            <a href="/{{ charm.url }}">
-              <span class="p-tooltip p-tooltip--top-center" aria-describedby="tp-cntr">
-              {% if outerloop.index > 20 %}
-                {% if charm.icon %}
-                    <img data-icon="{{ charm.icon }}"
-                        class="entity-icon"
-                        src="{{ STATIC_URL }}img/icons/default-charm.svg"
-                        alt="{{ charm.display_name }} icon"
-                        width="24" />
-                {% else %}
-                    <img src="{{ STATIC_URL }}img/icons/default-charm.svg"
-                         class="entity-icon"
-                         alt="{{ charm.display_name }} icon"
-                         width="24" />
-                {% endif %}
-              </span>
-              {% else %}
-              {% endif %}
-                <img src="{% if charm.icon %}{{ charm.icon }}{% else %}{{ STATIC_URL }}img/icons/default-charm.svg{% endif %}"
-                     class="entity-icon"
-                     alt="{{ charm.display_name }} icon"
-                     width="24" />
-              <span class="p-tooltip__message" role="tooltip" id="tp-cntr">{{ charm.display_name }}</span>
-            </a>
-          </li>
-      {% endfor %}
+    {% for name, charm in entity.services.items() %}
+    <li class="p-inline-list__item">
+      <a href="/{{ charm.url }}">
+        <span class="p-tooltip p-tooltip--top-center" aria-describedby="tp-cntr">
+          {% if outerloop.index > 20 %}
+          {% if charm.icon %}
+          <img data-icon="{{ charm.icon }}" class="entity-icon" src="{{ STATIC_URL }}img/icons/default-charm.svg"
+            alt="{{ charm.display_name }} icon" width="24" />
+          {% else %}
+          <img src="{{ STATIC_URL }}img/icons/default-charm.svg" class="entity-icon" alt="{{ charm.display_name }} icon"
+            width="24" />
+          {% endif %}
+        </span>
+        {% else %}
+        {% endif %}
+        <img src="{% if charm.icon %}{{ charm.icon }}{% else %}{{ STATIC_URL }}img/icons/default-charm.svg{% endif %}"
+          class="entity-icon" alt="{{ charm.display_name }} icon" width="24" />
+        <span class="p-tooltip__message" role="tooltip">{{ charm.display_name }}</span>
+      </a>
+    </li>
+    {% endfor %}
     {% else %}
-      <li class="p-inline-list__item">
-        <a href="/{{ entity.url }}">
-          <span class="p-tooltip p-tooltip--top-center" aria-describedby="tp-cntr">
-            {% if outerloop.index > 20 %}
-              {% if entity.icon %}
-                <img data-icon="{{ entity.icon }}"
-                     class="entity-icon"
-                     src="{{ STATIC_URL }}img/icons/default-charm.svg"
-                     alt="{{ entity.display_name }} icon"
-                     width="24" />
-              {% else %}
-                <img src="{{ STATIC_URL }}img/icons/default-charm.svg"
-                     class="entity-icon"
-                     alt="{{ entity.display_name }} icon"
-                     width="24" />
-              {% endif %}
-            {% else %}
-                <img src="{% if entity.icon %}{{ entity.icon }}{% else %}{{ STATIC_URL }}img/icons/default-charm.svg{% endif %}"
-                     class="entity-icon"
-                     alt="{{ entity.display_name }} icon"
-                     width="24" />
-            {% endif %}
-            <span class="p-tooltip__message" role="tooltip" id="tp-cntr">{{ entity.display_name }}</span>
-          </span>
-        </a>
-      </li>
+    <li class="p-inline-list__item">
+      <a href="/{{ entity.url }}">
+        <span class="p-tooltip p-tooltip--top-center" aria-describedby="tp-cntr">
+          {% if outerloop.index > 20 %}
+          {% if entity.icon %}
+          <img data-icon="{{ entity.icon }}" class="entity-icon" src="{{ STATIC_URL }}img/icons/default-charm.svg"
+            alt="{{ entity.display_name }} icon" width="24" />
+          {% else %}
+          <img src="{{ STATIC_URL }}img/icons/default-charm.svg" class="entity-icon"
+            alt="{{ entity.display_name }} icon" width="24" />
+          {% endif %}
+          {% else %}
+          <img
+            src="{% if entity.icon %}{{ entity.icon }}{% else %}{{ STATIC_URL }}img/icons/default-charm.svg{% endif %}"
+            class="entity-icon" alt="{{ entity.display_name }} icon" width="24" />
+          {% endif %}
+          <span class="p-tooltip__message" role="tooltip">{{ entity.display_name }}</span>
+        </span>
+      </a>
+    </li>
     {% endif %}
   </ul>
 </td>
-<td class="u-align--center u-vertically-center">
-  {{ entity.units }}&nbsp;
+
+<td class="u-vertically-center">
+  <div>
+    <a href="/{{ entity.url }}">
+      <h4 class="search-results__entity-name u-no-margin--bottom">{{ entity.display_name }}</h4>
+    </a>
+    {% if entity.tags %}
+      <div class="entity-tags">
+        {% for tag in entity.tags %}
+          <a href="{{ url_for('jaasstore.search', tags=tag) }}">{{ tag }}{{ "," if not loop.last }}</a>
+        {% endfor %}
+      </div>
+    {% endif %}
+  </div>
 </td>
-<td class="u-align--center u-vertically-center">
+
+<td class="u-vertically-center">
+  {% if entity.series %}
+    {% for series in entity.series %}
+    <span class="series-tag series-tag--{{ series }}">
+      {% if series.url%}
+        <a class="p-link--soft" href="/{{ series.url }}">{{ series.name }}</a>
+      {% else %}
+        {{ series }}
+      {% endif %}
+    </span>
+    {% endfor %}
+  {% endif %}
+</td>
+
+<td class="u-vertically-center">
   {% if entity.owner %}
-    <a class="p-link--soft" href="{{ url_for('jaasstore.user_details', username=entity.owner) }}">{{ entity.owner }}</a>
+    <a href="{{ url_for('jaasstore.user_details', username=entity.owner) }}">{{ entity.owner }}</a>
   {% else %}
     No owner
   {% endif %}

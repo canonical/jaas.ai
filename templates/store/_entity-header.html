@@ -50,7 +50,7 @@
       {% if context.entity.series %}
       Supports:
         {% for supported_release in context.entity.series %}
-          <span class="entity__supported-release {{ supported_release }}">
+          <span class="series-tag series-tag--{{ supported_release }}">
             {{ supported_release }}
           </span>
         {% endfor %}

@@ -1,5 +1,6 @@
 .search-results {
   &__entity-name {
+    line-height: 1.5rem;
     font-size: 1rem;
     text-transform: capitalize;
   }
@@ -15,7 +16,7 @@
       flex: 1;
 
       &:first-child {
-        flex: 2;
+        flex: 0.5;
       }
     }
   }
@@ -24,19 +25,41 @@
 .filter-row {
   margin: 1rem auto;
 
+  .list-block__filter {
+    margin-right: 1rem;
+    @media (min-width: $breakpoint-small) {
+      display: flex;
+    }
+  }
+
   .list-block__filters--selects {
+    .list-block__filter {
+      margin-bottom: 1rem;
+    }
+
+    @media (min-width: $breakpoint-x-small) {
+      float: right;
+      display: flex;
+    }
+
     &-item {
-      float: left;
       margin-left: 0;
-      width: 50%;
+      margin-right: 0.5rem;
+
+      select {
+        margin: 0;
+      }
     }
 
     label {
-      padding-right: 1rem;
-      text-align: right;
+      width: 100%;
+      min-width: 55px;
+
+      @media (min-width: $breakpoint-x-small) {
+        text-align: right;
+      }
 
       @media (min-width: $breakpoint-medium) {
-        padding-right: 2rem;
         padding-top: 0;
       }
     }
@@ -46,28 +69,67 @@
     cursor: pointer;
   }
 
+  .is-selected {
+    position: relative;
+
+    &::after {
+      background: $color-mid-dark;
+      bottom: -2px;
+      content: ' ';
+      height: 2px;
+      left: 0;
+      position: absolute;
+      width: 100%;
+    }
+  }
+
   @media (min-width: $breakpoint-medium) {
     select {
       margin-left: -1.5rem;
       margin-top: -0.5rem;
-    }
-
-    .is-selected {
-      position: relative;
-
-      &::after {
-        background: $color-mid-dark;
-        bottom: -0.25rem;
-        content: ' ';
-        height: 3px;
-        left: 0;
-        position: absolute;
-        width: 100%;
-      }
     }
   }
 }
 
 .entity-icon {
   border-radius: 50%;
+}
+
+@media (min-width: $breakpoint-small) {
+  .p-tabs__list {
+    width: auto;
+  }
+}
+.p-tabs:before {
+  display: none;
+}
+
+.p-tabs__item:last-child {
+  margin: 0;
+}
+
+.entity-search-selector {
+  display: flex;
+  overflow-x: hidden;
+
+  @media (min-width: $breakpoint-small) {
+    display: inline-flex;
+  }
+
+  li {
+    flex: 1;
+    text-align: center;
+
+    a {
+      display: inline-block;
+      width: 100%;
+    }
+  }
+}
+
+.entity-tags {
+  a {
+    font-size: 0.875rem;
+    color: $color-mid-dark;
+  }
 }

@@ -32,15 +32,14 @@
        </div>
          {% if context.bundles_count > 0 %}
            <table class="search-results-table">
-             <thead>
-               <tr>
-                 <th scope="col">Name</th>
-                 <th scope="col">&nbsp;</th>
-                 <th scope="col" class="u-hide--small">Charms</th>
-                 <th scope="col" class="u-align-text--center">Units</th>
-                 <th scope="col" class="u-align-text--center">Owner</th>
-               </tr>
-             </thead>
+            <thead>
+              <tr>
+                <th scope="col" class="u-hide--small u-vertically-center"></th>
+                <th scope="col">Name/Tags</th>
+                <th scope="col">Supports</th>
+                <th scope="col">Publisher</th>
+              </tr>
+            </thead>
              <tbody>
              {% for entity in context.bundles %}
                <tr class="{{ entity.type }} u-no-padding--top">
@@ -72,13 +71,12 @@
          {% if context.charms_count > 0 %}
            <table class="search-results-table">
              <thead>
-               <tr>
-                 <th scope="col">Name</th>
-                 <th scope="col">Series</th>
-                 <th scope="col">&nbsp;</th>
-                 <th scope="col" class="u-hide--small">&nbsp;</th>
-                 <th scope="col" class="u-align-text--center">Owner</th>
-               </tr>
+              <tr>
+                <th scope="col" class="u-hide--small u-vertically-center"></th>
+                <th scope="col">Name/Tags</th>
+                <th scope="col">Supports</th>
+                <th scope="col">Publisher</th>
+              </tr>
              </thead>
              <tbody>
                {% for entity in context.charms %}
