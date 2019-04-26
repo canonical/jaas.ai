@@ -288,3 +288,8 @@ div .p-accordion__tab[aria-expanded] {
     width: 1rem;
   }
 }
+
+// h2 font weight override required until Vanilla 2.0 release
+h2 {
+  font-weight: 100;
+}

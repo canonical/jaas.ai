@@ -63,7 +63,7 @@
 <div class="p-strip is-bordered">
   <div class="row">
     <div class="col-12">
-      <h3 id="deploy-kubernetes-in-minutes">Deploy Kubernetes in minutes</h3>
+      <h2 id="deploy-kubernetes-in-minutes">Deploy Kubernetes in minutes</h2>
       <img src="https://assets.ubuntu.com/v1/c45bb1aa-jaas5.gif" alt="Kuberneets overview GIF">
       <p>In partnership with Google, Canonical delivers a ‘pure K8s’ experience, tested across a wide range of clouds and integrated with modern metrics and monitoring.</p>
       <p>The <a href="{{ url_for('jaasstore.details', charm_or_bundle_name='canonical-kubernetes') }}">Charmed Distribution Of Kubernetes</a> is for full production usage. Start using Kubernetes today.</p>
@@ -78,25 +78,25 @@
 <div class="p-strip is-bordered">
   <div class="row">
     <div class="col-8">
-      <h3>
+      <h2>
         Getting started
-      </h3>
+      </h2>
     </div>
   </div>
   <div class="row">
     <ol class="p-list-step">
       <li class="p-list-step__item col-8">
-        <h3 class="p-list-step__title">
+        <h4 class="p-list-step__title">
           <span class="p-list-step__bullet">1</span>
           Create an Ubuntu Single Sign On identity
-        </h3>
+        </h4>
         <p class="p-list-step__content">JAAS uses Ubuntu SSO for identity management, so if you don’t already have an account create one at <a href="https://login.ubuntu.com/">https://login.ubuntu.com</a></p>
       </li>
       <li class="p-list-step__item col-8">
-        <h3 class="p-list-step__title">
+        <h4 class="p-list-step__title">
           <span class="p-list-step__bullet">2</span>
           Get cloud credentials from your provider
-        </h3>
+        </h4>
         <p class="p-list-step__content">JAAS deploys your workload to your
         cloud of choice, so you must provide your cloud credentials for JAAS
         to create and access virtual machines on your behalf. We recommend
@@ -105,17 +105,17 @@
         your credentials see our <a class="external external-alt" href="{{ external_urls.docs }}credentials">credentials documentation page.</a></p>
       </li>
       <li class="p-list-step__item col-8">
-        <h3 class="p-list-step__title">
+        <h4 class="p-list-step__title">
           <span class="p-list-step__bullet">3</span>
           Start modelling
-        </h3>
-        <h4>On the web</h4>
+        </h4>
+        <h5>On the web</h5>
         <p>Go to <a href="{{ external_urls.gui }}">{{ external_urls.gui }}</a></p>
-        <h4>On the command line:</h4>
-        <h5>1. Install</h5>
+        <h5>On the command line:</h5>
+        <h6>1. Install</h6>
         <p>If you haven’t installed Juju yet follow <a class="external
         external-alt" href="{{ external_urls.docs }}getting-started">these instructions</a> to get it running on your system.</p>
-        <h5>2. Register</h5>
+        <h6>2. Register</h6>
         <p>Register the JAAS controller with:</p>
         <p>
           <pre><code>juju register jimm.jujucharms.com</code></pre>
@@ -126,10 +126,10 @@
         </p>
       </li>
       <li class="p-list-step__item col-8">
-        <h3 class="p-list-step__title">
+        <h4 class="p-list-step__title">
           <span class="p-list-step__bullet">4</span>
           Find solutions to deploy
-        </h3>
+        </h4>
         <p class="p-list-step__content">Hundreds of popular cloud-oriented applications such as Kubernetes, Apache Hadoop, Big Data solutions and OpenStack are available in the store as charms and bundles. New ones are added nearly every day and are regularly reviewed and updated.</p>
       </li>
     </ol>
@@ -144,7 +144,7 @@
 <div class="p-strip has-image-bg" style="background: no-repeat top 20% right 0 url('{{ static_url('img/jaas/openstack-bundle-background.png') }}')">
   <div class="row">
     <dic class="col-6">
-      <h4>Alternatively, you can test and deploy models on your own hardware</h4>
+      <h2>Alternatively, you can test and deploy models on your own hardware</h2>
       <p>Use Juju for private cloud infrastructure or deploying onto bare metal, including:</p>
       <ul class="p-list">
         <li class="p-list__item is-ticked">MAAS</li>
