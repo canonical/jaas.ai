@@ -110,7 +110,7 @@
 
 .entity-search-selector {
   display: flex;
-  overflow-x: unset;
+  overflow-x: hidden;
 
   @media (min-width: $breakpoint-small) {
     display: inline-flex;
