@@ -21,6 +21,7 @@ def search_entities(
     tags=None,
     sort=None,
     series=None,
+    owner=None,
     promulgated_only=None,
 ):
     includes = [
@@ -37,6 +38,7 @@ def search_entities(
             doc_type=entity_type,
             includes=includes,
             limit=SEARCH_LIMIT,
+            owner=owner,
             promulgated_only=False,
             series=series,
             sort=sort,
@@ -49,6 +51,32 @@ def search_entities(
         return results
     except EntityNotFound:
         return None
+
+
+def get_reference(entity):
+    """From a string, see if we can make an entity reference out of it, using
+        all possible methods.
+        :param string: a string to turn into a reference.
+        :returns: A reference or None.
+    """
+    reference = None
+    try:
+        reference = references.Reference.from_jujucharms_url(entity)
+    except ValueError:
+        pass
+    try:
+        reference = references.Reference.from_string(entity)
+    except ValueError:
+        pass
+    try:
+        reference = references.Reference.from_jujucharms_url(entity)
+    except ValueError:
+        pass
+    try:
+        reference = references.Reference.from_fully_qualified_url(entity)
+    except ValueError:
+        pass
+    return reference
 
 
 def _group_status(entities):

@@ -21,7 +21,8 @@ def store():
 
 @jaasstore.route("/search")
 def search():
-    query = request.args.get("q", "").replace("/", " ")
+    query = request.args.get("q", "")
+    search_terms = query.replace("/", " ").replace("-", " ")
     entity_type = request.args.get("type", None)
     if entity_type not in ["charm", "bundle"]:
         entity_type = None
@@ -36,13 +37,22 @@ def search():
         results = models.fetch_requires(requires)
     else:
         results = models.search_entities(
-            query,
+            search_terms,
             entity_type=entity_type,
             tags=tags,
             sort=sort,
             series=series,
             promulgated_only=False,
         )
+    if len(results["recommended"]) + len(results["community"]) == 0:
+        # If there are no results then check to see if this string could be a
+        # bundle/charm id and do another search. This is something the
+        # charmstore should handle internally, but until it does, do it here.
+        reference = models.get_reference(query)
+        if reference is not None:
+            results = models.search_entities(
+                reference.name, owner=reference.user
+            )
     return render_template(
         "store/search.html",
         context={
