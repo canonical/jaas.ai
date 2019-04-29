@@ -19,42 +19,21 @@
 }
 
 .homepage-hero-image-wrap {
-  min-height: 16rem;
-  position: relative;
-
-  @media (min-width: $breakpoint-medium) {
-    position: static;
-  }
+  position: static;
 }
 
 .homepage-hero-image {
+  max-width: 600px;
   position: absolute;
-  right: 0;
+  right: -1rem;
+  top: 0;
+  width: 55vw;
 
   @media (max-width: $breakpoint-medium) {
-    top: -5rem;
-    z-index: 999;
-  }
-
-  @media (min-width: $breakpoint-medium) {
-    max-width: 600px;
-    right: 0;
-    top: 1rem;
-    width: 65vw;
-  }
-
-  @media (min-width: 940px) {
-    max-width: 600px;
-    right: -1rem;
-    top: 0;
-  }
-}
-
-.homepage-hero-card {
-  position: relative;
-
-  @media (max-width: 940px) {
-    z-index: 999;
+    left: -1.5rem;
+    position: relative;
+    width: 100vw;
+    max-width: none;
   }
 }
 
