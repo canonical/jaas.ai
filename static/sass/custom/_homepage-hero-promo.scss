@@ -20,10 +20,6 @@
 
 .homepage-hero-image-wrap {
   position: static;
-
-  @media (max-width: $breakpoint-medium) {
-    display: none;
-  }
 }
 
 .homepage-hero-image {
@@ -33,6 +29,12 @@
   top: 0;
   width: 55vw;
 
+  @media (max-width: $breakpoint-medium) {
+    left: -1.5rem;
+    position: relative;
+    width: 100vw;
+    max-width: none;
+  }
 }
 
 .homepage-hero-promos {
