@@ -133,3 +133,9 @@
     color: $color-mid-dark;
   }
 }
+
+@media (max-width: $breakpoint-medium) {
+  .series-tags {
+    margin-bottom: 1rem;
+  }
+}
