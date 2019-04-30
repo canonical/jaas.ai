@@ -55,13 +55,13 @@
       <nav class="p-tabs">
         <ul class="p-tabs__list entity-search-selector" role="tablist">
           <li class="p-tabs__item" role="button">
-            <a href="#_" class="p-tabs__link" tabindex="0" role="button" {% if context.current_type == None %}aria-selected="true"{% endif %} data-type="all">All</a>
+            <a href="{{ context.type_urls.all }}" class="p-tabs__link" tabindex="0" role="button" {% if context.current_type == None %}aria-selected="true"{% endif %} data-type="all">All</a>
           </li>
           <li class="p-tabs__item" role="button">
-            <a href="#_" class="p-tabs__link" tabindex="-1" role="button" {% if context.current_type == 'charm' %}aria-selected="true"{% endif %} data-type="charm">Charms</a>
+            <a href="{{ context.type_urls.charms }}" class="p-tabs__link" tabindex="-1" role="button" {% if context.current_type == 'charm' %}aria-selected="true"{% endif %} data-type="charm">Charms</a>
           </li>
           <li class="p-tabs__item" role="button">
-            <a href="#_" class="p-tabs__link" tabindex="-1" role="button" {% if context.current_type == 'bundle' %}aria-selected="true"{% endif %} data-type="bundle">Bundles</a>
+            <a href="{{ context.type_urls.bundles }}" class="p-tabs__link" tabindex="-1" role="button" {% if context.current_type == 'bundle' %}aria-selected="true"{% endif %} data-type="bundle">Bundles</a>
           </li>
         </ul>
       </nav>
@@ -220,7 +220,7 @@
       })
       // No need to change the url if the filter value is already selected.
       if (value !== queries[type]) {
-        if ((type === 'series' || type === 'type') && value === 'all') {
+        if (type === 'series' && value === 'all') {
           delete queries[type];
         } else {
           queries[type] = value;
@@ -233,16 +233,6 @@
       .addEventListener('change', e => _searchChangeFilter('sort', e.target.value));
     document.querySelector('.js-series-select')
       .addEventListener('change', e => _searchChangeFilter('series', e.target.value));
-    document
-      .querySelectorAll('.entity-search-selector li')
-      .forEach(ele => ele.addEventListener('click', e => _searchChangeFilter('type', e.target.dataset.type)));
-    document
-      .querySelectorAll('.p-tabs__link')
-      .forEach(ele => ele.addEventListener('click', e => {
-        e.preventDefault();
-      }));
-
-
   </script>
 {% else %}
   <div class="p-strip">
