@@ -1,24 +1,24 @@
 <td class="u-hide--small u-vertically-center">
   <ul class="p-inline-list u-no-margin--bottom">
     {% if entity.services %}
-    {% for name, charm in entity.services.items() %}
+    {% for name, entity in entity.services.items() %}
     <li class="p-inline-list__item">
-      <a href="/{{ charm.url }}">
+      <a href="/{{ entity.url }}">
         <span class="p-tooltip p-tooltip--top-center" aria-describedby="tp-cntr">
           {% if outerloop.index > 20 %}
-          {% if charm.icon %}
-          <img data-icon="{{ charm.icon }}" class="entity-icon" src="{{ STATIC_URL }}img/icons/default-charm.svg"
-            alt="{{ charm.display_name }} icon" width="24" />
+          {% if entity.icon %}
+          <img data-icon="{{ entity.icon }}" class="entity-icon" src="https://assets.ubuntu.com/v1/d64591a6-default-charm.svg"
+            alt="{{ entity.display_name }} icon" width="24" />
           {% else %}
-          <img src="{{ STATIC_URL }}img/icons/default-charm.svg" class="entity-icon" alt="{{ charm.display_name }} icon"
+          <img src="https://assets.ubuntu.com/v1/d64591a6-default-charm.svg" class="entity-icon" alt="{{ entity.display_name }} icon"
             width="24" />
           {% endif %}
         </span>
         {% else %}
         {% endif %}
-        <img src="{% if charm.icon %}{{ charm.icon }}{% else %}{{ STATIC_URL }}img/icons/default-charm.svg{% endif %}"
-          class="entity-icon" alt="{{ charm.display_name }} icon" width="24" />
-        <span class="p-tooltip__message" role="tooltip">{{ charm.display_name }}</span>
+        <img src="{% if entity.icon %}{{ entity.icon }}{% else %}https://assets.ubuntu.com/v1/d64591a6-default-charm.svg{% endif %}"
+          class="entity-icon" alt="{{ entity.display_name }} icon" width="24" />
+        <span class="p-tooltip__message" role="tooltip">{{ entity.display_name }}</span>
       </a>
     </li>
     {% endfor %}
@@ -28,15 +28,15 @@
         <span class="p-tooltip p-tooltip--top-center" aria-describedby="tp-cntr">
           {% if outerloop.index > 20 %}
           {% if entity.icon %}
-          <img data-icon="{{ entity.icon }}" class="entity-icon" src="{{ STATIC_URL }}img/icons/default-charm.svg"
+          <img class="entity-icon" src="{% if entity.icon %}{{ entity.icon }}{% else %}https://assets.ubuntu.com/v1/d64591a6-default-charm.svg{% endif %}"
             alt="{{ entity.display_name }} icon" width="24" />
           {% else %}
-          <img src="{{ STATIC_URL }}img/icons/default-charm.svg" class="entity-icon"
+          <img src="https://assets.ubuntu.com/v1/d64591a6-default-charm.svg" class="entity-icon"
             alt="{{ entity.display_name }} icon" width="24" />
           {% endif %}
           {% else %}
           <img
-            src="{% if entity.icon %}{{ entity.icon }}{% else %}{{ STATIC_URL }}img/icons/default-charm.svg{% endif %}"
+            src="{% if entity.icon %}{{ entity.icon }}{% else %}https://assets.ubuntu.com/v1/d64591a6-default-charm.svg{% endif %}"
             class="entity-icon" alt="{{ entity.display_name }} icon" width="24" />
           {% endif %}
           <span class="p-tooltip__message" role="tooltip">{{ entity.display_name }}</span>
