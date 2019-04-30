@@ -2,8 +2,7 @@ const searchPanel = () => {
   /**
     Sets up the search handler.
   */
-  const form = document.querySelector('[data-js="search-form"]'),
-    input = document.querySelector('[data-js="form-text"]'),
+  const input = document.querySelector('[data-js="form-text"]'),
     header = document.querySelector('[data-js="navigation"]'),
     searchClose = document.querySelector('[data-js="search-close"]'),
     searchReset = document.querySelector('[data-js="search-reset"]');
