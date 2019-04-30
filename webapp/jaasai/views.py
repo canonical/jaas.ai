@@ -1,4 +1,3 @@
-import datetime
 import feedparser
 import os
 import canonicalwebteam.http
