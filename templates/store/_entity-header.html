@@ -48,13 +48,15 @@
         {% endif %}
       </ul>
       {% if context.entity.series %}
-      Supports:
-        {% for supported_release in context.entity.series %}
-          <span class="series-tag series-tag--{{ supported_release }}">
-            {{ supported_release }}
-          </span>
-        {% endfor %}
-      {% endif %}
+      <div class="series-tags">
+        Supports:
+          {% for supported_release in context.entity.series %}
+            <span class="series-tag series-tag--{{ supported_release }}">
+              {{ supported_release }}
+            </span>
+          {% endfor %}
+        {% endif %}
+      </div>
     </div>
     <div class="col-4">
       <div class="p-code-snippet">
