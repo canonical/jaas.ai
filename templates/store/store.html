@@ -65,19 +65,19 @@
   <div class="row">
     <div class="col-12 prefix-1 suffix-1 u-align--center">
       <ul class="p-inline-list">
-        <li class="p-inline-list__item"><a class="p-link--strong" href="{{ url_for('jaasstore.search', text='databases') }}">databases</a></li>
-        <li class="p-inline-list__item"><a class="p-link--strong" href="{{ url_for('jaasstore.search', text='app-servers') }}">app-servers</a></li>
-        <li class="p-inline-list__item"><a class="p-link--strong" href="{{ url_for('jaasstore.search', text='file-servers') }}">file-servers</a></li>
-        <li class="p-inline-list__item"><a class="p-link--strong" href="{{ url_for('jaasstore.search', text='monitoring') }}">monitoring</a></li>
-        <li class="p-inline-list__item"><a class="p-link--strong" href="{{ url_for('jaasstore.search', text='ops') }}">ops</a></li>
-        <li class="p-inline-list__item"><a class="p-link--strong" href="{{ url_for('jaasstore.search', text='openstack') }}">openstack</a></li>
-        <li class="p-inline-list__item"><a class="p-link--strong" href="{{ url_for('jaasstore.search', text='applications') }}">applications</a></li>
-        <li class="p-inline-list__item"><a class="p-link--strong" href="{{ url_for('jaasstore.search', text='misc') }}">misc</a></li>
-        <li class="p-inline-list__item"><a class="p-link--strong" href="{{ url_for('jaasstore.search', text='network') }}">network</a></li>
-        <li class="p-inline-list__item"><a class="p-link--strong" href="{{ url_for('jaasstore.search', text='analytics') }}">analytics</a></li>
-        <li class="p-inline-list__item"><a class="p-link--strong" href="{{ url_for('jaasstore.search', text='apache') }}">apache</a></li>
-        <li class="p-inline-list__item"><a class="p-link--strong" href="{{ url_for('jaasstore.search', text='security') }}">security</a></li>
-        <li class="p-inline-list__item"><a class="p-link--strong" href="{{ url_for('jaasstore.search', text='storage') }}">storage</a></li>
+        <li class="p-inline-list__item"><a class="p-link--strong" href="{{ url_for('jaasstore.search', q='databases') }}">databases</a></li>
+        <li class="p-inline-list__item"><a class="p-link--strong" href="{{ url_for('jaasstore.search', q='app-servers') }}">app-servers</a></li>
+        <li class="p-inline-list__item"><a class="p-link--strong" href="{{ url_for('jaasstore.search', q='file-servers') }}">file-servers</a></li>
+        <li class="p-inline-list__item"><a class="p-link--strong" href="{{ url_for('jaasstore.search', q='monitoring') }}">monitoring</a></li>
+        <li class="p-inline-list__item"><a class="p-link--strong" href="{{ url_for('jaasstore.search', q='ops') }}">ops</a></li>
+        <li class="p-inline-list__item"><a class="p-link--strong" href="{{ url_for('jaasstore.search', q='openstack') }}">openstack</a></li>
+        <li class="p-inline-list__item"><a class="p-link--strong" href="{{ url_for('jaasstore.search', q='applications') }}">applications</a></li>
+        <li class="p-inline-list__item"><a class="p-link--strong" href="{{ url_for('jaasstore.search', q='misc') }}">misc</a></li>
+        <li class="p-inline-list__item"><a class="p-link--strong" href="{{ url_for('jaasstore.search', q='network') }}">network</a></li>
+        <li class="p-inline-list__item"><a class="p-link--strong" href="{{ url_for('jaasstore.search', q='analytics') }}">analytics</a></li>
+        <li class="p-inline-list__item"><a class="p-link--strong" href="{{ url_for('jaasstore.search', q='apache') }}">apache</a></li>
+        <li class="p-inline-list__item"><a class="p-link--strong" href="{{ url_for('jaasstore.search', q='security') }}">security</a></li>
+        <li class="p-inline-list__item"><a class="p-link--strong" href="{{ url_for('jaasstore.search', q='storage') }}">storage</a></li>
       </ul>
     </div>
   </div>
@@ -204,7 +204,7 @@
   <div class="row">
     <div class="col-12">
       <p>
-        <a href="{{ url_for('jaasstore.search', text='ops') }}">View all operations&nbsp;&rsaquo;</a>
+        <a href="{{ url_for('jaasstore.search', q='ops') }}">View all operations&nbsp;&rsaquo;</a>
       </p>
     </div>
   </div>
@@ -294,7 +294,7 @@
   <div class="row">
     <div class="col-12">
       <p>
-        <a href="{{ url_for('jaasstore.search', text='analytics') }}">View all analytics&nbsp;&rsaquo;</a>
+        <a href="{{ url_for('jaasstore.search', q='analytics') }}">View all analytics&nbsp;&rsaquo;</a>
       </p>
     </div>
   </div>
@@ -388,7 +388,7 @@
   <div class="row">
     <div class="col-12">
       <p>
-        <a href="{{ url_for('jaasstore.search', text='databases') }}">View all databases&nbsp;&rsaquo;</a>
+        <a href="{{ url_for('jaasstore.search', q='databases') }}">View all databases&nbsp;&rsaquo;</a>
       </p>
     </div>
   </div>

@@ -56,15 +56,15 @@
         <div class="p-search-panel__sidebar">
           <h4 class="p-search-panel__heading">Popular searches</h4>
           <ul class="p-list">
-            <li class="p-search-panel__list-item"><a href="{{ url_for('jaasstore.search') }}?q=openstack">openstack</a></li>
-            <li class="p-search-panel__list-item"><a href="{{ url_for('jaasstore.search') }}?q=ceph">ceph</a></li>
-            <li class="p-search-panel__list-item"><a href="{{ url_for('jaasstore.search') }}?q=mysql">mysql</a></li>
-            <li class="p-search-panel__list-item"><a href="{{ url_for('jaasstore.search') }}?q=analytics">analytics</a></li>
-            <li class="p-search-panel__list-item"><a href="{{ url_for('jaasstore.search') }}?q=spark">spark</a></li>
-            <li class="p-search-panel__list-item"><a href="{{ url_for('jaasstore.search') }}?q=nginx">nginx</a></li>
-            <li class="p-search-panel__list-item"><a href="{{ url_for('jaasstore.search') }}?q=redis">redis</a></li>
-            <li class="p-search-panel__list-item"><a href="{{ url_for('jaasstore.search') }}?q=jenkins">jenkins</a></li>
-            <li class="p-search-panel__list-item"><a href="{{ url_for('jaasstore.search') }}?q=logstash">logstash</a></li>
+            <li class="p-search-panel__list-item"><a href="{{ url_for('jaasstore.search', q='openstack') }}">openstack</a></li>
+            <li class="p-search-panel__list-item"><a href="{{ url_for('jaasstore.search', q='ceph') }}">ceph</a></li>
+            <li class="p-search-panel__list-item"><a href="{{ url_for('jaasstore.search', q='mysql') }}">mysql</a></li>
+            <li class="p-search-panel__list-item"><a href="{{ url_for('jaasstore.search', q='analytics') }}">analytics</a></li>
+            <li class="p-search-panel__list-item"><a href="{{ url_for('jaasstore.search', q='spark') }}">spark</a></li>
+            <li class="p-search-panel__list-item"><a href="{{ url_for('jaasstore.search', q='nginx') }}">nginx</a></li>
+            <li class="p-search-panel__list-item"><a href="{{ url_for('jaasstore.search', q='redis') }}">redis</a></li>
+            <li class="p-search-panel__list-item"><a href="{{ url_for('jaasstore.search', q='jenkins') }}">jenkins</a></li>
+            <li class="p-search-panel__list-item"><a href="{{ url_for('jaasstore.search', q='logstash') }}">logstash</a></li>
           </ul>
         </div>
         <div class="p-search-panel__footer">
@@ -73,35 +73,35 @@
               <strong>Categories:</strong>
             </li>
             <li class="p-inline-list__item">
-              <a href="{{ url_for('jaasstore.search') }}?tags=openstack">openstack
+              <a href="{{ url_for('jaasstore.search', tags='openstack') }}">openstack
               </a>
             </li>
             <li class="p-inline-list__item">
-              <a href="{{ url_for('jaasstore.search') }}?tags=applications">applications
+              <a href="{{ url_for('jaasstore.search', tags='applications') }}">applications
               </a>
             </li>
             <li class="p-inline-list__item">
-              <a href="{{ url_for('jaasstore.search') }}?tags=databases">databases
+              <a href="{{ url_for('jaasstore.search', tags='databases') }}">databases
               </a>
             </li>
             <li class="p-inline-list__item">
-              <a href="{{ url_for('jaasstore.search') }}?tags=app-servers">app-servers
+              <a href="{{ url_for('jaasstore.search', tags='app-servers') }}">app-servers
               </a>
             </li>
             <li class="p-inline-list__item">
-              <a href="{{ url_for('jaasstore.search') }}?tags=file-servers">file-servers
+              <a href="{{ url_for('jaasstore.search', tags='file-servers') }}">file-servers
               </a>
             </li>
             <li class="p-inline-list__item">
-              <a href="{{ url_for('jaasstore.search') }}?tags=monitoring">monitoring
+              <a href="{{ url_for('jaasstore.search', tags='monitoring') }}">monitoring
               </a>
             </li>
             <li class="p-inline-list__item">
-              <a href="{{ url_for('jaasstore.search') }}?tags=misc">misc
+              <a href="{{ url_for('jaasstore.search', tags='misc') }}">misc
               </a>
             </li>
             <li class="p-inline-list__item">
-              <a href="{{ url_for('jaasstore.search') }}?tags=ops">ops
+              <a href="{{ url_for('jaasstore.search', tags='ops') }}">ops
               </a>
             </li>
           </ul>
