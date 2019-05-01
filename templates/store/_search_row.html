@@ -1,48 +1,22 @@
+{% macro icon(entity) -%}
+  <li class="p-inline-list__item">
+    <a href="/{{ entity.url }}">
+      <span class="p-tooltip p-tooltip--top-center" aria-describedby="tp-cntr">
+        <img src="{{ entity.icon }}" class="entity-icon" alt="{{ entity.display_name }} icon" width="24" />
+        <span class="p-tooltip__message" role="tooltip">{{ entity.display_name }}</span>
+      </span>
+    </a>
+  </li>
+{%- endmacro %}
+
 <td class="u-hide--small u-vertically-center">
   <ul class="p-inline-list u-no-margin--bottom">
     {% if entity.services %}
-    {% for name, entity in entity.services.items() %}
-    <li class="p-inline-list__item">
-      <a href="/{{ entity.url }}">
-        <span class="p-tooltip p-tooltip--top-center" aria-describedby="tp-cntr">
-          {% if outerloop.index > 20 %}
-          {% if entity.icon %}
-          <img data-icon="{{ entity.icon }}" class="entity-icon" src="https://assets.ubuntu.com/v1/d64591a6-default-charm.svg"
-            alt="{{ entity.display_name }} icon" width="24" />
-          {% else %}
-          <img src="https://assets.ubuntu.com/v1/d64591a6-default-charm.svg" class="entity-icon" alt="{{ entity.display_name }} icon"
-            width="24" />
-          {% endif %}
-        </span>
-        {% else %}
-        {% endif %}
-        <img src="{% if entity.icon %}{{ entity.icon }}{% else %}https://assets.ubuntu.com/v1/d64591a6-default-charm.svg{% endif %}"
-          class="entity-icon" alt="{{ entity.display_name }} icon" width="24" />
-        <span class="p-tooltip__message" role="tooltip">{{ entity.display_name }}</span>
-      </a>
-    </li>
-    {% endfor %}
+      {% for name, entity in entity.services.items() %}
+        {{ icon(entity) }}
+      {% endfor %}
     {% else %}
-    <li class="p-inline-list__item">
-      <a href="/{{ entity.url }}">
-        <span class="p-tooltip p-tooltip--top-center" aria-describedby="tp-cntr">
-          {% if outerloop.index > 20 %}
-          {% if entity.icon %}
-          <img class="entity-icon" src="{% if entity.icon %}{{ entity.icon }}{% else %}https://assets.ubuntu.com/v1/d64591a6-default-charm.svg{% endif %}"
-            alt="{{ entity.display_name }} icon" width="24" />
-          {% else %}
-          <img src="https://assets.ubuntu.com/v1/d64591a6-default-charm.svg" class="entity-icon"
-            alt="{{ entity.display_name }} icon" width="24" />
-          {% endif %}
-          {% else %}
-          <img
-            src="{% if entity.icon %}{{ entity.icon }}{% else %}https://assets.ubuntu.com/v1/d64591a6-default-charm.svg{% endif %}"
-            class="entity-icon" alt="{{ entity.display_name }} icon" width="24" />
-          {% endif %}
-          <span class="p-tooltip__message" role="tooltip">{{ entity.display_name }}</span>
-        </span>
-      </a>
-    </li>
+      {{ icon(entity) }}
     {% endif %}
   </ul>
 </td>

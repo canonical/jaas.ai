@@ -44,7 +44,6 @@
              {% for entity in context.bundles %}
                <tr class="{{ entity.type }} u-no-padding--top">
                  {% with %}
-                   {% set outerloop = loop %}
                    {% include "store/_search_row.html" %}
                  {% endwith %}
                </tr>
