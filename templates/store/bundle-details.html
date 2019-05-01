@@ -81,7 +81,7 @@
                 {% else %}
                   <div class="p-accordion__tab">
                 {% endif %}
-                  <img src="{% if v.icon %}{{ v.icon }}{% else %}https://assets.ubuntu.com/v1/d64591a6-default-charm.svg{% endif %}"
+                  <img src="{{ v.icon }}"
                   alt="{{ d }}" width="30" height="30" />
                   <span class="p-accordion__title">
                     {{ v.display_name }}
