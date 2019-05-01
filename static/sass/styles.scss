@@ -16,11 +16,8 @@ $breakpoint-navigation-threshold: $breakpoint-large;
 
 @include vanilla;
 
-// Plugin imports for Syntax highlighting
 $cool-grey: $color-brand;
 $mid-grey: $color-mid-light;
-@import 'plugins/prism';
-@import 'plugins/prism-overrides';
 
 // Custom snowflake code for bespoke components
 @import 'custom/row-cli';
