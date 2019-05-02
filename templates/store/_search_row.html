@@ -39,13 +39,9 @@
 <td class="u-vertically-center">
   {% if entity.series %}
     {% for series in entity.series %}
-    <span class="series-tag series-tag--{{ series }}">
-      {% if series.url%}
-        <a class="p-link--soft" href="/{{ series.url }}">{{ series.name }}</a>
-      {% else %}
-        {{ series }}
-      {% endif %}
-    </span>
+    <a href="{{ current_url_with_query(series=series) }}" class="series-tag series-tag--{{ series }}">
+      {{ series }}
+    </a>
     {% endfor %}
   {% endif %}
 </td>

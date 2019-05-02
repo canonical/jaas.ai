@@ -6,42 +6,6 @@
 
 {% block content %}
 {% if context.results_count > 0 %}
-  {% macro full_series(series) -%}
-    {% if series|lower == 'oneiric' %}
-      Oneiric 11.10
-    {% elif series|lower == 'precise' %}
-      Precise 12.04
-    {% elif series|lower == 'quantal' %}
-      Quantal 12.10
-    {% elif series|lower == 'raring' %}
-      Raring 13.04
-    {% elif series|lower == 'saucy' %}
-      Saucy 13.10
-    {% elif series|lower == 'trusty' %}
-      Trusty 14.04
-    {% elif series|lower == 'utopic' %}
-      Utopic 14.10
-    {% elif series|lower == 'vivid' %}
-      Vivid 15.04
-    {% elif series|lower == 'wily' %}
-      Wily 15.10
-    {% elif series|lower == 'xenial' %}
-      Xenial 16.04
-    {% elif series|lower == 'yakkety' %}
-      Yakkety 16.10
-    {% elif series|lower == 'zesty' %}
-      Zesty 17.04
-    {% elif series|lower == 'artful' %}
-      Artful 17.10
-    {% elif series|lower == 'bionic' %}
-      Bionic 18.04
-    {% elif series|lower == 'cosmic' %}
-      Cosmic 18.10
-    {% else %}
-      {{ series|capitalize }}
-    {% endif %}
-  {%- endmacro %}
-
   <div class="p-strip is-shallow">
     <div class="row">
       <div class="col-12 search-results__overview">
@@ -55,13 +19,13 @@
       <nav class="p-tabs">
         <ul class="p-tabs__list entity-search-selector" role="tablist">
           <li class="p-tabs__item" role="button">
-            <a href="{{ context.type_urls.all }}" class="p-tabs__link" tabindex="0" role="button" {% if context.current_type == None %}aria-selected="true"{% endif %} data-type="all">All</a>
+            <a href="{{ current_url_with_query(type=None) }}" class="p-tabs__link" tabindex="0" role="button" {% if context.current_type == None %}aria-selected="true"{% endif %} data-type="all">All</a>
           </li>
           <li class="p-tabs__item" role="button">
-            <a href="{{ context.type_urls.charms }}" class="p-tabs__link" tabindex="-1" role="button" {% if context.current_type == 'charm' %}aria-selected="true"{% endif %} data-type="charm">Charms</a>
+            <a href="{{ current_url_with_query(type='charm') }}" class="p-tabs__link" tabindex="-1" role="button" {% if context.current_type == 'charm' %}aria-selected="true"{% endif %} data-type="charm">Charms</a>
           </li>
           <li class="p-tabs__item" role="button">
-            <a href="{{ context.type_urls.bundles }}" class="p-tabs__link" tabindex="-1" role="button" {% if context.current_type == 'bundle' %}aria-selected="true"{% endif %} data-type="bundle">Bundles</a>
+            <a href="{{ current_url_with_query(type='bundle') }}" class="p-tabs__link" tabindex="-1" role="button" {% if context.current_type == 'bundle' %}aria-selected="true"{% endif %} data-type="bundle">Bundles</a>
           </li>
         </ul>
       </nav>
@@ -105,16 +69,40 @@
                 </label>
               </div>
               <div class="list-block__filters--selects-item">
-                <select class="js-series-select" name="series-select">
-                {# The series list has been limited to sane options, full list is here:
-                https://github.com/juju/charmstore/blob/v5-unstable/internal/router/router.go#L33  #}
-                {% for series in ['all', 'precise', 'trusty', 'xenial', 'bionic', 'centos7'] %}
-                  <option value="{{ series }}"
-                    {% if context.current_series == series %}selected="selected"{% endif %}>
-                    {{ full_series(series) }}
-                  </option>
-                {% endfor %}
-              </select>
+                <span class="p-contextual-menu">
+                  <select name="series-select" class="p-contextual-menu__toggle" aria-controls="#menu" aria-expanded="false" aria-haspopup="true">
+                    {# The series list has been limited to sane options, full list is here:
+                      https://github.com/juju/charmstore/blob/v5/internal/series/series.go  #}
+                    {% for series in ['all', 'kubernetes', 'precise', 'trusty', 'xenial', 'bionic', 'centos7'] %}
+                      <option value="{{ series }}" {% if context.current_series == series %}selected="selected"{% endif %}>
+                        {{ series }}
+                      </option>
+                    {% endfor %}
+                  </select>
+                  {% macro series_tag(series) -%}
+                    <a href="{{ current_url_with_query(series=series) }}" class="series-tag series-tag--{{ series }} u-no-margin--bottom">
+                      {{ series }}
+                    </a>
+                  {%- endmacro %}
+                  <span class="p-contextual-menu__dropdown" id="menu" aria-hidden="true" aria-label="submenu">
+                    <ul class="p-list u-no-margin--bottom">
+                      <li class="p-list__item {% if not context.current_series %}series-tag--active{% endif %}">
+                        <a href="{{ current_url_with_query(series=None) }}">
+                           All
+                        </a>
+                      </li>
+                      <li class="p-list__item">
+                        {{ series_tag('kubernetes') }}
+                      </li>
+                      <li class="p-list__item">
+                        {% for series in ['xenial', 'bionic', 'cosmic', 'trusty'] %}{{ series_tag(series) }}{% endfor %}
+                      </li>
+                      <li class="p-list__item">
+                        {{ series_tag('centos7') }}
+                      </li>
+                    </ul>
+                  </span>
+                </span>
               </div>
             </div>
           </div>
@@ -202,37 +190,7 @@
      </div>
    {% endif %}
 
-  <script>
-    /**
-     * Change the sort order of the search results.
-     * @param {String} type the type of filter to change.
-     * @param {String} value the new filter value.
-     */
-    function _searchChangeFilter(type, value) {
-      const url = window.location.href.split('?')[0];
-      const queries = {};
-      window.location.search.substr(1).split('&').forEach(ele => {
-        const parts = ele.split('=');
-        if (parts[0]) {
-          queries[parts[0]] = parts[1];
-        }
-      })
-      // No need to change the url if the filter value is already selected.
-      if (value !== queries[type]) {
-        if (type === 'series' && value === 'all') {
-          delete queries[type];
-        } else {
-          queries[type] = value;
-        }
-        const queryString = Object.keys(queries).map(key => `${key}=${queries[key]}`).join('&');
-        window.location = `${url}?${queryString}`;
-      }
-    }
-    document.querySelector('.js-sort-select')
-      .addEventListener('change', e => _searchChangeFilter('sort', e.target.value));
-    document.querySelector('.js-series-select')
-      .addEventListener('change', e => _searchChangeFilter('series', e.target.value));
-  </script>
+  <script src="{{ static_url('js/dist/search-filters.min.js') }}"></script>
 {% else %}
   <div class="p-strip">
     <div class="row">

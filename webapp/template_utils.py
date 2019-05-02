@@ -1,6 +1,7 @@
 import hashlib
 import os
-from flask import url_for
+from flask import request, url_for
+from werkzeug.urls import url_encode
 
 
 def static_url(filename):
@@ -21,3 +22,16 @@ def static_url(filename):
         for chunk in iter(lambda: file_contents.read(4096), b""):
             file_hash.update(chunk)
     return "{}?v={}".format(url, file_hash.hexdigest()[:7])
+
+
+def current_url_with_query(**query_params):
+    """Generate a version of the current URL with modified query params. This
+        can be used for changing search filters when you want to maintain
+        other existing filters.
+        :param **kwargs: The query params to manipulate.
+        :returns: A new URL.
+    """
+    params = request.args.copy()
+    for param, value in query_params.items():
+        params[param] = value
+    return '{}?{}'.format(request.path, url_encode(params))

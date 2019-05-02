@@ -59,46 +59,6 @@ class StoreViews(TestCase):
             ),
         )
 
-    @patch("webapp.store.models.search_entities")
-    def test_search_type_urls(self, mock_search_entities):
-        mock_search_entities.return_value = {
-            "recommended": [{}, {}],
-            "community": [{}, {}],
-        }
-        response = self.client.get(
-            url_for("jaasstore.search", q="k8s", tags="ops", sort="-name")
-        )
-        self.assertEqual(response.status_code, 200)
-        context = self.get_context_variable("context")
-        self.assertEqual(
-            context["type_urls"],
-            {
-                "all": "/search?q=k8s&tags=ops&sort=-name",
-                "bundles": "/search?type=bundle&q=k8s&tags=ops&sort=-name",
-                "charms": "/search?type=charm&q=k8s&tags=ops&sort=-name",
-            },
-        )
-
-    @patch("webapp.store.models.search_entities")
-    def test_search_type_urls_updates_existing(self, mock_search_entities):
-        mock_search_entities.return_value = {
-            "recommended": [{}, {}],
-            "community": [{}, {}],
-        }
-        response = self.client.get(
-            url_for("jaasstore.search", q="k8s", type="bundles")
-        )
-        self.assertEqual(response.status_code, 200)
-        context = self.get_context_variable("context")
-        self.assertEqual(
-            context["type_urls"],
-            {
-                "all": "/search?q=k8s",
-                "bundles": "/search?type=bundle&q=k8s",
-                "charms": "/search?type=charm&q=k8s",
-            },
-        )
-
     @patch("theblues.charmstore.CharmStore.list")
     def test_user_details(self, mock_list):
         mock_list.return_value = user_entities_data

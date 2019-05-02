@@ -89,6 +89,33 @@
       margin-top: -0.5rem;
     }
   }
+
+  .p-contextual-menu {
+    &__toggle {
+      text-transform: capitalize;
+      
+      &--active {
+        border-color: $color-focus;
+      }
+    }
+
+    &__dropdown {
+      min-width: 19rem;
+      padding: 0.5rem 0;
+
+      .p-list__item {
+        padding: 0.5rem 1rem;
+      }
+
+      .series-tag:last-child {
+        margin-right: 0;
+      }
+
+      .series-tag--active {
+        background-color: $color-light;
+      }
+    }
+  }
 }
 
 .entity-icon {
