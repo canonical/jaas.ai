@@ -1,4 +1,4 @@
-from flask import Blueprint, abort, request, render_template, Response, url_for
+from flask import Blueprint, abort, request, render_template, Response
 from jujubundlelib import references
 
 from webapp.experts import get_experts

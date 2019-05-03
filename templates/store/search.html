@@ -65,7 +65,7 @@
             <div class="list-block__filter">
               <div class="list-block__filters--selects-item u-vertically-center">
                 <label for="series-select">
-                  Series:
+                  Filter:
                 </label>
               </div>
               <div class="list-block__filters--selects-item">
@@ -86,8 +86,8 @@
                   {%- endmacro %}
                   <span class="p-contextual-menu__dropdown" id="menu" aria-hidden="true" aria-label="submenu">
                     <ul class="p-list u-no-margin--bottom">
-                      <li class="p-list__item {% if not context.current_series %}series-tag--active{% endif %}">
-                        <a href="{{ current_url_with_query(series=None) }}">
+                      <li class="p-list__item {% if not context.current_series %}p-list__item--active{% endif %}">
+                        <a href="{{ current_url_with_query(series=None) }}" class="list-block__filter--link">
                            All
                         </a>
                       </li>

@@ -18,6 +18,10 @@ a.series-tag,
   &:hover {
     text-decoration: none;
   }
+
+  &:last-child {
+    margin-right: 0;
+  }
 }
 
 a.series-tag--kubernetes,

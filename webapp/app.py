@@ -52,7 +52,11 @@ def create_app(testing=False):
 
     @app.context_processor
     def inject_utilities():
-        return {"current_url_with_query": current_url_with_query, "external_urls": external_urls, "static_url": static_url}
+        return {
+            "current_url_with_query": current_url_with_query,
+            "external_urls": external_urls,
+            "static_url": static_url,
+        }
 
     app.jinja_env.add_extension("jinja2.ext.do")
 

@@ -34,4 +34,4 @@ def current_url_with_query(**query_params):
     params = request.args.copy()
     for param, value in query_params.items():
         params[param] = value
-    return '{}?{}'.format(request.path, url_encode(params))
+    return "{}?{}".format(request.path, url_encode(params))
