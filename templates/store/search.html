@@ -91,13 +91,13 @@
                            All
                         </a>
                       </li>
-                      <li class="p-list__item">
+                      <li class="p-list__item {% if context.current_series == 'kubernetes' %}p-list__item--active{% endif %}">
                         {{ series_tag('kubernetes') }}
                       </li>
-                      <li class="p-list__item">
+                      <li class="p-list__item {% if context.current_series and context.current_series != 'kubernetes' and context.current_series != 'centos7' %}p-list__item--active{% endif %}">
                         {% for series in ['xenial', 'bionic', 'cosmic', 'trusty'] %}{{ series_tag(series) }}{% endfor %}
                       </li>
-                      <li class="p-list__item">
+                      <li class="p-list__item {% if context.current_series == 'centos7' %}p-list__item--active{% endif %}">
                         {{ series_tag('centos7') }}
                       </li>
                     </ul>
