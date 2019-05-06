@@ -44,7 +44,7 @@
       </div>
       <div class="col-6 u-vertically-center homepage-hero-image-wrap">
         <img
-          src="{{ static_url('img/home/home-promo-bundle.svg') }}"
+          src="https://assets.ubuntu.com/v1/f3f75945-home-promo-bundle.svg"
           alt="Pictogram of bundle"
           class="homepage-hero-image"
         />
@@ -63,7 +63,7 @@
           <h5 class="u-no-padding--top">Or build it yourself</h5>
           <p>Create your own solution in the GUI or browse the store to get started</p>
           <div class="card-wrap">
-            <img src="{{ static_url('img/home/build-yourself.png') }}" alt="Build it yourself example">
+            <img src="https://assets.ubuntu.com/v1/3f449866-build-yourself.png" alt="Build it yourself example">
           </div>
           <p><a href="{{ external_urls.gui }}" class="p-button--neutral" style="margin-top:5px">Start a new model</a></p>
         </div>
@@ -72,7 +72,7 @@
           <h5 class="u-no-padding--top">JAAS is Juju as a service</h5>
           <p>Managed Juju infrastructure, hosted by Canonical, the makers of Ubuntu.</p>
           <div class="p-card u-align--center">
-            <img style="padding:1rem 0" src="{{ static_url('img/home/jaas-black-orange-hz-hex.svg') }}" alt="JAAS logo">
+            <img style="padding:1rem 0" src="https://assets.ubuntu.com/v1/a559e2c5-jaas-black-orange-hz-hex.svg" alt="JAAS logo">
           </div>
           <a href="{{ url_for('jaasai.jaas') }}" class="p-button--neutral" style="margin-top:-6px">About JAAS</a>
         </div>
@@ -110,7 +110,7 @@
           <ul class="p-list icon-list">
             <li class="p-list__item">
               <a href="{{ url_for('jaasstore.details', charm_or_bundle_name='openstack-base') }}">
-                <img src="{{ static_url('img/home/openstack-base.svg') }}" alt="Openstack Base icon" />
+                <img src="https://assets.ubuntu.com/v1/2e50c6c7-openstack-base.svg" alt="Openstack Base icon" />
                 <span class="icon-list__title">
                   OpenStack Base&nbsp;&rsaquo;
                 </span>
@@ -118,7 +118,7 @@
             </li>
             <li class="p-list__item">
               <a href="{{ url_for('jaasstore.details', charm_or_bundle_name='canonical-kubernetes') }}">
-                <img src="{{ static_url('img/home/canonical-kubernetes.svg') }}" alt="Canonical Kubernetes icon" />
+                <img src="https://assets.ubuntu.com/v1/3181c7b2-canonical-kubernetes.svg" alt="Canonical Kubernetes icon" />
                 <span class="icon-list__title">
                   Canonical Kubernetes&nbsp;&rsaquo;
                 </span>
@@ -126,7 +126,7 @@
             </li>
             <li class="p-list__item">
               <a href="{{ url_for('jaasstore.details', charm_or_bundle_name='hadoop-spark') }}">
-                <img src="{{ static_url('img/home/hadoop-spark.svg') }}" alt="Hadoop Spark icon" />
+                <img src="https://assets.ubuntu.com/v1/40c3bc89-hadoop-spark.svg" alt="Hadoop Spark icon" />
                 <span class="icon-list__title">
                   Hadoop Spark&nbsp;&rsaquo;
                 </span>
@@ -137,7 +137,7 @@
           <ul class="p-list icon-list">
             <li class="p-list__item">
               <a href="{{ url_for('jaasstore.details', charm_or_bundle_name='postgresql') }}">
-                <img width="52" src="{{ static_url('img/home/postgresql-circle.svg') }}" alt="Postgresql icon" />
+                <img width="52" src="https://assets.ubuntu.com/v1/a854c8a7-postgresql-circle.svg" alt="Postgresql icon" />
                 <span class="icon-list__title">
                   Postgresql&nbsp;&rsaquo;
                 </span>
@@ -145,7 +145,7 @@
             </li>
             <li class="p-list__item">
               <a href="{{ url_for('jaasstore.user_entity', username='prometheus-charmers', charm_or_bundle_name='prometheus') }}">
-                <img width="52" src="{{ static_url('img/home/prometheus-circle.svg') }}" alt="Prometheus" />
+                <img width="52" src="https://assets.ubuntu.com/v1/804a5808-prometheus-circle.svg" alt="Prometheus" />
                 <span class="icon-list__title">
                   Prometheus&nbsp;&rsaquo;
                 </span>
@@ -153,7 +153,7 @@
             </li>
             <li class="p-list__item">
               <a href="{{ url_for('jaasstore.details', charm_or_bundle_name='elasticsearch') }}">
-                <img width="52" src="{{ static_url('img/home/elasticsearch-icon.svg') }}" alt="Elasticsearch" />
+                <img width="52" src="https://assets.ubuntu.com/v1/9842fcf6-elasticsearch-icon.svg" alt="Elasticsearch" />
                 <span class="icon-list__title">
                   Elasticsearch&nbsp;&rsaquo;
                 </span>
@@ -164,16 +164,16 @@
         <div class="col-4 p-divider__block">
           <h2 class="row--stages__title">Model</h2>
           <p>With Juju, relationships between linked charms are formed automatically.</p>
-          <p class="align-center"><img src="{{ static_url('img/home/model-canvas.png') }}" alt="" srcset="{{ static_url('img/home/model-canvas-2x.png') }} 2x" /></p>
+          <p class="align-center"><img src="https://assets.ubuntu.com/v1/1c86ec05-model-canvas.png" alt="" srcset="https://assets.ubuntu.com/v1/fc0ccef5-model-canvas-2x.png 2x" /></p>
           <p>Easily configure charms via the inspector.</p>
-          <p class="align-center"><img src="{{ static_url('img/home/model-config.png') }}" alt="" srcset="{{ static_url('img/home/model-config-2x.png') }} 2x" /></p>
+          <p class="align-center"><img src="https://assets.ubuntu.com/v1/550e1003-model-config.png" alt="" srcset="https://assets.ubuntu.com/v1/8d6efbaa-model-config-2x.png 2x" /></p>
         </div>
         <div class="col-4 p-divider__block">
           <h2 class="row--stages__title">Deploy</h2>
           <p>Deploy and redeploy to all major public clouds or locally on your own hardware.</p>
-          <p class="align-center"><img src="{{ static_url('img/home/deploy-logos.png') }}" alt="" srcset="{{ static_url('img/home/deploy-logos-2x.png') }} 2x" /></p>
+          <p class="align-center"><img src="https://assets.ubuntu.com/v1/0b9e98e2-deploy-logos.png" alt="" srcset="https://assets.ubuntu.com/v1/78c1ad70-deploy-logos-2x.png 2x" /></p>
           <p>Monitor, maintain and scale on demand.</p>
-          <p class="align-center"><img src="{{ static_url('img/home/deploy-new-units.png') }}" alt="" srcset="{{ static_url('img/home/deploy-new-units-2x.png') }} 2x" /></p>
+          <p class="align-center"><img src="https://assets.ubuntu.com/v1/f5d6e17e-deploy-new-units.png" alt="" srcset="https://assets.ubuntu.com/v1/ff83e81e-deploy-new-units-2x.png 2x" /></p>
         </div>
       </div>
       <div class="row">
@@ -191,10 +191,10 @@
     </div>
     <div class="row">
       <div class="col-6 u-align-text--center">
-        <img src="{{ static_url('img/home/why-use-juju-diagram-left.svg') }}" />
+        <img src="https://assets.ubuntu.com/v1/fafa0260-why-use-juju-diagram-left.svg" />
       </div>
       <div class="col-6 u-align-text--center">
-        <img src="{{ static_url('img/home/why-use-juju-diagram-right.svg') }}" />
+        <img src="https://assets.ubuntu.com/v1/101f09f9-why-use-juju-diagram-right.svg" />
       </div>
     </div>
   </div>
@@ -228,7 +228,7 @@
       <div>
         <div class="p-heading-icon">
           <div class="p-heading-icon__header">
-            <img class="p-heading-icon__img" src="{{ static_url('img/logos/github-logo.svg') }}" alt="Github logo">
+            <img class="p-heading-icon__img" src="https://assets.ubuntu.com/v1/61d83c7e-icon-github.svg" alt="Github logo">
             <h3 class="p-heading-icon__title">
               <a href="https://github.com/juju">
                 Juju on Github
@@ -257,7 +257,7 @@
     <div class="row">
       <div class="col-2">
         <p>
-          <img src="{{ static_url('img/logos/spicule.png') }}" alt="Spicule logo" width="135" />
+          <img src="https://assets.ubuntu.com/v1/c7881d6c-spiculelogo-spacingx2-01.svg" alt="Spicule logo" width="135" />
         </p>
       </div>
       <div class="col-10">
@@ -274,7 +274,7 @@
     <div class="row">
       <div class="col-2">
         <p>
-          <img src="{{ static_url('img/logos/ghent-logo.svg') }}" alt="Ghent logo" width="74" />
+          <img src="https://assets.ubuntu.com/v1/f5a5d807-ghent-logo.svg" alt="Ghent logo" width="74" />
         </p>
       </div>
       <div class="col-10">
@@ -293,7 +293,7 @@
     <div class="row">
       <div class="col-2">
         <p>
-          <img src="{{ static_url('img/logos/epam.svg') }}" alt="Epam logo" width="135" />
+          <img src="https://assets.ubuntu.com/v1/393fe2c8-epam.svg" alt="Epam logo" width="135" />
         </p>
       </div>
       <div class="col-10">
