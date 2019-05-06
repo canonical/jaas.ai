@@ -14,7 +14,10 @@ def get_experts(expert=None):
             "name": "Spicule",
             "username": "spiculecharms",
             "page_url": url_for("jaasai.experts_spicule"),
-            "logo": "https://assets.ubuntu.com/v1/c7881d6c-spiculelogo-spacingx2-01.svg",
+            "logo": (
+                "https://assets.ubuntu.com/v1/"
+                "c7881d6c-spiculelogo-spacingx2-01.svg"
+            ),
             "highlights": [
                 "Spicule&rsquo;s solutions can solve your Big Data challenges",
                 "Supported analytics",
