@@ -106,74 +106,92 @@
     <div class="row p-divider">
         <div class="col-4 p-divider__block">
           <h2>Choose</h2>
-          <p><b>Bundles</b> are collections of charms that link services together, so you can deploy whole chunks of infrastructure in one go.</p>
-          <ul class="p-list icon-list">
-            <li class="p-list__item">
-              <a href="{{ url_for('jaasstore.details', charm_or_bundle_name='openstack-base') }}">
-                <img src="https://assets.ubuntu.com/v1/2e50c6c7-openstack-base.svg" alt="Openstack Base icon" />
-                <span class="icon-list__title">
-                  OpenStack Base&nbsp;&rsaquo;
-                </span>
-              </a>
-            </li>
-            <li class="p-list__item">
-              <a href="{{ url_for('jaasstore.details', charm_or_bundle_name='canonical-kubernetes') }}">
-                <img src="https://assets.ubuntu.com/v1/3181c7b2-canonical-kubernetes.svg" alt="Canonical Kubernetes icon" />
-                <span class="icon-list__title">
-                  Canonical Kubernetes&nbsp;&rsaquo;
-                </span>
-              </a>
-            </li>
-            <li class="p-list__item">
-              <a href="{{ url_for('jaasstore.details', charm_or_bundle_name='hadoop-spark') }}">
-                <img src="https://assets.ubuntu.com/v1/40c3bc89-hadoop-spark.svg" alt="Hadoop Spark icon" />
-                <span class="icon-list__title">
-                  Hadoop Spark&nbsp;&rsaquo;
-                </span>
-              </a>
-            </li>
-          </ul>
-          <p><b>Charms</b> contain scripts that simplify the deployment and management of a service.</p>
-          <ul class="p-list icon-list">
-            <li class="p-list__item">
-              <a href="{{ url_for('jaasstore.details', charm_or_bundle_name='postgresql') }}">
-                <img width="52" src="https://assets.ubuntu.com/v1/a854c8a7-postgresql-circle.svg" alt="Postgresql icon" />
-                <span class="icon-list__title">
-                  Postgresql&nbsp;&rsaquo;
-                </span>
-              </a>
-            </li>
-            <li class="p-list__item">
-              <a href="{{ url_for('jaasstore.user_entity', username='prometheus-charmers', charm_or_bundle_name='prometheus') }}">
-                <img width="52" src="https://assets.ubuntu.com/v1/804a5808-prometheus-circle.svg" alt="Prometheus" />
-                <span class="icon-list__title">
-                  Prometheus&nbsp;&rsaquo;
-                </span>
-              </a>
-            </li>
-            <li class="p-list__item">
-              <a href="{{ url_for('jaasstore.details', charm_or_bundle_name='elasticsearch') }}">
-                <img width="52" src="https://assets.ubuntu.com/v1/9842fcf6-elasticsearch-icon.svg" alt="Elasticsearch" />
-                <span class="icon-list__title">
-                  Elasticsearch&nbsp;&rsaquo;
-                </span>
-              </a>
-            </li>
-          </ul>
+          <div class="step-block">
+            <div class="step-block__section">
+              <p><b>Bundles</b> are collections of charms that link services together, so you can deploy whole chunks of infrastructure in one go.</p>
+              <ul class="p-list icon-list">
+                <li class="p-list__item">
+                  <a href="{{ url_for('jaasstore.details', charm_or_bundle_name='openstack-base') }}">
+                    <img src="https://assets.ubuntu.com/v1/2e50c6c7-openstack-base.svg" alt="Openstack Base icon" />
+                    <span class="icon-list__title">
+                      OpenStack Base&nbsp;&rsaquo;
+                    </span>
+                  </a>
+                </li>
+                <li class="p-list__item">
+                  <a href="{{ url_for('jaasstore.details', charm_or_bundle_name='canonical-kubernetes') }}">
+                    <img src="https://assets.ubuntu.com/v1/3181c7b2-canonical-kubernetes.svg" alt="Canonical Kubernetes icon" />
+                    <span class="icon-list__title">
+                      Canonical Kubernetes&nbsp;&rsaquo;
+                    </span>
+                  </a>
+                </li>
+                <li class="p-list__item">
+                  <a href="{{ url_for('jaasstore.details', charm_or_bundle_name='hadoop-spark') }}">
+                    <img src="https://assets.ubuntu.com/v1/40c3bc89-hadoop-spark.svg" alt="Hadoop Spark icon" />
+                    <span class="icon-list__title">
+                      Hadoop Spark&nbsp;&rsaquo;
+                    </span>
+                  </a>
+                </li>
+              </ul>
+            </div>
+            <div class="step-block__section">
+              <p><b>Charms</b> contain scripts that simplify the deployment and management of a service.</p>
+              <ul class="p-list icon-list">
+                <li class="p-list__item">
+                  <a href="{{ url_for('jaasstore.details', charm_or_bundle_name='postgresql') }}">
+                    <img width="52" src="https://assets.ubuntu.com/v1/a854c8a7-postgresql-circle.svg" alt="Postgresql icon" />
+                    <span class="icon-list__title">
+                      Postgresql&nbsp;&rsaquo;
+                    </span>
+                  </a>
+                </li>
+                <li class="p-list__item">
+                  <a href="{{ url_for('jaasstore.user_entity', username='prometheus-charmers', charm_or_bundle_name='prometheus') }}">
+                    <img width="52" src="https://assets.ubuntu.com/v1/804a5808-prometheus-circle.svg" alt="Prometheus" />
+                    <span class="icon-list__title">
+                      Prometheus&nbsp;&rsaquo;
+                    </span>
+                  </a>
+                </li>
+                <li class="p-list__item">
+                  <a href="{{ url_for('jaasstore.details', charm_or_bundle_name='elasticsearch') }}">
+                    <img width="52" src="https://assets.ubuntu.com/v1/9842fcf6-elasticsearch-icon.svg" alt="Elasticsearch" />
+                    <span class="icon-list__title">
+                      Elasticsearch&nbsp;&rsaquo;
+                    </span>
+                  </a>
+                </li>
+              </ul>
+            </div>
+          </div>
         </div>
         <div class="col-4 p-divider__block">
           <h2 class="row--stages__title">Model</h2>
-          <p>With Juju, relationships between linked charms are formed automatically.</p>
-          <p class="align-center"><img src="https://assets.ubuntu.com/v1/1c86ec05-model-canvas.png" alt="" srcset="https://assets.ubuntu.com/v1/fc0ccef5-model-canvas-2x.png 2x" /></p>
-          <p>Easily configure charms via the inspector.</p>
-          <p class="align-center"><img src="https://assets.ubuntu.com/v1/550e1003-model-config.png" alt="" srcset="https://assets.ubuntu.com/v1/8d6efbaa-model-config-2x.png 2x" /></p>
+          <div class="step-block">
+            <div class="step-block__section">
+              <p>With Juju, relationships between linked charms are formed automatically.</p>
+              <p class="align-center"><img src="https://assets.ubuntu.com/v1/1c86ec05-model-canvas.png" alt="" srcset="https://assets.ubuntu.com/v1/fc0ccef5-model-canvas-2x.png 2x" /></p>
+            </div>
+            <div class="step-block__section">
+              <p>Easily configure charms via the inspector.</p>
+              <p class="align-center"><img src="https://assets.ubuntu.com/v1/550e1003-model-config.png" alt="" srcset="https://assets.ubuntu.com/v1/8d6efbaa-model-config-2x.png 2x" /></p>
+            </div>
+          </div>
         </div>
         <div class="col-4 p-divider__block">
           <h2 class="row--stages__title">Deploy</h2>
-          <p>Deploy and redeploy to all major public clouds or locally on your own hardware.</p>
-          <p class="align-center"><img src="https://assets.ubuntu.com/v1/0b9e98e2-deploy-logos.png" alt="" srcset="https://assets.ubuntu.com/v1/78c1ad70-deploy-logos-2x.png 2x" /></p>
-          <p>Monitor, maintain and scale on demand.</p>
-          <p class="align-center"><img src="https://assets.ubuntu.com/v1/f5d6e17e-deploy-new-units.png" alt="" srcset="https://assets.ubuntu.com/v1/ff83e81e-deploy-new-units-2x.png 2x" /></p>
+          <div class="step-block">
+            <div class="step-block__section">
+              <p>Deploy and redeploy to all major public clouds or locally on your own hardware.</p>
+              <p class="align-center"><img src="https://assets.ubuntu.com/v1/0b9e98e2-deploy-logos.png" alt="" srcset="https://assets.ubuntu.com/v1/78c1ad70-deploy-logos-2x.png 2x" /></p>
+            </div>
+            <div class="step-block__section">
+              <p>Monitor, maintain and scale on demand.</p>
+              <p class="align-center"><img src="https://assets.ubuntu.com/v1/f5d6e17e-deploy-new-units.png" alt="" srcset="https://assets.ubuntu.com/v1/ff83e81e-deploy-new-units-2x.png 2x" /></p>
+            </div>
+          </div>
         </div>
       </div>
       <div class="row">

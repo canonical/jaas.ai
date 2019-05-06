@@ -291,3 +291,20 @@ div .p-accordion__tab[aria-expanded] {
 h2 {
   font-weight: 100;
 }
+
+// Modeling steps on the homepage.
+@media (min-width: $breakpoint-small) and (max-width: $breakpoint-medium) {
+  .step-block {
+    display: flex;
+
+    &__section {
+      flex: 1;
+      padding-right: 0.5rem;
+
+      &:last-child {
+        padding-left: 0.5rem;
+        padding-right: 0;
+      }
+    }
+  }
+}
