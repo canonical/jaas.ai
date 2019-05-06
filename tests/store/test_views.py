@@ -47,7 +47,16 @@ class StoreViews(TestCase):
         self.assertEqual(response.status_code, 200)
         self.assertEqual(mock_search_entities.call_count, 2)
         self.assertEqual(
-            mock_search_entities.call_args_list[1], call("k8s", owner="wombat")
+            mock_search_entities.call_args_list[1],
+            call(
+                "k8s",
+                owner="wombat",
+                entity_type=None,
+                tags=None,
+                sort=None,
+                series=None,
+                promulgated_only=False,
+            ),
         )
 
     @patch("webapp.store.models.search_entities")

@@ -51,7 +51,13 @@ def search():
         reference = models.get_reference(query)
         if reference is not None:
             results = models.search_entities(
-                reference.name, owner=reference.user
+                reference.name,
+                owner=reference.user,
+                entity_type=entity_type,
+                tags=tags,
+                sort=sort,
+                series=series,
+                promulgated_only=False,
             )
     query_params = {}
     # Recreate the filter params without the type filter. This can then be used
