@@ -1,3 +1,5 @@
+@import 'vanilla-framework/scss/settings_spacing';
+
 .search-results {
   &__entity-name {
     line-height: 1.5rem;
@@ -14,6 +16,7 @@
     th,
     td {
       flex: 1;
+      flex-wrap: wrap;
 
       &:first-child {
         flex: 0.5;
@@ -27,8 +30,62 @@
 
   .list-block__filter {
     margin-right: 1rem;
+
     @media (min-width: $breakpoint-small) {
       display: flex;
+    }
+
+    &--link {
+      color: $color-dark;
+    }
+
+    .p-contextual-menu {
+      display: block;
+
+      &__toggle {
+        text-transform: capitalize;
+
+        &--active {
+          border-color: $color-focus;
+        }
+      }
+
+      &__dropdown {
+        $tooltip-size: 8px;
+        min-width: 19rem;
+        overflow: visible;
+        padding: 0.5rem 0;
+        top: calc(100% + 1rem);
+
+        @media (max-width: $breakpoint-x-small) {
+          min-width: 0;
+        }
+
+        &:before {
+          border: {
+            bottom-width: $tooltip-size + 2;
+            left-width: $tooltip-size + 2;
+            right-width: $tooltip-size + 2;
+          }
+        }
+
+        &:after {
+          border: {
+            bottom-width: $tooltip-size;
+            left-width: $tooltip-size;
+            right-width: $tooltip-size;
+          }
+        }
+
+        .p-list__item {
+          padding: 0.5rem 1rem 0.25rem 1rem;
+
+          &:hover,
+          &--active {
+            background-color: $color-light;
+          }
+        }
+      }
     }
   }
 

@@ -47,47 +47,16 @@ class StoreViews(TestCase):
         self.assertEqual(response.status_code, 200)
         self.assertEqual(mock_search_entities.call_count, 2)
         self.assertEqual(
-            mock_search_entities.call_args_list[1], call("k8s", owner="wombat")
-        )
-
-    @patch("webapp.store.models.search_entities")
-    def test_search_type_urls(self, mock_search_entities):
-        mock_search_entities.return_value = {
-            "recommended": [{}, {}],
-            "community": [{}, {}],
-        }
-        response = self.client.get(
-            url_for("jaasstore.search", q="k8s", tags="ops", sort="-name")
-        )
-        self.assertEqual(response.status_code, 200)
-        context = self.get_context_variable("context")
-        self.assertEqual(
-            context["type_urls"],
-            {
-                "all": "/search?q=k8s&tags=ops&sort=-name",
-                "bundles": "/search?type=bundle&q=k8s&tags=ops&sort=-name",
-                "charms": "/search?type=charm&q=k8s&tags=ops&sort=-name",
-            },
-        )
-
-    @patch("webapp.store.models.search_entities")
-    def test_search_type_urls_updates_existing(self, mock_search_entities):
-        mock_search_entities.return_value = {
-            "recommended": [{}, {}],
-            "community": [{}, {}],
-        }
-        response = self.client.get(
-            url_for("jaasstore.search", q="k8s", type="bundles")
-        )
-        self.assertEqual(response.status_code, 200)
-        context = self.get_context_variable("context")
-        self.assertEqual(
-            context["type_urls"],
-            {
-                "all": "/search?q=k8s",
-                "bundles": "/search?type=bundle&q=k8s",
-                "charms": "/search?type=charm&q=k8s",
-            },
+            mock_search_entities.call_args_list[1],
+            call(
+                "k8s",
+                owner="wombat",
+                entity_type=None,
+                tags=None,
+                sort=None,
+                series=None,
+                promulgated_only=False,
+            ),
         )
 
     @patch("theblues.charmstore.CharmStore.list")

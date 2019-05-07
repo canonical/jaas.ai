@@ -1,4 +1,4 @@
-from flask import Blueprint, abort, request, render_template, Response, url_for
+from flask import Blueprint, abort, request, render_template, Response
 from jujubundlelib import references
 
 from webapp.experts import get_experts
@@ -51,31 +51,20 @@ def search():
         reference = models.get_reference(query)
         if reference is not None:
             results = models.search_entities(
-                reference.name, owner=reference.user
+                reference.name,
+                owner=reference.user,
+                entity_type=entity_type,
+                tags=tags,
+                sort=sort,
+                series=series,
+                promulgated_only=False,
             )
-    query_params = {}
-    # Recreate the filter params without the type filter. This can then be used
-    # to create new type filter URLS.
-    for param in request.args.items():
-        if param[0] != "type":
-            query_params[param[0]] = param[1]
     return render_template(
         "store/search.html",
         context={
             "current_series": series,
             "current_sort": sort,
             "current_type": entity_type,
-            # Generate the filter URLs here so that when the filter
-            # links are clicked they maintain the other active filters.
-            "type_urls": {
-                "all": url_for("jaasstore.search", **query_params),
-                "bundles": url_for(
-                    "jaasstore.search", type="bundle", **query_params
-                ),
-                "charms": url_for(
-                    "jaasstore.search", type="charm", **query_params
-                ),
-            },
             "results": results,
             "results_count": len(results["recommended"])
             + len(results["community"]),

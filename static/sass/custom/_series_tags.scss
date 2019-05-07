@@ -9,12 +9,22 @@
   text-transform: capitalize;
 }
 
+a.series-tag,
 .series-tag {
   @extend %series-tag;
   border: 1px solid $color-mid-dark;
   color: $color-mid-dark;
+
+  &:hover {
+    text-decoration: none;
+  }
+
+  &:last-child {
+    margin-right: 0;
+  }
 }
 
+a.series-tag--kubernetes,
 .series-tag--kubernetes {
   @extend %series-tag;
   border-color: $color-kubernetes;

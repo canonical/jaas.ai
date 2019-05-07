@@ -36,7 +36,7 @@
     <div class="u-equal-height">
       <div class="col-6 p-card">
       <div class="col-2 u-align--center">
-        <img src="{{ static_url('img/store/charm-icon.png') }}" alt="Illustration of a Charm pictogram">
+        <img src="https://assets.ubuntu.com/v1/96c61b0d-charm-icon.png" alt="Illustration of a Charm pictogram">
       </div>
       <div class="col-4 u-no-margin--left">
         <p>Charms are sets of scripts that simplify the deployment and management tasks of a service. They are regularly reviewed and updated.</p>
@@ -45,7 +45,7 @@
     </div>
       <div class="col-6 p-card">
       <div class="col-2 u-align--center">
-        <img src="{{ static_url('img/store/bundle-icon.png') }}" alt="Illustration of a Bundle pictogram">
+        <img src="https://assets.ubuntu.com/v1/d4ffa9bc-bundle-icon.png" alt="Illustration of a Bundle pictogram">
       </div>
       <div class="col-4 u-no-margin--left">
         <p>Bundles are collections of charms that link applications together, so you can deploy whole chunks of infrastructure in one go.</p>
@@ -89,7 +89,10 @@
       <h2>Operations</h2>
       <div class="p-card pictogram-bg">
         <div class="u-equal-height entity-cards">
-          <div class="col-6">
+          <div class="col-6 u-align--center u-vertically-center">
+            <img src="https://assets.ubuntu.com/v1/896aa4e6-nagios.svg" alt="Nagios promo" width="150">
+          </div>
+          <div class="col-3">
             <h3>Nagios</h3>
             <p>By <a href="{{ url_for('jaasstore.user_details', username='charmers') }}">charmers</a></p>
             <p>Nagios offers complete monitoring, management and alerting of any service from the charm store that is related to it.</p>
@@ -211,14 +214,16 @@
 </div>
 
 <div class="p-strip--light is-shallow">
-  <div class="row">
-    <div class="col-6">
-      <h2>Container management</h2>
-      <p>Juju makes it easy to deploy container management solutions by provisioning, installing and configuring all the systems in the cluster.</p>
-      <p><a href="{{ url_for('jaasai.containers') }} class="p-button--neutral">View bundles</a></p>
+  <div class="row u-equal-height entity-cards">
+    <div class="col-5 u-vertically-center">
+      <div>
+        <h2>Container management</h2>
+        <p>Juju makes it easy to deploy container management solutions by provisioning, installing and configuring all the systems in the cluster.</p>
+        <p><a href="{{ url_for('jaasai.containers') }}" class="p-button--neutral">View bundles</a></p>
+      </div>
     </div>
     <div class="col-6">
-      <img src="{{ static_url('img/store/kubernetes-promo.png') }}" alt="Kubernetes promo pictogram">
+      <img src="https://assets.ubuntu.com/v1/86a111b8-CDK+bundle.svg" alt="Kubernetes promo pictogram">
     </div>
   </div>
 </div>
@@ -309,7 +314,7 @@
       <div class="p-card pictogram-bg">
         <div class="u-equal-height">
           <div class="col-6">
-            <h3>MySQL</h3>
+            <h4>MySQL</h4>
             <p>By <a href="{{ url_for('jaasstore.user_details', username='mysql-charmers') }}" class="p-link--strong">mysql-charmers</a></p>
             <p>MySQL is a fast, stable and true multi-user, multi-threaded SQL database server. Its main goals are speed, robustness and ease of use.</p>
             <a href="{{ url_for('jaasstore.details', charm_or_bundle_name='mysql') }}" class="p-button--neutral">View the charm</a>
@@ -442,7 +447,7 @@
       </div>
     </div>
     <div class="col-6 u-hide--small">
-      <img src="{{ static_url('img/home/write-your-own.png') }}" alt="Pictogram of world map">
+      <img src="https://assets.ubuntu.com/v1/e57116e1-write-your-own.png" alt="Pictogram of world map">
     </div>
   </div>
 </div>
