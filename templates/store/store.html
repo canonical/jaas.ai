@@ -89,14 +89,14 @@
       <h2>Operations</h2>
       <div class="p-card pictogram-bg">
         <div class="u-equal-height entity-cards">
-          <div class="col-6 u-align--center u-vertically-center">
-            <img src="https://assets.ubuntu.com/v1/896aa4e6-nagios.svg" alt="Nagios promo" width="150">
-          </div>
-          <div class="col-3">
-            <h4>Nagios</h4>
+          <div class="col-6">
+            <h3>Nagios</h3>
             <p>By <a href="{{ url_for('jaasstore.user_details', username='charmers') }}">charmers</a></p>
             <p>Nagios offers complete monitoring, management and alerting of any service from the charm store that is related to it.</p>
             <a href="{{ url_for('jaasstore.details', charm_or_bundle_name='nagios') }}" class="p-button--neutral">View the charm</a>
+          </div>
+          <div class="col-6 u-align--center u-vertically-center u-hide--small prefix-2">
+            <img width="144" src="https://assets.ubuntu.com/v1/4d474129-nagios.svg" alt="Nagios logo">
           </div>
         </div>
       </div>
@@ -219,8 +219,8 @@
         <p><a href="{{ url_for('jaasai.containers') }}" class="p-button--neutral">View bundles</a></p>
       </div>
     </div>
-    <div class="col-7 u-hide--small u-align--right">
-      <img src="https://assets.ubuntu.com/v1/86a111b8-CDK+bundle.svg" alt="Kubernetes promo pictogram" width="350">
+    <div class="col-6">
+      <img src="https://assets.ubuntu.com/v1/86a111b8-CDK+bundle.svg" alt="Kubernetes promo pictogram">
     </div>
   </div>
 </div>
@@ -230,14 +230,16 @@
     <div class="col-12">
       <h2>Analytics</h2>
       <div class="p-card pictogram-bg">
-        <div class="col-6 u-align--center">
-          <object wmode="transparent" width="100%" type="image/svg+xml" data="{{ external_urls.charmstore }}bundle/realtime-syslog-analytics/diagram.svg"></object>
-        </div>
-        <div class="col-6">
-          <h4>Realtime Syslog Analytics</h4>
-          <p>By <a href="{{ url_for('jaasstore.user_details', username='bigdata-charmers') }}">bigdata-charmers</a></p>
-          <p>This bundle provides a big data environment for analysing syslog events. Built around Apache Hadoop components, it offers a repeatable and reliable way to setup complex software across multiple substrates.</p>
-          <a href="{{ url_for('jaasstore.details', charm_or_bundle_name='realtime-syslog-analytics') }}" class="p-button--neutral">View the bundle</a>
+        <div class="u-equal-height">
+          <div class="col-6">
+            <h3>Realtime Syslog Analytics</h3>
+            <p>By <a href="{{ url_for('jaasstore.user_details', username='bigdata-charmers') }}">bigdata-charmers</a></p>
+            <p>This bundle provides a big data environment for analysing syslog events. Built around Apache Hadoop components, it offers a repeatable and reliable way to setup complex software across multiple substrates.</p>
+            <a href="{{ url_for('jaasstore.details', charm_or_bundle_name='realtime-syslog-analytics') }}" class="p-button--neutral">View the bundle</a>
+          </div>
+          <div class="col-6 u-align--center u-vertically-center u-hide--small prefix-2">
+            <img width="144" src="https://assets.ubuntu.com/v1/6ecdbc71-hadoop.svg" alt="Hadoop logo">
+          </div>
         </div>
       </div>
     </div>
@@ -306,15 +308,17 @@
   <div class="row">
     <div class="col-12">
       <h2>Databases</h2>
-      <div class="p-strip--dark u-clearfix" style="background:#2089B5;padding:1rem">
-        <div class="col-6 u-align--center">
-          <img src="https://assets.ubuntu.com/v1/90e476fc-mysql-promo.png" alt="">
-        </div>
-        <div class="col-6">
-          <h4>MySQL</h4>
-          <p>By <a href="{{ url_for('jaasstore.user_details', username='mysql-charmers') }}" class="p-link--strong">mysql-charmers</a></p>
-          <p>MySQL is a fast, stable and true multi-user, multi-threaded SQL database server. Its main goals are speed, robustness and ease of use.</p>
-          <a href="{{ url_for('jaasstore.details', charm_or_bundle_name='mysql') }}" class="p-button--neutral">View the charm</a>
+      <div class="p-card pictogram-bg">
+        <div class="u-equal-height">
+          <div class="col-6">
+            <h4>MySQL</h4>
+            <p>By <a href="{{ url_for('jaasstore.user_details', username='mysql-charmers') }}" class="p-link--strong">mysql-charmers</a></p>
+            <p>MySQL is a fast, stable and true multi-user, multi-threaded SQL database server. Its main goals are speed, robustness and ease of use.</p>
+            <a href="{{ url_for('jaasstore.details', charm_or_bundle_name='mysql') }}" class="p-button--neutral">View the charm</a>
+          </div>
+          <div class="col-6 u-align--center u-vertically-center u-hide--small prefix-2">
+            <img width="144" src="https://assets.ubuntu.com/v1/80cd67d3-mysql.svg" alt="mySQL logo">
+          </div>
         </div>
       </div>
     </div>
