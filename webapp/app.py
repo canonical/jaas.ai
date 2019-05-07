@@ -10,7 +10,7 @@ from webapp.handlers import add_headers, clear_trailing_slash
 from webapp.jaasai.views import jaasai
 from webapp.redirects.views import jaasredirects
 from webapp.store.views import jaasstore
-from webapp.template_utils import static_url
+from webapp.template_utils import current_url_with_query, static_url
 
 
 def create_app(testing=False):
@@ -52,7 +52,11 @@ def create_app(testing=False):
 
     @app.context_processor
     def inject_utilities():
-        return {"external_urls": external_urls, "static_url": static_url}
+        return {
+            "current_url_with_query": current_url_with_query,
+            "external_urls": external_urls,
+            "static_url": static_url,
+        }
 
     app.jinja_env.add_extension("jinja2.ext.do")
 
