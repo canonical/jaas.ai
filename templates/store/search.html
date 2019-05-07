@@ -80,7 +80,7 @@
                     {% endfor %}
                   </select>
                   {% macro series_tag(series) -%}
-                    <a href="{{ current_url_with_query(series=series) }}" class="series-tag series-tag--{{ series }} u-no-margin--bottom">
+                    <a href="{{ current_url_with_query(series=series) }}" class="series-tag series-tag--{{ series }}">
                       {{ series }}
                     </a>
                   {%- endmacro %}
