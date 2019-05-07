@@ -51,12 +51,17 @@ function setupContextualMenuListeners(contextualMenuToggleSelector) {
       }
     });
   });
+  var oldKeyDown = document.onkeydown;
   document.onkeydown = e => {
     e = e || window.event;
     if (e.keyCode === 27) {
       toggles.forEach(toggle => {
         toggleMenu(toggle, false);
       });
+    }
+    // If another script provides a document.onkeydown then call it here so it still works.
+    if (oldKeyDown) {
+      oldKeyDown(e);
     }
   };
 }
