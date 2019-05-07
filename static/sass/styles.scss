@@ -146,7 +146,7 @@ $color-experts-highlight: #e95420;
 // icon list
 .icon-list {
   &__link {
-      display: flex;
+    display: flex;
   }
 
   &__image {
@@ -156,8 +156,8 @@ $color-experts-highlight: #e95420;
   &__title {
     align-items: center;
     display: flex;
-    padding-left: 1rem;
     flex: 1;
+    padding-left: 1rem;
   }
 }
 
