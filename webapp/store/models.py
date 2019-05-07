@@ -170,11 +170,6 @@ def _parse_bundle_data(bundle_data, include_files=False):
         supported_price,
         supported_description,
     ) = _extract_from_extrainfo(meta, ref)
-    latest_revision = revision_list and {
-        "id": int(revision_list[0].split("-")[-1]),
-        "full_id": revision_list[0],
-        "url": "{}/{}".format(ref.name, int(revision_list[0].split("-")[-1])),
-    }
     description = bundle_metadata.get("Description")
     files = None
     readme = None
@@ -194,7 +189,7 @@ def _parse_bundle_data(bundle_data, include_files=False):
         "files": files,
         "id": bundle_data.get("Id"),
         "is_charm": False,
-        "latest_revision": latest_revision,
+        "latest_revision": _get_latest_revision(revision_list),
         "owner": meta.get("owner", {}).get("User"),
         "promulgated": meta.get("promulgated", {}).get("Promulgated"),
         "readme": readme,
@@ -210,6 +205,18 @@ def _parse_bundle_data(bundle_data, include_files=False):
         "units": meta.get("bundle-unit-count", {}).get("Count", ""),
         "url": ref.jujucharms_id(),
     }
+
+
+def _get_latest_revision(revision_list):
+    latest_revision = None
+    if revision_list:
+        ref = references.Reference.from_string(revision_list[0])
+        latest_revision = {
+            "id": ref.revision,
+            "full_id": revision_list[0],
+            "url": ref.jujucharms_id(),
+        }
+    return latest_revision
 
 
 def _parseBundleServices(services):
@@ -238,11 +245,6 @@ def _parse_charm_data(charm_data, include_files=False):
     bugs_url, homepage = _extract_from_commoninfo(meta)
     name = charm_metadata["Name"]
     revision_list = meta.get("revision-info", {}).get("Revisions")
-    latest_revision = revision_list and {
-        "id": int(revision_list[0].split("-")[-1]),
-        "full_id": revision_list[0],
-        "url": "{}/{}".format(name, int(revision_list[0].split("-")[-1])),
-    }
     description = charm_metadata.get("Description")
     files = None
     readme = None
@@ -264,7 +266,7 @@ def _parse_charm_data(charm_data, include_files=False):
         "homepage": homepage,
         "icon": cs.charm_icon_url(charm_id),
         "id": charm_id,
-        "latest_revision": latest_revision,
+        "latest_revision": _get_latest_revision(revision_list),
         "options": meta.get("charm-config", {}).get("Options"),
         "owner": meta.get("owner", {}).get("User"),
         "promulgated": meta.get("promulgated", {}).get("Promulgated"),

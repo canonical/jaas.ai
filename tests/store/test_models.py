@@ -46,7 +46,14 @@ class TestStoreModels(unittest.TestCase):
         )
         self.assertEqual(charm["id"], "cs:apache2-26")
         self.assertTrue(charm["is_charm"])
-        self.assertIsNone(charm["latest_revision"])
+        self.assertEqual(
+            charm["latest_revision"],
+            {
+                "full_id": "cs:precise/apache2-27",
+                "id": 27,
+                "url": "apache2/precise/27",
+            },
+        )
         self.assertEqual(
             charm["options"].get("apt-key-id"),
             {
@@ -85,7 +92,8 @@ class TestStoreModels(unittest.TestCase):
             },
         )
         self.assertEqual(charm["resources"], {})
-        self.assertIsNone(charm["revision_list"], "bob")
+        self.assertTrue(len(charm["revision_list"]) > 0)
+        self.assertEqual(charm["revision_list"][0], "cs:precise/apache2-27")
         self.assertEqual(charm["revision_number"], 26)
         self.assertEqual(len(charm["revisions"]), 10)
         self.assertEqual(charm["series"], ["xenial", "trusty", "bionic"])
@@ -145,7 +153,7 @@ class TestStoreModels(unittest.TestCase):
         self.assertEqual(
             bundle["channels"],
             [
-                {"Channel": "stable", "Current": True},
+                {"Channel": "stable", "Current": False},
                 {"Channel": "candidate", "Current": False},
                 {"Channel": "beta", "Current": False},
                 {"Channel": "edge", "Current": False},
@@ -160,7 +168,14 @@ class TestStoreModels(unittest.TestCase):
         )
         self.assertEqual(bundle["id"], "cs:bundle/canonical-kubernetes-466")
         self.assertFalse(bundle["is_charm"])
-        self.assertIsNone(bundle["latest_revision"])
+        self.assertEqual(
+            bundle["latest_revision"],
+            {
+                "id": 530,
+                "full_id": "cs:bundle/canonical-kubernetes-530",
+                "url": "canonical-kubernetes/bundle/530",
+            },
+        )
         self.assertEqual(bundle["owner"], "containers")
         self.assertIsNone(bundle["promulgated"])
         self.assertEqual(bundle["revision_number"], 466)
