@@ -145,12 +145,20 @@ $color-experts-highlight: #e95420;
 
 // icon list
 .icon-list {
+  &__item {
+    margin-bottom: 0.25rem;
+  }
+
   &__link {
     display: flex;
   }
 
   &__image {
     flex: 0 0 52px;
+
+    img {
+      vertical-align: middle;
+    }
   }
 
   &__title {
