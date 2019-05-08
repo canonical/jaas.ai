@@ -20,6 +20,9 @@ $breakpoint-navigation-threshold: $breakpoint-large;
 $cool-grey: $color-brand;
 $mid-grey: $color-mid-light;
 
+// Import cookie-policy
+@import '@canonical/cookie-policy/src/sass/cookie-policy';
+
 // Custom snowflake code for bespoke components
 @import 'custom/row-cli';
 @import 'custom/search-panel';
