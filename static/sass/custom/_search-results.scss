@@ -22,6 +22,11 @@
         flex: 0.5;
       }
     }
+
+    &__icons,
+    &__series {
+      padding-top: 0.75rem;
+    }
   }
 }
 
@@ -188,11 +193,5 @@
   a {
     font-size: 0.875rem;
     color: $color-mid-dark;
-  }
-}
-
-@media (max-width: $breakpoint-medium) {
-  .series-tags {
-    margin-bottom: 1rem;
   }
 }

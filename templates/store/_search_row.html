@@ -9,7 +9,7 @@
   </li>
 {%- endmacro %}
 
-<td class="u-hide--small u-vertically-center">
+<td class="u-hide--small search-results-table__icons">
   <ul class="p-inline-list u-no-margin--bottom">
     {% if entity.services %}
       {% for name, entity in entity.services.items() %}
@@ -21,7 +21,7 @@
   </ul>
 </td>
 
-<td class="u-vertically-center">
+<td>
   <div>
     <a href="/{{ entity.url }}">
       <h4 class="search-results__entity-name u-no-margin--bottom">{{ entity.display_name }}</h4>
@@ -36,7 +36,7 @@
   </div>
 </td>
 
-<td class="u-vertically-center">
+<td class="search-results-table__series">
   {% if entity.series %}
     {% for series in entity.series %}
     <a href="{{ current_url_with_query(series=series) }}" class="series-tag series-tag--{{ series }}">
@@ -46,7 +46,7 @@
   {% endif %}
 </td>
 
-<td class="u-vertically-center">
+<td>
   {% if entity.owner %}
     <a href="{{ url_for('jaasstore.user_details', username=entity.owner) }}">{{ entity.owner }}</a>
   {% else %}

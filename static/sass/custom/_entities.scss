@@ -17,6 +17,14 @@
 }
 
 .entity {
+  &__header {
+    @media (max-width: $breakpoint-medium) {
+      .series-tags {
+        margin-bottom: 1rem;
+      }
+    }
+  }
+
   &__title-wrap {
     align-items: center;
     display: flex;
