@@ -44,10 +44,10 @@
           {% endfor %}
         </ul>
       {% endif %}
-      {% if context.entity.charm_data['Meta']['charm-metadata']['Tags'] %}
+      {% if context.entity.tags %}
         <ul class="p-inline-list">
           <li class="p-inline-list__item"><strong>Tags:</strong></li>
-          {% for tag in context.entity.charm_data['Meta']['charm-metadata']['Tags'] %}
+          {% for tag in context.entity.tags %}
             <li class="p-inline-list__item"><a href="{{ url_for('jaasstore.search', tags=tag) }}">{{ tag }}&nbsp;&rsaquo;</a></li>
           {% endfor %}
         </ul>

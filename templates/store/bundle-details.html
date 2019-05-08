@@ -40,16 +40,16 @@
         </div>
       {% endif %}
 
-      {% if context.entity.bundle_data.Meta['common-info'] %}
+      {% if context.entity.homepage or context.entity.bugs_url %}
         <div class="p-card">
           <h4 class="p-card__title">Contribute</h4>
-          {% if context.entity.bundle_data.Meta['common-info']['homepage'] %}
-            <p><a href="{{ context.entity.bundle_data.Meta['common-info']['homepage'] }}">
+          {% if context.entity.homepage %}
+            <p><a href="{{ context.entity.homepage }}">
               Project homepage
             </a></p>
           {% endif %}
-          {% if context.entity.bundle_data.Meta['common-info']['bugs-url'] %}
-            <p><a href="{{ context.entity.bundle_data.Meta['common-info']['bugs-url'] }}">
+          {% if context.entity.bugs_url %}
+            <p><a href="{{ context.entity.bugs_url }}">
               Submit a bug
             </a></p>
           {% endif %}
@@ -75,7 +75,7 @@
         <aside class="p-accordion" role="tablist" aria-multiselect="true">
           <ul class="p-accordion__list">
             <li class="p-accordion__group">
-              {% for d,v in context.entity.services.items() %}
+              {% for d,v in context.entity.applications.items() %}
                 {% if v.Options %}
                   <button class="p-accordion__tab" id="charm-config-{{ d  }}-tab" role="tab" aria-controls="#charm-config-{{ d  }}" aria-expanded="false">
                 {% else %}

@@ -123,11 +123,11 @@ def details(charm_or_bundle_name, series_or_version=None, version=None):
 
     if entity:
         template = "store/{}-details.html".format(
-            "charm" if entity["is_charm"] else "bundle"
+            "charm" if entity.is_charm else "bundle"
         )
         return render_template(
             template,
-            context={"entity": entity, "expert": get_experts(entity["owner"])},
+            context={"entity": entity, "expert": get_experts(entity.owner)},
         )
     else:
         return abort(404, "Entity not found {}".format(charm_or_bundle_name))

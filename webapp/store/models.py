@@ -46,7 +46,7 @@ def search_entities(
         )
         results = {"community": [], "recommended": []}
         for entity in _parse_list(entities):
-            group = "recommended" if entity["promulgated"] else "community"
+            group = "recommended" if entity.promulgated else "community"
             results[group].append(entity)
         return results
     except EntityNotFound:
@@ -141,7 +141,7 @@ def _parse_list(entities):
 def _group_entities(entities):
     groups = {"bundles": [], "charms": []}
     [
-        groups["charms" if entity["is_charm"] else "bundles"].append(entity)
+        groups["charms" if entity.is_charm else "bundles"].append(entity)
         for entity in entities
     ]
     return groups
@@ -151,269 +151,294 @@ def _parse_charm_or_bundle(entity_data, include_files=False):
     meta = entity_data.get("Meta", None)
     is_charm = meta.get("charm-metadata", False)
     if is_charm:
-        return _parse_charm_data(entity_data, include_files)
+        return Charm(entity_data, include_files)
     else:
-        return _parse_bundle_data(entity_data, include_files)
+        return Bundle(entity_data, include_files)
 
 
-def _parse_shared_attributes(
-    entity_id, ref, entity_data, metadata, include_files=False
-):
-    meta = entity_data["Meta"]
-    description = metadata.get("Description")
-    (
-        _,
-        _,
-        supported,
-        supported_price,
-        supported_description,
-    ) = _extract_from_extrainfo(meta, ref)
-    files = None
-    readme = None
-    if include_files:
-        files = _get_entity_files(ref, meta.get("manifest"))
-        readme = _render_markdown(cs.entity_readme_content(entity_id))
-    return {
-        "archive_url": cs.archive_url(ref),
-        "card_id": ref.path(),
-        "channels": meta.get("published", {}).get("Info"),
+class Entity:
+    """Base class for charms and bundles. Contains the shared attributes and
+        methods.
+        Classes that extend Entity will need to provide the following methods:
+        - _get_metadata
+        - _get_metadata
+        - _get_display_name
+        - _get_tags
+        - _get_series
+    """
+
+    def __init__(self, entity_data, include_files=False):
+        self.id = entity_data["Id"]
+        self._ref = references.Reference.from_string(self.id)
+        self._meta = entity_data.get("Meta", None)
+        self._metadata = self._get_metadata()
+        description = self._metadata.get("Description")
+        (
+            _,
+            supported,
+            supported_price,
+            supported_description,
+        ) = self._extract_from_extrainfo()
+        bugs_url, homepage = self._extract_from_commoninfo()
+        self.files = None
+        self.readme = None
+        if include_files:
+            self.files = self._get_entity_files(self._meta.get("manifest"))
+            self.readme = self._render_markdown(
+                cs.entity_readme_content(self.id)
+            )
+        self.archive_url = cs.archive_url(self._ref)
+        self.bugs_url = bugs_url
+        self.card_id = self._ref.path()
+        self.channels = self._meta.get("published", {}).get("Info")
         # Some entities don't have descriptions, so first check that the
         # description exists before trying to render the Markdown.
-        "description": _render_markdown(description) if description else None,
-        "files": files,
-        "id": entity_id,
-        "latest_revision": _get_latest_revision(
-            meta.get("revision-info", {}).get("Revisions")
-        ),
-        "promulgated": meta.get("promulgated", {}).get("Promulgated"),
-        "readme": readme,
-        "revision_number": ref.revision,
-        "supported": supported,
-        "supported_price": supported_price,
-        "supported_description": (
-            supported_description and _render_markdown(supported_description)
-        ),
-        "url": ref.jujucharms_id(),
-    }
-
-
-def _parse_bundle_data(bundle_data, include_files=False):
-    bundle_id = bundle_data["Id"]
-    ref = references.Reference.from_string(bundle_id)
-    meta = bundle_data["Meta"]
-    bundle_metadata = meta["bundle-metadata"]
-    bundle = _parse_shared_attributes(
-        bundle_id, ref, bundle_data, bundle_metadata, include_files
-    )
-    bundle.update(
-        {
-            "bundle_data": bundle_data,
-            "bundle_visulisation": getBundleVisualization(ref),
-            "display_name": _get_display_name(ref.name),
-            "is_charm": False,
-            "owner": meta.get("owner", {}).get("User"),
-            # The series is an array to match the charm data.
-            "series": [bundle_metadata.get("Series")],
-            "services": _parseBundleServices(bundle_metadata["applications"]),
-            "tags": bundle_metadata.get("Tags"),
-            "units": meta.get("bundle-unit-count", {}).get("Count", ""),
-        }
-    )
-    return bundle
-
-
-def _get_latest_revision(revision_list):
-    latest_revision = None
-    if revision_list:
-        ref = references.Reference.from_string(revision_list[0])
-        latest_revision = {
-            "id": ref.revision,
-            "full_id": revision_list[0],
-            "url": ref.jujucharms_id(),
-        }
-    return latest_revision
-
-
-def _parseBundleServices(services):
-    for k, v in services.items():
-        ref = references.Reference.from_string(v["Charm"])
-        v["Charm"] = ref.path()
-        v["icon"] = cs.charm_icon_url(v["Charm"])
-        v["url"] = ref.jujucharms_id()
-        v["display_name"] = _get_display_name(k)
-
-    return services
-
-
-def _parse_charm_data(charm_data, include_files=False):
-    charm_id = charm_data["Id"]
-    ref = references.Reference.from_string(charm_id)
-    meta = charm_data.get("Meta", None)
-    charm_metadata = meta["charm-metadata"]
-    (bzr_url, revisions, _, _, _) = _extract_from_extrainfo(meta, ref)
-    bugs_url, homepage = _extract_from_commoninfo(meta)
-    charm = _parse_shared_attributes(
-        charm_id, ref, charm_data, charm_metadata, include_files
-    )
-    charm.update(
-        {
-            "bugs_url": bugs_url,
-            "bzr_url": bzr_url,
-            "charm_data": charm_data,
-            "display_name": _get_display_name(charm_metadata["Name"]),
-            "homepage": homepage,
-            "icon": cs.charm_icon_url(charm_id),
-            "options": meta.get("charm-config", {}).get("Options"),
-            "owner": meta.get("owner", {}).get("User"),
-            "provides": charm_metadata.get("Provides"),
-            "requires": charm_metadata.get("Requires"),
-            "resources": _extract_resources(ref, meta.get("resources", {})),
-            "revision_list": meta.get("revision-info", {}).get("Revisions"),
-            "revisions": revisions,
-            "series": meta.get("supported-series", {}).get("SupportedSeries"),
-            # Some charms do not have tags, so fall back to categories if they
-            # exist (mostly on older charms).
-            "is_charm": True,
-            "tags": charm_metadata.get("Tags")
-            or charm_metadata.get("Categories"),
-            "term_ids": _parse_term_ids(meta.get("terms")),
-        }
-    )
-    return charm
-
-
-def _parse_term_ids(term_ids):
-    """Extract the term names and revisions.
-        :param term_ids: A list of term ids.
-        :returns: a collection of term ids, names and revisions.
-    """
-    if term_ids is None:
-        return None
-    terms = []
-    for term in term_ids:
-        parts = term.split("/")
-        terms.append(
-            {
-                "id": term,
-                "name": parts[0],
-                "revision": int(parts[1]) if len(parts) == 2 else None,
-            }
+        self.description = (
+            self._render_markdown(description) if description else None
         )
-    return terms
+        self.display_name = self._get_display_name()
+        self.homepage = homepage
+        self.latest_revision = self._get_latest_revision()
+        self.owner = self._meta.get("owner", {}).get("User")
+        self.promulgated = self._meta.get("promulgated", {}).get("Promulgated")
+        self.revision_number = self._ref.revision
+        self.series = self._get_series()
+        self.supported = supported
+        self.supported_price = supported_price
+        self.supported_description = (
+            supported_description
+            and self._render_markdown(supported_description)
+        )
+        self.tags = self._get_tags()
+        self.url = self._ref.jujucharms_id()
+
+    def _render_markdown(self, content):
+        """Render markdown for the provided content.
+            :content string: Some markdown.
+            :returns: HTML as a string.
+        """
+        html = gfm.markdown(content)
+        try:
+            html = self._convert_http_to_https(html)
+        except Exception:
+            # Leave the readme unparsed.
+            pass
+        return html
+
+    def _convert_http_to_https(self, content):
+        """Convert any non secure inclusion of assets to secure.
+            :param content: the content to parse as a string.
+            :returns: the parsed content with http replaces with https
+        """
+        insensitive_link = re.compile(re.escape('src="http:'), re.IGNORECASE)
+        content = insensitive_link.sub('src="https:', content)
+        insensitive_link = re.compile(re.escape("src='http:"), re.IGNORECASE)
+        content = insensitive_link.sub("src='https:", content)
+        return content
+
+    def _get_entity_files(self, manifest=None):
+        """Get files for an entity.
+            :manifest array: The manifest of the files.
+            :returns: The collection of files.
+        """
+        try:
+            files = cs.files(self._ref, manifest=manifest) or {}
+            files = collections.OrderedDict(sorted(files.items()))
+        except EntityNotFound:
+            files = {}
+        return files
+
+    def _get_latest_revision(self):
+        """Get the latest revision for an entity.
+            :returns: The latest revision details.
+        """
+        revision_list = self._meta.get("revision-info", {}).get("Revisions")
+        latest_revision = None
+        if revision_list:
+            ref = references.Reference.from_string(revision_list[0])
+            latest_revision = {
+                "id": ref.revision,
+                "full_id": revision_list[0],
+                "url": ref.jujucharms_id(),
+            }
+        return latest_revision
+
+    def _extract_from_extrainfo(self):
+        """Get data from extrainfo.
+            :returns: The extracted extrainfo data.
+        """
+        extra_info = self._meta.get("extra-info", {})
+        revisions = extra_info.get("bzr-revisions") or extra_info.get(
+            "vcs-revisions"
+        )
+        supported = bool(extra_info.get("supported", False))
+        supported_price = extra_info.get("price")
+        supported_description = extra_info.get("description")
+        return (revisions, supported, supported_price, supported_description)
+
+    def _parse_display_name(self, name):
+        """Clean the name of the charm for readability.
+            :param name: the charm/bundle name.
+            :returns: a cleaned name for display.
+        """
+        name = name.replace("-", " ")
+        # Hack to rename 'canonical kubernetes'. To be removed when display
+        # name has been implemented.
+        if name == "canonical kubernetes":
+            name = "The Charmed Distribution of Kubernetes"
+        return name
+
+    def _extract_from_commoninfo(self):
+        """Get data from commonifo.
+            :returns: The extracted commoninfo data.
+        """
+        common_info = self._meta.get("common-info", {})
+        bugs_url = common_info.get("bugs-url")
+        homepage = common_info.get("homepage")
+        return bugs_url, homepage
 
 
-def _get_entity_files(ref, manifest=None):
-    try:
-        files = cs.files(ref, manifest=manifest) or {}
-        files = collections.OrderedDict(sorted(files.items()))
-    except EntityNotFound:
-        files = {}
-    return files
-
-
-def getBundleVisualization(ref, fetch=False):
-    """Get the url for the bundle visualization, or the actual svg.
-        :param ref The reference of the bundle to get the visualization for.
-        :param fetch Whether or not to get the actual svg.
-        :returns the URL or the SVG for the bundle visualisation
+class Charm(Entity):
+    """A charm definition.
     """
-    if not fetch:
-        return cs.bundle_visualization_url(ref)
-    try:
-        return cs.bundle_visualization(ref)
-    except EntityNotFound:
-        return None
 
+    is_charm = True
 
-def _extract_resources(ref, resources):
-    """Extract data from resources metadata.
-        :param ref: The reference of the entity.
-        :param resources: the resources metadata associated with the entity.
-        :returns: a dictionary of resource name and an array containing
-                the file extension, the file link of the resource.
-    """
-    result = {}
-    for resource in resources:
-        resource_url = ""
-        if resource["Revision"] >= 0:
-            resource_url = cs.resource_url(
-                ref, resource["Name"], resource["Revision"]
+    def __init__(self, entity_data, include_files=False):
+        super().__init__(entity_data, include_files)
+        (revisions, _, _, _) = self._extract_from_extrainfo()
+        self.icon = cs.charm_icon_url(self.id)
+        self.options = self._meta.get("charm-config", {}).get("Options")
+        self.provides = self._metadata.get("Provides")
+        self.requires = self._metadata.get("Requires")
+        self.resources = self._extract_resources()
+        self.revision_list = self._meta.get("revision-info", {}).get(
+            "Revisions"
+        )
+        self.revisions = revisions
+        self.series = self._meta.get("supported-series", {}).get(
+            "SupportedSeries"
+        )
+        self.term_ids = self._parse_term_ids()
+
+    def _get_metadata(self):
+        """Get the metadata info.
+            :returns: The extracted metadata object.
+        """
+        return self._meta["charm-metadata"]
+
+    def _get_display_name(self):
+        """Get the display name for the charm.
+            :returns: The parsed display name.
+        """
+        return self._parse_display_name(self._metadata["Name"])
+
+    def _get_tags(self):
+        """Get the list of tags.
+            :returns: The array of tags.
+        """
+        # Some charms do not have tags, so fall back to categories if they
+        # exist (mostly on older charms).
+        return self._metadata.get("Tags") or self._metadata.get("Categories")
+
+    def _get_series(self):
+        """Get the list of series.
+            :returns: The array of series.
+        """
+        return self._meta.get("supported-series", {}).get("SupportedSeries")
+
+    def _parse_term_ids(self):
+        """Extract the term names and revisions.
+            :returns: a collection of term ids, names and revisions.
+        """
+        term_ids = self._meta.get("terms")
+        if term_ids is None:
+            return None
+        terms = []
+        for term in term_ids:
+            parts = term.split("/")
+            terms.append(
+                {
+                    "id": term,
+                    "name": parts[0],
+                    "revision": int(parts[1]) if len(parts) == 2 else None,
+                }
             )
-        result[resource["Name"]] = [
-            os.path.splitext(resource["Path"])[1],
-            resource_url,
-        ]
+        return terms
 
-    return result
+    def _extract_resources(self):
+        """Extract data from resources metadata.
+            :returns: a dictionary of resource name and an array containing
+                the file extension, the file link of the resource.
+        """
+        result = {}
+        for resource in self._meta.get("resources", {}):
+            resource_url = ""
+            if resource["Revision"] >= 0:
+                resource_url = cs.resource_url(
+                    self._ref, resource["Name"], resource["Revision"]
+                )
+            result[resource["Name"]] = [
+                os.path.splitext(resource["Path"])[1],
+                resource_url,
+            ]
+
+        return result
 
 
-def _get_display_name(name):
-    """Clean the name of the charm for readability.
-        :param name the charm/bundle name.
-        :return a cleaned name for display.
+class Bundle(Entity):
+    """A bundle definition.
     """
-    name = name.replace("-", " ")
-    # Hack to rename 'canonical kubernetes'. To be removed when display
-    # name has been implemented.
-    if name == "canonical kubernetes":
-        name = "The Charmed Distribution of Kubernetes"
-    return name
 
+    is_charm = False
 
-def _get_bug_url(name, bugs_url):
-    """Create a link to the bug tracker on Launchpad.
-        :param name: the charm name.
-        :returns: a URL for the bug tracker.
-    """
-    if bugs_url:
-        return bugs_url
-    return "https://bugs.launchpad.net/charms/+source/{}".format(name)
+    def __init__(self, entity_data, include_files=False):
+        super().__init__(entity_data, include_files)
+        self.bundle_visulisation = self._get_bundle_visualization()
+        self.applications = self._parse_bundle_applications(
+            self._metadata["applications"]
+        )
+        self.units = self._meta.get("bundle-unit-count", {}).get("Count", "")
 
+    def _get_metadata(self):
+        """Get the metadata info.
+            :returns: The extracted metadata object.
+        """
+        return self._meta["bundle-metadata"]
 
-def _render_markdown(content):
-    html = gfm.markdown(content)
+    def _get_display_name(self):
+        """Get the display name for the bundle.
+            :returns: The parsed display name.
+        """
+        return self._parse_display_name(self._ref.name)
 
-    try:
-        html = _convert_http_to_https(html)
-    except Exception:
-        # Leave the readme unparsed.
-        pass
+    def _get_tags(self):
+        """Get the list of tags.
+            :returns: The array of tags.
+        """
+        return self._metadata.get("Tags")
 
-    return html
+    def _get_series(self):
+        """Get the list of series.
+            :returns: The array of series.
+        """
+        # The series is an array to match the charm data.
+        return [self._metadata.get("Series")]
 
+    def _get_bundle_visualization(self):
+        """Get the url for the bundle visualization.
+            :returns: the bundle visualisation URL.
+        """
+        return cs.bundle_visualization_url(self._ref)
 
-def _convert_http_to_https(content):
-    """Convert any non secure inclusion of assets to secure.
-        :param content: the content to parse as a string.
-        :returns: the parsed content with http replaces with https
-    """
-    insensitive_link = re.compile(re.escape('src="http:'), re.IGNORECASE)
-    content = insensitive_link.sub('src="https:', content)
-    insensitive_link = re.compile(re.escape("src='http:"), re.IGNORECASE)
-    content = insensitive_link.sub("src='https:", content)
-    return content
-
-
-def _extract_from_extrainfo(charm_data, ref):
-    extra_info = charm_data.get("extra-info", {})
-    revisions = extra_info.get("bzr-revisions") or extra_info.get(
-        "vcs-revisions"
-    )
-    bzr_url = extra_info.get("bzr-url")
-    supported = bool(extra_info.get("supported", False))
-    supported_price = extra_info.get("price")
-    supported_description = extra_info.get("description")
-    return (
-        bzr_url,
-        revisions,
-        supported,
-        supported_price,
-        supported_description,
-    )
-
-
-def _extract_from_commoninfo(bundle_data):
-    common_info = bundle_data.get("common-info", {})
-    bugs_url = common_info.get("bugs-url")
-    homepage = common_info.get("homepage")
-    return bugs_url, homepage
+    def _parse_bundle_applications(self, applications):
+        """Get the list of applications for a bundle.
+            :returns: The array of applications.
+        """
+        for name, app in applications.items():
+            ref = references.Reference.from_string(app["Charm"])
+            app["Charm"] = ref.path()
+            app["icon"] = cs.charm_icon_url(app["Charm"])
+            app["url"] = ref.jujucharms_id()
+            app["display_name"] = self._parse_display_name(name)
+        return applications

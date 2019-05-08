@@ -11,8 +11,8 @@
 
 <td class="u-hide--small u-vertically-center">
   <ul class="p-inline-list u-no-margin--bottom">
-    {% if entity.services %}
-      {% for name, entity in entity.services.items() %}
+    {% if entity.applications %}
+      {% for name, entity in entity.applications.items() %}
         {{ icon(entity) }}
       {% endfor %}
     {% else %}
