@@ -20,8 +20,16 @@ $breakpoint-navigation-threshold: $breakpoint-large;
 $cool-grey: $color-brand;
 $mid-grey: $color-mid-light;
 
-// Import cookie-policy
-@import '@canonical/cookie-policy/src/sass/cookie-policy';
+// Import cookie-policy. Just import the bits we need as the proper file
+// includes override for other generic styles.
+@import '@canonical/cookie-policy/src/sass/patterns-notification';
+
+.cookie-policy {
+  @include vf-u-off-screen;
+  @include vf-b-placeholders;
+  @include vf-p-notification;
+  @include cookie-p-notification;
+}
 
 // Custom snowflake code for bespoke components
 @import 'custom/row-cli';
