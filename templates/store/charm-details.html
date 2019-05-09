@@ -108,7 +108,7 @@
           {% include "shared/contact-card/_entity-page.html" %}
         </div>
       {% endif %}
-      {% if context.entity.code_url or context.entity.bug_url or context.entity.homepage %}
+      {% if context.entity.code_url or context.entity.bugs_url or context.entity.homepage %}
         <div class="p-card">
           <h3>Contribute</h3>
           <ul class="p-list">
@@ -119,9 +119,9 @@
                 </a>
               </li>
             {% endif %}
-            {% if context.entity.bug_url %}
+            {% if context.entity.bugs_url %}
               <li class="p-list__item">
-                <a href="{{ context.entity.bug_url }}" class="p-link--external">
+                <a href="{{ context.entity.bugs_url }}" class="p-link--external">
                   Submit a bug
                 </a>
               </li>
