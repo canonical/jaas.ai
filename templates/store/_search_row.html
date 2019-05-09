@@ -1,6 +1,6 @@
 {% macro icon(entity) -%}
   <li class="p-inline-list__item">
-    <a href="/{{ entity.url }}">
+    <a href="/{{ entity.url }}" class="u-no-link-underline">
       <span class="p-tooltip p-tooltip--top-center" aria-describedby="tp-cntr">
         <img src="{{ entity.icon }}" class="entity-icon" alt="{{ entity.display_name }} icon" width="24" />
         <span class="p-tooltip__message" role="tooltip">{{ entity.display_name }}</span>

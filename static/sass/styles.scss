@@ -334,3 +334,10 @@ h2 {
     }
   }
 }
+
+// Util to disable link underline on hover
+.u-no-link-underline {
+  &:hover {
+    text-decoration: none;
+  }
+}
