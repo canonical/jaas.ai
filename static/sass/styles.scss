@@ -8,10 +8,6 @@ $color-navigation-active-bar: #e95420;
 $color-kubernetes: #2e69ea;
 $grid-max-width: 72rem;
 
-// Import cookie-policy. This needs to be before the vanilla imports otherwise
-// this will override other generic styles.
-@import '@canonical/cookie-policy/src/sass/cookie-policy';
-
 // Set the mobile nav breakpoint to handle the large number of nav items.
 @import 'vanilla-framework/scss/settings_breakpoints';
 $breakpoint-navigation-threshold: $breakpoint-large;
@@ -23,6 +19,16 @@ $breakpoint-navigation-threshold: $breakpoint-large;
 
 $cool-grey: $color-brand;
 $mid-grey: $color-mid-light;
+
+// Import cookie-policy. Just import the bits we need as the proper file
+// includes override for other generic styles.
+@import '@canonical/cookie-policy/src/sass/patterns-notification';
+.cookie-policy {
+  @include vf-u-off-screen;
+  @include vf-b-placeholders;
+  @include vf-p-notification;
+  @include cookie-p-notification;
+}
 
 // Custom snowflake code for bespoke components
 @import 'custom/row-cli';
