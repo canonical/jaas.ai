@@ -9,11 +9,11 @@
       <a href="#navigation" class="p-navigation__toggle--open" title="menu">Menu</a>
       <a href="#navigation-closed" class="p-navigation__toggle--close" title="close menu">Close menu</a>
     </div>
-    <nav class="p-navigation__nav" role="menubar">
+    <nav class="p-navigation__nav">
       <form class="p-search-box u-no-margin--bottom" data-js="search-form" action="/q" method="GET">
-        <input type="search" class="p-search-box__input" name="q" data-js="form-text" placeholder="Search the store"
+        <input aria-label="Search the site" id="navigation-search" type="search" class="p-search-box__input" name="q" data-js="form-text" placeholder="Search the store"
           value="{% if context and context.query %}{{ context.query }}{% endif %}" required>
-        <button type="submit" class="p-search-box__button" alt="search"><i class="p-icon--search"></i></button>
+        <button type="submit" class="p-search-box__button" alt="search"><i class="p-icon--search">Search</i></button>
       </form>
       <span class="u-off-screen">
         <a href="#main-content">Jump to main content</a>
