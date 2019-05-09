@@ -1,3 +1,4 @@
+import copy
 import unittest
 from tests.store.testdata import bundle_data, charm_data, search_data
 from unittest.mock import patch
@@ -98,8 +99,9 @@ class TestStoreModels(unittest.TestCase):
         self.assertEqual(charm.url, "apache2/26")
 
     def test_charm_terms(self):
-        charm_data["Meta"]["terms"] = ["special-term/99", "another-term"]
-        charm = models.Charm(charm_data)
+        data = copy.deepcopy(charm_data)
+        data["Meta"]["terms"] = ["special-term/99", "another-term"]
+        charm = models.Charm(data)
         self.assertEqual(
             charm.term_ids,
             [
@@ -117,12 +119,11 @@ class TestStoreModels(unittest.TestCase):
         )
 
     def test_charm_supported(self):
-        charm_data["Meta"]["extra-info"]["supported"] = "true"
-        charm_data["Meta"]["extra-info"]["price"] = "99"
-        charm_data["Meta"]["extra-info"][
-            "description"
-        ] = "Great ol' charm\nthis one"
-        charm = models.Charm(charm_data)
+        data = copy.deepcopy(charm_data)
+        data["Meta"]["extra-info"]["supported"] = "true"
+        data["Meta"]["extra-info"]["price"] = "99"
+        data["Meta"]["extra-info"]["description"] = "Great ol' charm\nthis one"
+        charm = models.Charm(data)
         self.assertTrue(charm.supported)
         self.assertEqual(charm.supported_price, "99")
         self.assertEqual(
@@ -188,12 +189,13 @@ class TestStoreModels(unittest.TestCase):
         self.assertEqual(bundle.url, "canonical-kubernetes/bundle/466")
 
     def test_bundle_supported(self):
-        bundle_data["Meta"]["extra-info"]["supported"] = "true"
-        bundle_data["Meta"]["extra-info"]["price"] = "99"
-        bundle_data["Meta"]["extra-info"][
+        data = copy.deepcopy(bundle_data)
+        data["Meta"]["extra-info"]["supported"] = "true"
+        data["Meta"]["extra-info"]["price"] = "99"
+        data["Meta"]["extra-info"][
             "description"
         ] = "Great ol' bundle\nthis one"
-        bundle = models.Bundle(bundle_data)
+        bundle = models.Bundle(data)
         self.assertTrue(bundle.supported)
         self.assertEqual(bundle.supported_price, "99")
         self.assertEqual(
@@ -203,14 +205,31 @@ class TestStoreModels(unittest.TestCase):
 
     def test_bundle_icon(self):
         bundle = models.Bundle(bundle_data)
-        self.assertEqual(bundle.icon, 'https://api.jujucharms.com/v5/~containers/kubernetes-master-636/icon.svg')
+        self.assertEqual(
+            bundle.icon,
+            (
+                "https://api.jujucharms.com/v5/~containers/"
+                "kubernetes-master-636/icon.svg"
+            ),
+        )
 
     def test_bundle_icon_no_match(self):
-        bundle_data['Id'] = 'cs:nothing-here-123'
-        bundle = models.Bundle(bundle_data)
-        self.assertEqual(bundle.icon, 'https://api.jujucharms.com/v5/~containers/easyrsa-231/icon.svg')
+        data = copy.deepcopy(bundle_data)
+        data["Id"] = "cs:nothing-here-123"
+        bundle = models.Bundle(data)
+        self.assertEqual(
+            bundle.icon,
+            "https://api.jujucharms.com/v5/~containers/easyrsa-231/icon.svg",
+        )
 
     def test_bundle_icon_exact_match(self):
-        bundle_data['Id'] = '~containers/kubeapi-load-balancer-613'
-        bundle = models.Bundle(bundle_data)
-        self.assertEqual(bundle.icon, 'https://api.jujucharms.com/v5/~containers/kubeapi-load-balancer-613/icon.svg')
+        data = copy.deepcopy(bundle_data)
+        data["Id"] = "~containers/kubeapi-load-balancer-613"
+        bundle = models.Bundle(data)
+        self.assertEqual(
+            bundle.icon,
+            (
+                "https://api.jujucharms.com/v5/~containers/"
+                "kubeapi-load-balancer-613/icon.svg"
+            ),
+        )
