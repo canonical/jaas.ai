@@ -18,6 +18,10 @@
     max-width: 64.875rem;
   }
 
+  &__featured-image {
+    border-radius: 50%;
+  }
+
   @at-root {
     .p-search-panel__close {
       position: absolute;
