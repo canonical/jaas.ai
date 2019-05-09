@@ -23,6 +23,7 @@ $mid-grey: $color-mid-light;
 // Import cookie-policy. Just import the bits we need as the proper file
 // includes override for other generic styles.
 @import '@canonical/cookie-policy/src/sass/patterns-notification';
+
 .cookie-policy {
   @include vf-u-off-screen;
   @include vf-b-placeholders;
