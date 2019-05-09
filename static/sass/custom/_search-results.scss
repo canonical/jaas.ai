@@ -1,6 +1,8 @@
 @import 'vanilla-framework/scss/settings_spacing';
 
 .search-results {
+  $icon-size: 24px;
+
   &__entity-name {
     line-height: 1.5rem;
     font-size: 1rem;
@@ -27,6 +29,29 @@
     &__series {
       padding-top: 0.75rem;
     }
+  }
+
+  &__bundle-icon {
+    $padding: 2px;
+    border-radius: (($padding * 2) + $icon-size) / 2;
+    border: 1px solid $color-mid-light;
+    display: inline-block;
+    padding: $padding 5px + $padding $padding $padding;
+
+    @at-root a#{&} {
+      color: $color-mid-dark;
+    }
+
+    &:hover {
+      text-decoration: none;
+    }
+  }
+
+  &__icon {
+    border-radius: $icon-size / 2;
+    max-height: $icon-size;
+    max-width: $icon-size;
+    vertical-align: bottom;
   }
 }
 
@@ -151,10 +176,6 @@
       margin-top: -0.5rem;
     }
   }
-}
-
-.entity-icon {
-  border-radius: 50%;
 }
 
 @media (min-width: $breakpoint-small) {

@@ -399,6 +399,7 @@ class Bundle(Entity):
             self._metadata["applications"]
         )
         self.units = self._meta.get("bundle-unit-count", {}).get("Count", "")
+        self.icon = self._get_icon()
 
     def _get_metadata(self):
         """Get the metadata info.
@@ -442,3 +443,35 @@ class Bundle(Entity):
             app["url"] = ref.jujucharms_id()
             app["display_name"] = self._parse_display_name(name)
         return applications
+
+    def _get_icon(self):
+        """Get a sensible icon for this bundle.
+            :returns: The URL of an icon.
+        """
+        name_parts = self._ref.name.split("-")
+        name_parts.insert(0, self._ref.name)
+        match = None
+        # Look for an exact match.
+        match = self._find_name_match(name_parts)
+        # If there is no match then check within app names
+        if not match:
+            match = self._find_name_match(name_parts, partial_match=True)
+        # If there is still no match then return the first icon.
+        if not match:
+            match = list(self.applications.keys())[0]
+        return self.applications[match]["icon"]
+
+    def _find_name_match(self, names, partial_match=False):
+        """Search a list of names and application names for matches.
+            :names array: A list of possible names to match.
+            :partial_match bool: Whether to check within app names.
+            :returns: An application name or None.
+        """
+        for name in names:
+            for app_name, app in self.applications.items():
+                # Check if there is an exact match.
+                if app_name == name:
+                    return name
+                # Check if there is match within the parts of the app name.
+                if partial_match and name in app_name.split("-"):
+                    return app_name

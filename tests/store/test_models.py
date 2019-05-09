@@ -200,3 +200,17 @@ class TestStoreModels(unittest.TestCase):
             bundle.supported_description,
             "<p>Great ol' bundle<br />\nthis one</p>",
         )
+
+    def test_bundle_icon(self):
+        bundle = models.Bundle(bundle_data)
+        self.assertEqual(bundle.icon, 'https://api.jujucharms.com/v5/~containers/kubernetes-master-636/icon.svg')
+
+    def test_bundle_icon_no_match(self):
+        bundle_data['Id'] = 'cs:nothing-here-123'
+        bundle = models.Bundle(bundle_data)
+        self.assertEqual(bundle.icon, 'https://api.jujucharms.com/v5/~containers/easyrsa-231/icon.svg')
+
+    def test_bundle_icon_exact_match(self):
+        bundle_data['Id'] = '~containers/kubeapi-load-balancer-613'
+        bundle = models.Bundle(bundle_data)
+        self.assertEqual(bundle.icon, 'https://api.jujucharms.com/v5/~containers/kubeapi-load-balancer-613/icon.svg')

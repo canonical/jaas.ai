@@ -1,24 +1,10 @@
-{% macro icon(entity) -%}
-  <li class="p-inline-list__item">
-    <a href="/{{ entity.url }}" class="u-no-link-underline">
-      <span class="p-tooltip p-tooltip--top-center" aria-describedby="tp-cntr">
-        <img src="{{ entity.icon }}" class="entity-icon" alt="{{ entity.display_name }} icon" width="24" />
-        <span class="p-tooltip__message" role="tooltip">{{ entity.display_name }}</span>
-      </span>
-    </a>
-  </li>
-{%- endmacro %}
-
-<td class="u-hide--small search-results-table__icons">
-  <ul class="p-inline-list u-no-margin--bottom">
+<td class="u-hide--small">
+  <a href="/{{ entity.url }}" class="u-no-link-underline {% if entity.applications %}search-results__bundle-icon{% endif %}">
+    <img src="{{ entity.icon }}" class="search-results__icon" alt="" width="24" />
     {% if entity.applications %}
-      {% for name, entity in entity.applications.items() %}
-        {{ icon(entity) }}
-      {% endfor %}
-    {% else %}
-      {{ icon(entity) }}
+      +{{ entity.applications|count - 1 }}
     {% endif %}
-  </ul>
+  </a>
 </td>
 
 <td>
