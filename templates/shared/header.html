@@ -11,9 +11,10 @@
     </div>
     <nav class="p-navigation__nav">
       <form class="p-search-box u-no-margin--bottom" data-js="search-form" action="/q" method="GET">
-        <input type="search" class="p-search-box__input" name="q" data-js="form-text" placeholder="Search the store"
+        <label class="u-off-screen" for="navigation-search">Search term</label>
+        <input id="navigation-search" type="search" class="p-search-box__input" name="q" data-js="form-text" placeholder="Search the store"
           value="{% if context and context.query %}{{ context.query }}{% endif %}" required>
-        <button type="submit" class="p-search-box__button" alt="search"><i class="p-icon--search"></i></button>
+        <button type="submit" class="p-search-box__button" alt="search"><i class="p-icon--search">Search</i></button>
       </form>
       <span class="u-off-screen">
         <a href="#main-content">Jump to main content</a>
