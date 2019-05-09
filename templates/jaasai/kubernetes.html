@@ -68,7 +68,7 @@
       <div class="col-4 p-divider__block">
         <div class="p-heading-icon">
           <div class="p-heading-icon__header">
-            <img class="p-heading-icon__img" src="{{ external_urls.charmstore }}~containers/kubernetes-master/icon.svg">
+            <img class="p-heading-icon__img" src="{{ external_urls.charmstore }}~containers/kubernetes-master/icon.svg" alt="Kubernetes icon">
             <h3 class="p-heading-icon__title">Latest upstream Kubernetes</h3>
           </div>
         </div>
@@ -83,7 +83,7 @@
       <div class="col-4 p-divider__block">
         <div class="p-heading-icon">
           <div class="p-heading-icon__header">
-            <img class="p-heading-icon__img" src="{{ external_urls.charmstore }}~containers/etcd/icon.svg">
+            <img class="p-heading-icon__img" src="{{ external_urls.charmstore }}~containers/etcd/icon.svg" alt="etcd icon">
             <h3 class="p-heading-icon__title">etcd</h3>
           </div>
         </div>
@@ -97,7 +97,7 @@
       <div class="col-4 p-divider__block">
         <div class="p-heading-icon">
           <div class="p-heading-icon__header">
-            <img class="p-heading-icon__img" src="{{ external_urls.charmstore }}~containers/easyrsa/icon.svg">
+            <img class="p-heading-icon__img" src="{{ external_urls.charmstore }}~containers/easyrsa/icon.svg" alt="EasyRSA icon">
             <h3 class="p-heading-icon__title">EasyRSA</h3>
           </div>
         </div>
@@ -140,7 +140,7 @@
         <div class="p-list-step__content">
           <div class="col-6">
             <div class="pictogram-bg">
-              <object type="image/svg+xml" data="{{ external_urls.charmstore }}bundle/kubernetes-core-24/diagram.svg" height="300" class="cluster-card__image"></object>
+              <object type="image/svg+xml" data="{{ external_urls.charmstore }}bundle/kubernetes-core-24/diagram.svg" height="300" class="cluster-card__image" title="Kubernetes cluster overview"></object>
             </div>
             <h3><a href="{{ url_for('jaasstore.details', charm_or_bundle_name='kubernetes-core') }}">Staging cluster&nbsp;&rsaquo;</a></h3>
             <div class="row">
@@ -154,7 +154,7 @@
           </div>
           <div class="col-6">
             <div class="pictogram-bg">
-              <object type="image/svg+xml" data="{{ external_urls.charmstore }}bundle/canonical-kubernetes-30/diagram.svg" height="300" class="cluster-card__image"></object>
+              <object type="image/svg+xml" data="{{ external_urls.charmstore }}bundle/canonical-kubernetes-30/diagram.svg" height="300" class="cluster-card__image" title="Production cluster overview"></object>
             </div>
             <h3><a href="{{ url_for('jaasstore.details', charm_or_bundle_name='canonical-kubernetes') }}">Production cluster&nbsp;&rsaquo;</a></h3>
             <div class="row">
@@ -209,7 +209,7 @@
               <div class="col-4 p-card">
                 <div class="p-heading-icon">
                   <div class="p-heading-icon__header">
-                    <img class="p-heading-icon__img" src="https://assets.ubuntu.com/v1/804a5808-prometheus-circle.svg">
+                    <img class="p-heading-icon__img" src="https://assets.ubuntu.com/v1/804a5808-prometheus-circle.svg" alt="Prometheus icon">
                     <h3 class="p-heading-icon__title">
                       <a href="{{ url_for('jaasstore.user_entity', username='prometheus-charmers', charm_or_bundle_name='prometheus', series_or_version=14) }}">
                         Prometheus&nbsp;&rsaquo;
@@ -222,7 +222,7 @@
               <div class="col-4 p-card">
                 <div class="p-heading-icon">
                   <div class="p-heading-icon__header">
-                    <img class="p-heading-icon__img" src="{{ external_urls.charmstore }}trusty/elasticsearch/icon.svg">
+                    <img class="p-heading-icon__img" src="{{ external_urls.charmstore }}trusty/elasticsearch/icon.svg" alt="ElasticSearch icon">
                     <h3 class="p-heading-icon__title">
                       <a href="{{ url_for('jaasstore.details', charm_or_bundle_name='elasticsearch', series_or_version='trusty', version=19) }}">
                         ElasticSearch&nbsp;&rsaquo;
@@ -235,7 +235,7 @@
               <div class="col-4 p-card">
                 <div class="p-heading-icon">
                   <div class="p-heading-icon__header">
-                    <img class="p-heading-icon__img" src="https://assets.ubuntu.com/v1/636b94fd-ceph.svg">
+                    <img class="p-heading-icon__img" src="https://assets.ubuntu.com/v1/636b94fd-ceph.svg" alt="Ceph icon">
                     <h3 class="p-heading-icon__title">
                       <a href="{{ url_for('jaasstore.details', charm_or_bundle_name='ceph', series_or_version=271) }}">
                         Ceph&nbsp;&rsaquo;
@@ -335,7 +335,7 @@
 <div class="p-strip is-bordered">
     <div class="row">
       <div class="col-2">
-        <img class="contact__image" src="https://assets.ubuntu.com/v1/6e61dfbc-picto-quote-k8.svg" />
+        <img class="contact__image" src="https://assets.ubuntu.com/v1/6e61dfbc-picto-quote-k8.svg" alt="" />
       </div>
       <div class="col-10">
         <h2>Get in touch</h2>
