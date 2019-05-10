@@ -203,33 +203,69 @@ class TestStoreModels(unittest.TestCase):
             "<p>Great ol' bundle<br />\nthis one</p>",
         )
 
-    def test_bundle_icon(self):
+    def test_bundle_icons(self):
         bundle = models.Bundle(bundle_data)
         self.assertEqual(
-            bundle.icon,
-            (
-                "https://api.jujucharms.com/v5/~containers/"
-                "kubernetes-master-636/icon.svg"
-            ),
+            bundle.icons,
+            [
+                (
+                    "https://api.jujucharms.com/v5/~containers/"
+                    "kubernetes-master-636/icon.svg"
+                ),
+                (
+                    "https://api.jujucharms.com/v5/~containers/"
+                    "kubernetes-worker-502/icon.svg"
+                ),
+            ],
         )
 
-    def test_bundle_icon_no_match(self):
+    def test_bundle_icons_no_match(self):
         data = copy.deepcopy(bundle_data)
         data["Id"] = "cs:nothing-here-123"
         bundle = models.Bundle(data)
         self.assertEqual(
-            bundle.icon,
-            "https://api.jujucharms.com/v5/~containers/easyrsa-231/icon.svg",
+            bundle.icons,
+            [
+                (
+                    "https://api.jujucharms.com/v5/"
+                    "~containers/easyrsa-231/icon.svg"
+                ),
+                "https://api.jujucharms.com/v5/~containers/etcd-411/icon.svg",
+            ],
         )
 
-    def test_bundle_icon_exact_match(self):
+    def test_bundle_icons_exact_match(self):
         data = copy.deepcopy(bundle_data)
         data["Id"] = "~containers/kubeapi-load-balancer-613"
         bundle = models.Bundle(data)
         self.assertEqual(
-            bundle.icon,
-            (
-                "https://api.jujucharms.com/v5/~containers/"
-                "kubeapi-load-balancer-613/icon.svg"
-            ),
+            bundle.icons,
+            [
+                (
+                    "https://api.jujucharms.com/v5/~containers/"
+                    "kubeapi-load-balancer-613/icon.svg"
+                ),
+                (
+                    "https://api.jujucharms.com/v5/~containers/"
+                    "easyrsa-231/icon.svg"
+                ),
+            ],
+        )
+
+    def test_bundle_icons_only_one(self):
+        data = copy.deepcopy(bundle_data)
+        data["Meta"]["bundle-metadata"]["applications"] = {
+            "kubernetes-master": {
+                "Charm": "cs:~containers/kubernetes-master-636"
+            }
+        }
+        bundle = models.Bundle(data)
+        self.assertEqual(
+            bundle.icons,
+            [
+                (
+                    "https://api.jujucharms.com/v5/~containers/"
+                    "kubernetes-master-636/icon.svg"
+                )
+            ],
         )

@@ -1,8 +1,16 @@
-<td class="u-hide--small">
+<td class="search-results-table__icons u-hide--small">
   <a href="/{{ entity.url }}" class="u-no-link-underline {% if entity.applications %}search-results__bundle-icon{% endif %}">
-    <img src="{{ entity.icon }}" class="search-results__icon" alt="" width="24" />
-    {% if entity.applications %}
-      +{{ entity.applications|count - 1 }}
+    {% if entity.icons %}
+      {% for icon in entity.icons %}
+        <img src="{{ icon }}" class="search-results__icon" alt="" />
+      {% endfor %}
+      {% set extra_count = entity.applications|count - 2 %}
+      {% if extra_count < 0 %}
+        {% set extra_count = 0 %}
+      {% endif %}
+      +{{ extra_count }}
+    {% else %}
+      <img src="{{ entity.icon }}" class="search-results__icon" alt="" />
     {% endif %}
   </a>
 </td>

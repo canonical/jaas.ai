@@ -399,7 +399,7 @@ class Bundle(Entity):
             self._metadata["applications"]
         )
         self.units = self._meta.get("bundle-unit-count", {}).get("Count", "")
-        self.icon = self._get_icon()
+        self.icons = self._get_icons()
 
     def _get_metadata(self):
         """Get the metadata info.
@@ -444,31 +444,59 @@ class Bundle(Entity):
             app["display_name"] = self._parse_display_name(name)
         return applications
 
-    def _get_icon(self):
-        """Get a sensible icon for this bundle.
-            :returns: The URL of an icon.
+    def _get_icons(self):
+        """Get two sensible icons for this bundle.
+            :returns: The icon URLS.
         """
         name_parts = self._ref.name.split("-")
         name_parts.insert(0, self._ref.name)
+        primary_charm, primary_icon = self._get_icon(name_parts)
+        icons = [primary_icon]
+        if len(self.applications.keys()) > 1:
+            secondary_charm, secondary_icon = self._get_icon(
+                name_parts, primary_charm
+            )
+            icons.append(secondary_icon)
+        return icons
+
+    def _get_icon(self, names, previous_match=None):
+        """Get a sensible icon for this bundle.
+            :names array: A list of possible names to match.
+            :previous_match string: A previous name match to ignore.
+            :returns: The charm name and icon URL.
+        """
         match = None
         # Look for an exact match.
-        match = self._find_name_match(name_parts)
+        match = self._find_name_match(names, previous_match)
         # If there is no match then check within app names
         if not match:
-            match = self._find_name_match(name_parts, partial_match=True)
-        # If there is still no match then return the first icon.
-        if not match:
-            match = list(self.applications.keys())[0]
-        return self.applications[match]["icon"]
+            match = self._find_name_match(
+                names, previous_match, partial_match=True
+            )
+        # If there is still no match then return the first/second icon.
+        if not match and (
+            previous_match is None or len(self.applications) > 1
+        ):
+            position = 0
+            if list(self.applications.keys())[0] == previous_match:
+                position = 1
+            match = list(self.applications.keys())[position]
+        return match, self.applications[match]["icon"]
 
-    def _find_name_match(self, names, partial_match=False):
+    def _find_name_match(
+        self, names, previous_match=None, partial_match=False
+    ):
         """Search a list of names and application names for matches.
             :names array: A list of possible names to match.
+            :previous_match string: A previous name match to ignore.
             :partial_match bool: Whether to check within app names.
             :returns: An application name or None.
         """
         for name in names:
             for app_name, app in self.applications.items():
+                if app_name == previous_match:
+                    # If this charm's icon has already be used then skip it.
+                    continue
                 # Check if there is an exact match.
                 if app_name == name:
                     return name

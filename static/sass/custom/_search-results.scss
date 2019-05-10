@@ -1,7 +1,7 @@
 @import 'vanilla-framework/scss/settings_spacing';
 
 .search-results {
-  $icon-size: 24px;
+  $icon-size: 1.5rem;
 
   &__entity-name {
     line-height: 1.5rem;
@@ -21,7 +21,8 @@
       flex-wrap: wrap;
 
       &:first-child {
-        flex: 0.5;
+        flex: 0.25;
+        padding-right: 0;
       }
     }
 
@@ -32,11 +33,14 @@
   }
 
   &__bundle-icon {
-    $padding: 2px;
+    $padding: 0.12rem;
     border-radius: (($padding * 2) + $icon-size) / 2;
-    border: 1px solid $color-mid-light;
+    border: 0.06rem solid $color-mid-light;
     display: inline-block;
-    padding: $padding 5px + $padding $padding $padding;
+    font-size: 0.875rem;
+    padding: $padding 0.3rem + $padding $padding $padding;
+    position: relative;
+    top: -0.12rem;
 
     @at-root a#{&} {
       color: $color-mid-dark;
@@ -45,12 +49,25 @@
     &:hover {
       text-decoration: none;
     }
+
+    .search-results__icon {
+      &:first-child {
+        // Set a background to handle overlapping transparent icons.
+        background-color: #fff;
+        box-shadow: 0 0 0 0.04rem #fff;
+        position: relative;
+      }
+
+      &:nth-child(2) {
+        margin-left: -1.2rem;
+      }
+    }
   }
 
   &__icon {
     border-radius: $icon-size / 2;
-    max-height: $icon-size;
-    max-width: $icon-size;
+    height: $icon-size;
+    width: $icon-size;
     vertical-align: bottom;
   }
 }
