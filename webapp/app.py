@@ -1,5 +1,4 @@
 import flask
-import prometheus_flask_exporter
 import talisker.flask
 from werkzeug.debug import DebuggedApplication
 from werkzeug.middleware.proxy_fix import ProxyFix
@@ -28,13 +27,6 @@ def create_app(testing=False):
 
     if not testing:
         talisker.flask.register(app)
-
-        prometheus_flask_exporter.PrometheusMetrics(
-            app,
-            group_by_endpoint=True,
-            buckets=[0.25, 0.5, 0.75, 1, 2],
-            path=None,
-        )
 
         init_extensions(app)
 
