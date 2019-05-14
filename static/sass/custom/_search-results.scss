@@ -54,8 +54,8 @@
     .search-results__icon {
       &:first-child {
         // Set a background to handle overlapping transparent icons.
-        background-color: #fff;
-        box-shadow: 0 0 0 0.04rem #fff;
+        background-color: $color-x-light;
+        box-shadow: 0 0 0 0.04rem $color-x-light;
         position: relative;
       }
 
