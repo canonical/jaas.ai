@@ -9,7 +9,7 @@ from theblues.errors import EntityNotFound, ServerError
 from theblues.terms import Terms
 
 
-cs = CharmStore("https://api.jujucharms.com/v5")
+cs = CharmStore()
 terms = Terms("https://api.jujucharms.com/terms/")
 
 SEARCH_LIMIT = 400
