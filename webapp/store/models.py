@@ -179,7 +179,7 @@ def _parse_bundle_data(bundle_data, include_files=False):
     return {
         "archive_url": cs.archive_url(ref),
         "bundle_data": bundle_data,
-        "bundle_visulisation": getBundleVisualization(ref),
+        "bundle_visualisation": cs.bundle_visualization_url(ref),
         "card_id": ref.path(),
         "channels": meta.get("published", {}).get("Info"),
         # Some bundles don't have descriptions, so first check that the
@@ -318,20 +318,6 @@ def _get_entity_files(ref, manifest=None):
     except EntityNotFound:
         files = {}
     return files
-
-
-def getBundleVisualization(ref, fetch=False):
-    """Get the url for the bundle visualization, or the actual svg.
-        :param ref The reference of the bundle to get the visualization for.
-        :param fetch Whether or not to get the actual svg.
-        :returns the URL or the SVG for the bundle visualisation
-    """
-    if not fetch:
-        return cs.bundle_visualization_url(ref)
-    try:
-        return cs.bundle_visualization(ref)
-    except EntityNotFound:
-        return None
 
 
 def _extract_resources(ref, resources):
