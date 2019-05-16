@@ -134,18 +134,21 @@ def static_from_root():
     return send_from_directory(current_app.static_folder, request.path[1:])
 
 
-@jaasai.route("/sitemap.xml")
-def sitemap():
-    xml = render_template("sitemaps/sitemap.xml")
+def set_xml_content_type( path, context ):
+    print(context)
+    xml = render_template(path, context=context)
     response = make_response(xml)
     response.headers['Content-Type'] = 'application/xml'
     return response
 
 
+@jaasai.route("/sitemap.xml")
+def sitemap():
+    return set_xml_content_type("sitemaps/sitemap.xml")
+
+
 @jaasai.route("/sitemap-base.xml")
 def sitemap_base():
-    xml = render_template(
-        "sitemaps/sitemap-base.xml",
         context={
             "pages": [
                 "jaasai.big_data",
@@ -166,11 +169,8 @@ def sitemap_base():
                 "jaasstore.store",
                 "jaasstore.search",
             ]
-        },
-    )
-    response = make_response(xml)
-    response.headers['Content-Type'] = 'application/xml'
-    return response
+        }
+        return set_xml_content_type("sitemaps/sitemap-base.xml", context)
 
 
 @jaasai.route("/sitemap-store.xml")
@@ -180,12 +180,7 @@ def sitemap_store():
     for entity in results:
         ref = references.Reference.from_string(entity.get("Id"))
         entities.append(ref.jujucharms_id())
-    xml = render_template(
-        "sitemaps/sitemap-store.xml", context={"entities": entities}
-    )
-    response = make_response(xml)
-    response.headers['Content-Type'] = 'application/xml'
-    return response
+    return set_xml_content_type("sitemaps/sitemap-store.xml", {"entities": entities})
 
 
 @jaasai.route("/_status/check")
