@@ -5,6 +5,7 @@ from flask import (
     Blueprint,
     current_app,
     jsonify,
+    make_response,
     render_template,
     request,
     send_from_directory,
@@ -135,12 +136,15 @@ def static_from_root():
 
 @jaasai.route("/sitemap.xml")
 def sitemap():
-    return render_template("sitemaps/sitemap.xml")
+    xml = render_template("sitemaps/sitemap.xml")
+    response = make_response(xml)
+    response.headers['Content-Type'] = 'application/xml'
+    return response
 
 
 @jaasai.route("/sitemap-base.xml")
 def sitemap_base():
-    return render_template(
+    xml = render_template(
         "sitemaps/sitemap-base.xml",
         context={
             "pages": [
@@ -164,6 +168,9 @@ def sitemap_base():
             ]
         },
     )
+    response = make_response(xml)
+    response.headers['Content-Type'] = 'application/xml'
+    return response
 
 
 @jaasai.route("/sitemap-store.xml")
@@ -173,9 +180,12 @@ def sitemap_store():
     for entity in results:
         ref = references.Reference.from_string(entity.get("Id"))
         entities.append(ref.jujucharms_id())
-    return render_template(
+    xml = render_template(
         "sitemaps/sitemap-store.xml", context={"entities": entities}
     )
+    response = make_response(xml)
+    response.headers['Content-Type'] = 'application/xml'
+    return response
 
 
 @jaasai.route("/_status/check")
