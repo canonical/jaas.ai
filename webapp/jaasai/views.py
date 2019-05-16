@@ -5,6 +5,7 @@ from flask import (
     Blueprint,
     current_app,
     jsonify,
+    make_response,
     render_template,
     request,
     send_from_directory,
@@ -133,37 +134,43 @@ def static_from_root():
     return send_from_directory(current_app.static_folder, request.path[1:])
 
 
+def set_xml_content_type(path, context={}):
+    print(context)
+    xml = render_template(path, context=context)
+    response = make_response(xml)
+    response.headers["Content-Type"] = "application/xml"
+    return response
+
+
 @jaasai.route("/sitemap.xml")
 def sitemap():
-    return render_template("sitemaps/sitemap.xml")
+    return set_xml_content_type("sitemaps/sitemap.xml")
 
 
 @jaasai.route("/sitemap-base.xml")
 def sitemap_base():
-    return render_template(
-        "sitemaps/sitemap-base.xml",
-        context={
-            "pages": [
-                "jaasai.big_data",
-                "jaasai.community_cards",
-                "jaasai.community_partners",
-                "jaasai.community",
-                "jaasai.containers",
-                "jaasai.experts_spicule",
-                "jaasai.experts_tengu",
-                "jaasai.experts_thanks",
-                "jaasai.experts",
-                "jaasai.getting_started",
-                "jaasai.how_it_works",
-                "jaasai.jaas",
-                "jaasai.kubernetes",
-                "jaasai.openstack",
-                "jaasai.support",
-                "jaasstore.store",
-                "jaasstore.search",
-            ]
-        },
-    )
+    context = {
+        "pages": [
+            "jaasai.big_data",
+            "jaasai.community_cards",
+            "jaasai.community_partners",
+            "jaasai.community",
+            "jaasai.containers",
+            "jaasai.experts_spicule",
+            "jaasai.experts_tengu",
+            "jaasai.experts_thanks",
+            "jaasai.experts",
+            "jaasai.getting_started",
+            "jaasai.how_it_works",
+            "jaasai.jaas",
+            "jaasai.kubernetes",
+            "jaasai.openstack",
+            "jaasai.support",
+            "jaasstore.store",
+            "jaasstore.search",
+        ]
+    }
+    return set_xml_content_type("sitemaps/sitemap-base.xml", context)
 
 
 @jaasai.route("/sitemap-store.xml")
@@ -173,8 +180,8 @@ def sitemap_store():
     for entity in results:
         ref = references.Reference.from_string(entity.get("Id"))
         entities.append(ref.jujucharms_id())
-    return render_template(
-        "sitemaps/sitemap-store.xml", context={"entities": entities}
+    return set_xml_content_type(
+        "sitemaps/sitemap-store.xml", {"entities": entities}
     )
 
 

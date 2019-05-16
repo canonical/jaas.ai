@@ -1,8 +1,7 @@
 User-agent: *
-Crawl-delay: 10
 
 Disallow: /terms/*
 Disallow: /blog/feed
 Disallow: /blog/feed/
 
-Sitemap: /sitemap.xml
+Sitemap: https://jaas.ai/sitemap.xml
