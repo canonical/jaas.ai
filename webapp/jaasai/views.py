@@ -134,11 +134,11 @@ def static_from_root():
     return send_from_directory(current_app.static_folder, request.path[1:])
 
 
-def set_xml_content_type( path, context ):
+def set_xml_content_type(path, context={}):
     print(context)
     xml = render_template(path, context=context)
     response = make_response(xml)
-    response.headers['Content-Type'] = 'application/xml'
+    response.headers["Content-Type"] = "application/xml"
     return response
 
 
@@ -149,28 +149,28 @@ def sitemap():
 
 @jaasai.route("/sitemap-base.xml")
 def sitemap_base():
-        context={
-            "pages": [
-                "jaasai.big_data",
-                "jaasai.community_cards",
-                "jaasai.community_partners",
-                "jaasai.community",
-                "jaasai.containers",
-                "jaasai.experts_spicule",
-                "jaasai.experts_tengu",
-                "jaasai.experts_thanks",
-                "jaasai.experts",
-                "jaasai.getting_started",
-                "jaasai.how_it_works",
-                "jaasai.jaas",
-                "jaasai.kubernetes",
-                "jaasai.openstack",
-                "jaasai.support",
-                "jaasstore.store",
-                "jaasstore.search",
-            ]
-        }
-        return set_xml_content_type("sitemaps/sitemap-base.xml", context)
+    context = {
+        "pages": [
+            "jaasai.big_data",
+            "jaasai.community_cards",
+            "jaasai.community_partners",
+            "jaasai.community",
+            "jaasai.containers",
+            "jaasai.experts_spicule",
+            "jaasai.experts_tengu",
+            "jaasai.experts_thanks",
+            "jaasai.experts",
+            "jaasai.getting_started",
+            "jaasai.how_it_works",
+            "jaasai.jaas",
+            "jaasai.kubernetes",
+            "jaasai.openstack",
+            "jaasai.support",
+            "jaasstore.store",
+            "jaasstore.search",
+        ]
+    }
+    return set_xml_content_type("sitemaps/sitemap-base.xml", context)
 
 
 @jaasai.route("/sitemap-store.xml")
@@ -180,7 +180,9 @@ def sitemap_store():
     for entity in results:
         ref = references.Reference.from_string(entity.get("Id"))
         entities.append(ref.jujucharms_id())
-    return set_xml_content_type("sitemaps/sitemap-store.xml", {"entities": entities})
+    return set_xml_content_type(
+        "sitemaps/sitemap-store.xml", {"entities": entities}
+    )
 
 
 @jaasai.route("/_status/check")
