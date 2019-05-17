@@ -9,7 +9,7 @@ from theblues.errors import EntityNotFound, ServerError
 from theblues.terms import Terms
 
 
-cs = CharmStore("https://api.jujucharms.com/v5")
+cs = CharmStore()
 terms = Terms("https://api.jujucharms.com/terms/")
 
 SEARCH_LIMIT = 400
@@ -394,7 +394,7 @@ class Bundle(Entity):
 
     def __init__(self, entity_data, include_files=False):
         super().__init__(entity_data, include_files)
-        self.bundle_visulisation = self._get_bundle_visualization()
+        self.bundle_visualisation = self._get_bundle_visualization()
         self.applications = self._parse_bundle_applications(
             self._metadata["applications"]
         )

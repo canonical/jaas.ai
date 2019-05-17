@@ -25,7 +25,7 @@ class TestStoreModels(unittest.TestCase):
         charm = models.Charm(charm_data)
         self.assertEqual(
             charm.archive_url,
-            "https://api.jujucharms.com/v5/apache2-26/archive",
+            "https://api.jujucharms.com/charmstore/v5/apache2-26/archive",
         )
         self.assertEqual(
             charm.bugs_url, "https://bugs.launchpad.net/apache2-charm"
@@ -40,7 +40,8 @@ class TestStoreModels(unittest.TestCase):
         self.assertEqual(charm.display_name, "apache2")
         self.assertEqual(charm.homepage, "https://launchpad.net/apache2-charm")
         self.assertEqual(
-            charm.icon, "https://api.jujucharms.com/v5/apache2-26/icon.svg"
+            charm.icon,
+            "https://api.jujucharms.com/charmstore/v5/apache2-26/icon.svg",
         )
         self.assertEqual(charm.id, "cs:apache2-26")
         self.assertTrue(charm.is_charm)
@@ -136,15 +137,15 @@ class TestStoreModels(unittest.TestCase):
         self.assertEqual(
             bundle.archive_url,
             (
-                "https://api.jujucharms.com/v5/bundle/"
+                "https://api.jujucharms.com/charmstore/v5/bundle/"
                 "canonical-kubernetes-466/archive"
             ),
         )
         self.assertEqual(
-            bundle.bundle_visulisation,
+            bundle.bundle_visualisation,
             (
-                "https://api.jujucharms.com/v5/bundle/canonical-kubernetes-466"
-                "/diagram.svg"
+                "https://api.jujucharms.com/charmstore/v5/bundle/"
+                "canonical-kubernetes-466/diagram.svg"
             ),
         )
         self.assertEqual(
@@ -209,11 +210,11 @@ class TestStoreModels(unittest.TestCase):
             bundle.icons,
             [
                 (
-                    "https://api.jujucharms.com/v5/~containers/"
+                    "https://api.jujucharms.com/charmstore/v5/~containers/"
                     "kubernetes-master-636/icon.svg"
                 ),
                 (
-                    "https://api.jujucharms.com/v5/~containers/"
+                    "https://api.jujucharms.com/charmstore/v5/~containers/"
                     "kubernetes-worker-502/icon.svg"
                 ),
             ],
@@ -227,10 +228,13 @@ class TestStoreModels(unittest.TestCase):
             bundle.icons,
             [
                 (
-                    "https://api.jujucharms.com/v5/"
+                    "https://api.jujucharms.com/charmstore/v5/"
                     "~containers/easyrsa-231/icon.svg"
                 ),
-                "https://api.jujucharms.com/v5/~containers/etcd-411/icon.svg",
+                (
+                    "https://api.jujucharms.com/charmstore/v5/~containers/"
+                    "etcd-411/icon.svg"
+                ),
             ],
         )
 
@@ -242,11 +246,11 @@ class TestStoreModels(unittest.TestCase):
             bundle.icons,
             [
                 (
-                    "https://api.jujucharms.com/v5/~containers/"
+                    "https://api.jujucharms.com/charmstore/v5/~containers/"
                     "kubeapi-load-balancer-613/icon.svg"
                 ),
                 (
-                    "https://api.jujucharms.com/v5/~containers/"
+                    "https://api.jujucharms.com/charmstore/v5/~containers/"
                     "easyrsa-231/icon.svg"
                 ),
             ],
@@ -264,7 +268,7 @@ class TestStoreModels(unittest.TestCase):
             bundle.icons,
             [
                 (
-                    "https://api.jujucharms.com/v5/~containers/"
+                    "https://api.jujucharms.com/charmstore/v5/~containers/"
                     "kubernetes-master-636/icon.svg"
                 )
             ],
