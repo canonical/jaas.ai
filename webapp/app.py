@@ -1,5 +1,6 @@
 import flask
 import talisker.flask
+import talisker.logs
 from werkzeug.debug import DebuggedApplication
 from werkzeug.middleware.proxy_fix import ProxyFix
 
@@ -27,6 +28,7 @@ def create_app(testing=False):
 
     if not testing:
         talisker.flask.register(app)
+        talisker.logs.set_global_extra({"service": "jaas.ai"})
 
         init_extensions(app)
 
