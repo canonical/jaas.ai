@@ -6,6 +6,18 @@ $breakpoint-navigation: 980px;
   bottom: 3px;
 }
 
+.p-navigation_login {
+  order: 2;
+  margin-right: .35rem;
+}
+
+@media (min-width: $breakpoint-large) {
+  .p-navigation .p-search-box {
+    margin-right: 0;
+    max-width: 15rem;
+  }
+}
+
 @media (min-width: $breakpoint-medium) and (max-width: $breakpoint-navigation) {
   .is-secondary-link {
     display: none !important;
