@@ -23,10 +23,7 @@ class TestStoreModels(unittest.TestCase):
 
     def test_charm(self):
         charm = models.Charm(charm_data)
-        self.assertEqual(
-            charm.archive_url,
-            "https://api.jujucharms.com/v5/apache2-26/archive",
-        )
+        self.assertTrue(charm.archive_url.endswith("apache2-26/archive"))
         self.assertEqual(
             charm.bugs_url, "https://bugs.launchpad.net/apache2-charm"
         )
@@ -39,9 +36,7 @@ class TestStoreModels(unittest.TestCase):
         )
         self.assertEqual(charm.display_name, "apache2")
         self.assertEqual(charm.homepage, "https://launchpad.net/apache2-charm")
-        self.assertEqual(
-            charm.icon, "https://api.jujucharms.com/v5/apache2-26/icon.svg"
-        )
+        self.assertTrue(charm.icon.endswith("apache2-26/icon.svg"))
         self.assertEqual(charm.id, "cs:apache2-26")
         self.assertTrue(charm.is_charm)
         self.assertEqual(
@@ -133,19 +128,15 @@ class TestStoreModels(unittest.TestCase):
 
     def test_bundle(self):
         bundle = models.Bundle(bundle_data)
-        self.assertEqual(
-            bundle.archive_url,
-            (
-                "https://api.jujucharms.com/v5/bundle/"
-                "canonical-kubernetes-466/archive"
-            ),
+        self.assertTrue(
+            bundle.archive_url.endswith(
+                "bundle/canonical-kubernetes-466/archive"
+            )
         )
-        self.assertEqual(
-            bundle.bundle_visulisation,
-            (
-                "https://api.jujucharms.com/v5/bundle/canonical-kubernetes-466"
-                "/diagram.svg"
-            ),
+        self.assertTrue(
+            bundle.bundle_visualisation.endswith(
+                "bundle/canonical-kubernetes-466/diagram.svg"
+            )
         )
         self.assertEqual(
             bundle.bugs_url, "https://bugs.launchpad.net/charmed-kubernetes"
@@ -205,51 +196,39 @@ class TestStoreModels(unittest.TestCase):
 
     def test_bundle_icons(self):
         bundle = models.Bundle(bundle_data)
-        self.assertEqual(
-            bundle.icons,
-            [
-                (
-                    "https://api.jujucharms.com/v5/~containers/"
-                    "kubernetes-master-636/icon.svg"
-                ),
-                (
-                    "https://api.jujucharms.com/v5/~containers/"
-                    "kubernetes-worker-502/icon.svg"
-                ),
-            ],
+        self.assertTrue(
+            bundle.icons[0].endswith(
+                "~containers/kubernetes-master-636/icon.svg"
+            )
+        )
+        self.assertTrue(
+            bundle.icons[1].endswith(
+                "~containers/kubernetes-worker-502/icon.svg"
+            )
         )
 
     def test_bundle_icons_no_match(self):
         data = copy.deepcopy(bundle_data)
         data["Id"] = "cs:nothing-here-123"
         bundle = models.Bundle(data)
-        self.assertEqual(
-            bundle.icons,
-            [
-                (
-                    "https://api.jujucharms.com/v5/"
-                    "~containers/easyrsa-231/icon.svg"
-                ),
-                "https://api.jujucharms.com/v5/~containers/etcd-411/icon.svg",
-            ],
+        self.assertTrue(
+            bundle.icons[0].endswith("~containers/easyrsa-231/icon.svg")
+        )
+        self.assertTrue(
+            bundle.icons[1].endswith("~containers/etcd-411/icon.svg")
         )
 
     def test_bundle_icons_exact_match(self):
         data = copy.deepcopy(bundle_data)
         data["Id"] = "~containers/kubeapi-load-balancer-613"
         bundle = models.Bundle(data)
-        self.assertEqual(
-            bundle.icons,
-            [
-                (
-                    "https://api.jujucharms.com/v5/~containers/"
-                    "kubeapi-load-balancer-613/icon.svg"
-                ),
-                (
-                    "https://api.jujucharms.com/v5/~containers/"
-                    "easyrsa-231/icon.svg"
-                ),
-            ],
+        self.assertTrue(
+            bundle.icons[0].endswith(
+                "~containers/kubeapi-load-balancer-613/icon.svg"
+            )
+        )
+        self.assertTrue(
+            bundle.icons[1].endswith("~containers/easyrsa-231/icon.svg")
         )
 
     def test_bundle_icons_only_one(self):
@@ -260,12 +239,9 @@ class TestStoreModels(unittest.TestCase):
             }
         }
         bundle = models.Bundle(data)
-        self.assertEqual(
-            bundle.icons,
-            [
-                (
-                    "https://api.jujucharms.com/v5/~containers/"
-                    "kubernetes-master-636/icon.svg"
-                )
-            ],
+        self.assertEqual(len(bundle.icons), 1)
+        self.assertTrue(
+            bundle.icons[0].endswith(
+                "~containers/kubernetes-master-636/icon.svg"
+            )
         )

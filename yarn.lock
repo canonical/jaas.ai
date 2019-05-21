@@ -734,7 +734,6 @@
 "@canonical/global-nav@2.0.8":
   version "2.0.8"
   resolved "https://registry.yarnpkg.com/@canonical/global-nav/-/global-nav-2.0.8.tgz#36eafbae0be0a854e953902cd2c6152e574d5ed1"
-  integrity sha512-IM7gOBSB9QMDoo2Bp52KfmmVFzemUrPBeWKKtV0RNFod7Gn1eEZ6QOt98eiLzpPgAWomPCZdAZgV+UQekK3ffQ==
 
 "@types/estree@0.0.39":
   version "0.0.39"
