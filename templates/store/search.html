@@ -79,9 +79,9 @@
                       </option>
                     {% endfor %}
                   </select>
-                  {% macro series_tag(series) -%}
+                  {% macro series_tag(series, label) -%}
                     <a href="{{ current_url_with_query(series=series) }}" class="series-tag series-tag--{{ series }}">
-                      {{ series }}
+                      {{ label or series }}
                     </a>
                   {%- endmacro %}
                   <span class="p-contextual-menu__dropdown" id="menu" aria-hidden="true" aria-label="submenu">
@@ -94,11 +94,18 @@
                       <li class="p-list__item {% if context.current_series == 'kubernetes' %}p-list__item--active{% endif %}">
                         {{ series_tag('kubernetes') }}
                       </li>
-                      <li class="p-list__item {% if context.current_series and context.current_series != 'kubernetes' and context.current_series != 'centos7' %}p-list__item--active{% endif %}">
+                      <li class="p-list__item {% if context.current_series and (
+                        context.current_series == 'xenial' or
+                        context.current_series == 'bionic' or
+                        context.current_series == 'cosmic' or
+                        context.current_series == 'trusty') %}p-list__item--active{% endif %}">
                         {% for series in ['xenial', 'bionic', 'cosmic', 'trusty'] %}{{ series_tag(series) }}{% endfor %}
                       </li>
                       <li class="p-list__item {% if context.current_series == 'centos7' %}p-list__item--active{% endif %}">
                         {{ series_tag('centos7') }}
+                      </li>
+                      <li class="p-list__item {% if context.current_series == 'win2016' %}p-list__item--active{% endif %}">
+                        {{ series_tag('win2016', 'windows') }}
                       </li>
                     </ul>
                   </span>
