@@ -81,9 +81,9 @@ def get_reference(entity):
 
 def _group_status(entities):
     results = {"community": [], "recommended": []}
-    for entity in entities:
-        group = "recommended" if entity.get("promulgated") else "community"
-        results[group].append(_parse_charm_or_bundle(entity))
+    for entity in _parse_list(entities):
+        group = "recommended" if entity.promulgated else "community"
+        results[group].append(entity)
     return results
 
 

@@ -21,6 +21,20 @@ class TestStoreModels(unittest.TestCase):
         self.assertEqual(len(results["community"]), 0)
         self.assertEqual(len(results["recommended"]), 0)
 
+    @patch("theblues.charmstore.CharmStore.fetch_interfaces")
+    def test_fetch_provides(self, mock_fetch_interfaces):
+        mock_fetch_interfaces.return_value = [None, None, search_data]
+        results = models.fetch_provides("mysql")
+        self.assertEqual(len(results["community"]), 8)
+        self.assertEqual(len(results["recommended"]), 2)
+
+    @patch("theblues.charmstore.CharmStore.fetch_interfaces")
+    def test_fetch_requires(self, mock_fetch_interfaces):
+        mock_fetch_interfaces.return_value = [None, None, search_data]
+        results = models.fetch_requires("mysql")
+        self.assertEqual(len(results["community"]), 8)
+        self.assertEqual(len(results["recommended"]), 2)
+
     def test_charm(self):
         charm = models.Charm(charm_data)
         self.assertTrue(charm.archive_url.endswith("apache2-26/archive"))
