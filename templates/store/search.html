@@ -73,7 +73,10 @@
                   <select name="series-select" class="p-contextual-menu__toggle" aria-controls="#menu" aria-expanded="false" aria-haspopup="true">
                     {# The series list has been limited to sane options, full list is here:
                       https://github.com/juju/charmstore/blob/v5/internal/series/series.go  #}
-                    {% for series in ['all', 'kubernetes', 'precise', 'trusty', 'xenial', 'bionic', 'centos7'] %}
+                    <option default>
+                      All
+                    </option>
+                    {% for series in context.all_series %}
                       <option value="{{ series }}" {% if context.current_series == series %}selected="selected"{% endif %}>
                         {{ series }}
                       </option>
