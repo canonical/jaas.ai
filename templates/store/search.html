@@ -204,7 +204,7 @@
   <script src="{{ static_url('js/dist/search-icons.min.js') }}"></script>
 {% else %}
   <div class="p-strip">
-    {% if context.query|length <= 2 %}
+    {% if context.query and context.query|length <= 2 %}
       <div class="row">
         <div class="col-12">
           <div class="p-notification--negative">
@@ -217,8 +217,13 @@
     {% endif %}
     <div class="row">
       <div class="col-8">
-        <h4>Sorry, your search for <strong>{{ context.query }}</strong> returned 0 results.</h4>
-        <p>Try a more specific or different query, try other keywords or learn how to <a class="p-link--external" href="{{ external_urls.docs }}authors-charm-writing">create your own solution</a>.</p>
+        {% if context.query %}
+          <h4>Sorry, your search for <strong>{{ context.query }}</strong> returned 0 results.</h4>
+          <p>Try a more specific or different query, try other keywords or learn how to <a class="p-link--external" href="{{ external_urls.docs }}authors-charm-writing">create your own solution</a>.</p>
+        {% else %}
+          <h4>Sorry, your search query is empty.</h4>
+          <p>Please enter your search terms above and try again.</p>
+        {% endif %}
       </div>
     </div>
   </div>
