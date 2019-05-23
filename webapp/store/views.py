@@ -11,6 +11,39 @@ jaasstore = Blueprint(
     static_folder="/static",
 )
 
+SERIES = [
+    "artful",
+    "bionic",
+    "centos7",
+    "cosmic",
+    "disco",
+    "eoan",
+    "kubernetes",
+    "oneiric",
+    "precise",
+    "quantal",
+    "raring",
+    "saucy",
+    "trusty",
+    "utopic",
+    "vivid",
+    "wily",
+    "win10",
+    "win2012",
+    "win2012hv",
+    "win2012hvr2",
+    "win2012r2",
+    "win2016",
+    "win2016hv",
+    "win2016nano",
+    "win7",
+    "win8",
+    "win81",
+    "xenial",
+    "yakkety",
+    "zesty",
+]
+
 
 @jaasstore.route("/store")
 def store():
@@ -62,6 +95,7 @@ def search():
     return render_template(
         "store/search.html",
         context={
+            "all_series": SERIES,
             "current_series": series,
             "current_sort": sort,
             "current_type": entity_type,
