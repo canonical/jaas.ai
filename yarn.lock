@@ -720,7 +720,7 @@
     lodash "^4.17.11"
     to-fast-properties "^2.0.0"
 
-"@canonical/cookie-policy@^2.0.1":
+"@canonical/cookie-policy@2.0.1":
   version "2.0.1"
   resolved "https://registry.yarnpkg.com/@canonical/cookie-policy/-/cookie-policy-2.0.1.tgz#051f2ac36845820249f7654cc5ee5a6a89d964d3"
   dependencies:

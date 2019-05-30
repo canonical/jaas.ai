@@ -18,7 +18,7 @@
   "dependencies": {
     "@babel/core": "7.4.3",
     "@babel/preset-env": "7.4.3",
-    "@canonical/cookie-policy": "^2.0.1",
+    "@canonical/cookie-policy": "2.0.1",
     "@canonical/global-nav": "2.0.8",
     "autoprefixer": "9.5.1",
     "babel-loader": "8.0.5",
