@@ -341,3 +341,9 @@ h2 {
     text-decoration: none;
   }
 }
+
+// XXX Ant - 31.05.19: This can be removed when the follow issue is resolved.
+// https://github.com/canonical-web-and-design/vanilla-framework/issues/2364
+.p-code-snippet__input {
+  padding-right: 2.5rem;
+}
