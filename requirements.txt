@@ -1,7 +1,7 @@
 canonicalwebteam.http==1.0.1
 feedparser==5.2.1
 Flask-Testing==0.7.1
-Flask==1.0.2
+Flask==1.0.3
 gfm==0.0.3
 jujubundlelib==0.5.6
 raven[flask]==6.10.0
