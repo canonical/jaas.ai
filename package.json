@@ -16,6 +16,7 @@
     "watch-js": "watch -p 'static/js/src/**/*.js' -c 'yarn run build-js'"
   },
   "dependencies": {
+    "@sentry/browser": "5.2.1",
     "@babel/core": "7.4.5",
     "@babel/preset-env": "7.4.5",
     "@canonical/cookie-policy": "2.0.1",
