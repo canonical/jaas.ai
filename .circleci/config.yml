@@ -7,6 +7,16 @@ defaults: &defaults
 
 version: 2
 jobs:
+  check-build:
+    <<: *defaults
+    steps:
+      - checkout
+      - run:
+          name: Install dependencies
+          command: yarn
+      - run:
+          name: Check the project builds
+          command: yarn run build
   python-lint:
     <<: *defaults
     steps:
@@ -22,7 +32,7 @@ jobs:
     steps:
       - checkout
       - run:
-          name: Install npm dependencies
+          name: Install dependencies
           command: yarn
       - run:
           name: Lint scss with sass-lint
@@ -41,6 +51,7 @@ workflows:
   version: 2
   build:
     jobs:
+      - check-build
       - python-lint
       - scss-lint
       - python-tests

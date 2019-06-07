@@ -1,7 +1,7 @@
 {
   "scripts": {
-    "build": "node-sass --omit-source-map-url --include-path node_modules static/sass --output-style compressed --output static/css && postcss --no-map --use autoprefixer --replace 'static/css/**/*.css' --dir static/minified 'static/css/**/*.css' && npm run build-js",
-    "build-css": "node-sass --include-path node_modules static/sass --output static/css && postcss --use autoprefixer --replace 'static/css/**/*.css' --dir static/minified 'static/css/**/*.css'",
+    "build": "node-sass --omit-source-map-url --include-path node_modules static/sass --output-style compressed --output static/css && postcss --no-map --use autoprefixer --replace 'static/css/**/*.css' && npm run build-js",
+    "build-css": "node-sass --include-path node_modules static/sass --output static/css && postcss --use autoprefixer --replace 'static/css/**/*.css'",
     "build-js": "webpack",
     "clean": "rm -rf node_modules yarn-error.log css static/css *.log *.sqlite _site/ build/ .jekyll-metadata .bundle",
     "format-python": "black --line-length 79 tests webapp",
@@ -16,26 +16,26 @@
     "watch-js": "watch -p 'static/js/src/**/*.js' -c 'yarn run build-js'"
   },
   "dependencies": {
-    "@babel/core": "7.4.3",
-    "@babel/preset-env": "7.4.3",
-    "@canonical/cookie-policy": "^2.0.1",
-    "@canonical/global-nav": "2.0.8",
     "@sentry/browser": "5.2.1",
+    "@babel/core": "7.4.5",
+    "@babel/preset-env": "7.4.5",
+    "@canonical/cookie-policy": "2.0.1",
+    "@canonical/global-nav": "2.1.0",
     "autoprefixer": "9.5.1",
-    "babel-loader": "8.0.5",
+    "babel-loader": "8.0.6",
     "concurrently": "4.1.0",
-    "node-sass": "4.11.0",
-    "postcss-cli": "4.1.1",
+    "node-sass": "4.12.0",
+    "postcss-cli": "6.1.2",
     "vanilla-framework": "1.8.1",
     "watch-cli": "0.2.3",
-    "webpack": "4.30.0",
-    "webpack-cli": "3.3.0"
+    "webpack": "4.32.2",
+    "webpack-cli": "3.3.2"
   },
   "devDependencies": {
-    "husky": "1.3.1",
-    "prettier": "1.17.0",
-    "pretty-quick": "1.10.0",
-    "sass-lint": "1.12.1"
+    "husky": "2.3.0",
+    "prettier": "1.17.1",
+    "pretty-quick": "1.11.0",
+    "sass-lint": "1.13.1"
   },
   "resolutions": {
     "braces": "^2.3.1",

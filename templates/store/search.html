@@ -73,15 +73,18 @@
                   <select name="series-select" class="p-contextual-menu__toggle" aria-controls="#menu" aria-expanded="false" aria-haspopup="true">
                     {# The series list has been limited to sane options, full list is here:
                       https://github.com/juju/charmstore/blob/v5/internal/series/series.go  #}
-                    {% for series in ['all', 'kubernetes', 'precise', 'trusty', 'xenial', 'bionic', 'centos7'] %}
+                    <option default>
+                      All
+                    </option>
+                    {% for series in context.all_series %}
                       <option value="{{ series }}" {% if context.current_series == series %}selected="selected"{% endif %}>
                         {{ series }}
                       </option>
                     {% endfor %}
                   </select>
-                  {% macro series_tag(series) -%}
+                  {% macro series_tag(series, label) -%}
                     <a href="{{ current_url_with_query(series=series) }}" class="series-tag series-tag--{{ series }}">
-                      {{ series }}
+                      {{ label or series }}
                     </a>
                   {%- endmacro %}
                   <span class="p-contextual-menu__dropdown" id="menu" aria-hidden="true" aria-label="submenu">
@@ -94,11 +97,18 @@
                       <li class="p-list__item {% if context.current_series == 'kubernetes' %}p-list__item--active{% endif %}">
                         {{ series_tag('kubernetes') }}
                       </li>
-                      <li class="p-list__item {% if context.current_series and context.current_series != 'kubernetes' and context.current_series != 'centos7' %}p-list__item--active{% endif %}">
+                      <li class="p-list__item {% if context.current_series and (
+                        context.current_series == 'xenial' or
+                        context.current_series == 'bionic' or
+                        context.current_series == 'cosmic' or
+                        context.current_series == 'trusty') %}p-list__item--active{% endif %}">
                         {% for series in ['xenial', 'bionic', 'cosmic', 'trusty'] %}{{ series_tag(series) }}{% endfor %}
                       </li>
                       <li class="p-list__item {% if context.current_series == 'centos7' %}p-list__item--active{% endif %}">
                         {{ series_tag('centos7') }}
+                      </li>
+                      <li class="p-list__item {% if context.current_series == 'win2016' %}p-list__item--active{% endif %}">
+                        {{ series_tag('win2016', 'windows') }}
                       </li>
                     </ul>
                   </span>
@@ -194,7 +204,7 @@
   <script src="{{ static_url('js/dist/search-icons.min.js') }}"></script>
 {% else %}
   <div class="p-strip">
-    {% if context.query|length <= 2 %}
+    {% if context.query and context.query|length <= 2 %}
       <div class="row">
         <div class="col-12">
           <div class="p-notification--negative">
@@ -207,8 +217,13 @@
     {% endif %}
     <div class="row">
       <div class="col-8">
-        <h4>Sorry, your search for <strong>{{ context.query }}</strong> returned 0 results.</h4>
-        <p>Try a more specific or different query, try other keywords or learn how to <a class="p-link--external" href="{{ external_urls.docs }}authors-charm-writing">create your own solution</a>.</p>
+        {% if context.query %}
+          <h4>Sorry, your search for <strong>{{ context.query }}</strong> returned 0 results.</h4>
+          <p>Try a more specific or different query, try other keywords or learn how to <a class="p-link--external" href="{{ external_urls.docs }}authors-charm-writing">create your own solution</a>.</p>
+        {% else %}
+          <h4>Sorry, your search query is empty.</h4>
+          <p>Please enter your search terms above and try again.</p>
+        {% endif %}
       </div>
     </div>
   </div>
