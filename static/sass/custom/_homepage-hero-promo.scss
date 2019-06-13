@@ -44,3 +44,14 @@
     }
   }
 }
+
+.homepage-hero-card {
+  &__video-link {
+    display: inline-block;
+    margin-top: 1em;
+
+    .p-icon {
+      vertical-align: middle;
+    }
+  }
+}
