@@ -1,10 +1,6 @@
 import flask
-import talisker.flask
-import talisker.logs
-from werkzeug.debug import DebuggedApplication
-from werkzeug.middleware.proxy_fix import ProxyFix
 
-from webapp.extensions import sentry
+from canonicalwebteam.flask_base.app import FlaskBase
 from webapp.external_urls import external_urls
 from webapp.handlers import add_headers, clear_trailing_slash
 from webapp.jaasai.views import jaasai
@@ -14,24 +10,14 @@ from webapp.template_utils import current_url_with_query, static_url
 
 
 def create_app(testing=False):
-    app = flask.Flask(
-        __name__, template_folder="../templates", static_folder="../static"
+    app = FlaskBase(
+        __name__,
+        "jaas.ai",
+        template_folder="../templates",
+        static_folder="../static",
     )
 
     app.testing = testing
-
-    app.wsgi_app = ProxyFix(app.wsgi_app)
-    if app.debug:
-        app.wsgi_app = DebuggedApplication(app.wsgi_app)
-
-    app.url_map.strict_slashes = False
-
-    if not testing:
-        talisker.flask.register(app)
-        talisker.logs.set_global_extra({"service": "jaas.ai"})
-
-        init_extensions(app)
-
     app.before_request(clear_trailing_slash)
     app.after_request(add_headers)
 
@@ -81,7 +67,3 @@ def init_blueprint(app):
     app.register_blueprint(jaasai)
     app.register_blueprint(jaasredirects)
     app.register_blueprint(jaasstore)
-
-
-def init_extensions(app):
-    sentry.init_app(app)
