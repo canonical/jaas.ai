@@ -1,24 +1,6 @@
 import socket
-from urllib.parse import unquote, urlparse, urlunparse
 
 import flask
-
-
-# Global tasks for all requests
-# ===
-def clear_trailing_slash():
-    """
-    Remove trailing slashes from all routes
-    We like our URLs without slashes
-    """
-
-    parsed_url = urlparse(unquote(flask.request.url))
-    path = parsed_url.path
-
-    if path != "/" and path.endswith("/"):
-        new_uri = urlunparse(parsed_url._replace(path=path[:-1]))
-
-        return flask.redirect(new_uri)
 
 
 def add_headers(response):

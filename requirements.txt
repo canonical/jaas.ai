@@ -1,6 +1,6 @@
 talisker[gunicorn, prometheus, flask, raven]==0.14.3
 canonicalwebteam.http==1.0.1
-canonicalwebteam.flask_base==0.2.0
+canonicalwebteam.flask_base==0.3.1
 feedparser==5.2.1
 Flask-Testing==0.7.1
 Flask==1.0.3

@@ -2,7 +2,7 @@ import flask
 
 from canonicalwebteam.flask_base.app import FlaskBase
 from webapp.external_urls import external_urls
-from webapp.handlers import add_headers, clear_trailing_slash
+from webapp.handlers import add_headers
 from webapp.jaasai.views import jaasai
 from webapp.redirects.views import jaasredirects
 from webapp.store.views import jaasstore
@@ -18,7 +18,6 @@ def create_app(testing=False):
     )
 
     app.testing = testing
-    app.before_request(clear_trailing_slash)
     app.after_request(add_headers)
 
     init_handler(app)
