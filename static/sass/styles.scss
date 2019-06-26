@@ -42,6 +42,12 @@ $mid-grey: $color-mid-light;
 @import 'custom/modal';
 @import 'custom/header';
 @import 'custom/series_tags';
+@import 'custom/patterns_strips';
+@import 'custom/patterns_lists';
+@import 'custom/patterns_icons';
+@include jaas-p-strips;
+@include jaas-p-lists;
+@include jaas-p-icons;
 
 // github component homepage
 .github-actions {
@@ -346,4 +352,8 @@ h2 {
 // https://github.com/canonical-web-and-design/vanilla-framework/issues/2364
 .p-code-snippet__input {
   padding-right: 2.5rem;
+}
+
+.u-no-max-width {
+  max-width: none !important;
 }
