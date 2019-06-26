@@ -4,7 +4,7 @@
   .p-strip--suru {
     @extend %vf-strip;
     background-repeat: no-repeat;
-    background-size: auto 100%, cover;
+    background-size: cover;
     overflow: hidden;
     padding-top: 8rem;
     position: relative;
