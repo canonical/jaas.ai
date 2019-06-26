@@ -42,6 +42,12 @@ $mid-grey: $color-mid-light;
 @import 'custom/modal';
 @import 'custom/header';
 @import 'custom/series_tags';
+@import 'custom/patterns_strips';
+@import 'custom/patterns_lists';
+@import 'custom/patterns_icons';
+@include jaas-p-strips;
+@include jaas-p-lists;
+@include jaas-p-icons;
 
 // github component homepage
 .github-actions {

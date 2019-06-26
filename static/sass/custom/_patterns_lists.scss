@@ -1,0 +1,20 @@
+@mixin jaas-p-lists {
+  @include jaas-p-inline-list-middot;
+}
+
+@mixin jaas-p-inline-list-middot {
+  .p-inline-list--middot {
+    @at-root .is-dark .p-inline-list__item {
+      &::after {
+        color: $color-x-light;
+        font-size: 2em;
+        right: -0.4em;
+        top: 0.3em;
+      }
+
+      &:hover::after {
+        color: $color-x-light;
+      }
+    }
+  }
+}
