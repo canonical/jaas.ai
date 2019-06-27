@@ -1,5 +1,10 @@
 @mixin jaas-p-strips {
-  $color-suru-accent: #3fc8f2;
+  @include jaas-p-strip-suru;
+  @include jaas-p-strip-slanted;
+}
+
+@mixin jaas-p-strip-suru {
+  $suru-accent: #3fc8f2;
 
   %jaas-strip-suru {
     @extend %vf-strip;
@@ -77,6 +82,32 @@
     &::after {
       bottom: -70px;
       left: -100px;
+    }
+  }
+}
+
+@mixin jaas-p-strip-slanted {
+  [class*='p-strip'].is-slanted {
+    overflow: hidden;
+    padding-top: 8rem;
+    position: relative;
+
+    &::before {
+      background: linear-gradient(
+        to top left,
+        rgba(255, 255, 255, 1) 0%,
+        rgba(255, 255, 255, 1) 49%,
+        rgba(255, 255, 255, 0) 50%,
+        rgba(255, 255, 255, 0) 100%
+      );
+      content: '';
+      display: block;
+      height: 4rem;
+      left: 0;
+      position: absolute;
+      bottom: 0;
+      width: 100%;
+      z-index: 2;
     }
   }
 }
