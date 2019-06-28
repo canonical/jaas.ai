@@ -1,40 +1,29 @@
 @mixin jaas-p-strips {
-  $suru-accent: #3fc8f2;
+  $color-suru-accent: #3fc8f2;
 
-  .p-strip--suru {
+  %jaas-strip-suru {
     @extend %vf-strip;
     background-repeat: no-repeat;
     background-size: cover;
     overflow: hidden;
-    padding-top: 8rem;
     position: relative;
 
     &::before {
-      background: linear-gradient(
-        to bottom right,
-        rgba(255, 255, 255, 1) 0%,
-        rgba(255, 255, 255, 1) 49%,
-        rgba(255, 255, 255, 0) 50%,
-        rgba(255, 255, 255, 0) 100%
-      );
       content: '';
       display: block;
       height: 4rem;
       left: 0;
       position: absolute;
-      top: 0;
       width: 100%;
       z-index: 2;
     }
 
     &::after {
-      background: $suru-accent;
+      background: $color-suru-accent;
       content: '';
       display: block;
       height: 100px;
       position: absolute;
-      right: -100px;
-      top: -70px;
       transform: rotate(15deg);
       width: 500px;
       z-index: 1;
@@ -46,6 +35,48 @@
 
     &.is-dark {
       color: $color-x-light;
+    }
+  }
+
+  .p-strip--suru-top {
+    @extend %jaas-strip-suru;
+    padding-top: 8rem;
+
+    &::before {
+      background: linear-gradient(
+        to bottom right,
+        rgba(255, 255, 255, 1) 0%,
+        rgba(255, 255, 255, 1) 49%,
+        rgba(255, 255, 255, 0) 50%,
+        rgba(255, 255, 255, 0) 100%
+      );
+      top: 0;
+    }
+
+    &::after {
+      right: -100px;
+      top: -70px;
+    }
+  }
+
+  .p-strip--suru-bottom {
+    @extend %jaas-strip-suru;
+    padding-bottom: 8rem;
+
+    &::before {
+      background: linear-gradient(
+        to top left,
+        rgba(255, 255, 255, 1) 0%,
+        rgba(255, 255, 255, 1) 49%,
+        rgba(255, 255, 255, 0) 50%,
+        rgba(255, 255, 255, 0) 100%
+      );
+      bottom: 0;
+    }
+
+    &::after {
+      bottom: -70px;
+      left: -100px;
     }
   }
 }

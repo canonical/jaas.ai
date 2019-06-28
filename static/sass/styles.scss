@@ -1,11 +1,10 @@
 @charset "UTF-8";
 
-$asset-path: '/static/';
-
 // Override local variables
 $color-navigation-background: #333;
 $color-navigation-active-bar: #e95420;
 $color-kubernetes: #2e69ea;
+$color-accent: #0e8420;
 $grid-max-width: 72rem;
 
 // Set the mobile nav breakpoint to handle the large number of nav items.
@@ -14,11 +13,7 @@ $breakpoint-navigation-threshold: $breakpoint-large;
 
 // Import Vanilla Framework
 @import 'vanilla-framework/scss/vanilla';
-
 @include vanilla;
-
-$cool-grey: $color-brand;
-$mid-grey: $color-mid-light;
 
 // Import cookie-policy. Just import the bits we need as the proper file
 // includes override for other generic styles.
@@ -48,20 +43,6 @@ $mid-grey: $color-mid-light;
 @include jaas-p-strips;
 @include jaas-p-lists;
 @include jaas-p-icons;
-
-// github component homepage
-.github-actions {
-  display: flex;
-  max-width: 100px;
-
-  &__cta {
-    margin: 0 0.1rem 0 0;
-
-    &:last-child {
-      margin-right: 0;
-    }
-  }
-}
 
 // Homepage Card footer margin
 .p-card.is-flex {
