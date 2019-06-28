@@ -89,7 +89,7 @@
 @mixin jaas-p-strip-slanted {
   [class*='p-strip'].is-slanted {
     overflow: hidden;
-    padding-top: 8rem;
+    padding-bottom: 8rem;
     position: relative;
 
     &::before {
