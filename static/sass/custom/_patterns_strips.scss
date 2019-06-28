@@ -23,15 +23,17 @@
       z-index: 2;
     }
 
-    &::after {
-      background: $suru-accent;
-      content: '';
-      display: block;
-      height: 100px;
-      position: absolute;
-      transform: rotate(15deg);
-      width: 500px;
-      z-index: 1;
+    &.has-accent {
+      &::after {
+        background: $suru-accent;
+        content: '';
+        display: block;
+        height: 100px;
+        position: absolute;
+        transform: rotate(15deg);
+        width: 500px;
+        z-index: 1;
+      }
     }
 
     &.is-light {
@@ -71,10 +73,10 @@
     &::before {
       background: linear-gradient(
         to top left,
-        rgba(255, 255, 255, 1) 0%,
-        rgba(255, 255, 255, 1) 49%,
-        rgba(255, 255, 255, 0) 50%,
-        rgba(255, 255, 255, 0) 100%
+        rgba(240, 245, 247, 1) 0%,
+        rgba(240, 245, 247, 1) 49%,
+        rgba(240, 245, 247, 0) 50%,
+        rgba(240, 245, 247, 0) 100%
       );
       bottom: 0;
     }

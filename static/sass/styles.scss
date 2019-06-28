@@ -4,6 +4,7 @@
 $color-navigation-background: #333;
 $color-navigation-active-bar: #e95420;
 $color-kubernetes: #2e69ea;
+$color-accent-background: #f0f5f7;
 $color-accent: #0e8420;
 $grid-max-width: 72rem;
 
@@ -94,7 +95,7 @@ $color-experts-highlight: #e95420;
 }
 
 .expert__strap {
-  background: $color-light;
+  background: $color-x-light;
   border-left: 3px solid $color-experts-highlight;
   clear: both;
   display: inline-block;
@@ -337,4 +338,8 @@ h2 {
 
 .u-no-max-width {
   max-width: none !important;
+}
+
+.p-separator {
+  margin: 4rem 0;
 }
