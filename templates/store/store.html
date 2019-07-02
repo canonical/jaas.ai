@@ -31,59 +31,55 @@
   </div>
 </div>
 
-<div class="p-strip is-shallow u-no-padding--bottom">
+<div class="p-strip--accent is-slanted">
   <div class="row">
-    <div class="u-equal-height">
-      <div class="col-6 p-card">
-        <div class="col-2 u-align--center">
-          <img src="https://assets.ubuntu.com/v1/96c61b0d-charm-icon.png" alt="Illustration of a Charm pictogram">
-        </div>
-        <div class="col-4 u-no-margin--left">
-          <p>Charms are sets of scripts that simplify the deployment and management tasks of a service. They are regularly reviewed and updated.</p>
-          <a href="{{ url_for('jaasstore.search', type='charm') }}" class="p-button--neutral">View all the charms</a>
-        </div>
+    <div class="col-6">
+      <div class="col-2 u-align--center">
+        <img src="https://assets.ubuntu.com/v1/96c61b0d-charm-icon.png" alt="">
       </div>
-      <div class="col-6 p-card">
-        <div class="col-2 u-align--center">
-          <img src="https://assets.ubuntu.com/v1/d4ffa9bc-bundle-icon.png" alt="Illustration of a Bundle pictogram">
-        </div>
-        <div class="col-4 u-no-margin--left">
-          <p>Bundles are collections of charms that link applications together, so you can deploy whole chunks of infrastructure in one go.</p>
-          <a href="{{ url_for('jaasstore.search', type='bundle') }}" class="p-button--neutral">View all the bundles</a>
-        </div>
+      <div class="col-4 u-no-margin--left">
+        <h4 class="p-muted-heading">Charms</h4>
+        <p>Charms are sets of scripts that simplify the deployment and management tasks of a service. They are regularly reviewed and updated.</p>
+        <a href="{{ url_for('jaasstore.search', type='charm') }}" class="p-button--neutral">View all the charms</a>
+      </div>
+    </div>
+      <div class="col-6">
+      <div class="col-2 u-align--center">
+        <img src="https://assets.ubuntu.com/v1/d4ffa9bc-bundle-icon.png" alt="">
+      </div>
+      <div class="col-4 u-no-margin--left">
+        <h4 class="p-muted-heading">Bundles</h4>
+        <p>Bundles are collections of charms that link applications together, so you can deploy whole chunks of infrastructure in one go.</p>
+        <a href="{{ url_for('jaasstore.search', type='bundle') }}" class="p-button--neutral">View all the bundles</a>
       </div>
     </div>
   </div>
 </div>
 
-<div class="p-strip is-shallow is-bordered">
+<div class="p-strip is-bordered">
   <div class="row">
     <div class="col-12">
-      <h3 class="p-muted-heading u-align--center" style="max-width:100%">Categories</h3>
+      <h3 class="p-muted-heading">Categories</h3>
+      <p class="u-no-max-width u-no-margin--bottom">
+        <a class="p-link--strong" href="{{ url_for('jaasstore.search', q='databases') }}">databases</a>,
+        <a class="p-link--strong" href="{{ url_for('jaasstore.search', q='app-servers') }}">app-servers</a>,
+        <a class="p-link--strong" href="{{ url_for('jaasstore.search', q='file-servers') }}">file-servers</a>,
+        <a class="p-link--strong" href="{{ url_for('jaasstore.search', q='monitoring') }}">monitoring</a>,
+        <a class="p-link--strong" href="{{ url_for('jaasstore.search', q='ops') }}">ops</a>,
+        <a class="p-link--strong" href="{{ url_for('jaasstore.search', q='openstack') }}">openstack</a>,
+        <a class="p-link--strong" href="{{ url_for('jaasstore.search', q='applications') }}">applications</a>,
+        <a class="p-link--strong" href="{{ url_for('jaasstore.search', q='misc') }}">misc</a>,
+        <a class="p-link--strong" href="{{ url_for('jaasstore.search', q='network') }}">network</a>,
+        <a class="p-link--strong" href="{{ url_for('jaasstore.search', q='analytics') }}">analytics</a>,
+        <a class="p-link--strong" href="{{ url_for('jaasstore.search', q='apache') }}">apache</a>,
+        <a class="p-link--strong" href="{{ url_for('jaasstore.search', q='security') }}">security</a>,
+        <a class="p-link--strong" href="{{ url_for('jaasstore.search', q='storage') }}">storage</a>
+      </p>
     </div>
   </div>
   <div class="row">
-    <div class="col-12 prefix-1 suffix-1 u-align--center">
-      <ul class="p-inline-list">
-        <li class="p-inline-list__item"><a class="p-link--strong" href="{{ url_for('jaasstore.search', q='databases') }}">databases</a></li>
-        <li class="p-inline-list__item"><a class="p-link--strong" href="{{ url_for('jaasstore.search', q='app-servers') }}">app-servers</a></li>
-        <li class="p-inline-list__item"><a class="p-link--strong" href="{{ url_for('jaasstore.search', q='file-servers') }}">file-servers</a></li>
-        <li class="p-inline-list__item"><a class="p-link--strong" href="{{ url_for('jaasstore.search', q='monitoring') }}">monitoring</a></li>
-        <li class="p-inline-list__item"><a class="p-link--strong" href="{{ url_for('jaasstore.search', q='ops') }}">ops</a></li>
-        <li class="p-inline-list__item"><a class="p-link--strong" href="{{ url_for('jaasstore.search', q='openstack') }}">openstack</a></li>
-        <li class="p-inline-list__item"><a class="p-link--strong" href="{{ url_for('jaasstore.search', q='applications') }}">applications</a></li>
-        <li class="p-inline-list__item"><a class="p-link--strong" href="{{ url_for('jaasstore.search', q='misc') }}">misc</a></li>
-        <li class="p-inline-list__item"><a class="p-link--strong" href="{{ url_for('jaasstore.search', q='network') }}">network</a></li>
-        <li class="p-inline-list__item"><a class="p-link--strong" href="{{ url_for('jaasstore.search', q='analytics') }}">analytics</a></li>
-        <li class="p-inline-list__item"><a class="p-link--strong" href="{{ url_for('jaasstore.search', q='apache') }}">apache</a></li>
-        <li class="p-inline-list__item"><a class="p-link--strong" href="{{ url_for('jaasstore.search', q='security') }}">security</a></li>
-        <li class="p-inline-list__item"><a class="p-link--strong" href="{{ url_for('jaasstore.search', q='storage') }}">storage</a></li>
-      </ul>
-    </div>
+    <hr class="p-separator" style="margin: 2rem 0 4rem;" />
   </div>
-</div>
-
-<div class="p-strip u-no-padding--bottom">
   <div class="row">
     <div class="col-12">
       <h2>Operations</h2>
@@ -96,15 +92,12 @@
             <a href="{{ url_for('jaasstore.details', charm_or_bundle_name='nagios') }}" class="p-button--neutral">View the charm</a>
           </div>
           <div class="col-6 u-align--center u-vertically-center u-hide--small prefix-2">
-            <img width="144" src="https://assets.ubuntu.com/v1/4d474129-nagios.svg" alt="Nagios logo">
+            <img width="96" src="https://assets.ubuntu.com/v1/4d474129-nagios.svg" alt="Nagios logo">
           </div>
         </div>
       </div>
     </div>
   </div>
-</div>
-
-<div class="p-strip">
   <div class="row">
     <div class="u-equal-height entity-cards">
       <div class="col-3 p-card">
@@ -210,7 +203,7 @@
   </div>
 </div>
 
-<div class="p-strip--light is-shallow">
+<div class="p-strip--accent is-slanted">
   <div class="row u-equal-height entity-cards">
     <div class="col-5 u-vertically-center">
       <div>
@@ -238,15 +231,12 @@
             <a href="{{ url_for('jaasstore.details', charm_or_bundle_name='realtime-syslog-analytics') }}" class="p-button--neutral">View the bundle</a>
           </div>
           <div class="col-6 u-align--center u-vertically-center u-hide--small prefix-2">
-            <img width="144" src="https://assets.ubuntu.com/v1/6ecdbc71-hadoop.svg" alt="Hadoop logo">
+            <img width="96" src="https://assets.ubuntu.com/v1/6ecdbc71-hadoop.svg" alt="Hadoop logo">
           </div>
         </div>
       </div>
     </div>
   </div>
-</div>
-
-<div class="p-strip is-bordered">
   <div class="row">
     <div class="u-equal-height entity-cards">
       <div class="col-3 p-card">
@@ -302,9 +292,11 @@
       </p>
     </div>
   </div>
-</div>
 
-<div class="p-strip">
+  <div class="row">
+    <hr class="p-separator" style="margin: 2rem 0 4rem;" />
+  </div>
+
   <div class="row">
     <div class="col-12">
       <h2>Databases</h2>
@@ -312,19 +304,17 @@
         <div class="u-equal-height">
           <div class="col-6">
             <h4>MySQL</h4>
-            <p>By <a href="{{ url_for('jaasstore.user_details', username='mysql-charmers') }}" class="p-link--strong">mysql-charmers</a></p>
+            <p>By <a href="{{ url_for('jaasstore.user_details', username='mysql-charmers') }}">mysql-charmers</a></p>
             <p>MySQL is a fast, stable and true multi-user, multi-threaded SQL database server. Its main goals are speed, robustness and ease of use.</p>
             <a href="{{ url_for('jaasstore.details', charm_or_bundle_name='mysql') }}" class="p-button--neutral">View the charm</a>
           </div>
           <div class="col-6 u-align--center u-vertically-center u-hide--small prefix-2">
-            <img width="144" src="https://assets.ubuntu.com/v1/80cd67d3-mysql.svg" alt="mySQL logo">
+            <img width="96" src="https://assets.ubuntu.com/v1/80cd67d3-mysql.svg" alt="mySQL logo">
           </div>
         </div>
       </div>
     </div>
   </div>
-</div>
-<div class="p-strip is-bordered u-no-padding--top">
   <div class="row">
     <div class="u-equal-height entity-cards">
       <div class="col-3 p-card">
@@ -398,43 +388,13 @@
       </p>
     </div>
   </div>
-</div>
 
-<div class="p-strip is-bordered">
   <div class="row">
-    <div class="col-12">
-      <h2>Development tools</h2>
-    </div>
-  </div>
-  <div class="row">
-    <div class="u-equal-height entity-cards">
-      <div class="col-3 p-card">
-        <div class="p-media-object charm-object u-no-margin--bottom">
-          <img src="{{ external_urls.charmstore }}gitlab/icon.svg" alt="Gitlab icon" class="p-media-object__image is-round">
-          <div class="p-media-object__details">
-            <h3 class="p-media-object__title">
-              <a href="{{ url_for('jaasstore.details', charm_or_bundle_name='gitlab') }}">Gitlab</a>
-            </h3>
-            <p class="p-media-object__content">by charmers</p>
-          </div>
-        </div>
-      </div>
-      <div class="col-3 p-card">
-        <div class="p-media-object charm-object u-no-margin--bottom">
-          <img src="{{ external_urls.charmstore }}jenkins/icon.svg" alt="Jenkins icon" class="p-media-object__image is-round">
-          <div class="p-media-object__details">
-            <h3 class="p-media-object__title">
-              <a href="{{ url_for('jaasstore.details', charm_or_bundle_name='jenkins') }}">Jenkins</a>
-            </h3>
-            <p class="p-media-object__content">by Creative</p>
-          </div>
-        </div>
-      </div>
-    </div>
+    <hr class="p-separator" style="margin: 2rem 0 4rem;" />
   </div>
 </div>
 
-<div class="p-strip is-shallow">
+<div class="p-strip">
   <div class="row u-equal-height entity-cards">
     <div class="col-6 u-vertically-center">
       <div>

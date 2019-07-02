@@ -6,6 +6,7 @@ $color-navigation-active-bar: #e95420;
 $color-kubernetes: #2e69ea;
 $color-accent-background: #f0f5f7;
 $color-accent: #0e8420;
+$color-mid-x-light: #e5e5e5;
 $grid-max-width: 72rem;
 
 // Set the mobile nav breakpoint to handle the large number of nav items.
@@ -240,7 +241,7 @@ $color-experts-highlight: #e95420;
 // Pictogram
 .pictogram-bg {
   background-color: $color-light;
-  border: 1px solid $color-mid-light;
+  border: 1px solid $color-mid-x-light;
   margin-bottom: 1rem;
   padding: 1.5rem 2rem 0;
 
