@@ -54,8 +54,9 @@ def get_experts(expert=None):
             "username": "tengu-team",
             "page_url": url_for("jaasai.experts_tengu"),
             "logo": "https://assets.ubuntu.com/v1/68b288f6-tengu.png",
-            "logo_invert":
-                "https://assets.ubuntu.com/v1/8d87553b-tengu-white.png",
+            "logo_invert": (
+                "https://assets.ubuntu.com/v1/" "8d87553b-tengu-white.png"
+            ),
             "highlights": [
                 "Your own Big Data workspace",
                 "Use all Juju-charmed technologies",
