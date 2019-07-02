@@ -345,7 +345,7 @@ h2 {
     border-top-color: $color-mid-dark !important;
   }
 
-  a:link {
+  .invert-link a:link {
     @extend .p-link--inverted; // sass-lint:disable-line placeholder-in-extend
   }
 }

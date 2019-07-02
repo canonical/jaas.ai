@@ -18,6 +18,10 @@ def get_experts(expert=None):
                 "https://assets.ubuntu.com/v1/"
                 "c7881d6c-spiculelogo-spacingx2-01.svg"
             ),
+            "logo_invert": (
+                "https://assets.ubuntu.com/v1/"
+                "cdad8056-spiculelogo-white.svg"
+            ),
             "highlights": [
                 "Spicule&rsquo;s solutions can solve your Big Data challenges",
                 "Supported analytics",
@@ -50,6 +54,8 @@ def get_experts(expert=None):
             "username": "tengu-team",
             "page_url": url_for("jaasai.experts_tengu"),
             "logo": "https://assets.ubuntu.com/v1/68b288f6-tengu.png",
+            "logo_invert":
+                "https://assets.ubuntu.com/v1/8d87553b-tengu-white.png",
             "highlights": [
                 "Your own Big Data workspace",
                 "Use all Juju-charmed technologies",
