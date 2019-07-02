@@ -1,6 +1,7 @@
 @mixin jaas-p-strips {
   @include jaas-p-strip-suru;
   @include jaas-p-strip-slanted;
+  @include jaas-p-strip-half-and-half;
 }
 
 @mixin jaas-p-strip-suru {
@@ -85,6 +86,18 @@
       bottom: -70px;
       left: -100px;
     }
+
+    &.to-white {
+      &::before {
+        background: linear-gradient(
+          to top left,
+          rgba(255, 255, 255, 1) 0%,
+          rgba(255, 255, 255, 1) 49%,
+          rgba(255, 255, 255, 0) 50%,
+          rgba(255, 255, 255, 0) 100%
+        );
+      }
+    }
   }
 }
 
@@ -110,6 +123,30 @@
       bottom: 0;
       width: 100%;
       z-index: 2;
+    }
+  }
+}
+
+@mixin jaas-p-strip-half-and-half {
+  .p-strip--half-and-half {
+    @extend .p-strip--image;
+    position: relative;
+
+    &::before {
+      background-image: linear-gradient(
+        to right,
+        rgba(240, 245, 247, 1) 0%,
+        rgba(240, 245, 247, 1) 49.9%,
+        rgba(240, 245, 247, 0) 50%,
+        rgba(240, 245, 247, 0) 100%
+      );
+      content: '';
+      display: block;
+      height: 100%;
+      width: 100%;
+      position: absolute;
+      top: 0;
+      left: 0;
     }
   }
 }
