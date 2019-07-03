@@ -31,7 +31,6 @@ $breakpoint-navigation-threshold: $breakpoint-large;
 @import 'custom/row-cli';
 @import 'custom/search-panel';
 @import 'custom/search-results';
-@import 'custom/store-promos';
 @import 'custom/minimal-juju-cards';
 @import 'custom/entities';
 @import 'custom/homepage-hero-promo';
@@ -100,17 +99,8 @@ $color-experts-highlight: #e95420;
   clear: both;
   display: inline-block;
   font-size: 0.875rem;
-  margin-bottom: 2rem;
   padding: 0.25rem 0.75rem;
   text-transform: uppercase;
-
-  .has-strap & {
-    display: block;
-    position: absolute;
-    right: 0;
-    top: 0;
-    width: calc(100% + 1px);
-  }
 }
 
 .expert__card-logo {
@@ -342,4 +332,20 @@ h2 {
 
 .p-separator {
   margin: 4rem 0;
+}
+
+// XXX Ant - 01.06.19: This can be removed when the follow issue is resolved.
+// https://github.com/canonical-web-and-design/vanilla-framework/issues/2401
+.is-dark {
+  .p-divider__block:not(:nth-child(1))::before {
+    border-left-color: $color-mid-dark !important;
+  }
+
+  .p-divider__block:not(:first-child) {
+    border-top-color: $color-mid-dark !important;
+  }
+
+  .invert-link a:link {
+    @extend .p-link--inverted; // sass-lint:disable-line placeholder-in-extend
+  }
 }

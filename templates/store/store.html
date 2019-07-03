@@ -6,27 +6,27 @@
 {% block description %}Browse Juju's entire repository of solutions and find Charms or Bundles for any problem, including OpenStack, Big Data, MongoDB and Elastic search.{% endblock %}
 
 {% block content %}
-<div class="p-strip u-no-padding--bottom">
-  <div class="row">
-    <div class="u-equal-height">
-        <div class="col-4 p-card store-promo--k8">
-          <div class="u-align--center">
-            <img width="150" src="https://assets.ubuntu.com/v1/dba11aee-kubernetes.svg" alt="Kubernetes logo">
-            <h2>Kubernetes</h2>
-            <a href="{{ url_for('jaasai.kubernetes') }}" class="p-button--neutral">Find out more</a>
-          </div>
-        </div>
-        <div class="col-4 p-card store-promo--hadoop">
-          <div class="u-align--center">
-            <img width="195" src="https://assets.ubuntu.com/v1/883e4977-hadoop-elephant.png" alt="Hadoop logo">
-            <h2>Big data</h2>
-            <a href="{{ url_for('jaasai.big_data') }}" class="p-button--neutral">Find out more</a>
-          </div>
-        </div>
-        <div class="col-4 has-strap">
-          {% set expert_card = {'show_footer_rule': True, 'heading_style': 'padding:0.5rem 0 0.5rem'} %}
-          {% include "shared/store-card/_random.html" %}
-       </div>
+<div class="p-strip--suru-bottom has-accent is-dark" style="background-size: auto 100%, cover; background-position: right center; background-image: url('https://assets.ubuntu.com/v1/a9dab044-suru-right.svg'), linear-gradient(266deg, #044f66, #022935)">
+  <div class="row u-equal-height p-divider">
+    <div class="col-4 p-divider__block">
+      <div class="u-sv2">
+        <img width="96" src="https://assets.ubuntu.com/v1/d1208c3f-kubernetes.svg" alt="Kubernetes logo">
+      </div>
+      <small>KUBERNETES</small>
+      <h3>The open-source <br class="u-hide--small"/>orchestration system</h3>
+      <a href="{{ url_for('jaasai.kubernetes') }}" class="p-button--neutral">Find out more</a>
+    </div>
+    <div class="col-4 p-divider__block">
+      <div class="u-sv2">
+        <img width="96" src="https://assets.ubuntu.com/v1/5e3456e3-hadoop.svg" alt="Hadoop logo">
+      </div>
+      <small>BIG DATA</small>
+      <h3>Juju solutions for <br class="u-hide--small"/>big data</h3>
+      <a href="{{ url_for('jaasai.big_data') }}" class="p-button--neutral">Find out more</a>
+    </div>
+    <div class="col-4 p-divider__block">
+      {% set expert_card = {'heading_style': 'min-height: 96px', 'invert_logo': true} %}
+      {% include "shared/store-card/_random.html" %}
     </div>
   </div>
 </div>
@@ -35,23 +35,23 @@
   <div class="row">
     <div class="u-equal-height">
       <div class="col-6 p-card">
-      <div class="col-2 u-align--center">
-        <img src="https://assets.ubuntu.com/v1/96c61b0d-charm-icon.png" alt="Illustration of a Charm pictogram">
+        <div class="col-2 u-align--center">
+          <img src="https://assets.ubuntu.com/v1/96c61b0d-charm-icon.png" alt="Illustration of a Charm pictogram">
+        </div>
+        <div class="col-4 u-no-margin--left">
+          <p>Charms are sets of scripts that simplify the deployment and management tasks of a service. They are regularly reviewed and updated.</p>
+          <a href="{{ url_for('jaasstore.search', type='charm') }}" class="p-button--neutral">View all the charms</a>
+        </div>
       </div>
-      <div class="col-4 u-no-margin--left">
-        <p>Charms are sets of scripts that simplify the deployment and management tasks of a service. They are regularly reviewed and updated.</p>
-        <a href="{{ url_for('jaasstore.search', type='charm') }}" class="p-button--neutral">View all the charms</a>
-      </div>
-    </div>
       <div class="col-6 p-card">
-      <div class="col-2 u-align--center">
-        <img src="https://assets.ubuntu.com/v1/d4ffa9bc-bundle-icon.png" alt="Illustration of a Bundle pictogram">
+        <div class="col-2 u-align--center">
+          <img src="https://assets.ubuntu.com/v1/d4ffa9bc-bundle-icon.png" alt="Illustration of a Bundle pictogram">
+        </div>
+        <div class="col-4 u-no-margin--left">
+          <p>Bundles are collections of charms that link applications together, so you can deploy whole chunks of infrastructure in one go.</p>
+          <a href="{{ url_for('jaasstore.search', type='bundle') }}" class="p-button--neutral">View all the bundles</a>
+        </div>
       </div>
-      <div class="col-4 u-no-margin--left">
-        <p>Bundles are collections of charms that link applications together, so you can deploy whole chunks of infrastructure in one go.</p>
-        <a href="{{ url_for('jaasstore.search', type='bundle') }}" class="p-button--neutral">View all the bundles</a>
-      </div>
-    </div>
     </div>
   </div>
 </div>
@@ -409,27 +409,27 @@
   <div class="row">
     <div class="u-equal-height entity-cards">
       <div class="col-3 p-card">
-      <div class="p-media-object charm-object u-no-margin--bottom">
-        <img src="{{ external_urls.charmstore }}gitlab/icon.svg" alt="Gitlab icon" class="p-media-object__image is-round">
-        <div class="p-media-object__details">
-          <h3 class="p-media-object__title">
-            <a href="{{ url_for('jaasstore.details', charm_or_bundle_name='gitlab') }}">Gitlab</a>
-          </h3>
-          <p class="p-media-object__content">by charmers</p>
+        <div class="p-media-object charm-object u-no-margin--bottom">
+          <img src="{{ external_urls.charmstore }}gitlab/icon.svg" alt="Gitlab icon" class="p-media-object__image is-round">
+          <div class="p-media-object__details">
+            <h3 class="p-media-object__title">
+              <a href="{{ url_for('jaasstore.details', charm_or_bundle_name='gitlab') }}">Gitlab</a>
+            </h3>
+            <p class="p-media-object__content">by charmers</p>
+          </div>
         </div>
       </div>
-    </div>
       <div class="col-3 p-card">
-      <div class="p-media-object charm-object u-no-margin--bottom">
-        <img src="{{ external_urls.charmstore }}jenkins/icon.svg" alt="Jenkins icon" class="p-media-object__image is-round">
-        <div class="p-media-object__details">
-          <h3 class="p-media-object__title">
-            <a href="{{ url_for('jaasstore.details', charm_or_bundle_name='jenkins') }}">Jenkins</a>
-          </h3>
-          <p class="p-media-object__content">by Creative</p>
+        <div class="p-media-object charm-object u-no-margin--bottom">
+          <img src="{{ external_urls.charmstore }}jenkins/icon.svg" alt="Jenkins icon" class="p-media-object__image is-round">
+          <div class="p-media-object__details">
+            <h3 class="p-media-object__title">
+              <a href="{{ url_for('jaasstore.details', charm_or_bundle_name='jenkins') }}">Jenkins</a>
+            </h3>
+            <p class="p-media-object__content">by Creative</p>
+          </div>
         </div>
       </div>
-    </div>
     </div>
   </div>
 </div>
