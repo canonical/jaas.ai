@@ -218,6 +218,10 @@ $color-experts-highlight: #e95420;
   }
 }
 
+.p-list-step > li::before {
+  background-color: #022935;
+}
+
 .p-list-step__title {
   padding-bottom: 2rem;
 }
