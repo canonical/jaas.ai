@@ -2,6 +2,7 @@
   @include jaas-p-strip-suru;
   @include jaas-p-strip-slanted;
   @include jaas-p-strip-half-and-half;
+  @include jaas-p-strip-muted-suru;
 }
 
 @mixin jaas-p-strip-suru {
@@ -159,6 +160,35 @@
 
     @media (max-width: $breakpoint-medium) {
       background: #f0f5f7;
+    }
+  }
+}
+
+@mixin jaas-p-strip-muted-suru {
+  .p-strip--muted-suru {
+    @extend %vf-strip;
+
+    background-image: linear-gradient(
+        to top left,
+        rgba(63, 200, 242, 0.03) 0%,
+        rgba(63, 200, 242, 0.03) 49.9%,
+        rgba(63, 200, 242, 0) 50%,
+        rgba(63, 200, 242, 0) 100%
+      ),
+      linear-gradient(
+        to top right,
+        rgba(255, 255, 255, 0.3) 0%,
+        rgba(255, 255, 255, 0.3) 49.9%,
+        rgba(255, 255, 255, 0) 50%,
+        rgba(255, 255, 255, 0) 100%
+      ),
+      linear-gradient(266deg, #e9f3f7, #e9f3f7);
+    background-position: top right, bottom left, top left;
+    background-repeat: no-repeat;
+    background-size: 40% 100%, 80% 60%, 100% 100%;
+
+    @media (max-width: $breakpoint-medium) {
+      background: rgb(240, 245, 247);
     }
   }
 }
