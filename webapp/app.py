@@ -1,4 +1,5 @@
 import flask
+import datetime
 
 from canonicalwebteam.flask_base.app import FlaskBase
 from webapp.external_urls import external_urls
@@ -36,6 +37,10 @@ def create_app(testing=False):
             "external_urls": external_urls,
             "static_url": static_url,
         }
+
+    @app.context_processor
+    def inject_today_date():
+        return {"current_year": datetime.date.today().year}
 
     app.jinja_env.add_extension("jinja2.ext.do")
 
