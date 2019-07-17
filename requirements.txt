@@ -6,3 +6,4 @@ Flask==1.1.1
 gfm==0.0.3
 jujubundlelib==0.5.6
 theblues==0.5.1
+canonicalwebteam.discourse-docs==0.6.0
