@@ -185,6 +185,8 @@ class Entity:
         if include_files:
             self.files = self._get_entity_files(self._meta.get("manifest"))
             try:
+                # If the readme is not available for the charm we pass
+                # unparsed.
                 self.readme = self._render_markdown(
                     cs.entity_readme_content(self.id)
                 )
