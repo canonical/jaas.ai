@@ -184,9 +184,13 @@ class Entity:
         self.readme = None
         if include_files:
             self.files = self._get_entity_files(self._meta.get("manifest"))
-            self.readme = self._render_markdown(
-                cs.entity_readme_content(self.id)
-            )
+            try:
+                self.readme = self._render_markdown(
+                    cs.entity_readme_content(self.id)
+                )
+            except Exception:
+                # Leave the readme unparsed.
+                pass
         self.archive_url = cs.archive_url(self._ref)
         self.bugs_url = bugs_url
         self.card_id = self._ref.path()
