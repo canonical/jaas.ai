@@ -66,8 +66,8 @@ def get_experts(expert=None):
             "email": "info@tengu.io",
             "phone_numbers": [
                 {
-                    "number": "+32478668489",
-                    "display": "+32 478 66 84 89",
+                    "number": "+3293963202",
+                    "display": "+32 9 39 63 202",
                     "location": "BE",
                 }
             ],
