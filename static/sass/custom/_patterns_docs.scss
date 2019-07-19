@@ -11,9 +11,6 @@
   .l-docs-sidebar {
     border-right: $border;
     flex: 0 0 $sidebar-width;
-    height: 100vh;
-    overflow: auto;
-    position: sticky;
     top: 0;
 
     @media only screen and (max-width: $breakpoint-navigation-threshold) {
