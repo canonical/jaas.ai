@@ -24,6 +24,7 @@
 <script>
   // Set up highlightjs
   hljs.initHighlightingOnLoad();
+
   document.addEventListener("DOMContentLoaded", function(event) {
     // Toggle mobile sidebar nav
     var toggle = document.querySelector('.p-sidenav__toggle');
@@ -33,6 +34,16 @@
       toggle.classList.toggle('p-icon--close');
       sidebarContent.classList.toggle('u-hide--small');
     });
+  });
+
+  // Add active links to active nav item and scroll to section
+  var sidebar = document.querySelector(".l-docs-sidebar");
+  document.querySelectorAll('.p-sidenav__body ul a').forEach(function(anchor) {
+    if (anchor.pathname === location.pathname) {
+      anchor.classList.add('is-active');
+      var section = anchor.closest("ul");
+      sidebar.scrollTo(0, section.offsetTop - 40);
+    }
   });
 </script>
 {% endblock %}
