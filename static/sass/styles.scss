@@ -41,9 +41,12 @@ $breakpoint-navigation-threshold: $breakpoint-large;
 @import 'custom/patterns_strips';
 @import 'custom/patterns_lists';
 @import 'custom/patterns_icons';
+@import 'custom/patterns_docs';
+@import 'custom/hljs';
 @include jaas-p-strips;
 @include jaas-p-lists;
 @include jaas-p-icons;
+@include jaas-docs;
 
 // Homepage Card footer margin
 .p-card.is-flex {

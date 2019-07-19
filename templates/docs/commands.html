@@ -1,13 +1,14 @@
 {% extends "docs/base.html" %}
 
 {% block content_docs %}
-  <div class="p-strip is-shallow">
-    <div class="p-content__row">
-      <h1>Command reference</h1>
+<main class="l-docs-content" id="main-content">
+<div class="p-strip is-shallow">
+<div class="l-docs-row">
+<h1>Command reference</h1>
 
-      <p>You can get a list of all Juju commands by invoking <code>juju help commands</code> in a terminal.</p>
-      <p>To drill down into each command use <code>juju help &lt;command name&gt;</code>.</p>
-      <p>This same information is also provided below. Click on a command to view information on it.</p>
+<p>You can get a list of all Juju commands by invoking <code>juju help commands</code> in a terminal.</p>
+<p>To drill down into each command use <code>juju help &lt;command name&gt;</code>.</p>
+<p>This same information is also provided below. Click on a command to view information on it.</p>
 
 <details id="actions"> <summary>actions</summary>
 <p>
@@ -106,7 +107,7 @@ If you are accessing a public cloud, running add-cloud unlikely to be necessary.
 add-cloud operates in two modes:
 </p>
 <pre><code>         juju add-cloud
-          juju add-cloud &lt;cloud name&gt; &lt;cloud definition file&gt;
+juju add-cloud &lt;cloud name&gt; &lt;cloud definition file&gt;
 </code></pre>
 <p>
 When invoked without arguments, add-cloud begins an interactive session designed for working with private clouds. The session will enable you to instruct Juju how to connect to your private cloud.
@@ -125,7 +126,7 @@ clouds: # mandatory mycloud: # <cloud name> argument type: openstack # <cloud ty
 </p>
 <pre><code>           london:
 
-              endpoint: https://london.mycloud.com:35574/v3.0/
+endpoint: https://london.mycloud.com:35574/v3.0/
 </code></pre>
 <p>
 <cloud types> for private clouds: - lxd - maas - manual - openstack - vsphere
@@ -134,18 +135,18 @@ clouds: # mandatory mycloud: # <cloud name> argument type: openstack # <cloud ty
 <cloud types> for public clouds:
 </p>
 <pre><code>      - azure
-      - cloudsigma
-      - ec2
-      - gce
-      - joyent
-      - oci
+- cloudsigma
+- ec2
+- gce
+- joyent
+- oci
 </code></pre>
 <p>
 <strong>Examples:</strong>
 </p>
 <pre><code>   juju add-cloud
-    juju add-cloud mycloud ~/mycloud.yaml
-    juju add-cloud --replace mycloud ~/mycloud2.yaml
+juju add-cloud mycloud ~/mycloud.yaml
+juju add-cloud --replace mycloud ~/mycloud2.yaml
 </code></pre>
 <p>
 <strong>See also:</strong>
@@ -190,25 +191,25 @@ credentials:
 </p>
 <pre><code>       aws:
 
-          &lt;credential name&gt;:
+&lt;credential name&gt;:
 
-            auth-type: access-key
-            access-key: &lt;key&gt;
-            secret-key: &lt;key&gt;
-        azure:
+auth-type: access-key
+access-key: &lt;key&gt;
+secret-key: &lt;key&gt;
+azure:
 
-          &lt;credential name&gt;:
+&lt;credential name&gt;:
 
-            auth-type: service-principal-secret
-            application-id: &lt;uuid1&gt;
-            application-password: &lt;password&gt;
-            subscription-id: &lt;uuid2&gt;
-        lxd:
+auth-type: service-principal-secret
+application-id: &lt;uuid1&gt;
+application-password: &lt;password&gt;
+subscription-id: &lt;uuid2&gt;
+lxd:
 
-          &lt;credential name&gt;:
+&lt;credential name&gt;:
 
-            auth-type: interactive
-            trust-password: &lt;password&gt;
+auth-type: interactive
+trust-password: &lt;password&gt;
 </code></pre>
 <p>
 A &quot;credential name&quot; is arbitrary and is used solely to represent a set of credentials, of which there may be multiple per cloud.
@@ -226,7 +227,7 @@ When Juju needs credentials for a cloud, i) if there are multiple available; ii)
 <strong>Examples:</strong>
 </p>
 <pre><code>   juju add-credential google
-    juju add-credential aws -f ~/credentials.yaml
+juju add-credential aws -f ~/credentials.yaml
 </code></pre>
 <p>
 <strong>See also:</strong>
@@ -276,8 +277,8 @@ Creates a user-defined cloud and populate the selected controller with the k8s c
 <strong>Examples:</strong>
 </p>
 <pre><code>   juju add-k8s myk8scloud
-    KUBECONFIG=path-to-kubuconfig-file juju add-k8s myk8scloud --cluster-name=my_cluster_name
-    kubectl config view --raw | juju add-k8s myk8scloud --cluster-name=my_cluster_name
+KUBECONFIG=path-to-kubuconfig-file juju add-k8s myk8scloud --cluster-name=my_cluster_name
+kubectl config view --raw | juju add-k8s myk8scloud --cluster-name=my_cluster_name
 </code></pre>
 <p>
 <strong>See also:</strong>
@@ -357,15 +358,15 @@ It is possible to override or augment constraints by passing provider-specific &
 <strong>Examples:</strong>
 </p>
 <pre><code>  juju add-machine                      (starts a new machine)
-  juju add-machine -n 2                 (starts 2 new machines)
-  juju add-machine lxd                  (starts a new machine with an lxd container)
-  juju add-machine lxd -n 2             (starts 2 new machines with an lxd container)
-  juju add-machine lxd:4                (starts a new lxd container on machine 4)
-  juju add-machine --constraints mem=8G (starts a machine with at least 8GB RAM)
-  juju add-machine ssh:user@10.10.0.3   (manually provisions machine with ssh)
-  juju add-machine winrm:user@10.10.0.3 (manually provisions machine with winrm)
-  juju add-machine zone=us-east-1a      (start a machine in zone us-east-1a on AWS)
-  juju add-machine maas2.name           (acquire machine maas2.name on MAAS)
+juju add-machine -n 2                 (starts 2 new machines)
+juju add-machine lxd                  (starts a new machine with an lxd container)
+juju add-machine lxd -n 2             (starts 2 new machines with an lxd container)
+juju add-machine lxd:4                (starts a new lxd container on machine 4)
+juju add-machine --constraints mem=8G (starts a machine with at least 8GB RAM)
+juju add-machine ssh:user@10.10.0.3   (manually provisions machine with ssh)
+juju add-machine winrm:user@10.10.0.3 (manually provisions machine with winrm)
+juju add-machine zone=us-east-1a      (start a machine in zone us-east-1a on AWS)
+juju add-machine maas2.name           (acquire machine maas2.name on MAAS)
 </code></pre>
 <p>
 <strong>See also:</strong>
@@ -439,11 +440,11 @@ Model names may only contain lowercase letters, digits and hyphens, and may not 
 To add a model, Juju requires a credential:
 </p>
 <pre><code>         * if you have a default (or just one) credential defined at client
-          (i.e. in credentials.yaml), then juju will use that;
-          * if you have no default (and multiple) credentials defined at the client, 
-          then you must specify one using --credential;
-          * as the admin user you can omit the credential, 
-          and the credential used to bootstrap will be used.
+(i.e. in credentials.yaml), then juju will use that;
+* if you have no default (and multiple) credentials defined at the client,
+then you must specify one using --credential;
+* as the admin user you can omit the credential,
+and the credential used to bootstrap will be used.
 </code></pre>
 <p>
 To add a credential for add-model, use one of the &quot;juju add-credential&quot; or &quot;juju autoload-credentials&quot; commands. These will add credentials to the Juju client, which &quot;juju add-model&quot; will upload to the controller as necessary.
@@ -458,10 +459,10 @@ If no cloud/region is specified, then the model will be deployed to the same clo
 <strong>Examples:</strong>
 </p>
 <pre><code>   juju add-model mymodel
-    juju add-model mymodel us-east-1
-    juju add-model mymodel aws/us-east-1
-    juju add-model mymodel --config my-config.yaml --config image-stream=daily
-    juju add-model mymodel --credential credential_name --config authorized-keys="ssh-rsa ..."
+juju add-model mymodel us-east-1
+juju add-model mymodel aws/us-east-1
+juju add-model mymodel --config my-config.yaml --config image-stream=daily
+juju add-model mymodel --credential credential_name --config authorized-keys="ssh-rsa ..."
 </code></pre>
 <p></details></p>
 <details id="add-relation"> <summary>add-relation</summary>
@@ -496,7 +497,7 @@ for cross model relations, specify the egress subnets for outbound traffic
 Add a relation between 2 local application endpoints or a local endpoint and a remote application endpoint. Adding a relation between two remote application endpoints is not supported. Application endpoints can be identified either by:
 </p>
 <pre><code>         &lt;application name&gt;[:&lt;relation name&gt;]
-              where application name supplied without relation will be internally expanded to be well-formed
+where application name supplied without relation will be internally expanded to be well-formed
 </code></pre>
 <p>
 or <model name>.<application name>[:<relation name>] where the application is hosted in another model owned by the current user, in the same controller
@@ -511,14 +512,14 @@ For a cross model relation, if the consuming side is behind a firewall and/or NA
 <strong>Examples:</strong>
 </p>
 <pre><code>   $ juju add-relation wordpress mysql
-        where "wordpress" and "mysql" will be internally expanded to "wordpress:db" and "mysql:server" respectively
+where "wordpress" and "mysql" will be internally expanded to "wordpress:db" and "mysql:server" respectively
 
-    $ juju add-relation wordpress someone/prod.mysql
-        where "wordpress" will be internally expanded to "wordpress:db"
+$ juju add-relation wordpress someone/prod.mysql
+where "wordpress" will be internally expanded to "wordpress:db"
 
-    $ juju add-relation wordpress someone/prod.mysql --via 192.168.0.0/16
+$ juju add-relation wordpress someone/prod.mysql --via 192.168.0.0/16
 
-    $ juju add-relation wordpress someone/prod.mysql --via 192.168.0.0/16,10.0.0.0/8
+$ juju add-relation wordpress someone/prod.mysql --via 192.168.0.0/16,10.0.0.0/8
 </code></pre>
 <p>
 <strong>Aliases:</strong>
@@ -594,14 +595,14 @@ Juju maintains a per-model cache of public SSH keys which it copies to each unit
 <strong>Examples:</strong>
 </p>
 <pre><code>   juju add-ssh-key "ssh-rsa qYfS5LieM79HIOr535ret6xy
-    AAAAB3NzaC1yc2EAAAADAQA6fgBAAABAQCygc6Rc9XgHdhQqTJ
-    Wsoj+I3xGrOtk21xYtKijnhkGqItAHmrE5+VH6PY1rVIUXhpTg
-    pSkJsHLmhE29OhIpt6yr8vQSOChqYfS5LieM79HIOJEgJEzIqC
-    52rCYXLvr/BVkd6yr4IoM1vpb/n6u9o8v1a0VUGfc/J6tQAcPR
-    ExzjZUVsfjj8HdLtcFq4JLYC41miiJtHw4b3qYu7qm3vh4eCiK
-    1LqLncXnBCJfjj0pADXaL5OQ9dmD3aCbi8KFyOEs3UumPosgmh
-    VCAfjjHObWHwNQ/ZU2KrX1/lv/+lBChx2tJliqQpyYMiA3nrtS
-    jfqQgZfjVF5vz8LESQbGc6+vLcXZ9KQpuYDt joe@ubuntu"
+AAAAB3NzaC1yc2EAAAADAQA6fgBAAABAQCygc6Rc9XgHdhQqTJ
+Wsoj+I3xGrOtk21xYtKijnhkGqItAHmrE5+VH6PY1rVIUXhpTg
+pSkJsHLmhE29OhIpt6yr8vQSOChqYfS5LieM79HIOJEgJEzIqC
+52rCYXLvr/BVkd6yr4IoM1vpb/n6u9o8v1a0VUGfc/J6tQAcPR
+ExzjZUVsfjj8HdLtcFq4JLYC41miiJtHw4b3qYu7qm3vh4eCiK
+1LqLncXnBCJfjj0pADXaL5OQ9dmD3aCbi8KFyOEs3UumPosgmh
+VCAfjjHObWHwNQ/ZU2KrX1/lv/+lBChx2tJliqQpyYMiA3nrtS
+jfqQgZfjVF5vz8LESQbGc6+vLcXZ9KQpuYDt joe@ubuntu"
 </code></pre>
 <p>
 For ease of use it is possible to use shell substitution to pass the key to the command:
@@ -653,13 +654,13 @@ A storage directive consists of a storage name as per charm specification and st
 The acceptable format for storage constraints is a comma separated sequence of: POOL, COUNT, and SIZE, where POOL identifies the storage pool. POOL can be a string starting with a letter, followed by zero or more digits or letters optionally separated by hyphens.
 </p>
 <pre><code>         COUNT is a positive integer indicating how many instances
-          of the storage to create. If unspecified, and SIZE is
-          specified, COUNT defaults to 1.
+of the storage to create. If unspecified, and SIZE is
+specified, COUNT defaults to 1.
 
-          SIZE describes the minimum size of the storage instances to
-          create. SIZE is a floating point number and multiplier from
-          the set (M, G, T, P, E, Z, Y), which are all treated as
-          powers of 1024.
+SIZE describes the minimum size of the storage instances to
+create. SIZE is a floating point number and multiplier from
+the set (M, G, T, P, E, Z, Y), which are all treated as
+powers of 1024.
 </code></pre>
 <p>
 Storage constraints can be optionally omitted.
@@ -676,18 +677,18 @@ There is no need to comma-separate omitted constraints.
 <p>
 Add 3 ebs storage instances for &quot;data&quot; storage to unit u/0:
 </p>
-<pre><code>     juju add-storage u/0 data=ebs,1024,3 
-    or
-      juju add-storage u/0 data=ebs,3
-    or
-      juju add-storage u/0 data=ebs,,3
+<pre><code>     juju add-storage u/0 data=ebs,1024,3
+or
+juju add-storage u/0 data=ebs,3
+or
+juju add-storage u/0 data=ebs,,3
 </code></pre>
 <p>
 Add 1 storage instances for &quot;data&quot; storage to unit u/0 using default model provider pool:
 </p>
-<pre><code>     juju add-storage u/0 data=1 
-    or
-      juju add-storage u/0 data
+<pre><code>     juju add-storage u/0 data=1
+or
+juju add-storage u/0 data
 </code></pre>
 <p></details></p>
 <details id="add-subnet"> <summary>add-subnet</summary>
@@ -882,7 +883,7 @@ A user unique registration string will be printed. This registration string must
 <strong>Examples:</strong>
 </p>
 <pre><code>   juju add-user bob
-    juju add-user --controller mycontroller bob
+juju add-user --controller mycontroller bob
 </code></pre>
 <p>
 <strong>See also:</strong>
@@ -1145,26 +1146,26 @@ An alternative to this command is <code>juju add-credential</code> Below are the
 EC2 Credentials and regions:
 </p>
 <pre><code>         1. On Linux, $HOME/.aws/credentials and $HOME/.aws/config
-          2. Environment variables AWS_ACCESS_KEY_ID, AWS_SECRET_ACCESS_KEY
+2. Environment variables AWS_ACCESS_KEY_ID, AWS_SECRET_ACCESS_KEY
 </code></pre>
 <p>
 GCE Credentials:
 </p>
 <pre><code>         1. A JSON file whose path is specified by the
-            GOOGLE_APPLICATION_CREDENTIALS environment variable
-          2. On Linux, $HOME/.config/gcloud/application_default_credentials.json
-            Default region is specified by the CLOUDSDK_COMPUTE_REGION environment
-            variable.
+GOOGLE_APPLICATION_CREDENTIALS environment variable
+2. On Linux, $HOME/.config/gcloud/application_default_credentials.json
+Default region is specified by the CLOUDSDK_COMPUTE_REGION environment
+variable.
 
-          3. On Windows, %APPDATA%\\gcloud\\application_default_credentials.json
+3. On Windows, %APPDATA%\\gcloud\\application_default_credentials.json
 </code></pre>
 <p>
 OpenStack Credentials:
 </p>
 <pre><code>         1. On Linux, $HOME/.novarc
-          2. Environment variables OS_USERNAME, OS_PASSWORD, OS_TENANT_NAME,
+2. Environment variables OS_USERNAME, OS_PASSWORD, OS_TENANT_NAME,
 
-    OS_DOMAIN_NAME
+OS_DOMAIN_NAME
 </code></pre>
 <p>
 LXD Credentials:
@@ -1385,21 +1386,21 @@ It is possible to override constraints and the automatic machine selection algor
 Available keys for use with --config can be found here:
 </p>
 <pre><code>         https://jujucharms.com/stable/controllers-config
-          https://jujucharms.com/stable/models-config
+https://jujucharms.com/stable/models-config
 </code></pre>
 <p>
 You can change the default timeout and retry delays used during the bootstrap by changing the following settings in your configuration (all values represent number of seconds):
 </p>
 <pre><code>         # How long to wait for a connection to the controller
-          bootstrap-timeout: 600 # default: 10 minutes
-          # How long to wait between connection attempts to a controller
+bootstrap-timeout: 600 # default: 10 minutes
+# How long to wait between connection attempts to a controller
 </code></pre>
 <p>
 address.
 </p>
 <pre><code>         bootstrap-retry-delay: 5 # default: 5 seconds
-          # How often to refresh controller addresses from the API server.
-          bootstrap-addresses-delay: 10 # default: 10 seconds
+# How often to refresh controller addresses from the API server.
+bootstrap-addresses-delay: 10 # default: 10 seconds
 </code></pre>
 <p>
 Private clouds may need to specify their own custom image metadata and tools/agent. Use '--metadata-source' whose value is a local directory. By default, the Juju version of the agent binary that is downloaded and installed on all models for the new controller will be the same as that of the Juju client used to perform the bootstrap.
@@ -1420,14 +1421,14 @@ However, if this client has a copy of codebase, then a local copy of Juju will b
 <strong>Examples:</strong>
 </p>
 <pre><code>   juju bootstrap
-    juju bootstrap --clouds
-    juju bootstrap --regions aws
-    juju bootstrap aws
-    juju bootstrap aws/us-east-1
-    juju bootstrap google joe-us-east1
-    juju bootstrap --config=~/config-rs.yaml rackspace joe-syd
-    juju bootstrap --agent-version=2.2.4 aws joe-us-east-1
-    juju bootstrap --config bootstrap-timeout=1200 azure joe-eastus
+juju bootstrap --clouds
+juju bootstrap --regions aws
+juju bootstrap aws
+juju bootstrap aws/us-east-1
+juju bootstrap google joe-us-east1
+juju bootstrap --config=~/config-rs.yaml rackspace joe-syd
+juju bootstrap --agent-version=2.2.4 aws joe-us-east-1
+juju bootstrap --config bootstrap-timeout=1200 azure joe-eastus
 </code></pre>
 <p>
 <strong>See also:</strong>
@@ -1552,8 +1553,8 @@ List cached os images in the Juju model.
 Images can be filtered on:
 </p>
 <pre><code>       Kind         eg "lxd"
-        Series       eg "xenial"
-        Architecture eg "amd64"
+Series       eg "xenial"
+Architecture eg "amd64"
 </code></pre>
 <p>
 The filter attributes are optional.
@@ -1671,10 +1672,10 @@ This option will issue a new registration string to be used with <code>juju regi
 <strong>Examples:</strong>
 </p>
 <pre><code>   juju change-user-password
-    juju change-user-password bob
-    juju change-user-password bob --reset
-    juju change-user-password -c another-known-controller
-    juju change-user-password bob --controller another-known-controller
+juju change-user-password bob
+juju change-user-password bob --reset
+juju change-user-password -c another-known-controller
+juju change-user-password bob --controller another-known-controller
 </code></pre>
 <p>
 <strong>See also:</strong>
@@ -1718,8 +1719,8 @@ This command is DEPRECATED since Juju 2.3.x. Use the <code>charm-resources</code
 Sub-commands:
 </p>
 <pre><code>  help           - Show help on a command or other topic.
-  list-resources - Alias for 'resources'.
-  resources      - DEPRECATED: Display the resources for a charm in the Charm Store.
+list-resources - Alias for 'resources'.
+resources      - DEPRECATED: Display the resources for a charm in the Charm Store.
 </code></pre>
 <p></details></p>
 <details id="charm-resources"> <summary>charm-resources</summary>
@@ -1834,7 +1835,7 @@ Use the <code>regions</code> command to list a cloud's regions. Use the <code>sh
 <strong>Examples:</strong>
 </p>
 <pre><code>   juju clouds
-    juju clouds --format yaml
+juju clouds --format yaml
 </code></pre>
 <p>
 <strong>See also:</strong>
@@ -1949,12 +1950,12 @@ When only one configuration value is desired, the command will ignore --format o
 <strong>Examples:</strong>
 </p>
 <pre><code>   juju config apache2
-    juju config --format=json apache2
-    juju config mysql dataset-size
-    juju config mysql --reset dataset-size,backup_dir
-    juju config apache2 --file path/to/config.yaml
-    juju config mysql dataset-size=80% backup_dir=/vol1/mysql/backups
-    juju config apache2 --model mymodel --file /home/ubuntu/mysql.yaml
+juju config --format=json apache2
+juju config mysql dataset-size
+juju config mysql --reset dataset-size,backup_dir
+juju config apache2 --file path/to/config.yaml
+juju config mysql dataset-size=80% backup_dir=/vol1/mysql/backups
+juju config apache2 --model mymodel --file /home/ubuntu/mysql.yaml
 </code></pre>
 <p>
 <strong>See also:</strong>
@@ -1995,14 +1996,14 @@ Model to operate in. Accepts [&lt;controller name&gt;:]&lt;model name&gt;
 Adds a remote offer to the model. Relations can be created later using &quot;juju relate&quot;. The remote offer is identified by providing a path to the offer:
 </p>
 <pre><code>         [&lt;model owner&gt;/]&lt;model name&gt;.&lt;application name&gt;
-              for an application in another model in this controller (if owner isn't specified it's assumed to be the logged-in user)
+for an application in another model in this controller (if owner isn't specified it's assumed to be the logged-in user)
 </code></pre>
 <p>
 <strong>Examples:</strong>
 </p>
 <pre><code>   $ juju consume othermodel.mysql
-    $ juju consume owner/othermodel.mysql
-    $ juju consume anothercontroller:owner/othermodel.mysql
+$ juju consume owner/othermodel.mysql
+$ juju consume anothercontroller:owner/othermodel.mysql
 </code></pre>
 <p>
 <strong>See also:</strong>
@@ -2067,11 +2068,11 @@ https://jujucharms.com/stable/controllers-config
 <strong>Examples:</strong>
 </p>
 <pre><code>   juju controller-config
-    juju controller-config api-port
-    juju controller-config -c mycontroller
-    juju controller-config auditing-enabled=true audit-log-max-backups=5
-    juju controller-config auditing-enabled=true path/to/file.yaml
-    juju controller-config path/to/file.yaml
+juju controller-config api-port
+juju controller-config -c mycontroller
+juju controller-config auditing-enabled=true audit-log-max-backups=5
+juju controller-config auditing-enabled=true path/to/file.yaml
+juju controller-config path/to/file.yaml
 </code></pre>
 <p>
 <strong>See also:</strong>
@@ -2127,7 +2128,7 @@ The output format may be selected with the '--format' option. In the default tab
 <strong>Examples:</strong>
 </p>
 <pre><code>   juju controllers
-    juju controllers --format json --output ~/tmp/controllers.json
+juju controllers --format json --output ~/tmp/controllers.json
 </code></pre>
 <p>
 <strong>See also:</strong>
@@ -2203,11 +2204,11 @@ To access remote backups stored on the controller, see 'juju download-backup'.
 <p>
 <strong>Examples:</strong>
 </p>
-<pre><code>   juju create-backup 
-    juju create-backup --no-download
-    juju create-backup --no-download --keep-copy=false // ignores --keep-copy
-    juju create-backup --keep-copy
-    juju create-backup --verbose
+<pre><code>   juju create-backup
+juju create-backup --no-download
+juju create-backup --no-download --keep-copy=false // ignores --keep-copy
+juju create-backup --keep-copy
+juju create-backup --verbose
 </code></pre>
 <p>
 <strong>See also:</strong>
@@ -2359,8 +2360,8 @@ Credentials denoted with an asterisk '*' are currently set as the local default 
 <strong>Examples:</strong>
 </p>
 <pre><code>   juju credentials
-    juju credentials aws
-    juju credentials --format yaml --show-secrets
+juju credentials aws
+juju credentials --format yaml --show-secrets
 </code></pre>
 <p>
 <strong>See also:</strong>
@@ -2614,17 +2615,17 @@ Show all messages from unit apache2/3 or machine 1 and then exit:
 <p>
 Show all juju.worker.uniter logging module messages that are also unit wordpress/0 messages, and then show any new log messages which match the filter:
 </p>
-<pre><code>   juju debug-log --replay 
-        --include-module juju.worker.uniter \
-        --include unit-wordpress-0
+<pre><code>   juju debug-log --replay
+--include-module juju.worker.uniter \
+--include unit-wordpress-0
 </code></pre>
 <p>
 Show all messages from the juju.worker.uniter module, except those sent from machine-3 or machine-4, and then stop:
 </p>
 <pre><code>   juju debug-log --replay --no-tail
-        --include-module juju.worker.uniter \
-        --exclude machine-3 \
-        --exclude machine-4
+--include-module juju.worker.uniter \
+--exclude machine-3 \
+--exclude machine-4
 </code></pre>
 <p>
 To see all WARNING and ERROR messages and then continue showing any new WARNING and ERROR messages as they are logged:
@@ -2778,10 +2779,10 @@ Allows charm to run hooks that require access credentials
 A charm can be referred to by its simple name and a series can optionally be specified:
 </p>
 <pre><code>       juju deploy postgresql
-        juju deploy xenial/postgresql
-        juju deploy cs:postgresql
-        juju deploy cs:xenial/postgresql
-        juju deploy postgresql --series xenial
+juju deploy xenial/postgresql
+juju deploy cs:postgresql
+juju deploy cs:xenial/postgresql
+juju deploy postgresql --series xenial
 </code></pre>
 <p>
 All the above deployments use remote charms found in the Charm Store (denoted by 'cs') and therefore also make use of &quot;charm URLs&quot;.
@@ -2793,13 +2794,13 @@ A versioned charm URL will be expanded as expected. For example, 'mysql-56' beco
 A local charm may be deployed by giving the path to its directory:
 </p>
 <pre><code>       juju deploy /path/to/charm
-        juju deploy /path/to/charm --series xenial
+juju deploy /path/to/charm --series xenial
 </code></pre>
 <p>
 You will need to be explicit if there is an ambiguity between a local and a remote charm:
 </p>
 <pre><code>       juju deploy ./pig
-        juju deploy cs:pig
+juju deploy cs:pig
 </code></pre>
 <p>
 An error is emitted if the determined series is not supported by the charm. Use the '--force' option to override this check:
@@ -2816,18 +2817,18 @@ A local bundle may be deployed by specifying the path to its YAML file: juju dep
 The final charm/machine series is determined using an order of precedence (most preferred to least):
 </p>
 <pre><code>      - the '--series' command option
-      - the series stated in the charm URL
-      - for a bundle, the series stated in each charm URL (in the bundle file)
-      - for a bundle, the series given at the top level (in the bundle file)
-      - the 'default-series' model key
-      - the top-most series specified in the charm's metadata file
-        (this sets the charm's 'preferred series' in the Charm Store)
+- the series stated in the charm URL
+- for a bundle, the series stated in each charm URL (in the bundle file)
+- for a bundle, the series given at the top level (in the bundle file)
+- the 'default-series' model key
+- the top-most series specified in the charm's metadata file
+(this sets the charm's 'preferred series' in the Charm Store)
 </code></pre>
 <p>
 An 'application name' provides an alternate name for the application. It works only for charms; it is silently ignored for bundles (although the same can be done at the bundle file level). Such a name must consist only of lower-case letters (a-z), numbers (0-9), and single hyphens (-). The name must begin with a letter and not have a group of all numbers follow a hyphen:
 </p>
 <pre><code>       Valid:   myappname, custom-app, app2-scat-23skidoo
-        Invalid: myAppName, custom--app, app2-scat-23, areacode-555-info
+Invalid: myAppName, custom--app, app2-scat-23, areacode-555-info
 </code></pre>
 <p>
 Use the '--constraints' option to specify hardware requirements for new machines. These become the application's default constraints (i.e. they are used if the application is later scaled out with the <code>add-unit</code> command). To overcome this behaviour use the <code>set-constraints</code> command to change the application's default constraints or add a machine (<code>add-machine</code>) with a certain constraint and then target that machine with <code>add-unit</code> by using the '--to' option.
@@ -2972,7 +2973,7 @@ Deploy a Kubernetes charm that requires a single Nvidia GPU:
 Deploy a Kubernetes charm that requires two Nvidia GPUs that have an attribute of 'gpu=nvidia-tesla-p100':
 </p>
 <pre><code>   juju deploy mycharm --device \
-      twingpu=2,nvidia.com/gpu,gpu=nvidia-tesla-p100
+twingpu=2,nvidia.com/gpu,gpu=nvidia-tesla-p100
 </code></pre>
 <p>
 <strong>See also:</strong>
@@ -3114,9 +3115,9 @@ If there is persistent storage in any of the models managed by the controller, t
 <strong>Examples:</strong>
 </p>
 <pre><code>   juju destroy-model test
-    juju destroy-model -y mymodel
-    juju destroy-model -y mymodel --destroy-storage
-    juju destroy-model -y mymodel --release-storage
+juju destroy-model -y mymodel
+juju destroy-model -y mymodel --destroy-storage
+juju destroy-model -y mymodel --release-storage
 </code></pre>
 <p>
 <strong>See also:</strong>
@@ -3224,11 +3225,11 @@ The map-machines option works similarly as for the deploy command, but existing 
 <strong>Examples:</strong>
 </p>
 <pre><code>   juju diff-bundle localbundle.yaml
-    juju diff-bundle canonical-kubernetes
-    juju diff-bundle -m othermodel hadoop-spark
-    juju diff-bundle mongodb-cluster --channel beta
-    juju diff-bundle canonical-kubernetes --overlay local-config.yaml --overlay extra.yaml
-    juju diff-bundle localbundle.yaml --map-machines 3=4
+juju diff-bundle canonical-kubernetes
+juju diff-bundle -m othermodel hadoop-spark
+juju diff-bundle mongodb-cluster --channel beta
+juju diff-bundle canonical-kubernetes --overlay local-config.yaml --overlay extra.yaml
+juju diff-bundle localbundle.yaml --map-machines 3=4
 </code></pre>
 <p>
 <strong>See also:</strong>
@@ -3275,50 +3276,50 @@ This is done by disabling certain sets of commands from successful execution. Di
 Some commands offer a --force option that can be used to bypass the disabling. Commands that can be disabled are grouped based on logical operations as follows: &quot;destroy-model&quot; prevents:
 </p>
 <pre><code>         destroy-controller
-          destroy-model
+destroy-model
 </code></pre>
 <p>
 &quot;remove-object&quot; prevents:
 </p>
 <pre><code>         destroy-controller
-          destroy-model
-          remove-machine
-          remove-relation
-          remove-application
-          remove-unit
+destroy-model
+remove-machine
+remove-relation
+remove-application
+remove-unit
 </code></pre>
 <p>
 &quot;all&quot; prevents:
 </p>
 <pre><code>         add-machine
-          add-relation
-          add-unit
-          add-ssh-key
-          add-user
-          change-user-password
-          config
-          deploy
-          disable-user
-          destroy-controller
-          destroy-model
-          enable-ha
-          enable-user
-          expose
-          import-ssh-key
-          model-config
-          remove-application
-          remove-machine
-          remove-relation
-          remove-ssh-key
-          remove-unit
-          resolved
-          retry-provisioning
-          run
-          set-constraints
-          sync-agents
-          unexpose
-          upgrade-charm
-          upgrade-model
+add-relation
+add-unit
+add-ssh-key
+add-user
+change-user-password
+config
+deploy
+disable-user
+destroy-controller
+destroy-model
+enable-ha
+enable-user
+expose
+import-ssh-key
+model-config
+remove-application
+remove-machine
+remove-relation
+remove-ssh-key
+remove-unit
+resolved
+retry-provisioning
+run
+set-constraints
+sync-agents
+unexpose
+upgrade-charm
+upgrade-model
 </code></pre>
 <p>
 <strong>Examples:</strong>
@@ -3444,50 +3445,50 @@ List disabled commands for the model.
 Commands that can be disabled are grouped based on logical operations as follows: &quot;destroy-model&quot; prevents:
 </p>
 <pre><code>         destroy-controller
-          destroy-model
+destroy-model
 </code></pre>
 <p>
 &quot;remove-object&quot; prevents:
 </p>
 <pre><code>         destroy-controller
-          destroy-model
-          remove-machine
-          remove-relation
-          remove-application
-          remove-unit
+destroy-model
+remove-machine
+remove-relation
+remove-application
+remove-unit
 </code></pre>
 <p>
 &quot;all&quot; prevents:
 </p>
 <pre><code>         add-machine
-          add-relation
-          add-unit
-          add-ssh-key
-          add-user
-          change-user-password
-          config
-          deploy
-          disable-user
-          destroy-controller
-          destroy-model
-          enable-ha
-          enable-user
-          expose
-          import-ssh-key
-          model-config
-          remove-application
-          remove-machine
-          remove-relation
-          remove-ssh-key
-          remove-unit
-          resolved
-          retry-provisioning
-          run
-          set-constraints
-          sync-agents
-          unexpose
-          upgrade-charm
-          upgrade-model
+add-relation
+add-unit
+add-ssh-key
+add-user
+change-user-password
+config
+deploy
+disable-user
+destroy-controller
+destroy-model
+enable-ha
+enable-user
+expose
+import-ssh-key
+model-config
+remove-application
+remove-machine
+remove-relation
+remove-ssh-key
+remove-unit
+resolved
+retry-provisioning
+run
+set-constraints
+sync-agents
+unexpose
+upgrade-charm
+upgrade-model
 </code></pre>
 <p>
 <strong>See also:</strong>
@@ -3581,50 +3582,50 @@ This is done by disabling certain sets of commands from successful execution. Di
 Some commands offer a --force option that can be used to bypass a block. Commands that can be disabled are grouped based on logical operations as follows: &quot;destroy-model&quot; prevents:
 </p>
 <pre><code>         destroy-controller
-          destroy-model
+destroy-model
 </code></pre>
 <p>
 &quot;remove-object&quot; prevents:
 </p>
 <pre><code>         destroy-controller
-          destroy-model
-          remove-machine
-          remove-relation
-          remove-application
-          remove-unit
+destroy-model
+remove-machine
+remove-relation
+remove-application
+remove-unit
 </code></pre>
 <p>
 &quot;all&quot; prevents:
 </p>
 <pre><code>         add-machine
-          add-relation
-          add-unit
-          add-ssh-key
-          add-user
-          change-user-password
-          config
-          deploy
-          disable-user
-          destroy-controller
-          destroy-model
-          enable-ha
-          enable-user
-          expose
-          import-ssh-key
-          model-config
-          remove-application
-          remove-machine
-          remove-relation
-          remove-ssh-key
-          remove-unit
-          resolved
-          retry-provisioning
-          run
-          set-constraints
-          sync-agents
-          unexpose
-          upgrade-charm
-          upgrade-model
+add-relation
+add-unit
+add-ssh-key
+add-user
+change-user-password
+config
+deploy
+disable-user
+destroy-controller
+destroy-model
+enable-ha
+enable-user
+expose
+import-ssh-key
+model-config
+remove-application
+remove-machine
+remove-relation
+remove-ssh-key
+remove-unit
+resolved
+retry-provisioning
+run
+set-constraints
+sync-agents
+unexpose
+upgrade-charm
+upgrade-model
 </code></pre>
 <p>
 <strong>Examples:</strong>
@@ -3980,12 +3981,12 @@ Find which offered application endpoints are available to the current user. This
 <strong>Examples:</strong>
 </p>
 <pre><code>  $ juju find-offers
-  $ juju find-offers mycontroller:
+$ juju find-offers mycontroller:
 
-  $ juju find-offers fred/prod
-  $ juju find-offers --interface mysql
-  $ juju find-offers --url fred/prod.db2
-  $ juju find-offers --offer db2
+$ juju find-offers fred/prod
+$ juju find-offers --interface mysql
+$ juju find-offers --url fred/prod.db2
+$ juju find-offers --offer db2
 </code></pre>
 <p>
 <strong>See also:</strong>
@@ -4035,7 +4036,7 @@ Lists the firewall rules which control ingress to well known services within a J
 <strong>Examples:</strong>
 </p>
 <pre><code>   juju list-firewall-rules
-    juju firewall-rules
+juju firewall-rules
 </code></pre>
 <p>
 <strong>See also:</strong>
@@ -4106,7 +4107,7 @@ Constraints for a specific model can be viewed with <code>juju get-model- constr
 <strong>Examples:</strong>
 </p>
 <pre><code>   juju get-constraints mysql
-    juju get-constraints -m mymodel apache2
+juju get-constraints -m mymodel apache2
 </code></pre>
 <p>
 <strong>See also:</strong>
@@ -4168,7 +4169,7 @@ Constraints for a specific application can be viewed with <code>juju get-constra
 <strong>Examples:</strong>
 </p>
 <pre><code>   juju get-model-constraints
-    juju get-model-constraints -m mymodel
+juju get-model-constraints -m mymodel
 </code></pre>
 <p>
 <strong>See also:</strong>
@@ -4215,21 +4216,21 @@ Users with read access are limited in what they can do with models:
 <code>juju models</code>, <code>juju machines</code>, and <code>juju status</code> Valid access levels for models are:
 </p>
 <pre><code>         read
-          write
-          admin
+write
+admin
 </code></pre>
 <p>
 Valid access levels for controllers are:
 </p>
 <pre><code>         login
-          superuser
+superuser
 </code></pre>
 <p>
 Valid access levels for application offers are:
 </p>
 <pre><code>         read
-          consume
-          admin
+consume
+admin
 </code></pre>
 <p>
 <strong>Examples:</strong>
@@ -4303,7 +4304,7 @@ Controller to operate in
 Valid access levels are:
 </p>
 <pre><code>         add-model
-          admin
+admin
 </code></pre>
 <p>
 <strong>Examples:</strong>
@@ -4415,40 +4416,40 @@ Show help on a Juju charm hook tool.
 Juju charms can access a series of built-in helpers called 'hook-tools'. These are useful for the charm to be able to inspect its running environment. Currently available charm hook tools are:
 </p>
 <pre><code>         action-fail              set action fail status with message
-          action-get               get action parameters
-          action-set               set action results
-          add-metric               add metrics
-          application-version-set  specify which version of the application is deployed
-          close-port               ensure a port or range is always closed
-          config-get               print application configuration
-          credential-get           access cloud credentials
-          goal-state               print the status of the charm's peers and related units
-          is-leader                print application leadership status
-          juju-log                 write a message to the juju log
-          juju-reboot              Reboot the host machine
-          leader-get               print application leadership settings
-          leader-set               write application leadership settings
-          network-get              get network config
-          open-port                register a port or range to open
-          opened-ports             lists all ports or ranges opened by the unit
-          pod-spec-set             set pod spec information
-          relation-get             get relation settings
-          relation-ids             list all relation ids with the given relation name
-          relation-list            list relation units
-          relation-set             set relation settings
-          status-get               print status information
-          status-set               set status information
-          storage-add              add storage instances
-          storage-get              print information for storage instance with specified id
-          storage-list             list storage attached to the unit
-          unit-get                 print public-address or private-address
+action-get               get action parameters
+action-set               set action results
+add-metric               add metrics
+application-version-set  specify which version of the application is deployed
+close-port               ensure a port or range is always closed
+config-get               print application configuration
+credential-get           access cloud credentials
+goal-state               print the status of the charm's peers and related units
+is-leader                print application leadership status
+juju-log                 write a message to the juju log
+juju-reboot              Reboot the host machine
+leader-get               print application leadership settings
+leader-set               write application leadership settings
+network-get              get network config
+open-port                register a port or range to open
+opened-ports             lists all ports or ranges opened by the unit
+pod-spec-set             set pod spec information
+relation-get             get relation settings
+relation-ids             list all relation ids with the given relation name
+relation-list            list relation units
+relation-set             set relation settings
+status-get               print status information
+status-set               set status information
+storage-add              add storage instances
+storage-get              print information for storage instance with specified id
+storage-list             list storage attached to the unit
+unit-get                 print public-address or private-address
 </code></pre>
 <p>
 <strong>Examples:</strong>
 </p>
 <pre><code>   For help on a specific tool, supply the name of that tool, for example:
 
-        juju hook-tool unit-get
+juju hook-tool unit-get
 </code></pre>
 <p>
 <strong>Aliases:</strong>
@@ -4477,40 +4478,40 @@ Show help on a Juju charm hook tool.
 Juju charms can access a series of built-in helpers called 'hook-tools'. These are useful for the charm to be able to inspect its running environment. Currently available charm hook tools are:
 </p>
 <pre><code>         action-fail              set action fail status with message
-          action-get               get action parameters
-          action-set               set action results
-          add-metric               add metrics
-          application-version-set  specify which version of the application is deployed
-          close-port               ensure a port or range is always closed
-          config-get               print application configuration
-          credential-get           access cloud credentials
-          goal-state               print the status of the charm's peers and related units
-          is-leader                print application leadership status
-          juju-log                 write a message to the juju log
-          juju-reboot              Reboot the host machine
-          leader-get               print application leadership settings
-          leader-set               write application leadership settings
-          network-get              get network config
-          open-port                register a port or range to open
-          opened-ports             lists all ports or ranges opened by the unit
-          pod-spec-set             set pod spec information
-          relation-get             get relation settings
-          relation-ids             list all relation ids with the given relation name
-          relation-list            list relation units
-          relation-set             set relation settings
-          status-get               print status information
-          status-set               set status information
-          storage-add              add storage instances
-          storage-get              print information for storage instance with specified id
-          storage-list             list storage attached to the unit
-          unit-get                 print public-address or private-address
+action-get               get action parameters
+action-set               set action results
+add-metric               add metrics
+application-version-set  specify which version of the application is deployed
+close-port               ensure a port or range is always closed
+config-get               print application configuration
+credential-get           access cloud credentials
+goal-state               print the status of the charm's peers and related units
+is-leader                print application leadership status
+juju-log                 write a message to the juju log
+juju-reboot              Reboot the host machine
+leader-get               print application leadership settings
+leader-set               write application leadership settings
+network-get              get network config
+open-port                register a port or range to open
+opened-ports             lists all ports or ranges opened by the unit
+pod-spec-set             set pod spec information
+relation-get             get relation settings
+relation-ids             list all relation ids with the given relation name
+relation-list            list relation units
+relation-set             set relation settings
+status-get               print status information
+status-set               set status information
+storage-add              add storage instances
+storage-get              print information for storage instance with specified id
+storage-list             list storage attached to the unit
+unit-get                 print public-address or private-address
 </code></pre>
 <p>
 <strong>Examples:</strong>
 </p>
 <pre><code>   For help on a specific tool, supply the name of that tool, for example:
 
-        juju hook-tool unit-get
+juju hook-tool unit-get
 </code></pre>
 <p>
 <strong>Aliases:</strong>
@@ -4539,40 +4540,40 @@ Show help on a Juju charm hook tool.
 Juju charms can access a series of built-in helpers called 'hook-tools'. These are useful for the charm to be able to inspect its running environment. Currently available charm hook tools are:
 </p>
 <pre><code>         action-fail              set action fail status with message
-          action-get               get action parameters
-          action-set               set action results
-          add-metric               add metrics
-          application-version-set  specify which version of the application is deployed
-          close-port               ensure a port or range is always closed
-          config-get               print application configuration
-          credential-get           access cloud credentials
-          goal-state               print the status of the charm's peers and related units
-          is-leader                print application leadership status
-          juju-log                 write a message to the juju log
-          juju-reboot              Reboot the host machine
-          leader-get               print application leadership settings
-          leader-set               write application leadership settings
-          network-get              get network config
-          open-port                register a port or range to open
-          opened-ports             lists all ports or ranges opened by the unit
-          pod-spec-set             set pod spec information
-          relation-get             get relation settings
-          relation-ids             list all relation ids with the given relation name
-          relation-list            list relation units
-          relation-set             set relation settings
-          status-get               print status information
-          status-set               set status information
-          storage-add              add storage instances
-          storage-get              print information for storage instance with specified id
-          storage-list             list storage attached to the unit
-          unit-get                 print public-address or private-address
+action-get               get action parameters
+action-set               set action results
+add-metric               add metrics
+application-version-set  specify which version of the application is deployed
+close-port               ensure a port or range is always closed
+config-get               print application configuration
+credential-get           access cloud credentials
+goal-state               print the status of the charm's peers and related units
+is-leader                print application leadership status
+juju-log                 write a message to the juju log
+juju-reboot              Reboot the host machine
+leader-get               print application leadership settings
+leader-set               write application leadership settings
+network-get              get network config
+open-port                register a port or range to open
+opened-ports             lists all ports or ranges opened by the unit
+pod-spec-set             set pod spec information
+relation-get             get relation settings
+relation-ids             list all relation ids with the given relation name
+relation-list            list relation units
+relation-set             set relation settings
+status-get               print status information
+status-set               set status information
+storage-add              add storage instances
+storage-get              print information for storage instance with specified id
+storage-list             list storage attached to the unit
+unit-get                 print public-address or private-address
 </code></pre>
 <p>
 <strong>Examples:</strong>
 </p>
 <pre><code>   For help on a specific tool, supply the name of that tool, for example:
 
-        juju hook-tool unit-get
+juju hook-tool unit-get
 </code></pre>
 <p>
 <strong>Aliases:</strong>
@@ -4967,8 +4968,8 @@ List cached os images in the Juju model.
 Images can be filtered on:
 </p>
 <pre><code>       Kind         eg "lxd"
-        Series       eg "xenial"
-        Architecture eg "amd64"
+Series       eg "xenial"
+Architecture eg "amd64"
 </code></pre>
 <p>
 The filter attributes are optional.
@@ -5110,7 +5111,7 @@ Use the <code>regions</code> command to list a cloud's regions. Use the <code>sh
 <strong>Examples:</strong>
 </p>
 <pre><code>   juju clouds
-    juju clouds --format yaml
+juju clouds --format yaml
 </code></pre>
 <p>
 <strong>See also:</strong>
@@ -5172,7 +5173,7 @@ The output format may be selected with the '--format' option. In the default tab
 <strong>Examples:</strong>
 </p>
 <pre><code>   juju controllers
-    juju controllers --format json --output ~/tmp/controllers.json
+juju controllers --format json --output ~/tmp/controllers.json
 </code></pre>
 <p>
 <strong>See also:</strong>
@@ -5243,8 +5244,8 @@ Credentials denoted with an asterisk '*' are currently set as the local default 
 <strong>Examples:</strong>
 </p>
 <pre><code>   juju credentials
-    juju credentials aws
-    juju credentials --format yaml --show-secrets
+juju credentials aws
+juju credentials --format yaml --show-secrets
 </code></pre>
 <p>
 <strong>See also:</strong>
@@ -5312,50 +5313,50 @@ List disabled commands for the model.
 Commands that can be disabled are grouped based on logical operations as follows: &quot;destroy-model&quot; prevents:
 </p>
 <pre><code>         destroy-controller
-          destroy-model
+destroy-model
 </code></pre>
 <p>
 &quot;remove-object&quot; prevents:
 </p>
 <pre><code>         destroy-controller
-          destroy-model
-          remove-machine
-          remove-relation
-          remove-application
-          remove-unit
+destroy-model
+remove-machine
+remove-relation
+remove-application
+remove-unit
 </code></pre>
 <p>
 &quot;all&quot; prevents:
 </p>
 <pre><code>         add-machine
-          add-relation
-          add-unit
-          add-ssh-key
-          add-user
-          change-user-password
-          config
-          deploy
-          disable-user
-          destroy-controller
-          destroy-model
-          enable-ha
-          enable-user
-          expose
-          import-ssh-key
-          model-config
-          remove-application
-          remove-machine
-          remove-relation
-          remove-ssh-key
-          remove-unit
-          resolved
-          retry-provisioning
-          run
-          set-constraints
-          sync-agents
-          unexpose
-          upgrade-charm
-          upgrade-model
+add-relation
+add-unit
+add-ssh-key
+add-user
+change-user-password
+config
+deploy
+disable-user
+destroy-controller
+destroy-model
+enable-ha
+enable-user
+expose
+import-ssh-key
+model-config
+remove-application
+remove-machine
+remove-relation
+remove-ssh-key
+remove-unit
+resolved
+retry-provisioning
+run
+set-constraints
+sync-agents
+unexpose
+upgrade-charm
+upgrade-model
 </code></pre>
 <p>
 <strong>See also:</strong>
@@ -5411,7 +5412,7 @@ Lists the firewall rules which control ingress to well known services within a J
 <strong>Examples:</strong>
 </p>
 <pre><code>   juju list-firewall-rules
-    juju firewall-rules
+juju firewall-rules
 </code></pre>
 <p>
 <strong>See also:</strong>
@@ -5573,7 +5574,7 @@ The models listed here are either models you have created yourself, or models wh
 <strong>Examples:</strong>
 </p>
 <pre><code>   juju models
-    juju models --user bob
+juju models --user bob
 </code></pre>
 <p>
 <strong>See also:</strong>
@@ -5668,22 +5669,22 @@ The summary output shows one row per offer, with a count of active/total relatio
 The output can be filtered by:
 </p>
 <pre><code>      - interface: the interface name of the endpoint
-      - application: the name of the offered application
-      - connected user: the name of a user who has a relation to the offer
-      - allowed consumer: the name of a user allowed to consume the offer
-      - active only: only show offers which are in use (are related to)
+- application: the name of the offered application
+- connected user: the name of a user who has a relation to the offer
+- allowed consumer: the name of a user allowed to consume the offer
+- active only: only show offers which are in use (are related to)
 </code></pre>
 <p>
 <strong>Examples:</strong>
 </p>
 <pre><code>   $ juju offers
-    $ juju offers -m model
-    $ juju offers --interface db2
-    $ juju offers --application mysql
-    $ juju offers --connected-user fred
-    $ juju offers --allowed-consumer mary
-    $ juju offers hosted-mysql
-    $ juju offers hosted-mysql --active-only
+$ juju offers -m model
+$ juju offers --interface db2
+$ juju offers --application mysql
+$ juju offers --connected-user fred
+$ juju offers --allowed-consumer mary
+$ juju offers hosted-mysql
+$ juju offers hosted-mysql --active-only
 </code></pre>
 <p>
 <strong>See also:</strong>
@@ -6297,16 +6298,16 @@ When used without a model name argument, users relevant to a controller are prin
 <p>
 <strong>Examples:</strong>
 </p>
-<pre><code>   Print the users relevant to the current controller: 
-    juju users
+<pre><code>   Print the users relevant to the current controller:
+juju users
 
-    Print the users relevant to the controller "another":
+Print the users relevant to the controller "another":
 
-    juju users -c another
+juju users -c another
 
-    Print the users relevant to the model "mymodel":
+Print the users relevant to the model "mymodel":
 
-    juju users mymodel
+juju users mymodel
 </code></pre>
 <p>
 <strong>See also:</strong>
@@ -6445,8 +6446,8 @@ The URL for the directory service may be configured by setting the environment v
 <strong>Examples:</strong>
 </p>
 <pre><code>   juju login somepubliccontroller
-    juju login jimm.jujucharms.com
-    juju login -u bob
+juju login jimm.jujucharms.com
+juju login -u bob
 </code></pre>
 <p>
 <strong>See also:</strong>
@@ -6736,406 +6737,406 @@ Supplying one key name returns only the value for the key. Supplying key=value w
 agent-metadata-url:
 </p>
 <pre><code>       type: string
-        description: URL of private stream
+description: URL of private stream
 </code></pre>
 <p>
 agent-stream:
 </p>
 <pre><code>       type: string
-        description: Version of Juju to use for deploy/upgrades.
+description: Version of Juju to use for deploy/upgrades.
 </code></pre>
 <p>
 apt-ftp-proxy:
 </p>
 <pre><code>       type: string
-        description: The APT FTP proxy for the model
+description: The APT FTP proxy for the model
 </code></pre>
 <p>
 apt-http-proxy:
 </p>
 <pre><code>       type: string
-        description: The APT HTTP proxy for the model
+description: The APT HTTP proxy for the model
 </code></pre>
 <p>
 apt-https-proxy:
 </p>
 <pre><code>       type: string
-        description: The APT HTTPS proxy for the model
+description: The APT HTTPS proxy for the model
 </code></pre>
 <p>
 apt-mirror:
 </p>
 <pre><code>       type: string
-        description: The APT mirror for the model
+description: The APT mirror for the model
 </code></pre>
 <p>
 apt-no-proxy:
 </p>
 <pre><code>       type: string
-        description: List of domain addresses not to be proxied for APT (comma-separated)
+description: List of domain addresses not to be proxied for APT (comma-separated)
 </code></pre>
 <p>
 authorized-keys:
 </p>
 <pre><code>       type: string
-        description: Any authorized SSH public keys for the model, as found in a ~/.ssh/authorized_keys
-          file
+description: Any authorized SSH public keys for the model, as found in a ~/.ssh/authorized_keys
+file
 </code></pre>
 <p>
 automatically-retry-hooks:
 </p>
 <pre><code>       type: bool
-        description: Determines whether the uniter should automatically retry failed hooks
+description: Determines whether the uniter should automatically retry failed hooks
 </code></pre>
 <p>
 backup-dir:
 </p>
 <pre><code>       type: string
-        description: Directory used to store the backup working directory
+description: Directory used to store the backup working directory
 </code></pre>
 <p>
 cloudinit-userdata:
 </p>
 <pre><code>       type: string
-        description: Cloud-init user-data (in yaml format) to be added to userdata for new
-          machines created in this model
+description: Cloud-init user-data (in yaml format) to be added to userdata for new
+machines created in this model
 </code></pre>
 <p>
 container-image-metadata-url:
 </p>
 <pre><code>       type: string
-        description: The URL at which the metadata used to locate container OS image ids
-          is located
+description: The URL at which the metadata used to locate container OS image ids
+is located
 </code></pre>
 <p>
 container-image-stream:
 </p>
 <pre><code>       type: string
-        description: The simplestreams stream used to identify which image ids to search
-          when starting a container.
+description: The simplestreams stream used to identify which image ids to search
+when starting a container.
 </code></pre>
 <p>
 container-inherit-properties:
 </p>
 <pre><code>       type: string
-        description: List of properties to be copied from the host machine to new containers
-          created in this model (comma-separated)
+description: List of properties to be copied from the host machine to new containers
+created in this model (comma-separated)
 </code></pre>
 <p>
 container-networking-method:
 </p>
 <pre><code>       type: string
-        description: Method of container networking setup - one of fan, provider, local
+description: Method of container networking setup - one of fan, provider, local
 </code></pre>
 <p>
 default-series:
 </p>
 <pre><code>       type: string
-        description: The default series of Ubuntu to use for deploying charms
+description: The default series of Ubuntu to use for deploying charms
 </code></pre>
 <p>
 development:
 </p>
 <pre><code>       type: bool
-        description: Whether the model is in development mode
+description: Whether the model is in development mode
 </code></pre>
 <p>
 disable-network-management:
 </p>
 <pre><code>       type: bool
-        description: Whether the provider should control networks (on MAAS models, set to
-          true for MAAS to control networks
+description: Whether the provider should control networks (on MAAS models, set to
+true for MAAS to control networks
 </code></pre>
 <p>
 egress-subnets:
 </p>
 <pre><code>       type: string
-        description: Source address(es) for traffic originating from this model
+description: Source address(es) for traffic originating from this model
 </code></pre>
 <p>
 enable-os-refresh-update:
 </p>
 <pre><code>       type: bool
-        description: Whether newly provisioned instances should run their respective OS's
-          update capability.
+description: Whether newly provisioned instances should run their respective OS's
+update capability.
 </code></pre>
 <p>
 enable-os-upgrade:
 </p>
 <pre><code>       type: bool
-        description: Whether newly provisioned instances should run their respective OS's
-          upgrade capability.
+description: Whether newly provisioned instances should run their respective OS's
+upgrade capability.
 </code></pre>
 <p>
 extra-info:
 </p>
 <pre><code>       type: string
-        description: Arbitrary user specified string data that is stored against the model.
+description: Arbitrary user specified string data that is stored against the model.
 </code></pre>
 <p>
 fan-config:
 </p>
 <pre><code>       type: string
-        description: Configuration for fan networking for this model
+description: Configuration for fan networking for this model
 </code></pre>
 <p>
 firewall-mode:
 </p>
 <pre><code>       type: string
-        description: |-
-          The mode to use for network firewalling.
+description: |-
+The mode to use for network firewalling.
 
-          'instance' requests the use of an individual firewall per instance.
-          'global' uses a single firewall for all instances (access
-          for a network port is enabled to one instance if any instance requires
-          that port).
+'instance' requests the use of an individual firewall per instance.
+'global' uses a single firewall for all instances (access
+for a network port is enabled to one instance if any instance requires
+that port).
 
-          'none' requests that no firewalling should be performed
-          inside the model. It's useful for clouds without support for either
-          global or per instance security groups.
+'none' requests that no firewalling should be performed
+inside the model. It's useful for clouds without support for either
+global or per instance security groups.
 </code></pre>
 <p>
 ftp-proxy:
 </p>
 <pre><code>       type: string
-        description: The FTP proxy value to configure on instances, in the FTP_PROXY environment
-          variable
+description: The FTP proxy value to configure on instances, in the FTP_PROXY environment
+variable
 </code></pre>
 <p>
 http-proxy:
 </p>
 <pre><code>       type: string
-        description: The HTTP proxy value to configure on instances, in the HTTP_PROXY environment
-          variable
+description: The HTTP proxy value to configure on instances, in the HTTP_PROXY environment
+variable
 </code></pre>
 <p>
 https-proxy:
 </p>
 <pre><code>       type: string
-        description: The HTTPS proxy value to configure on instances, in the HTTPS_PROXY
-          environment variable
+description: The HTTPS proxy value to configure on instances, in the HTTPS_PROXY
+environment variable
 </code></pre>
 <p>
 ignore-machine-addresses:
 </p>
 <pre><code>       type: bool
-        description: Whether the machine worker should discover machine addresses on startup
+description: Whether the machine worker should discover machine addresses on startup
 </code></pre>
 <p>
 image-metadata-url:
 </p>
 <pre><code>       type: string
-        description: The URL at which the metadata used to locate OS image ids is located
+description: The URL at which the metadata used to locate OS image ids is located
 </code></pre>
 <p>
 image-stream:
 </p>
 <pre><code>       type: string
-        description: The simplestreams stream used to identify which image ids to search
-          when starting an instance.
+description: The simplestreams stream used to identify which image ids to search
+when starting an instance.
 </code></pre>
 <p>
 juju-ftp-proxy:
 </p>
 <pre><code>       type: string
-        description: The FTP proxy value to pass to charms in the JUJU_CHARM_FTP_PROXY environment
-          variable
+description: The FTP proxy value to pass to charms in the JUJU_CHARM_FTP_PROXY environment
+variable
 </code></pre>
 <p>
 juju-http-proxy:
 </p>
 <pre><code>       type: string
-        description: The HTTP proxy value to pass to charms in the JUJU_CHARM_HTTP_PROXY
-          environment variable
+description: The HTTP proxy value to pass to charms in the JUJU_CHARM_HTTP_PROXY
+environment variable
 </code></pre>
 <p>
 juju-https-proxy:
 </p>
 <pre><code>       type: string
-        description: The HTTPS proxy value to pass to charms in the JUJU_CHARM_HTTPS_PROXY
-          environment variable
+description: The HTTPS proxy value to pass to charms in the JUJU_CHARM_HTTPS_PROXY
+environment variable
 </code></pre>
 <p>
 juju-no-proxy:
 </p>
 <pre><code>       type: string
-        description: List of domain addresses not to be proxied (comma-separated), may contain
-          CIDRs. Passed to charms in the JUJU_CHARM_NO_PROXY environment variable
+description: List of domain addresses not to be proxied (comma-separated), may contain
+CIDRs. Passed to charms in the JUJU_CHARM_NO_PROXY environment variable
 </code></pre>
 <p>
 logforward-enabled:
 </p>
 <pre><code>       type: bool
-        description: Whether syslog forwarding is enabled.
+description: Whether syslog forwarding is enabled.
 </code></pre>
 <p>
 logging-config:
 </p>
 <pre><code>       type: string
-        description: The configuration string to use when configuring Juju agent logging
-          (see http://godoc.org/github.com/juju/loggo#ParseConfigurationString for details)
+description: The configuration string to use when configuring Juju agent logging
+(see http://godoc.org/github.com/juju/loggo#ParseConfigurationString for details)
 </code></pre>
 <p>
 max-action-results-age:
 </p>
 <pre><code>       type: string
-        description: The maximum age for action entries before they are pruned, in human-readable
-          time format
+description: The maximum age for action entries before they are pruned, in human-readable
+time format
 </code></pre>
 <p>
 max-action-results-size:
 </p>
 <pre><code>       type: string
-        description: The maximum size for the action collection, in human-readable memory
-          format
+description: The maximum size for the action collection, in human-readable memory
+format
 </code></pre>
 <p>
 max-status-history-age:
 </p>
 <pre><code>       type: string
-        description: The maximum age for status history entries before they are pruned,
-          in human-readable time format
+description: The maximum age for status history entries before they are pruned,
+in human-readable time format
 </code></pre>
 <p>
 max-status-history-size:
 </p>
 <pre><code>       type: string
-        description: The maximum size for the status history collection, in human-readable
-          memory format
+description: The maximum size for the status history collection, in human-readable
+memory format
 </code></pre>
 <p>
 net-bond-reconfigure-delay:
 </p>
 <pre><code>       type: int
-        description: The amount of time in seconds to sleep between ifdown and ifup when
-          bridging
+description: The amount of time in seconds to sleep between ifdown and ifup when
+bridging
 </code></pre>
 <p>
 no-proxy:
 </p>
 <pre><code>       type: string
-        description: List of domain addresses not to be proxied (comma-separated)
+description: List of domain addresses not to be proxied (comma-separated)
 </code></pre>
 <p>
 provisioner-harvest-mode:
 </p>
 <pre><code>       type: string
-        description: What to do with unknown machines. See https://jujucharms.com/stable/config-general#juju-lifecycle-and-harvesting
-          (default destroyed)
+description: What to do with unknown machines. See https://jujucharms.com/stable/config-general#juju-lifecycle-and-harvesting
+(default destroyed)
 </code></pre>
 <p>
 proxy-ssh:
 </p>
 <pre><code>       type: bool
-        description: Whether SSH commands should be proxied through the API server
+description: Whether SSH commands should be proxied through the API server
 </code></pre>
 <p>
 resource-tags:
 </p>
 <pre><code>       type: attrs
-        description: resource tags
+description: resource tags
 </code></pre>
 <p>
 snap-http-proxy:
 </p>
 <pre><code>       type: string
-        description: The HTTP proxy value to for installing snaps
+description: The HTTP proxy value to for installing snaps
 </code></pre>
 <p>
 snap-https-proxy:
 </p>
 <pre><code>       type: string
-        description: The HTTPS proxy value to for installing snaps
+description: The HTTPS proxy value to for installing snaps
 </code></pre>
 <p>
 snap-store-assertions:
 </p>
 <pre><code>       type: string
-        description: The assertions for the defined snap store proxy
+description: The assertions for the defined snap store proxy
 </code></pre>
 <p>
 snap-store-proxy:
 </p>
 <pre><code>       type: string
-        description: The snap store proxy for installing snaps
+description: The snap store proxy for installing snaps
 </code></pre>
 <p>
 ssl-hostname-verification:
 </p>
 <pre><code>       type: bool
-        description: Whether SSL hostname verification is enabled (default true)
+description: Whether SSL hostname verification is enabled (default true)
 </code></pre>
 <p>
 storage-default-block-source:
 </p>
 <pre><code>       type: string
-        description: The default block storage source for the model
+description: The default block storage source for the model
 </code></pre>
 <p>
 storage-default-filesystem-source:
 </p>
 <pre><code>       type: string
-        description: The default filesystem storage source for the model
+description: The default filesystem storage source for the model
 </code></pre>
 <p>
 syslog-ca-cert:
 </p>
 <pre><code>       type: string
-        description: The certificate of the CA that signed the syslog server certificate,
-          in PEM format.
+description: The certificate of the CA that signed the syslog server certificate,
+in PEM format.
 </code></pre>
 <p>
 syslog-client-cert:
 </p>
 <pre><code>       type: string
-        description: The syslog client certificate in PEM format.
+description: The syslog client certificate in PEM format.
 </code></pre>
 <p>
 syslog-client-key:
 </p>
 <pre><code>       type: string
-        description: The syslog client key in PEM format.
+description: The syslog client key in PEM format.
 </code></pre>
 <p>
 syslog-host:
 </p>
 <pre><code>       type: string
-        description: The hostname:port of the syslog server.
+description: The hostname:port of the syslog server.
 </code></pre>
 <p>
 test-mode:
 </p>
 <pre><code>       type: bool
-        description: |-
-          Whether the model is intended for testing.
+description: |-
+Whether the model is intended for testing.
 
-          If true, accessing the charm store does not affect statistical
-          data of the store. (default false)
+If true, accessing the charm store does not affect statistical
+data of the store. (default false)
 </code></pre>
 <p>
 transmit-vendor-metrics:
 </p>
 <pre><code>       type: bool
-        description: Determines whether metrics declared by charms deployed into this model
-          are sent for anonymized aggregate analytics
+description: Determines whether metrics declared by charms deployed into this model
+are sent for anonymized aggregate analytics
 </code></pre>
 <p>
 update-status-hook-interval:
 </p>
 <pre><code>       type: string
-        description: How often to run the charm update-status hook, in human-readable time
-          format (default 5m, range 1-60m)
+description: How often to run the charm update-status hook, in human-readable time
+format (default 5m, range 1-60m)
 </code></pre>
 <p>
 <strong>Examples:</strong>
 </p>
 <pre><code>   juju model-config default-series
-    juju model-config -m mycontroller:mymodel
-    juju model-config ftp-proxy=10.0.0.1:8000
-    juju model-config ftp-proxy=10.0.0.1:8000 path/to/file.yaml
-    juju model-config path/to/file.yaml
-    juju model-config -m othercontroller:mymodel default-series=yakkety test-mode=false
-    juju model-config --reset default-series test-mode
+juju model-config -m mycontroller:mymodel
+juju model-config ftp-proxy=10.0.0.1:8000
+juju model-config ftp-proxy=10.0.0.1:8000 path/to/file.yaml
+juju model-config path/to/file.yaml
+juju model-config -m othercontroller:mymodel default-series=yakkety test-mode=false
+juju model-config --reset default-series test-mode
 </code></pre>
 <p>
 <strong>See also:</strong>
@@ -7200,19 +7201,19 @@ By default, the model is the current model.
 <strong>Examples:</strong>
 </p>
 <pre><code>   juju model-defaults
-    juju model-defaults http-proxy
-    juju model-defaults aws/us-east-1 http-proxy
-    juju model-defaults us-east-1 http-proxy
-    juju model-defaults -m mymodel type
-    juju model-defaults ftp-proxy=10.0.0.1:8000
-    juju model-defaults aws/us-east-1 ftp-proxy=10.0.0.1:8000
-    juju model-defaults us-east-1 ftp-proxy=10.0.0.1:8000
-    juju model-defaults us-east-1 ftp-proxy=10.0.0.1:8000 path/to/file.yaml
-    juju model-defaults us-east-1 path/to/file.yaml    
-    juju model-defaults -m othercontroller:mymodel default-series=yakkety test-mode=false
-    juju model-defaults --reset default-series test-mode
-    juju model-defaults aws/us-east-1 --reset http-proxy
-    juju model-defaults us-east-1 --reset http-proxy
+juju model-defaults http-proxy
+juju model-defaults aws/us-east-1 http-proxy
+juju model-defaults us-east-1 http-proxy
+juju model-defaults -m mymodel type
+juju model-defaults ftp-proxy=10.0.0.1:8000
+juju model-defaults aws/us-east-1 ftp-proxy=10.0.0.1:8000
+juju model-defaults us-east-1 ftp-proxy=10.0.0.1:8000
+juju model-defaults us-east-1 ftp-proxy=10.0.0.1:8000 path/to/file.yaml
+juju model-defaults us-east-1 path/to/file.yaml
+juju model-defaults -m othercontroller:mymodel default-series=yakkety test-mode=false
+juju model-defaults --reset default-series test-mode
+juju model-defaults aws/us-east-1 --reset http-proxy
+juju model-defaults us-east-1 --reset http-proxy
 </code></pre>
 <p>
 <strong>See also:</strong>
@@ -7283,19 +7284,19 @@ By default, the model is the current model.
 <strong>Examples:</strong>
 </p>
 <pre><code>   juju model-defaults
-    juju model-defaults http-proxy
-    juju model-defaults aws/us-east-1 http-proxy
-    juju model-defaults us-east-1 http-proxy
-    juju model-defaults -m mymodel type
-    juju model-defaults ftp-proxy=10.0.0.1:8000
-    juju model-defaults aws/us-east-1 ftp-proxy=10.0.0.1:8000
-    juju model-defaults us-east-1 ftp-proxy=10.0.0.1:8000
-    juju model-defaults us-east-1 ftp-proxy=10.0.0.1:8000 path/to/file.yaml
-    juju model-defaults us-east-1 path/to/file.yaml    
-    juju model-defaults -m othercontroller:mymodel default-series=yakkety test-mode=false
-    juju model-defaults --reset default-series test-mode
-    juju model-defaults aws/us-east-1 --reset http-proxy
-    juju model-defaults us-east-1 --reset http-proxy
+juju model-defaults http-proxy
+juju model-defaults aws/us-east-1 http-proxy
+juju model-defaults us-east-1 http-proxy
+juju model-defaults -m mymodel type
+juju model-defaults ftp-proxy=10.0.0.1:8000
+juju model-defaults aws/us-east-1 ftp-proxy=10.0.0.1:8000
+juju model-defaults us-east-1 ftp-proxy=10.0.0.1:8000
+juju model-defaults us-east-1 ftp-proxy=10.0.0.1:8000 path/to/file.yaml
+juju model-defaults us-east-1 path/to/file.yaml
+juju model-defaults -m othercontroller:mymodel default-series=yakkety test-mode=false
+juju model-defaults --reset default-series test-mode
+juju model-defaults aws/us-east-1 --reset http-proxy
+juju model-defaults us-east-1 --reset http-proxy
 </code></pre>
 <p>
 <strong>See also:</strong>
@@ -7381,7 +7382,7 @@ The models listed here are either models you have created yourself, or models wh
 <strong>Examples:</strong>
 </p>
 <pre><code>   juju models
-    juju models --user bob
+juju models --user bob
 </code></pre>
 <p>
 <strong>See also:</strong>
@@ -7523,22 +7524,22 @@ The summary output shows one row per offer, with a count of active/total relatio
 The output can be filtered by:
 </p>
 <pre><code>      - interface: the interface name of the endpoint
-      - application: the name of the offered application
-      - connected user: the name of a user who has a relation to the offer
-      - allowed consumer: the name of a user allowed to consume the offer
-      - active only: only show offers which are in use (are related to)
+- application: the name of the offered application
+- connected user: the name of a user who has a relation to the offer
+- allowed consumer: the name of a user allowed to consume the offer
+- active only: only show offers which are in use (are related to)
 </code></pre>
 <p>
 <strong>Examples:</strong>
 </p>
 <pre><code>   $ juju offers
-    $ juju offers -m model
-    $ juju offers --interface db2
-    $ juju offers --application mysql
-    $ juju offers --connected-user fred
-    $ juju offers --allowed-consumer mary
-    $ juju offers hosted-mysql
-    $ juju offers hosted-mysql --active-only
+$ juju offers -m model
+$ juju offers --interface db2
+$ juju offers --application mysql
+$ juju offers --connected-user fred
+$ juju offers --allowed-consumer mary
+$ juju offers hosted-mysql
+$ juju offers hosted-mysql --active-only
 </code></pre>
 <p>
 <strong>See also:</strong>
@@ -7766,7 +7767,7 @@ When adding a controller at a public address, authentication via some external t
 </p>
 <pre><code>   juju register MFATA3JvZDAnExMxMDQuMTU0LjQyLjQ0OjE3MDcwExAxMC4xMjguMC4yOjE3MDcwBCBEFCaXerhNImkKKabuX5ULWf2Bp4AzPNJEbXVWgraLrAA=
 
-    juju register public-controller.example.com
+juju register public-controller.example.com
 </code></pre>
 <p>
 <strong>See also:</strong>
@@ -7807,7 +7808,7 @@ for cross model relations, specify the egress subnets for outbound traffic
 Add a relation between 2 local application endpoints or a local endpoint and a remote application endpoint. Adding a relation between two remote application endpoints is not supported. Application endpoints can be identified either by:
 </p>
 <pre><code>         &lt;application name&gt;[:&lt;relation name&gt;]
-              where application name supplied without relation will be internally expanded to be well-formed
+where application name supplied without relation will be internally expanded to be well-formed
 </code></pre>
 <p>
 or <model name>.<application name>[:<relation name>] where the application is hosted in another model owned by the current user, in the same controller
@@ -7822,14 +7823,14 @@ For a cross model relation, if the consuming side is behind a firewall and/or NA
 <strong>Examples:</strong>
 </p>
 <pre><code>   $ juju add-relation wordpress mysql
-        where "wordpress" and "mysql" will be internally expanded to "wordpress:db" and "mysql:server" respectively
+where "wordpress" and "mysql" will be internally expanded to "wordpress:db" and "mysql:server" respectively
 
-    $ juju add-relation wordpress someone/prod.mysql
-        where "wordpress" will be internally expanded to "wordpress:db"
+$ juju add-relation wordpress someone/prod.mysql
+where "wordpress" will be internally expanded to "wordpress:db"
 
-    $ juju add-relation wordpress someone/prod.mysql --via 192.168.0.0/16
+$ juju add-relation wordpress someone/prod.mysql --via 192.168.0.0/16
 
-    $ juju add-relation wordpress someone/prod.mysql --via 192.168.0.0/16,10.0.0.0/8
+$ juju add-relation wordpress someone/prod.mysql --via 192.168.0.0/16,10.0.0.0/8
 </code></pre>
 <p>
 <strong>Aliases:</strong>
@@ -7911,7 +7912,7 @@ Removing an application will terminate any relations that application has, remov
 <strong>Examples:</strong>
 </p>
 <pre><code>   juju remove-application hadoop
-    juju remove-application -m test-model mariadb
+juju remove-application -m test-model mariadb
 </code></pre>
 <p></details></p>
 <details id="remove-backup"> <summary>remove-backup</summary>
@@ -8005,8 +8006,8 @@ Remove cached os images in the Juju model.
 Images are identified by:
 </p>
 <pre><code>       Kind         eg "lxd"
-        Series       eg "xenial"
-        Architecture eg "amd64"
+Series       eg "xenial"
+Architecture eg "amd64"
 </code></pre>
 <p>
 <strong>Examples:</strong>
@@ -8080,7 +8081,7 @@ Removing a consumed (SAAS) application will terminate any relations that applica
 <strong>Examples:</strong>
 </p>
 <pre><code>   juju remove-saas hosted-mysql
-    juju remove-saas -m test-model hosted-mariadb
+juju remove-saas -m test-model hosted-mariadb
 </code></pre>
 <p>
 <strong>Aliases:</strong>
@@ -8293,8 +8294,8 @@ It's also possible to specify just the offer name, in which case the offer is co
 <strong>Examples:</strong>
 </p>
 <pre><code>   juju remove-offer prod.model/hosted-mysql
-    juju remove-offer prod.model/hosted-mysql --force
-    juju remove-offer hosted-mysql
+juju remove-offer prod.model/hosted-mysql --force
+juju remove-offer hosted-mysql
 </code></pre>
 <p>
 <strong>See also:</strong>
@@ -8344,14 +8345,14 @@ It is also possible to specify the relation ID, if known. This is useful to term
 <strong>Examples:</strong>
 </p>
 <pre><code>   juju remove-relation mysql wordpress
-    juju remove-relation 4
+juju remove-relation 4
 </code></pre>
 <p>
 In the case of multiple relations, the relation name should be specified at least once - the following examples will all have the same effect:
 </p>
 <pre><code>   juju remove-relation mediawiki:db mariadb:db
-    juju remove-relation mediawiki mariadb:db
-    juju remove-relation mediawiki:db mariadb
+juju remove-relation mediawiki mariadb:db
+juju remove-relation mediawiki:db mariadb
 </code></pre>
 <p>
 <strong>See also:</strong>
@@ -8395,7 +8396,7 @@ Removing a consumed (SAAS) application will terminate any relations that applica
 <strong>Examples:</strong>
 </p>
 <pre><code>   juju remove-saas hosted-mysql
-    juju remove-saas -m test-model hosted-mariadb
+juju remove-saas -m test-model hosted-mariadb
 </code></pre>
 <p>
 <strong>Aliases:</strong>
@@ -8439,8 +8440,8 @@ Juju maintains a per-model cache of public SSH keys which it copies to each unit
 <strong>Examples:</strong>
 </p>
 <pre><code>   juju remove-ssh-key ubuntu@ubuntu
-    juju remove-ssh-key 45:7f:33:2c:10:4e:6c:14:e3:a1:a4:c8:b2:e1:34:b4
-    juju remove-ssh-key bob@ubuntu carol@ubuntu
+juju remove-ssh-key 45:7f:33:2c:10:4e:6c:14:e3:a1:a4:c8:b2:e1:34:b4
+juju remove-ssh-key bob@ubuntu carol@ubuntu
 </code></pre>
 <p>
 <strong>See also:</strong>
@@ -8588,7 +8589,7 @@ Examples:
 </p>
 <pre><code>   juju remove-unit wordpress/2 wordpress/3 wordpress/4
 
-    juju remove-unit wordpress/2 --destroy-storage
+juju remove-unit wordpress/2 --destroy-storage
 </code></pre>
 <p>
 <strong>See also:</strong>
@@ -8641,7 +8642,7 @@ By default, the controller is the current controller.
 <strong>Examples:</strong>
 </p>
 <pre><code>   juju remove-user bob
-    juju remove-user bob --yes
+juju remove-user bob --yes
 </code></pre>
 <p>
 <strong>See also:</strong>
@@ -8876,7 +8877,7 @@ A relation between an application in another model and an offer in this model wi
 <strong>Examples:</strong>
 </p>
 <pre><code>   juju resume-relation 123
-    juju resume-relation 123 456
+juju resume-relation 123 456
 </code></pre>
 <p>
 <strong>See also:</strong>
@@ -9209,11 +9210,11 @@ If --params is passed, along with key.key...=value explicit arguments, the expli
 $ juju run-action mysql/3 backup --wait action-id: <ID> result:
 </p>
 <pre><code> status: success
-  file:
+file:
 
-    size: 873.2
-    units: GB
-    name: foo.sql
+size: 873.2
+units: GB
+name: foo.sql
 </code></pre>
 <p>
 $ juju run-action mysql/3 backup action: <ID>
@@ -9225,11 +9226,11 @@ $ juju run-action mysql/leader backup resolved leader: mysql/0 action: <ID>
 $ juju show-action-output <ID> result:
 </p>
 <pre><code> status: success
-  file:
+file:
 
-    size: 873.2
-    units: GB
-    name: foo.sql
+size: 873.2
+units: GB
+name: foo.sql
 </code></pre>
 <p>
 $ juju run-action mysql/3 backup --params parameters.yml ...
@@ -9250,7 +9251,7 @@ Params sent will be:
 out: out.tar.bz2 file:
 </p>
 <pre><code> kind: xz
-  quality: high
+quality: high
 </code></pre>
 <p>
 ...
@@ -9265,7 +9266,7 @@ If p.yml contains:
 file:
 </p>
 <pre><code> location: /var/backups/mysql/
-  kind: gzip
+kind: gzip
 </code></pre>
 <p>
 then the merged args passed will be:
@@ -9274,8 +9275,8 @@ then the merged args passed will be:
 file:
 </p>
 <pre><code> location: /var/backups/mysql/
-  kind: xz
-  quality: high
+kind: xz
+quality: high
 </code></pre>
 <p>
 ...
@@ -9471,7 +9472,7 @@ This command requires that the application to have at least one unit. To apply c
 <strong>Examples:</strong>
 </p>
 <pre><code>   juju set-constraints mysql mem=8G cores=4
-    juju set-constraints -m mymodel apache2 mem=8G arch=amd64
+juju set-constraints -m mymodel apache2 mem=8G arch=amd64
 </code></pre>
 <p>
 <strong>See also:</strong>
@@ -9632,15 +9633,15 @@ Firewall rules control ingress to a well known services within a Juju model. A r
 The currently supported services are:
 </p>
 <pre><code>      -ssh
-      -juju-controller
-      -juju-application-offer
+-juju-controller
+-juju-application-offer
 </code></pre>
 <p>
 <strong>Examples:</strong>
 </p>
 <pre><code>   juju set-firewall-rule ssh --whitelist 192.168.1.0/16
-    juju set-firewall-rule juju-controller --whitelist 192.168.1.0/16
-    juju set-firewall-rule juju-application-offer --whitelist 192.168.1.0/16
+juju set-firewall-rule juju-controller --whitelist 192.168.1.0/16
+juju set-firewall-rule juju-application-offer --whitelist 192.168.1.0/16
 </code></pre>
 <p>
 <strong>See also:</strong>
@@ -9734,7 +9735,7 @@ Constraints for a specific application can be viewed with <code>juju get-constra
 <strong>Examples:</strong>
 </p>
 <pre><code>   juju set-model-constraints cores=8 mem=16G
-    juju set-model-constraints -m mymodel root-disk=64G
+juju set-model-constraints -m mymodel root-disk=64G
 </code></pre>
 <p>
 <strong>See also:</strong>
@@ -10052,7 +10053,7 @@ If ‘--include-config’ is used, additional configuration (key, type, and desc
 <strong>Examples:</strong>
 </p>
 <pre><code>   juju show-cloud google
-    juju show-cloud azure-china --output ~/azure_cloud_details.txt
+juju show-cloud azure-china --output ~/azure_cloud_details.txt
 </code></pre>
 <p>
 <strong>See also:</strong>
@@ -10108,7 +10109,7 @@ Shows extended information about a controller(s) as well as related models and u
 <strong>Examples:</strong>
 </p>
 <pre><code>   juju show-controller
-    juju show-controller aws google
+juju show-controller aws google
 </code></pre>
 <p>
 <strong>See also:</strong>
@@ -10170,8 +10171,8 @@ To see secrets, content attributes marked as hidden, use --show-secrets option. 
 <strong>Examples:</strong>
 </p>
 <pre><code>   juju show-credential google my-admin-credential
-    juju show-credentials 
-    juju show-credentials --show-secrets
+juju show-credentials
+juju show-credentials --show-secrets
 </code></pre>
 <p>
 <strong>See also:</strong>
@@ -10239,8 +10240,8 @@ To see secrets, content attributes marked as hidden, use --show-secrets option. 
 <strong>Examples:</strong>
 </p>
 <pre><code>   juju show-credential google my-admin-credential
-    juju show-credentials 
-    juju show-credentials --show-secrets
+juju show-credentials
+juju show-credentials --show-secrets
 </code></pre>
 <p>
 <strong>See also:</strong>
@@ -10520,7 +10521,7 @@ Machine numbers may also be used as output filters. This will only display data 
 tabular (default): Displays status in a tabular format with a separate table for the model, machines, applications, relations (if any), storage (if any) and units.
 </p>
 <pre><code>       Note: in this format, the AZ column refers to the cloud region's
-        availability zone.
+availability zone.
 </code></pre>
 </li>
 <li>
@@ -10534,9 +10535,9 @@ summary: Displays the subnet(s) and port(s) the model utilises. Also displays ag
 </p>
 <pre><code>       - Machines: total #, and # in each state.
 
-        - Units: total #, and # in each state.
+- Units: total #, and # in each state.
 
-        - Applications: total #, and # exposed of each application.
+- Applications: total #, and # exposed of each application.
 </code></pre>
 </li>
 <li>
@@ -10557,10 +10558,10 @@ In tabular format, 'Relations' section is not displayed by default. Use --relati
 <strong>Examples:</strong>
 </p>
 <pre><code>   juju show-status
-    juju show-status mysql
-    juju show-status nova-*
-    juju show-status --relations
-    juju show-status --storage
+juju show-status mysql
+juju show-status nova-*
+juju show-status --relations
+juju show-status --storage
 </code></pre>
 <p>
 <strong>See also:</strong>
@@ -10649,15 +10650,15 @@ The statuses are available for the following types.
 -type supports:
 </p>
 <pre><code>         container:  statuses from the agent that is managing containers
-          juju-container:  statuses from the containers only and not their host machines
-          juju-machine:  status of the agent that is managing a machine
-          juju-unit:  statuses from the agent that is managing a unit
-          machine:  statuses that occur due to provisioning of a machine
-          unit:  statuses for specified unit and its workload
-          workload:  statuses for unit's workload
-      and sorted by time of occurrence.
+juju-container:  statuses from the containers only and not their host machines
+juju-machine:  status of the agent that is managing a machine
+juju-unit:  statuses from the agent that is managing a unit
+machine:  statuses that occur due to provisioning of a machine
+unit:  statuses for specified unit and its workload
+workload:  statuses for unit's workload
+and sorted by time of occurrence.
 
-      The default is unit.
+The default is unit.
 </code></pre>
 <p></details></p>
 <details id="show-storage"> <summary>show-storage</summary>
@@ -10754,9 +10755,9 @@ By default, the YAML format is used and the user name is the current user.
 <strong>Examples:</strong>
 </p>
 <pre><code>   juju show-user
-    juju show-user jsmith
-    juju show-user --format json
-    juju show-user --format yaml
+juju show-user jsmith
+juju show-user --format json
+juju show-user --format yaml
 </code></pre>
 <p>
 <strong>See also:</strong>
@@ -11178,7 +11179,7 @@ Machine numbers may also be used as output filters. This will only display data 
 tabular (default): Displays status in a tabular format with a separate table for the model, machines, applications, relations (if any), storage (if any) and units.
 </p>
 <pre><code>       Note: in this format, the AZ column refers to the cloud region's
-        availability zone.
+availability zone.
 </code></pre>
 </li>
 <li>
@@ -11192,9 +11193,9 @@ summary: Displays the subnet(s) and port(s) the model utilises. Also displays ag
 </p>
 <pre><code>       - Machines: total #, and # in each state.
 
-        - Units: total #, and # in each state.
+- Units: total #, and # in each state.
 
-        - Applications: total #, and # exposed of each application.
+- Applications: total #, and # exposed of each application.
 </code></pre>
 </li>
 <li>
@@ -11215,10 +11216,10 @@ In tabular format, 'Relations' section is not displayed by default. Use --relati
 <strong>Examples:</strong>
 </p>
 <pre><code>   juju show-status
-    juju show-status mysql
-    juju show-status nova-*
-    juju show-status --relations
-    juju show-status --storage
+juju show-status mysql
+juju show-status nova-*
+juju show-status --relations
+juju show-status --storage
 </code></pre>
 <p>
 <strong>See also:</strong>
@@ -11475,8 +11476,8 @@ A relation between an application in another model and an offer in this model wi
 <strong>Examples:</strong>
 </p>
 <pre><code>   juju suspend-relation 123
-    juju suspend-relation 123 --message "reason for suspending"
-    juju suspend-relation 123 456 --message "reason for suspending"
+juju suspend-relation 123 --message "reason for suspending"
+juju suspend-relation 123 456 --message "reason for suspending"
 </code></pre>
 <p>
 <strong>See also:</strong>
@@ -11514,12 +11515,12 @@ When used without an argument, the command shows the current controller and its 
 <strong>Examples:</strong>
 </p>
 <pre><code>   juju switch
-    juju switch mymodel
-    juju switch mycontroller
-    juju switch mycontroller:mymodel
-    juju switch mycontroller:
+juju switch mymodel
+juju switch mycontroller
+juju switch mycontroller:mymodel
+juju switch mycontroller:
 
-    juju switch :mymodel
+juju switch :mymodel
 </code></pre>
 <p>
 <strong>See also:</strong>
@@ -12274,11 +12275,11 @@ A model's agent version can be shown with <code>juju model-config agent- version
 A version is denoted by: major.minor.patch The upgrade candidate will be auto-selected if '--agent-version' is not specified:
 </p>
 <pre><code>      - If the server major version matches the client major version, the
-      version selected is minor+1. If such a minor version is not available then
-      the next patch version is chosen.
+version selected is minor+1. If such a minor version is not available then
+the next patch version is chosen.
 
-      - If the server major version does not match the client major version,
-      the version selected is that of the client version.
+- If the server major version does not match the client major version,
+the version selected is that of the client version.
 </code></pre>
 <p>
 If the controller is without internet access, the client must first supply the software to the controller's cache via the <code>juju sync-agent-binaries</code> command. The command will abort if an upgrade is in progress. It will also abort if a previous upgrade was not fully completed (e.g.: if one of the controllers in a high availability model failed to upgrade).
@@ -12293,8 +12294,8 @@ Backups are recommended prior to upgrading.
 <strong>Examples:</strong>
 </p>
 <pre><code>   juju upgrade-model --dry-run
-    juju upgrade-model --agent-version 2.0.1
-    juju upgrade-model --agent-stream proposed
+juju upgrade-model --agent-version 2.0.1
+juju upgrade-model --agent-stream proposed
 </code></pre>
 <p>
 <strong>See also:</strong>
@@ -12389,11 +12390,11 @@ A model's agent version can be shown with <code>juju model-config agent- version
 A version is denoted by: major.minor.patch The upgrade candidate will be auto-selected if '--agent-version' is not specified:
 </p>
 <pre><code>      - If the server major version matches the client major version, the
-      version selected is minor+1. If such a minor version is not available then
-      the next patch version is chosen.
+version selected is minor+1. If such a minor version is not available then
+the next patch version is chosen.
 
-      - If the server major version does not match the client major version,
-      the version selected is that of the client version.
+- If the server major version does not match the client major version,
+the version selected is that of the client version.
 </code></pre>
 <p>
 If the controller is without internet access, the client must first supply the software to the controller's cache via the <code>juju sync-agent-binaries</code> command. The command will abort if an upgrade is in progress. It will also abort if a previous upgrade was not fully completed (e.g.: if one of the controllers in a high availability model failed to upgrade).
@@ -12408,8 +12409,8 @@ Backups are recommended prior to upgrading.
 <strong>Examples:</strong>
 </p>
 <pre><code>   juju upgrade-model --dry-run
-    juju upgrade-model --agent-version 2.0.1
-    juju upgrade-model --agent-stream proposed
+juju upgrade-model --agent-version 2.0.1
+juju upgrade-model --agent-stream proposed
 </code></pre>
 <p>
 <strong>See also:</strong>
@@ -12532,210 +12533,211 @@ upload-backup sends a backup archive file to remote storage.
 <p></details></p>
 <details id="users"> <summary>users</summary>
 <p>
-<strong>Usage:</strong> <code>juju users [options]</code>
+  <strong>Usage:</strong> <code>juju users [options]</code>
 </p>
 <p>
-<strong>Summary:</strong>
+  <strong>Summary:</strong>
 </p>
 <p>
-Lists Juju users allowed to connect to a controller or model.
+  Lists Juju users allowed to connect to a controller or model.
 </p>
 <p>
-<strong>Options:</strong>
+  <strong>Options:</strong>
 </p>
 <p>
-<em>--all (= false)</em>
+  <em>--all (= false)</em>
 </p>
 <p>
-Include disabled users
+  Include disabled users
 </p>
 <p>
-<em>-c, --controller (= &quot;&quot;)</em>
+  <em>-c, --controller (= &quot;&quot;)</em>
 </p>
 <p>
-Controller to operate in
+  Controller to operate in
 </p>
 <p>
-<em>--exact-time (= false)</em>
+  <em>--exact-time (= false)</em>
 </p>
 <p>
-Use full timestamp for connection times
+  Use full timestamp for connection times
 </p>
 <p>
-<em>--format (= tabular)</em>
+  <em>--format (= tabular)</em>
 </p>
 <p>
-Specify output format (json|tabular|yaml)
+  Specify output format (json|tabular|yaml)
 </p>
 <p>
-<em>-o, --output (= &quot;&quot;)</em>
+  <em>-o, --output (= &quot;&quot;)</em>
 </p>
 <p>
-Specify an output file
+  Specify an output file
 </p>
 <p>
-<strong>Details:</strong>
+  <strong>Details:</strong>
 </p>
 <p>
-When used without a model name argument, users relevant to a controller are printed. When used with a model name, users relevant to the specified model are printed.
+  When used without a model name argument, users relevant to a controller are printed. When used with a model name, users relevant to the specified model are printed.
 </p>
 <p>
-<strong>Examples:</strong>
+  <strong>Examples:</strong>
 </p>
-<pre><code>   Print the users relevant to the current controller: 
-    juju users
+<pre><code>   Print the users relevant to the current controller:
+  juju users
 
-    Print the users relevant to the controller "another":
+  Print the users relevant to the controller "another":
 
-    juju users -c another
+  juju users -c another
 
-    Print the users relevant to the model "mymodel":
+  Print the users relevant to the model "mymodel":
 
-    juju users mymodel
+  juju users mymodel
 </code></pre>
 <p>
-<strong>See also:</strong>
+  <strong>See also:</strong>
 </p>
 <p>
-<a href="#add-user">add-user</a> , <a href="#register">register</a> , <a href="#show-user">show-user</a> , <a href="#disable-user">disable-user</a> , <a href="#enable-user">enable-user</a>
+  <a href="#add-user">add-user</a> , <a href="#register">register</a> , <a href="#show-user">show-user</a> , <a href="#disable-user">disable-user</a> , <a href="#enable-user">enable-user</a>
 </p>
 <p>
-<strong>Aliases:</strong>
+  <strong>Aliases:</strong>
 </p>
 <p>
-<code>list-users</code>
+  <code>list-users</code>
 </p>
 <p></details></p>
 <details id="version"> <summary>version</summary>
-<p>
-<strong>Usage:</strong> <code>juju version [options]</code>
-</p>
-<p>
-<strong>Summary:</strong>
-</p>
-<p>
-Print the current version.
-</p>
-<p>
-<strong>Options:</strong>
-</p>
-<p>
-<em>--format (= smart)</em>
-</p>
-<p>
-Specify output format (json|smart|yaml)
-</p>
-<p>
-<em>-o, --output (= &quot;&quot;)</em>
-</p>
-<p>
-Specify an output file
-</p>
-<p></details></p>
-<details id="wallets"> <summary>wallets</summary>
-<p>
-<strong>Usage:</strong> <code>juju wallets [options]</code>
-</p>
-<p>
-<strong>Summary:</strong>
-</p>
-<p>
-List wallets.
-</p>
-<p>
-<strong>Options:</strong>
-</p>
-<p>
-<em>-B, --no-browser-login (= false)</em>
-</p>
-<p>
-Do not use web browser for authentication
-</p>
-<p>
-<em>-c, --controller (= &quot;&quot;)</em>
-</p>
-<p>
-Controller to operate in
-</p>
-<p>
-<em>--format (= tabular)</em>
-</p>
-<p>
-Specify output format (json|tabular)
-</p>
-<p>
-<em>-o, --output (= &quot;&quot;)</em>
-</p>
-<p>
-Specify an output file
-</p>
-<p>
-<strong>Details:</strong>
-</p>
-<p>
-List the available wallets.
-</p>
-<p>
-<strong>Examples:</strong>
-</p>
-<pre><code>   juju wallets
-</code></pre>
-<p>
-<strong>Aliases:</strong>
-</p>
-<p>
-<code>list-wallets</code>
-</p>
-<p></details></p>
-<details id="whoami"> <summary>whoami</summary>
-<p>
-<strong>Usage:</strong> <code>juju whoami [options]</code>
-</p>
-<p>
-<strong>Summary:</strong>
-</p>
-<p>
-Print current login details.
-</p>
-<p>
-<strong>Options:</strong>
-</p>
-<p>
-<em>-B, --no-browser-login (= false)</em>
-</p>
-<p>
-Do not use web browser for authentication
-</p>
-<p>
-<em>--format (= tabular)</em>
-</p>
-<p>
-Specify output format (json|tabular|yaml)
-</p>
-<p>
-<em>-o, --output (= &quot;&quot;)</em>
-</p>
-<p>
-Specify an output file
-</p>
-<p>
-<strong>Details:</strong>
-</p>
-<p>
-Display the current controller, model and logged in user name.
-</p>
-<p>
-<strong>Examples:</strong>
-</p>
-<pre><code>   juju whoami
-</code></pre>
-<p>
-<strong>See also:</strong>
-</p>
-<p>
-<a href="#controllers">controllers</a> , <a href="#login">login</a> , <a href="#logout">logout</a> , <a href="#models">models</a> , <a href="#users">users</a>
-</p>
-</details>
-    </div>
+  <p>
+    <strong>Usage:</strong> <code>juju version [options]</code>
+  </p>
+  <p>
+    <strong>Summary:</strong>
+  </p>
+  <p>
+    Print the current version.
+  </p>
+  <p>
+    <strong>Options:</strong>
+  </p>
+  <p>
+    <em>--format (= smart)</em>
+  </p>
+  <p>
+    Specify output format (json|smart|yaml)
+  </p>
+  <p>
+    <em>-o, --output (= &quot;&quot;)</em>
+  </p>
+  <p>
+    Specify an output file
+  </p>
+  <p></details></p>
+  <details id="wallets"> <summary>wallets</summary>
+    <p>
+      <strong>Usage:</strong> <code>juju wallets [options]</code>
+    </p>
+    <p>
+      <strong>Summary:</strong>
+    </p>
+    <p>
+      List wallets.
+    </p>
+    <p>
+      <strong>Options:</strong>
+    </p>
+    <p>
+      <em>-B, --no-browser-login (= false)</em>
+    </p>
+    <p>
+      Do not use web browser for authentication
+    </p>
+    <p>
+      <em>-c, --controller (= &quot;&quot;)</em>
+    </p>
+    <p>
+      Controller to operate in
+    </p>
+    <p>
+      <em>--format (= tabular)</em>
+    </p>
+    <p>
+      Specify output format (json|tabular)
+    </p>
+    <p>
+      <em>-o, --output (= &quot;&quot;)</em>
+    </p>
+    <p>
+      Specify an output file
+    </p>
+    <p>
+      <strong>Details:</strong>
+    </p>
+    <p>
+      List the available wallets.
+    </p>
+    <p>
+      <strong>Examples:</strong>
+    </p>
+    <pre><code>   juju wallets
+    </code></pre>
+    <p>
+      <strong>Aliases:</strong>
+    </p>
+    <p>
+      <code>list-wallets</code>
+    </p>
+    <p></details></p>
+    <details id="whoami"> <summary>whoami</summary>
+      <p>
+        <strong>Usage:</strong> <code>juju whoami [options]</code>
+      </p>
+      <p>
+        <strong>Summary:</strong>
+      </p>
+      <p>
+        Print current login details.
+      </p>
+      <p>
+        <strong>Options:</strong>
+      </p>
+      <p>
+        <em>-B, --no-browser-login (= false)</em>
+      </p>
+      <p>
+        Do not use web browser for authentication
+      </p>
+      <p>
+        <em>--format (= tabular)</em>
+      </p>
+      <p>
+        Specify output format (json|tabular|yaml)
+      </p>
+      <p>
+        <em>-o, --output (= &quot;&quot;)</em>
+      </p>
+      <p>
+        Specify an output file
+      </p>
+      <p>
+        <strong>Details:</strong>
+      </p>
+      <p>
+        Display the current controller, model and logged in user name.
+      </p>
+      <p>
+        <strong>Examples:</strong>
+      </p>
+      <pre><code>   juju whoami
+      </code></pre>
+      <p>
+        <strong>See also:</strong>
+      </p>
+      <p>
+        <a href="#controllers">controllers</a> , <a href="#login">login</a> , <a href="#logout">logout</a> , <a href="#models">models</a> , <a href="#users">users</a>
+      </p>
+    </details>
   </div>
+</div>
+</main>
 {% endblock %}
