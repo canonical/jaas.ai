@@ -1,17 +1,16 @@
 {% extends "_layout.html" %}
 
+{% block page_class %}docs{% endblock %}
+{% block page_title %}| {{ document.title }} {% endblock %}
+
 {% block content %}
-<aside class="p-sidebar" id="navigation">
-    <div class="p-sidebar__banner u-hide--medium u-hide--large">
-        <i class="p-sidebar__toggle p-icon--menu"></i>
-    </div>
-    <div class="p-sidebar__content u-hide--small">
-        <nav class="p-sidebar-nav">
-            {{ navigation | safe }}
-        </nav>
-    </div>
-</aside>
-
-{% block content_docs %}{% endblock content_docs %}
-
+  <div class="l-docs">
+    <aside class="l-docs-sidebar" id="navigation">
+      <i class="p-sidenav__toggle p-icon--menu u-hide--medium u-hide--large"></i>
+      <nav class="p-sidenav__body u-hide--small">
+        {{ navigation | safe }}
+      </nav>
+    </aside>
+    {% block content_docs %}{% endblock content_docs %}
+  </div>
 {% endblock %}
