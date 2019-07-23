@@ -30,40 +30,43 @@
       <div class="col-12">
         <ul class="p-inline-images">
           <li class="p-inline-images__item">
-            <img alt="AWS" src="https://assets.ubuntu.com/v1/39002345-AmazonWebservices_Logo.svg" />
+            <img class="p-inline-images__logo" alt="AWS" src="https://assets.ubuntu.com/v1/39002345-AmazonWebservices_Logo.svg" />
           </li>
           <li class="p-inline-images__item">
-            <img alt="Azure" src="https://assets.ubuntu.com/v1/515658c0-microsoft-azure-763dcdb6a8a3facccca6f538a909f1ec.svg" />
+            <img class="p-inline-images__logo" alt="Azure" src="https://assets.ubuntu.com/v1/515658c0-microsoft-azure-763dcdb6a8a3facccca6f538a909f1ec.svg" />
           </li>
           <li class="p-inline-images__item">
-            <img alt="Google Cloud Platform" src="https://assets.ubuntu.com/v1/410984a3-Google-cloud-platform-stacked.svg" />
+            <img class="p-inline-images__logo" alt="Google Cloud Platform" src="https://assets.ubuntu.com/v1/410984a3-Google-cloud-platform-stacked.svg" />
           </li>
           <li class="p-inline-images__item">
-            <img alt="vmware" src="https://assets.ubuntu.com/v1/3006b8c7-vmware.svg" />
+            <img class="p-inline-images__logo" alt="vmware" src="https://assets.ubuntu.com/v1/3006b8c7-vmware.svg" />
           </li>
           <li class="p-inline-images__item">
-            <img alt="lxd" src="https://assets.ubuntu.com/v1/fe9b270c-lxd_black-orange_hex_su.svg" />
+            <img class="p-inline-images__logo" alt="lxd" src="https://assets.ubuntu.com/v1/fe9b270c-lxd_black-orange_hex_su.svg" />
           </li>
           <li class="p-inline-images__item">
-            <img alt="openstack" src="https://assets.ubuntu.com/v1/7934d19b-OpenStack_Logo_Horizontal.svg" />
+            <img class="p-inline-images__logo" alt="openstack" src="https://assets.ubuntu.com/v1/7934d19b-OpenStack_Logo_Horizontal.svg" />
           </li>
           <li class="p-inline-images__item">
-            <img alt="joyent" src="https://assets.ubuntu.com/v1/529822fd-joyent_logo.svg" />
+            <img class="p-inline-images__logo" alt="joyent" src="https://assets.ubuntu.com/v1/529822fd-joyent_logo.svg" />
           </li>
           <li class="p-inline-images__item">
-            <img alt="maas" src="https://assets.ubuntu.com/v1/1e783fd8-maas_black-orange_hex.svg" />
+            <img class="p-inline-images__logo" alt="maas" src="https://assets.ubuntu.com/v1/1e783fd8-maas_black-orange_hex.svg" />
           </li>
         </ul>
       </div>
     </div>
   </div>
 
-<div class="p-strip--light is-bordered">
-    <div class="row">
-      <div class="col-12">
-        <h2>Best practices across core components</h2>
-      </div>
+<div class="p-strip--light is-shallow u-no-margin--bottom">
+  <div class="row">
+    <div class="col-12">
+      <h2>Best practices across core components</h2>
     </div>
+  </div>
+</div>
+
+<div class="p-strip--light is-bordered u-no-margin--top u-no-padding--top">
     <div class="row p-divider">
       <div class="col-4 p-divider__block">
         <div class="p-heading-icon">
@@ -203,8 +206,8 @@
         </h3>
         <div class="p-stepped-list__content">
           <div class="row">
-            <div class="u-equal-height">
-              <div class="col-4 p-card">
+            <div class="col-4">
+              <div class="p-card">
                 <div class="p-heading-icon">
                   <div class="p-heading-icon__header">
                     <img class="p-heading-icon__img" src="https://assets.ubuntu.com/v1/804a5808-prometheus-circle.svg" alt="Prometheus icon">
@@ -217,7 +220,9 @@
                 </div>
                 <p>Monitor, profile and debug your applications.</p>
               </div>
-              <div class="col-4 p-card">
+            </div>
+            <div class="col-4">
+              <div class="p-card">
                 <div class="p-heading-icon">
                   <div class="p-heading-icon__header">
                     <img class="p-heading-icon__img" src="{{ external_urls.charmstore }}trusty/elasticsearch/icon.svg" alt="ElasticSearch icon">
@@ -230,7 +235,9 @@
                 </div>
                 <p>Centralise all logs and metrics and get awesome dashboards for your cluster.</p>
               </div>
-              <div class="col-4 p-card">
+            </div>
+            <div class="col-4">
+              <div class="p-card">
                 <div class="p-heading-icon">
                   <div class="p-heading-icon__header">
                     <img class="p-heading-icon__img" src="https://assets.ubuntu.com/v1/636b94fd-ceph.svg" alt="Ceph icon">
@@ -274,8 +281,9 @@
 
 <div class="p-strip--light">
     <div class="row">
-      <div class="u-equal-height">
-        <div class="col-6 p-card--highlighted">
+      <div class="col-6">
+        <div class="p-card--highlighted">
+
           <div class="p-card__header">
             <h3>
               Kubernetes support plans
@@ -299,7 +307,9 @@
             <a href="https://www.ubuntu.com/pricing/infra">Price details</a>
           </p>
         </div>
-        <div class="col-6 p-card--highlighted">
+      </div>
+      <div class="col-6">
+        <div class="p-card--highlighted">
           <div class="p-card__header">
             <h3>
               Kubernetes consulting packages
