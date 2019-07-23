@@ -41,8 +41,8 @@
               {{ supported_release }}
             </span>
           {% endfor %}
-        {% endif %}
       </div>
+      {% endif %}
     </div>
     <div class="col-4">
       <div class="p-code-snippet">
@@ -51,10 +51,16 @@
         <button class="p-code-snippet__action">Copy to clipboard</button>
       </div>
       <p>
-        <a href="{{ external_urls.gui }}?deploy-target={{ context.entity.id }}"
-          class="p-button--positive row" rel="nofollow">
-          Add to new model
-        </a>
+        {% if "kubernetes" in context.entity.series %}
+          <a class="p-button--neutral row is-disabled" aria-disabled="true">
+            Use the Juju CLI to deploy
+          </a>
+        {% else %}
+          <a href="{{ external_urls.gui }}?deploy-target={{ context.entity.id }}"
+            class="p-button--positive row" rel="nofollow">
+            Add to new model
+          </a>
+        {% endif %}
       </p>
     </div>
   </header>
