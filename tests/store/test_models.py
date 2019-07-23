@@ -54,14 +54,6 @@ class TestStoreModels(unittest.TestCase):
         self.assertEqual(charm.id, "cs:apache2-26")
         self.assertTrue(charm.is_charm)
         self.assertEqual(
-            charm.latest_revision,
-            {
-                "full_id": "cs:precise/apache2-27",
-                "id": 27,
-                "url": "apache2/precise/27",
-            },
-        )
-        self.assertEqual(
             charm.options.get("apt-key-id"),
             {
                 "Type": "string",
@@ -177,14 +169,6 @@ class TestStoreModels(unittest.TestCase):
         )
         self.assertEqual(bundle.id, "cs:bundle/canonical-kubernetes-466")
         self.assertFalse(bundle.is_charm)
-        self.assertEqual(
-            bundle.latest_revision,
-            {
-                "id": 530,
-                "full_id": "cs:bundle/canonical-kubernetes-530",
-                "url": "canonical-kubernetes/bundle/530",
-            },
-        )
         self.assertEqual(bundle.owner, "containers")
         self.assertIsNone(bundle.promulgated)
         self.assertEqual(bundle.revision_number, 466)
