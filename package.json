@@ -10,7 +10,6 @@
     "serve": "./entrypoint 0.0.0.0:${PORT}",
     "test": "npm run python-lint && npm run test-python && sass-lint static/**/*.scss --verbose --no-exit",
     "test-python": "python3 -m unittest discover tests",
-    "test-links": "./entrypoint 0.0.0.0:${PORT} && sleep 2 && linkchecker --threads 2 --ignore-url /store --no-warnings http://0.0.0.0:${PORT}",
     "update-test-json": "python3 scripts/update_test_json.py",
     "watch": "concurrently \"npm run watch-scss\" \"npm run watch-js\"",
     "watch-scss": "watch -p 'static/sass/**/*.scss' -c 'yarn run build-css'",
