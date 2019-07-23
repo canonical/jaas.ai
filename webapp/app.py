@@ -2,6 +2,10 @@ import flask
 import datetime
 
 from canonicalwebteam.flask_base.app import FlaskBase
+from canonicalwebteam.yaml_responses.flask_helpers import (
+    prepare_deleted,
+    prepare_redirects,
+)
 from webapp.external_urls import external_urls
 from webapp.handlers import add_headers
 from webapp.jaasai.views import jaasai
@@ -21,6 +25,8 @@ def create_app(testing=False):
 
     app.testing = testing
     app.after_request(add_headers)
+    app.before_request(prepare_redirects())
+    app.before_request(prepare_deleted())
 
     init_handler(app)
     init_blueprint(app)

@@ -8,7 +8,7 @@ from canonicalwebteam.discourse_docs import (
 
 
 def init_docs(app, url_prefix):
-    discourse_index_id = 1087
+    discourse_index_id = 1868
 
     discourse_api = DiscourseAPI(base_url="https://discourse.jujucharms.com/")
     discourse_parser = DocParser(discourse_api, discourse_index_id, url_prefix)
