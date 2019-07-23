@@ -215,39 +215,6 @@ $color-experts-highlight: #e95420;
   }
 }
 
-// Expanded stepped list
-.p-list-step__item {
-  margin-top: 2rem;
-
-  &:first-child {
-    margin-top: 1rem;
-  }
-}
-
-.p-list-step > li::before {
-  background-color: #022935;
-}
-
-.p-list-step__title {
-  padding-bottom: 2rem;
-}
-
-// Inline images fix
-.p-inline-images__item {
-  img {
-    width: 100%;
-  }
-}
-
-// Stepped content Override
-.p-list-step__content {
-  .p-heading-icon__header {
-    @media (min-width: $breakpoint-medium) and (max-width: $breakpoint-large) {
-      display: block;
-    }
-  }
-}
-
 // Pictogram
 .pictogram-bg {
   background-color: $color-light;
