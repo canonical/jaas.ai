@@ -4,7 +4,7 @@ import os
 import re
 
 from jujubundlelib import references
-from theblues.charmstore import CharmStore, DEFAULT_INCLUDES
+from theblues.charmstore import CharmStore
 from theblues.errors import EntityNotFound, ServerError
 from theblues.terms import Terms
 
@@ -117,10 +117,8 @@ def get_user_entities(username):
 
 
 def get_charm_or_bundle(reference):
-    includes = DEFAULT_INCLUDES[:]
-    includes.append("revision-info")
     try:
-        entity_data = cs.entity(reference, True, includes=includes)
+        entity_data = cs.entity(reference, True, include_stats=False)
         return _parse_charm_or_bundle(entity_data, include_files=True)
     except EntityNotFound:
         return None
@@ -204,7 +202,6 @@ class Entity:
         )
         self.display_name = self._get_display_name()
         self.homepage = homepage
-        self.latest_revision = self._get_latest_revision()
         self.owner = self._meta.get("owner", {}).get("User")
         self.promulgated = self._meta.get("promulgated", {}).get("Promulgated")
         self.revision_number = self._ref.revision
@@ -253,21 +250,6 @@ class Entity:
         except EntityNotFound:
             files = {}
         return files
-
-    def _get_latest_revision(self):
-        """Get the latest revision for an entity.
-            :returns: The latest revision details.
-        """
-        revision_list = self._meta.get("revision-info", {}).get("Revisions")
-        latest_revision = None
-        if revision_list:
-            ref = references.Reference.from_string(revision_list[0])
-            latest_revision = {
-                "id": ref.revision,
-                "full_id": revision_list[0],
-                "url": ref.jujucharms_id(),
-            }
-        return latest_revision
 
     def _extract_from_extrainfo(self):
         """Get data from extrainfo.
