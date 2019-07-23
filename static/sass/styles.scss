@@ -102,12 +102,9 @@ $color-experts-highlight: #e95420;
   clear: both;
   display: inline-block;
   font-size: 0.875rem;
+  margin-bottom: 1rem;
   padding: 0.25rem 0.75rem;
   text-transform: uppercase;
-
-  .has-strap & {
-    margin-bottom: 1rem;
-  }
 }
 
 .expert__card-logo {
