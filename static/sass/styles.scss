@@ -23,7 +23,6 @@ $breakpoint-navigation-threshold: $breakpoint-large;
 
 .cookie-policy {
   @include vf-u-off-screen;
-  @include vf-b-placeholders;
   @include vf-p-notification;
   @include cookie-p-notification;
 }
