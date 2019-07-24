@@ -50,18 +50,19 @@
           readonly="readonly">
         <button class="p-code-snippet__action">Copy to clipboard</button>
       </div>
-      <p>
         {% if "kubernetes" in context.entity.series %}
-          <a class="p-button--neutral row is-disabled" aria-disabled="true">
-            Use the Juju CLI to deploy
-          </a>
+          <div class="p-notification--information">
+            <p class="p-notification__response">
+              Deploy this charm on Kubernetes with the CLI. Find out how by reading the
+              <a href="https://docs.jujucharms.com/k8s-cloud">Discourse discussion</a>.
+            </p>
+          </div>
         {% else %}
           <a href="{{ external_urls.gui }}?deploy-target={{ context.entity.id }}"
             class="p-button--positive row" rel="nofollow">
             Add to new model
           </a>
         {% endif %}
-      </p>
     </div>
   </header>
 </div>
