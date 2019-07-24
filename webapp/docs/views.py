@@ -6,6 +6,8 @@ from canonicalwebteam.discourse_docs import (
     DocParser,
 )
 
+from canonicalwebteam.search import build_search_view
+
 
 def init_docs(app, url_prefix):
     discourse_index_id = 1868
@@ -48,3 +50,11 @@ def init_docs(app, url_prefix):
         return flask.render_template(
             "docs/commands.html", navigation=discourse_parser.navigation
         )
+
+    app.add_url_rule(
+        "/docs/search",
+        "docs-search",
+        build_search_view(
+            site="docs.jujucharms.com", template_path="docs/search.html"
+        ),
+    )
