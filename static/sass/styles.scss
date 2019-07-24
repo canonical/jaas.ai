@@ -313,7 +313,7 @@ h2 {
 // https://github.com/canonical-web-and-design/vanilla-framework/issues/2401
 .is-dark {
   .p-divider__block:not(:nth-child(1))::before {
-    border-left-color: $color-mid-dark !important;
+    background-color: $color-mid-dark !important;
   }
 
   .p-divider__block:not(:first-child) {
