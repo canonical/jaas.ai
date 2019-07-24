@@ -6,6 +6,7 @@
   opacity: 0;
   padding: $sp-medium;
   position: absolute;
+  pointer-events: none;
   top: 3rem;
   transition: opacity 0.25s;
   width: 100%;
@@ -46,6 +47,7 @@
   @media (min-width: $breakpoint-navigation-threshold) {
     .search-active & {
       opacity: 1;
+      pointer-events: auto;
       z-index: 9999;
     }
   }
