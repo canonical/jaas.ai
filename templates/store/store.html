@@ -7,7 +7,7 @@
 
 {% block content %}
 <div class="p-strip--suru-bottom has-accent is-dark" style="background-size: auto 100%, cover; background-position: right center; background-image: url('https://assets.ubuntu.com/v1/a9dab044-suru-right.svg'), linear-gradient(266deg, #044f66, #022935)">
-  <div class="row u-equal-height p-divider">
+  <div class="row p-divider">
     <div class="col-4 p-divider__block">
       <div class="u-sv2">
         <img width="96" src="https://assets.ubuntu.com/v1/d1208c3f-kubernetes.svg" alt="Kubernetes logo">
@@ -102,98 +102,94 @@
       </div>
     </div>
   </div>
-  <div class="row">
-    <div class="u-equal-height entity-cards">
-      <div class="col-3 p-card" style="border:0;">
-        <div class="p-media-object charm-object u-no-margin--bottom">
-          <img src="{{ external_urls.charmstore }}kibana/icon.svg" alt="Kibana icon" class="p-media-object__image is-round">
-          <div class="p-media-object__details">
-            <h3 class="p-media-object__title">
-              <a href="{{ url_for('jaasstore.details', charm_or_bundle_name='kibana') }}">Kibana</a>
-            </h3>
-            <p class="p-media-object__content">by containers</p>
-          </div>
+  <div class="row entity-cards">
+    <div class="col-3 p-card" style="border:0;">
+      <div class="p-media-object charm-object u-no-margin--bottom">
+        <img src="{{ external_urls.charmstore }}kibana/icon.svg" alt="Kibana icon" class="p-media-object__image is-round">
+        <div class="p-media-object__details">
+          <h3 class="p-media-object__title">
+            <a href="{{ url_for('jaasstore.details', charm_or_bundle_name='kibana') }}">Kibana</a>
+          </h3>
+          <p class="p-media-object__content">by containers</p>
         </div>
       </div>
-      <div class="col-3 p-card" style="border:0;">
-        <div class="p-media-object charm-object u-no-margin--bottom">
-          <img width="60" src="{{ external_urls.charmstore }}logstash/icon.svg" alt="Logstash icon" class="p-media-object__image is-round">
-          <div class="p-media-object__details">
-            <h3 class="p-media-object__title">
-              <a href="{{ url_for('jaasstore.details', charm_or_bundle_name='logstash') }}">Logstash</a>
-            </h3>
-            <p class="p-media-object__content">by containers</p>
-          </div>
+    </div>
+    <div class="col-3 p-card" style="border:0;">
+      <div class="p-media-object charm-object u-no-margin--bottom">
+        <img width="60" src="{{ external_urls.charmstore }}logstash/icon.svg" alt="Logstash icon" class="p-media-object__image is-round">
+        <div class="p-media-object__details">
+          <h3 class="p-media-object__title">
+            <a href="{{ url_for('jaasstore.details', charm_or_bundle_name='logstash') }}">Logstash</a>
+          </h3>
+          <p class="p-media-object__content">by containers</p>
         </div>
       </div>
-      <div class="col-3 p-card" style="border:0;">
-        <div class="p-media-object charm-object u-no-margin--bottom">
-          <img width="60" src="{{ external_urls.charmstore }}elasticsearch/icon.svg" alt="Elasticsearch icon" class="p-media-object__image is-round">
-          <div class="p-media-object__details">
-            <h3 class="p-media-object__title">
-              <a href="{{ url_for('jaasstore.details', charm_or_bundle_name='elasticsearch') }}">Elasticsearch</a>
-            </h3>
-            <p class="p-media-object__content">by onlineservices-charmers</p>
-          </div>
+    </div>
+    <div class="col-3 p-card" style="border:0;">
+      <div class="p-media-object charm-object u-no-margin--bottom">
+        <img width="60" src="{{ external_urls.charmstore }}elasticsearch/icon.svg" alt="Elasticsearch icon" class="p-media-object__image is-round">
+        <div class="p-media-object__details">
+          <h3 class="p-media-object__title">
+            <a href="{{ url_for('jaasstore.details', charm_or_bundle_name='elasticsearch') }}">Elasticsearch</a>
+          </h3>
+          <p class="p-media-object__content">by onlineservices-charmers</p>
         </div>
       </div>
-      <div class="col-3 p-card" style="border:0;">
-        <div class="p-media-object charm-object u-no-margin--bottom">
-          <img width="60" src="{{ external_urls.charmstore }}prometheus/icon.svg" alt="Prometheus icon" class="p-media-object__image is-round">
-          <div class="p-media-object__details">
-            <h3 class="p-media-object__title">
-              <a href="{{ url_for('jaasstore.details', charm_or_bundle_name='prometheus') }}">Prometheus</a>
-            </h3>
-            <p class="p-media-object__content">by prometheus-charmers</p>
-          </div>
+    </div>
+    <div class="col-3 p-card" style="border:0;">
+      <div class="p-media-object charm-object u-no-margin--bottom">
+        <img width="60" src="{{ external_urls.charmstore }}prometheus/icon.svg" alt="Prometheus icon" class="p-media-object__image is-round">
+        <div class="p-media-object__details">
+          <h3 class="p-media-object__title">
+            <a href="{{ url_for('jaasstore.details', charm_or_bundle_name='prometheus') }}">Prometheus</a>
+          </h3>
+          <p class="p-media-object__content">by prometheus-charmers</p>
         </div>
       </div>
     </div>
   </div>
-  <div class="row">
-    <div class="u-equal-height entity-cards">
-      <div class="col-3 p-card" style="border:0;">
-        <div class="p-media-object charm-object u-no-margin--bottom">
-          <img src="{{ external_urls.charmstore }}munin/icon.svg" alt="Munin icon" class="p-media-object__image is-round">
-          <div class="p-media-object__details">
-            <h3 class="p-media-object__title">
-              <a href="{{ url_for('jaasstore.details', charm_or_bundle_name='munin') }}">Munin</a>
-            </h3>
-            <p class="p-media-object__content">by charmers</p>
-          </div>
+  <div class="row entity-cards">
+    <div class="col-3 p-card" style="border:0;">
+      <div class="p-media-object charm-object u-no-margin--bottom">
+        <img src="{{ external_urls.charmstore }}munin/icon.svg" alt="Munin icon" class="p-media-object__image is-round">
+        <div class="p-media-object__details">
+          <h3 class="p-media-object__title">
+            <a href="{{ url_for('jaasstore.details', charm_or_bundle_name='munin') }}">Munin</a>
+          </h3>
+          <p class="p-media-object__content">by charmers</p>
         </div>
       </div>
-      <div class="col-3 p-card" style="border:0;">
-        <div class="p-media-object charm-object u-no-margin--bottom">
-          <img src="{{ external_urls.charmstore }}rsyslog/icon.svg" alt="Rsyslog icon" class="p-media-object__image is-round">
-          <div class="p-media-object__details">
-            <h3 class="p-media-object__title">
-              <a href="{{ url_for('jaasstore.details', charm_or_bundle_name='rsyslog') }}">Rsyslog</a>
-            </h3>
-            <p class="p-media-object__content">by charmers</p>
-          </div>
+    </div>
+    <div class="col-3 p-card" style="border:0;">
+      <div class="p-media-object charm-object u-no-margin--bottom">
+        <img src="{{ external_urls.charmstore }}rsyslog/icon.svg" alt="Rsyslog icon" class="p-media-object__image is-round">
+        <div class="p-media-object__details">
+          <h3 class="p-media-object__title">
+            <a href="{{ url_for('jaasstore.details', charm_or_bundle_name='rsyslog') }}">Rsyslog</a>
+          </h3>
+          <p class="p-media-object__content">by charmers</p>
         </div>
       </div>
-      <div class="col-3 p-card" style="border:0;">
-        <div class="p-media-object charm-object u-no-margin--bottom">
-          <img src="{{ external_urls.charmstore }}zabbix-server/icon.svg" alt="Zabbix Server icon" class="p-media-object__image is-round">
-          <div class="p-media-object__details">
-            <h3 class="p-media-object__title">
-              <a href="{{ url_for('jaasstore.details', charm_or_bundle_name='zabbix-server') }}">Zabbix Server</a>
-            </h3>
-            <p class="p-media-object__content">by charmers</p>
-          </div>
+    </div>
+    <div class="col-3 p-card" style="border:0;">
+      <div class="p-media-object charm-object u-no-margin--bottom">
+        <img src="{{ external_urls.charmstore }}zabbix-server/icon.svg" alt="Zabbix Server icon" class="p-media-object__image is-round">
+        <div class="p-media-object__details">
+          <h3 class="p-media-object__title">
+            <a href="{{ url_for('jaasstore.details', charm_or_bundle_name='zabbix-server') }}">Zabbix Server</a>
+          </h3>
+          <p class="p-media-object__content">by charmers</p>
         </div>
       </div>
-      <div class="col-3 p-card" style="border:0;">
-        <div class="p-media-object charm-object u-no-margin--bottom">
-          <img src="{{ external_urls.charmstore }}~ricardokirkner/sentry/icon.svg" alt="Sentry icon" class="p-media-object__image is-round">
-          <div class="p-media-object__details">
-            <h3 class="p-media-object__title">
-              <a href="{{ url_for('jaasstore.details', charm_or_bundle_name='sentry') }}">Sentry</a>
-            </h3>
-            <p class="p-media-object__content">by ricardokirkner</p>
-          </div>
+    </div>
+    <div class="col-3 p-card" style="border:0;">
+      <div class="p-media-object charm-object u-no-margin--bottom">
+        <img src="{{ external_urls.charmstore }}~ricardokirkner/sentry/icon.svg" alt="Sentry icon" class="p-media-object__image is-round">
+        <div class="p-media-object__details">
+          <h3 class="p-media-object__title">
+            <a href="{{ url_for('jaasstore.details', charm_or_bundle_name='sentry') }}">Sentry</a>
+          </h3>
+          <p class="p-media-object__content">by ricardokirkner</p>
         </div>
       </div>
     </div>
@@ -208,7 +204,7 @@
 </div>
 
 <div class="p-strip--accent is-slanted">
-  <div class="row u-equal-height entity-cards">
+  <div class="row entity-cards">
     <div class="col-5 u-vertically-center">
       <div>
         <h2>Container management</h2>
@@ -241,50 +237,48 @@
       </div>
     </div>
   </div>
-  <div class="row">
-    <div class="u-equal-height entity-cards">
-      <div class="col-3 p-card" style="border:0;">
-        <div class="p-media-object charm-object u-no-margin--bottom">
-          <img src="{{ external_urls.charmstore }}hive/icon.svg" alt="Hive icon" class="p-media-object__image is-round">
-          <div class="p-media-object__details">
-            <h3 class="p-media-object__title">
-              <a href="{{ url_for('jaasstore.details', charm_or_bundle_name='hive') }}">Hive</a>
-            </h3>
-            <p class="p-media-object__content">by bigdata-charmers</p>
-          </div>
+  <div class="row entity-cards">
+    <div class="col-3 p-card" style="border:0;">
+      <div class="p-media-object charm-object u-no-margin--bottom">
+        <img src="{{ external_urls.charmstore }}hive/icon.svg" alt="Hive icon" class="p-media-object__image is-round">
+        <div class="p-media-object__details">
+          <h3 class="p-media-object__title">
+            <a href="{{ url_for('jaasstore.details', charm_or_bundle_name='hive') }}">Hive</a>
+          </h3>
+          <p class="p-media-object__content">by bigdata-charmers</p>
         </div>
       </div>
-      <div class="col-3 p-card" style="border:0;">
-        <div class="p-media-object charm-object u-no-margin--bottom">
-          <img width="60" src="{{ external_urls.charmstore }}spark/icon.svg" alt="Spark icon" class="p-media-object__image is-round">
-          <div class="p-media-object__details">
-            <h3 class="p-media-object__title">
-              <a href="{{ url_for('jaasstore.details', charm_or_bundle_name='spark') }}">Spark</a>
-            </h3>
-            <p class="p-media-object__content">by containers</p>
-          </div>
+    </div>
+    <div class="col-3 p-card" style="border:0;">
+      <div class="p-media-object charm-object u-no-margin--bottom">
+        <img width="60" src="{{ external_urls.charmstore }}spark/icon.svg" alt="Spark icon" class="p-media-object__image is-round">
+        <div class="p-media-object__details">
+          <h3 class="p-media-object__title">
+            <a href="{{ url_for('jaasstore.details', charm_or_bundle_name='spark') }}">Spark</a>
+          </h3>
+          <p class="p-media-object__content">by containers</p>
         </div>
       </div>
-      <div class="col-3 p-card" style="border:0;">
-        <div class="p-media-object charm-object u-no-margin--bottom">
-          <img width="60" src="{{ external_urls.charmstore }}zeppelin/icon.svg" alt="Zeppelin icon" class="p-media-object__image is-round">
-          <div class="p-media-object__details">
-            <h3 class="p-media-object__title">
-              <a href="{{ url_for('jaasstore.details', charm_or_bundle_name='zeppelin') }}">Zeppelin</a>
-            </h3>
-            <p class="p-media-object__content">by bigdata-charmers</p>
-          </div>
+    </div>
+    <div class="col-3 p-card" style="border:0;">
+      <div class="p-media-object charm-object u-no-margin--bottom">
+        <img width="60" src="{{ external_urls.charmstore }}zeppelin/icon.svg" alt="Zeppelin icon" class="p-media-object__image is-round">
+        <div class="p-media-object__details">
+          <h3 class="p-media-object__title">
+            <a href="{{ url_for('jaasstore.details', charm_or_bundle_name='zeppelin') }}">Zeppelin</a>
+          </h3>
+          <p class="p-media-object__content">by bigdata-charmers</p>
         </div>
       </div>
-      <div class="col-3 p-card" style="border:0;">
-        <div class="p-media-object charm-object u-no-margin--bottom">
-          <img width="60" src="{{ external_urls.charmstore }}elasticsearch/icon.svg" alt="Elasticsearch cluster icon" class="p-media-object__image is-round">
-          <div class="p-media-object__details">
-            <h3 class="p-media-object__title">
-              <a href="{{ url_for('jaasstore.details', charm_or_bundle_name='elasticsearch-cluster') }}">Elasticsearch cluster</a>
-            </h3>
-            <p class="p-media-object__content">by charmers</p>
-          </div>
+    </div>
+    <div class="col-3 p-card" style="border:0;">
+      <div class="p-media-object charm-object u-no-margin--bottom">
+        <img width="60" src="{{ external_urls.charmstore }}elasticsearch/icon.svg" alt="Elasticsearch cluster icon" class="p-media-object__image is-round">
+        <div class="p-media-object__details">
+          <h3 class="p-media-object__title">
+            <a href="{{ url_for('jaasstore.details', charm_or_bundle_name='elasticsearch-cluster') }}">Elasticsearch cluster</a>
+          </h3>
+          <p class="p-media-object__content">by charmers</p>
         </div>
       </div>
     </div>
@@ -296,11 +290,9 @@
       </p>
     </div>
   </div>
-
   <div class="row">
     <hr class="p-separator" style="margin: 2rem 0 4rem;" />
   </div>
-
   <div class="row">
     <div class="col-12">
       <h2>Databases</h2>
@@ -319,68 +311,64 @@
       </div>
     </div>
   </div>
-  <div class="row">
-    <div class="u-equal-height entity-cards">
-      <div class="col-3 p-card" style="border:0;">
-        <div class="p-media-object charm-object u-no-margin--bottom">
-          <img src="{{ external_urls.charmstore }}cassandra/icon.svg" alt="Cassandra icon" class="p-media-object__image is-round">
-          <div class="p-media-object__details">
-            <h3 class="p-media-object__title">
-              <a href="{{ url_for('jaasstore.details', charm_or_bundle_name='cassandra') }}">Cassandra</a>
-            </h3>
-            <p class="p-media-object__content">by Cassandra-charmers</p>
-          </div>
+  <div class="row entity-cards">
+    <div class="col-3 p-card" style="border:0;">
+      <div class="p-media-object charm-object u-no-margin--bottom">
+        <img src="{{ external_urls.charmstore }}cassandra/icon.svg" alt="Cassandra icon" class="p-media-object__image is-round">
+        <div class="p-media-object__details">
+          <h3 class="p-media-object__title">
+            <a href="{{ url_for('jaasstore.details', charm_or_bundle_name='cassandra') }}">Cassandra</a>
+          </h3>
+          <p class="p-media-object__content">by Cassandra-charmers</p>
         </div>
       </div>
+    </div>
 
-      <div class="col-3 p-card" style="border:0;">
-        <div class="p-media-object charm-object u-no-margin--bottom">
-          <img width="60" src="{{ external_urls.charmstore }}spark/icon.svg" alt="Mariadb icon" class="p-media-object__image is-round">
-          <div class="p-media-object__details">
-            <h3 class="p-media-object__title">
-              <a href="{{ url_for('jaasstore.details', charm_or_bundle_name='mariadb') }}">Mariadb</a>
-            </h3>
-            <p class="p-media-object__content">by mariadb-charmers</p>
-          </div>
+    <div class="col-3 p-card" style="border:0;">
+      <div class="p-media-object charm-object u-no-margin--bottom">
+        <img width="60" src="{{ external_urls.charmstore }}spark/icon.svg" alt="Mariadb icon" class="p-media-object__image is-round">
+        <div class="p-media-object__details">
+          <h3 class="p-media-object__title">
+            <a href="{{ url_for('jaasstore.details', charm_or_bundle_name='mariadb') }}">Mariadb</a>
+          </h3>
+          <p class="p-media-object__content">by mariadb-charmers</p>
         </div>
       </div>
+    </div>
 
-      <div class="col-3 p-card" style="border:0;">
-        <div class="p-media-object charm-object u-no-margin--bottom">
-          <img width="60" src="{{ external_urls.charmstore }}mongodb/icon.svg" alt="mongodb icon" class="p-media-object__image is-round">
-          <div class="p-media-object__details">
-            <h3 class="p-media-object__title">
-              <a href="{{ url_for('jaasstore.details', charm_or_bundle_name='mongodb') }}">Mongodb</a>
-            </h3>
-            <p class="p-media-object__content">by charmers</p>
-          </div>
+    <div class="col-3 p-card" style="border:0;">
+      <div class="p-media-object charm-object u-no-margin--bottom">
+        <img width="60" src="{{ external_urls.charmstore }}mongodb/icon.svg" alt="mongodb icon" class="p-media-object__image is-round">
+        <div class="p-media-object__details">
+          <h3 class="p-media-object__title">
+            <a href="{{ url_for('jaasstore.details', charm_or_bundle_name='mongodb') }}">Mongodb</a>
+          </h3>
+          <p class="p-media-object__content">by charmers</p>
         </div>
       </div>
+    </div>
 
-      <div class="col-3 p-card" style="border:0;">
-        <div class="p-media-object charm-object u-no-margin--bottom">
-          <img width="60" src="{{ external_urls.charmstore }}redis/icon.svg" alt="Redis icon" class="p-media-object__image is-round">
-          <div class="p-media-object__details">
-            <h3 class="p-media-object__title">
-              <a href="{{ url_for('jaasstore.details', charm_or_bundle_name='redis') }}">Redis</a>
-            </h3>
-            <p class="p-media-object__content">by charmers</p>
-          </div>
+    <div class="col-3 p-card" style="border:0;">
+      <div class="p-media-object charm-object u-no-margin--bottom">
+        <img width="60" src="{{ external_urls.charmstore }}redis/icon.svg" alt="Redis icon" class="p-media-object__image is-round">
+        <div class="p-media-object__details">
+          <h3 class="p-media-object__title">
+            <a href="{{ url_for('jaasstore.details', charm_or_bundle_name='redis') }}">Redis</a>
+          </h3>
+          <p class="p-media-object__content">by charmers</p>
         </div>
       </div>
     </div>
   </div>
-  <div class="row">
-    <div class="u-equal-height entity-cards">
-      <div class="col-3 p-card" style="border:0;">
-        <div class="p-media-object charm-object u-no-margin--bottom">
-          <img src="{{ external_urls.charmstore }}postgresql/icon.svg" alt="Postgresql icon" class="p-media-object__image is-round">
-          <div class="p-media-object__details">
-            <h3 class="p-media-object__title">
-              <a href="{{ url_for('jaasstore.details', charm_or_bundle_name='postgresql') }}">Postgresql</a>
-            </h3>
-            <p class="p-media-object__content">by postgresql-charmers</p>
-          </div>
+  <div class="row entity-cards">
+    <div class="col-3 p-card" style="border:0;">
+      <div class="p-media-object charm-object u-no-margin--bottom">
+        <img src="{{ external_urls.charmstore }}postgresql/icon.svg" alt="Postgresql icon" class="p-media-object__image is-round">
+        <div class="p-media-object__details">
+          <h3 class="p-media-object__title">
+            <a href="{{ url_for('jaasstore.details', charm_or_bundle_name='postgresql') }}">Postgresql</a>
+          </h3>
+          <p class="p-media-object__content">by postgresql-charmers</p>
         </div>
       </div>
     </div>
@@ -392,12 +380,10 @@
       </p>
     </div>
   </div>
-
   <div class="row">
     <hr class="p-separator" style="margin: 2rem 0 4rem;" />
   </div>
-
-  <div class="row u-equal-height entity-cards">
+  <div class="row entity-cards">
     <div class="col-6 u-vertically-center">
       <div>
         <h2>Write a charm and join the ecosystem</h2>
