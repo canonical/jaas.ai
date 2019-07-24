@@ -29,14 +29,22 @@
           </div>
 
           <div class="row">
-            <div class="col-6">
-              <a href="{{ url_for('jaasstore.details', charm_or_bundle_name='canonical-kubernetes') }}" class="p-button--positive u-no-margin--bottom">Deploy Kubernetes</a>
-            </div>
-            <div class="col-6">
-              <a href="{{ url_for('jaasai.jaas') }}#deploy-kubernetes-in-minutes" class="p-link--inverted">
-                Or watch the video
-                <img class="p-icon" src="https://assets.ubuntu.com/v1/0d85260e-play-icon.svg" alt="Play icon" style="position: relative; top: 3px; left: 5px; filter: invert(1);">
-              </a>
+            <div class="col-12">
+              <ul class="p-inline-list">
+                <li class="p-inline-list__item">
+                  <a href="{{ url_for('jaasstore.details', charm_or_bundle_name='canonical-kubernetes') }}"
+                  class="p-button--positive u-no-margin--bottom">
+                    Deploy Kubernetes
+                  </a>
+                </li>
+                <li class="p-inline-list__item">
+                  <a href="{{ url_for('jaasai.jaas') }}#deploy-kubernetes-in-minutes" class="p-link--inverted">
+                    Or watch the video
+                    <img class="p-icon" src="https://assets.ubuntu.com/v1/0d85260e-play-icon.svg" alt="Play icon"
+                      style="position: relative; top: 3px; left: 5px; filter: invert(1);">
+                  </a>
+                </li>
+              </ul>
             </div>
           </div>
 
