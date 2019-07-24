@@ -74,7 +74,8 @@ def get_experts(expert=None):
             "store_card": {
                 "heading": (
                     "Big Data in minutes. Get started fast, with "
-                    'Tengu&rsquo;s <a class="link--light" href="{}">Python Spark cluster</a>'
+                    "Tengu&rsquo;s "
+                    "<a class='link--light' href='{}'>Python Spark cluster</a>"
                 ).format(
                     url_for(
                         "jaasstore.user_entity",

@@ -44,6 +44,11 @@
 
     &.is-dark {
       color: $color-x-light;
+
+      .link--light {
+        color: $color-x-light;
+        text-decoration: underline;
+      }
     }
   }
 
@@ -99,11 +104,6 @@
         );
       }
     }
-  }
-
-  .link--light {
-    color: $color-x-light;
-    text-decoration: underline;
   }
 }
 
