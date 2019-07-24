@@ -23,20 +23,6 @@
             </span>
           </li>
         {% endif %}
-        {% if context.entity.latest_revision and context.entity.revision_number != context.entity.latest_revision %}
-          <li class="p-inline-list__item">
-            <span class="entity__latest-version">
-              <a href="/{{ context.entity.latest_revision['url'] }}" onclick="dataLayer.push({
-                    'event' : 'GAEvent',
-                    'eventCategory' : 'Entity Details Link',
-                    'eventAction' : 'Goto latest version',
-                    'eventLabel' : 'Latest version (#ID)',
-                    'eventValue' : '{{ context.entity.latest_revision['full_id'] }}'
-                  });"><strong>Latest version</strong> (#{{ context.entity.latest_revision.id }})
-              </a>
-            </span>
-          </li>
-        {% endif %}
         {% if context.entity.channels %}
           <li class="p-inline-list__item">
             <span class="entity__channel">
