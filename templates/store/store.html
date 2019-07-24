@@ -34,24 +34,28 @@
 <div class="p-strip--accent is-slanted">
   <div class="row">
     <div class="col-6">
-      <div class="col-2 u-align--center">
-        <img src="https://assets.ubuntu.com/v1/3fe6b167-CHARM-FILEBEATS.svg" alt="">
-      </div>
-      <div class="col-4 u-no-margin--left">
-        <h4 class="p-muted-heading">Charms</h4>
-        <p>Charms are sets of scripts that simplify the deployment and management tasks of a service. They are regularly reviewed and updated.</p>
-        <a href="{{ url_for('jaasstore.search', type='charm') }}" class="p-button--neutral">View all the charms</a>
+      <div class="row">
+        <div class="col-2 u-align--center">
+          <img src="https://assets.ubuntu.com/v1/3fe6b167-CHARM-FILEBEATS.svg" alt="">
+        </div>
+        <div class="col-4 u-no-margin--left">
+          <h4 class="p-muted-heading">Charms</h4>
+          <p>Charms are sets of scripts that simplify the deployment and management tasks of a service. They are regularly reviewed and updated.</p>
+          <a href="{{ url_for('jaasstore.search', type='charm') }}" class="p-button--neutral">View all the charms</a>
+        </div>
       </div>
     </div>
       <div class="col-6">
-      <div class="col-2 u-align--center">
-        <img src="https://assets.ubuntu.com/v1/d58e79e3-BUNDLE%281%29.svg" alt="" style="padding: 2rem 0;">
-      </div>
-      <div class="col-4 u-no-margin--left">
-        <h4 class="p-muted-heading">Bundles</h4>
-        <p>Bundles are collections of charms that link applications together, so you can deploy whole chunks of infrastructure in one go.</p>
-        <a href="{{ url_for('jaasstore.search', type='bundle') }}" class="p-button--neutral">View all the bundles</a>
-      </div>
+        <div class="row">
+          <div class="col-2 u-align--center">
+            <img src="https://assets.ubuntu.com/v1/d58e79e3-BUNDLE%281%29.svg" alt="" style="padding: 2rem 0;">
+          </div>
+          <div class="col-4 u-no-margin--left">
+            <h4 class="p-muted-heading">Bundles</h4>
+            <p>Bundles are collections of charms that link applications together, so you can deploy whole chunks of infrastructure in one go.</p>
+            <a href="{{ url_for('jaasstore.search', type='bundle') }}" class="p-button--neutral">View all the bundles</a>
+          </div>
+        </div>
     </div>
   </div>
 </div>
