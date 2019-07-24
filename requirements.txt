@@ -1,8 +1,11 @@
 canonicalwebteam.http==1.0.1
 canonicalwebteam.flask_base==0.3.1
+canonicalwebteam.yaml-responses==1.1.1
 feedparser==5.2.1
 Flask-Testing==0.7.1
 Flask==1.1.1
 gfm==0.0.3
 jujubundlelib==0.5.6
 theblues==0.5.1
+canonicalwebteam.discourse-docs==0.6.0
+canonicalwebteam.search==0.1.0

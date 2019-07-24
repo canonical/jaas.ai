@@ -2,12 +2,17 @@ import flask
 import datetime
 
 from canonicalwebteam.flask_base.app import FlaskBase
+from canonicalwebteam.yaml_responses.flask_helpers import (
+    prepare_deleted,
+    prepare_redirects,
+)
 from webapp.external_urls import external_urls
 from webapp.handlers import add_headers
 from webapp.jaasai.views import jaasai
 from webapp.redirects.views import jaasredirects
 from webapp.store.views import jaasstore
 from webapp.template_utils import current_url_with_query, static_url
+from webapp.docs.views import init_docs
 
 
 def create_app(testing=False):
@@ -20,6 +25,8 @@ def create_app(testing=False):
 
     app.testing = testing
     app.after_request(add_headers)
+    app.before_request(prepare_redirects())
+    app.before_request(prepare_deleted())
 
     init_handler(app)
     init_blueprint(app)
@@ -71,3 +78,4 @@ def init_blueprint(app):
     app.register_blueprint(jaasai)
     app.register_blueprint(jaasredirects)
     app.register_blueprint(jaasstore)
+    init_docs(app, "/docs")
