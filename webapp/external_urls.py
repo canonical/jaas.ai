@@ -1,5 +1,5 @@
 external_urls = {
-    "askubuntu": "https://askubuntu.com/questions/tagged/juju",
+    "discourse": "https://discourse.jujucharms.com/",
     "blog": "https://blog.ubuntu.com/topics/juju",
     "charmstore": "https://api.jujucharms.com/charmstore/v5/",
     "discourse": "https://discourse.jujucharms.com/",
