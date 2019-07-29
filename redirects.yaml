@@ -151,3 +151,4 @@ docs/whats-new: /docs/whats-new-2-6
 
 # Other redirects
 docs/help-google/?: /docs/gce-cloud
+support/create: /support
