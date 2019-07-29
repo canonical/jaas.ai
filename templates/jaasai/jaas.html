@@ -8,18 +8,16 @@
 {% block content %}
 <div class="p-strip--suru-bottom has-accent is-dark to-white" style="background-size: auto 100%, cover; background-position: right center; background-image: url('https://assets.ubuntu.com/v1/a9dab044-suru-right.svg'), linear-gradient(266deg, #044f66, #022935)">
   <div class="row">
-    <div class="u-equal-height">
-      <div class="col-6">
-        <h1>JAAS gives you Juju, as a service</h1>
-        <h2 class="p-heading--four">JAAS is the best way to quickly model and deploy your cloud-based applications. Concentrate on your software and solutions with a fully managed Juju infrastructure.</h2>
-        <div>
-          <a href="{{ external_urls.gui }}" class="p-button--positive" rel="nofollow">Your models</a>
-          <a href="{{ url_for('jaasstore.store') }}" class="p-button--neutral" rel="nofollow">Visit the store</a>
-        </div>
+    <div class="col-6">
+      <h1>JAAS gives you Juju, as a service</h1>
+      <h2 class="p-heading--four">JAAS is the best way to quickly model and deploy your cloud-based applications. Concentrate on your software and solutions with a fully managed Juju infrastructure.</h2>
+      <div>
+        <a href="{{ external_urls.gui }}" class="p-button--positive" rel="nofollow">Your models</a>
+        <a href="{{ url_for('jaasstore.store') }}" class="p-button--neutral" rel="nofollow">Visit the store</a>
       </div>
-      <div class="col-6 u-vertically-center u-align--center u-hide--small">
-        <img src="https://assets.ubuntu.com/v1/e7ae18b9-jaas-logos.svg" alt="Cloud based application logos" style="width:100%;max-width:294px;"/>
-      </div>
+    </div>
+    <div class="col-6 u-vertically-center u-align--center u-hide--small">
+      <img src="https://assets.ubuntu.com/v1/e7ae18b9-jaas-logos.svg" alt="Cloud based application logos" style="width:100%;max-width:294px;"/>
     </div>
   </div>
 </div>
@@ -86,29 +84,26 @@
   </div>
   <div class="row">
     <div class="col-8">
-      <ol class="p-list-step">
-        <li class="p-list-step__item">
-          <h4 class="p-list-step__title">
-            <span class="p-list-step__bullet">1</span>
+      <ul class="p-stepped-list u-no-margin--left">
+        <li class="p-stepped-list__item">
+          <h4 class="p-stepped-list__title">
             Create an Ubuntu Single Sign On identity
           </h4>
-          <p class="p-list-step__content">JAAS uses Ubuntu SSO for identity management, so if you don’t already have an account create one at <a href="https://login.ubuntu.com/">https://login.ubuntu.com</a></p>
+          <p class="p-stepped-list__content">JAAS uses Ubuntu SSO for identity management, so if you don’t already have an account create one at <a href="https://login.ubuntu.com/">https://login.ubuntu.com</a></p>
         </li>
-        <li class="p-list-step__item">
-          <h4 class="p-list-step__title">
-            <span class="p-list-step__bullet">2</span>
+        <li class="p-stepped-list__item">
+          <h4 class="p-stepped-list__title">
             Get cloud credentials from your provider
           </h4>
-          <p class="p-list-step__content">JAAS deploys your workload to your
+          <p class="p-stepped-list__content">JAAS deploys your workload to your
           cloud of choice, so you must provide your cloud credentials for JAAS
           to create and access virtual machines on your behalf. We recommend
           that users generate a new set of credentials exclusively for use with
           JAAS via the public cloud’s IAM tools. For instructions on getting
           your credentials see our <a class="external external-alt" href="{{ external_urls.docs }}credentials">credentials documentation page.</a></p>
         </li>
-        <li class="p-list-step__item">
-          <h4 class="p-list-step__title">
-            <span class="p-list-step__bullet">3</span>
+        <li class="p-stepped-list__item">
+          <h4 class="p-stepped-list__title">
             Start modelling
           </h4>
           <h5>On the web</h5>
@@ -127,14 +122,13 @@
             <pre><code>juju login jaas</code></pre>
           </p>
         </li>
-        <li class="p-list-step__item">
-          <h4 class="p-list-step__title">
-            <span class="p-list-step__bullet">4</span>
+        <li class="p-stepped-list__item">
+          <h4 class="p-stepped-list__title">
             Find solutions to deploy
           </h4>
-          <p class="p-list-step__content">Hundreds of popular cloud-oriented applications such as Kubernetes, Apache Hadoop, Big Data solutions and OpenStack are available in the store as charms and bundles. New ones are added nearly every day and are regularly reviewed and updated.</p>
+          <p class="p-stepped-list__content">Hundreds of popular cloud-oriented applications such as Kubernetes, Apache Hadoop, Big Data solutions and OpenStack are available in the store as charms and bundles. New ones are added nearly every day and are regularly reviewed and updated.</p>
         </li>
-      </ol>
+      </ul>
     </div>
   </div>
   <div class="row">

@@ -23,7 +23,6 @@ $breakpoint-navigation-threshold: $breakpoint-large;
 
 .cookie-policy {
   @include vf-u-off-screen;
-  @include vf-b-placeholders;
   @include vf-p-notification;
   @include cookie-p-notification;
 }
@@ -103,6 +102,7 @@ $color-experts-highlight: #e95420;
   clear: both;
   display: inline-block;
   font-size: 0.875rem;
+  margin-bottom: 1rem;
   padding: 0.25rem 0.75rem;
   text-transform: uppercase;
 }
@@ -212,39 +212,6 @@ $color-experts-highlight: #e95420;
   }
 }
 
-// Expanded stepped list
-.p-list-step__item {
-  margin-top: 2rem;
-
-  &:first-child {
-    margin-top: 1rem;
-  }
-}
-
-.p-list-step > li::before {
-  background-color: #022935;
-}
-
-.p-list-step__title {
-  padding-bottom: 2rem;
-}
-
-// Inline images fix
-.p-inline-images__item {
-  img {
-    width: 100%;
-  }
-}
-
-// Stepped content Override
-.p-list-step__content {
-  .p-heading-icon__header {
-    @media (min-width: $breakpoint-medium) and (max-width: $breakpoint-large) {
-      display: block;
-    }
-  }
-}
-
 // Pictogram
 .pictogram-bg {
   background-color: $color-light;
@@ -346,7 +313,7 @@ h2 {
 // https://github.com/canonical-web-and-design/vanilla-framework/issues/2401
 .is-dark {
   .p-divider__block:not(:nth-child(1))::before {
-    border-left-color: $color-mid-dark !important;
+    background-color: $color-mid-dark !important;
   }
 
   .p-divider__block:not(:first-child) {

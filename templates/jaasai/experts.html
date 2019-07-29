@@ -32,9 +32,9 @@
     </div>
   </div>
   <div class="row">
-    <div class="u-equal-height">
-      {% for expert_id, expert in context.experts.items() %}
-        <div class="col-4 p-card">
+    {% for expert_id, expert in context.experts.items() %}
+      <div class="col-4">
+        <div class="p-card">
           <div class="expert__logo-wrap">
             <a href="{{ expert.page_url }}">
               <img class="expert__card-logo" src="{{ expert.logo }}" alt="{{ expert.name }} logo" />
@@ -47,8 +47,8 @@
             {% endfor %}
           </ul>
         </div>
-      {% endfor %}
-    </div>
+      </div>
+    {% endfor %}
   </div>
 </div>
 
