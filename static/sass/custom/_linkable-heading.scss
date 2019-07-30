@@ -1,31 +1,27 @@
 .linkable-heading {
-  display: grid;
-  grid-template-columns: 16px 1fr;
-  justify-content: center;
-  align-content: center;
   position: relative;
-  margin-left: -1rem;
+  margin-left: -3.25rem;
   padding-left: 1rem;
 
   a {
-    display: inline-block;
+    float: left;
+    padding-right: 0.25rem;
+    padding-top: 0.5rem;
+    margin-left: 1rem;
+  }
+
+  .linkable-heading__icon {
+    opacity: 0;
+    display: block;
+    left: -0.5rem;
+    border: 0 !important;
+    margin: 0;
+    transition: opacity 0.15s;
   }
 
   &:hover .linkable-heading__icon {
     opacity: 1;
     height: 16px;
     width: 16px;
-  }
-
-  .linkable-heading__icon {
-    opacity: 0;
-    display: block;
-    position: absolute;
-    top: 50%;
-    margin-top: -1rem !important;
-    left: -0.5rem;
-    border: 0 !important;
-    margin: 0;
-    transition: opacity 0.15s;
   }
 }

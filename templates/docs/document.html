@@ -49,7 +49,8 @@
         // Wrap heading in container
         const container = document.createElement('div');
         // Add classname to wrapper
-        container.classList.add("linkable-heading");
+        console.log(heading.tagName);
+        container.classList.add('linkable-heading', heading.tagName.toLowerCase());
         // Wrap the container around exisiting heading
         wrap(heading, container);
         // Create link icon
