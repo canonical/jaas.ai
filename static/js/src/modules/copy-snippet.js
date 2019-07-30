@@ -8,11 +8,11 @@ const copySnippet = () => {
     @static
   **/
   const instantiateCopyButtons = () => {
-    var codeSnippetActions = document.querySelectorAll('.p-code-snippet__action');
+    var codeSnippetActions = document.querySelectorAll('.p-code-copyable__action');
     for (var codeSnippetAction of codeSnippetActions) {
       codeSnippetAction.addEventListener(
         'click',
-        function(e) {
+        function() {
           const clipboardValue = this.previousSibling.previousSibling.value;
           copyToClipboard(clipboardValue);
         },
