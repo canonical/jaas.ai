@@ -1,8 +1,9 @@
 external_urls = {
-    "askubuntu": "https://askubuntu.com/questions/tagged/juju",
+    "discourse": "https://discourse.jujucharms.com/",
     "blog": "https://blog.ubuntu.com/topics/juju",
     "charmstore": "https://api.jujucharms.com/charmstore/v5/",
     "discourse": "https://discourse.jujucharms.com/",
     "gui": "https://jujucharms.com/new/",
     "issues": "https://github.com/canonical-web-and-design/jaas.ai/issues",
+    "freenode": "http://webchat.freenode.net/?channels=%23juju",
 }
