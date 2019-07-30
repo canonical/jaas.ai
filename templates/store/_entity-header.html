@@ -41,21 +41,27 @@
               {{ supported_release }}
             </span>
           {% endfor %}
-        {% endif %}
       </div>
+      {% endif %}
     </div>
     <div class="col-4">
-      <div class="p-code-snippet">
-        <input class="p-code-snippet__input deploy-command__field" value="juju deploy {{ context.entity.id }}"
-          readonly="readonly">
-        <button class="p-code-snippet__action">Copy to clipboard</button>
+      <div class="p-code-copyable">
+        <input class="p-code-copyable__input" value="juju deploy {{ context.entity.id }}" readonly="readonly">
+        <button class="p-code-copyable__action">Copy to clipboard</button>
       </div>
-      <p>
+      {% if "kubernetes" in context.entity.series %}
+        <div class="p-notification--information">
+          <p class="p-notification__response">
+            Deploy this charm on Kubernetes with the CLI. Find out how by reading the
+            <a class="p-link--external" href="https://docs.jujucharms.com/k8s-cloud">Discourse discussion</a>.
+          </p>
+        </div>
+      {% else %}
         <a href="{{ external_urls.gui }}?deploy-target={{ context.entity.id }}"
-          class="p-button--positive row" rel="nofollow">
+          class="p-button--positive" rel="nofollow" style="width:100%">
           Add to new model
         </a>
-      </p>
+      {% endif %}
     </div>
   </header>
 </div>
