@@ -29,13 +29,7 @@ def create_app(testing=False):
     app.before_request(prepare_redirects())
     app.before_request(prepare_deleted())
 
-    blog = BlogExtension(
-        app,
-        "JAAS Case Studies",
-        [""],
-        "lang:en",
-        "/case-studies"
-    )
+    BlogExtension(app, "JAAS Case Studies", [""], "lang:en", "/case-studies")
 
     init_handler(app)
     init_blueprint(app)
@@ -65,7 +59,6 @@ def create_app(testing=False):
     def descending_years_filter(end_year):
         now = datetime.datetime.now()
         return range(now.year, end_year, -1)
-
 
     @app.template_filter("months_list")
     def months_list_filter(year):
