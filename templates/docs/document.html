@@ -60,6 +60,7 @@
         const anchorLocation = heading.getAttribute("id");
         // create link wrapper
         const anchor = document.createElement('a');
+        anchor.classList.add("linkable-heading__anchor");
         // Assign each href to the link
         anchor.setAttribute("href", `#` + anchorLocation);
         // Insert link before heading
