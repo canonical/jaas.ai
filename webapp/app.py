@@ -1,6 +1,7 @@
 import flask
 import datetime
 
+from canonicalwebteam.blog.app import BlogExtension
 from canonicalwebteam.flask_base.app import FlaskBase
 from canonicalwebteam.yaml_responses.flask_helpers import (
     prepare_deleted,
@@ -28,14 +29,23 @@ def create_app(testing=False):
     app.before_request(prepare_redirects())
     app.before_request(prepare_deleted())
 
+    blog = BlogExtension(
+        app,
+        "JAAS Case Studies",
+        [8029],
+        "lang:en",
+        "/case-studies"
+    )
+
     init_handler(app)
     init_blueprint(app)
 
     @app.template_filter("pluralize")
-    def pluralize(count):
-        if count != 1:
+    def pluralize_filter(count):
+        if int(count) > 1:
             return "s"
-        return ""
+        else:
+            return ""
 
     @app.context_processor
     def inject_utilities():
@@ -50,6 +60,22 @@ def create_app(testing=False):
         return {"current_year": datetime.date.today().year}
 
     app.jinja_env.add_extension("jinja2.ext.do")
+
+    @app.template_filter("descending_years")
+    def descending_years_filter(end_year):
+        now = datetime.datetime.now()
+        return range(now.year, end_year, -1)
+
+
+    @app.template_filter("months_list")
+    def months_list_filter(year):
+        months = []
+        now = datetime.datetime.now()
+        for i in range(1, 13):
+            date = datetime.date(year, i, 1)
+            if date < now.date():
+                months.append({"name": date.strftime("%b"), "number": i})
+        return months
 
     return app
 

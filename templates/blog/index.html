@@ -1,0 +1,46 @@
+{% extends "_layout.html" %}
+
+{% block title %}JAAS Case Studies{% endblock %}
+
+{% block content %}
+  {% include 'blog/_newsletter-success.html' %}
+
+  <header class="p-strip--light" style="text-align: left">
+    <div class="row">
+      <div class="col-8">
+        <h1>Case studies</h1>
+      </div>
+    </div>
+  </header>
+
+  <section class="p-strip">
+    <div class="row">
+      <div class="col-7">
+        {% for article in articles %}
+          <article>
+            <h1 class="p-heading--two u-no-margin--bottom u-sv1">{{ article.title.rendered|safe }}</h1>
+            <p>{{ article.date }}</p>
+
+            {{ article.content.rendered|safe }}
+          </article>
+
+          {% if loop.first %}
+            <div class="u-hide--medium u-hide--large">
+              {% include 'blog/_newsletter-signup-form.html' %}
+            </div>
+          {% endif %}
+
+          {% if not loop.last %}
+          <hr class="p-separator" />
+          {% endif %}
+        {% endfor %}
+      </div>
+
+      <div class="col-4 col-start-large-9">
+        {% include 'blog/_newsletter-signup-form.html' %}
+      </div>
+    </div>
+  </section>
+
+  {% include 'blog/_pagination.html' %}
+{% endblock %}
