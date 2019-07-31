@@ -134,16 +134,6 @@ def static_from_root():
     return send_from_directory(current_app.static_folder, request.path[1:])
 
 
-@jaasai.route("/case-studies")
-def case_studies():
-    return render_template("jaasai/case-studies/index.html")
-
-
-@jaasai.route("/case-studies/article")
-def case_studies_article():
-    return render_template("jaasai/case-studies/article.html")
-
-
 def set_xml_content_type(path, context={}):
     print(context)
     xml = render_template(path, context=context)
