@@ -49,18 +49,18 @@
         // Wrap heading in container
         const container = document.createElement('div');
         // Add classname to wrapper
-        container.classList.add('linkable-heading', heading.tagName.toLowerCase());
+        container.classList.add('p-linkable-heading', heading.tagName.toLowerCase());
         // Wrap the container around exisiting heading
         wrap(heading, container);
         // Create link icon
         const linkIcon = document.createElement('img');
         linkIcon.setAttribute("src", "https://assets.ubuntu.com/v1/994e60f9-get-link-url_16.svg");
-        linkIcon.classList.add("linkable-heading__icon");
+        linkIcon.classList.add("p-linkable-heading__icon");
         // Grab each id in each heading
         const anchorLocation = heading.getAttribute("id");
         // create link wrapper
         const anchor = document.createElement('a');
-        anchor.classList.add("linkable-heading__anchor");
+        anchor.classList.add("p-linkable-heading__anchor");
         // Assign each href to the link
         anchor.setAttribute("href", `#` + anchorLocation);
         // Insert link before heading

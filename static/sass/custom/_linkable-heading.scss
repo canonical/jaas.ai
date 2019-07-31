@@ -1,4 +1,4 @@
-.linkable-heading {
+.p-linkable-heading {
   position: relative;
   margin-left: -3.25rem;
   padding-left: 1rem;
@@ -10,7 +10,7 @@
     margin-left: 1rem;
   }
 
-  .linkable-heading__icon {
+  .p-linkable-heading__icon {
     @include vf-animation(opacity, snap, in);
     opacity: 0;
     display: block;
@@ -19,7 +19,7 @@
     margin: 0;
   }
 
-  &:hover .linkable-heading__icon {
+  &:hover .p-linkable-heading__icon {
     opacity: 1;
     height: 16px;
     width: 16px;
