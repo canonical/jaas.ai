@@ -25,10 +25,8 @@
           <article>
             <h1 class="p-heading--three u-no-margin--bottom u-sv1">{{ article.title.rendered }}</h1>
             <p>{{ article.date }}</p>
-
             {{ article.content.rendered|safe }}
           </article>
-
           {% if not loop.last %}
             <hr class="p-separator">
           {% endif %}

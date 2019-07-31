@@ -12,7 +12,6 @@
           {% if current_page > 1 %}
             <li class="p-inline-list__item"><a href="{{ page_prefix }}{{ current_page - 1 }}">Previous</a></li>
           {% endif %}
-
           {% if current_page > 4 and current_page == total_pages %}
             <!-- 5 before current page -->
             <li class="p-inline-list__item"><a class="p-link--soft" href="{{ page_prefix }}{{ current_page - 4 }}">{{ current_page - 4 }}</a></li>
@@ -29,10 +28,8 @@
             <!-- 1 before current page -->
             <li class="p-inline-list__item"><a class="p-link--soft" href="{{ page_prefix }}{{ current_page - 1 }}">{{ current_page - 1 }}</a></li>
           {% endif %}
-
           <!-- current page -->
           <li class="p-inline-list__item"><a class="p-link--strong p-heading--five" href="{{ page_prefix }}{{ current_page }}">{{ current_page }}</a></li>
-
           {% if current_page < total_pages %}
             <!-- 1 after current page -->
             <li class="p-inline-list__item"><a class="p-link--soft" href="{{ page_prefix }}{{ current_page + 1 }}">{{ current_page + 1 }}</a></li>
@@ -49,7 +46,6 @@
             <!-- 4 after current page -->
             <li class="p-inline-list__item"><a class="p-link--soft" href="{{ page_prefix }}{{ current_page + 4 }}">{{ current_page + 4 }}</a></li>
           {% endif %}
-
           {% if total_pages > current_page %}
             <li class="p-inline-list__item"><a href="{{ page_prefix }}{{ current_page + 1 }}">Next</a></li>
           {% endif %}
