@@ -11,12 +11,12 @@
   }
 
   .linkable-heading__icon {
+    @include vf-animation(opacity, snap, in);
     opacity: 0;
     display: block;
     left: -0.5rem;
     border: 0 !important;
     margin: 0;
-    transition: opacity 0.15s;
   }
 
   &:hover .linkable-heading__icon {
