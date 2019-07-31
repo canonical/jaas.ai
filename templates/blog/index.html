@@ -1,6 +1,6 @@
 {% extends "_layout.html" %}
 
-{% block title %}JAAS Case Studies{% endblock %}
+{% block title %}Case Studies{% endblock %}
 
 {% block content %}
   {% include 'blog/_newsletter-success.html' %}
@@ -17,21 +17,25 @@
     <div class="row">
       <div class="col-7">
         {% for article in articles %}
-          <article>
-            <h1 class="p-heading--two u-no-margin--bottom u-sv1">{{ article.title.rendered|safe }}</h1>
-            <p>{{ article.date }}</p>
+          {% if loop.index < 9 %}
+            <article>
+              <h1 class="p-heading--two u-no-margin--bottom u-sv1">
+                <a href="/case-studies/{{ article.slug|safe }}">
+                  {{ article.title.rendered|safe }}
+                </a>
+              </h1>
+              <p>{{ article.date }}</p>
+              {{ article.content.rendered|safe }}
+            </article>
+            {% if loop.first %}
+              <div class="u-hide--medium u-hide--large">
+                {% include 'blog/_newsletter-signup-form.html' %}
+              </div>
+            {% endif %}
 
-            {{ article.content.rendered|safe }}
-          </article>
-
-          {% if loop.first %}
-            <div class="u-hide--medium u-hide--large">
-              {% include 'blog/_newsletter-signup-form.html' %}
-            </div>
-          {% endif %}
-
-          {% if not loop.last %}
-          <hr class="p-separator" />
+            {% if not loop.last %}
+            <hr class="p-separator" />
+            {% endif %}
           {% endif %}
         {% endfor %}
       </div>

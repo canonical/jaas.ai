@@ -32,7 +32,7 @@ def create_app(testing=False):
     blog = BlogExtension(
         app,
         "JAAS Case Studies",
-        [8029],
+        [""],
         "lang:en",
         "/case-studies"
     )
