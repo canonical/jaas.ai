@@ -35,38 +35,29 @@
       sidebarContent.classList.toggle('u-hide--small');
     });
 
-      // Add anchor links to section headings
-    // Help function wrap: wrap one element with another
-    function wrap(el, wrapper) {
-      el.parentNode.insertBefore(wrapper, el);
-      wrapper.appendChild(el);
-    }
     // Grab all heading elements inside main content area
     var container = document.querySelector(".l-docs-content");
     var matches = container.querySelectorAll("h1, h2, h3, h4, h5, h6").forEach(function (heading) {
       // Only proceed if headings have an id attribute
       if (heading.hasAttribute("id")) {
-        // Wrap heading in container
-        const container = document.createElement('div');
-        // Add classname to wrapper
-        container.classList.add('p-linkable-heading', heading.tagName.toLowerCase());
-        // Wrap the container around exisiting heading
-        wrap(heading, container);
-        // Create link icon
-        const linkIcon = document.createElement('img');
-        linkIcon.setAttribute("src", "https://assets.ubuntu.com/v1/994e60f9-get-link-url_16.svg");
-        linkIcon.classList.add("p-linkable-heading__icon");
-        // Grab each id in each heading
-        const anchorLocation = heading.getAttribute("id");
+        // Add class to all linkable headings
+        heading.classList.add("p-linkable-heading");
+        // Create hover icon
+        const hoverIcon = document.createElement('img');
+        hoverIcon.setAttribute("src", "https://assets.ubuntu.com/v1/994e60f9-get-link-url_16.svg");
+        hoverIcon.classList.add("p-linkable-heading__icon");
         // create link wrapper
         const anchor = document.createElement('a');
+        // Grab each id in each heading
+        const anchorLocation = heading.getAttribute("id");
+        // Add class to each link
         anchor.classList.add("p-linkable-heading__anchor");
         // Assign each href to the link
         anchor.setAttribute("href", `#` + anchorLocation);
-        // Insert link before heading
-        heading.before(linkIcon);
-        // Wrap the link icon with a link to #location
-        wrap(linkIcon, anchor);
+        // Insert the icon to the link
+        anchor.appendChild(hoverIcon);
+        // Insert the link into the heading
+        heading.appendChild(anchor);
       }
     });
   });

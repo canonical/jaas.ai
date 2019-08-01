@@ -1,27 +1,14 @@
 .p-linkable-heading {
-  position: relative;
-  margin-left: -3.25rem;
-  padding-left: 1rem;
-
   &__anchor {
-    float: left;
-    padding-right: 0.25rem;
-    padding-top: 0.5rem;
-    margin-left: 1rem;
-  }
-
-  .p-linkable-heading__icon {
     @include vf-animation(opacity, snap, in);
     opacity: 0;
-    display: block;
-    left: -0.5rem;
-    border: 0 !important;
-    margin: 0;
+    float: left;
+    margin-left: -1.25rem;
   }
 
-  &:hover .p-linkable-heading__icon {
-    opacity: 1;
-    height: 16px;
-    width: 16px;
+  &:hover {
+    .p-linkable-heading__anchor {
+      opacity: 1;
+    }
   }
 }
