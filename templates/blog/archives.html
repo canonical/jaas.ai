@@ -1,17 +1,17 @@
 {% extends "_layout.html" %}
 
-{% block title %}Archives{% endblock %}
+{% block title %}Case Study Archives{% endblock %}
 
 {% block content %}
   <header class="p-strip--dark p-strip--image" style="text-align: left">
     <div class="row">
       <div class="col-10">
-        <h1>Archives</h1>
+        <h1>Case Study Archives</h1>
         <p class="p-heading--four">
           {% if total_posts|length > 0 %}
-          {{ total_posts }} post{{ total_posts|pluralize }}
+            {{ total_posts }} post{{ total_posts|pluralize }}
           {% else %}
-          No posts
+            No posts
           {% endif %}
         </p>
       </div>

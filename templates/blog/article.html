@@ -3,31 +3,27 @@
 {% block title %}{{ article.title.rendered|safe }} | JAAS{% endblock %}
 
 {% block content %}
+
   {% include 'blog/_newsletter-success.html' %}
+
   <header class="p-strip--dark p-strip--image" style="text-align: left">
     <div class="row">
       <div class="col-8">
         <h1>{{ article.title.rendered|safe }}</h1>
       </div>
     </div>
-    <div class="row">
-      <div class="col-8">
-        <h2 class="p-heading--four">{{ article.date }}</h2>
-      </div>
-    </div>
   </header>
 
-  <div>
-    <article class="p-strip">
-      <div class="row">
-        <div class="col-7">
-          {{ article.content.rendered|safe }}
-        </div>
-        <div class="col-4 col-start-large-9">
-          {% include '/blog/_newsletter-signup-form.html' %}
-        </div>
+  <article class="p-strip">
+    <div class="row">
+      <div class="col-7">
+        {{ article.content.rendered|safe }}
       </div>
-    </article>
-  </div>
+      <div class="col-4 col-start-large-9">
+        {% include '/blog/_newsletter-signup-form.html' %}
+      </div>
+    </div>
+  </article>
+
 {% endblock %}
 
