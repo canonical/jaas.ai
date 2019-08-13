@@ -1,8 +1,9 @@
 import collections
-import gfm
 import os
 import re
+import markdown
 
+from mdx_gfm import GithubFlavoredMarkdownExtension
 from jujubundlelib import references
 from theblues.charmstore import CharmStore
 from theblues.errors import EntityNotFound, ServerError
@@ -220,7 +221,9 @@ class Entity:
             :content string: Some markdown.
             :returns: HTML as a string.
         """
-        html = gfm.markdown(content)
+        html = markdown.markdown(
+            content, extensions=[GithubFlavoredMarkdownExtension()]
+        )
         try:
             html = self._convert_http_to_https(html)
         except Exception:
