@@ -1,6 +1,7 @@
-<div class="col-4 p-card--highlighted">
+<div class="col-4 p-card--highlighted p-card--case-study">
   <div class="p-card__content">
     {% if article.image and article.image.source_url %}
+    <div class="p-card__image">
       <a href="/case-studies/{{ article.slug }}">
         <img src="https://res.cloudinary.com/canonical/image/fetch/q_auto,f_auto,w_460/{{ article.image.source_url }}"
           srcset="https://res.cloudinary.com/canonical/image/fetch/q_auto,f_auto,w_460/{{ article.image.source_url }} 460w,
@@ -12,6 +13,7 @@
             (max-width: 620px) and (min-width: 461px) 620px,
             (max-width: 460px) 460px" alt="">
       </a>
+    </div>
     {% endif %}
     <h3 class="p-heading--four">
       <a href="/case-studies/{{ article.slug }}">{{ article.title.rendered|safe }}</a>
