@@ -1,0 +1,35 @@
+.p-linkable-heading {
+  &__anchor {
+    @include vf-animation(opacity, snap, in);
+    opacity: 0;
+    float: left;
+    margin-left: -1.25rem;
+  }
+
+  &:hover {
+    .p-linkable-heading__anchor {
+      opacity: 1;
+    }
+  }
+}
+
+.p-linkable-heading__icon {
+  position: relative;
+
+  h1 & {
+    top: -0.5rem;
+  }
+
+  h2 & {
+    top: -0.2rem;
+  }
+
+  h4 & {
+    top: 0.1rem;
+  }
+
+  h5 &,
+  h6 & {
+    top: 0.2rem;
+  }
+}

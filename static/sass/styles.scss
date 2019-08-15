@@ -43,7 +43,7 @@ $breakpoint-navigation-threshold: $breakpoint-large;
 @import 'custom/patterns_docs';
 @import 'custom/hljs';
 @import 'custom/case_studies';
-
+@import 'custom/linkable-heading';
 @include jaas-p-strips;
 @include jaas-p-lists;
 @include jaas-p-icons;
