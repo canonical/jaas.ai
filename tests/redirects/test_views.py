@@ -13,6 +13,14 @@ class RedirectViews(TestCase):
         app.config["PRESERVE_CONTEXT_ON_EXCEPTION"] = False
         return app
 
+    def test_redirect_logo(self):
+        response = self.client.get("/static/img/logos/juju-logo.svg")
+        self.assertEqual(response.status_code, 301)
+        self.assertEqual(
+            response.location,
+            "https://assets.ubuntu.com/v1/7e21b535-logo-juju.svg",
+        )
+
     @patch("webapp.store.models.search_entities")
     def test_search_redirect(self, mock_search_entities):
         mock_search_entities.return_value = []
