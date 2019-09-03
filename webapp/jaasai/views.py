@@ -91,6 +91,14 @@ def experts_tengu():
     )
 
 
+@jaasai.route("/experts/omnivector")
+def experts_omnivector():
+    return render_template(
+        "jaasai/experts/omnivector.html",
+        context={"expert": get_experts("omnivector")},
+    )
+
+
 @jaasai.route("/experts/thanks")
 def experts_thanks():
     return render_template("jaasai/experts/thanks.html")
