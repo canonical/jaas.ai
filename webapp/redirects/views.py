@@ -33,13 +33,3 @@ def blog_redirect():
     Redirect the blog page that existed on jujucharms.com.
     """
     return redirect(external_urls["blog"], code=302)
-
-
-@jaasredirects.route("/static/img/logos/juju-logo.svg")
-def redirect_logo():
-    """
-    Perminantly redirect the old logo url to the assets server.
-    """
-    return redirect(
-        "https://assets.ubuntu.com/v1/7e21b535-logo-juju.svg", code=301
-    )
