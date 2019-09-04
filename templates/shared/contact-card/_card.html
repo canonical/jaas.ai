@@ -11,6 +11,11 @@
         Get in touch
       </button>
       {% include "shared/_spicule_lead-gen-form.html" %}
+    {% elif context.expert.username == "omnivector"  %}
+      <button data-js="leadGenerationModalTrigger" class="p-button--positive">
+        Get in touch
+      </button>
+      {% include "shared/_omnivector_lead-gen-form.html" %}
     {% else %}
       <a href="#_" data-js="show-btn" class="p-button--positive"
         onclick="dataLayer.push({
