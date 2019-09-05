@@ -325,3 +325,12 @@ h2 {
     @extend .p-link--inverted; // sass-lint:disable-line placeholder-in-extend
   }
 }
+
+// Hide images that fail to lazy load due to JS failing or other
+.lazyload {
+  visibility: hidden;
+  height: 0;
+  width: 0;
+  margin: 0;
+  padding: 0;
+}
