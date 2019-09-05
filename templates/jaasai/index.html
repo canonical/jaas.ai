@@ -51,7 +51,15 @@
         </div>
       </div>
       <div class="col-6 u-vertically-center">
-        <img src="https://assets.ubuntu.com/v1/f3f75945-home-promo-bundle.svg" alt="Pictogram of bundle" style="margin-bottom: -2rem;" />
+        {{
+          image(
+            url="https://assets.ubuntu.com/v1/f3f75945-home-promo-bundle.svg",
+            alt="Pictogram of bundle",
+            width="600",
+            height="570",
+            hi_def=True,
+          ) | safe
+        }}
       </div>
     </div>
   </div>
@@ -65,7 +73,15 @@
         <h5 class="u-no-padding--top">Or build it yourself</h5>
         <p>Create your own solution in the GUI or browse the store to get started</p>
         <div class="card-wrap">
-          <img src="https://assets.ubuntu.com/v1/3f449866-build-yourself.png" srcset="https://assets.ubuntu.com/v1/a728511e-build-it-yourself.png 2x" alt="Build it yourself example">
+          {{
+            image(
+              url="https://assets.ubuntu.com/v1/a728511e-build-it-yourself.png",
+              alt="Build it yourself example",
+              width="326",
+              height="108",
+              hi_def=True,
+            ) | safe
+          }}
         </div>
         <p><a href="{{ external_urls.gui }}" class="p-button--neutral" style="margin-top:5px">Start a new model</a></p>
       </div>
@@ -73,7 +89,15 @@
         <h5 class="u-no-padding--top">JAAS is Juju as a service</h5>
         <p>Managed Juju infrastructure, hosted by Canonical, the makers of Ubuntu.</p>
         <div class="p-card u-align--center">
-          <img style="padding:1rem 0" src="https://assets.ubuntu.com/v1/a559e2c5-jaas-black-orange-hz-hex.svg" alt="JAAS logo">
+          {{
+            image(
+              url="https://assets.ubuntu.com/v1/a559e2c5-jaas-black-orange-hz-hex.svg",
+              alt="JAAS logo",
+              width="114",
+              height="64",
+              hi_def=True,
+            ) | safe
+          }}
         </div>
         <a href="{{ url_for('jaasai.jaas') }}" class="p-button--neutral" style="margin-top:-6px">About JAAS</a>
       </div>
@@ -185,11 +209,31 @@
         <div class="step-block">
           <div class="step-block__section">
             <p>With Juju, relationships between linked charms are formed automatically.</p>
-            <p class="align-center"><img src="https://assets.ubuntu.com/v1/1c86ec05-model-canvas.png" alt="" srcset="https://assets.ubuntu.com/v1/fc0ccef5-model-canvas-2x.png 2x" /></p>
+            <p class="align-center">
+              {{
+                image(
+                  url="https://assets.ubuntu.com/v1/fc0ccef5-model-canvas-2x.png",
+                  alt="Linked charms",
+                  width="300",
+                  height="235",
+                  hi_def=True,
+                ) | safe
+              }}
+            </p>
           </div>
           <div class="step-block__section">
             <p>Easily configure charms via the inspector.</p>
-            <p class="align-center"><img src="https://assets.ubuntu.com/v1/550e1003-model-config.png" alt="" srcset="https://assets.ubuntu.com/v1/8d6efbaa-model-config-2x.png 2x" /></p>
+            <p class="align-center">
+              {{
+                image(
+                  url="https://assets.ubuntu.com/v1/8d6efbaa-model-config-2x.png",
+                  alt="Inspector screenshot",
+                  width="307",
+                  height="247",
+                  hi_def=True,
+                ) | safe
+              }}
+            </p>
           </div>
         </div>
       </div>
@@ -198,11 +242,31 @@
         <div class="step-block">
           <div class="step-block__section">
             <p>Deploy and redeploy to all major public clouds or locally on your own hardware.</p>
-            <p class="align-center"><img src="https://assets.ubuntu.com/v1/0b9e98e2-deploy-logos.png" alt="" srcset="https://assets.ubuntu.com/v1/78c1ad70-deploy-logos-2x.png 2x" /></p>
+            <p class="align-center">
+              {{
+                image(
+                  url="https://assets.ubuntu.com/v1/78c1ad70-deploy-logos-2x.png",
+                  alt="Public cloud logos",
+                  width="326",
+                  height="235",
+                  hi_def=True,
+                ) | safe
+              }}
+            </p>
           </div>
           <div class="step-block__section">
             <p>Monitor, maintain and scale on demand.</p>
-            <p class="align-center"><img src="https://assets.ubuntu.com/v1/f5d6e17e-deploy-new-units.png" alt="" srcset="https://assets.ubuntu.com/v1/ff83e81e-deploy-new-units-2x.png 2x" /></p>
+            <p class="align-center">
+              {{
+                image(
+                  url="https://assets.ubuntu.com/v1/ff83e81e-deploy-new-units-2x.png",
+                  alt="New units screenshot",
+                  width="326",
+                  height="235",
+                  hi_def=True,
+                ) | safe
+              }}
+            </p>
           </div>
         </div>
       </div>
@@ -222,10 +286,26 @@
     </div>
     <div class="row">
       <div class="col-6 u-align-text--center">
-        <img src="https://assets.ubuntu.com/v1/4c62db97-why-use-juju-diagram-left.svg" alt="Diagram on 'Why use Juju (Part 1)'" />
+        {{
+          image(
+            url="https://assets.ubuntu.com/v1/4c62db97-why-use-juju-diagram-left.svg",
+            alt="Diagram on 'Why use Juju (Part 1)",
+            width="440",
+            height="789",
+            hi_def=True,
+          ) | safe
+        }}
       </div>
       <div class="col-6 u-align-text--center">
-        <img src="https://assets.ubuntu.com/v1/a018d25e-why-use-juju-diagram-right.svg" alt="Diagram on 'Why use Juju (Part 2)'" />
+        {{
+          image(
+            url="https://assets.ubuntu.com/v1/a018d25e-why-use-juju-diagram-right.svg",
+            alt="Diagram on 'Why use Juju (Part 2)",
+            width="440",
+            height="779",
+            hi_def=True,
+          ) | safe
+        }}
       </div>
     </div>
     <div class="p-strip is-shallow">

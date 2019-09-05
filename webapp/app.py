@@ -6,6 +6,7 @@ from canonicalwebteam.yaml_responses.flask_helpers import (
     prepare_deleted,
     prepare_redirects,
 )
+from canonicalwebteam import image_template
 from webapp.external_urls import external_urls
 from webapp.handlers import add_headers
 from webapp.jaasai.views import jaasai
@@ -50,6 +51,10 @@ def create_app(testing=False):
         return {"current_year": datetime.date.today().year}
 
     app.jinja_env.add_extension("jinja2.ext.do")
+
+    @app.context_processor
+    def utility_processor():
+        return {"image": image_template}
 
     return app
 
