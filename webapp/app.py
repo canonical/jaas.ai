@@ -29,7 +29,7 @@ def create_app(testing=False):
     app.before_request(prepare_redirects())
     app.before_request(prepare_deleted())
 
-    BlogExtension(app, "JAAS Case Studies", [""], "lang:en", "/case-studies")
+    BlogExtension(app, "JAAS Case Studies", [3513], "lang:en", "/case-studies")
 
     init_handler(app)
     init_blueprint(app)
