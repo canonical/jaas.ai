@@ -10,6 +10,33 @@ def get_experts(expert=None):
         :returns: One or all experts.
     """
     experts = {
+        "omnivector": {
+            "name": "Omnivector",
+            "username": "omnivector",
+            "page_url": url_for("jaasai.experts_omnivector"),
+            "logo": (
+                "https://assets.ubuntu.com/v1/"
+                "9681b99c-OV+Logo+Horiz+3color.svg"
+            ),
+            "logo_invert": (
+                "https://assets.ubuntu.com/v1/"
+                "9681b99c-OV+Logo+Horiz+3color.svg"
+            ),
+            "highlights": ["Big data", "Data Services", "Devops services"],
+            "website": "https://www.omnivector.solutions",
+            "email": "info@omnivector.solutions",
+            "phone_numbers": [
+                {
+                    "number": "+14134897005",
+                    "display": "+1 (413) 489 7005",
+                    "location": "USA",
+                }
+            ],
+            "store_card": {
+                "heading": ("Smart, Flexible, Scalable. No strings attached."),
+                "button_label": "Big data experts",
+            },
+        },
         "spiculecharms": {
             "name": "Spicule",
             "username": "spiculecharms",
