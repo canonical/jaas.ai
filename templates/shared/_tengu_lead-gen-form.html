@@ -1,0 +1,89 @@
+<div data-js="contact-form" class="contact-form">
+  <div class="p-modal p-modal--hidden" id="leadGenerationModal">
+    <div class="p-modal__dialog" role="dialog" aria-labelledby="modal-title" aria-describedby="modal-description">
+      <header class="p-modal__header">
+        <button class="p-modal__close" aria-label="Close active modal" data-js="modalClose">Close</button>
+      </header>
+      <ul class="modal__contact-list">
+        <li class="modal__website">
+          <span>
+            <img src="https://assets.ubuntu.com/v1/4f94bbf4-icon-web.svg" alt="Email icon">
+          </span>
+          <a href="{{ context.expert.website }}">{{ context.expert.website }}</a>
+        </li>
+        <li class="modal__email">
+          <span>
+            <img src="https://assets.ubuntu.com/v1/5e815088-icon-email.svg" alt="Email icon">
+          </span>
+          <a href="mailto:{{ context.expert.email }}">{{ context.expert.email }}</a>
+        </li>
+        {% for phone in context.expert.phone_numbers %}
+        <li class="modal__tel">
+          <span>
+            <img src="https://assets.ubuntu.com/v1/a52bd3b1-Icon-telephone.svg" alt="Email icon">
+          </span>
+          <a class="modal__tel-link" rel="tel" href="tel:{{ phone.number }}">{{ phone.display }}</a>({{ phone.location }})
+        </li>
+        {% endfor %}
+      </ul>
+      <hr class="modal__divider" />
+      <!-- MARKETO FORM -->
+      <form action="https://pages.ubuntu.com/index.php/leadCapture/save" method="post" id="mktoForm_3443">
+        <ul class="p-list">
+          <li class="mktFormReq mktField">
+            <label for="FirstName" class="mktoLabel ">First Name:</label>
+            <input required id="FirstName" name="FirstName" maxlength="255" type="text"
+              class="mktoField mktoRequired mktoInvalid">
+          </li>
+          <li class="mktFormReq mktField">
+            <label for="LastName" class="mktoLabel ">Last Name:</label>
+            <input required id="LastName" name="LastName" maxlength="255" type="text" class="mktoField mktoRequired">
+          </li>
+          <li class="mktFormReq mktField">
+            <label for="Email" class="mktoLabel ">Email address:</label>
+            <input required id="Email" name="Email" maxlength="255" type="email"
+              class="mktoField mktoEmailField mktoRequired">
+          </li>
+          <li class="mktFormReq mktField" id="comments">
+            <label for="Comments_from_lead__c" class="mktoLabel ">
+              {% if context and context.entity and context.entity.display_name %}
+                How can we help with <strong>{{ context.entity.display_name }}</strong>?
+              {% else %}
+                How can we help?
+              {% endif %}
+            </label>
+            <textarea required id="Comments_from_lead__c" name="Comments_from_lead__c" rows="2"
+              class="mktoField mktoRequired" maxlength="2000"></textarea>
+          </li>
+          <li class="mktField">
+            <label for="canonicalUpdatesOptIn" class="mktoLabel modal__terms">
+              In submitting this form, I confirm that I have read and agree to Canonical’s
+              <a href="https://www.ubuntu.com/legal/data-privacy/contact?_ga=2.67215766.606903877.1552321043-1465573742.1527584293"
+                target="_blank">Privacy Notice</a>, <a
+                href="https://www.ubuntu.com/legal/data-privacy?_ga=2.67215766.606903877.1552321043-1465573742.1527584293"
+                target="_blank">Privacy Policy</a>, <a href="https://www.tengu.io/privacy-policy" target="_blank">Tengu's Privacy Policy</a> and acknowledge that I may be contacted by Tengu and/or Canonical about my form and relevant information.
+            </label>
+          </li>
+          <li class="mktField">
+            <input type="hidden" name="Consent_to_Processing__c" class="mktoField  mktoFormCol" value="Yes">
+          </li>
+          <li class="mktField submit-wrapper" style="display:flex;margin-top:1rem;">
+            <button type="submit" class="mktoButton submit-wrapper__button">Send message</button><input type="hidden" name="formid"
+              class="mktoField " value="3359"><input type="hidden" name="lpId" class="mktoField " value=""><input
+              type="hidden" name="subId" class="mktoField " value=""><input type="hidden" name="munchkinId"
+              class="mktoField " value=""><input type="hidden" name="lpurl" class="mktoField " value=""><input
+              type="hidden" name="cr" class="mktoField " value=""><input type="hidden" name="kw" class="mktoField "
+              value=""><input type="hidden" name="q" class="mktoField " value="">
+          </li>
+        </ul>
+        <input type="hidden" name="returnURL" value="{{ expertThanksPage }}/experts/thanks" />
+        <input type="hidden" name="retURL" value="{{ expertThanksPage }}/experts/thanks" />
+      </form>
+      <!-- /MARKETO FORM -->
+    </div>
+  </div>
+</div>
+<script src="{{ static_url('js/app/modal.js') }}"></script>
+<script>
+  window.app.modal('leadGenerationModal');
+</script>
