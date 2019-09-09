@@ -31,12 +31,12 @@
           opacity: 1;
         }
 
-        &::before {
+        .before {
           background-color: $color-navigation-active-bar;
           content: '';
           display: block;
           height: 2px;
-          width: 30%;
+          width: 0%;
         }
       }
     }
