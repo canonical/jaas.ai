@@ -1,4 +1,11 @@
 @mixin jaas-hero-tab {
+  .p-hero-panel {
+    height: 0;
+    opacity: 0;
+    overflow: hidden;
+    transition: opacity 0.5s ease-in;
+  }
+
   .p-hero-tab {
     margin-top: 2rem;
 

@@ -337,3 +337,10 @@ h2 {
   margin: 0;
   padding: 0;
 }
+
+// Fades in content when class is added
+.u-animate--reveal {
+  height: auto !important;
+  opacity: 1 !important;
+  transition: opacity 0.5s ease-in;
+}

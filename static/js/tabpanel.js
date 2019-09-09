@@ -30,10 +30,12 @@ function changeTabs(e) {
   target.setAttribute('aria-selected', true);
 
   // Hide all tab panels
-  panels.forEach(panel => panel.setAttribute('hidden', true));
+  panels.forEach(panel => panel.classList.remove('u-animate--reveal'));
 
   // Show the selected panel
-  document.querySelector(`#${target.getAttribute('aria-controls')}`).removeAttribute('hidden');
+  document
+    .querySelector(`#${target.getAttribute('aria-controls')}`)
+    .classList.add('u-animate--reveal');
 
   playTab(target);
 }
