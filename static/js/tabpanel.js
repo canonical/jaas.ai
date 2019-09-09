@@ -1,11 +1,16 @@
 let timer;
+let MODE = 'AUTOPLAY';
 
 window.addEventListener('DOMContentLoaded', () => {
   const tabs = document.querySelectorAll('[role="tab"]');
 
   // Add a click event handler to each tab
   tabs.forEach(tab => {
-    tab.addEventListener('click', changeTabs);
+    tab.addEventListener('click', function(e) {
+      MODE = 'CLICK';
+      const target = e.target.closest('[role="tab"]');
+      changeTabs(target);
+    });
   });
 
   // Select the inital active tab
@@ -15,14 +20,14 @@ window.addEventListener('DOMContentLoaded', () => {
   }
 });
 
-function changeTabs(e) {
-  clearInterval(timer);
-  const target = e.target.closest('[role="tab"]');
+function changeTabs(target) {
   const tabs = document.querySelectorAll('[role="tab"]');
   const panels = document.querySelectorAll('[role="tabpanel"]');
+  clearInterval(timer);
 
   // Remove all current selected tabs
   tabs.forEach(tab => {
+    draw(0, tab.querySelector('.before'));
     tab.setAttribute('aria-selected', false);
   });
 
@@ -36,8 +41,14 @@ function changeTabs(e) {
   document
     .querySelector(`#${target.getAttribute('aria-controls')}`)
     .classList.add('u-animate--reveal');
-
-  playTab(target);
+  switch (MODE) {
+    case 'AUTOPLAY':
+      playTab(target);
+      break;
+    case 'CLICK':
+      draw(25, target.querySelector('.before'));
+      break;
+  }
 }
 
 function playTab(tab) {
@@ -65,11 +76,10 @@ function draw(timePassed, tab) {
 
 function triggerNextTab(tab) {
   setTimeout(function() {
-    draw(0, tab.querySelector('.before'));
     let nextTab = tab.nextElementSibling;
     if (!nextTab) {
       nextTab = document.querySelectorAll('.p-hero-tab__item')[0];
     }
-    nextTab.click();
+    changeTabs(nextTab);
   }, 1000);
 }
