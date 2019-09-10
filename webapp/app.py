@@ -1,6 +1,7 @@
 import flask
 import datetime
 
+from canonicalwebteam.blog.app import BlogExtension
 from canonicalwebteam.flask_base.app import FlaskBase
 from canonicalwebteam.yaml_responses.flask_helpers import (
     prepare_deleted,
@@ -29,14 +30,17 @@ def create_app(testing=False):
     app.before_request(prepare_redirects())
     app.before_request(prepare_deleted())
 
+    BlogExtension(app, "JAAS Case Studies", [3513], "lang:en", "/case-studies")
+
     init_handler(app)
     init_blueprint(app)
 
     @app.template_filter("pluralize")
-    def pluralize(count):
-        if count != 1:
+    def pluralize_filter(count):
+        if int(count) > 1:
             return "s"
-        return ""
+        else:
+            return ""
 
     @app.context_processor
     def inject_utilities():

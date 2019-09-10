@@ -1,0 +1,63 @@
+{% extends "_layout.html" %}
+
+{% block title %}Case Studies{% endblock %}
+
+{% block content %}
+
+  {% include 'blog/_newsletter-success.html' %}
+
+  <header class="p-strip--light">
+    <div class="row">
+      <div class="col-8">
+        <h1>Case studies</h1>
+      </div>
+    </div>
+  </header>
+
+  <section class="p-strip is-shallow">
+    {% if newsletter_subscribed %}
+    <div class="row">
+      <div class="p-notification--positive">
+        <div class="p-notification__response"><b>Success:</b> Thanks for subscribing!</div>
+      </div>
+    </div>
+    {% endif %}
+    {% if categories %}
+    <div class="row u-align--right">
+      <form class="p-form p-form--inline" data-js="filterForm" method="get">
+        <div class="p-form__group">
+          <label class="p-form__label" for="filter" aria-label="Filter posts by category">Filter:</label>
+          <select id="filter" name="filter" class="p-form__control" name="filter">
+            <option value="all">All</option>
+            {% for category in categories %}
+            <option value="{{ category.name.lower() }}" {% if filter == category.name.lower() %} selected="selected"
+              {% endif %}>
+              {{ category.name }}
+            </option>
+            {% endfor %}
+          </select>
+        </div>
+      </form>
+    </div>
+    {% endif %}
+    </div>
+    <div class="row u-equal-height u-clearfix">
+      {% for article in articles %}
+        {% if current_page == 1 and loop.index == 3 %}
+          <div class="col-4">
+            {% include 'blog/_newsletter-signup-form.html' %}
+          </div>
+        {% else %}
+          {% if (loop.index - 1) % 3 == 0 and loop.index > 3 %}
+            </div>
+            <div class="row u-equal-height u-clearfix">
+          {% endif %}
+          {% include 'blog/_case-study-card.html' %}
+        {% endif %}
+      {% endfor %}
+    </div>
+  </section>
+
+  {% include 'blog/_pagination.html' %}
+
+{% endblock %}
