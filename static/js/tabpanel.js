@@ -1,5 +1,4 @@
 let timer;
-let MODE = 'AUTOPLAY';
 
 window.addEventListener('DOMContentLoaded', () => {
   const tabs = document.querySelectorAll('[role="tab"]');
@@ -7,7 +6,6 @@ window.addEventListener('DOMContentLoaded', () => {
   // Add a click event handler to each tab
   tabs.forEach(tab => {
     tab.addEventListener('click', function(e) {
-      MODE = 'CLICK';
       const target = e.target.closest('[role="tab"]');
       changeTabs(target);
     });
@@ -41,14 +39,8 @@ function changeTabs(target) {
   document
     .querySelector(`#${target.getAttribute('aria-controls')}`)
     .classList.add('u-animate--reveal');
-  switch (MODE) {
-    case 'AUTOPLAY':
-      playTab(target);
-      break;
-    case 'CLICK':
-      draw(25, target.querySelector('.before'));
-      break;
-  }
+
+  playTab(target);
 }
 
 function playTab(tab) {
@@ -56,17 +48,15 @@ function playTab(tab) {
   let duration = 10000;
   let tabIndicator = tab.querySelector('.before');
   if (tabIndicator) {
-    setTimeout(function() {
-      timer = setInterval(function() {
-        let timePassed = Date.now() - start;
-        if (timePassed >= duration) {
-          clearInterval(timer);
-          triggerNextTab(tab);
-          return;
-        }
-        draw(timePassed / (duration / 100), tabIndicator);
-      }, 20);
-    }, 500);
+    timer = setInterval(function() {
+      let timePassed = Date.now() - start;
+      if (timePassed >= duration) {
+        clearInterval(timer);
+        triggerNextTab(tab);
+        return;
+      }
+      draw(timePassed / (duration / 100), tabIndicator);
+    }, 20);
   }
 }
 

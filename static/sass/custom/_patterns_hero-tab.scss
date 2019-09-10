@@ -24,10 +24,6 @@
         opacity: 0.5;
       }
 
-      &:focus {
-        outline: 0;
-      }
-
       &:hover {
         background: transparent;
         border-top: 1px solid rgba(255, 255, 255, 0.2);
@@ -35,6 +31,13 @@
         * {
           opacity: 1;
         }
+      }
+
+      &:active,
+      &:focus,
+      &:active:hover {
+        background: transparent;
+        outline: 0;
       }
 
       &[aria-selected='true'] {
@@ -47,6 +50,8 @@
           content: '';
           display: block;
           height: 2px;
+          position: relative;
+          top: -1px;
           width: 0%;
         }
       }
