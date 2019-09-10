@@ -20,6 +20,10 @@
       text-align: left;
       width: calc(25% - 1rem);
 
+      @media only screen and (max-width: $breakpoint-small) {
+        width: calc(25% - 3px);
+      }
+
       * {
         opacity: 0.5;
       }
@@ -53,6 +57,10 @@
           position: relative;
           top: -1px;
           width: 0%;
+
+          @media only screen and (max-width: $breakpoint-small) {
+            top: 0;
+          }
         }
       }
     }
