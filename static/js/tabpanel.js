@@ -75,11 +75,9 @@ function draw(timePassed, tab) {
 }
 
 function triggerNextTab(tab) {
-  setTimeout(function() {
-    let nextTab = tab.nextElementSibling;
-    if (!nextTab) {
-      nextTab = document.querySelectorAll('.p-hero-tab__item')[0];
-    }
-    changeTabs(nextTab);
-  }, 1000);
+  let nextTab = tab.nextElementSibling;
+  if (!nextTab) {
+    nextTab = document.querySelectorAll('.p-hero-tab__item')[0];
+  }
+  changeTabs(nextTab);
 }
