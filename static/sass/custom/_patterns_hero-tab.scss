@@ -21,7 +21,7 @@
       width: calc(25% - 1rem);
 
       @media only screen and (max-width: $breakpoint-small) {
-        width: calc(25% - 3px);
+        width: 100%;
       }
 
       * {
