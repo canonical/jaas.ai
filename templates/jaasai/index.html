@@ -6,60 +6,107 @@
 {% block content %}
 
   <div class="p-strip--suru-bottom has-accent is-dark" style="background-size: auto 100%, cover; background-position: right center; background-image: url('https://assets.ubuntu.com/v1/a9dab044-suru-right.svg'), linear-gradient(266deg, #044f66, #022935)">
-    <div class="row">
-      <div class="col-6">
-        <h1>Big software, tamed</h1>
-        <p class="p-heading--four">JAAS is Juju as a service which simplifies how you configure, scale and operate today&rsquo;s complex software.</p>
-        <p class="p-heading--four">Juju deploys everywhere: to public or private clouds.</p>
-
-        <div class="p-strip is-shallow u-no-padding--bottom">
-          <div class="row">
-            <div class="col-6">
-              <ul class="p-list">
-                <li>JUJU IN ACTION</li>
-                <li><h5>Production grade Kubernetes</h5></li>
-              </ul>
+    <div id="panel-juju-as-a-service" role="tabpanel" aria-labelledby="juju-as-a-service" class="p-hero-panel u-animate--reveal">
+      <div class="row">
+        <div class="col-6">
+          <h1>Big software tamed</h1>
+          <p>Juju simplifies how you configure, scale and operate todays’ complex software. Juju deploys everywhere: to public or private clouds.</p>
+          <div class="p-strip is-shallow u-no-padding--bottom">
+            <div class="row">
+              <div class="col-3">
+                <ul class="p-list">
+                  <li>JUJU IN ACTION:</li>
+                  <li><h5>Production-grade Kubernetes</h5></li>
+                </ul>
+              </div>
+              <div class="col-3">
+                <ul class="p-list">
+                  <li class="p-list__item is-ticked">Scalable 11 node cluster</li>
+                  <li class="p-list__item is-ticked">Latest upstream version</li>
+                </ul>
+              </div>
             </div>
-            <div class="col-6">
-              <ul class="p-list">
-                <li class="p-list__item is-ticked">Scalable 11 node cluster</li>
-                <li class="p-list__item is-ticked">Latest Upstream version</li>
-              </ul>
-            </div>
-          </div>
 
-          <div class="row">
-            <div class="col-12">
-              <ul class="p-inline-list">
-                <li class="p-inline-list__item">
-                  <a href="{{ url_for('jaasstore.details', charm_or_bundle_name='canonical-kubernetes') }}"
-                  class="p-button--positive u-no-margin--bottom">
-                    Deploy Kubernetes
-                  </a>
-                </li>
-                <li class="p-inline-list__item">
-                  <a href="{{ url_for('jaasai.jaas') }}#deploy-kubernetes-in-minutes" class="p-link--inverted">
-                    Or watch the video
-                    <img class="p-icon" src="https://assets.ubuntu.com/v1/0d85260e-play-icon.svg" alt="Play icon"
-                      style="position: relative; top: 3px; left: 5px; filter: invert(1);">
-                  </a>
-                </li>
-              </ul>
+            <div class="row">
+              <div class="col-12">
+                <a href="{{ url_for('jaasstore.details', charm_or_bundle_name='canonical-kubernetes') }}" class="p-button--positive">Deploy Kubernetes</a>
+                <a href="{{ url_for('jaasai.jaas') }}#deploy-kubernetes-in-minutes" class="p-link--inverted">
+                  Or watch the video
+                  <img class="p-icon" src="https://assets.ubuntu.com/v1/0d85260e-play-icon.svg" alt="Play icon" style="position: relative; top: 3px; left: 5px; filter: invert(1);">
+                </a>
+              </div>
             </div>
           </div>
-
+        </div>
+        <div class="col-6 u-vertically-center u-hide--small">
+          <img src="https://assets.ubuntu.com/v1/d1f2108a-Slide+-+Jaas.svg" alt="" />
         </div>
       </div>
-      <div class="col-6 u-vertically-center">
-        {{
-          image(
-            url="https://assets.ubuntu.com/v1/f3f75945-home-promo-bundle.svg",
-            alt="Pictogram of bundle",
-            width="600",
-            height="570",
-            hi_def=True,
-          ) | safe
-        }}
+    </div>
+
+    <div id="panel-juju-expert-partners" role="tabpanel" aria-labelledby="juju-expert-partners"  class="p-hero-panel">
+      <div class="row">
+        <div class="col-6">
+          <h1>Managed solutions from Canonical’s partners</h1>
+          <p>Canonical partners with selected companies to provide specialised supported solutions. If you are an independent software vendor or bundle author, it's easy to apply.</p>
+          <a href="{{ url_for('jaasai.experts') }}" class="p-button--positive">Join the programme</a>
+          <a href="{{ url_for('jaasai.experts_spicule') }}" class="p-button--neutral">Managed solutions</a>
+        </div>
+        <div class="col-6 u-vertically-center u-align--center u-hide--small">
+          <img src="https://assets.ubuntu.com/v1/87827c6f-Slide+-+experts.svg" alt="" />
+        </div>
+      </div>
+    </div>
+
+    <div id="panel-openstack-solutions" role="tabpanel" aria-labelledby="openstack-solutions"  class="p-hero-panel">
+      <div class="row">
+        <div class="col-6">
+          <h1>Juju solutions for OpenStack</h1>
+          <p>Juju makes it easy to deploy OpenStack at scale. Quickly and reliably build an enterprise-scale cloud run on Ubuntu &ndash; the most popular operating system for OpenStack.</p>
+          <p><a href="{{ url_for('jaasai.openstack') }}" class="p-button--positive u-no-margin--bottom">OpenStack solutions</a></p>
+        </div>
+        <div class="col-6 u-vertically-center u-hide--small">
+          <img src="https://assets.ubuntu.com/v1/c8038e7d-Slide+-+openstack.svg" alt="" />
+        </div>
+      </div>
+    </div>
+
+
+    <div id="panel-big-data-solutions" role="tabpanel" aria-labelledby="big-data-solutions"  class="p-hero-panel">
+      <div class="row">
+        <div class="col-6">
+          <h1>Juju solutions for big data</h1>
+          <p>The setup and configuration of big data tools can be very complex and daunting &ndash; Juju frees you to explore, test and evaluate big data solutions to choose the one that works best for you.</p>
+          <p><a href="{{ url_for('jaasai.big_data') }}" class="p-button--positive u-no-margin--bottom">Big data solutions</a></p>
+        </div>
+        <div class="col-6 u-vertically-center u-hide--small">
+          <img src="https://assets.ubuntu.com/v1/bc700bb6-Slide+-+big+data.svg" alt="" />
+        </div>
+      </div>
+    </div>
+
+    <div class="row p-hero-tab">
+      <div role="tablist" aria-label="Discover Juju services and solutons" class="p-hero-tab__list">
+        <button role="tab" aria-selected="true" aria-controls="panel-juju-as-a-service" id="juju-as-a-service" class="p-hero-tab__item">
+          <i class="before"></i>
+          <p class="p-hero-tab__title">Juju as a service</p>
+          <i class="u-hide--small">Simplify software operations</i>
+        </button>
+        <button role="tab" aria-selected="false" aria-controls="panel-juju-expert-partners" id="juju-expert-partners" class="p-hero-tab__item">
+          <i class="before"></i>
+          <p class="p-hero-tab__title">Juju expert partners</p>
+          <i class="u-hide--small">Specialised supported solutions</i>
+        </button>
+        <button role="tab" aria-selected="false" aria-controls="panel-openstack-solutions" id="openstack-solutions" class="p-hero-tab__item">
+          <i class="before"></i>
+          <p class="p-hero-tab__title">OpenStack solutions</p>
+          <i class="u-hide--small">Enterprise deployments at scale</i>
+        </button>
+        <button role="tab" aria-selected="false" aria-controls="panel-big-data-solutions" id="big-data-solutions" class="p-hero-tab__item">
+          <i class="before"></i>
+          <p class="p-hero-tab__title">Big data solutions</p>
+          <i class="u-hide--small">Configure complex deployments</i>
+        </button>
       </div>
     </div>
   </div>
@@ -437,5 +484,7 @@
     </div>
   </div>
 </div>
+
+<script src="{{ static_url('js/tabpanel.js') }}"></script>
 
 {% endblock content %}
