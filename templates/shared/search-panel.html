@@ -8,48 +8,137 @@
         <div class="p-search-panel__main">
           <a href="{{ url_for('jaasstore.details', charm_or_bundle_name='canonical-kubernetes') }}"
             class="p-search-panel__featured-link">
-            <img src="{{ external_urls.charmstore }}~containers/kubernetes-master/icon.svg" alt=""
-              class="p-search-panel__featured-image" />
+            {{
+              image(
+                url="https://api.jujucharms.com/charmstore/v5/~containers/kubernetes-master/icon.svg",
+                alt="",
+                width="64",
+                height="64",
+                hi_def=True,
+                extra_classes="p-search-panel__featured-image"
+              ) | safe
+            }}
             <p class="p-search-panel__featured-name">kubernetes</p>
           </a>
           <a href="{{ url_for('jaasstore.details', charm_or_bundle_name='elasticsearch') }}"
             class="p-search-panel__featured-link">
-            <img src="{{ external_urls.charmstore }}elasticsearch/icon.svg" alt="" class="p-search-panel__featured-image" />
+            {{
+              image(
+                url="https://api.jujucharms.com/charmstore/v5/elasticsearch/icon.svg",
+                alt="",
+                width="64",
+                height="64",
+                hi_def=True,
+                extra_classes="p-search-panel__featured-image"
+              ) | safe
+            }}
             <p class="p-search-panel__featured-name">elasticsearch</p>
           </a>
           <a href="{{ url_for('jaasstore.details', charm_or_bundle_name='kafka') }}" class="p-search-panel__featured-link">
-            <img src="{{ external_urls.charmstore }}kafka/icon.svg" alt="" class="p-search-panel__featured-image" />
+            {{
+              image(
+                url="https://api.jujucharms.com/charmstore/v5/kafka/icon.svg",
+                alt="",
+                width="64",
+                height="64",
+                hi_def=True,
+                extra_classes="p-search-panel__featured-image"
+              ) | safe
+            }}
             <p class="p-search-panel__featured-name">kafka</p>
           </a>
           <a href="{{ url_for('jaasstore.details', charm_or_bundle_name='zookeeper') }}"
             class="p-search-panel__featured-link">
-            <img src="{{ external_urls.charmstore }}zookeeper/icon.svg" alt="" class="p-search-panel__featured-image" />
+            {{
+              image(
+                url="https://api.jujucharms.com/charmstore/v5/zookeeper/icon.svg",
+                alt="",
+                width="64",
+                height="64",
+                hi_def=True,
+                extra_classes="p-search-panel__featured-image"
+              ) | safe
+            }}
             <p class="p-search-panel__featured-name">zookeeper</p>
           </a>
           <a href="{{ url_for('jaasstore.details', charm_or_bundle_name='ceph') }}" class="p-search-panel__featured-link">
-            <img src="{{ external_urls.charmstore }}ceph/icon.svg" alt="" class="p-search-panel__featured-image" />
+            {{
+              image(
+                url="https://api.jujucharms.com/charmstore/v5/ceph/icon.svg",
+                alt="",
+                width="64",
+                height="64",
+                hi_def=True,
+                extra_classes="p-search-panel__featured-image"
+              ) | safe
+            }}
             <p class="p-search-panel__featured-name">ceph</p>
           </a>
           <a href="{{ url_for('jaasstore.details', charm_or_bundle_name='cassandra') }}"
             class="p-search-panel__featured-link">
-            <img src="{{ external_urls.charmstore }}cassandra/icon.svg" alt="" class="p-search-panel__featured-image" />
+            {{
+              image(
+                url="https://api.jujucharms.com/charmstore/v5/cassandra/icon.svg",
+                alt="",
+                width="64",
+                height="64",
+                hi_def=True,
+                extra_classes="p-search-panel__featured-image"
+              ) | safe
+            }}
             <p class="p-search-panel__featured-name">cassandra</p>
           </a>
           <a href="{{ url_for('jaasstore.details', charm_or_bundle_name='percona-cluster') }}"
             class="p-search-panel__featured-link">
-            <img src="{{ external_urls.charmstore }}percona-cluster/icon.svg" alt="" class="p-search-panel__featured-image" />
+            {{
+              image(
+                url="https://api.jujucharms.com/charmstore/v5/percona-cluster/icon.svg",
+                alt="",
+                width="64",
+                height="64",
+                hi_def=True,
+                extra_classes="p-search-panel__featured-image"
+              ) | safe
+            }}
             <p class="p-search-panel__featured-name">percona-cluster</p>
           </a>
           <a href="{{ url_for('jaasstore.details', charm_or_bundle_name='glance') }}" class="p-search-panel__featured-link">
-            <img src="{{ external_urls.charmstore }}glance/icon.svg" alt="" class="p-search-panel__featured-image" />
+            {{
+              image(
+                url="https://api.jujucharms.com/charmstore/v5/glance/icon.svg",
+                alt="",
+                width="64",
+                height="64",
+                hi_def=True,
+                extra_classes="p-search-panel__featured-image"
+              ) | safe
+            }}
             <p class="p-search-panel__featured-name">glance</p>
           </a>
           <a href="{{ url_for('jaasstore.details', charm_or_bundle_name='mariadb') }}" class="p-search-panel__featured-link">
-            <img src="{{ external_urls.charmstore }}mariadb/icon.svg" alt="" class="p-search-panel__featured-image" />
+            {{
+              image(
+                url="https://api.jujucharms.com/charmstore/v5/mariadb/icon.svg",
+                alt="",
+                width="64",
+                height="64",
+                hi_def=True,
+                extra_classes="p-search-panel__featured-image"
+              ) | safe
+            }}
             <p class="p-search-panel__featured-name">mariadb</p>
           </a>
           <a href="{{ url_for('jaasstore.details', charm_or_bundle_name='spark') }}" class="p-search-panel__featured-link">
-            <img src="{{ external_urls.charmstore }}spark/icon.svg" alt="" class="p-search-panel__featured-image" />
+            {{
+              image(
+                url="https://api.jujucharms.com/charmstore/v5/spark/icon.svg",
+                alt="",
+                width="64",
+                height="64",
+                hi_def=True,
+                extra_classes="p-search-panel__featured-image"
+              ) | safe
+            }}
             <p class="p-search-panel__featured-name">spark</p>
           </a>
         </div>
