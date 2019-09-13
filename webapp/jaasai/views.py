@@ -85,16 +85,24 @@ def experts_spicule():
 
 @jaasai.route("/experts/tengu")
 def experts_tengu():
+    EXPERTS_RETURN = os.environ.get(
+        "EXPERTS_RETURN", default="https://jaas.ai"
+    )
     return render_template(
         "jaasai/experts/tengu.html",
+        expertThanksPage=EXPERTS_RETURN,
         context={"expert": get_experts("tengu-team")},
     )
 
 
 @jaasai.route("/experts/omnivector")
 def experts_omnivector():
+    EXPERTS_RETURN = os.environ.get(
+        "EXPERTS_RETURN", default="https://jaas.ai"
+    )
     return render_template(
         "jaasai/experts/omnivector.html",
+        expertThanksPage=EXPERTS_RETURN,
         context={"expert": get_experts("omnivector")},
     )
 
