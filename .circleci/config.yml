@@ -61,7 +61,7 @@ jobs:
           name: Install dependencies
           command: yarn
       - run:
-          name: Lint scss with sass-lint
+          name: Lint scss with stylelint
           command: yarn run lint-scss
   python-tests:
     <<: *defaults

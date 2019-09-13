@@ -15,6 +15,7 @@ $breakpoint-navigation-threshold: $breakpoint-large;
 
 // Import Vanilla Framework
 @import 'vanilla-framework/scss/vanilla';
+
 @include vanilla;
 
 // Import cookie-policy. Just import the bits we need as the proper file
@@ -45,6 +46,7 @@ $breakpoint-navigation-threshold: $breakpoint-large;
 @import 'custom/linkable-heading';
 @import 'custom/case_studies';
 @import 'custom/patterns_hero-tab';
+
 @include jaas-hero-tab;
 @include jaas-p-strips;
 @include jaas-p-lists;
@@ -260,7 +262,7 @@ div .p-accordion__tab[aria-expanded] {
   }
 
   &::after {
-    content: url('https://assets.ubuntu.com/v1/0d85260e-play-icon.svg'); // sass-lint:disable-line no-url-protocols no-url-domains
+    content: url('https://assets.ubuntu.com/v1/0d85260e-play-icon.svg');
     display: inline-block;
     height: 1rem;
     position: absolute;
@@ -325,17 +327,17 @@ h2 {
   }
 
   .invert-link a:link {
-    @extend .p-link--inverted; // sass-lint:disable-line placeholder-in-extend
+    @extend .p-link--inverted;
   }
 }
 
 // Hide images that fail to lazy load due to JS failing or other
 .lazyload {
-  visibility: hidden;
   height: 0;
-  width: 0;
   margin: 0;
   padding: 0;
+  visibility: hidden;
+  width: 0;
 }
 
 // Fades in content when class is added
