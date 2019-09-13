@@ -5,10 +5,10 @@
     "build-js": "webpack",
     "clean": "rm -rf node_modules yarn-error.log css static/css *.log *.sqlite _site/ build/ .jekyll-metadata .bundle",
     "format-python": "black --line-length 79 tests webapp",
-    "lint-scss": "sass-lint static/**/*.scss --verbose --no-exit",
+    "lint-scss": "stylelint static/**/*.scss",
     "python-lint": "flake8 webapp tests && black --check --line-length 79 tests webapp",
     "serve": "./entrypoint 0.0.0.0:${PORT}",
-    "test": "npm run python-lint && npm run test-python && sass-lint static/**/*.scss --verbose --no-exit",
+    "test": "npm run python-lint && npm run test-python && stylelint static/**/*.scss",
     "test-python": "python3 -m unittest discover tests",
     "update-test-json": "python3 scripts/update_test_json.py",
     "watch": "concurrently \"npm run watch-scss\" \"npm run watch-js\"",
@@ -36,7 +36,9 @@
     "husky": "3.0.5",
     "prettier": "1.18.2",
     "pretty-quick": "1.11.1",
-    "sass-lint": "1.13.1"
+    "stylelint": "^10.1.0",
+    "stylelint-config-standard": "^18.3.0",
+    "stylelint-order": "^3.1.0"
   },
   "resolutions": {
     "lodash": "^4.17.15",
