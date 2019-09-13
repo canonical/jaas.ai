@@ -8,7 +8,7 @@
     "lint-scss": "stylelint static/**/*.scss",
     "python-lint": "flake8 webapp tests && black --check --line-length 79 tests webapp",
     "serve": "./entrypoint 0.0.0.0:${PORT}",
-    "test": "npm run python-lint && npm run test-python && stylelint static/**/*.scss",
+    "test": "npm run python-lint && npm run test-python && npm run lint-scss",
     "test-python": "python3 -m unittest discover tests",
     "update-test-json": "python3 scripts/update_test_json.py",
     "watch": "concurrently \"npm run watch-scss\" \"npm run watch-js\"",
