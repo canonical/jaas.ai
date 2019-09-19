@@ -32,7 +32,7 @@ jobs:
           command: sleep 5
       - run:
           name: Run Linkchecker
-          command: linkchecker --threads 2 -r 2 --verbose --ignore-url /docs/* --ignore-url /search/* --ignore-url /store/* --ignore-url ".*(?:png|jpg|jpeg|gif|bmp|svg|js)$" --ignore-url /q_auto --ignore-url /fl_sanitize --ignore-url /w_* --no-warnings http://0.0.0.0:8029
+          command: linkchecker --threads 2 -r 2 --verbose --ignore-url /docs/* --ignore-url /search/* --ignore-url /store/* --ignore-url ".*(?:png|jpg|jpeg|gif|bmp|svg|js)$" --ignore-url /q_auto --ignore-url /case-studies --ignore-url /fl_sanitize --ignore-url /w_* --no-warnings http://0.0.0.0:8029
   check-build:
     <<: *defaults
     steps:
