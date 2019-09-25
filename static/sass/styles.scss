@@ -346,3 +346,8 @@ h2 {
   opacity: 1 !important;
   transition: opacity 0.5s ease-in;
 }
+
+// Util helper to remove borders
+.u-no-border {
+  border: 0;
+}
