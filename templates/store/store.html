@@ -10,7 +10,16 @@
   <div class="row p-divider">
     <div class="col-4 p-divider__block">
       <div class="u-sv2">
-        <img width="96" src="https://assets.ubuntu.com/v1/d1208c3f-kubernetes.svg" alt="Kubernetes logo">
+        {{
+          image(
+            url="https://assets.ubuntu.com/v1/d1208c3f-kubernetes.svg",
+            alt="Kubernetes logo",
+            width="96",
+            height="96",
+            hi_def=False,
+            lazy=False,
+          ) | safe
+        }}
       </div>
       <small>KUBERNETES</small>
       <h3>The open-source <br class="u-hide--small"/>orchestration system</h3>
@@ -18,7 +27,16 @@
     </div>
     <div class="col-4 p-divider__block">
       <div class="u-sv2">
-        <img width="96" src="https://assets.ubuntu.com/v1/5e3456e3-hadoop.svg" alt="Hadoop logo">
+        {{
+          image(
+            url="https://assets.ubuntu.com/v1/5e3456e3-hadoop.svg",
+            alt="Hadoop logo",
+            width="96",
+            height="96",
+            hi_def=True,
+            lazy=False,
+          ) | safe
+        }}
       </div>
       <small>BIG DATA</small>
       <h3>Juju solutions for <br class="u-hide--small"/>big data</h3>
@@ -36,7 +54,16 @@
     <div class="col-6">
       <div class="row">
         <div class="col-2 u-align--center">
-          <img src="https://assets.ubuntu.com/v1/3fe6b167-CHARM-FILEBEATS.svg" alt="">
+          {{
+            image(
+              url="https://assets.ubuntu.com/v1/3fe6b167-CHARM-FILEBEATS.svg",
+              alt="",
+              width="98",
+              height="98",
+              hi_def=False,
+              lazy=False,
+            ) | safe
+          }}
         </div>
         <div class="col-4 u-no-margin--left">
           <h4 class="p-muted-heading">Charms</h4>
@@ -48,7 +75,17 @@
       <div class="col-6">
         <div class="row">
           <div class="col-2 u-align--center">
-            <img src="https://assets.ubuntu.com/v1/d58e79e3-BUNDLE%281%29.svg" alt="" style="padding: 2rem 0;">
+            {{
+              image(
+                url="https://assets.ubuntu.com/v1/d58e79e3-BUNDLE%281%29.svg",
+                alt="Public cloud logos",
+                width="112",
+                height="96",
+                hi_def=False,
+                lazy=False,
+                style="padding: 1rem 0;",
+              ) | safe
+            }}
           </div>
           <div class="col-4 u-no-margin--left">
             <h4 class="p-muted-heading">Bundles</h4>
@@ -96,16 +133,34 @@
             <a href="{{ url_for('jaasstore.details', charm_or_bundle_name='nagios') }}" class="p-button--neutral">View the charm</a>
           </div>
           <div class="col-2 col-start-large-10 u-align--center u-vertically-center u-hide--small">
-            <img width="96" src="https://assets.ubuntu.com/v1/4d474129-nagios.svg" alt="Nagios logo">
+            {{
+              image(
+                url="https://assets.ubuntu.com/v1/4d474129-nagios.svg",
+                alt="Nagios logo",
+                width="96",
+                height="96",
+                hi_def=True,
+              ) | safe
+            }}
           </div>
         </div>
       </div>
     </div>
   </div>
   <div class="row entity-cards">
-    <div class="col-3 p-card" style="border:0;">
+    <div class="col-3 p-card u-no-border">
       <div class="p-media-object charm-object u-no-margin--bottom">
-        <img src="{{ external_urls.charmstore }}kibana/icon.svg" alt="Kibana icon" class="p-media-object__image is-round">
+        {% set url = external_urls.charmstore + "kibana/icon.svg" %}
+        {{
+          image(
+            url=url,
+            alt="Kibana icon",
+            width="40",
+            height="40",
+            hi_def=True,
+            extra_classes="p-media-object__image is-round"
+          ) | safe
+        }}
         <div class="p-media-object__details">
           <h3 class="p-media-object__title">
             <a href="{{ url_for('jaasstore.details', charm_or_bundle_name='kibana') }}">Kibana</a>
@@ -114,9 +169,19 @@
         </div>
       </div>
     </div>
-    <div class="col-3 p-card" style="border:0;">
+    <div class="col-3 p-card u-no-border">
       <div class="p-media-object charm-object u-no-margin--bottom">
-        <img width="60" src="{{ external_urls.charmstore }}logstash/icon.svg" alt="Logstash icon" class="p-media-object__image is-round">
+        {% set url = external_urls.charmstore + "logstash/icon.svg" %}
+        {{
+        image(
+          url=url,
+          alt="Logstash icon",
+          width="40",
+          height="40",
+          hi_def=True,
+          extra_classes="p-media-object__image is-round"
+        ) | safe
+        }}
         <div class="p-media-object__details">
           <h3 class="p-media-object__title">
             <a href="{{ url_for('jaasstore.details', charm_or_bundle_name='logstash') }}">Logstash</a>
@@ -125,9 +190,19 @@
         </div>
       </div>
     </div>
-    <div class="col-3 p-card" style="border:0;">
+    <div class="col-3 p-card u-no-border">
       <div class="p-media-object charm-object u-no-margin--bottom">
-        <img width="60" src="{{ external_urls.charmstore }}elasticsearch/icon.svg" alt="Elasticsearch icon" class="p-media-object__image is-round">
+        {% set url = external_urls.charmstore + "elasticsearch/icon.svg" %}
+        {{
+        image(
+          url=url,
+          alt="Elasticsearch icon",
+          width="40",
+          height="40",
+          hi_def=True,
+          extra_classes="p-media-object__image is-round"
+          ) | safe
+        }}
         <div class="p-media-object__details">
           <h3 class="p-media-object__title">
             <a href="{{ url_for('jaasstore.details', charm_or_bundle_name='elasticsearch') }}">Elasticsearch</a>
@@ -136,9 +211,19 @@
         </div>
       </div>
     </div>
-    <div class="col-3 p-card" style="border:0;">
+    <div class="col-3 p-card u-no-border">
       <div class="p-media-object charm-object u-no-margin--bottom">
-        <img width="60" src="{{ external_urls.charmstore }}prometheus/icon.svg" alt="Prometheus icon" class="p-media-object__image is-round">
+        {% set url = external_urls.charmstore + "prometheus/icon.svg" %}
+        {{
+          image(
+            url=url,
+            alt="Prometheus icon",
+            width="40",
+            height="40",
+            hi_def=True,
+            extra_classes="p-media-object__image is-round"
+          ) | safe
+        }}
         <div class="p-media-object__details">
           <h3 class="p-media-object__title">
             <a href="{{ url_for('jaasstore.details', charm_or_bundle_name='prometheus') }}">Prometheus</a>
@@ -149,9 +234,19 @@
     </div>
   </div>
   <div class="row entity-cards">
-    <div class="col-3 p-card" style="border:0;">
+    <div class="col-3 p-card u-no-border">
       <div class="p-media-object charm-object u-no-margin--bottom">
-        <img src="{{ external_urls.charmstore }}munin/icon.svg" alt="Munin icon" class="p-media-object__image is-round">
+        {% set url = external_urls.charmstore + "munin/icon.svg" %}
+        {{
+          image(
+            url=url,
+            alt="Munin icon",
+            width="40",
+            height="40",
+            hi_def=True,
+            extra_classes="p-media-object__image is-round"
+          ) | safe
+        }}
         <div class="p-media-object__details">
           <h3 class="p-media-object__title">
             <a href="{{ url_for('jaasstore.details', charm_or_bundle_name='munin') }}">Munin</a>
@@ -160,9 +255,19 @@
         </div>
       </div>
     </div>
-    <div class="col-3 p-card" style="border:0;">
+    <div class="col-3 p-card u-no-border">
       <div class="p-media-object charm-object u-no-margin--bottom">
-        <img src="{{ external_urls.charmstore }}rsyslog/icon.svg" alt="Rsyslog icon" class="p-media-object__image is-round">
+        {% set url = external_urls.charmstore + "rsyslog/icon.svg" %}
+        {{
+          image(
+            url=url,
+            alt="Rsyslog icon",
+            width="40",
+            height="40",
+            hi_def=True,
+            extra_classes="p-media-object__image is-round"
+          ) | safe
+        }}
         <div class="p-media-object__details">
           <h3 class="p-media-object__title">
             <a href="{{ url_for('jaasstore.details', charm_or_bundle_name='rsyslog') }}">Rsyslog</a>
@@ -171,9 +276,19 @@
         </div>
       </div>
     </div>
-    <div class="col-3 p-card" style="border:0;">
+    <div class="col-3 p-card u-no-border">
       <div class="p-media-object charm-object u-no-margin--bottom">
-        <img src="{{ external_urls.charmstore }}zabbix-server/icon.svg" alt="Zabbix Server icon" class="p-media-object__image is-round">
+        {% set url = external_urls.charmstore + "zabbix-server/icon.svg" %}
+        {{
+          image(
+            url=url,
+            alt="Zabbix Server icon",
+            width="40",
+            height="40",
+            hi_def=True,
+            extra_classes="p-media-object__image is-round"
+          ) | safe
+        }}
         <div class="p-media-object__details">
           <h3 class="p-media-object__title">
             <a href="{{ url_for('jaasstore.details', charm_or_bundle_name='zabbix-server') }}">Zabbix Server</a>
@@ -182,9 +297,19 @@
         </div>
       </div>
     </div>
-    <div class="col-3 p-card" style="border:0;">
+    <div class="col-3 p-card u-no-border">
       <div class="p-media-object charm-object u-no-margin--bottom">
-        <img src="{{ external_urls.charmstore }}~ricardokirkner/sentry/icon.svg" alt="Sentry icon" class="p-media-object__image is-round">
+        {% set url = external_urls.charmstore + "~ricardokirkner/sentry/icon.svg" %}
+        {{
+          image(
+            url=url,
+            alt="Sentry icon",
+            width="40",
+            height="40",
+            hi_def=True,
+            extra_classes="p-media-object__image is-round"
+          ) | safe
+        }}
         <div class="p-media-object__details">
           <h3 class="p-media-object__title">
             <a href="{{ url_for('jaasstore.details', charm_or_bundle_name='sentry') }}">Sentry</a>
@@ -213,7 +338,15 @@
       </div>
     </div>
     <div class="col-7 u-hide--small u-align--right">
-      <img src="https://assets.ubuntu.com/v1/86a111b8-CDK+bundle.svg" alt="Kubernetes promo pictogram" width="330">
+      {{
+        image(
+          url="https://assets.ubuntu.com/v1/86a111b8-CDK+bundle.svg",
+          alt="CDK bundle",
+          width="330",
+          height="305",
+          hi_def=True,
+        ) | safe
+      }}
     </div>
   </div>
 </div>
@@ -231,16 +364,34 @@
             <a href="{{ url_for('jaasstore.details', charm_or_bundle_name='realtime-syslog-analytics') }}" class="p-button--neutral">View the bundle</a>
           </div>
           <div class="col-2 col-start-large-10 u-align--center u-vertically-center u-hide--small">
-            <img width="96" src="https://assets.ubuntu.com/v1/6ecdbc71-hadoop.svg" alt="Hadoop logo">
+            {{
+              image(
+                url="https://assets.ubuntu.com/v1/6ecdbc71-hadoop.svg",
+                alt="Hadoop icon",
+                width="96",
+                height="96",
+                hi_def=True,
+              ) | safe
+            }}
           </div>
         </div>
       </div>
     </div>
   </div>
   <div class="row entity-cards">
-    <div class="col-3 p-card" style="border:0;">
+    <div class="col-3 p-card u-no-border">
       <div class="p-media-object charm-object u-no-margin--bottom">
-        <img src="{{ external_urls.charmstore }}hive/icon.svg" alt="Hive icon" class="p-media-object__image is-round">
+        {% set url = external_urls.charmstore + "hive/icon.svg" %}
+        {{
+          image(
+            url=url,
+            alt="Hive icon",
+            width="40",
+            height="40",
+            hi_def=True,
+            extra_classes="p-media-object__image is-round"
+          ) | safe
+        }}
         <div class="p-media-object__details">
           <h3 class="p-media-object__title">
             <a href="{{ url_for('jaasstore.details', charm_or_bundle_name='hive') }}">Hive</a>
@@ -249,9 +400,19 @@
         </div>
       </div>
     </div>
-    <div class="col-3 p-card" style="border:0;">
+    <div class="col-3 p-card u-no-border">
       <div class="p-media-object charm-object u-no-margin--bottom">
-        <img width="60" src="{{ external_urls.charmstore }}spark/icon.svg" alt="Spark icon" class="p-media-object__image is-round">
+        {% set url = external_urls.charmstore + "spark/icon.svg" %}
+        {{
+          image(
+            url=url,
+            alt="Spark icon",
+            width="40",
+            height="40",
+            hi_def=True,
+            extra_classes="p-media-object__image is-round"
+          ) | safe
+        }}
         <div class="p-media-object__details">
           <h3 class="p-media-object__title">
             <a href="{{ url_for('jaasstore.details', charm_or_bundle_name='spark') }}">Spark</a>
@@ -260,9 +421,19 @@
         </div>
       </div>
     </div>
-    <div class="col-3 p-card" style="border:0;">
+    <div class="col-3 p-card u-no-border">
       <div class="p-media-object charm-object u-no-margin--bottom">
-        <img width="60" src="{{ external_urls.charmstore }}zeppelin/icon.svg" alt="Zeppelin icon" class="p-media-object__image is-round">
+        {% set url = external_urls.charmstore + "zeppelin/icon.svg" %}
+        {{
+          image(
+            url=url,
+            alt="Zeppelin icon",
+            width="40",
+            height="40",
+            hi_def=True,
+            extra_classes="p-media-object__image is-round"
+          ) | safe
+        }}
         <div class="p-media-object__details">
           <h3 class="p-media-object__title">
             <a href="{{ url_for('jaasstore.details', charm_or_bundle_name='zeppelin') }}">Zeppelin</a>
@@ -271,9 +442,19 @@
         </div>
       </div>
     </div>
-    <div class="col-3 p-card" style="border:0;">
+    <div class="col-3 p-card u-no-border">
       <div class="p-media-object charm-object u-no-margin--bottom">
-        <img width="60" src="{{ external_urls.charmstore }}elasticsearch/icon.svg" alt="Elasticsearch cluster icon" class="p-media-object__image is-round">
+        {% set url = external_urls.charmstore + "elasticsearch/icon.svg" %}
+        {{
+          image(
+            url=url,
+            alt="Elasticsearch icon",
+            width="40",
+            height="40",
+            hi_def=True,
+            extra_classes="p-media-object__image is-round"
+          ) | safe
+        }}
         <div class="p-media-object__details">
           <h3 class="p-media-object__title">
             <a href="{{ url_for('jaasstore.details', charm_or_bundle_name='elasticsearch-cluster') }}">Elasticsearch cluster</a>
@@ -305,16 +486,34 @@
             <a href="{{ url_for('jaasstore.details', charm_or_bundle_name='mysql') }}" class="p-button--neutral">View the charm</a>
           </div>
           <div class="col-2 col-start-large-10 u-align--center u-vertically-center u-hide--small">
-            <img width="96" src="https://assets.ubuntu.com/v1/80cd67d3-mysql.svg" alt="mySQL logo">
+            {{
+              image(
+                url="https://assets.ubuntu.com/v1/80cd67d3-mysql.svg",
+                alt="mySQL icon",
+                width="96",
+                height="96",
+                hi_def=True,
+              ) | safe
+            }}
           </div>
         </div>
       </div>
     </div>
   </div>
   <div class="row entity-cards">
-    <div class="col-3 p-card" style="border:0;">
+    <div class="col-3 p-card u-no-border">
       <div class="p-media-object charm-object u-no-margin--bottom">
-        <img src="{{ external_urls.charmstore }}cassandra/icon.svg" alt="Cassandra icon" class="p-media-object__image is-round">
+        {% set url = external_urls.charmstore + "cassandra/icon.svg" %}
+        {{
+          image(
+            url=url,
+            alt="Cassandra icon",
+            width="40",
+            height="40",
+            hi_def=True,
+            extra_classes="p-media-object__image is-round"
+          ) | safe
+        }}
         <div class="p-media-object__details">
           <h3 class="p-media-object__title">
             <a href="{{ url_for('jaasstore.details', charm_or_bundle_name='cassandra') }}">Cassandra</a>
@@ -324,9 +523,19 @@
       </div>
     </div>
 
-    <div class="col-3 p-card" style="border:0;">
+    <div class="col-3 p-card u-no-border">
       <div class="p-media-object charm-object u-no-margin--bottom">
-        <img width="60" src="{{ external_urls.charmstore }}spark/icon.svg" alt="Mariadb icon" class="p-media-object__image is-round">
+        {% set url = external_urls.charmstore + "mariadb/icon.svg" %}
+        {{
+          image(
+            url=url,
+            alt="MariaDB icon",
+            width="40",
+            height="40",
+            hi_def=True,
+            extra_classes="p-media-object__image is-round"
+          ) | safe
+        }}
         <div class="p-media-object__details">
           <h3 class="p-media-object__title">
             <a href="{{ url_for('jaasstore.details', charm_or_bundle_name='mariadb') }}">Mariadb</a>
@@ -336,9 +545,19 @@
       </div>
     </div>
 
-    <div class="col-3 p-card" style="border:0;">
+    <div class="col-3 p-card u-no-border">
       <div class="p-media-object charm-object u-no-margin--bottom">
-        <img width="60" src="{{ external_urls.charmstore }}mongodb/icon.svg" alt="mongodb icon" class="p-media-object__image is-round">
+        {% set url = external_urls.charmstore + "mongodb/icon.svg" %}
+        {{
+          image(
+            url=url,
+            alt="Mongodb icon",
+            width="40",
+            height="40",
+            hi_def=True,
+            extra_classes="p-media-object__image is-round"
+          ) | safe
+        }}
         <div class="p-media-object__details">
           <h3 class="p-media-object__title">
             <a href="{{ url_for('jaasstore.details', charm_or_bundle_name='mongodb') }}">Mongodb</a>
@@ -348,9 +567,19 @@
       </div>
     </div>
 
-    <div class="col-3 p-card" style="border:0;">
+    <div class="col-3 p-card u-no-border">
       <div class="p-media-object charm-object u-no-margin--bottom">
-        <img width="60" src="{{ external_urls.charmstore }}redis/icon.svg" alt="Redis icon" class="p-media-object__image is-round">
+        {% set url = external_urls.charmstore + "redis/icon.svg" %}
+        {{
+          image(
+            url=url,
+            alt="Redis icon",
+            width="40",
+            height="40",
+            hi_def=True,
+            extra_classes="p-media-object__image is-round"
+          ) | safe
+        }}
         <div class="p-media-object__details">
           <h3 class="p-media-object__title">
             <a href="{{ url_for('jaasstore.details', charm_or_bundle_name='redis') }}">Redis</a>
@@ -361,9 +590,19 @@
     </div>
   </div>
   <div class="row entity-cards">
-    <div class="col-3 p-card" style="border:0;">
+    <div class="col-3 p-card u-no-border">
       <div class="p-media-object charm-object u-no-margin--bottom">
-        <img src="{{ external_urls.charmstore }}postgresql/icon.svg" alt="Postgresql icon" class="p-media-object__image is-round">
+        {% set url = external_urls.charmstore + "postgresql/icon.svg" %}
+        {{
+          image(
+            url=url,
+            alt="Postgresql icon",
+            width="40",
+            height="40",
+            hi_def=True,
+            extra_classes="p-media-object__image is-round"
+          ) | safe
+        }}
         <div class="p-media-object__details">
           <h3 class="p-media-object__title">
             <a href="{{ url_for('jaasstore.details', charm_or_bundle_name='postgresql') }}">Postgresql</a>
@@ -392,7 +631,15 @@
       </div>
     </div>
     <div class="col-6 u-hide--small">
-      <img src="https://assets.ubuntu.com/v1/e57116e1-write-your-own.png" alt="Pictogram of world map">
+      {{
+        image(
+          url="https://assets.ubuntu.com/v1/e57116e1-write-your-own.png",
+          alt="Pictogram of world map",
+          width="535",
+          height="325",
+          hi_def=True,
+        ) | safe
+      }}
     </div>
   </div>
 </div>

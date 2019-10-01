@@ -4,9 +4,33 @@
 <div class="u-sv2">
   <div style="{{ expert_card.heading_style }}">
     {% if expert_card.invert_logo %}
-      <img src="{{ expert.logo_invert }}" alt="{{ expert.name }} logo" width="160" style="padding: 1rem 0;"/>
+      {% set url = expert.logo_invert %}
+      {% set alt = expert.name + " logo" %}
+      {{
+        image(
+          url=url,
+          alt=alt,
+          width="160",
+          height="80",
+          hi_def=False,
+          lazy=False,
+          style="padding: 1rem 0;",
+        ) | safe
+      }}
     {% else %}
-      <img src="{{ expert.logo }}" alt="{{ expert.name }} logo" width="160" style="padding: 1rem 0;"/>
+      {% set url = expert.logo %}
+      {% set alt = expert.name + " logo" %}
+      {{
+        image(
+          url=url,
+          alt=alt,
+          width="160",
+          height="80",
+          hi_def=False,
+          lazy=False,
+          style="padding: 1rem 0;",
+        ) | safe
+      }}
     {% endif %}
   </div>
 </div>
