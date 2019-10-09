@@ -1,7 +1,8 @@
 import flask
 import datetime
 
-from canonicalwebteam.blog.app import BlogExtension
+from canonicalwebteam.blog import BlogViews
+from canonicalwebteam.blog.flask import build_blueprint
 from canonicalwebteam.flask_base.app import FlaskBase
 from canonicalwebteam.yaml_responses.flask_helpers import (
     prepare_deleted,
@@ -31,6 +32,10 @@ def create_app(testing=False):
     app.before_request(prepare_deleted())
 
     BlogExtension(app, "JAAS Case Studies", [3513], "lang:en", "/case-studies")
+    blog_views = BlogViews(
+        blog_title="JAAS Case Studies",
+        tag_ids=[3513],
+    )
 
     init_handler(app)
     init_blueprint(app)
@@ -87,4 +92,5 @@ def init_blueprint(app):
     app.register_blueprint(jaasai)
     app.register_blueprint(jaasredirects)
     app.register_blueprint(jaasstore)
+    app.register_blueprint(build_blueprint(blog_views), url_prefix="/case-studies")
     init_docs(app, "/docs")
