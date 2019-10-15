@@ -1,6 +1,7 @@
 import flask
 import datetime
 
+import talisker.requests
 from canonicalwebteam.blog.app import BlogExtension
 from canonicalwebteam.flask_base.app import FlaskBase
 from canonicalwebteam.yaml_responses.flask_helpers import (
@@ -12,6 +13,7 @@ from webapp.external_urls import external_urls
 from webapp.handlers import add_headers
 from webapp.jaasai.views import jaasai
 from webapp.redirects.views import jaasredirects
+from webapp.store.models import cs
 from webapp.store.views import jaasstore
 from webapp.template_utils import current_url_with_query, static_url
 from webapp.docs.views import init_docs
@@ -31,6 +33,7 @@ def create_app(testing=False):
     app.before_request(prepare_deleted())
 
     BlogExtension(app, "JAAS Case Studies", [3513], "lang:en", "/case-studies")
+    talisker.requests.configure(cs.session)
 
     init_handler(app)
     init_blueprint(app)
