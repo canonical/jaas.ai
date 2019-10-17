@@ -15,6 +15,8 @@ terms = Terms("https://api.jujucharms.com/terms/")
 
 SEARCH_LIMIT = 400
 
+markdown = markdown.Markdown(extensions=[GithubFlavoredMarkdownExtension()])
+
 
 def search_entities(
     query,
@@ -221,9 +223,7 @@ class Entity:
             :content string: Some markdown.
             :returns: HTML as a string.
         """
-        html = markdown.markdown(
-            content, extensions=[GithubFlavoredMarkdownExtension()]
-        )
+        html = markdown.convert(content)
         try:
             html = self._convert_http_to_https(html)
         except Exception:
