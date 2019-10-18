@@ -52,7 +52,7 @@ jobs:
           command: pip3 install flake8
       - run:
           name: Lint webapp with Flake8
-          command: yarn run python-lint
+          command: yarn run lint-python
   scss-lint:
     <<: *defaults
     steps:
@@ -71,8 +71,13 @@ jobs:
           name: Install requirements
           command: pip3 install -r requirements.txt
       - run:
-          name: Run tests
-          command: python3 -m unittest discover tests
+          name: Install coverage
+          command: pip3 install coverage
+      - run:
+          name: Run tests with coverage
+          command: |
+            coverage run  --source=. -m unittest discover tests
+            bash <(curl -s https://codecov.io/bash) -cF python
 workflows:
   version: 2
   build:
