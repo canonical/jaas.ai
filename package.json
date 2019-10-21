@@ -1,6 +1,6 @@
 {
   "scripts": {
-    "build": "node-sass --omit-source-map-url --include-path node_modules static/sass --output-style compressed --output static/css && postcss --no-map --use autoprefixer --replace 'static/css/**/*.css' && npm run build-js",
+    "build": "node-sass --omit-source-map-url --include-path node_modules static/sass --output-style compressed --output static/css && postcss --no-map --use autoprefixer --replace 'static/css/**/*.css' && yarn run build-js",
     "build-css": "node-sass --include-path node_modules static/sass --output static/css && postcss --use autoprefixer --replace 'static/css/**/*.css'",
     "build-js": "webpack",
     "clean": "rm -rf node_modules yarn-error.log css static/css *.log *.sqlite _site/ build/ .jekyll-metadata .bundle",
@@ -8,10 +8,10 @@
     "lint-scss": "stylelint static/**/*.scss",
     "lint-python": "flake8 webapp tests && black --check --line-length 79 tests webapp",
     "serve": "./entrypoint 0.0.0.0:${PORT}",
-    "test": "npm run lint-scss && npm run lint-python && npm run test-python",
+    "test": "yarn run lint-scss && yarn run lint-python && yarn run test-python",
     "test-python": "python3 -m unittest discover tests",
     "update-test-json": "python3 scripts/update_test_json.py",
-    "watch": "concurrently \"npm run watch-scss\" \"npm run watch-js\"",
+    "watch": "concurrently \"yarn run watch-scss\" \"yarn run watch-js\"",
     "watch-scss": "watch -p 'static/sass/**/*.scss' -c 'yarn run build-css'",
     "watch-js": "watch -p 'static/js/src/**/*.js' -c 'yarn run build-js'"
   },
