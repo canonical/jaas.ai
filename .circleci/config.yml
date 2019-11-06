@@ -54,7 +54,7 @@ jobs:
       - run:
           name: Lint scss with stylelint
           command: yarn run lint-scss
-  python-tests:
+  test-python:
     <<: *defaults
     steps:
       - checkout
@@ -77,4 +77,4 @@ workflows:
       - check-build
       - python-lint
       - scss-lint
-      - python-tests
+      - test-python
