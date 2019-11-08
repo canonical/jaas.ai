@@ -34,19 +34,19 @@
   <div class="row">
     {% for expert_id, expert in context.experts.items() %}
       <div class="col-4">
-        <div class="p-card">
-          <div class="expert__logo-wrap">
-            <a href="{{ expert.page_url }}">
-              <img class="expert__card-logo" src="{{ expert.logo }}" alt="{{ expert.name }} logo" />
+        <div class="p-card p-card--experts">
+          <a href="{{ expert.page_url }}" class="p-link--soft">
+            <div class="expert__logo-wrap">
+                <img class="expert__card-logo" src="{{ expert.logo }}" alt="{{ expert.name }} logo" />
+              </div>
+              <hr class="u-sv1">
+              <ul class="p-list">
+                {% for highlight in expert.highlights %}
+                <li class="p-list__item is-ticked">{{ highlight|safe }}</li>
+                {% endfor %}
+              </ul>
             </a>
           </div>
-          <hr class="u-sv1">
-          <ul class="p-list">
-            {% for highlight in expert.highlights %}
-              <li class="p-list__item is-ticked">{{ highlight|safe }}</li>
-            {% endfor %}
-          </ul>
-        </div>
       </div>
     {% endfor %}
   </div>
