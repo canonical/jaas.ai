@@ -22,7 +22,13 @@ def get_experts(expert=None):
                 "https://assets.ubuntu.com/v1/"
                 "9681b99c-OV+Logo+Horiz+3color.svg"
             ),
-            "highlights": ["Big data", "Data Services", "Devops services"],
+            "highlights": [
+                "Workflow solutions that enable enterprise processing"
+                + " at scale",
+                "Distributed processing and storage platform architecture",
+                "DevOPS/DataOPS design and implementation",
+                "Data processing and batch enrichment",
+            ],
             "website": "https://www.omnivector.solutions",
             "email": "info@omnivector.solutions",
             "phone_numbers": [

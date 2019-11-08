@@ -87,6 +87,32 @@ $breakpoint-navigation-threshold: $breakpoint-large;
   }
 }
 
+// Override neccessary until this bug is resolved upstream
+// https://github.com/canonical-websites/vanillaframework.io/pull/171#issuecomment-424717215
+.homepage-logos .p-inline-images__item {
+  margin: 0;
+  padding-right: 0.5rem;
+}
+
+.play-video-cta {
+  display: inline-block;
+  position: relative;
+
+  a {
+    padding-right: 2rem;
+  }
+
+  &::after {
+    content: url('https://assets.ubuntu.com/v1/0d85260e-play-icon.svg');
+    display: inline-block;
+    height: 1rem;
+    position: absolute;
+    right: 0.5rem;
+    top: 0.15rem;
+    width: 1rem;
+  }
+}
+
 // experts expert-cards
 $color-experts-highlight: #e95420;
 
@@ -135,6 +161,13 @@ $color-experts-highlight: #e95420;
   padding-top: 0.25rem;
   text-transform: uppercase;
   width: 100%;
+}
+
+.p-card--experts {
+  a:hover {
+    color: $color-dark;
+    text-decoration: none;
+  }
 }
 
 // quotes grid
@@ -244,32 +277,6 @@ p:empty {
 
 div .p-accordion__tab[aria-expanded] {
   background: none;
-}
-
-// Override neccessary until this bug is resolved upstream
-// https://github.com/canonical-websites/vanillaframework.io/pull/171#issuecomment-424717215
-.homepage-logos .p-inline-images__item {
-  margin: 0;
-  padding-right: 0.5rem;
-}
-
-.play-video-cta {
-  display: inline-block;
-  position: relative;
-
-  a {
-    padding-right: 2rem;
-  }
-
-  &::after {
-    content: url('https://assets.ubuntu.com/v1/0d85260e-play-icon.svg');
-    display: inline-block;
-    height: 1rem;
-    position: absolute;
-    right: 0.5rem;
-    top: 0.15rem;
-    width: 1rem;
-  }
 }
 
 // h2 font weight override required until Vanilla 2.0 release
