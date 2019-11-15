@@ -1,3 +1,5 @@
+import flask
+
 from canonicalwebteam.discourse_docs import (
     DiscourseAPI,
     DiscourseDocs,
@@ -20,6 +22,18 @@ def init_docs(app, url_prefix):
     )
 
     discourse_docs.init_app(app)
+
+    @app.route(url_prefix + "/commands")
+    def commands():
+        """
+        Show the static commands page
+        """
+
+        discourse_parser.parse()
+
+        return flask.render_template(
+            "docs/commands.html", navigation=discourse_parser.navigation
+        )
 
     app.add_url_rule(
         "/docs/search",
