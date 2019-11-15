@@ -32,7 +32,9 @@ def init_docs(app, url_prefix):
         discourse_parser.parse()
 
         return flask.render_template(
-            "docs/commands.html", navigation=discourse_parser.navigation
+            "docs/commands.html",
+            document={"title": "Command reference"},
+            navigation=discourse_parser.navigation,
         )
 
     app.add_url_rule(
