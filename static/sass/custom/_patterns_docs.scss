@@ -13,7 +13,7 @@
     flex: 0 0 $sidebar-width;
     top: 0;
 
-    @media only screen and (max-width: $breakpoint-navigation-threshold) {
+    @media only screen and (max-width: $breakpoint-medium) {
       border-bottom: $border;
       border-right: 0;
       flex: auto;
@@ -29,7 +29,7 @@
     margin-top: 0;
     overflow: hidden;
 
-    @media only screen and (max-width: $breakpoint-navigation-threshold) {
+    @media only screen and (max-width: $breakpoint-medium) {
       flex: auto;
     }
 
@@ -45,6 +45,7 @@
 
   .l-docs-row {
     @extend .row;
+
     margin-left: inherit;
     padding: 0 $sp-xxx-large;
 
