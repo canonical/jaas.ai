@@ -1,9 +1,10 @@
 {
   "scripts": {
-    "build": "node-sass --omit-source-map-url --include-path node_modules static/sass --output-style compressed --output static/css && postcss --no-map --use autoprefixer --replace 'static/css/**/*.css' && yarn run build-js",
+    "build": "node-sass --omit-source-map-url --include-path node_modules static/sass --output-style compressed --output static/css && postcss --no-map --use autoprefixer --replace 'static/css/**/*.css' && yarn run build-js && yarn run copy-3rd-party-js",
     "build-css": "node-sass --include-path node_modules static/sass --output static/css && postcss --use autoprefixer --replace 'static/css/**/*.css'",
     "build-js": "webpack",
     "clean": "rm -rf node_modules yarn-error.log css static/css *.log *.sqlite _site/ build/ .jekyll-metadata .bundle",
+    "copy-3rd-party-js": "mkdir -p static/js/modules/global-nav && cp node_modules/@canonical/global-nav/dist/global-nav.js static/js/modules/global-nav",
     "format-python": "black --line-length 79 tests webapp",
     "lint-scss": "stylelint static/**/*.scss",
     "lint-python": "flake8 webapp tests && black --check --line-length 79 tests webapp",
