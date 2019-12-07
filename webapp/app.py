@@ -2,7 +2,8 @@ import flask
 import datetime
 
 import talisker.requests
-from canonicalwebteam.blog.app import BlogExtension
+from canonicalwebteam.blog import BlogViews
+from canonicalwebteam.blog.flask import build_blueprint
 from canonicalwebteam.flask_base.app import FlaskBase
 from canonicalwebteam.yaml_responses.flask_helpers import (
     prepare_deleted,
@@ -32,7 +33,15 @@ def create_app(testing=False):
     app.before_request(prepare_redirects())
     app.before_request(prepare_deleted())
 
-    BlogExtension(app, "JAAS Case Studies", [3513], "lang:en", "/case-studies")
+    blog_views = BlogViews(
+        blog_title="JAAS Case Studies",
+        tag_ids=[3513],
+        feed_description="Case Studies from happy JAAS users",
+    )
+    app.register_blueprint(
+        build_blueprint(blog_views), url_prefix="/case-studies"
+    )
+
     talisker.requests.configure(cs.session)
 
     init_handler(app)
