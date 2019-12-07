@@ -33,13 +33,14 @@ def create_app(testing=False):
     app.before_request(prepare_redirects())
     app.before_request(prepare_deleted())
 
-
     blog_views = BlogViews(
-      blog_title="JAAS Case Studies",
-      tag_ids=[3513],
-      feed_description="Case Studies from happy JAAS users"
+        blog_title="JAAS Case Studies",
+        tag_ids=[3513],
+        feed_description="Case Studies from happy JAAS users",
     )
-    app.register_blueprint(build_blueprint(blog_views), url_prefix="/case-studies")
+    app.register_blueprint(
+        build_blueprint(blog_views), url_prefix="/case-studies"
+    )
 
     talisker.requests.configure(cs.session)
 
