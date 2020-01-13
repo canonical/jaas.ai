@@ -25,7 +25,7 @@ def create_app(testing=False):
         __name__,
         "jaas.ai",
         template_folder="../templates",
-        static_folder="../static",
+        static_folder="../assets",
     )
 
     app.testing = testing
