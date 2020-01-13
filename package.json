@@ -1,20 +1,20 @@
 {
   "scripts": {
-    "build": "node-sass --omit-source-map-url --include-path node_modules static/sass --output-style compressed --output static/css && postcss --no-map --use autoprefixer --replace 'static/css/**/*.css' && yarn run build-js && yarn run copy-3rd-party-js",
-    "build-css": "node-sass --include-path node_modules static/sass --output static/css && postcss --use autoprefixer --replace 'static/css/**/*.css'",
+    "build": "node-sass --omit-source-map-url --include-path node_modules assets/sass --output-style compressed --output assets/css && postcss --no-map --use autoprefixer --replace 'assets/css/**/*.css' && yarn run build-js && yarn run copy-3rd-party-js",
+    "build-css": "node-sass --include-path node_modules assets/sass --output assets/css && postcss --use autoprefixer --replace 'assets/css/**/*.css'",
     "build-js": "webpack",
-    "clean": "rm -rf node_modules yarn-error.log css static/css *.log *.sqlite _site/ build/ .jekyll-metadata .bundle",
-    "copy-3rd-party-js": "mkdir -p static/js/modules/global-nav && cp node_modules/@canonical/global-nav/dist/global-nav.js static/js/modules/global-nav",
+    "clean": "rm -rf node_modules yarn-error.log css assets/css *.log *.sqlite _site/ build/ .jekyll-metadata .bundle",
+    "copy-3rd-party-js": "mkdir -p assets/js/modules/global-nav && cp node_modules/@canonical/global-nav/dist/global-nav.js assets/js/modules/global-nav",
     "format-python": "black --line-length 79 tests webapp",
-    "lint-scss": "stylelint static/**/*.scss",
+    "lint-scss": "stylelint assets/**/*.scss",
     "lint-python": "flake8 webapp tests && black --check --line-length 79 tests webapp",
     "serve": "./entrypoint 0.0.0.0:${PORT}",
     "test": "yarn run lint-scss && yarn run lint-python && yarn run test-python",
     "test-python": "python3 -m unittest discover tests",
     "update-test-json": "python3 scripts/update_test_json.py",
     "watch": "concurrently \"yarn run watch-scss\" \"yarn run watch-js\"",
-    "watch-scss": "watch -p 'static/sass/**/*.scss' -c 'yarn run build-css'",
-    "watch-js": "watch -p 'static/js/src/**/*.js' -c 'yarn run build-js'"
+    "watch-scss": "watch -p 'assets/sass/**/*.scss' -c 'yarn run build-css'",
+    "watch-js": "watch -p 'assets/js/src/**/*.js' -c 'yarn run build-js'"
   },
   "dependencies": {
     "@babel/core": "7.7.4",
