@@ -1,0 +1,90 @@
+.p-modal {
+  opacity: 1;
+  visibility: visible;
+  transition: visibility 0s, opacity 0.25s linear;
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 99999;
+
+  ul,
+  button {
+    margin-bottom: 0;
+  }
+
+  &__header {
+    max-height: 16px;
+  }
+
+  &__close {
+    margin-left: auto;
+  }
+
+  &__dialog {
+    max-width: 420px;
+    overflow-y: scroll;
+  }
+}
+
+.p-modal--hidden {
+  opacity: 0;
+  visibility: hidden;
+}
+
+.modal__divider {
+  margin: 1rem 0;
+}
+
+.modal__contact-list {
+  list-style: none;
+  margin-left: 0;
+  padding-left: 0;
+
+  li {
+    display: flex;
+    margin-bottom: 0.25rem;
+
+    a {
+      padding-left: 0.5rem;
+    }
+  }
+
+  img {
+    display: block;
+    padding-top: 0.25rem;
+  }
+}
+
+.modal__button {
+  display: flex;
+
+  button {
+    margin-left: auto;
+  }
+}
+
+.icon-placeholder {
+  display: inline-block;
+  width: 16px;
+}
+
+.modal__tel-link {
+  display: inline-block;
+  margin-right: 0.5rem;
+}
+
+.modal__terms {
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+}
+
+.submit-wrapper {
+  display: flex;
+  margin-top: 1rem;
+
+  &__button {
+    margin-left: auto;
+  }
+}

@@ -1,0 +1,99 @@
+.p-search-panel {
+  background: $color-x-light;
+  box-shadow: 0 1px 5px 1px transparentize($color-dark, 0.8);
+  left: 0;
+  margin-top: 0;
+  opacity: 0;
+  padding: $sp-medium;
+  position: absolute;
+  pointer-events: none;
+  top: 3rem;
+  transition: opacity 0.25s;
+  width: 100%;
+  z-index: -9999;
+
+  .row {
+    margin-right: auto;
+    margin-left: auto;
+    max-width: 64.875rem;
+  }
+
+  &__featured-image {
+    border-radius: 50%;
+  }
+
+  @at-root {
+    .p-search-panel__close {
+      position: absolute;
+      right: $sp-medium;
+      top: 0.75rem;
+    }
+  }
+
+  &__heading {
+    color: $color-brand;
+  }
+
+  @at-root {
+    .p-navigation & a {
+      color: $color-link;
+
+      &:hover {
+        color: darken($color-link, 10%);
+      }
+    }
+  }
+
+  @media (min-width: $breakpoint-navigation-threshold) {
+    .search-active & {
+      opacity: 1;
+      pointer-events: auto;
+      z-index: 9999;
+    }
+  }
+
+  &__inner {
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  &__main {
+    display: flex;
+    flex: 3;
+    flex-wrap: wrap;
+    padding: $sp-x-large $sp-medium $sp-medium 0;
+  }
+
+  &__sidebar {
+    flex: 1;
+    margin-top: 0;
+    padding: 3rem $sp-medium $sp-medium;
+  }
+
+  &__footer {
+    flex: none;
+    margin: 0 0 $sp-x-large;
+    width: 100%;
+  }
+
+  &__featured-name {
+    margin-top: $sp-x-small;
+  }
+
+  &__featured-link {
+    border: 1px solid transparent;
+    display: inline-block;
+    margin: 0 0 $sp-medium;
+    padding: $sp-medium;
+    text-align: center;
+    width: 20%;
+
+    &:hover {
+      border: 1px solid $color-mid-light;
+    }
+
+    img {
+      max-width: 4rem;
+    }
+  }
+}

@@ -1,0 +1,15 @@
+// Homepage promo takeover
+
+.homepage-hero-promos {
+  @media (max-width: $breakpoint-medium) {
+    margin-top: 25vw;
+  }
+
+  .card-wrap {
+    min-height: 96px;
+  }
+
+  h5 {
+    margin-bottom: 2.5rem;
+  }
+}

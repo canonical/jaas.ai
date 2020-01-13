@@ -1,0 +1,21 @@
+.juju-card.juju-card--minimal {
+  margin-bottom: 1rem;
+
+  .charm-card__image {
+    margin-right: 1rem;
+  }
+
+  .charm-card__title {
+    line-height: 1.25;
+  }
+
+  .charm-card__header,
+  .charm-card__meta {
+    margin-bottom: 0;
+  }
+
+  .charm-card__main,
+  .charm-card__footer {
+    display: none;
+  }
+}

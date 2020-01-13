@@ -1,0 +1,56 @@
+.readme {
+  h1 {
+    @extend %vf-heading-3;
+  }
+
+  h2 {
+    @extend %vf-heading-4;
+  }
+
+  h3 {
+    @extend %vf-heading-5;
+  }
+
+  h4 {
+    @extend %vf-heading-6;
+  }
+}
+
+.entity {
+  &__header {
+    @media (max-width: $breakpoint-medium) {
+      .series-tags {
+        margin-bottom: 1rem;
+      }
+    }
+  }
+
+  &__title-wrap {
+    align-items: center;
+    display: flex;
+    margin: 0.5rem 0 1rem;
+  }
+
+  &__meta {
+    margin-bottom: 1rem;
+  }
+
+  &__title {
+    text-transform: capitalize;
+  }
+
+  &__version {
+    color: $color-mid-dark;
+    top: 0 !important;
+  }
+
+  &__channel {
+    span {
+      text-transform: capitalize;
+    }
+  }
+
+  &__charm-icon {
+    border-radius: 50%;
+  }
+}

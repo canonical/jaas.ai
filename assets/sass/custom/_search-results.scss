@@ -1,0 +1,237 @@
+@import 'vanilla-framework/scss/settings_spacing';
+
+.search-results {
+  $icon-size: 1.5rem;
+
+  &__entity-name {
+    line-height: 1.5rem;
+    font-size: 1rem;
+    text-transform: capitalize;
+  }
+
+  &-table {
+    tr {
+      display: flex;
+      padding-top: 1rem;
+    }
+
+    th,
+    td {
+      flex: 1;
+      flex-wrap: wrap;
+
+      &:first-child {
+        flex: 0.25;
+        min-width: 5rem;
+        padding-right: 0;
+      }
+    }
+
+    &__icons,
+    &__series {
+      padding-top: 0.75rem;
+    }
+  }
+
+  &__bundle-icon {
+    $padding: 0.12rem;
+    border-radius: (($padding * 2) + $icon-size) / 2;
+    border: 0.06rem solid $color-mid-light;
+    display: inline-block;
+    font-size: 0.875rem;
+    padding: $padding 0.3rem + $padding $padding $padding;
+    position: relative;
+    top: -0.12rem;
+
+    @at-root a#{&} {
+      color: $color-mid-dark;
+    }
+
+    &:hover {
+      text-decoration: none;
+    }
+
+    .search-results__icon {
+      &:first-child {
+        // Set a background to handle overlapping transparent icons.
+        background-color: $color-x-light;
+        box-shadow: 0 0 0 0.04rem $color-x-light;
+        position: relative;
+      }
+
+      &:nth-child(2) {
+        margin-left: -1.2rem;
+      }
+    }
+  }
+
+  &__icon {
+    border-radius: $icon-size / 2;
+    display: inline-block;
+    height: $icon-size;
+    width: $icon-size;
+    vertical-align: bottom;
+  }
+}
+
+.filter-row {
+  margin: 1rem auto;
+
+  .list-block__filter {
+    margin-right: 1rem;
+
+    @media (min-width: $breakpoint-small) {
+      display: flex;
+    }
+
+    &--link {
+      color: $color-dark;
+    }
+
+    .p-contextual-menu {
+      display: block;
+
+      &__toggle {
+        text-transform: capitalize;
+
+        &--active {
+          border-color: $color-focus;
+        }
+      }
+
+      &__dropdown {
+        $tooltip-size: 8px;
+        min-width: 19rem;
+        overflow: visible;
+        padding: 0.5rem 0;
+        top: calc(100% + 1rem);
+
+        @media (max-width: $breakpoint-x-small) {
+          min-width: 0;
+        }
+
+        &:before {
+          border: {
+            bottom-width: $tooltip-size + 2;
+            left-width: $tooltip-size + 2;
+            right-width: $tooltip-size + 2;
+          }
+        }
+
+        &:after {
+          border: {
+            bottom-width: $tooltip-size;
+            left-width: $tooltip-size;
+            right-width: $tooltip-size;
+          }
+        }
+
+        .p-list__item {
+          padding: 0.5rem 1rem 0.25rem 1rem;
+
+          &:hover,
+          &--active {
+            background-color: $color-light;
+          }
+        }
+      }
+    }
+  }
+
+  .list-block__filters--selects {
+    .list-block__filter {
+      margin-bottom: 1rem;
+    }
+
+    @media (min-width: $breakpoint-x-small) {
+      float: right;
+      display: flex;
+    }
+
+    &-item {
+      margin-left: 0;
+      margin-right: 0.5rem;
+
+      select {
+        margin: 0;
+      }
+    }
+
+    label {
+      width: 100%;
+      min-width: 55px;
+
+      @media (min-width: $breakpoint-x-small) {
+        text-align: right;
+      }
+
+      @media (min-width: $breakpoint-medium) {
+        padding-top: 0;
+      }
+    }
+  }
+
+  .p-inline-list__item {
+    cursor: pointer;
+  }
+
+  .is-selected {
+    position: relative;
+
+    &::after {
+      background: $color-mid-dark;
+      bottom: -2px;
+      content: ' ';
+      height: 2px;
+      left: 0;
+      position: absolute;
+      width: 100%;
+    }
+  }
+
+  @media (min-width: $breakpoint-medium) {
+    select {
+      margin-left: -1.5rem;
+      margin-top: -0.5rem;
+    }
+  }
+}
+
+@media (min-width: $breakpoint-small) {
+  .p-tabs__list {
+    width: auto;
+  }
+}
+.p-tabs:before {
+  display: none;
+}
+
+.p-tabs__item:last-child {
+  margin: 0;
+}
+
+.entity-search-selector {
+  display: flex;
+  overflow-x: hidden;
+
+  @media (min-width: $breakpoint-small) {
+    display: inline-flex;
+  }
+
+  li {
+    flex: 1;
+    text-align: center;
+
+    a {
+      display: inline-block;
+      width: 100%;
+    }
+  }
+}
+
+.entity-tags {
+  a {
+    font-size: 0.875rem;
+    color: $color-mid-dark;
+  }
+}

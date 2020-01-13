@@ -1,0 +1,7 @@
+User-agent: *
+
+Disallow: /terms/*
+Disallow: /blog/feed
+Disallow: /blog/feed/
+
+Sitemap: https://jaas.ai/sitemap.xml

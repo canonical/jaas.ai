@@ -1,0 +1,67 @@
+%series-tag {
+  display: inline-block;
+  border-radius: 4px;
+  font-size: 0.875rem;
+  font-weight: 500;
+  padding: 0 0.5rem;
+  margin-right: 0.25rem;
+  margin-bottom: 0.25rem;
+  text-transform: capitalize;
+}
+
+a.series-tag,
+.series-tag {
+  @extend %series-tag;
+  border: 1px solid $color-mid-dark;
+  color: $color-mid-dark;
+
+  &:hover {
+    text-decoration: none;
+  }
+
+  &:last-child {
+    margin-right: 0;
+  }
+}
+
+a.series-tag--kubernetes,
+.series-tag--kubernetes {
+  @extend %series-tag;
+  border-color: $color-kubernetes;
+  color: $color-kubernetes;
+}
+
+// The list of series can be found here:
+// https://github.com/juju/charmstore/blob/v5/internal/series/series.go#L61
+a.series-tag--win2012hvr2,
+.series-tag--win2012hvr2,
+a.series-tag--win2012hv,
+.series-tag--win2012hv,
+a.series-tag--win2012r2,
+.series-tag--win2012r2,
+a.series-tag--win2012,
+.series-tag--win2012,
+a.series-tag--win7,
+.series-tag--win7,
+a.series-tag--win8,
+.series-tag--win8,
+a.series-tag--win81,
+.series-tag--win81,
+a.series-tag--win10,
+.series-tag--win10,
+a.series-tag--win2016,
+.series-tag--win2016,
+a.series-tag--win2016hv,
+.series-tag--win2016hv,
+a.series-tag--win2016nano,
+.series-tag--win2016nano,
+a.series-tag--centos7,
+.series-tag--centos7 {
+  @extend %series-tag;
+  border-color: $color-information;
+  color: $color-information;
+}
+
+.series-tag--None {
+  display: none;
+}
