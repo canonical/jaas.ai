@@ -1,12 +1,8 @@
 // Delegate error events to load default icons.
 document.querySelectorAll('.search-results-table').forEach(function(table) {
-  table.addEventListener(
-    'error',
-    function(evt) {
-      if (evt.target.classList.contains('search-results__icon')) {
-        evt.target.src = 'https://assets.ubuntu.com/v1/d64591a6-default-charm.svg';
-      }
-    },
-    true
-  );
+  table.addEventListener('error', function(evt) {
+    if (evt.target.classList.contains('search-results__icon')) {
+      evt.target.src = 'https://assets.ubuntu.com/v1/d64591a6-default-charm.svg';
+    }
+  }, true);
 });

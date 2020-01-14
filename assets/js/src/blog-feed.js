@@ -2,8 +2,7 @@ function renderFeed(selector) {
   const container = document.querySelector(selector);
   if (container) {
     const feed = JSON.parse(this.responseText);
-    let posts = feed.map(
-      post => `
+    let posts = feed.map(post => `
       <li class="p-list__item">
         <h4 class="u-no-margin--bottom">
           <a href="${post.links[0].href}">${post.title_detail.value}</a>
@@ -13,8 +12,7 @@ function renderFeed(selector) {
           ${post.summary_detail.value}
         </p>
       </li>
-    `
-    );
+    `);
     container.innerHTML = `<ul class="p-list">${posts.join('')}</ul>`;
   }
 }

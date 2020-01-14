@@ -469,13 +469,7 @@ hljs.registerLanguage('xml', function(s) {
           sL: ['actionscript', 'javascript', 'handlebars', 'xml']
         }
       },
-      {
-        cN: 'meta',
-        v: [
-          {b: /<\?xml/, e: /\?>/, r: 10},
-          {b: /<\?\w+/, e: /\?>/}
-        ]
-      },
+      {cN: 'meta', v: [{b: /<\?xml/, e: /\?>/, r: 10}, {b: /<\?\w+/, e: /\?>/}]},
       {cN: 'tag', b: '</?', e: '/?>', c: [{cN: 'name', b: /[^\/><\s]+/, r: 0}, t]}
     ]
   };
@@ -645,14 +639,7 @@ hljs.registerLanguage('nginx', function(e) {
       i: '=>',
       c: [
         e.HCM,
-        {
-          cN: 'string',
-          c: [e.BE, r],
-          v: [
-            {b: /"/, e: /"/},
-            {b: /'/, e: /'/}
-          ]
-        },
+        {cN: 'string', c: [e.BE, r], v: [{b: /"/, e: /"/}, {b: /'/, e: /'/}]},
         {b: '([a-z]+):/', e: '\\s', eW: !0, eE: !0, c: [r]},
         {
           cN: 'regexp',
@@ -727,13 +714,7 @@ hljs.registerLanguage('java', function(e) {
     k: r,
     i: /<\/|#/,
     c: [
-      e.C('/\\*\\*', '\\*/', {
-        r: 0,
-        c: [
-          {b: /\w+@/, r: 0},
-          {cN: 'doctag', b: '@[A-Za-z]+'}
-        ]
-      }),
+      e.C('/\\*\\*', '\\*/', {r: 0, c: [{b: /\w+@/, r: 0}, {cN: 'doctag', b: '@[A-Za-z]+'}]}),
       e.CLCM,
       e.CBCM,
       e.ASM,
@@ -858,15 +839,7 @@ hljs.registerLanguage('coffeescript', function(e) {
         ]
       },
       {b: '@' + n},
-      {
-        sL: 'javascript',
-        eB: !0,
-        eE: !0,
-        v: [
-          {b: '```', e: '```'},
-          {b: '`', e: '`'}
-        ]
-      }
+      {sL: 'javascript', eB: !0, eE: !0, v: [{b: '```', e: '```'}, {b: '`', e: '`'}]}
     ];
   r.c = i;
   var s = e.inherit(e.TM, {b: n}),
@@ -1012,10 +985,7 @@ hljs.registerLanguage('css', function(e) {
               {
                 b: /[\w-]+\(/,
                 rB: !0,
-                c: [
-                  {cN: 'built_in', b: /[\w-]+/},
-                  {b: /\(/, e: /\)/, c: [e.ASM, e.QSM]}
-                ]
+                c: [{cN: 'built_in', b: /[\w-]+/}, {b: /\(/, e: /\)/, c: [e.ASM, e.QSM]}]
               },
               e.CSSNM,
               e.QSM,
@@ -1114,11 +1084,7 @@ hljs.registerLanguage('cpp', function(t) {
       },
       {b: t.IR + '::', k: c},
       {
-        v: [
-          {b: /=/, e: /;/},
-          {b: /\(/, e: /\)/},
-          {bK: 'new throw return else', e: /;/}
-        ],
+        v: [{b: /=/, e: /;/}, {b: /\(/, e: /\)/}, {bK: 'new throw return else', e: /;/}],
         k: c,
         c: n.concat([{b: /\(/, e: /\)/, k: c, c: n.concat(['self']), r: 0}]),
         r: 0
@@ -1177,24 +1143,13 @@ hljs.registerLanguage('objectivec', function(e) {
       e.QSM,
       {
         cN: 'string',
-        v: [
-          {b: '@"', e: '"', i: '\\n', c: [e.BE]},
-          {b: "'", e: "[^\\\\]'", i: "[^\\\\][^']"}
-        ]
+        v: [{b: '@"', e: '"', i: '\\n', c: [e.BE]}, {b: "'", e: "[^\\\\]'", i: "[^\\\\][^']"}]
       },
       {
         cN: 'meta',
         b: '#',
         e: '$',
-        c: [
-          {
-            cN: 'meta-string',
-            v: [
-              {b: '"', e: '"'},
-              {b: '<', e: '>'}
-            ]
-          }
-        ]
+        c: [{cN: 'meta-string', v: [{b: '"', e: '"'}, {b: '<', e: '>'}]}]
       },
       {
         cN: 'class',
@@ -1327,10 +1282,7 @@ hljs.registerLanguage('python', function(e) {
         a,
         e.HCM,
         {
-          v: [
-            {cN: 'function', bK: 'def'},
-            {cN: 'class', bK: 'class'}
-          ],
+          v: [{cN: 'function', bK: 'def'}, {cN: 'class', bK: 'class'}],
           e: /:/,
           i: /[${=;\n,]/,
           c: [e.UTM, i, {b: /->/, eW: !0, k: 'None'}]

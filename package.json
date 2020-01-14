@@ -44,10 +44,5 @@
   "resolutions": {
     "lodash": "^4.17.15",
     "minimatch": "^3.0.2"
-  },
-  "husky": {
-    "hooks": {
-      "pre-commit": "pretty-quick --staged"
-    }
   }
 }
