@@ -55,7 +55,7 @@ def store():
 @jaasstore.route("/search")
 def search():
     query = request.args.get("q", "")
-    search_terms = query.replace("/", " ").replace("-", " ")
+    search_terms = query.replace("/", " ")
     entity_type = request.args.get("type", None)
     if entity_type not in ["charm", "bundle"]:
         entity_type = None
