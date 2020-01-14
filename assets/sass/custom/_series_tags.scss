@@ -31,7 +31,6 @@ a.series-tag--kubernetes,
   color: $color-kubernetes;
 }
 
-
 // The list of series can be found here:
 // https://github.com/juju/charmstore/blob/v5/internal/series/series.go#L61
 a.series-tag--win2012hvr2,
@@ -58,9 +57,9 @@ a.series-tag--win2016nano,
 .series-tag--win2016nano,
 a.series-tag--centos7,
 .series-tag--centos7 {
-    @extend %series-tag;
-    border-color: $color-information;
-    color: $color-information;
+  @extend %series-tag;
+  border-color: $color-information;
+  color: $color-information;
 }
 
 .series-tag--None {
