@@ -59,6 +59,6 @@ env[23]/
 *.css
 
 # Project specific ignores
-assets/js/dist/*.js
+static/js/dist/*.js
 .webcache
 .webcache_blog

@@ -14,7 +14,7 @@ class RedirectViews(TestCase):
         return app
 
     def test_redirect_logo(self):
-        response = self.client.get("/assets/img/logos/juju-logo.svg")
+        response = self.client.get("/static/img/logos/juju-logo.svg")
         self.assertEqual(response.status_code, 301)
         self.assertEqual(
             response.location,

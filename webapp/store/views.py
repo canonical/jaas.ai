@@ -8,7 +8,7 @@ jaasstore = Blueprint(
     "jaasstore",
     __name__,
     template_folder="/templates",
-    static_folder="/assets",
+    static_folder="/static",
 )
 
 SERIES = [
