@@ -16,6 +16,16 @@ ADD package.json .
 RUN --mount=type=cache,target=/usr/local/share/.cache/yarn yarn install
 
 
+# Build stage: Build dashboard
+# ===
+FROM node:12-slim AS build-dashboard
+WORKDIR /srv
+RUN apt-get update && apt-get install --no-install-recommends --yes git ca-certificates
+RUN git clone https://github.com/canonical-web-and-design/jaas-dashboard /srv
+RUN yarn install
+RUN node_modules/.bin/craco build
+
+
 # Build stage: Run "yarn run build-js"
 # ===
 FROM yarn-dependencies AS build-js
@@ -40,7 +50,6 @@ ENV LANG C.UTF-8
 WORKDIR /srv
 
 # System dependencies
-#RUN apt-get update && apt-get install --no-install-recommends --yes python3-lib2to3 python3-pkg-resources ca-certificates libsodium-dev
 RUN apt-get update && apt-get install --no-install-recommends --yes python3-lib2to3 python3-pkg-resources
 COPY --from=python-dependencies /root/.local/lib/python3.6/site-packages /root/.local/lib/python3.6/site-packages
 COPY --from=python-dependencies /root/.local/bin /root/.local/bin
@@ -49,8 +58,13 @@ ENV PATH="/root/.local/bin:${PATH}"
 # Import code, build assets and mirror list
 ADD . .
 RUN rm -rf package.json yarn.lock .babelrc webpack.config.js
+COPY --from=build-dashboard /srv/build templates/dashboard
 COPY --from=build-js /srv/static/js static/js
 COPY --from=build-css /srv/static/css static/css
+RUN cp templates/dashboard/static/js/* static/js/.
+RUN cp templates/dashboard/static/css/* static/css/.
+RUN cp -r templates/dashboard/static/media static/.
+RUN rm -r templates/dashboard/static
 
 # Set build ID
 ARG BUILD_ID

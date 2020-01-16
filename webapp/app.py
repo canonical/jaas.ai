@@ -46,6 +46,7 @@ def create_app(testing=False):
 
     init_handler(app)
     init_blueprint(app)
+    init_dashboard(app)
 
     @app.template_filter("pluralize")
     def pluralize_filter(count):
@@ -100,3 +101,29 @@ def init_blueprint(app):
     app.register_blueprint(jaasredirects)
     app.register_blueprint(jaasstore)
     init_docs(app, "/docs")
+
+
+def init_dashboard(app):
+    """
+    Add views for the dashboard
+    """
+
+    @app.route("/models")
+    @app.route("/models/<path:path>")
+    @app.route("/controllers")
+    @app.route("/controllers/<path:path>")
+    def dashboard_index(path=None):
+        """
+        Send /models and /controllers to the index page
+        """
+
+        return flask.render_template("dashboard/index.html")
+
+    @app.route("/manifest.json")
+    @app.route("/ghost-bundle.svg")
+    def dashboard_files():
+        """
+        Load dashboard files directly
+        """
+
+        return flask.render_template("dashboard" + flask.request.path)
