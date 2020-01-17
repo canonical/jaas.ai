@@ -18,9 +18,8 @@ RUN --mount=type=cache,target=/usr/local/share/.cache/yarn yarn install
 
 # Build stage: Build dashboard
 # ===
-FROM node:12-slim AS build-dashboard
+FROM node:12 AS build-dashboard
 WORKDIR /srv
-RUN apt-get update && apt-get install --no-install-recommends --yes git ca-certificates
 RUN git clone https://github.com/canonical-web-and-design/jaas-dashboard /srv
 RUN yarn install
 RUN node_modules/.bin/craco build
