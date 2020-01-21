@@ -20,6 +20,8 @@ RUN --mount=type=cache,target=/usr/local/share/.cache/yarn yarn install
 # ===
 FROM node:12 AS build-dashboard
 WORKDIR /srv
+# A cache-busting HTTP call, so we always clone the jaas-dashboard repo
+ADD https://httpbin.org/uuid /dev/null
 RUN git clone https://github.com/canonical-web-and-design/jaas-dashboard /srv
 RUN yarn install
 RUN node_modules/.bin/craco build
