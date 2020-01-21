@@ -3,6 +3,7 @@
 .circleci
 .codecov
 .git
+!.git/refs/heads/master
 .github
 .gitignore
 .vscode
