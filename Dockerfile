@@ -20,8 +20,8 @@ RUN --mount=type=cache,target=/usr/local/share/.cache/yarn yarn install
 # ===
 FROM node:12 AS build-dashboard
 WORKDIR /srv
-# A cache-busting HTTP call, so we always clone the jaas-dashboard repo
-ADD .git/refs/heads/master /dev/null
+# A cache-busting line. .git/index should always be fresh, I hope
+ADD .git/index /dev/null
 RUN git clone https://github.com/canonical-web-and-design/jaas-dashboard /srv
 RUN yarn install
 RUN node_modules/.bin/craco build
@@ -58,7 +58,7 @@ ENV PATH="/root/.local/bin:${PATH}"
 
 # Import code, build assets and mirror list
 ADD . .
-RUN rm -rf package.json yarn.lock .babelrc webpack.config.js .git/refs/heads/master
+RUN rm -rf package.json yarn.lock .babelrc webpack.config.js .git/index
 COPY --from=build-dashboard /srv/build templates/dashboard
 COPY --from=build-js /srv/static/js static/js
 COPY --from=build-css /srv/static/css static/css
