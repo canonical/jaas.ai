@@ -2,7 +2,7 @@ canonicalwebteam.http==1.0.1
 canonicalwebteam.flask_base==0.3.3
 canonicalwebteam.blog==4.0.2
 canonicalwebteam.yaml-responses==1.1.1
-canonicalwebteam.discourse-docs==0.6.4
+canonicalwebteam.discourse-docs==0.10.1
 canonicalwebteam.search==0.2.0
 canonicalwebteam.image-template==1.0.0
 feedparser==5.2.1
