@@ -153,3 +153,4 @@ docs/whats-new: /docs/whats-new-2-6
 docs/help-google/?: /docs/gce-cloud
 support/create: /support
 assets/(?P<path>.*): /static/{path}
+get-started/?: /docs/getting-started-with-juju
