@@ -146,7 +146,8 @@ def blog_feed():
 
 
 @jaasai.route("/robots.txt")
-def static_from_root():
+@jaasai.route("/favicon.ico")
+def assets_from_root():
     return send_from_directory(current_app.static_folder, request.path[1:])
 
 
