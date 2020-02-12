@@ -117,7 +117,7 @@
     const tutorialFeedbackIcons = document.querySelectorAll('.p-tutorial__feedback-icon');
     const tutorialFeedbackResult = document.querySelector('.p-tutorial__feedback-result');
 
-    [].forEach.call(tutorialFeedbackIcons, function(icon) {
+    tutorialFeedbackIcons.forEach(function(icon) {
       icon.addEventListener('click', function(e) {
         const feedbackValue = e.target.getAttribute('data-feedback-value');
         dataLayer.push({
@@ -138,7 +138,7 @@
 <script>
 (function() {
   function setActiveLink(navigationItems) {
-    [].forEach.call(navigationItems, function(item) {
+    navigationItems.forEach(function(item) {
       const link = item.querySelector('.p-tutorial__nav-link');
       if (link.getAttribute('href') === window.location.hash) {
         item.classList.add('is-active');
@@ -161,7 +161,7 @@
   sectionIds = [];
 
   const tutorialSections = document.querySelectorAll('.p-tutorial__content section');
-  [].forEach.call(tutorialSections, function(section) {
+  tutorialSections.forEach(function(section) {
     sectionIds.push(section.id);
   });
 
@@ -187,11 +187,11 @@
   (function() {
     const polls = document.querySelectorAll('.poll');
 
-    [].forEach.call(polls, function(poll) {
+    polls.forEach(function(poll) {
       const answers = poll.querySelectorAll('[type="radio"]');
       const pollId = poll.getAttribute('data-poll-name');
 
-      [].forEach.call(answers, function(answer) {
+      answers.forEach(function(answer) {
         answer.addEventListener('change', function(e) {
           const answerLabel = document.querySelector('label[for="' + e.target.id + '"]');
           const eventLabel = answerLabel.innerText;
