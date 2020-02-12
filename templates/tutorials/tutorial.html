@@ -117,21 +117,23 @@
     const tutorialFeedbackIcons = document.querySelectorAll('.p-tutorial__feedback-icon');
     const tutorialFeedbackResult = document.querySelector('.p-tutorial__feedback-result');
 
-    tutorialFeedbackIcons.forEach(icon => {
-      icon.addEventListener('click', e => {
-        const feedbackValue = e.target.getAttribute('data-feedback-value');
-        dataLayer.push({
-          'event' : 'GAEvent',
-          'eventCategory' : 'feedback',
-          'eventAction' : feedbackValue,
-          'eventLabel' : feedbackValue,
-          'eventValue' : undefined
-        });
+    if (dataLayer) {
+      tutorialFeedbackIcons.forEach(icon => {
+        icon.addEventListener('click', e => {
+          const feedbackValue = e.target.getAttribute('data-feedback-value');
+          dataLayer.push({
+            'event' : 'GAEvent',
+            'eventCategory' : 'feedback',
+            'eventAction' : feedbackValue,
+            'eventLabel' : feedbackValue,
+            'eventValue' : undefined
+          });
 
-        tutorialFeedbackOptions.classList.add('u-hide');
-        tutorialFeedbackResult.classList.remove('u-hide');
+          tutorialFeedbackOptions.classList.add('u-hide');
+          tutorialFeedbackResult.classList.remove('u-hide');
+        });
       });
-    });
+    }
   })();
 </script>
 
@@ -187,26 +189,27 @@
   (function() {
     const polls = document.querySelectorAll('.poll');
 
-    polls.forEach(poll => {
-      const answers = poll.querySelectorAll('[type="radio"]');
-      const pollId = poll.getAttribute('data-poll-name');
+    if (dataLayer) {
+      polls.forEach(poll => {
+        const answers = poll.querySelectorAll('[type="radio"]');
+        const pollId = poll.getAttribute('data-poll-name');
 
-      answers.forEach(answer => {
-        answer.addEventListener('change', e => {
-          const answerLabel = document.querySelector('label[for="' + e.target.id + '"]');
-          const eventLabel = answerLabel.innerText;
-          const eventAction = document.getElementById(pollId).innerText;
-
-          dataLayer.push({
-            'event' : 'GAEvent',
-            'eventCategory' : 'survey',
-            'eventAction' : eventAction,
-            'eventLabel' : eventLabel,
-            'eventValue' : undefined
+        answers.forEach(answer => {
+          answer.addEventListener('change', e => {
+            const answerLabel = document.querySelector('label[for="' + e.target.id + '"]');
+            const eventLabel = answerLabel.innerText;
+            const eventAction = document.getElementById(pollId).innerText;
+            dataLayer.push({
+              'event' : 'GAEvent',
+              'eventCategory' : 'survey',
+              'eventAction' : eventAction,
+              'eventLabel' : eventLabel,
+              'eventValue' : undefined
+            });
           });
         });
       });
-    });
+    }
   })();
 </script>
 
