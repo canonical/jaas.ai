@@ -18,6 +18,7 @@ from webapp.store.models import cs
 from webapp.store.views import jaasstore
 from webapp.template_utils import current_url_with_query, static_url
 from webapp.docs.views import init_docs
+from webapp.tutorials.views import init_tutorials
 
 
 def create_app(testing=False):
@@ -101,6 +102,7 @@ def init_blueprint(app):
     app.register_blueprint(jaasredirects)
     app.register_blueprint(jaasstore)
     init_docs(app, "/docs")
+    init_tutorials(app, "/tutorials")
 
 
 def init_dashboard(app):
