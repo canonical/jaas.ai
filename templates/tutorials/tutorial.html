@@ -178,7 +178,7 @@
     if (match) {
       index = parseInt(match[1]);
       sectionId = sectionIds[index];
-      window.location.hash = '#' + sectionId;
+      window.location.hash = `#${sectionId}`;
       window.location.reload();
     }
   }
