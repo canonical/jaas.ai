@@ -196,7 +196,7 @@
 
         answers.forEach(answer => {
           answer.addEventListener('change', e => {
-            const answerLabel = document.querySelector('label[for="' + e.target.id + '"]');
+            const answerLabel = document.querySelector(`label[for="${e.target.id}"]`);
             const eventLabel = answerLabel.innerText;
             const eventAction = document.getElementById(pollId).innerText;
             dataLayer.push({
