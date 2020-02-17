@@ -3,7 +3,7 @@ canonicalwebteam.flask_base==0.3.3
 canonicalwebteam.blog==4.0.2
 canonicalwebteam.yaml-responses==1.1.1
 canonicalwebteam.discourse-docs==0.11.0
-canonicalwebteam.search==0.2.0
+canonicalwebteam.search==0.2.1
 canonicalwebteam.image-template==1.0.0
 feedparser==5.2.1
 Flask-Testing==0.7.1

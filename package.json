@@ -17,26 +17,26 @@
     "watch-js": "watch -p 'static/js/src/**/*.js' -c 'yarn run build-js'"
   },
   "dependencies": {
-    "@babel/core": "7.8.3",
-    "@babel/preset-env": "7.8.3",
+    "@babel/core": "7.8.4",
+    "@babel/preset-env": "7.8.4",
     "@canonical/cookie-policy": "2.0.2",
     "@canonical/global-nav": "2.4.0",
-    "@sentry/browser": "5.11.1",
+    "@sentry/browser": "5.12.1",
     "autoprefixer": "9.7.4",
     "babel-loader": "8.0.6",
     "braces": "3.0.2",
-    "concurrently": "5.0.2",
+    "concurrently": "5.1.0",
     "node-sass": "4.13.1",
     "postcss-cli": "7.1.0",
-    "vanilla-framework": "2.5.0",
+    "vanilla-framework": "2.6.0",
     "watch-cli": "0.2.3",
-    "webpack": "4.41.5",
-    "webpack-cli": "3.3.10"
+    "webpack": "4.41.6",
+    "webpack-cli": "3.3.11"
   },
   "devDependencies": {
     "prettier": "1.19.1",
-    "stylelint": "13.0.0",
-    "stylelint-config-standard": "19.0.0",
+    "stylelint": "13.1.0",
+    "stylelint-config-standard": "20.0.0",
     "stylelint-order": "4.0.0"
   },
   "resolutions": {
