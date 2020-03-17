@@ -6,4 +6,5 @@ external_urls = {
     "gui": "https://jujucharms.com/new/",
     "issues": "https://github.com/canonical-web-and-design/jaas.ai/issues",
     "freenode": "http://webchat.freenode.net/?channels=%23juju",
+    "docs": "https://juju.is/docs",
 }
