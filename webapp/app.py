@@ -119,6 +119,7 @@ def init_dashboard(app):
 
         return flask.render_template("dashboard/index.html")
 
+    @app.route("/config.js")
     @app.route("/manifest.json")
     @app.route("/ghost-bundle.svg")
     def dashboard_files():
