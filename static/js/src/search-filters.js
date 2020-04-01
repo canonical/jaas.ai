@@ -6,21 +6,27 @@
 function _searchChangeFilter(type, value) {
   const url = window.location.href.split('?')[0];
   const queries = {};
-  window.location.search.substr(1).split('&').forEach(ele => {
-    const parts = ele.split('=');
-    if (parts[0]) {
-      queries[parts[0]] = parts[1];
-    }
-  });
+  window.location.search
+    .substr(1)
+    .split('&')
+    .forEach((ele) => {
+      const parts = ele.split('=');
+      if (parts[0]) {
+        queries[parts[0]] = parts[1];
+      }
+    });
   // No need to change the url if the filter value is already selected.
   if (value !== queries[type]) {
     queries[type] = value;
-    const queryString = Object.keys(queries).map(key => `${key}=${queries[key]}`).join('&');
+    const queryString = Object.keys(queries)
+      .map((key) => `${key}=${queries[key]}`)
+      .join('&');
     window.location = `${url}?${queryString}`;
   }
 }
-document.querySelector('.js-sort-select')
-  .addEventListener('change', e => _searchChangeFilter('sort', e.target.value));
+document
+  .querySelector('.js-sort-select')
+  .addEventListener('change', (e) => _searchChangeFilter('sort', e.target.value));
 
 function toggleMenu(element, show) {
   element.setAttribute('aria-expanded', show);
@@ -32,8 +38,8 @@ function toggleMenu(element, show) {
 
 function setupContextualMenuListeners(contextualMenuToggleSelector) {
   const toggles = document.querySelectorAll(contextualMenuToggleSelector);
-  toggles.forEach(toggle => {
-    toggle.addEventListener('mousedown', e => {
+  toggles.forEach((toggle) => {
+    toggle.addEventListener('mousedown', (e) => {
       e.preventDefault();
       const target = e.target;
       target.blur();
@@ -42,8 +48,8 @@ function setupContextualMenuListeners(contextualMenuToggleSelector) {
       toggleMenu(target, !menuAlreadyOpen);
     });
   });
-  document.addEventListener('click', e => {
-    toggles.forEach(toggle => {
+  document.addEventListener('click', (e) => {
+    toggles.forEach((toggle) => {
       const contextualMenu = document.querySelector(toggle.getAttribute('aria-controls'));
       const clickOutside = !(toggle.contains(e.target) || contextualMenu.contains(e.target));
       if (clickOutside) {
@@ -52,10 +58,10 @@ function setupContextualMenuListeners(contextualMenuToggleSelector) {
     });
   });
   var oldKeyDown = document.onkeydown;
-  document.onkeydown = e => {
+  document.onkeydown = (e) => {
     e = e || window.event;
     if (e.keyCode === 27) {
-      toggles.forEach(toggle => {
+      toggles.forEach((toggle) => {
         toggleMenu(toggle, false);
       });
     }

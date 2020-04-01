@@ -3,7 +3,7 @@
   @param {HTMLElement} container The main container to type in
   @param {HTMLElement} commentContainer the container to add comments
 */
-window.app.cliTyper = function(container, commentContainer) {
+window.app.cliTyper = function (container, commentContainer) {
   var cli = [
     'juju clouds',
     'juju add-credential aws-personal',
@@ -23,7 +23,7 @@ window.app.cliTyper = function(container, commentContainer) {
     'juju add-unit jenkins-slave -n 3',
     'juju add-user sarah',
     'juju grant sarah read prod-california',
-    'juju add-cloud mystack mystack-config.yaml'
+    'juju add-cloud mystack mystack-config.yaml',
   ];
 
   // For future decorations of the CLI
@@ -46,7 +46,7 @@ window.app.cliTyper = function(container, commentContainer) {
     'Increased demand? Bring up 3 more nodes...',
     'Juju is multi-user',
     false,
-    'Use your own private cloud - including OpenStack'
+    'Use your own private cloud - including OpenStack',
   ];
 
   var RESET_SPEED = 1000;
@@ -126,7 +126,7 @@ window.app.cliTyper = function(container, commentContainer) {
     var speed = BASE_SPEED + Math.ceil(Math.random() * SPEED_MODIFIER);
     var currentText = current;
     if (typeof change === 'string' && change.indexOf('#') === 0) {
-      comment(true, false, function() {
+      comment(true, false, function () {
         comment(false, change.substr(1));
       });
     } else if (change === -1) {
@@ -144,10 +144,10 @@ window.app.cliTyper = function(container, commentContainer) {
 
     cliEle.innerHTML = html;
 
-    var next = (function() {
+    var next = (function () {
       var _changes = changes;
 
-      return function() {
+      return function () {
         typeIt(_changes, original);
       };
     })();

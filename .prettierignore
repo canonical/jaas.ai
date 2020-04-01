@@ -5,3 +5,5 @@ Dockerfile
 run
 entrypoint
 yarn.lock
+global-nav.js
+highlight.pack.js
