@@ -12,7 +12,7 @@ const copySnippet = () => {
     for (var codeSnippetAction of codeSnippetActions) {
       codeSnippetAction.addEventListener(
         'click',
-        function() {
+        function () {
           const clipboardValue = this.previousSibling.previousSibling.value;
           copyToClipboard(clipboardValue);
         },
@@ -27,7 +27,7 @@ const copySnippet = () => {
     @param str {String} String to be copied to clipboard
     @static
   **/
-  const copyToClipboard = str => {
+  const copyToClipboard = (str) => {
     const el = document.createElement('textarea'); // Create a <textarea> element
     el.value = str; // Set its value to the string that you want copied
     el.setAttribute('readonly', ''); // Make it readonly to be tamper-proof
