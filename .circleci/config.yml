@@ -55,6 +55,16 @@ jobs:
       - run:
           name: Lint scss with stylelint
           command: yarn run lint-scss
+  js-lint:
+    <<: *defaults
+    steps:
+      - checkout
+      - run:
+          name: Install dependencies
+          command: yarn
+      - run:
+          name: Lint js with eslint
+          command: yarn run lint-js
   test-python:
     <<: *defaults
     steps:
@@ -80,7 +90,7 @@ jobs:
       - run: yarn
       - run:
           name: Run tests
-          command: yarn prettier --check 'static/**/*'
+          command: yarn run check-prettier
       - save_cache:
           key: yarn-{{ checksum "yarn.lock" }}
           paths:
@@ -93,5 +103,6 @@ workflows:
       - check-build
       - python-lint
       - scss-lint
+      - js-lint
       - test-python
       - check-prettier

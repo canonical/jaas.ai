@@ -1,32 +1,13 @@
 /**
   Allows users to click button on code snippet pattern to copy contents to clipboard
-**/
+* */
 const copySnippet = () => {
   /**
-    Activate copy button on code snippets
-    @method copyCodeSnippets.instantiateCopyButtons
-    @static
-  **/
-  const instantiateCopyButtons = () => {
-    var codeSnippetActions = document.querySelectorAll('.p-code-copyable__action');
-    for (var codeSnippetAction of codeSnippetActions) {
-      codeSnippetAction.addEventListener(
-        'click',
-        function () {
-          const clipboardValue = this.previousSibling.previousSibling.value;
-          copyToClipboard(clipboardValue);
-        },
-        false
-      );
-    }
-  };
-
-  /**
     Copies string to clipboard
-    @method copyCodeSnippets.copyToClipboard
+    @method copySnippet.copyToClipboard
     @param str {String} String to be copied to clipboard
     @static
-  **/
+  * */
   const copyToClipboard = (str) => {
     const el = document.createElement('textarea'); // Create a <textarea> element
     el.value = str; // Set its value to the string that you want copied
@@ -46,6 +27,25 @@ const copySnippet = () => {
       document.getSelection().removeAllRanges(); // Unselect everything on the HTML document
       document.getSelection().addRange(selected); // Restore the original selection
     }
+  };
+
+  /**
+    Activate copy button on code snippets
+    @method copySnippet.instantiateCopyButtons
+    @static
+  * */
+  const instantiateCopyButtons = () => {
+    const codeSnippetActions = document.querySelectorAll('.p-code-copyable__action');
+    codeSnippetActions.forEach((codeSnippetAction) => {
+      codeSnippetAction.addEventListener(
+        'click',
+        () => {
+          const clipboardValue = this.previousSibling.previousSibling.value;
+          copyToClipboard(clipboardValue);
+        },
+        false
+      );
+    });
   };
 
   // Check to ensure code snippet elements exist on the page

@@ -3,7 +3,7 @@
   @param {String} type the type of filter to change.
   @param {String} value the new filter value.
 */
-function _searchChangeFilter(type, value) {
+function searchChangeFilter(type, value) {
   const url = window.location.href.split('?')[0];
   const queries = {};
   window.location.search
@@ -12,6 +12,7 @@ function _searchChangeFilter(type, value) {
     .forEach((ele) => {
       const parts = ele.split('=');
       if (parts[0]) {
+        // eslint-disable-next-line prefer-destructuring
         queries[parts[0]] = parts[1];
       }
     });
@@ -26,7 +27,7 @@ function _searchChangeFilter(type, value) {
 }
 document
   .querySelector('.js-sort-select')
-  .addEventListener('change', (e) => _searchChangeFilter('sort', e.target.value));
+  .addEventListener('change', (e) => searchChangeFilter('sort', e.target.value));
 
 function toggleMenu(element, show) {
   element.setAttribute('aria-expanded', show);
@@ -42,7 +43,7 @@ function setupContextualMenuListeners(contextualMenuToggleSelector) {
   toggles.forEach((toggle) => {
     toggle.addEventListener('mousedown', (e) => {
       e.preventDefault();
-      const target = e.target;
+      const {target} = e;
       target.blur();
       document.querySelector('.p-contextual-menu__dropdown').focus();
       const menuAlreadyOpen = target.getAttribute('aria-expanded') === 'true';
@@ -58,7 +59,7 @@ function setupContextualMenuListeners(contextualMenuToggleSelector) {
       }
     });
   });
-  var oldKeyDown = document.onkeydown;
+  const oldKeyDown = document.onkeydown;
   document.onkeydown = (e) => {
     e = e || window.event;
     if (e.keyCode === 27) {

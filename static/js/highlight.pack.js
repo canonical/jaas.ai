@@ -1,11 +1,11 @@
 /*! highlight.js v9.12.0 | BSD3 License | git.io/hljslicense */
 !(function (e) {
-  var n = ('object' == typeof window && window) || ('object' == typeof self && self);
-  'undefined' != typeof exports
+  const n = (typeof window === 'object' && window) || (typeof self === 'object' && self);
+  typeof exports !== 'undefined'
     ? e(exports)
     : n &&
       ((n.hljs = e({})),
-      'function' == typeof define &&
+      typeof define === 'function' &&
         define.amd &&
         define([], function () {
           return n.hljs;
@@ -18,27 +18,27 @@
     return e.nodeName.toLowerCase();
   }
   function r(e, n) {
-    var t = e && e.exec(n);
-    return t && 0 === t.index;
+    const t = e && e.exec(n);
+    return t && t.index === 0;
   }
   function a(e) {
     return k.test(e);
   }
   function i(e) {
-    var n,
-      t,
-      r,
-      i,
-      o = e.className + ' ';
+    let n;
+      let t;
+      let r;
+      let i;
+      let o = `${e.className  } `;
     if (((o += e.parentNode ? e.parentNode.className : ''), (t = B.exec(o))))
       return w(t[1]) ? t[1] : 'no-highlight';
     for (o = o.split(/\s+/), n = 0, r = o.length; r > n; n++)
       if (((i = o[n]), a(i) || w(i))) return i;
   }
   function o(e) {
-    var n,
-      t = {},
-      r = Array.prototype.slice.call(arguments, 1);
+    let n;
+      const t = {};
+      const r = Array.prototype.slice.call(arguments, 1);
     for (n in e) t[n] = e[n];
     return (
       r.forEach(function (e) {
@@ -48,13 +48,13 @@
     );
   }
   function u(e) {
-    var n = [];
+    const n = [];
     return (
       (function r(e, a) {
-        for (var i = e.firstChild; i; i = i.nextSibling)
-          3 === i.nodeType
+        for (let i = e.firstChild; i; i = i.nextSibling)
+          i.nodeType === 3
             ? (a += i.nodeValue.length)
-            : 1 === i.nodeType &&
+            : i.nodeType === 1 &&
               (n.push({event: 'start', offset: a, node: i}),
               (a = r(i, a)),
               t(i).match(/br|hr|img|input/) || n.push({event: 'stop', offset: a, node: i}));
@@ -70,7 +70,7 @@
           ? e[0].offset < r[0].offset
             ? e
             : r
-          : 'start' === r[0].event
+          : r[0].event === 'start'
           ? e
           : r
         : e.length
@@ -79,24 +79,24 @@
     }
     function o(e) {
       function r(e) {
-        return ' ' + e.nodeName + '="' + n(e.value).replace('"', '&quot;') + '"';
+        return ` ${  e.nodeName  }="${  n(e.value).replace('"', '&quot;')  }"`;
       }
-      s += '<' + t(e) + E.map.call(e.attributes, r).join('') + '>';
+      s += `<${  t(e)  }${E.map.call(e.attributes, r).join('')  }>`;
     }
     function u(e) {
-      s += '</' + t(e) + '>';
+      s += `</${  t(e)  }>`;
     }
     function c(e) {
-      ('start' === e.event ? o : u)(e.node);
+      (e.event === 'start' ? o : u)(e.node);
     }
     for (var l = 0, s = '', f = []; e.length || r.length; ) {
-      var g = i();
+      let g = i();
       if (((s += n(a.substring(l, g[0].offset))), (l = g[0].offset), g === e)) {
         f.reverse().forEach(u);
         do c(g.splice(0, 1)[0]), (g = i());
         while (g === e && g.length && g[0].offset === l);
         f.reverse().forEach(o);
-      } else 'start' === g[0].event ? f.push(g[0].node) : f.pop(), c(g.splice(0, 1)[0]);
+      } else g[0].event === 'start' ? f.push(g[0].node) : f.pop(), c(g.splice(0, 1)[0]);
     }
     return s + n(a.substr(l));
   }
@@ -115,20 +115,20 @@
       return (e && e.source) || e;
     }
     function t(t, r) {
-      return new RegExp(n(t), 'm' + (e.cI ? 'i' : '') + (r ? 'g' : ''));
+      return new RegExp(n(t), `m${  e.cI ? 'i' : ''  }${r ? 'g' : ''}`);
     }
     function r(a, i) {
       if (!a.compiled) {
         if (((a.compiled = !0), (a.k = a.k || a.bK), a.k)) {
-          var o = {},
-            u = function (n, t) {
+          const o = {};
+            const u = function (n, t) {
               e.cI && (t = t.toLowerCase()),
                 t.split(' ').forEach(function (e) {
-                  var t = e.split('|');
+                  const t = e.split('|');
                   o[t[0]] = [n, t[1] ? Number(t[1]) : 1];
                 });
             };
-          'string' == typeof a.k
+          typeof a.k === 'string'
             ? u('keyword', a.k)
             : x(a.k).forEach(function (e) {
                 u(e, a.k[e]);
@@ -137,7 +137,7 @@
         }
         (a.lR = t(a.l || /\w+/, !0)),
           i &&
-            (a.bK && (a.b = '\\b(' + a.bK.split(' ').join('|') + ')\\b'),
+            (a.bK && (a.b = `\\b(${  a.bK.split(' ').join('|')  })\\b`),
             a.b || (a.b = /\B|\b/),
             (a.bR = t(a.b)),
             a.e || a.eW || (a.e = /\B|\b/),
@@ -145,21 +145,21 @@
             (a.tE = n(a.e) || ''),
             a.eW && i.tE && (a.tE += (a.e ? '|' : '') + i.tE)),
           a.i && (a.iR = t(a.i)),
-          null == a.r && (a.r = 1),
+          a.r == null && (a.r = 1),
           a.c || (a.c = []),
           (a.c = Array.prototype.concat.apply(
             [],
             a.c.map(function (e) {
-              return l('self' === e ? a : e);
+              return l(e === 'self' ? a : e);
             })
           )),
           a.c.forEach(function (e) {
             r(e, a);
           }),
           a.starts && r(a.starts, i);
-        var c = a.c
+        const c = a.c
           .map(function (e) {
-            return e.bK ? '\\.?(' + e.b + ')\\.?' : e.b;
+            return e.bK ? `\\.?(${  e.b  })\\.?` : e.b;
           })
           .concat([a.tE, a.i])
           .map(n)
@@ -167,7 +167,7 @@
         a.t = c.length
           ? t(c.join('|'), !0)
           : {
-              exec: function () {
+              exec () {
                 return null;
               },
             };
@@ -177,7 +177,7 @@
   }
   function f(e, t, a, i) {
     function o(e, n) {
-      var t, a;
+      let t; let a;
       for (t = 0, a = n.c.length; a > t; t++) if (r(n.c[t].bR, e)) return n.c[t];
     }
     function u(e, n) {
@@ -191,17 +191,17 @@
       return !a && r(n.iR, e);
     }
     function l(e, n) {
-      var t = N.cI ? n[0].toLowerCase() : n[0];
+      const t = N.cI ? n[0].toLowerCase() : n[0];
       return e.k.hasOwnProperty(t) && e.k[t];
     }
     function p(e, n, t, r) {
-      var a = r ? '' : I.classPrefix,
-        i = '<span class="' + a,
-        o = t ? '' : C;
-      return (i += e + '">'), i + n + o;
+      const a = r ? '' : I.classPrefix;
+        let i = `<span class="${  a}`;
+        const o = t ? '' : C;
+      return (i += `${e  }">`), i + n + o;
     }
     function h() {
-      var e, t, r, a;
+      let e; let t; let r; let a;
       if (!E.k) return n(k);
       for (a = '', t = 0, E.lR.lastIndex = 0, r = E.lR.exec(k); r; )
         (a += n(k.substring(t, r.index))),
@@ -212,48 +212,48 @@
       return a + n(k.substr(t));
     }
     function d() {
-      var e = 'string' == typeof E.sL;
+      const e = typeof E.sL === 'string';
       if (e && !y[E.sL]) return n(k);
-      var t = e ? f(E.sL, k, !0, x[E.sL]) : g(k, E.sL.length ? E.sL : void 0);
+      const t = e ? f(E.sL, k, !0, x[E.sL]) : g(k, E.sL.length ? E.sL : void 0);
       return E.r > 0 && (B += t.r), e && (x[E.sL] = t.top), p(t.language, t.value, !1, !0);
     }
     function b() {
-      (L += null != E.sL ? d() : h()), (k = '');
+      (L += E.sL != null ? d() : h()), (k = '');
     }
     function v(e) {
       (L += e.cN ? p(e.cN, '', !0) : ''), (E = Object.create(e, {parent: {value: E}}));
     }
     function m(e, n) {
-      if (((k += e), null == n)) return b(), 0;
-      var t = o(n, E);
+      if (((k += e), n == null)) return b(), 0;
+      const t = o(n, E);
       if (t)
         return (
           t.skip ? (k += n) : (t.eB && (k += n), b(), t.rB || t.eB || (k = n)),
           v(t, n),
           t.rB ? 0 : n.length
         );
-      var r = u(E, n);
+      const r = u(E, n);
       if (r) {
-        var a = E;
+        const a = E;
         a.skip ? (k += n) : (a.rE || a.eE || (k += n), b(), a.eE && (k = n));
         do E.cN && (L += C), E.skip || (B += E.r), (E = E.parent);
         while (E !== r.parent);
         return r.starts && v(r.starts, ''), a.rE ? 0 : n.length;
       }
       if (c(n, E))
-        throw new Error('Illegal lexeme "' + n + '" for mode "' + (E.cN || '<unnamed>') + '"');
+        throw new Error(`Illegal lexeme "${  n  }" for mode "${  E.cN || '<unnamed>'  }"`);
       return (k += n), n.length || 1;
     }
     var N = w(e);
-    if (!N) throw new Error('Unknown language: "' + e + '"');
+    if (!N) throw new Error(`Unknown language: "${  e  }"`);
     s(N);
-    var R,
-      E = i || N,
-      x = {},
-      L = '';
+    let R;
+      var E = i || N;
+      var x = {};
+      var L = '';
     for (R = E; R !== N; R = R.parent) R.cN && (L = p(R.cN, '', !0) + L);
-    var k = '',
-      B = 0;
+    var k = '';
+      var B = 0;
     try {
       for (var M, j, O = 0; ; ) {
         if (((E.t.lastIndex = O), (M = E.t.exec(t)), !M)) break;
@@ -262,17 +262,17 @@
       for (m(t.substr(O)), R = E; R.parent; R = R.parent) R.cN && (L += C);
       return {r: B, value: L, language: e, top: E};
     } catch (T) {
-      if (T.message && -1 !== T.message.indexOf('Illegal')) return {r: 0, value: n(t)};
+      if (T.message && T.message.indexOf('Illegal') !== -1) return {r: 0, value: n(t)};
       throw T;
     }
   }
   function g(e, t) {
     t = t || I.languages || x(y);
-    var r = {r: 0, value: n(e)},
-      a = r;
+    let r = {r: 0, value: n(e)};
+      let a = r;
     return (
       t.filter(w).forEach(function (n) {
-        var t = f(n, e, !1);
+        const t = f(n, e, !1);
         (t.language = n), t.r > a.r && (a = t), t.r > r.r && ((a = r), (r = t));
       }),
       a.language && (r.second_best = a),
@@ -282,7 +282,7 @@
   function p(e) {
     return I.tabReplace || I.useBR
       ? e.replace(M, function (e, n) {
-          return I.useBR && '\n' === e
+          return I.useBR && e === '\n'
             ? '<br>'
             : I.tabReplace
             ? n.replace(/\t/g, I.tabReplace)
@@ -291,21 +291,21 @@
       : e;
   }
   function h(e, n, t) {
-    var r = n ? L[n] : t,
-      a = [e.trim()];
+    const r = n ? L[n] : t;
+      const a = [e.trim()];
     return (
       e.match(/\bhljs\b/) || a.push('hljs'),
-      -1 === e.indexOf(r) && a.push(r),
+      e.indexOf(r) === -1 && a.push(r),
       a.join(' ').trim()
     );
   }
   function d(e) {
-    var n,
-      t,
-      r,
-      o,
-      l,
-      s = i(e);
+    let n;
+      let t;
+      let r;
+      let o;
+      let l;
+      const s = i(e);
     a(s) ||
       (I.useBR
         ? ((n = document.createElementNS('http://www.w3.org/1999/xhtml', 'div')),
@@ -331,7 +331,7 @@
   function v() {
     if (!v.called) {
       v.called = !0;
-      var e = document.querySelectorAll('pre code');
+      const e = document.querySelectorAll('pre code');
       E.forEach.call(e, d);
     }
   }
@@ -339,7 +339,7 @@
     addEventListener('DOMContentLoaded', v, !1), addEventListener('load', v, !1);
   }
   function N(n, t) {
-    var r = (y[n] = t(e));
+    const r = (y[n] = t(e));
     r.aliases &&
       r.aliases.forEach(function (e) {
         L[e] = n;
@@ -351,15 +351,15 @@
   function w(e) {
     return (e = (e || '').toLowerCase()), y[e] || y[L[e]];
   }
-  var E = [],
-    x = Object.keys,
-    y = {},
-    L = {},
-    k = /^(no-?highlight|plain|text)$/i,
-    B = /\blang(?:uage)?-([\w-]+)\b/i,
-    M = /((^(<[^>]+>|\t|)+|(?:\n)))/gm,
-    C = '</span>',
-    I = {classPrefix: 'hljs-', tabReplace: null, useBR: !1, languages: void 0};
+  var E = [];
+    var x = Object.keys;
+    var y = {};
+    var L = {};
+    var k = /^(no-?highlight|plain|text)$/i;
+    var B = /\blang(?:uage)?-([\w-]+)\b/i;
+    var M = /((^(<[^>]+>|\t|)+|(?:\n)))/gm;
+    var C = '</span>';
+    var I = {classPrefix: 'hljs-', tabReplace: null, useBR: !1, languages: void 0};
   return (
     (e.highlight = f),
     (e.highlightAuto = g),
@@ -386,7 +386,7 @@
       b: /\b(a|an|the|are|I'm|isn't|don't|doesn't|won't|but|just|should|pretty|simply|enough|gonna|going|wtf|so|such|will|you|your|they|like|more)\b/,
     }),
     (e.C = function (n, t, r) {
-      var a = e.inherit({cN: 'comment', b: n, e: t, c: []}, r || {});
+      const a = e.inherit({cN: 'comment', b: n, e: t, c: []}, r || {});
       return (
         a.c.push(e.PWM), a.c.push({cN: 'doctag', b: '(?:TODO|FIXME|NOTE|BUG|XXX):', r: 0}), a
       );
@@ -400,8 +400,8 @@
     (e.CSSNM = {
       cN: 'number',
       b:
-        e.NR +
-        '(%|em|ex|ch|rem|vw|vh|vmin|vmax|cm|mm|in|pt|pc|px|deg|grad|rad|turn|s|ms|Hz|kHz|dpi|dpcm|dppx)?',
+        `${e.NR 
+        }(%|em|ex|ch|rem|vw|vh|vmin|vmax|cm|mm|in|pt|pc|px|deg|grad|rad|turn|s|ms|Hz|kHz|dpi|dpcm|dppx)?`,
       r: 0,
     }),
     (e.RM = {
@@ -413,13 +413,13 @@
     }),
     (e.TM = {cN: 'title', b: e.IR, r: 0}),
     (e.UTM = {cN: 'title', b: e.UIR, r: 0}),
-    (e.METHOD_GUARD = {b: '\\.\\s*' + e.UIR, r: 0}),
+    (e.METHOD_GUARD = {b: `\\.\\s*${  e.UIR}`, r: 0}),
     e
   );
 });
 hljs.registerLanguage('xml', function (s) {
-  var e = '[A-Za-z0-9\\._:-]+',
-    t = {
+  const e = '[A-Za-z0-9\\._:-]+';
+    const t = {
       eW: !0,
       i: /</,
       r: 0,
@@ -514,19 +514,19 @@ hljs.registerLanguage('markdown', function (e) {
   };
 });
 hljs.registerLanguage('javascript', function (e) {
-  var r = '[A-Za-z$_][0-9A-Za-z$_]*',
-    t = {
+  const r = '[A-Za-z$_][0-9A-Za-z$_]*';
+    const t = {
       keyword:
         'in of if for while finally var new function do return void else break catch instanceof with throw case default try this switch continue typeof delete let yield const export super debugger as async await static import from as',
       literal: 'true false null undefined NaN Infinity',
       built_in:
         'eval isFinite isNaN parseFloat parseInt decodeURI decodeURIComponent encodeURI encodeURIComponent escape unescape Object Function Boolean Error EvalError InternalError RangeError ReferenceError StopIteration SyntaxError TypeError URIError Number Math Date String RegExp Array Float32Array Float64Array Int16Array Int32Array Int8Array Uint16Array Uint32Array Uint8Array Uint8ClampedArray ArrayBuffer DataView JSON Intl arguments require module console window document Symbol Set Map WeakSet WeakMap Proxy Reflect Promise',
-    },
-    a = {cN: 'number', v: [{b: '\\b(0[bB][01]+)'}, {b: '\\b(0[oO][0-7]+)'}, {b: e.CNR}], r: 0},
-    n = {cN: 'subst', b: '\\$\\{', e: '\\}', k: t, c: []},
-    c = {cN: 'string', b: '`', e: '`', c: [e.BE, n]};
+    };
+    const a = {cN: 'number', v: [{b: '\\b(0[bB][01]+)'}, {b: '\\b(0[oO][0-7]+)'}, {b: e.CNR}], r: 0};
+    const n = {cN: 'subst', b: '\\$\\{', e: '\\}', k: t, c: []};
+    const c = {cN: 'string', b: '`', e: '`', c: [e.BE, n]};
   n.c = [e.ASM, e.QSM, c, a, e.RM];
-  var s = n.c.concat([e.CBCM, e.CLCM]);
+  const s = n.c.concat([e.CBCM, e.CLCM]);
   return {
     aliases: ['js', 'jsx'],
     k: t,
@@ -539,9 +539,9 @@ hljs.registerLanguage('javascript', function (e) {
       e.CLCM,
       e.CBCM,
       a,
-      {b: /[{,]\s*/, r: 0, c: [{b: r + '\\s*:', rB: !0, r: 0, c: [{cN: 'attr', b: r, r: 0}]}]},
+      {b: /[{,]\s*/, r: 0, c: [{b: `${r  }\\s*:`, rB: !0, r: 0, c: [{cN: 'attr', b: r, r: 0}]}]},
       {
-        b: '(' + e.RSR + '|\\b(case|return|throw)\\b)\\s*',
+        b: `(${  e.RSR  }|\\b(case|return|throw)\\b)\\s*`,
         k: 'return throw case',
         c: [
           e.CLCM,
@@ -549,7 +549,7 @@ hljs.registerLanguage('javascript', function (e) {
           e.RM,
           {
             cN: 'function',
-            b: '(\\(.*?\\)|' + r + ')\\s*=>',
+            b: `(\\(.*?\\)|${  r  })\\s*=>`,
             rB: !0,
             e: '\\s*=>',
             c: [
@@ -630,8 +630,8 @@ hljs.registerLanguage('diff', function (e) {
   };
 });
 hljs.registerLanguage('nginx', function (e) {
-  var r = {cN: 'variable', v: [{b: /\$\d+/}, {b: /\$\{/, e: /}/}, {b: '[\\$\\@]' + e.UIR}]},
-    b = {
+  const r = {cN: 'variable', v: [{b: /\$\d+/}, {b: /\$\{/, e: /}/}, {b: `[\\$\\@]${  e.UIR}`}]};
+    const b = {
       eW: !0,
       l: '[a-z/_]+',
       k: {
@@ -670,21 +670,21 @@ hljs.registerLanguage('nginx', function (e) {
     aliases: ['nginxconf'],
     c: [
       e.HCM,
-      {b: e.UIR + '\\s+{', rB: !0, e: '{', c: [{cN: 'section', b: e.UIR}], r: 0},
-      {b: e.UIR + '\\s', e: ';|{', rB: !0, c: [{cN: 'attribute', b: e.UIR, starts: b}], r: 0},
+      {b: `${e.UIR  }\\s+{`, rB: !0, e: '{', c: [{cN: 'section', b: e.UIR}], r: 0},
+      {b: `${e.UIR  }\\s`, e: ';|{', rB: !0, c: [{cN: 'attribute', b: e.UIR, starts: b}], r: 0},
     ],
     i: '[^\\s\\}]',
   };
 });
 hljs.registerLanguage('bash', function (e) {
-  var t = {cN: 'variable', v: [{b: /\$[\w\d#@][\w\d_]*/}, {b: /\$\{(.*?)}/}]},
-    s = {
+  const t = {cN: 'variable', v: [{b: /\$[\w\d#@][\w\d_]*/}, {b: /\$\{(.*?)}/}]};
+    const s = {
       cN: 'string',
       b: /"/,
       e: /"/,
       c: [e.BE, t, {cN: 'variable', b: /\$\(/, e: /\)/, c: [e.BE]}],
-    },
-    a = {cN: 'string', b: /'/, e: /'/};
+    };
+    const a = {cN: 'string', b: /'/, e: /'/};
   return {
     aliases: ['sh', 'zsh'],
     l: /\b-?[a-z\._]+\b/,
@@ -712,13 +712,13 @@ hljs.registerLanguage('bash', function (e) {
   };
 });
 hljs.registerLanguage('java', function (e) {
-  var a = '[À-ʸa-zA-Z_$][À-ʸa-zA-Z_$0-9]*',
-    t = a + '(<' + a + '(\\s*,\\s*' + a + ')*>)?',
-    r =
-      'false synchronized int abstract float private char boolean static null if const for true while long strictfp finally protected import native final void enum else break transient catch instanceof byte super volatile case assert short package default double public try this switch continue throws protected public private module requires exports do',
-    s =
-      '\\b(0[bB]([01]+[01_]+[01]+|[01]+)|0[xX]([a-fA-F0-9]+[a-fA-F0-9_]+[a-fA-F0-9]+|[a-fA-F0-9]+)|(([\\d]+[\\d_]+[\\d]+|[\\d]+)(\\.([\\d]+[\\d_]+[\\d]+|[\\d]+))?|\\.([\\d]+[\\d_]+[\\d]+|[\\d]+))([eE][-+]?\\d+)?)[lLfF]?',
-    c = {cN: 'number', b: s, r: 0};
+  const a = '[À-ʸa-zA-Z_$][À-ʸa-zA-Z_$0-9]*';
+    const t = `${a  }(<${  a  }(\\s*,\\s*${  a  })*>)?`;
+    const r =
+      'false synchronized int abstract float private char boolean static null if const for true while long strictfp finally protected import native final void enum else break transient catch instanceof byte super volatile case assert short package default double public try this switch continue throws protected public private module requires exports do';
+    const s =
+      '\\b(0[bB]([01]+[01_]+[01]+|[01]+)|0[xX]([a-fA-F0-9]+[a-fA-F0-9_]+[a-fA-F0-9]+|[a-fA-F0-9]+)|(([\\d]+[\\d_]+[\\d]+|[\\d]+)(\\.([\\d]+[\\d_]+[\\d]+|[\\d]+))?|\\.([\\d]+[\\d_]+[\\d]+|[\\d]+))([eE][-+]?\\d+)?)[lLfF]?';
+    const c = {cN: 'number', b: s, r: 0};
   return {
     aliases: ['jsp'],
     k: r,
@@ -747,13 +747,13 @@ hljs.registerLanguage('java', function (e) {
       {bK: 'new throw return else', r: 0},
       {
         cN: 'function',
-        b: '(' + t + '\\s+)+' + e.UIR + '\\s*\\(',
+        b: `(${  t  }\\s+)+${  e.UIR  }\\s*\\(`,
         rB: !0,
         e: /[{;=]/,
         eE: !0,
         k: r,
         c: [
-          {b: e.UIR + '\\s*\\(', rB: !0, r: 0, c: [e.UTM]},
+          {b: `${e.UIR  }\\s*\\(`, rB: !0, r: 0, c: [e.UTM]},
           {cN: 'params', b: /\(/, e: /\)/, k: r, r: 0, c: [e.ASM, e.QSM, e.CNM, e.CBCM]},
           e.CLCM,
           e.CBCM,
@@ -765,19 +765,19 @@ hljs.registerLanguage('java', function (e) {
   };
 });
 hljs.registerLanguage('perl', function (e) {
-  var t =
-      'getpwent getservent quotemeta msgrcv scalar kill dbmclose undef lc ma syswrite tr send umask sysopen shmwrite vec qx utime local oct semctl localtime readpipe do return format read sprintf dbmopen pop getpgrp not getpwnam rewinddir qqfileno qw endprotoent wait sethostent bless s|0 opendir continue each sleep endgrent shutdown dump chomp connect getsockname die socketpair close flock exists index shmgetsub for endpwent redo lstat msgctl setpgrp abs exit select print ref gethostbyaddr unshift fcntl syscall goto getnetbyaddr join gmtime symlink semget splice x|0 getpeername recv log setsockopt cos last reverse gethostbyname getgrnam study formline endhostent times chop length gethostent getnetent pack getprotoent getservbyname rand mkdir pos chmod y|0 substr endnetent printf next open msgsnd readdir use unlink getsockopt getpriority rindex wantarray hex system getservbyport endservent int chr untie rmdir prototype tell listen fork shmread ucfirst setprotoent else sysseek link getgrgid shmctl waitpid unpack getnetbyname reset chdir grep split require caller lcfirst until warn while values shift telldir getpwuid my getprotobynumber delete and sort uc defined srand accept package seekdir getprotobyname semop our rename seek if q|0 chroot sysread setpwent no crypt getc chown sqrt write setnetent setpriority foreach tie sin msgget map stat getlogin unless elsif truncate exec keys glob tied closedirioctl socket readlink eval xor readline binmode setservent eof ord bind alarm pipe atan2 getgrent exp time push setgrent gt lt or ne m|0 break given say state when',
-    r = {cN: 'subst', b: '[$@]\\{', e: '\\}', k: t},
-    s = {b: '->{', e: '}'},
-    n = {
+  const t =
+      'getpwent getservent quotemeta msgrcv scalar kill dbmclose undef lc ma syswrite tr send umask sysopen shmwrite vec qx utime local oct semctl localtime readpipe do return format read sprintf dbmopen pop getpgrp not getpwnam rewinddir qqfileno qw endprotoent wait sethostent bless s|0 opendir continue each sleep endgrent shutdown dump chomp connect getsockname die socketpair close flock exists index shmgetsub for endpwent redo lstat msgctl setpgrp abs exit select print ref gethostbyaddr unshift fcntl syscall goto getnetbyaddr join gmtime symlink semget splice x|0 getpeername recv log setsockopt cos last reverse gethostbyname getgrnam study formline endhostent times chop length gethostent getnetent pack getprotoent getservbyname rand mkdir pos chmod y|0 substr endnetent printf next open msgsnd readdir use unlink getsockopt getpriority rindex wantarray hex system getservbyport endservent int chr untie rmdir prototype tell listen fork shmread ucfirst setprotoent else sysseek link getgrgid shmctl waitpid unpack getnetbyname reset chdir grep split require caller lcfirst until warn while values shift telldir getpwuid my getprotobynumber delete and sort uc defined srand accept package seekdir getprotobyname semop our rename seek if q|0 chroot sysread setpwent no crypt getc chown sqrt write setnetent setpriority foreach tie sin msgget map stat getlogin unless elsif truncate exec keys glob tied closedirioctl socket readlink eval xor readline binmode setservent eof ord bind alarm pipe atan2 getgrent exp time push setgrent gt lt or ne m|0 break given say state when';
+    const r = {cN: 'subst', b: '[$@]\\{', e: '\\}', k: t};
+    const s = {b: '->{', e: '}'};
+    const n = {
       v: [
         {b: /\$\d/},
         {b: /[\$%@](\^\w\b|#\w+(::\w+)*|{\w+}|\w+(::\w*)*)/},
         {b: /[\$%@][^\s\w{]/, r: 0},
       ],
-    },
-    i = [e.BE, r, n],
-    o = [
+    };
+    const i = [e.BE, r, n];
+    const o = [
       n,
       e.HCM,
       e.C('^\\=\\w', '\\=cut', {eW: !0}),
@@ -805,7 +805,7 @@ hljs.registerLanguage('perl', function (e) {
         r: 0,
       },
       {
-        b: '(\\/\\/|' + e.RSR + '|\\b(split|return|print|reverse|grep)\\b)\\s*',
+        b: `(\\/\\/|${  e.RSR  }|\\b(split|return|print|reverse|grep)\\b)\\s*`,
         k: 'split return print reverse grep',
         r: 0,
         c: [
@@ -826,15 +826,15 @@ hljs.registerLanguage('perl', function (e) {
   return (r.c = o), (s.c = o), {aliases: ['pl', 'pm'], l: /[\w\.]+/, k: t, c: o};
 });
 hljs.registerLanguage('coffeescript', function (e) {
-  var c = {
+  const c = {
       keyword:
         'in if for while finally new do return else break catch instanceof throw try this switch continue typeof delete debugger super yield import export from as default await then unless until loop of by when and or is isnt not',
       literal: 'true false null undefined yes no on off',
       built_in: 'npm require console print module global window document',
-    },
-    n = '[A-Za-z$_][0-9A-Za-z$_]*',
-    r = {cN: 'subst', b: /#\{/, e: /}/, k: c},
-    i = [
+    };
+    const n = '[A-Za-z$_][0-9A-Za-z$_]*';
+    const r = {cN: 'subst', b: /#\{/, e: /}/, k: c};
+    const i = [
       e.BNM,
       e.inherit(e.CNM, {starts: {e: '(\\s*/)?', r: 0}}),
       {
@@ -854,7 +854,7 @@ hljs.registerLanguage('coffeescript', function (e) {
           {b: /\/(?![ *])(\\\/|.)*?\/[gim]*(?=\W|$)/},
         ],
       },
-      {b: '@' + n},
+      {b: `@${  n}`},
       {
         sL: 'javascript',
         eB: !0,
@@ -866,9 +866,9 @@ hljs.registerLanguage('coffeescript', function (e) {
       },
     ];
   r.c = i;
-  var s = e.inherit(e.TM, {b: n}),
-    t = '(\\(.*\\))?\\s*\\B[-=]>',
-    o = {
+  const s = e.inherit(e.TM, {b: n});
+    const t = '(\\(.*\\))?\\s*\\B[-=]>';
+    const o = {
       cN: 'params',
       b: '\\([^\\(]',
       rB: !0,
@@ -881,7 +881,7 @@ hljs.registerLanguage('coffeescript', function (e) {
     c: i.concat([
       e.C('###', '###'),
       e.HCM,
-      {cN: 'function', b: '^\\s*' + n + '\\s*=\\s*' + t, e: '[-=]>', rB: !0, c: [s, o]},
+      {cN: 'function', b: `^\\s*${  n  }\\s*=\\s*${  t}`, e: '[-=]>', rB: !0, c: [s, o]},
       {b: /[:\(,=]\s*/, r: 0, c: [{cN: 'function', b: t, e: '[-=]>', rB: !0, c: [o]}]},
       {
         cN: 'class',
@@ -890,26 +890,26 @@ hljs.registerLanguage('coffeescript', function (e) {
         i: /[:="\[\]]/,
         c: [{bK: 'extends', eW: !0, i: /[:="\[\]]/, c: [s]}, s],
       },
-      {b: n + ':', e: ':', rB: !0, rE: !0, r: 0},
+      {b: `${n  }:`, e: ':', rB: !0, rE: !0, r: 0},
     ]),
   };
 });
 hljs.registerLanguage('ruby', function (e) {
-  var b = '[a-zA-Z_]\\w*[!?=]?|[-+~]\\@|<<|>>|=~|===?|<=>|[<>]=?|\\*\\*|[-/+%^&*~`|]|\\[\\]=?',
-    r = {
+  const b = '[a-zA-Z_]\\w*[!?=]?|[-+~]\\@|<<|>>|=~|===?|<=>|[<>]=?|\\*\\*|[-/+%^&*~`|]|\\[\\]=?';
+    const r = {
       keyword:
         'and then defined module in return redo if BEGIN retry end for self when next until do begin unless END rescue else break undef not super class case require yield alias while ensure elsif or include attr_reader attr_writer attr_accessor',
       literal: 'true false nil',
-    },
-    c = {cN: 'doctag', b: '@[A-Za-z]+'},
-    a = {b: '#<', e: '>'},
-    s = [
+    };
+    const c = {cN: 'doctag', b: '@[A-Za-z]+'};
+    const a = {b: '#<', e: '>'};
+    const s = [
       e.C('#', '$', {c: [c]}),
       e.C('^\\=begin', '^\\=end', {c: [c], r: 10}),
       e.C('^__END__', '\\n$'),
-    ],
-    n = {cN: 'subst', b: '#\\{', e: '}', k: r},
-    t = {
+    ];
+    const n = {cN: 'subst', b: '#\\{', e: '}', k: r};
+    const t = {
       cN: 'string',
       c: [e.BE, n],
       v: [
@@ -927,9 +927,9 @@ hljs.registerLanguage('ruby', function (e) {
         {b: /\B\?(\\\d{1,3}|\\x[A-Fa-f0-9]{1,2}|\\u[A-Fa-f0-9]{4}|\\?\S)\b/},
         {b: /<<(-?)\w+$/, e: /^\s*\w+$/},
       ],
-    },
-    i = {cN: 'params', b: '\\(', e: '\\)', endsParent: !0, k: r},
-    d = [
+    };
+    const i = {cN: 'params', b: '\\(', e: '\\)', endsParent: !0, k: r};
+    const d = [
       t,
       a,
       {
@@ -939,13 +939,13 @@ hljs.registerLanguage('ruby', function (e) {
         i: /=/,
         c: [
           e.inherit(e.TM, {b: '[A-Za-z_]\\w*(::\\w+)*(\\?|\\!)?'}),
-          {b: '<\\s*', c: [{b: '(' + e.IR + '::)?' + e.IR}]},
+          {b: '<\\s*', c: [{b: `(${  e.IR  }::)?${  e.IR}`}]},
         ].concat(s),
       },
-      {cN: 'function', bK: 'def', e: '$|;', c: [e.inherit(e.TM, {b: b}), i].concat(s)},
-      {b: e.IR + '::'},
-      {cN: 'symbol', b: e.UIR + '(\\!|\\?)?:', r: 0},
-      {cN: 'symbol', b: ':(?!\\s)', c: [t, {b: b}], r: 0},
+      {cN: 'function', bK: 'def', e: '$|;', c: [e.inherit(e.TM, {b}), i].concat(s)},
+      {b: `${e.IR  }::`},
+      {cN: 'symbol', b: `${e.UIR  }(\\!|\\?)?:`, r: 0},
+      {cN: 'symbol', b: ':(?!\\s)', c: [t, {b}], r: 0},
       {
         cN: 'number',
         b: '(\\b0[0-7_]+)|(\\b0x[0-9a-fA-F_]+)|(\\b[1-9][0-9_]*(\\.[0-9_]+)?)|[0_]\\b',
@@ -954,7 +954,7 @@ hljs.registerLanguage('ruby', function (e) {
       {b: '(\\$\\W)|((\\$|\\@\\@?)(\\w+))'},
       {cN: 'params', b: /\|/, e: /\|/, k: r},
       {
-        b: '(' + e.RSR + '|unless)\\s*',
+        b: `(${  e.RSR  }|unless)\\s*`,
         k: 'unless',
         c: [
           a,
@@ -975,12 +975,12 @@ hljs.registerLanguage('ruby', function (e) {
       },
     ].concat(s);
   (n.c = d), (i.c = d);
-  var l = '[>?]>',
-    o = '[\\w#]+\\(\\w+\\):\\d+:\\d+>',
-    u = '(\\w+-)?\\d+\\.\\d+\\.\\d(p\\d+)?[^>]+>',
-    w = [
+  const l = '[>?]>';
+    const o = '[\\w#]+\\(\\w+\\):\\d+:\\d+>';
+    const u = '(\\w+-)?\\d+\\.\\d+\\.\\d(p\\d+)?[^>]+>';
+    const w = [
       {b: /^\s*=>/, starts: {e: '$', c: d}},
-      {cN: 'meta', b: '^(' + l + '|' + o + '|' + u + ')', starts: {e: '$', c: d}},
+      {cN: 'meta', b: `^(${  l  }|${  o  }|${  u  })`, starts: {e: '$', c: d}},
     ];
   return {
     aliases: ['rb', 'gemspec', 'podspec', 'thor', 'irb'],
@@ -990,8 +990,8 @@ hljs.registerLanguage('ruby', function (e) {
   };
 });
 hljs.registerLanguage('css', function (e) {
-  var c = '[a-zA-Z-][a-zA-Z0-9_-]*',
-    t = {
+  const c = '[a-zA-Z-][a-zA-Z0-9_-]*';
+    const t = {
       b: /[A-Z\_\.\-]+\s*:/,
       rB: !0,
       e: ';',
@@ -1050,16 +1050,16 @@ hljs.registerLanguage('css', function (e) {
   };
 });
 hljs.registerLanguage('cpp', function (t) {
-  var e = {cN: 'keyword', b: '\\b[a-z\\d_]*_t\\b'},
-    r = {
+  const e = {cN: 'keyword', b: '\\b[a-z\\d_]*_t\\b'};
+    const r = {
       cN: 'string',
       v: [
         {b: '(u8?|U)?L?"', e: '"', i: '\\n', c: [t.BE]},
         {b: '(u8?|U)?R"', e: '"', c: [t.BE]},
         {b: "'\\\\?.", e: "'", i: '.'},
       ],
-    },
-    s = {
+    };
+    const s = {
       cN: 'number',
       v: [
         {b: "\\b(0b[01']+)"},
@@ -1070,8 +1070,8 @@ hljs.registerLanguage('cpp', function (t) {
         },
       ],
       r: 0,
-    },
-    i = {
+    };
+    const i = {
       cN: 'meta',
       b: /#\s*[a-z]+\b/,
       e: /$/,
@@ -1086,16 +1086,16 @@ hljs.registerLanguage('cpp', function (t) {
         t.CLCM,
         t.CBCM,
       ],
-    },
-    a = t.IR + '\\s*\\(',
-    c = {
+    };
+    const a = `${t.IR  }\\s*\\(`;
+    const c = {
       keyword:
         'int float while private char catch import module export virtual operator sizeof dynamic_cast|10 typedef const_cast|10 const for static_cast|10 union namespace unsigned long volatile static protected bool template mutable if public friend do goto auto void enum else break extern using asm case typeid short reinterpret_cast|10 default double register explicit signed typename try this switch continue inline delete alignof constexpr decltype noexcept static_assert thread_local restrict _Bool complex _Complex _Imaginary atomic_bool atomic_char atomic_schar atomic_uchar atomic_short atomic_ushort atomic_int atomic_uint atomic_long atomic_ulong atomic_llong atomic_ullong new throw return and or not',
       built_in:
         'std string cin cout cerr clog stdin stdout stderr stringstream istringstream ostringstream auto_ptr deque list queue stack vector map set bitset multiset multimap unordered_set unordered_map unordered_multiset unordered_multimap array shared_ptr abort abs acos asin atan2 atan calloc ceil cosh cos exit exp fabs floor fmod fprintf fputs free frexp fscanf isalnum isalpha iscntrl isdigit isgraph islower isprint ispunct isspace isupper isxdigit tolower toupper labs ldexp log10 log malloc realloc memchr memcmp memcpy memset modf pow printf putchar puts scanf sinh sin snprintf sprintf sqrt sscanf strcat strchr strcmp strcpy strcspn strlen strncat strncmp strncpy strpbrk strrchr strspn strstr tanh tan vfprintf vprintf vsprintf endl initializer_list unique_ptr',
       literal: 'true false nullptr NULL',
-    },
-    n = [e, t.CLCM, t.CBCM, s, r];
+    };
+    const n = [e, t.CLCM, t.CBCM, s, r];
   return {
     aliases: ['c', 'cc', 'h', 'c++', 'h++', 'hpp'],
     k: c,
@@ -1109,7 +1109,7 @@ hljs.registerLanguage('cpp', function (t) {
         k: c,
         c: ['self', e],
       },
-      {b: t.IR + '::', k: c},
+      {b: `${t.IR  }::`, k: c},
       {
         v: [
           {b: /=/, e: /;/},
@@ -1122,7 +1122,7 @@ hljs.registerLanguage('cpp', function (t) {
       },
       {
         cN: 'function',
-        b: '(' + t.IR + '[\\*&\\s]+)+' + a,
+        b: `(${  t.IR  }[\\*&\\s]+)+${  a}`,
         rB: !0,
         e: /[{;=]/,
         eE: !0,
@@ -1148,19 +1148,19 @@ hljs.registerLanguage('shell', function (s) {
   };
 });
 hljs.registerLanguage('objectivec', function (e) {
-  var t = {
+  const t = {
       cN: 'built_in',
       b: '\\b(AV|CA|CF|CG|CI|CL|CM|CN|CT|MK|MP|MTK|MTL|NS|SCN|SK|UI|WK|XC)\\w+',
-    },
-    _ = {
+    };
+    const _ = {
       keyword:
         'int float while char export sizeof typedef const struct for union unsigned long volatile static bool mutable if do return goto void enum else break extern asm case short default double register explicit signed typename this switch continue wchar_t inline readonly assign readwrite self @synchronized id typeof nonatomic super unichar IBOutlet IBAction strong weak copy in out inout bycopy byref oneway __strong __weak __block __autoreleasing @private @protected @public @try @property @end @throw @catch @finally @autoreleasepool @synthesize @dynamic @selector @optional @required @encode @package @import @defs @compatibility_alias __bridge __bridge_transfer __bridge_retained __bridge_retain __covariant __contravariant __kindof _Nonnull _Nullable _Null_unspecified __FUNCTION__ __PRETTY_FUNCTION__ __attribute__ getter setter retain unsafe_unretained nonnull nullable null_unspecified null_resettable class instancetype NS_DESIGNATED_INITIALIZER NS_UNAVAILABLE NS_REQUIRES_SUPER NS_RETURNS_INNER_POINTER NS_INLINE NS_AVAILABLE NS_DEPRECATED NS_ENUM NS_OPTIONS NS_SWIFT_UNAVAILABLE NS_ASSUME_NONNULL_BEGIN NS_ASSUME_NONNULL_END NS_REFINED_FOR_SWIFT NS_SWIFT_NAME NS_SWIFT_NOTHROW NS_DURING NS_HANDLER NS_ENDHANDLER NS_VALUERETURN NS_VOIDRETURN',
       literal: 'false true FALSE TRUE nil YES NO NULL',
       built_in:
         'BOOL dispatch_once_t dispatch_queue_t dispatch_sync dispatch_async dispatch_once',
-    },
-    i = /[a-zA-Z@][a-zA-Z0-9_]*/,
-    n = '@interface @class @protocol @implementation';
+    };
+    const i = /[a-zA-Z@][a-zA-Z0-9_]*/;
+    const n = '@interface @class @protocol @implementation';
   return {
     aliases: ['mm', 'objc', 'obj-c'],
     k: _,
@@ -1195,19 +1195,19 @@ hljs.registerLanguage('objectivec', function (e) {
       },
       {
         cN: 'class',
-        b: '(' + n.split(' ').join('|') + ')\\b',
+        b: `(${  n.split(' ').join('|')  })\\b`,
         e: '({|$)',
         eE: !0,
         k: n,
         l: i,
         c: [e.UTM],
       },
-      {b: '\\.' + e.UIR, r: 0},
+      {b: `\\.${  e.UIR}`, r: 0},
     ],
   };
 });
 hljs.registerLanguage('ini', function (e) {
-  var b = {
+  const b = {
     cN: 'string',
     c: [e.BE],
     v: [
@@ -1249,12 +1249,12 @@ hljs.registerLanguage('ini', function (e) {
   };
 });
 hljs.registerLanguage('makefile', function (e) {
-  var i = {
+  const i = {
       cN: 'variable',
-      v: [{b: '\\$\\(' + e.UIR + '\\)', c: [e.BE]}, {b: /\$[@%<?\^\+\*]/}],
-    },
-    r = {cN: 'string', b: /"/, e: /"/, c: [e.BE, i]},
-    a = {
+      v: [{b: `\\$\\(${  e.UIR  }\\)`, c: [e.BE]}, {b: /\$[@%<?\^\+\*]/}],
+    };
+    const r = {cN: 'string', b: /"/, e: /"/, c: [e.BE, i]};
+    const a = {
       cN: 'variable',
       b: /\$\([\w-]+\s/,
       e: /\)/,
@@ -1263,15 +1263,15 @@ hljs.registerLanguage('makefile', function (e) {
           'subst patsubst strip findstring filter filter-out sort word wordlist firstword lastword dir notdir suffix basename addsuffix addprefix join wildcard realpath abspath error warning shell origin flavor foreach if or and call eval file value',
       },
       c: [i],
-    },
-    n = {
-      b: '^' + e.UIR + '\\s*[:+?]?=',
+    };
+    const n = {
+      b: `^${  e.UIR  }\\s*[:+?]?=`,
       i: '\\n',
       rB: !0,
-      c: [{b: '^' + e.UIR, e: '[:+?]?=', eE: !0}],
-    },
-    t = {cN: 'meta', b: /^\.PHONY:/, e: /$/, k: {'meta-keyword': '.PHONY'}, l: /[\.\w]+/},
-    l = {cN: 'section', b: /^[^\s]+:/, e: /$/, c: [i]};
+      c: [{b: `^${  e.UIR}`, e: '[:+?]?=', eE: !0}],
+    };
+    const t = {cN: 'meta', b: /^\.PHONY:/, e: /$/, k: {'meta-keyword': '.PHONY'}, l: /[\.\w]+/};
+    const l = {cN: 'section', b: /^[^\s]+:/, e: /$/, c: [i]};
   return {
     aliases: ['mk', 'mak'],
     k:
@@ -1281,14 +1281,14 @@ hljs.registerLanguage('makefile', function (e) {
   };
 });
 hljs.registerLanguage('python', function (e) {
-  var r = {
+  const r = {
       keyword:
         'and elif is global as in if from raise for except finally print import pass return exec else break not with class assert yield try while continue del or def lambda async await nonlocal|10 None True False',
       built_in: 'Ellipsis NotImplemented',
-    },
-    b = {cN: 'meta', b: /^(>>>|\.\.\.) /},
-    c = {cN: 'subst', b: /\{/, e: /\}/, k: r, i: /#/},
-    a = {
+    };
+    const b = {cN: 'meta', b: /^(>>>|\.\.\.) /};
+    const c = {cN: 'subst', b: /\{/, e: /\}/, k: r, i: /#/};
+    const a = {
       cN: 'string',
       c: [e.BE],
       v: [
@@ -1305,13 +1305,13 @@ hljs.registerLanguage('python', function (e) {
         e.ASM,
         e.QSM,
       ],
-    },
-    s = {
+    };
+    const s = {
       cN: 'number',
       r: 0,
-      v: [{b: e.BNR + '[lLjJ]?'}, {b: '\\b(0o[0-7]+)[lLjJ]?'}, {b: e.CNR + '[lLjJ]?'}],
-    },
-    i = {cN: 'params', b: /\(/, e: /\)/, c: ['self', b, s, a]};
+      v: [{b: `${e.BNR  }[lLjJ]?`}, {b: '\\b(0o[0-7]+)[lLjJ]?'}, {b: `${e.CNR  }[lLjJ]?`}],
+    };
+    const i = {cN: 'params', b: /\(/, e: /\)/, c: ['self', b, s, a]};
   return (
     (c.c = [a, s, b]),
     {
@@ -1339,20 +1339,20 @@ hljs.registerLanguage('python', function (e) {
   );
 });
 hljs.registerLanguage('json', function (e) {
-  var i = {literal: 'true false null'},
-    n = [e.QSM, e.CNM],
-    r = {e: ',', eW: !0, eE: !0, c: n, k: i},
-    t = {
+  const i = {literal: 'true false null'};
+    const n = [e.QSM, e.CNM];
+    const r = {e: ',', eW: !0, eE: !0, c: n, k: i};
+    const t = {
       b: '{',
       e: '}',
       c: [{cN: 'attr', b: /"/, e: /"/, c: [e.BE], i: '\\n'}, e.inherit(r, {b: /:/})],
       i: '\\S',
-    },
-    c = {b: '\\[', e: '\\]', c: [e.inherit(r)], i: '\\S'};
+    };
+    const c = {b: '\\[', e: '\\]', c: [e.inherit(r)], i: '\\S'};
   return n.splice(n.length, 0, t, c), {c: n, k: i, i: '\\S'};
 });
 hljs.registerLanguage('apache', function (e) {
-  var r = {cN: 'number', b: '[\\$%]\\d+'};
+  const r = {cN: 'number', b: '[\\$%]\\d+'};
   return {
     aliases: ['apacheconf'],
     cI: !0,
@@ -1384,22 +1384,22 @@ hljs.registerLanguage('apache', function (e) {
   };
 });
 hljs.registerLanguage('cs', function (e) {
-  var i = {
+  const i = {
       keyword:
         'abstract as base bool break byte case catch char checked const continue decimal default delegate do double enum event explicit extern finally fixed float for foreach goto if implicit in int interface internal is lock long nameof object operator out override params private protected public readonly ref sbyte sealed short sizeof stackalloc static string struct switch this try typeof uint ulong unchecked unsafe ushort using virtual void volatile while add alias ascending async await by descending dynamic equals from get global group into join let on orderby partial remove select set value var where yield',
       literal: 'null false true',
-    },
-    t = {cN: 'string', b: '@"', e: '"', c: [{b: '""'}]},
-    r = e.inherit(t, {i: /\n/}),
-    a = {cN: 'subst', b: '{', e: '}', k: i},
-    c = e.inherit(a, {i: /\n/}),
-    n = {cN: 'string', b: /\$"/, e: '"', i: /\n/, c: [{b: '{{'}, {b: '}}'}, e.BE, c]},
-    s = {cN: 'string', b: /\$@"/, e: '"', c: [{b: '{{'}, {b: '}}'}, {b: '""'}, a]},
-    o = e.inherit(s, {i: /\n/, c: [{b: '{{'}, {b: '}}'}, {b: '""'}, c]});
+    };
+    const t = {cN: 'string', b: '@"', e: '"', c: [{b: '""'}]};
+    const r = e.inherit(t, {i: /\n/});
+    const a = {cN: 'subst', b: '{', e: '}', k: i};
+    const c = e.inherit(a, {i: /\n/});
+    const n = {cN: 'string', b: /\$"/, e: '"', i: /\n/, c: [{b: '{{'}, {b: '}}'}, e.BE, c]};
+    const s = {cN: 'string', b: /\$@"/, e: '"', c: [{b: '{{'}, {b: '}}'}, {b: '""'}, a]};
+    const o = e.inherit(s, {i: /\n/, c: [{b: '{{'}, {b: '}}'}, {b: '""'}, c]});
   (a.c = [s, n, t, e.ASM, e.QSM, e.CNM, e.CBCM]),
     (c.c = [o, n, r, e.ASM, e.QSM, e.CNM, e.inherit(e.CBCM, {i: /\n/})]);
-  var l = {v: [s, n, t, e.ASM, e.QSM]},
-    b = e.IR + '(<' + e.IR + '(\\s*,\\s*' + e.IR + ')*>)?(\\[\\])?';
+  const l = {v: [s, n, t, e.ASM, e.QSM]};
+    const b = `${e.IR  }(<${  e.IR  }(\\s*,\\s*${  e.IR  })*>)?(\\[\\])?`;
   return {
     aliases: ['csharp'],
     k: i,
@@ -1440,13 +1440,13 @@ hljs.registerLanguage('cs', function (e) {
       {bK: 'new return throw await else', r: 0},
       {
         cN: 'function',
-        b: '(' + b + '\\s+)+' + e.IR + '\\s*\\(',
+        b: `(${  b  }\\s+)+${  e.IR  }\\s*\\(`,
         rB: !0,
         e: /[{;=]/,
         eE: !0,
         k: i,
         c: [
-          {b: e.IR + '\\s*\\(', rB: !0, c: [e.TM], r: 0},
+          {b: `${e.IR  }\\s*\\(`, rB: !0, c: [e.TM], r: 0},
           {cN: 'params', b: /\(/, e: /\)/, eB: !0, eE: !0, k: i, r: 0, c: [l, e.CNM, e.CBCM]},
           e.CLCM,
           e.CBCM,
@@ -1456,7 +1456,7 @@ hljs.registerLanguage('cs', function (e) {
   };
 });
 hljs.registerLanguage('sql', function (e) {
-  var t = e.C('--', '$');
+  const t = e.C('--', '$');
   return {
     cI: !0,
     i: /[<>{}*#]/,
@@ -1489,9 +1489,9 @@ hljs.registerLanguage('sql', function (e) {
   };
 });
 hljs.registerLanguage('php', function (e) {
-  var c = {b: '\\$+[a-zA-Z_-ÿ][a-zA-Z0-9_-ÿ]*'},
-    i = {cN: 'meta', b: /<\?(php)?|\?>/},
-    t = {
+  const c = {b: '\\$+[a-zA-Z_-ÿ][a-zA-Z0-9_-ÿ]*'};
+    const i = {cN: 'meta', b: /<\?(php)?|\?>/};
+    const t = {
       cN: 'string',
       c: [e.BE, i],
       v: [
@@ -1500,8 +1500,8 @@ hljs.registerLanguage('php', function (e) {
         e.inherit(e.ASM, {i: null}),
         e.inherit(e.QSM, {i: null}),
       ],
-    },
-    a = {v: [e.BNM, e.CNM]};
+    };
+    const a = {v: [e.BNM, e.CNM]};
   return {
     aliases: ['php3', 'php4', 'php5', 'php6'],
     cI: !0,
@@ -1547,14 +1547,14 @@ hljs.registerLanguage('php', function (e) {
   };
 });
 hljs.registerLanguage('http', function (e) {
-  var t = 'HTTP/[0-9\\.]+';
+  const t = 'HTTP/[0-9\\.]+';
   return {
     aliases: ['https'],
     i: '\\S',
     c: [
-      {b: '^' + t, e: '$', c: [{cN: 'number', b: '\\b\\d{3}\\b'}]},
+      {b: `^${  t}`, e: '$', c: [{cN: 'number', b: '\\b\\d{3}\\b'}]},
       {
-        b: '^[A-Z]+ (.*?) ' + t + '$',
+        b: `^[A-Z]+ (.*?) ${  t  }$`,
         rB: !0,
         e: '$',
         c: [

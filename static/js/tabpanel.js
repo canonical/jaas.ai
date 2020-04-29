@@ -44,12 +44,12 @@ function changeTabs(target) {
 }
 
 function playTab(tab) {
-  let start = Date.now();
-  let duration = 10000;
-  let tabIndicator = tab.querySelector('.before');
+  const start = Date.now();
+  const duration = 10000;
+  const tabIndicator = tab.querySelector('.before');
   if (tabIndicator) {
     timer = setInterval(function () {
-      let timePassed = Date.now() - start;
+      const timePassed = Date.now() - start;
       if (timePassed >= duration) {
         clearInterval(timer);
         triggerNextTab(tab);
@@ -61,7 +61,7 @@ function playTab(tab) {
 }
 
 function draw(timePassed, tab) {
-  tab.style.width = timePassed + '%';
+  tab.style.width = `${timePassed  }%`;
 }
 
 function triggerNextTab(tab) {

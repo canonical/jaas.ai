@@ -7,3 +7,4 @@ entrypoint
 yarn.lock
 global-nav.js
 highlight.pack.js
+static/favicon.ico

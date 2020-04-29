@@ -4,7 +4,7 @@
   @param {HTMLElement} commentContainer the container to add comments
 */
 window.app.cliTyper = function (container, commentContainer) {
-  var cli = [
+  const cli = [
     'juju clouds',
     'juju add-credential aws-personal',
     'juju add-credential aws-work',
@@ -27,7 +27,7 @@ window.app.cliTyper = function (container, commentContainer) {
   ];
 
   // For future decorations of the CLI
-  var comments = [
+  const comments = [
     'Choose a cloud to work with',
     'Juju manages multiple cloud credentials',
     false,
@@ -49,15 +49,15 @@ window.app.cliTyper = function (container, commentContainer) {
     'Use your own private cloud - including OpenStack',
   ];
 
-  var RESET_SPEED = 1000;
-  var BASE_SPEED = 50;
-  var SPEED_MODIFIER = 100;
-  var DELETE_PAUSE = 250;
-  var NEXT_PAUSE = 2000;
+  const RESET_SPEED = 1000;
+  const BASE_SPEED = 50;
+  const SPEED_MODIFIER = 100;
+  const DELETE_PAUSE = 250;
+  const NEXT_PAUSE = 2000;
 
-  var cliEle = container;
-  var commentEle = commentContainer;
-  var current = '';
+  const cliEle = container;
+  const commentEle = commentContainer;
+  let current = '';
 
   /**
     Get the difference between two strings
@@ -66,10 +66,10 @@ window.app.cliTyper = function (container, commentContainer) {
     @param {String} next The target string
   */
   function getDiff(orig, next) {
-    var changes = [];
-    var matchTo = 0;
-    var toAdd = [];
-    var i = 0;
+    let changes = [];
+    let matchTo = 0;
+    const toAdd = [];
+    let i = 0;
 
     for (i = orig.length; i > -1; i -= 1) {
       if (next[i] !== orig[i]) {
@@ -85,7 +85,7 @@ window.app.cliTyper = function (container, commentContainer) {
     }
 
     i = matchTo;
-    for (var ii = next.length; i < ii; i += 1) {
+    for (let ii = next.length; i < ii; i += 1) {
       toAdd.push(next[i]);
     }
 
@@ -122,9 +122,9 @@ window.app.cliTyper = function (container, commentContainer) {
     @param {Array} original The original change list
   */
   function typeIt(changes, original) {
-    var change = changes.shift();
-    var speed = BASE_SPEED + Math.ceil(Math.random() * SPEED_MODIFIER);
-    var currentText = current;
+    const change = changes.shift();
+    let speed = BASE_SPEED + Math.ceil(Math.random() * SPEED_MODIFIER);
+    let currentText = current;
     if (typeof change === 'string' && change.indexOf('#') === 0) {
       comment(true, false, function () {
         comment(false, change.substr(1));
@@ -135,17 +135,17 @@ window.app.cliTyper = function (container, commentContainer) {
     } else if (typeof change === 'number' && change >= 0) {
       speed = change;
     } else {
-      currentText = currentText + change;
+      currentText += change;
     }
 
-    var html = '<span>' + currentText.split(' ').join('</span> <span>') + '</span>';
+    const html = `<span>${  currentText.split(' ').join('</span> <span>')  }</span>`;
 
     current = currentText;
 
     cliEle.innerHTML = html;
 
-    var next = (function () {
-      var _changes = changes;
+    const next = (function () {
+      const _changes = changes;
 
       return function () {
         typeIt(_changes, original);
@@ -166,10 +166,10 @@ window.app.cliTyper = function (container, commentContainer) {
     @param {Boolean} resetAtEnd Start again?
   */
   function changesInArray(arr, resetAtEnd) {
-    var changes = [];
-    var i;
-    var current;
-    var previous;
+    const changes = [];
+    let i;
+    let current;
+    let previous;
 
     for (i = 0, ii = arr.length; i < ii; i += 1) {
       current = arr[i];
@@ -179,7 +179,7 @@ window.app.cliTyper = function (container, commentContainer) {
     }
 
     if (resetAtEnd) {
-      var reset = [];
+      const reset = [];
       for (i = 0, ii = current.length; i < ii; i += 1) {
         reset.push(-1);
       }
@@ -196,24 +196,24 @@ window.app.cliTyper = function (container, commentContainer) {
     @param {Array} arr the original array
   */
   function flattenArray(arr) {
-    var newArr = [];
+    let newArr = [];
 
-    for (var i = 0, ii = arr.length; i < ii; i += 1) {
+    for (let i = 0, ii = arr.length; i < ii; i += 1) {
       newArr = newArr.concat(arr[i]);
     }
 
     return newArr;
   }
 
-  var changeList = changesInArray(cli, true);
+  const changeList = changesInArray(cli, true);
 
   // Decorate with comments
   for (var i = 0, ii = changeList.length; i < ii; i += 1) {
     if (comments[i]) {
-      changeList[i].unshift('#' + comments[i]);
+      changeList[i].unshift(`#${  comments[i]}`);
     }
   }
 
-  var changes = flattenArray(changeList);
+  const changes = flattenArray(changeList);
   typeIt(changes.slice(0), changes);
 };
