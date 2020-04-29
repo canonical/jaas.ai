@@ -1,9 +1,10 @@
 .p-linkable-heading {
   &__anchor {
     @include vf-animation(opacity, snap, in);
-    opacity: 0;
+
     float: left;
     margin-left: -1.25rem;
+    opacity: 0;
   }
 
   &:hover {

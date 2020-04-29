@@ -40,7 +40,6 @@ $breakpoint-navigation-threshold: $breakpoint-large;
 @import 'custom/series_tags';
 @import 'custom/patterns_strips';
 @import 'custom/patterns_lists';
-@import 'custom/patterns_icons';
 @import 'custom/patterns_docs';
 @import 'custom/hljs';
 @import 'custom/linkable-heading';
@@ -51,7 +50,6 @@ $breakpoint-navigation-threshold: $breakpoint-large;
 @include jaas-hero-tab;
 @include jaas-p-strips;
 @include jaas-p-lists;
-@include jaas-p-icons;
 @include jaas-docs;
 @include jaas-tutorials;
 
@@ -87,13 +85,6 @@ $breakpoint-navigation-threshold: $breakpoint-large;
     display: block;
     margin: 0.5rem 0;
   }
-}
-
-// Override neccessary until this bug is resolved upstream
-// https://github.com/canonical-websites/vanillaframework.io/pull/171#issuecomment-424717215
-.homepage-logos .p-inline-images__item {
-  margin: 0;
-  padding-right: 0.5rem;
 }
 
 .play-video-cta {
@@ -281,11 +272,6 @@ div .p-accordion__tab[aria-expanded] {
   background: none;
 }
 
-// h2 font weight override required until Vanilla 2.0 release
-h2 {
-  font-weight: 100;
-}
-
 // Modelling steps on the homepage.
 @media (min-width: $breakpoint-small) and (max-width: $breakpoint-medium) {
   .step-block {
@@ -308,12 +294,6 @@ h2 {
   &:hover {
     text-decoration: none;
   }
-}
-
-// XXX Ant - 31.05.19: This can be removed when the follow issue is resolved.
-// https://github.com/canonical-web-and-design/vanilla-framework/issues/2364
-.p-code-snippet__input {
-  padding-right: 2.5rem;
 }
 
 .u-no-max-width {
