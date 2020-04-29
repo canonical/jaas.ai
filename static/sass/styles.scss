@@ -40,7 +40,6 @@ $breakpoint-navigation-threshold: $breakpoint-large;
 @import 'custom/series_tags';
 @import 'custom/patterns_strips';
 @import 'custom/patterns_lists';
-@import 'custom/patterns_icons';
 @import 'custom/patterns_docs';
 @import 'custom/hljs';
 @import 'custom/linkable-heading';
@@ -51,7 +50,6 @@ $breakpoint-navigation-threshold: $breakpoint-large;
 @include jaas-hero-tab;
 @include jaas-p-strips;
 @include jaas-p-lists;
-@include jaas-p-icons;
 @include jaas-docs;
 @include jaas-tutorials;
 
