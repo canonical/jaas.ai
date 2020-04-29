@@ -272,11 +272,6 @@ div .p-accordion__tab[aria-expanded] {
   background: none;
 }
 
-// h2 font weight override required until Vanilla 2.0 release
-h2 {
-  font-weight: 100;
-}
-
 // Modelling steps on the homepage.
 @media (min-width: $breakpoint-small) and (max-width: $breakpoint-medium) {
   .step-block {
