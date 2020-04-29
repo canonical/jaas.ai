@@ -87,13 +87,6 @@ $breakpoint-navigation-threshold: $breakpoint-large;
   }
 }
 
-// Override neccessary until this bug is resolved upstream
-// https://github.com/canonical-websites/vanillaframework.io/pull/171#issuecomment-424717215
-.homepage-logos .p-inline-images__item {
-  margin: 0;
-  padding-right: 0.5rem;
-}
-
 .play-video-cta {
   display: inline-block;
   position: relative;
