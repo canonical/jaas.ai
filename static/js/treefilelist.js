@@ -28,13 +28,13 @@ window.app.treeifyFileList = () => {
     fileUrl = DOMList.querySelector('a').href;
     fileUrl = fileUrl.substr(0, fileUrl.indexOf('/archive/') + 9);
 
-    DOMList.querySelectorAll('li').forEach((e) => parsePath(e.innerText.trim()));
+    DOMList.querySelectorAll('li').forEach(e => parsePath(e.innerText.trim()));
     addList(files);
     DOMList.innerHTML = renderedList;
 
     var listTreeToggle = document.querySelectorAll('.p-list-tree__toggle');
     for (var i = 0; i < listTreeToggle.length; i++) {
-      listTreeToggle[i].addEventListener('click', function (e) {
+      listTreeToggle[i].addEventListener('click', function(e) {
         e.preventDefault();
         var listTree = this.nextElementSibling;
         var expand = this.getAttribute('aria-expanded') === 'true' ? false : true;
@@ -53,7 +53,7 @@ window.app.treeifyFileList = () => {
   **/
   function parsePath(fileURL) {
     var cur = files;
-    fileURL.split('/').forEach(function (node) {
+    fileURL.split('/').forEach(function(node) {
       cur[node] = cur[node] || {};
       cur[node][rootAttribute] = fileURL;
       cur = cur[node];

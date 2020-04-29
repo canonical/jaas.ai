@@ -4,8 +4,8 @@ window.addEventListener('DOMContentLoaded', () => {
   const tabs = document.querySelectorAll('[role="tab"]');
 
   // Add a click event handler to each tab
-  tabs.forEach((tab) => {
-    tab.addEventListener('click', function (e) {
+  tabs.forEach(tab => {
+    tab.addEventListener('click', function(e) {
       const target = e.target.closest('[role="tab"]');
       changeTabs(target);
     });
@@ -24,7 +24,7 @@ function changeTabs(target) {
   clearInterval(timer);
 
   // Remove all current selected tabs
-  tabs.forEach((tab) => {
+  tabs.forEach(tab => {
     draw(0, tab.querySelector('.before'));
     tab.setAttribute('aria-selected', false);
   });
@@ -33,7 +33,7 @@ function changeTabs(target) {
   target.setAttribute('aria-selected', true);
 
   // Hide all tab panels
-  panels.forEach((panel) => panel.classList.remove('u-animate--reveal'));
+  panels.forEach(panel => panel.classList.remove('u-animate--reveal'));
 
   // Show the selected panel
   document
@@ -48,7 +48,7 @@ function playTab(tab) {
   let duration = 10000;
   let tabIndicator = tab.querySelector('.before');
   if (tabIndicator) {
-    timer = setInterval(function () {
+    timer = setInterval(function() {
       let timePassed = Date.now() - start;
       if (timePassed >= duration) {
         clearInterval(timer);
