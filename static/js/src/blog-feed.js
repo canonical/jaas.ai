@@ -3,7 +3,7 @@ function renderFeed(selector) {
   if (container) {
     const feed = JSON.parse(this.responseText);
     const posts = feed.map(
-      post => `
+      (post) => `
       <li class="p-list__item">
         <h4 class="u-no-margin--bottom">
           <a href="${post.links[0].href}">${post.title_detail.value}</a>

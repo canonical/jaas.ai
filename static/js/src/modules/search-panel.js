@@ -12,14 +12,14 @@ const searchPanel = () => {
   });
 
   if (searchClose !== null) {
-    searchClose.addEventListener('click', e => {
+    searchClose.addEventListener('click', (e) => {
       e.preventDefault();
       header.classList.remove('search-active');
     });
   }
 
   if (searchReset !== null) {
-    searchReset.addEventListener('click', e => {
+    searchReset.addEventListener('click', (e) => {
       e.preventDefault();
       input.value = '';
     });
@@ -27,7 +27,7 @@ const searchPanel = () => {
 
   // Close search panel if anywhere outside header and search panel area is clicked.
   const html = document.querySelector('html');
-  html.addEventListener('click', event => {
+  html.addEventListener('click', (event) => {
     if (!header.contains(event.target)) {
       header.classList.remove('search-active');
     }
