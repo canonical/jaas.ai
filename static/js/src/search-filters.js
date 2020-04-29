@@ -31,9 +31,10 @@ document
 function toggleMenu(element, show) {
   element.setAttribute('aria-expanded', show);
   element.classList.toggle('p-contextual-menu__toggle--active', show);
-  document
-    .querySelector(element.getAttribute('aria-controls'))
-    .setAttribute('aria-hidden', !show);
+  const control = document.querySelector(element.getAttribute('aria-controls'));
+  if (control) {
+    control.setAttribute('aria-hidden', !show);
+  }
 }
 
 function setupContextualMenuListeners(contextualMenuToggleSelector) {
