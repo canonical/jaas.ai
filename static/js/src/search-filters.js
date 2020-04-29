@@ -42,7 +42,7 @@ function setupContextualMenuListeners(contextualMenuToggleSelector) {
   toggles.forEach((toggle) => {
     toggle.addEventListener('mousedown', (e) => {
       e.preventDefault();
-      const target = e.target;
+      const { target } = e;
       target.blur();
       document.querySelector('.p-contextual-menu__dropdown').focus();
       const menuAlreadyOpen = target.getAttribute('aria-expanded') === 'true';
@@ -58,7 +58,7 @@ function setupContextualMenuListeners(contextualMenuToggleSelector) {
       }
     });
   });
-  var oldKeyDown = document.onkeydown;
+  const oldKeyDown = document.onkeydown;
   document.onkeydown = (e) => {
     e = e || window.event;
     if (e.keyCode === 27) {

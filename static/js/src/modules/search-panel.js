@@ -2,12 +2,12 @@ const searchPanel = () => {
   /**
     Sets up the search handler.
   */
-  const input = document.querySelector('[data-js="form-text"]'),
-    header = document.querySelector('[data-js="navigation"]'),
-    searchClose = document.querySelector('[data-js="search-close"]'),
-    searchReset = document.querySelector('[data-js="search-reset"]');
+  const input = document.querySelector('[data-js="form-text"]');
+  const header = document.querySelector('[data-js="navigation"]');
+  const searchClose = document.querySelector('[data-js="search-close"]');
+  const searchReset = document.querySelector('[data-js="search-reset"]');
 
-  input.addEventListener('focus', (e) => {
+  input.addEventListener('focus', () => {
     header.classList.add('search-active');
   });
 
