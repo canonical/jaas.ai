@@ -10,7 +10,7 @@ from canonicalwebteam.discourse_docs import (
 
 def init_tutorials(app, url_prefix):
     discourse_parser = DocParser(
-        api=DiscourseAPI(base_url="https://discourse.jujucharms.com/"),
+        api=DiscourseAPI(base_url="https://discourse.juju.is/"),
         index_topic_id=2628,
         category_id=34,
         url_prefix=url_prefix,
