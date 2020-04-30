@@ -35,7 +35,9 @@ const modal = () => {
   // Check to ensure modal elements exist on the page
   const modals = document.querySelectorAll('.p-modal');
   // If so, instantiate.
-  if (modals.length) instantiateModals(modals);
+  if (modals.length) {
+    instantiateModals(modals);
+  }
 };
 
 export default modal;
