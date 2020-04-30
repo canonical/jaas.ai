@@ -124,7 +124,16 @@
         <p class="p-heading--four">Get involved and find out more by visiting the Special Interest Group <a href="https://github.com/kubernetes/community/blob/master/sig-cluster-ops/README.md">SIG-clusterops</a>, or the <a href="https://groups.google.com/forum/#!forum/kubernetes-users">Kubernetes mailing lists</a>.</p>
       </div>
       <div class="col-4 u-align--center u-vertically-center">
-        <img src="https://assets.ubuntu.com/v1/8adead61-picto-community-orange.svg" alt="A gathering of Ubuntu community" width="300" />
+        {{
+          image(
+            url="https://assets.ubuntu.com/v1/8adead61-picto-community-orange.svg",
+            alt="",
+            width="300",
+            height="300",
+            hi_def=True,
+            loading="lazy",
+          ) | safe
+        }}
       </div>
     </div>
   </div>
