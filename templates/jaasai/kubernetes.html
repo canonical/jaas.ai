@@ -14,7 +14,17 @@
         <p>The easiest way to automate the deployment, scaling, lifecycle and management of your applications. Operate the latest Kubernetes, from the experts behind Ubuntu and the Kubernetes community.</p>
       </div>
       <div class="col-6 u-vertically-center u-align--center">
-        <img src="https://assets.ubuntu.com/v1/96d35aa4-certified-kubernetes-logo.svg" alt="Kubernetes logo" class="u-hide--small" width="230" />
+        {{
+          image(
+            url="https://assets.ubuntu.com/v1/96d35aa4-certified-kubernetes-logo.svg",
+            alt="Kubernetes logo",
+            width="230",
+            height="309",
+            hi_def=True,
+            attrs={"class": "u-hide--small"},
+            loading="eager",
+          ) | safe
+        }}
       </div>
     </div>
   </div>
@@ -30,28 +40,28 @@
       <div class="col-12">
         <ul class="p-inline-images">
           <li class="p-inline-images__item">
-            <img class="p-inline-images__logo" alt="AWS" src="https://assets.ubuntu.com/v1/39002345-AmazonWebservices_Logo.svg" />
+            <img loading="eager" class="p-inline-images__logo" alt="AWS" src="https://assets.ubuntu.com/v1/39002345-AmazonWebservices_Logo.svg" />
           </li>
           <li class="p-inline-images__item">
-            <img class="p-inline-images__logo" alt="Azure" src="https://assets.ubuntu.com/v1/515658c0-microsoft-azure-763dcdb6a8a3facccca6f538a909f1ec.svg" />
+            <img loading="eager" class="p-inline-images__logo" alt="Azure" src="https://assets.ubuntu.com/v1/515658c0-microsoft-azure-763dcdb6a8a3facccca6f538a909f1ec.svg" />
           </li>
           <li class="p-inline-images__item">
-            <img class="p-inline-images__logo" alt="Google Cloud Platform" src="https://assets.ubuntu.com/v1/410984a3-Google-cloud-platform-stacked.svg" />
+            <img loading="eager" class="p-inline-images__logo" alt="Google Cloud Platform" src="https://assets.ubuntu.com/v1/410984a3-Google-cloud-platform-stacked.svg" />
           </li>
           <li class="p-inline-images__item">
-            <img class="p-inline-images__logo" alt="vmware" src="https://assets.ubuntu.com/v1/3006b8c7-vmware.svg" />
+            <img loading="eager" class="p-inline-images__logo" alt="vmware" src="https://assets.ubuntu.com/v1/3006b8c7-vmware.svg" />
           </li>
           <li class="p-inline-images__item">
-            <img class="p-inline-images__logo" alt="lxd" src="https://assets.ubuntu.com/v1/fe9b270c-lxd_black-orange_hex_su.svg" />
+            <img loading="eager" class="p-inline-images__logo" alt="lxd" src="https://assets.ubuntu.com/v1/fe9b270c-lxd_black-orange_hex_su.svg" />
           </li>
           <li class="p-inline-images__item">
-            <img class="p-inline-images__logo" alt="openstack" src="https://assets.ubuntu.com/v1/7934d19b-OpenStack_Logo_Horizontal.svg" />
+            <img loading="eager" class="p-inline-images__logo" alt="openstack" src="https://assets.ubuntu.com/v1/7934d19b-OpenStack_Logo_Horizontal.svg" />
           </li>
           <li class="p-inline-images__item">
-            <img class="p-inline-images__logo" alt="joyent" src="https://assets.ubuntu.com/v1/529822fd-joyent_logo.svg" />
+            <img loading="eager" class="p-inline-images__logo" alt="joyent" src="https://assets.ubuntu.com/v1/529822fd-joyent_logo.svg" />
           </li>
           <li class="p-inline-images__item">
-            <img class="p-inline-images__logo" alt="maas" src="https://assets.ubuntu.com/v1/1e783fd8-maas_black-orange_hex.svg" />
+            <img loading="eager" class="p-inline-images__logo" alt="maas" src="https://assets.ubuntu.com/v1/1e783fd8-maas_black-orange_hex.svg" />
           </li>
         </ul>
       </div>
@@ -71,7 +81,7 @@
       <div class="col-4 p-divider__block">
         <div class="p-heading-icon">
           <div class="p-heading-icon__header">
-            <img class="p-heading-icon__img" src="{{ external_urls.charmstore }}~containers/kubernetes-master/icon.svg" alt="Kubernetes icon">
+            <img loading="lazy" class="p-heading-icon__img" src="{{ external_urls.charmstore }}~containers/kubernetes-master/icon.svg" alt="Kubernetes icon">
             <h3 class="p-heading-icon__title">Latest upstream Kubernetes</h3>
           </div>
         </div>
@@ -86,7 +96,7 @@
       <div class="col-4 p-divider__block">
         <div class="p-heading-icon">
           <div class="p-heading-icon__header">
-            <img class="p-heading-icon__img" src="{{ external_urls.charmstore }}~containers/etcd/icon.svg" alt="etcd icon">
+            <img loading="lazy" class="p-heading-icon__img" src="{{ external_urls.charmstore }}~containers/etcd/icon.svg" alt="etcd icon">
             <h3 class="p-heading-icon__title">etcd</h3>
           </div>
         </div>
@@ -100,7 +110,7 @@
       <div class="col-4 p-divider__block">
         <div class="p-heading-icon">
           <div class="p-heading-icon__header">
-            <img class="p-heading-icon__img" src="{{ external_urls.charmstore }}~containers/easyrsa/icon.svg" alt="EasyRSA icon">
+            <img loading="lazy" class="p-heading-icon__img" src="{{ external_urls.charmstore }}~containers/easyrsa/icon.svg" alt="EasyRSA icon">
             <h3 class="p-heading-icon__title">EasyRSA</h3>
           </div>
         </div>
@@ -182,7 +192,16 @@
                 </a>
               </div>
               <div class="col-3 u-align--center u-vertically-center">
-                <img src="https://assets.ubuntu.com/v1/ed4ca9fa-nvidia-logo-white.svg" alt="Nvidia logo">
+                {{
+                  image(
+                    url="https://assets.ubuntu.com/v1/ed4ca9fa-nvidia-logo-white.svg",
+                    alt="Nvidia logo",
+                    width="111",
+                    height="82",
+                    hi_def=True,
+                    loading="lazy",
+                  ) | safe
+                }}
               </div>
             </div>
           </div>
@@ -210,7 +229,7 @@
               <div class="p-card">
                 <div class="p-heading-icon">
                   <div class="p-heading-icon__header">
-                    <img class="p-heading-icon__img" src="https://assets.ubuntu.com/v1/804a5808-prometheus-circle.svg" alt="Prometheus icon">
+                    <img loading="lazy" class="p-heading-icon__img" src="https://assets.ubuntu.com/v1/804a5808-prometheus-circle.svg" alt="Prometheus icon">
                     <h3 class="p-heading-icon__title">
                       <a href="{{ url_for('jaasstore.user_entity', username='prometheus-charmers', charm_or_bundle_name='prometheus', series_or_version=14) }}">
                         Prometheus&nbsp;&rsaquo;
@@ -225,7 +244,7 @@
               <div class="p-card">
                 <div class="p-heading-icon">
                   <div class="p-heading-icon__header">
-                    <img class="p-heading-icon__img" src="{{ external_urls.charmstore }}trusty/elasticsearch/icon.svg" alt="ElasticSearch icon">
+                    <img loading="lazy" class="p-heading-icon__img" src="{{ external_urls.charmstore }}trusty/elasticsearch/icon.svg" alt="ElasticSearch icon">
                     <h3 class="p-heading-icon__title">
                       <a href="{{ url_for('jaasstore.details', charm_or_bundle_name='elasticsearch', series_or_version='trusty', version=19) }}">
                         ElasticSearch&nbsp;&rsaquo;
@@ -240,7 +259,7 @@
               <div class="p-card">
                 <div class="p-heading-icon">
                   <div class="p-heading-icon__header">
-                    <img class="p-heading-icon__img" src="https://assets.ubuntu.com/v1/636b94fd-ceph.svg" alt="Ceph icon">
+                    <img loading="lazy" class="p-heading-icon__img" src="https://assets.ubuntu.com/v1/636b94fd-ceph.svg" alt="Ceph icon">
                     <h3 class="p-heading-icon__title">
                       <a href="{{ url_for('jaasstore.details', charm_or_bundle_name='ceph', series_or_version=271) }}">
                         Ceph&nbsp;&rsaquo;
@@ -283,7 +302,6 @@
     <div class="row">
       <div class="col-6">
         <div class="p-card--highlighted">
-
           <div class="p-card__header">
             <h3>
               Kubernetes support plans
@@ -346,7 +364,16 @@
 <div class="p-strip is-bordered">
     <div class="row">
       <div class="col-2">
-        <img class="contact__image" src="https://assets.ubuntu.com/v1/6e61dfbc-picto-quote-k8.svg" alt="" />
+        {{
+          image(
+            url="https://assets.ubuntu.com/v1/6e61dfbc-picto-quote-k8.svg",
+            alt="",
+            width="109",
+            height="109",
+            hi_def=True,
+            loading="lazy",
+          ) | safe
+        }}
       </div>
       <div class="col-10">
         <h2>Get in touch</h2>
