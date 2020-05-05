@@ -3494,6 +3494,11 @@ inquirer@^7.0.0:
     strip-ansi "^6.0.0"
     through "^2.3.6"
 
+instant.page@3.0.0:
+  version "3.0.0"
+  resolved "https://registry.yarnpkg.com/instant.page/-/instant.page-3.0.0.tgz#5f0fee0a9bf6c8b48b57bbec77f3ed1c3ad60231"
+  integrity sha512-cWTCMZlMZ/CKtY7+Rf3ZgeNtNPP9Yv/glRyriOMym98OhF484N5dRES9qv8q2MgMPmNwUb6T9mEHMdffICbnzw==
+
 interpret@1.2.0:
   version "1.2.0"
   resolved "https://registry.yarnpkg.com/interpret/-/interpret-1.2.0.tgz#d5061a6224be58e8083985f5014d844359576296"
