@@ -10,6 +10,7 @@ module.exports = {
     filename: '[name].min.js',
     path: __dirname + '/static/js/dist'
   },
+  devtool: 'source-map',
   module: {
     rules: [
       {
