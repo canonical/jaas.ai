@@ -62,3 +62,7 @@ env[23]/
 static/js/dist/*.js
 .webcache
 .webcache_blog
+
+# Ignore 3rd party copied scripts
+/static/js/src/libs/global-nav/global-nav.js
+/static/js/src/libs/instant-page/instantpage.js
