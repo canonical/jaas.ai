@@ -2,7 +2,8 @@
   "scripts": {
     "build": "yarn run build-css && yarn run build-js",
     "build-css": "node-sass --omit-source-map-url --include-path node_modules static/sass --output-style compressed --output static/css && postcss --no-map --use autoprefixer --replace 'static/css/**/*.css'",
-    "build-js": "webpack && yarn run copy-3rd-party-libs",
+    "prebuild-js": "yarn run copy-3rd-party-libs",
+    "build-js": "webpack",
     "clean": "rm -rf node_modules yarn-error.log css static/css *.log *.sqlite _site/ build/ .jekyll-metadata .bundle",
     "copy-3rd-party-libs": "yarn run copy-global-nav && yarn run copy-instant-page",
     "copy-global-nav": "mkdir -p static/js/src/libs/global-nav && cp node_modules/@canonical/global-nav/dist/global-nav.js static/js/src/libs/global-nav",
