@@ -128,22 +128,46 @@
 
     <div class="row p-hero-tab">
       <div role="tablist" aria-label="Discover Juju services and solutons" class="p-hero-tab__list">
-        <button role="tab" aria-selected="true" aria-controls="panel-juju-as-a-service" id="juju-as-a-service" class="p-hero-tab__item">
+        <button role="tab" aria-selected="true" aria-controls="panel-juju-as-a-service" id="juju-as-a-service" class="p-hero-tab__item"
+          onclick="dataLayer.push({
+            'event' : 'GAEvent',
+            'eventCategory' : 'carousel',
+            'eventAction' : 'click',
+            'eventLabel' : 'juju-as-a-service'
+          });">
           <i class="before"></i>
           <p class="p-hero-tab__title">Juju as a service</p>
           <i class="u-hide--small">Simplify software operations</i>
         </button>
-        <button role="tab" aria-selected="false" aria-controls="panel-juju-expert-partners" id="juju-expert-partners" class="p-hero-tab__item">
+        <button role="tab" aria-selected="false" aria-controls="panel-juju-expert-partners" id="juju-expert-partners" class="p-hero-tab__item"
+          onclick="dataLayer.push({
+            'event' : 'GAEvent',
+            'eventCategory' : 'carousel',
+            'eventAction' : 'click',
+            'eventLabel' : 'juju-expert-partners'
+          });">
           <i class="before"></i>
           <p class="p-hero-tab__title">Juju expert partners</p>
           <i class="u-hide--small">Specialised supported solutions</i>
         </button>
-        <button role="tab" aria-selected="false" aria-controls="panel-openstack-solutions" id="openstack-solutions" class="p-hero-tab__item">
+        <button role="tab" aria-selected="false" aria-controls="panel-openstack-solutions" id="openstack-solutions" class="p-hero-tab__item"
+          onclick="dataLayer.push({
+            'event' : 'GAEvent',
+            'eventCategory' : 'carousel',
+            'eventAction' : 'click',
+            'eventLabel' : 'openstack-solutions'
+          });">
           <i class="before"></i>
           <p class="p-hero-tab__title">OpenStack solutions</p>
           <i class="u-hide--small">Enterprise deployments at scale</i>
         </button>
-        <button role="tab" aria-selected="false" aria-controls="panel-big-data-solutions" id="big-data-solutions" class="p-hero-tab__item">
+        <button role="tab" aria-selected="false" aria-controls="panel-big-data-solutions" id="big-data-solutions" class="p-hero-tab__item"
+          onclick="dataLayer.push({
+            'event' : 'GAEvent',
+            'eventCategory' : 'carousel',
+            'eventAction' : 'click',
+            'eventLabel' : 'big-data-solutions'
+          });">
           <i class="before"></i>
           <p class="p-hero-tab__title">Big data solutions</p>
           <i class="u-hide--small">Configure complex deployments</i>
