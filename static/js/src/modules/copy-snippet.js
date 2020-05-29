@@ -40,7 +40,9 @@ const copySnippet = () => {
       codeSnippetAction.addEventListener(
         'click',
         () => {
-          const clipboardValue = this.previousSibling.previousSibling.value;
+          const clipboardValue = codeSnippetAction.previousElementSibling.getAttribute(
+            'value'
+          );
           copyToClipboard(clipboardValue);
         },
         false
