@@ -1,5 +1,6 @@
 {
   "scripts": {
+    "start": "yarn run build && yarn run serve",
     "build": "yarn run build-css && yarn run build-js",
     "build-css": "node-sass --omit-source-map-url --include-path node_modules static/sass --output-style compressed --output static/css && postcss --no-map --use autoprefixer --replace 'static/css/**/*.css'",
     "prebuild-js": "yarn run copy-3rd-party-libs",
