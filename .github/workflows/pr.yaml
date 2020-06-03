@@ -20,20 +20,25 @@ jobs:
           sleep 1
           curl --head --fail --retry-delay 1 --retry 30 --retry-connrefused http://localhost
 
-  test-site:
+  run-dotrun:
     runs-on: ubuntu-latest
 
     steps:
       - uses: actions/checkout@v2
 
-      - name: Install dependencies
+      - name: Install dotrun
         run: |
-          sudo apt-get update && sudo apt-get install --yes python3 python3-setuptools
-          pip3 install -r requirements.txt
-          yarn && yarn run build
+          sudo snap install dotrun
+          sudo chown root:root /
 
-      - name:  Check site is accessible
-        run: yarn run serve & sleep 3 && curl --head --fail --retry-delay 5 --retry 2  --retry-connrefused http://localhost:8029
+      - name: Install dependencies
+        run: dotrun install
+
+      - name: Build assets
+        run: dotrun build
+
+      - name: Test site
+        run: dotrun & curl --head --fail --retry-delay 1 --retry 30 --retry-connrefused http://localhost:8029
 
   lint-scss:
     runs-on: ubuntu-latest
