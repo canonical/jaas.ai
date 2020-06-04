@@ -1,5 +1,6 @@
 {
   "scripts": {
+    "start": "yarn run build && yarn run serve",
     "build": "yarn run build-css && yarn run build-js",
     "build-css": "node-sass --omit-source-map-url --include-path node_modules static/sass --output-style compressed --output static/css && postcss --no-map --use autoprefixer --replace 'static/css/**/*.css'",
     "prebuild-js": "yarn run copy-3rd-party-libs",
@@ -15,7 +16,7 @@
     "lint-python": "flake8 webapp tests && black --check --line-length 79 tests webapp",
     "serve": "./entrypoint 0.0.0.0:${PORT}",
     "test": "yarn run lint-scss && yarn run lint-js && yarn run lint-python && yarn run test-python",
-    "test-python": "python3 -m unittest discover tests",
+    "test-python": "coverage run  --source=. -m unittest discover tests",
     "update-test-json": "python3 scripts/update_test_json.py",
     "watch": "concurrently \"yarn run watch-scss\" \"yarn run watch-js\"",
     "watch-scss": "watch -p 'static/sass/**/*.scss' -c 'yarn run build-css'",
