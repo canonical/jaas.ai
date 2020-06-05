@@ -200,8 +200,8 @@
      </div>
    {% endif %}
 
-  <script src="{{ static_url('js/dist/search-filters.min.js') }}"></script>
-  <script src="{{ static_url('js/dist/search-icons.min.js') }}"></script>
+  <script src="{{ static_url('js/dist/search-filters.js') }}"></script>
+  <script src="{{ static_url('js/dist/search-icons.js') }}"></script>
 {% else %}
   <div class="p-strip">
     {% if context.query and context.query|length <= 2 %}

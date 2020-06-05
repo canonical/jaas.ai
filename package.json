@@ -49,7 +49,8 @@
     "stylelint": "13.5.0",
     "stylelint-config-prettier": "8.0.1",
     "stylelint-config-standard": "20.0.0",
-    "stylelint-order": "4.0.0"
+    "stylelint-order": "4.0.0",
+    "terser-webpack-plugin": "3.0.3"
   },
   "resolutions": {
     "lodash": "^4.17.15",
