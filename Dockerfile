@@ -32,6 +32,8 @@ RUN node_modules/.bin/craco build
 FROM yarn-dependencies AS build-js
 ADD static/js static/js
 ADD webpack.config.js .
+ADD webpack.config.entry.js .
+ADD webpack.config.rules.js .
 RUN yarn run build-js
 
 

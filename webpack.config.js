@@ -1,29 +1,35 @@
+/* eslint-env node */
+
+const entry = require('./webpack.config.entry.js');
+const rules = require('./webpack.config.rules.js');
+
+const TerserPlugin = require('terser-webpack-plugin');
+
+const production = process.env.ENVIRONMENT !== 'devel';
+
+// turn on terser plugin on production
+const minimizer = production
+  ? [
+      new TerserPlugin({
+        sourceMap: true,
+        extractComments: false,
+      }),
+    ]
+  : [];
+
 module.exports = {
-  entry: {
-    app: './static/js/src/app.js',
-    'blog-feed': './static/js/src/blog-feed.js',
-    'search-filters': './static/js/src/search-filters.js',
-    'search-icons': './static/js/src/search-icons.js',
-    'instant-page': './static/js/src/libs/instant-page/instantpage.js',
-  },
-  mode: process.env.ENVIRONMENT === 'devel' ? 'development' : 'production',
+  entry: entry,
   output: {
-    filename: '[name].min.js',
+    filename: '[name].js',
     path: __dirname + '/static/js/dist',
   },
-  devtool: 'source-map',
+  mode: production ? 'production' : 'development',
+  devtool: production ? 'source-map' : 'eval-source-map',
   module: {
-    rules: [
-      {
-        test: /\.m?js$/,
-        exclude: /(node_modules)/,
-        use: {
-          loader: 'babel-loader',
-          options: {
-            presets: ['@babel/preset-env'],
-          },
-        },
-      },
-    ],
+    rules: rules,
+  },
+  optimization: {
+    minimize: true,
+    minimizer,
   },
 };
