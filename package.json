@@ -17,7 +17,7 @@
     "serve": "./entrypoint 0.0.0.0:${PORT}",
     "test": "yarn run lint-scss && yarn run lint-js && yarn run lint-python && yarn run test-python",
     "test-python": "python3 -m unittest discover tests",
-    "test-js": "jest",
+    "test-js": "jest --passWithNoTests",
     "update-test-json": "python3 scripts/update_test_json.py",
     "watch": "concurrently \"yarn run watch-scss\" \"yarn run watch-js\"",
     "watch-scss": "watch -p 'static/sass/**/*.scss' -c 'yarn run build-css'",
