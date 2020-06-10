@@ -12,6 +12,7 @@ const minimizer = production
   ? [
       new TerserPlugin({
         sourceMap: true,
+        extractComments: false,
       }),
     ]
   : [];
