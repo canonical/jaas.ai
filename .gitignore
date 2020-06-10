@@ -66,3 +66,7 @@ static/js/dist/**/*.js
 # Ignore 3rd party copied scripts
 /static/js/src/libs/global-nav/global-nav.js
 /static/js/src/libs/instant-page/instantpage.js
+
+# dotrun snap
+.venv/
+.dotrun.json
