@@ -2,6 +2,7 @@
 import * as Sentry from '@sentry/browser';
 import {createNav} from '@canonical/global-nav';
 import {cookiePolicy} from '@canonical/cookie-policy';
+import {fetchLatestNews} from '@canonical/latest-news';
 import searchPanel from './modules/search-panel';
 import showContactDetails from './modules/show-contact-details';
 import copySnippet from './modules/copy-snippet';
@@ -24,6 +25,14 @@ searchPanel();
 
 // Show modal windows
 modal();
+
+// Pull latest news from blog feed
+fetchLatestNews({
+  articlesContainerSelector: '#latest-news-container',
+  articleTemplateSelector: '#articles-template',
+  limit: 2,
+  id: 3612,
+});
 
 // Add cookie policy on page load
 const cookiePolicyOptions = {
