@@ -28,7 +28,7 @@
     "@babel/preset-env": "7.10.2",
     "@canonical/cookie-policy": "2.1.0",
     "@canonical/global-nav": "2.4.1",
-    "@canonical/latest-news": "^1.0.1",
+    "@canonical/latest-news": "1.0.1",
     "@sentry/browser": "5.15.5",
     "autoprefixer": "9.8.0",
     "babel-loader": "8.1.0",
