@@ -1092,6 +1092,11 @@
   dependencies:
     vanilla-framework "2.8.0"
 
+"@canonical/latest-news@^1.0.1":
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/@canonical/latest-news/-/latest-news-1.0.1.tgz#e1f843dbb00216752698ecb8f6afef095da15907"
+  integrity sha512-YsFbobts57/rJAX7VUQz082QsErx6eI99Paskj/2Sg8hCnrCp5J1dckAGJcb9pX6DMN6YcP1O33pTnVfoPf6XA==
+
 "@cnakazawa/watch@^1.0.3":
   version "1.0.4"
   resolved "https://registry.yarnpkg.com/@cnakazawa/watch/-/watch-1.0.4.tgz#f864ae85004d0fcab6f50be9141c4da368d1656a"
@@ -5180,7 +5185,7 @@ jest-worker@^26.0.0:
     merge-stream "^2.0.0"
     supports-color "^7.0.0"
 
-jest@^26.0.1:
+jest@26.0.1:
   version "26.0.1"
   resolved "https://registry.yarnpkg.com/jest/-/jest-26.0.1.tgz#5c51a2e58dff7525b65f169721767173bf832694"
   integrity sha512-29Q54kn5Bm7ZGKIuH2JRmnKl85YRigp0o0asTc6Sb6l2ch1DCXIeZTLLFy9ultJvhkTqbswF5DEx4+RlkmCxWg==
