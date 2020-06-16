@@ -12,3 +12,6 @@ After [installing Docker](https://docs.docker.com/install/):
 ```
 
 Now browse to http://localhost:8029.
+
+# Deploy
+You can find the deployment config in the deploy folder.
