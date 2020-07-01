@@ -15,6 +15,7 @@ env:
 
 extraHosts:
   - domain: docs.jujucharms.com
+  - domain: jujulabs.ubuntu.com
 
 memoryLimit: 512Mi
 
