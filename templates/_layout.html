@@ -13,6 +13,12 @@
   <script>window.app = {utils: {}};</script>
   <!-- Stylesheets -->
   <link rel="stylesheet" type="text/css" media="screen" href="{{ static_url('css/styles.css') }}" />
+
+  {% if self.canonical_url() %}
+    <!-- Canonical URL if provided -->
+    <link rel="canonical" href="https://jaas.ai/{% block canonical_url %}{% endblock %}" />
+  {% endif %}
+
   <!-- External scripts -->
   <script src="{{ static_url('js/dist/app.js') }}" defer></script>
   <script src="https://assets.ubuntu.com/v1/703e23c9-lazysizes+noscript+native-loading.5.1.2.min.js" defer></script>

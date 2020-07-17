@@ -3,6 +3,7 @@
 {% set active_section = "store" %}
 
 {% block title %}{{ context.entity.display_name }}{% endblock %}
+{% block canonical_url %}{{request.path.split('/')[1]}}{% endblock %}%
 {% block meta_description %}Deploy {{ context.entity.display_name }} to bare metal and public or private clouds using the Juju GUI or command line.{% endblock %}
 
 {% block meta_tags %}
