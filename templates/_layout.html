@@ -19,7 +19,8 @@
   <!-- Touch Icons -->
   <link rel="apple-touch-icon" href="https://assets.ubuntu.com/v1/905b8df0-apple-touch-icon-180x180-precomposed.png"/>
   <!-- SEO -->
-  <meta name="description" content="{% block description %}{% endblock %}" />
+  <meta name="description" content="{% block meta_description %}{% endblock %}" />
+  {% block head_extra %}
   <!-- Twitter Opengraph tags -->
   <meta name="twitter:card" content="summary">
   <meta name="twitter:site" content="@juju_devops">
@@ -28,6 +29,7 @@
   <meta name="twitter:title" content="JAAS | Juju as a service">
   <meta name="twitter:description" content="Juju is an open source, application and service modelling tool from Canonical that helps you deploy, manage, and scale your applications on any cloud.">
   <meta name="twitter:image" content="https://assets.ubuntu.com/v1/01868685-juju-twitter.png">
+  {% endblock %}
 </head>
 
 <body>
