@@ -217,6 +217,16 @@ class Entity:
         )
         self.tags = self._get_tags()
         self.url = self._ref.jujucharms_id()
+        self.canonical_url = self._get_canonical_url()
+
+    def _get_canonical_url(self):
+        jujucharms_url = self._ref.copy(
+            revision=None, series=None
+        ).jujucharms_url()
+        jaas_url = jujucharms_url.replace(
+            "https://jujucharms.com", "https://jaas.ai"
+        )
+        return jaas_url
 
     def _render_markdown(self, content):
         """Render markdown for the provided content.

@@ -4,6 +4,16 @@
 
 {% block title %}{{ context.entity.display_name }}{% endblock %}
 
+{% block head_extra %}
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:site" content="@ubuntucloud">
+  <meta name="twitter:creator" content="@ubuntucloud">
+  <meta name="twitter:title" content="{{ context.entity.display_name }} - Juju bundle">
+  <meta name="twitter:image" content="https://assets.ubuntu.com/v1/01868685-juju-twitter.png">
+  <meta name="twitter:description" content="{% if context.entity.description %}{{ context.entity.description|striptags }}{% else %}Deploy {{ context.entity.display_name }} to public or private clouds or even bare metal using the Juju GUI or command line.{% endif %}">
+  <link rel="canonical" href="{{ context.entity.canonical_url }}" />
+{% endblock %}
+
 {% block content %}
 
 {% include "store/_entity-header.html" %}
