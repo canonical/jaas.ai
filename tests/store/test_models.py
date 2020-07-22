@@ -52,6 +52,7 @@ class TestStoreModels(unittest.TestCase):
         self.assertEqual(charm.homepage, "https://launchpad.net/apache2-charm")
         self.assertTrue(charm.icon.endswith("apache2-26/icon.svg"))
         self.assertEqual(charm.id, "cs:apache2-26")
+        self.assertEqual(charm.canonical_url, "https://jaas.ai/apache2")
         self.assertTrue(charm.is_charm)
         self.assertEqual(
             charm.options.get("apt-key-id"),
