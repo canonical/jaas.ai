@@ -129,8 +129,7 @@ class TestStoreModels(unittest.TestCase):
         self.assertTrue(charm.supported)
         self.assertEqual(charm.supported_price, "99")
         self.assertEqual(
-            charm.supported_description,
-            "<p>Great ol' charm<br />\nthis one</p>",
+            charm.supported_description, "<p>Great ol' charm\nthis one</p>",
         )
 
     def test_bundle(self):
@@ -189,8 +188,7 @@ class TestStoreModels(unittest.TestCase):
         self.assertTrue(bundle.supported)
         self.assertEqual(bundle.supported_price, "99")
         self.assertEqual(
-            bundle.supported_description,
-            "<p>Great ol' bundle<br />\nthis one</p>",
+            bundle.supported_description, "<p>Great ol' bundle\nthis one</p>",
         )
 
     def test_bundle_icons(self):
