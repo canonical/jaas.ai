@@ -3,7 +3,7 @@ import os
 import re
 import markdown
 
-from mdx_gfm import GithubFlavoredMarkdownExtension
+from mdx_partial_gfm import PartialGithubFlavoredMarkdownExtension
 from jujubundlelib import references
 from theblues.charmstore import CharmStore
 from theblues.errors import EntityNotFound, ServerError
@@ -15,7 +15,9 @@ terms = Terms("https://api.jujucharms.com/terms/")
 
 SEARCH_LIMIT = 400
 
-markdown = markdown.Markdown(extensions=[GithubFlavoredMarkdownExtension()])
+markdown = markdown.Markdown(
+    extensions=[PartialGithubFlavoredMarkdownExtension()]
+)
 
 
 def search_entities(
