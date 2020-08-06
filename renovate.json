@@ -6,5 +6,5 @@
       "extends": [":automergeMinor"]
     }
   ],
-  "ignoreDeps": ["Markdown"]
+  "ignoreDeps": ["Markdown", "py-gfm"]
 }
