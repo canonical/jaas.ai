@@ -1,15 +1,15 @@
 import flask
 import datetime
 
-import talisker.requests
-from canonicalwebteam.blog import BlogViews
-from canonicalwebteam.blog.flask import build_blueprint
+import talisker
+from canonicalwebteam.blog import build_blueprint, BlogViews, BlogAPI
 from canonicalwebteam.flask_base.app import FlaskBase
 from canonicalwebteam.yaml_responses.flask_helpers import (
     prepare_deleted,
     prepare_redirects,
 )
 from canonicalwebteam import image_template
+
 from webapp.external_urls import external_urls
 from webapp.handlers import add_headers
 from webapp.jaasai.views import jaasai
@@ -18,6 +18,8 @@ from webapp.store.models import cs
 from webapp.store.views import jaasstore
 from webapp.template_utils import current_url_with_query, static_url
 from webapp.tutorials.views import init_tutorials
+
+session = talisker.requests.get_session()
 
 
 def create_app(testing=False):
@@ -34,6 +36,7 @@ def create_app(testing=False):
     app.before_request(prepare_deleted())
 
     blog_views = BlogViews(
+        api=BlogAPI(session=session),
         blog_title="JAAS Case Studies",
         tag_ids=[3513],
         feed_description="Case Studies from happy JAAS users",
