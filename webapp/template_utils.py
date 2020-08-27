@@ -6,10 +6,10 @@ from werkzeug.urls import url_encode
 
 def static_url(filename):
     """Template function for generating URLs to static assets:
-        Given the path for a static file, output a url path
-        with a hex hash as a query string for versioning.
-        :param string: A file name.
-        :returns: A file name with appended hash.
+    Given the path for a static file, output a url path
+    with a hex hash as a query string for versioning.
+    :param string: A file name.
+    :returns: A file name with appended hash.
     """
     filepath = os.path.join("static", filename)
     url = url_for("static", filename=filename)
@@ -26,10 +26,10 @@ def static_url(filename):
 
 def current_url_with_query(**query_params):
     """Generate a version of the current URL with modified query params. This
-        can be used for changing search filters when you want to maintain
-        other existing filters.
-        :param **kwargs: The query params to manipulate.
-        :returns: A new URL.
+    can be used for changing search filters when you want to maintain
+    other existing filters.
+    :param **kwargs: The query params to manipulate.
+    :returns: A new URL.
     """
     params = request.args.copy()
     for param, value in query_params.items():

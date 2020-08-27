@@ -3,11 +3,11 @@ from flask import url_for
 
 def get_experts(expert=None):
     """Generate the expert definitions. This needs to be done in a function so
-        that it can be called when the app context is available. This is so
-        that the url_for() methods work.
-        :param expert: A optional expert. If provided this method will only
-            return that expert.
-        :returns: One or all experts.
+    that it can be called when the app context is available. This is so
+    that the url_for() methods work.
+    :param expert: A optional expert. If provided this method will only
+        return that expert.
+    :returns: One or all experts.
     """
     experts = {
         "omnivector": {
