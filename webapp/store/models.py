@@ -60,9 +60,9 @@ def search_entities(
 
 def get_reference(entity):
     """From a string, see if we can make an entity reference out of it, using
-        all possible methods.
-        :param string: a string to turn into a reference.
-        :returns: A reference or None.
+    all possible methods.
+    :param string: a string to turn into a reference.
+    :returns: A reference or None.
     """
     reference = None
     try:
@@ -161,13 +161,13 @@ def _parse_charm_or_bundle(entity_data, include_files=False):
 
 class Entity:
     """Base class for charms and bundles. Contains the shared attributes and
-        methods.
-        Classes that extend Entity will need to provide the following methods:
-        - _get_metadata
-        - _get_metadata
-        - _get_display_name
-        - _get_tags
-        - _get_series
+    methods.
+    Classes that extend Entity will need to provide the following methods:
+    - _get_metadata
+    - _get_metadata
+    - _get_display_name
+    - _get_tags
+    - _get_series
     """
 
     def __init__(self, entity_data, include_files=False):
@@ -232,8 +232,8 @@ class Entity:
 
     def _render_markdown(self, content):
         """Render markdown for the provided content.
-            :content string: Some markdown.
-            :returns: HTML as a string.
+        :content string: Some markdown.
+        :returns: HTML as a string.
         """
         html = markdown.convert(content)
         try:
@@ -245,8 +245,8 @@ class Entity:
 
     def _convert_http_to_https(self, content):
         """Convert any non secure inclusion of assets to secure.
-            :param content: the content to parse as a string.
-            :returns: the parsed content with http replaces with https
+        :param content: the content to parse as a string.
+        :returns: the parsed content with http replaces with https
         """
         insensitive_link = re.compile(re.escape('src="http:'), re.IGNORECASE)
         content = insensitive_link.sub('src="https:', content)
@@ -256,8 +256,8 @@ class Entity:
 
     def _get_entity_files(self, manifest=None):
         """Get files for an entity.
-            :manifest array: The manifest of the files.
-            :returns: The collection of files.
+        :manifest array: The manifest of the files.
+        :returns: The collection of files.
         """
         try:
             files = cs.files(self._ref, manifest=manifest) or {}
@@ -268,7 +268,7 @@ class Entity:
 
     def _extract_from_extrainfo(self):
         """Get data from extrainfo.
-            :returns: The extracted extrainfo data.
+        :returns: The extracted extrainfo data.
         """
         extra_info = self._meta.get("extra-info", {})
         revisions = extra_info.get("bzr-revisions") or extra_info.get(
@@ -281,8 +281,8 @@ class Entity:
 
     def _parse_display_name(self, name):
         """Clean the name of the charm for readability.
-            :param name: the charm/bundle name.
-            :returns: a cleaned name for display.
+        :param name: the charm/bundle name.
+        :returns: a cleaned name for display.
         """
         name = name.replace("-", " ")
         # Hack to rename 'canonical kubernetes'. To be removed when display
@@ -293,7 +293,7 @@ class Entity:
 
     def _extract_from_commoninfo(self):
         """Get data from commonifo.
-            :returns: The extracted commoninfo data.
+        :returns: The extracted commoninfo data.
         """
         common_info = self._meta.get("common-info", {})
         bugs_url = common_info.get("bugs-url")
@@ -302,8 +302,7 @@ class Entity:
 
 
 class Charm(Entity):
-    """A charm definition.
-    """
+    """A charm definition."""
 
     is_charm = True
 
@@ -326,19 +325,19 @@ class Charm(Entity):
 
     def _get_metadata(self):
         """Get the metadata info.
-            :returns: The extracted metadata object.
+        :returns: The extracted metadata object.
         """
         return self._meta["charm-metadata"]
 
     def _get_display_name(self):
         """Get the display name for the charm.
-            :returns: The parsed display name.
+        :returns: The parsed display name.
         """
         return self._parse_display_name(self._metadata["Name"])
 
     def _get_tags(self):
         """Get the list of tags.
-            :returns: The array of tags.
+        :returns: The array of tags.
         """
         # Some charms do not have tags, so fall back to categories if they
         # exist (mostly on older charms).
@@ -346,13 +345,13 @@ class Charm(Entity):
 
     def _get_series(self):
         """Get the list of series.
-            :returns: The array of series.
+        :returns: The array of series.
         """
         return self._meta.get("supported-series", {}).get("SupportedSeries")
 
     def _parse_term_ids(self):
         """Extract the term names and revisions.
-            :returns: a collection of term ids, names and revisions.
+        :returns: a collection of term ids, names and revisions.
         """
         term_ids = self._meta.get("terms")
         if term_ids is None:
@@ -371,8 +370,8 @@ class Charm(Entity):
 
     def _extract_resources(self):
         """Extract data from resources metadata.
-            :returns: a dictionary of resource name and an array containing
-                the file extension, the file link of the resource.
+        :returns: a dictionary of resource name and an array containing
+            the file extension, the file link of the resource.
         """
         result = {}
         for resource in self._meta.get("resources", {}):
@@ -390,8 +389,7 @@ class Charm(Entity):
 
 
 class Bundle(Entity):
-    """A bundle definition.
-    """
+    """A bundle definition."""
 
     is_charm = False
 
@@ -406,38 +404,38 @@ class Bundle(Entity):
 
     def _get_metadata(self):
         """Get the metadata info.
-            :returns: The extracted metadata object.
+        :returns: The extracted metadata object.
         """
         return self._meta["bundle-metadata"]
 
     def _get_display_name(self):
         """Get the display name for the bundle.
-            :returns: The parsed display name.
+        :returns: The parsed display name.
         """
         return self._parse_display_name(self._ref.name)
 
     def _get_tags(self):
         """Get the list of tags.
-            :returns: The array of tags.
+        :returns: The array of tags.
         """
         return self._metadata.get("Tags")
 
     def _get_series(self):
         """Get the list of series.
-            :returns: The array of series.
+        :returns: The array of series.
         """
         # The series is an array to match the charm data.
         return [self._metadata.get("Series")]
 
     def _get_bundle_visualization(self):
         """Get the url for the bundle visualization.
-            :returns: the bundle visualisation URL.
+        :returns: the bundle visualisation URL.
         """
         return cs.bundle_visualization_url(self._ref)
 
     def _parse_bundle_applications(self, applications):
         """Get the list of applications for a bundle.
-            :returns: The array of applications.
+        :returns: The array of applications.
         """
         for name, app in applications.items():
             ref = references.Reference.from_string(app["Charm"])
@@ -449,7 +447,7 @@ class Bundle(Entity):
 
     def _get_icons(self):
         """Get two sensible icons for this bundle.
-            :returns: The icon URLS.
+        :returns: The icon URLS.
         """
         name_parts = self._ref.name.split("-")
         name_parts.insert(0, self._ref.name)
@@ -464,9 +462,9 @@ class Bundle(Entity):
 
     def _get_icon(self, names, previous_match=None):
         """Get a sensible icon for this bundle.
-            :names array: A list of possible names to match.
-            :previous_match string: A previous name match to ignore.
-            :returns: The charm name and icon URL.
+        :names array: A list of possible names to match.
+        :previous_match string: A previous name match to ignore.
+        :returns: The charm name and icon URL.
         """
         match = None
         # Look for an exact match.
@@ -490,10 +488,10 @@ class Bundle(Entity):
         self, names, previous_match=None, partial_match=False
     ):
         """Search a list of names and application names for matches.
-            :names array: A list of possible names to match.
-            :previous_match string: A previous name match to ignore.
-            :partial_match bool: Whether to check within app names.
-            :returns: An application name or None.
+        :names array: A list of possible names to match.
+        :previous_match string: A previous name match to ignore.
+        :partial_match bool: Whether to check within app names.
+        :returns: An application name or None.
         """
         for name in names:
             for app_name, app in self.applications.items():

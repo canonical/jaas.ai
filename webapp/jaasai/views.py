@@ -204,6 +204,5 @@ def sitemap_store():
 
 @jaasai.route("/_status/check")
 def health_check():
-    """ Health check end point used by Talisker.
-    """
+    """Health check end point used by Talisker."""
     return ("", 200)

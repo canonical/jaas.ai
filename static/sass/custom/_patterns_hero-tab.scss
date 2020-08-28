@@ -44,6 +44,18 @@
         outline: 0;
       }
 
+      &[aria-selected="false"] {
+        .before {
+          background-color: transparent;
+          content: "";
+          display: block;
+          height: 2px;
+          position: relative;
+          top: -1px;
+          width: 100%;
+        }
+      }
+
       &[aria-selected='true'] {
         * {
           opacity: 1;
