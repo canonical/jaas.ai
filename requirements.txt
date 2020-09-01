@@ -1,6 +1,6 @@
 canonicalwebteam.flask_base==0.6.3
 canonicalwebteam.http==1.0.3
-canonicalwebteam.blog==6.2.1
+canonicalwebteam.blog==6.2.3
 canonicalwebteam.yaml-responses==1.1.1
 canonicalwebteam.discourse-docs==1.0.1
 canonicalwebteam.search==0.2.1
