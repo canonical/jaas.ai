@@ -36,7 +36,11 @@ def create_app(testing=False):
     app.before_request(prepare_deleted())
 
     blog_views = BlogViews(
-        api=BlogAPI(session=session),
+        api=BlogAPI(
+            session=session,
+            thumbnail_width=354,
+            thumbnail_height=180,
+        ),
         blog_title="JAAS Case Studies",
         tag_ids=[3513],
         feed_description="Case Studies from happy JAAS users",
