@@ -26,7 +26,7 @@
   "dependencies": {
     "@babel/core": "7.11.6",
     "@babel/preset-env": "7.11.5",
-    "@canonical/cookie-policy": "3.0.3",
+    "@canonical/cookie-policy": "3.0.4",
     "@canonical/global-nav": "2.4.3",
     "@canonical/latest-news": "1.0.3",
     "@sentry/browser": "5.25.0",
