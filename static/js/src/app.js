@@ -32,13 +32,8 @@ fetchLatestNews({
   articleTemplateSelector: '#articles-template',
   limit: 2,
   id: 3612,
-  hostname: "ubuntu.com",
+  hostname: 'ubuntu.com',
 });
 
 // Add cookie policy on page load
-const cookiePolicyOptions = {
-  content:
-    'We use cookies to improve your experience. By your continued use of this site you accept such use. To change your settings please <a href="https://www.ubuntu.com/legal/terms-and-policies/privacy-policy#cookies">see our policy.</a>',
-  duration: 5000,
-};
-cookiePolicy(cookiePolicyOptions);
+cookiePolicy();
