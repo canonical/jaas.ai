@@ -64,6 +64,4 @@ class WebappViews(TestCase):
     def test_blog_feed_invalid(self, mock_get):
         mock_get.return_value = MagicMock(text="")
         response = self.client.get(url_for("jaasai.blog_feed"))
-        self.assertEqual(
-            json.loads(response.data), {"error": "no element found"}
-        )
+        self.assertEqual(json.loads(response.data), [])
