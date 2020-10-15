@@ -1381,10 +1381,10 @@
   dependencies:
     vanilla-framework "2.13.0"
 
-"@canonical/latest-news@1.0.3":
-  version "1.0.3"
-  resolved "https://registry.yarnpkg.com/@canonical/latest-news/-/latest-news-1.0.3.tgz#afa0d05604d2078a38eae7929dac2e41bf219d2a"
-  integrity sha512-zGYOskwnTkHe3H7n3HhhLLtwi8ufqkgfgQvpS5I4KQZ9hjn7J4X9lQtDArlWvb/TlD3m2+2JykRacFaRUeZeKw==
+"@canonical/latest-news@1.0.4":
+  version "1.0.4"
+  resolved "https://registry.yarnpkg.com/@canonical/latest-news/-/latest-news-1.0.4.tgz#08ffda58e0f9edd1dc2dd075b64973842c7b7537"
+  integrity sha512-9V9vz46udbDKSp81mwsmZmpe2olEtv4TVDLdKyH1lpsDAZBzPbGd2laFx/EOkWL/Ky6PJMgI38IM0hEFrelOAw==
 
 "@cnakazawa/watch@^1.0.3":
   version "1.0.4"
@@ -8179,10 +8179,10 @@ vanilla-framework@2.13.0:
   resolved "https://registry.yarnpkg.com/vanilla-framework/-/vanilla-framework-2.13.0.tgz#ac73e745150bcef183eb35e3ee47f3fd079ddd3e"
   integrity sha512-EuxlGxO4SmCGL4GVzcye5aas2HGVqRhPxlTHg84Lfw1e1E4F/Coxs78i3xxkPGw3LOcfea0KU096ar1PnLNuXQ==
 
-vanilla-framework@2.17.0:
-  version "2.17.0"
-  resolved "https://registry.yarnpkg.com/vanilla-framework/-/vanilla-framework-2.17.0.tgz#e33f072b34e98f98ab611e8292ba9277216adeb9"
-  integrity sha512-Zqn0UVcvKjffO16ajSidzOwlZAcIJFOZu2LsK0IWDiZGFdlCe/iQZH0tcM6M5repcbDPi93I9Thv4kpfPMAeqg==
+vanilla-framework@2.19.1:
+  version "2.19.1"
+  resolved "https://registry.yarnpkg.com/vanilla-framework/-/vanilla-framework-2.19.1.tgz#f071deed5504a5fe2104d6d9b087ce654e190881"
+  integrity sha512-y79SKAwertvgHVAf1PbGxiq6QvVxNI78txilSgESx80HUWBrooT1nXCDUuHC/ySGEq+JUpmVIv0PrmXXilYWdg==
 
 verbalize@^0.1.2:
   version "0.1.2"
