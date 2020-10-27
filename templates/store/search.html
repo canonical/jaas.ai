@@ -101,8 +101,9 @@
                         context.current_series == 'xenial' or
                         context.current_series == 'bionic' or
                         context.current_series == 'cosmic' or
+                        context.current_series == 'focal' or
                         context.current_series == 'trusty') %}p-list__item--active{% endif %}">
-                        {% for series in ['xenial', 'bionic', 'cosmic', 'trusty'] %}{{ series_tag(series) }}{% endfor %}
+                        {% for series in ['xenial', 'bionic', 'cosmic', 'trusty', 'focal'] %}{{ series_tag(series) }}{% endfor %}
                       </li>
                       <li class="p-list__item {% if context.current_series == 'centos7' %}p-list__item--active{% endif %}">
                         {{ series_tag('centos7') }}
