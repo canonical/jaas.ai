@@ -21,7 +21,9 @@
   <meta name="twitter:title" content="{{ context.entity.display_name }} - Juju charm">
   <meta name="twitter:image" content="{{ context.entity.icon }}">
   <meta name="twitter:description" content="{% if context.entity.description %}{{ context.entity.description|striptags }}{% else %}Deploy {{ context.entity.display_name }} to public or private clouds or even bare metal using the Juju GUI or command line.{% endif %}">
-  <link rel="canonical" href="{{ context.entity.canonical_url }}" />
+  {% if context.entity and context.entity.is_charm %}
+    <link rel="canonical" href="https://charmhub.io/{{ context.charm_bundle_name }}" />
+  {% endif %}
 {% endblock %}
 
 {% block content %}

@@ -161,7 +161,11 @@ def details(charm_or_bundle_name, series_or_version=None, version=None):
         )
         return render_template(
             template,
-            context={"entity": entity, "expert": get_experts(entity.owner)},
+            context={
+                "entity": entity,
+                "expert": get_experts(entity.owner),
+                "charm_bundle_name": charm_or_bundle_name,
+            },
         )
     else:
         return abort(404, "Entity not found {}".format(charm_or_bundle_name))
