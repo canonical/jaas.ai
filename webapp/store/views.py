@@ -164,9 +164,9 @@ def details(charm_or_bundle_name, series_or_version=None, version=None):
                     f"{charm_or_bundle_name}"
                 )
             )
-            exists_charmhub = response.status_code == 200
+            exists_in_charmhub = response.status_code == 200
         except Exception:
-            exists_charmhub = False
+            exists_in_charmhub = False
 
         template = "store/{}-details.html".format(
             "charm" if entity.is_charm else "bundle"
@@ -177,7 +177,7 @@ def details(charm_or_bundle_name, series_or_version=None, version=None):
                 "entity": entity,
                 "expert": get_experts(entity.owner),
                 "charm_bundle_name": charm_or_bundle_name,
-                "exists_charmhub": exists_charmhub,
+                "exists_in_charmhub": exists_in_charmhub,
             },
         )
     else:
