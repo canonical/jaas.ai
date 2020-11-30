@@ -24,7 +24,7 @@ WORKDIR /srv
 ADD .git/index /dev/null
 RUN git clone https://github.com/canonical-web-and-design/jaas-dashboard /srv
 RUN yarn install
-RUN node_modules/.bin/craco build
+RUN yarn build
 
 
 # Build stage: Run "yarn run build-js"
