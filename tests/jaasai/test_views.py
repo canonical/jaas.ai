@@ -40,7 +40,7 @@ class WebappViews(TestCase):
                 response.status_code, 200, "For page: {}".format(url)
             )
 
-    @patch("canonicalwebteam.http.CachedSession.get")
+    @patch("webapp.jaasai.views.session.get")
     def test_blog_feed(self, mock_get):
         feed = "<rss><channel><item><title>Post</title></item></channel></rss>"
         mock_get.return_value = MagicMock(text=feed)
@@ -49,7 +49,7 @@ class WebappViews(TestCase):
         self.assertEqual(len(posts), 1)
         self.assertEqual(posts[0]["title"], "Post")
 
-    @patch("canonicalwebteam.http.CachedSession.get")
+    @patch("webapp.jaasai.views.session.get")
     def test_blog_feed_limit_results(self, mock_get):
         feed = (
             "<rss><channel><item><title>Post</title></item>"
@@ -60,7 +60,7 @@ class WebappViews(TestCase):
         response = self.client.get(url_for("jaasai.blog_feed"))
         self.assertEqual(len(json.loads(response.data)), 2)
 
-    @patch("canonicalwebteam.http.CachedSession.get")
+    @patch("webapp.jaasai.views.session.get")
     def test_blog_feed_invalid(self, mock_get):
         mock_get.return_value = MagicMock(text="")
         response = self.client.get(url_for("jaasai.blog_feed"))
