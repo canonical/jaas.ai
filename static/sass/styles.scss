@@ -34,18 +34,14 @@ $breakpoint-navigation-threshold: $breakpoint-large;
 @import 'custom/series_tags';
 @import 'custom/patterns_strips';
 @import 'custom/patterns_lists';
-@import 'custom/patterns_docs';
 @import 'custom/hljs';
 @import 'custom/linkable-heading';
 @import 'custom/case_studies';
 @import 'custom/patterns_hero-tab';
-@import 'custom/patterns_tutorials';
 
 @include jaas-hero-tab;
 @include jaas-p-strips;
 @include jaas-p-lists;
-@include jaas-docs;
-@include jaas-tutorials;
 
 // Homepage Card footer margin
 .p-card.is-flex {

@@ -158,3 +158,5 @@ docs/help-google/?: /docs/gce-cloud
 support/create: /support
 assets/(?P<path>.*): /static/{path}
 get-started/?: /docs/getting-started-with-juju
+tutorials: https://juju.is/tutorials
+tutorials/(?P<path>.*): https://juju.is/tutorials/{path}
