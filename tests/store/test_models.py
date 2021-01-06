@@ -161,9 +161,7 @@ class TestStoreModels(unittest.TestCase):
             bundle.description,
             "<p>A highly-available, production-grade Kubernetes cluster.</p>",
         )
-        self.assertEqual(
-            bundle.display_name, "Charmed Kubernetes"
-        )
+        self.assertEqual(bundle.display_name, "Charmed Kubernetes")
         self.assertEqual(
             bundle.homepage, "https://www.ubuntu.com/kubernetes/docs"
         )
