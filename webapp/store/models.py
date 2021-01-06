@@ -288,7 +288,7 @@ class Entity:
         # Hack to rename 'canonical kubernetes'. To be removed when display
         # name has been implemented.
         if name == "canonical kubernetes":
-            name = "The Charmed Distribution of Kubernetes"
+            name = "Charmed Kubernetes"
         return name
 
     def _extract_from_commoninfo(self):
