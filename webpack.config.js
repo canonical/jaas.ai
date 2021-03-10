@@ -11,7 +11,6 @@ const production = process.env.ENVIRONMENT !== 'devel';
 const minimizer = production
   ? [
       new TerserPlugin({
-        sourceMap: true,
         extractComments: false,
       }),
     ]
