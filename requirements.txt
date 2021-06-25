@@ -10,5 +10,4 @@ py-gfm==0.1.4
 jujubundlelib==0.5.6
 theblues==0.5.2
 Markdown==2.6.11
-Werkzeug==1.0.1
 requests==2.25.1
