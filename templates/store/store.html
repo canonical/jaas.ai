@@ -299,11 +299,11 @@
     </div>
     <div class="col-3 p-card u-no-border">
       <div class="p-media-object charm-object u-no-margin--bottom">
-        {% set url = external_urls.charmstore + "~ricardokirkner/sentry/icon.svg" %}
+        {% set url = external_urls.charmstore + "jenkins-34/icon.svg" %}
         {{
           image(
             url=url,
-            alt="Sentry icon",
+            alt="Jenkins icon",
             width="40",
             height="40",
             hi_def=True,
@@ -312,9 +312,9 @@
         }}
         <div class="p-media-object__details">
           <h3 class="p-media-object__title">
-            <a href="{{ url_for('jaasstore.details', charm_or_bundle_name='sentry') }}">Sentry</a>
+            <a href="{{ url_for('jaasstore.details', charm_or_bundle_name='jenkins') }}">Jenkins</a>
           </h3>
-          <p class="p-media-object__content">by ricardokirkner</p>
+          <p class="p-media-object__content">by cicd</p>
         </div>
       </div>
     </div>

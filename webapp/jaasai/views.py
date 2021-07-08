@@ -1,6 +1,7 @@
 import feedparser
 import os
-import canonicalwebteam.http
+
+import talisker.requests
 from flask import (
     Blueprint,
     current_app,
@@ -11,7 +12,6 @@ from flask import (
     send_from_directory,
 )
 from jujubundlelib import references
-
 from webapp.experts import get_experts
 from webapp.store.models import cs
 
@@ -19,7 +19,7 @@ jaasai = Blueprint(
     "jaasai", __name__, template_folder="/templates", static_folder="/static"
 )
 
-cached_session = canonicalwebteam.http.CachedSession()
+session = talisker.requests.get_session()
 
 
 @jaasai.route("/")
@@ -135,7 +135,7 @@ def support():
 @jaasai.route("/blog/feed")
 def blog_feed():
     feed_url = "https://admin.insights.ubuntu.com/tag/juju/feed"
-    response = cached_session.get(feed_url)
+    response = session.get(feed_url)
     feed = feedparser.parse(response.text)
     response = None
     if feed.bozo == 1:

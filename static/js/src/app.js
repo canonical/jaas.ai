@@ -11,7 +11,7 @@ import modal from './modules/modal';
 Sentry.init({dsn: 'https://5b54e6946be34749935c4dd2d9d01cb8@sentry.is.canonical.com//7'});
 
 // Global nav strip
-createNav({maxWidth: '72rem', showLogins: false});
+createNav({maxWidth: '72rem', showLogins: false , hiring: 'https://juju.is/careers' });
 
 // Contact CTA for /experts
 showContactDetails();
