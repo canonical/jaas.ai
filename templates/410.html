@@ -1,0 +1,21 @@
+{% extends "_layout.html" %}
+
+{% block title %}410: Content deleted{% endblock %}
+
+{% block content %}
+<div class="p-strip--light">
+  <div class="row">
+    <h1>410: Content deleted.</h1>
+    <p>Try a different URL, try searching for solutions or learn how to <a href="{{ external_urls.docs }}/authors-charm-writing" class="p-link--external">create your own solution</a>.</p>
+    <nav>
+      <ul class="p-inline-list">
+        <li class="p-inline-list__item"><a href="{{ url_for('jaasstore.store') }}" class="p-button--positive">Browse the store</a></li>
+        <li class="p-inline-list__item"><a href="{{ url_for('jaasstore.search', type='bundle') }}">All bundles</a></li>
+        <li class="p-inline-list__item"><a href="{{ url_for('jaasstore.search', type='charm') }}">All charms</a></li>
+        <li class="p-inline-list__item"><a href="{{ external_urls.issues }}" class="p-link--external">Submit a bug</a></li>
+      </ul>
+    </nav>
+  </div>
+</div>
+
+{% endblock content %}

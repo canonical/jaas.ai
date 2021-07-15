@@ -17,3 +17,5 @@ reference/env: /docs
 reference/snap-command: /docs
 reference/snapcraft-command: /docs
 snaps/philosophy: /docs
+community/cards:
+  message: 'Juju cards is no longer supported'

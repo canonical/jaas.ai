@@ -17,7 +17,6 @@ class WebappViews(TestCase):
     def test_static_pages(self):
         pages = [
             "big_data",
-            "community_cards",
             "community_partners",
             "community",
             "containers",

@@ -117,11 +117,6 @@ def community():
     return render_template("jaasai/community.html")
 
 
-@jaasai.route("/community/cards")
-def community_cards():
-    return render_template("jaasai/community/cards.html")
-
-
 @jaasai.route("/community/partners")
 def community_partners():
     return render_template("jaasai/community/partners.html")
@@ -169,7 +164,6 @@ def sitemap_base():
     context = {
         "pages": [
             "jaasai.big_data",
-            "jaasai.community_cards",
             "jaasai.community_partners",
             "jaasai.community",
             "jaasai.containers",

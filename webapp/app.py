@@ -101,6 +101,15 @@ def init_handler(app):
 
         return flask.render_template("500.html", error=error), 500
 
+    @app.errorhandler(410)
+    def gone(error):
+        """
+        For 410 pages, display the 410.html template,
+        passing through the error.
+        """
+
+        return flask.render_template("410.html", error=error), 410
+
 
 def init_blueprint(app):
     app.register_blueprint(jaasai)
