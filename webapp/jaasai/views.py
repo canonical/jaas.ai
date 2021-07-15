@@ -164,7 +164,6 @@ def sitemap_base():
     context = {
         "pages": [
             "jaasai.big_data",
-            "jaasai.community_cards",
             "jaasai.community_partners",
             "jaasai.community",
             "jaasai.containers",
