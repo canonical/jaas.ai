@@ -3,43 +3,59 @@
 {% set active_section = "store" %}
 
 {% block title %}Store{% endblock %}
-{% block description %}Browse Juju's entire repository of solutions and find Charms or Bundles for any problem, including OpenStack, Big Data, MongoDB and Elastic search.{% endblock %}
+{% block description %}Browse Juju's entire repository of solutions and find Charms or Bundles for any problem,
+including OpenStack, Big Data, MongoDB and Elastic search.{% endblock %}
 
 {% block content %}
-<div class="p-strip--suru-bottom has-accent is-dark" style="background-size: auto 100%, cover; background-position: right center; background-image: url('https://assets.ubuntu.com/v1/a9dab044-suru-right.svg'), linear-gradient(266deg, #044f66, #022935)">
+<div class="p-strip--suru-bottom has-accent is-dark" style="
+  background-image: url('https://assets.ubuntu.com/v1/a9dab044-suru-right.svg'), linear-gradient(266deg, #044f66, #022935);
+  background-position: right center;
+  background-size: auto 100%, cover;
+  padding-top: 2rem;
+  ">
+  <div class="row moving-to-charmhub">
+    <div class="p-notification--caution">
+      <div class="p-notification__content">
+        <p class="p-notification__message"><strong>Jaas.ai/store will be moving to Charmhub.io</strong>. Head over there
+          now
+          to view all your
+          favourite Charms. Visit <a href="https://charmhub.io" class="p-link--external">https://charmhub.io</a> </p>
+      </div>
+    </div>
+  </div>
   <div class="row p-divider is-dark">
     <div class="col-4 p-divider__block">
       <div class="u-sv2">
         {{
-          image(
-            url="https://assets.ubuntu.com/v1/d1208c3f-kubernetes.svg",
-            alt="Kubernetes logo",
-            width="96",
-            height="96",
-            hi_def=False,
-            loading="eager",
-          ) | safe
+        image(
+        url="https://assets.ubuntu.com/v1/d1208c3f-kubernetes.svg",
+        alt="Kubernetes logo",
+        width="96",
+        height="96",
+        hi_def=False,
+        loading="eager",
+        ) | safe
         }}
       </div>
       <small>KUBERNETES</small>
-      <h3>The open-source <br class="u-hide--small"/>orchestration system</h3>
+      <h3>The open-source <br class="u-hide--small" />orchestration system</h3>
       <a href="{{ url_for('jaasai.kubernetes') }}" class="p-button--neutral">Find out more</a>
     </div>
     <div class="col-4 p-divider__block">
       <div class="u-sv2">
         {{
-          image(
-            url="https://assets.ubuntu.com/v1/5e3456e3-hadoop.svg",
-            alt="Hadoop logo",
-            width="96",
-            height="96",
-            hi_def=True,
-            loading="eager",
-          ) | safe
+        image(
+        url="https://assets.ubuntu.com/v1/5e3456e3-hadoop.svg",
+        alt="Hadoop logo",
+        width="96",
+        height="96",
+        hi_def=True,
+        loading="eager",
+        ) | safe
         }}
       </div>
       <small>BIG DATA</small>
-      <h3>Juju solutions for <br class="u-hide--small"/>big data</h3>
+      <h3>Juju solutions for <br class="u-hide--small" />big data</h3>
       <a href="{{ url_for('jaasai.big_data') }}" class="p-button--neutral">Find out more</a>
     </div>
     <div class="col-4 p-divider__block">
@@ -55,44 +71,46 @@
       <div class="row">
         <div class="col-2 u-align--center">
           {{
-            image(
-              url="https://assets.ubuntu.com/v1/3fe6b167-CHARM-FILEBEATS.svg",
-              alt="",
-              width="98",
-              height="98",
-              hi_def=False,
-              loading="eager",
-            ) | safe
+          image(
+          url="https://assets.ubuntu.com/v1/3fe6b167-CHARM-FILEBEATS.svg",
+          alt="",
+          width="98",
+          height="98",
+          hi_def=False,
+          loading="eager",
+          ) | safe
           }}
         </div>
         <div class="col-4 u-no-margin--left">
           <h4 class="p-muted-heading">Charms</h4>
-          <p>Charms are sets of scripts that simplify the deployment and management tasks of a service. They are regularly reviewed and updated.</p>
+          <p>Charms are sets of scripts that simplify the deployment and management tasks of a service. They are
+            regularly reviewed and updated.</p>
           <a href="{{ url_for('jaasstore.search', type='charm') }}" class="p-button--neutral">View all the charms</a>
         </div>
       </div>
     </div>
-      <div class="col-6">
-        <div class="row">
-          <div class="col-2 u-align--center">
-            {{
-              image(
-                url="https://assets.ubuntu.com/v1/d58e79e3-BUNDLE%281%29.svg",
-                alt="Public cloud logos",
-                width="112",
-                height="96",
-                hi_def=False,
-                loading="eager",
-                attrs={"class": "padding: 1rem 0;"},
-              ) | safe
-            }}
-          </div>
-          <div class="col-4 u-no-margin--left">
-            <h4 class="p-muted-heading">Bundles</h4>
-            <p>Bundles are collections of charms that link applications together, so you can deploy whole chunks of infrastructure in one go.</p>
-            <a href="{{ url_for('jaasstore.search', type='bundle') }}" class="p-button--neutral">View all the bundles</a>
-          </div>
+    <div class="col-6">
+      <div class="row">
+        <div class="col-2 u-align--center">
+          {{
+          image(
+          url="https://assets.ubuntu.com/v1/d58e79e3-BUNDLE%281%29.svg",
+          alt="Public cloud logos",
+          width="112",
+          height="96",
+          hi_def=False,
+          loading="eager",
+          attrs={"class": "padding: 1rem 0;"},
+          ) | safe
+          }}
         </div>
+        <div class="col-4 u-no-margin--left">
+          <h4 class="p-muted-heading">Bundles</h4>
+          <p>Bundles are collections of charms that link applications together, so you can deploy whole chunks of
+            infrastructure in one go.</p>
+          <a href="{{ url_for('jaasstore.search', type='bundle') }}" class="p-button--neutral">View all the bundles</a>
+        </div>
+      </div>
     </div>
   </div>
 </div>
@@ -102,19 +120,32 @@
     <div class="col-12">
       <h3 class="p-muted-heading">Categories</h3>
       <ul class="p-inline-list--middot">
-        <li class="p-inline-list__item"><a class="p-link--soft" href="{{ url_for('jaasstore.search', q='databases') }}">databases</a></li>
-        <li class="p-inline-list__item"><a class="p-link--soft" href="{{ url_for('jaasstore.search', q='app-servers') }}">app-servers</a></li>
-        <li class="p-inline-list__item"><a class="p-link--soft" href="{{ url_for('jaasstore.search', q='file-servers') }}">file-servers</a></li>
-        <li class="p-inline-list__item"><a class="p-link--soft" href="{{ url_for('jaasstore.search', q='monitoring') }}">monitoring</a></li>
-        <li class="p-inline-list__item"><a class="p-link--soft" href="{{ url_for('jaasstore.search', q='ops') }}">ops</a></li>
-        <li class="p-inline-list__item"><a class="p-link--soft" href="{{ url_for('jaasstore.search', q='openstack') }}">openstack</a></li>
-        <li class="p-inline-list__item"><a class="p-link--soft" href="{{ url_for('jaasstore.search', q='applications') }}">applications</a></li>
-        <li class="p-inline-list__item"><a class="p-link--soft" href="{{ url_for('jaasstore.search', q='misc') }}">misc</a></li>
-        <li class="p-inline-list__item"><a class="p-link--soft" href="{{ url_for('jaasstore.search', q='network') }}">network</a></li>
-        <li class="p-inline-list__item"><a class="p-link--soft" href="{{ url_for('jaasstore.search', q='analytics') }}">analytics</a></li>
-        <li class="p-inline-list__item"><a class="p-link--soft" href="{{ url_for('jaasstore.search', q='apache') }}">apache</a></li>
-        <li class="p-inline-list__item"><a class="p-link--soft" href="{{ url_for('jaasstore.search', q='security') }}">security</a></li>
-        <li class="p-inline-list__item"><a class="p-link--soft" href="{{ url_for('jaasstore.search', q='storage') }}">storage</a></li>
+        <li class="p-inline-list__item"><a class="p-link--soft"
+            href="{{ url_for('jaasstore.search', q='databases') }}">databases</a></li>
+        <li class="p-inline-list__item"><a class="p-link--soft"
+            href="{{ url_for('jaasstore.search', q='app-servers') }}">app-servers</a></li>
+        <li class="p-inline-list__item"><a class="p-link--soft"
+            href="{{ url_for('jaasstore.search', q='file-servers') }}">file-servers</a></li>
+        <li class="p-inline-list__item"><a class="p-link--soft"
+            href="{{ url_for('jaasstore.search', q='monitoring') }}">monitoring</a></li>
+        <li class="p-inline-list__item"><a class="p-link--soft"
+            href="{{ url_for('jaasstore.search', q='ops') }}">ops</a></li>
+        <li class="p-inline-list__item"><a class="p-link--soft"
+            href="{{ url_for('jaasstore.search', q='openstack') }}">openstack</a></li>
+        <li class="p-inline-list__item"><a class="p-link--soft"
+            href="{{ url_for('jaasstore.search', q='applications') }}">applications</a></li>
+        <li class="p-inline-list__item"><a class="p-link--soft"
+            href="{{ url_for('jaasstore.search', q='misc') }}">misc</a></li>
+        <li class="p-inline-list__item"><a class="p-link--soft"
+            href="{{ url_for('jaasstore.search', q='network') }}">network</a></li>
+        <li class="p-inline-list__item"><a class="p-link--soft"
+            href="{{ url_for('jaasstore.search', q='analytics') }}">analytics</a></li>
+        <li class="p-inline-list__item"><a class="p-link--soft"
+            href="{{ url_for('jaasstore.search', q='apache') }}">apache</a></li>
+        <li class="p-inline-list__item"><a class="p-link--soft"
+            href="{{ url_for('jaasstore.search', q='security') }}">security</a></li>
+        <li class="p-inline-list__item"><a class="p-link--soft"
+            href="{{ url_for('jaasstore.search', q='storage') }}">storage</a></li>
       </ul>
     </div>
   </div>
@@ -129,18 +160,20 @@
           <div class="col-6">
             <h3>Nagios</h3>
             <p>By <a href="{{ url_for('jaasstore.user_details', username='charmers') }}">charmers</a></p>
-            <p>Nagios offers complete monitoring, management and alerting of any service from the charm store that is related to it.</p>
-            <a href="{{ url_for('jaasstore.details', charm_or_bundle_name='nagios') }}" class="p-button--neutral">View the charm</a>
+            <p>Nagios offers complete monitoring, management and alerting of any service from the charm store that is
+              related to it.</p>
+            <a href="{{ url_for('jaasstore.details', charm_or_bundle_name='nagios') }}" class="p-button--neutral">View
+              the charm</a>
           </div>
           <div class="col-2 col-start-large-10 u-align--center u-vertically-center u-hide--small">
             {{
-              image(
-                url="https://assets.ubuntu.com/v1/4d474129-nagios.svg",
-                alt="Nagios logo",
-                width="96",
-                height="96",
-                hi_def=True,
-              ) | safe
+            image(
+            url="https://assets.ubuntu.com/v1/4d474129-nagios.svg",
+            alt="Nagios logo",
+            width="96",
+            height="96",
+            hi_def=True,
+            ) | safe
             }}
           </div>
         </div>
@@ -152,14 +185,14 @@
       <div class="p-media-object charm-object u-no-margin--bottom">
         {% set url = external_urls.charmstore + "kibana/icon.svg" %}
         {{
-          image(
-            url=url,
-            alt="Kibana icon",
-            width="40",
-            height="40",
-            hi_def=True,
-            attrs={"class": "p-media-object__image is-round"},
-          ) | safe
+        image(
+        url=url,
+        alt="Kibana icon",
+        width="40",
+        height="40",
+        hi_def=True,
+        attrs={"class": "p-media-object__image is-round"},
+        ) | safe
         }}
         <div class="p-media-object__details">
           <h3 class="p-media-object__title">
@@ -174,12 +207,12 @@
         {% set url = external_urls.charmstore + "logstash/icon.svg" %}
         {{
         image(
-          url=url,
-          alt="Logstash icon",
-          width="40",
-          height="40",
-          hi_def=True,
-          attrs={"class": "p-media-object__image is-round"},
+        url=url,
+        alt="Logstash icon",
+        width="40",
+        height="40",
+        hi_def=True,
+        attrs={"class": "p-media-object__image is-round"},
         ) | safe
         }}
         <div class="p-media-object__details">
@@ -195,13 +228,13 @@
         {% set url = external_urls.charmstore + "elasticsearch/icon.svg" %}
         {{
         image(
-          url=url,
-          alt="Elasticsearch icon",
-          width="40",
-          height="40",
-          hi_def=True,
-          attrs={"class": "p-media-object__image is-round"},
-          ) | safe
+        url=url,
+        alt="Elasticsearch icon",
+        width="40",
+        height="40",
+        hi_def=True,
+        attrs={"class": "p-media-object__image is-round"},
+        ) | safe
         }}
         <div class="p-media-object__details">
           <h3 class="p-media-object__title">
@@ -215,14 +248,14 @@
       <div class="p-media-object charm-object u-no-margin--bottom">
         {% set url = external_urls.charmstore + "prometheus/icon.svg" %}
         {{
-          image(
-            url=url,
-            alt="Prometheus icon",
-            width="40",
-            height="40",
-            hi_def=True,
-            attrs={"class": "p-media-object__image is-round"},
-          ) | safe
+        image(
+        url=url,
+        alt="Prometheus icon",
+        width="40",
+        height="40",
+        hi_def=True,
+        attrs={"class": "p-media-object__image is-round"},
+        ) | safe
         }}
         <div class="p-media-object__details">
           <h3 class="p-media-object__title">
@@ -238,14 +271,14 @@
       <div class="p-media-object charm-object u-no-margin--bottom">
         {% set url = external_urls.charmstore + "munin/icon.svg" %}
         {{
-          image(
-            url=url,
-            alt="Munin icon",
-            width="40",
-            height="40",
-            hi_def=True,
-            attrs={"class": "p-media-object__image is-round"},
-          ) | safe
+        image(
+        url=url,
+        alt="Munin icon",
+        width="40",
+        height="40",
+        hi_def=True,
+        attrs={"class": "p-media-object__image is-round"},
+        ) | safe
         }}
         <div class="p-media-object__details">
           <h3 class="p-media-object__title">
@@ -259,14 +292,14 @@
       <div class="p-media-object charm-object u-no-margin--bottom">
         {% set url = external_urls.charmstore + "rsyslog/icon.svg" %}
         {{
-          image(
-            url=url,
-            alt="Rsyslog icon",
-            width="40",
-            height="40",
-            hi_def=True,
-            attrs={"class": "p-media-object__image is-round"},
-          ) | safe
+        image(
+        url=url,
+        alt="Rsyslog icon",
+        width="40",
+        height="40",
+        hi_def=True,
+        attrs={"class": "p-media-object__image is-round"},
+        ) | safe
         }}
         <div class="p-media-object__details">
           <h3 class="p-media-object__title">
@@ -280,14 +313,14 @@
       <div class="p-media-object charm-object u-no-margin--bottom">
         {% set url = external_urls.charmstore + "zabbix-server/icon.svg" %}
         {{
-          image(
-            url=url,
-            alt="Zabbix Server icon",
-            width="40",
-            height="40",
-            hi_def=True,
-            attrs={"class": "p-media-object__image is-round"},
-          ) | safe
+        image(
+        url=url,
+        alt="Zabbix Server icon",
+        width="40",
+        height="40",
+        hi_def=True,
+        attrs={"class": "p-media-object__image is-round"},
+        ) | safe
         }}
         <div class="p-media-object__details">
           <h3 class="p-media-object__title">
@@ -301,14 +334,14 @@
       <div class="p-media-object charm-object u-no-margin--bottom">
         {% set url = external_urls.charmstore + "jenkins-34/icon.svg" %}
         {{
-          image(
-            url=url,
-            alt="Jenkins icon",
-            width="40",
-            height="40",
-            hi_def=True,
-            attrs={"class": "p-media-object__image is-round"},
-          ) | safe
+        image(
+        url=url,
+        alt="Jenkins icon",
+        width="40",
+        height="40",
+        hi_def=True,
+        attrs={"class": "p-media-object__image is-round"},
+        ) | safe
         }}
         <div class="p-media-object__details">
           <h3 class="p-media-object__title">
@@ -333,19 +366,20 @@
     <div class="col-5 u-vertically-center">
       <div>
         <h2>Container management</h2>
-        <p>Juju makes it easy to deploy container management solutions by provisioning, installing and configuring all the systems in the cluster.</p>
+        <p>Juju makes it easy to deploy container management solutions by provisioning, installing and configuring all
+          the systems in the cluster.</p>
         <p><a href="{{ url_for('jaasai.containers') }}">View bundles</a></p>
       </div>
     </div>
     <div class="col-7 u-hide--small u-align--right">
       {{
-        image(
-          url="https://assets.ubuntu.com/v1/86a111b8-CDK+bundle.svg",
-          alt="CDK bundle",
-          width="330",
-          height="305",
-          hi_def=True,
-        ) | safe
+      image(
+      url="https://assets.ubuntu.com/v1/86a111b8-CDK+bundle.svg",
+      alt="CDK bundle",
+      width="330",
+      height="305",
+      hi_def=True,
+      ) | safe
       }}
     </div>
   </div>
@@ -359,19 +393,23 @@
         <div class="row">
           <div class="col-6">
             <h3>Realtime Syslog Analytics</h3>
-            <p>By <a href="{{ url_for('jaasstore.user_details', username='bigdata-charmers') }}">bigdata-charmers</a></p>
-            <p>This bundle provides a big data environment for analysing syslog events. Built around Apache Hadoop components, it offers a repeatable and reliable way to setup complex software across multiple substrates.</p>
-            <a href="{{ url_for('jaasstore.details', charm_or_bundle_name='realtime-syslog-analytics') }}" class="p-button--neutral">View the bundle</a>
+            <p>By <a href="{{ url_for('jaasstore.user_details', username='bigdata-charmers') }}">bigdata-charmers</a>
+            </p>
+            <p>This bundle provides a big data environment for analysing syslog events. Built around Apache Hadoop
+              components, it offers a repeatable and reliable way to setup complex software across multiple substrates.
+            </p>
+            <a href="{{ url_for('jaasstore.details', charm_or_bundle_name='realtime-syslog-analytics') }}"
+              class="p-button--neutral">View the bundle</a>
           </div>
           <div class="col-2 col-start-large-10 u-align--center u-vertically-center u-hide--small">
             {{
-              image(
-                url="https://assets.ubuntu.com/v1/6ecdbc71-hadoop.svg",
-                alt="Hadoop icon",
-                width="96",
-                height="96",
-                hi_def=True,
-              ) | safe
+            image(
+            url="https://assets.ubuntu.com/v1/6ecdbc71-hadoop.svg",
+            alt="Hadoop icon",
+            width="96",
+            height="96",
+            hi_def=True,
+            ) | safe
             }}
           </div>
         </div>
@@ -383,14 +421,14 @@
       <div class="p-media-object charm-object u-no-margin--bottom">
         {% set url = external_urls.charmstore + "hive/icon.svg" %}
         {{
-          image(
-            url=url,
-            alt="Hive icon",
-            width="40",
-            height="40",
-            hi_def=True,
-            attrs={"class": "p-media-object__image is-round"},
-          ) | safe
+        image(
+        url=url,
+        alt="Hive icon",
+        width="40",
+        height="40",
+        hi_def=True,
+        attrs={"class": "p-media-object__image is-round"},
+        ) | safe
         }}
         <div class="p-media-object__details">
           <h3 class="p-media-object__title">
@@ -404,14 +442,14 @@
       <div class="p-media-object charm-object u-no-margin--bottom">
         {% set url = external_urls.charmstore + "spark/icon.svg" %}
         {{
-          image(
-            url=url,
-            alt="Spark icon",
-            width="40",
-            height="40",
-            hi_def=True,
-            attrs={"class": "p-media-object__image is-round"},
-          ) | safe
+        image(
+        url=url,
+        alt="Spark icon",
+        width="40",
+        height="40",
+        hi_def=True,
+        attrs={"class": "p-media-object__image is-round"},
+        ) | safe
         }}
         <div class="p-media-object__details">
           <h3 class="p-media-object__title">
@@ -425,14 +463,14 @@
       <div class="p-media-object charm-object u-no-margin--bottom">
         {% set url = external_urls.charmstore + "zeppelin/icon.svg" %}
         {{
-          image(
-            url=url,
-            alt="Zeppelin icon",
-            width="40",
-            height="40",
-            hi_def=True,
-            attrs={"class": "p-media-object__image is-round"},
-          ) | safe
+        image(
+        url=url,
+        alt="Zeppelin icon",
+        width="40",
+        height="40",
+        hi_def=True,
+        attrs={"class": "p-media-object__image is-round"},
+        ) | safe
         }}
         <div class="p-media-object__details">
           <h3 class="p-media-object__title">
@@ -446,18 +484,19 @@
       <div class="p-media-object charm-object u-no-margin--bottom">
         {% set url = external_urls.charmstore + "elasticsearch/icon.svg" %}
         {{
-          image(
-            url=url,
-            alt="Elasticsearch icon",
-            width="40",
-            height="40",
-            hi_def=True,
-            attrs={"class": "p-media-object__image is-round"},
-          ) | safe
+        image(
+        url=url,
+        alt="Elasticsearch icon",
+        width="40",
+        height="40",
+        hi_def=True,
+        attrs={"class": "p-media-object__image is-round"},
+        ) | safe
         }}
         <div class="p-media-object__details">
           <h3 class="p-media-object__title">
-            <a href="{{ url_for('jaasstore.details', charm_or_bundle_name='elasticsearch-cluster') }}">Elasticsearch cluster</a>
+            <a href="{{ url_for('jaasstore.details', charm_or_bundle_name='elasticsearch-cluster') }}">Elasticsearch
+              cluster</a>
           </h3>
           <p class="p-media-object__content">by charmers</p>
         </div>
@@ -482,18 +521,20 @@
           <div class="col-6">
             <h4>MySQL</h4>
             <p>By <a href="{{ url_for('jaasstore.user_details', username='mysql-charmers') }}">mysql-charmers</a></p>
-            <p>MySQL is a fast, stable and true multi-user, multi-threaded SQL database server. Its main goals are speed, robustness and ease of use.</p>
-            <a href="{{ url_for('jaasstore.details', charm_or_bundle_name='mysql') }}" class="p-button--neutral">View the charm</a>
+            <p>MySQL is a fast, stable and true multi-user, multi-threaded SQL database server. Its main goals are
+              speed, robustness and ease of use.</p>
+            <a href="{{ url_for('jaasstore.details', charm_or_bundle_name='mysql') }}" class="p-button--neutral">View
+              the charm</a>
           </div>
           <div class="col-2 col-start-large-10 u-align--center u-vertically-center u-hide--small">
             {{
-              image(
-                url="https://assets.ubuntu.com/v1/80cd67d3-mysql.svg",
-                alt="mySQL icon",
-                width="96",
-                height="96",
-                hi_def=True,
-              ) | safe
+            image(
+            url="https://assets.ubuntu.com/v1/80cd67d3-mysql.svg",
+            alt="mySQL icon",
+            width="96",
+            height="96",
+            hi_def=True,
+            ) | safe
             }}
           </div>
         </div>
@@ -505,14 +546,14 @@
       <div class="p-media-object charm-object u-no-margin--bottom">
         {% set url = external_urls.charmstore + "cassandra/icon.svg" %}
         {{
-          image(
-            url=url,
-            alt="Cassandra icon",
-            width="40",
-            height="40",
-            hi_def=True,
-            attrs={"class": "p-media-object__image is-round"},
-          ) | safe
+        image(
+        url=url,
+        alt="Cassandra icon",
+        width="40",
+        height="40",
+        hi_def=True,
+        attrs={"class": "p-media-object__image is-round"},
+        ) | safe
         }}
         <div class="p-media-object__details">
           <h3 class="p-media-object__title">
@@ -527,14 +568,14 @@
       <div class="p-media-object charm-object u-no-margin--bottom">
         {% set url = external_urls.charmstore + "mariadb/icon.svg" %}
         {{
-          image(
-            url=url,
-            alt="MariaDB icon",
-            width="40",
-            height="40",
-            hi_def=True,
-            attrs={"class": "p-media-object__image is-round"},
-          ) | safe
+        image(
+        url=url,
+        alt="MariaDB icon",
+        width="40",
+        height="40",
+        hi_def=True,
+        attrs={"class": "p-media-object__image is-round"},
+        ) | safe
         }}
         <div class="p-media-object__details">
           <h3 class="p-media-object__title">
@@ -549,14 +590,14 @@
       <div class="p-media-object charm-object u-no-margin--bottom">
         {% set url = external_urls.charmstore + "mongodb/icon.svg" %}
         {{
-          image(
-            url=url,
-            alt="Mongodb icon",
-            width="40",
-            height="40",
-            hi_def=True,
-            attrs={"class": "p-media-object__image is-round"},
-          ) | safe
+        image(
+        url=url,
+        alt="Mongodb icon",
+        width="40",
+        height="40",
+        hi_def=True,
+        attrs={"class": "p-media-object__image is-round"},
+        ) | safe
         }}
         <div class="p-media-object__details">
           <h3 class="p-media-object__title">
@@ -571,14 +612,14 @@
       <div class="p-media-object charm-object u-no-margin--bottom">
         {% set url = external_urls.charmstore + "redis/icon.svg" %}
         {{
-          image(
-            url=url,
-            alt="Redis icon",
-            width="40",
-            height="40",
-            hi_def=True,
-            attrs={"class": "p-media-object__image is-round"},
-          ) | safe
+        image(
+        url=url,
+        alt="Redis icon",
+        width="40",
+        height="40",
+        hi_def=True,
+        attrs={"class": "p-media-object__image is-round"},
+        ) | safe
         }}
         <div class="p-media-object__details">
           <h3 class="p-media-object__title">
@@ -594,14 +635,14 @@
       <div class="p-media-object charm-object u-no-margin--bottom">
         {% set url = external_urls.charmstore + "postgresql/icon.svg" %}
         {{
-          image(
-            url=url,
-            alt="Postgresql icon",
-            width="40",
-            height="40",
-            hi_def=True,
-            attrs={"class": "p-media-object__image is-round"},
-          ) | safe
+        image(
+        url=url,
+        alt="Postgresql icon",
+        width="40",
+        height="40",
+        hi_def=True,
+        attrs={"class": "p-media-object__image is-round"},
+        ) | safe
         }}
         <div class="p-media-object__details">
           <h3 class="p-media-object__title">
@@ -626,19 +667,21 @@
     <div class="col-6 u-vertically-center">
       <div>
         <h2>Write a charm and join the ecosystem</h2>
-        <p>Creating new charms it easy. Charms can be written in your choice of language and adapting existing scripts is straightforward. You can keep new charms private, or share them back with the community.</p>
-        <a href="{{ external_urls.docs }}/authors-charm-writing" class="p-link--external">Learn more about writing charms</a>
+        <p>Creating new charms it easy. Charms can be written in your choice of language and adapting existing scripts
+          is straightforward. You can keep new charms private, or share them back with the community.</p>
+        <a href="{{ external_urls.docs }}/authors-charm-writing" class="p-link--external">Learn more about writing
+          charms</a>
       </div>
     </div>
     <div class="col-6 u-hide--small">
       {{
-        image(
-          url="https://assets.ubuntu.com/v1/e57116e1-write-your-own.png",
-          alt="Pictogram of world map",
-          width="535",
-          height="325",
-          hi_def=True,
-        ) | safe
+      image(
+      url="https://assets.ubuntu.com/v1/e57116e1-write-your-own.png",
+      alt="Pictogram of world map",
+      width="535",
+      height="325",
+      hi_def=True,
+      ) | safe
       }}
     </div>
   </div>
