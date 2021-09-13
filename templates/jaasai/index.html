@@ -1,438 +1,474 @@
 {% extends "_layout.html" %}
 
 {% block title %}JAAS - Juju as a Service{% endblock %}
-{% block description %}Juju is an open source, application and service modelling tool from Ubuntu that helps you deploy, manage and scale your applications on any cloud.{% endblock %}
+{% block description %}Juju is an open source, application and service modelling tool from Ubuntu that helps you deploy,
+manage and scale your applications on any cloud.{% endblock %}
 
 {% block content %}
 
-<div class="p-strip is-shallow">
-  <div class="row">
-    <div>
-      <strong>We've released our new dashboard!</strong> To access it, <a href="/models">view your models</a> or for more info, read our <a class="p-link--external" href="https://discourse.juju.is/t/jaas-dashboard-the-new-juju-gui/2978" target="_blank" rel="noreferrer noopener">post on Discourse</a>.
+<div class="p-strip--suru-bottom has-accent is-dark" style="
+  background-image: url('https://assets.ubuntu.com/v1/a9dab044-suru-right.svg'), linear-gradient(266deg, #044f66, #022935);
+  background-position: right center;
+  background-size: auto 100%, cover;
+  padding-top: 2rem">
+  <div class="row moving-to-charmhub">
+    <div class="p-notification--caution">
+      <div class="p-notification__content">
+        <p class="p-notification__message"><strong>Jaas.ai/store will be moving to Charmhub.io</strong>. Head over there
+          now
+          to view all your
+          favourite Charms. Visit <a href="https://charmhub.io" class="p-link--external">https://charmhub.io</a> </p>
+      </div>
     </div>
   </div>
-</div>
-
-<div class="p-strip--suru-bottom has-accent is-dark" style="background-size: auto 100%, cover; background-position: right center; background-image: url('https://assets.ubuntu.com/v1/a9dab044-suru-right.svg'), linear-gradient(266deg, #044f66, #022935)">
-    <div id="panel-juju-as-a-service" role="tabpanel" aria-labelledby="juju-as-a-service" class="p-hero-panel u-animate--reveal">
-      <div class="row">
-        <div class="col-6">
-          <h1>Big software tamed</h1>
-          <p>Juju simplifies how you configure, scale and operate todays’ complex software. Juju deploys everywhere: to public or private clouds.</p>
-          <div class="p-strip is-shallow u-no-padding--bottom">
-            <div class="row">
-              <div class="col-3">
-                <ul class="p-list">
-                  <li>JUJU IN ACTION:</li>
-                  <li><h5>Production-grade Kubernetes</h5></li>
-                </ul>
-              </div>
-              <div class="col-3">
-                <ul class="p-list">
-                  <li class="p-list__item is-ticked">Scalable 11 node cluster</li>
-                  <li class="p-list__item is-ticked">Latest upstream version</li>
-                </ul>
-              </div>
+  <div id="panel-juju-as-a-service" role="tabpanel" aria-labelledby="juju-as-a-service"
+    class="p-hero-panel u-animate--reveal">
+    <div class="row">
+      <div class="col-6">
+        <h1>Big software tamed</h1>
+        <p>Juju simplifies how you configure, scale and operate todays’ complex software. Juju deploys everywhere: to
+          public or private clouds.</p>
+        <div class="p-strip is-shallow u-no-padding--bottom">
+          <div class="row">
+            <div class="col-3">
+              <ul class="p-list">
+                <li>JUJU IN ACTION:</li>
+                <li>
+                  <h5>Production-grade Kubernetes</h5>
+                </li>
+              </ul>
             </div>
+            <div class="col-3">
+              <ul class="p-list">
+                <li class="p-list__item is-ticked">Scalable 11 node cluster</li>
+                <li class="p-list__item is-ticked">Latest upstream version</li>
+              </ul>
+            </div>
+          </div>
 
-            <div class="row">
-              <div class="col-12">
-                <a href="{{ url_for('jaasstore.details', charm_or_bundle_name='charmed-kubernetes') }}" class="p-button--positive">Deploy Kubernetes</a>
-                <a href="{{ url_for('jaasai.jaas') }}#deploy-kubernetes-in-minutes" class="p-link--inverted">
-                  Or watch the video
-                  <img class="p-icon" src="https://assets.ubuntu.com/v1/0d85260e-play-icon.svg" alt="Play icon" style="position: relative; top: 3px; left: 5px; filter: invert(1);">
-                </a>
-              </div>
+          <div class="row">
+            <div class="col-12">
+              <a href="{{ url_for('jaasstore.details', charm_or_bundle_name='charmed-kubernetes') }}"
+                class="p-button--positive">Deploy Kubernetes</a>
+              <a href="{{ url_for('jaasai.jaas') }}#deploy-kubernetes-in-minutes" class="p-link--inverted">
+                Or watch the video
+                <img class="p-icon" src="https://assets.ubuntu.com/v1/0d85260e-play-icon.svg" alt="Play icon"
+                  style="position: relative; top: 3px; left: 5px; filter: invert(1);">
+              </a>
             </div>
           </div>
         </div>
-        <div class="col-6 u-vertically-center u-hide--small">
-          {{
-            image(
-              url="https://assets.ubuntu.com/v1/d1f2108a-Slide+-+Jaas.svg",
-              alt="",
-              width="534",
-              height="374",
-              hi_def=True,
-            ) | safe
-          }}
-        </div>
+      </div>
+      <div class="col-6 u-vertically-center u-hide--small">
+        {{
+        image(
+        url="https://assets.ubuntu.com/v1/d1f2108a-Slide+-+Jaas.svg",
+        alt="",
+        width="534",
+        height="374",
+        hi_def=True,
+        ) | safe
+        }}
       </div>
     </div>
+  </div>
 
-    <div id="panel-juju-expert-partners" role="tabpanel" aria-labelledby="juju-expert-partners"  class="p-hero-panel">
-      <div class="row">
-        <div class="col-6">
-          <h1>Managed solutions from Canonical’s partners</h1>
-          <p>Canonical partners with selected companies to provide specialised supported solutions. If you are an independent software vendor or bundle author, it's easy to apply.</p>
-          <a href="{{ url_for('jaasai.experts') }}" class="p-button--positive">Join the programme</a>
-          <a href="{{ url_for('jaasai.experts_spicule') }}" class="p-button--neutral">Managed solutions</a>
-        </div>
-        <div class="col-6 u-vertically-center u-align--center u-hide--small">
-          {{
-            image(
-              url="https://assets.ubuntu.com/v1/87827c6f-Slide+-+experts.svg",
-              alt="",
-              width="534",
-              height="374",
-              hi_def=True,
-            ) | safe
-          }}
-        </div>
+  <div id="panel-juju-expert-partners" role="tabpanel" aria-labelledby="juju-expert-partners" class="p-hero-panel">
+    <div class="row">
+      <div class="col-6">
+        <h1>Managed solutions from Canonical’s partners</h1>
+        <p>Canonical partners with selected companies to provide specialised supported solutions. If you are an
+          independent software vendor or bundle author, it's easy to apply.</p>
+        <a href="{{ url_for('jaasai.experts') }}" class="p-button--positive">Join the programme</a>
+        <a href="{{ url_for('jaasai.experts_spicule') }}" class="p-button--neutral">Managed solutions</a>
+      </div>
+      <div class="col-6 u-vertically-center u-align--center u-hide--small">
+        {{
+        image(
+        url="https://assets.ubuntu.com/v1/87827c6f-Slide+-+experts.svg",
+        alt="",
+        width="534",
+        height="374",
+        hi_def=True,
+        ) | safe
+        }}
       </div>
     </div>
+  </div>
 
-    <div id="panel-openstack-solutions" role="tabpanel" aria-labelledby="openstack-solutions"  class="p-hero-panel">
-      <div class="row">
-        <div class="col-6">
-          <h1>Juju solutions for OpenStack</h1>
-          <p>Juju makes it easy to deploy OpenStack at scale. Quickly and reliably build an enterprise-scale cloud run on Ubuntu &ndash; the most popular operating system for OpenStack.</p>
-          <p><a href="{{ url_for('jaasai.openstack') }}" class="p-button--positive u-no-margin--bottom">OpenStack solutions</a></p>
-        </div>
-        <div class="col-6 u-vertically-center u-hide--small">
-          {{
-            image(
-              url="https://assets.ubuntu.com/v1/c8038e7d-Slide+-+openstack.svg",
-              alt="",
-              width="534",
-              height="374",
-              hi_def=True,
-            ) | safe
-          }}
-        </div>
+  <div id="panel-openstack-solutions" role="tabpanel" aria-labelledby="openstack-solutions" class="p-hero-panel">
+    <div class="row">
+      <div class="col-6">
+        <h1>Juju solutions for OpenStack</h1>
+        <p>Juju makes it easy to deploy OpenStack at scale. Quickly and reliably build an enterprise-scale cloud run on
+          Ubuntu &ndash; the most popular operating system for OpenStack.</p>
+        <p><a href="{{ url_for('jaasai.openstack') }}" class="p-button--positive u-no-margin--bottom">OpenStack
+            solutions</a></p>
+      </div>
+      <div class="col-6 u-vertically-center u-hide--small">
+        {{
+        image(
+        url="https://assets.ubuntu.com/v1/c8038e7d-Slide+-+openstack.svg",
+        alt="",
+        width="534",
+        height="374",
+        hi_def=True,
+        ) | safe
+        }}
       </div>
     </div>
+  </div>
 
 
-    <div id="panel-big-data-solutions" role="tabpanel" aria-labelledby="big-data-solutions"  class="p-hero-panel">
-      <div class="row">
-        <div class="col-6">
-          <h1>Juju solutions for big data</h1>
-          <p>The setup and configuration of big data tools can be very complex and daunting &ndash; Juju frees you to explore, test and evaluate big data solutions to choose the one that works best for you.</p>
-          <p><a href="{{ url_for('jaasai.big_data') }}" class="p-button--positive u-no-margin--bottom">Big data solutions</a></p>
-        </div>
-        <div class="col-6 u-vertically-center u-align--center u-hide--small">
-          {{
-            image(
-              url="https://assets.ubuntu.com/v1/bc700bb6-Slide+-+big+data.svg",
-              alt="",
-              width="485",
-              height="374",
-              hi_def=True,
-            ) | safe
-          }}
-        </div>
+  <div id="panel-big-data-solutions" role="tabpanel" aria-labelledby="big-data-solutions" class="p-hero-panel">
+    <div class="row">
+      <div class="col-6">
+        <h1>Juju solutions for big data</h1>
+        <p>The setup and configuration of big data tools can be very complex and daunting &ndash; Juju frees you to
+          explore, test and evaluate big data solutions to choose the one that works best for you.</p>
+        <p><a href="{{ url_for('jaasai.big_data') }}" class="p-button--positive u-no-margin--bottom">Big data
+            solutions</a></p>
+      </div>
+      <div class="col-6 u-vertically-center u-align--center u-hide--small">
+        {{
+        image(
+        url="https://assets.ubuntu.com/v1/bc700bb6-Slide+-+big+data.svg",
+        alt="",
+        width="485",
+        height="374",
+        hi_def=True,
+        ) | safe
+        }}
       </div>
     </div>
+  </div>
 
-    <div class="row p-hero-tab">
-      <div role="tablist" aria-label="Discover Juju services and solutons" class="p-hero-tab__list">
-        <button role="tab" aria-selected="true" aria-controls="panel-juju-as-a-service" id="juju-as-a-service" class="p-hero-tab__item"
-          onclick="dataLayer.push({
+  <div class="row p-hero-tab">
+    <div role="tablist" aria-label="Discover Juju services and solutons" class="p-hero-tab__list">
+      <button role="tab" aria-selected="true" aria-controls="panel-juju-as-a-service" id="juju-as-a-service"
+        class="p-hero-tab__item" onclick="dataLayer.push({
             'event' : 'GAEvent',
             'eventCategory' : 'carousel',
             'eventAction' : 'click',
             'eventLabel' : 'juju-as-a-service'
           });">
-          <i class="before"></i>
-          <p class="p-hero-tab__title">Juju as a service</p>
-          <i class="u-hide--small">Simplify software operations</i>
-        </button>
-        <button role="tab" aria-selected="false" aria-controls="panel-juju-expert-partners" id="juju-expert-partners" class="p-hero-tab__item"
-          onclick="dataLayer.push({
+        <i class="before"></i>
+        <p class="p-hero-tab__title">Juju as a service</p>
+        <i class="u-hide--small">Simplify software operations</i>
+      </button>
+      <button role="tab" aria-selected="false" aria-controls="panel-juju-expert-partners" id="juju-expert-partners"
+        class="p-hero-tab__item" onclick="dataLayer.push({
             'event' : 'GAEvent',
             'eventCategory' : 'carousel',
             'eventAction' : 'click',
             'eventLabel' : 'juju-expert-partners'
           });">
-          <i class="before"></i>
-          <p class="p-hero-tab__title">Juju expert partners</p>
-          <i class="u-hide--small">Specialised supported solutions</i>
-        </button>
-        <button role="tab" aria-selected="false" aria-controls="panel-openstack-solutions" id="openstack-solutions" class="p-hero-tab__item"
-          onclick="dataLayer.push({
+        <i class="before"></i>
+        <p class="p-hero-tab__title">Juju expert partners</p>
+        <i class="u-hide--small">Specialised supported solutions</i>
+      </button>
+      <button role="tab" aria-selected="false" aria-controls="panel-openstack-solutions" id="openstack-solutions"
+        class="p-hero-tab__item" onclick="dataLayer.push({
             'event' : 'GAEvent',
             'eventCategory' : 'carousel',
             'eventAction' : 'click',
             'eventLabel' : 'openstack-solutions'
           });">
-          <i class="before"></i>
-          <p class="p-hero-tab__title">OpenStack solutions</p>
-          <i class="u-hide--small">Enterprise deployments at scale</i>
-        </button>
-        <button role="tab" aria-selected="false" aria-controls="panel-big-data-solutions" id="big-data-solutions" class="p-hero-tab__item"
-          onclick="dataLayer.push({
+        <i class="before"></i>
+        <p class="p-hero-tab__title">OpenStack solutions</p>
+        <i class="u-hide--small">Enterprise deployments at scale</i>
+      </button>
+      <button role="tab" aria-selected="false" aria-controls="panel-big-data-solutions" id="big-data-solutions"
+        class="p-hero-tab__item" onclick="dataLayer.push({
             'event' : 'GAEvent',
             'eventCategory' : 'carousel',
             'eventAction' : 'click',
             'eventLabel' : 'big-data-solutions'
           });">
-          <i class="before"></i>
-          <p class="p-hero-tab__title">Big data solutions</p>
-          <i class="u-hide--small">Configure complex deployments</i>
-        </button>
-      </div>
+        <i class="before"></i>
+        <p class="p-hero-tab__title">Big data solutions</p>
+        <i class="u-hide--small">Configure complex deployments</i>
+      </button>
     </div>
   </div>
+</div>
 
-  <div class="p-strip--accent is-slanted homepage-hero-promos u-no-margin--top">
-    <div class="row">
-      <div class="col-4 has-strap">
-        {% include "shared/store-card/_random.html" %}
-      </div>
-      <div class="col-4 is-flex">
-        <h5 class="u-no-padding--top">Or build it yourself</h5>
-        <p>Create your own solution in the GUI or browse the store to get started</p>
-        <div class="card-wrap">
-          {{
-            image(
-              url="https://assets.ubuntu.com/v1/a728511e-build-it-yourself.png",
-              alt="Build it yourself example",
-              width="326",
-              height="108",
-              hi_def=True,
-            ) | safe
-          }}
-        </div>
-        <p><a href="https://juju.is/docs/adding-a-model" class="p-button--neutral" style="margin-top:5px">Add a new model</a></p>
-      </div>
-      <div class="col-4">
-        <h5 class="u-no-padding--top">JAAS is Juju as a service</h5>
-        <p>Managed Juju infrastructure, hosted by Canonical, the makers of Ubuntu.</p>
-        <div class="p-card u-align--center">
-          {{
-            image(
-              url="https://assets.ubuntu.com/v1/5a2091ba-image+%281%29.svg",
-              alt="JAAS logo",
-              width="114",
-              height="64",
-              hi_def=True,
-            ) | safe
-          }}
-        </div>
-        <a href="{{ url_for('jaasai.jaas') }}" class="p-button--neutral" style="margin-top:-6px">About JAAS</a>
-      </div>
+<div class="p-strip--accent is-slanted homepage-hero-promos u-no-margin--top">
+  <div class="row">
+    <div class="col-4 has-strap">
+      {% include "shared/store-card/_random.html" %}
     </div>
-  </div>
-
-  <div class="p-strip is-bordered">
-    <div class="row">
-      <div class="col-12">
-        <h2>Juju at your command</h2>
-      </div>
-    </div>
-    <div class="row">
-      <div class="col-12">
-        <div class="row-cli__commands">$<span class="row-cli__commands-list js-cli"></span></div>
-        <div class="row-cli__comments js-cli-comments"></div>
-      </div>
-    </div>
-    <script src="{{ static_url('js/cli-typer.js') }}"></script>
-    <script>
-      window.app.cliTyper(
-        document.querySelector('.js-cli'),
-        document.querySelector('.js-cli-comments')
-      );
-    </script>
-
-    <div class="row">
-      <hr class="p-separator">
-    </div>
-
-    <div class="row p-divider">
-      <div class="col-4 p-divider__block">
-        <h2>Choose</h2>
-        <div class="step-block">
-          <div class="step-block__section">
-            <p><b>Bundles</b> are collections of charms that link services together, so you can deploy whole chunks of infrastructure in one go.</p>
-            <ul class="p-list icon-list">
-              <li class="p-list__item icon-list__item">
-                <a href="{{ url_for('jaasstore.details', charm_or_bundle_name='openstack-base') }}" class="icon-list__link">
-                  <span class="icon-list__image">
-                    <img src="https://assets.ubuntu.com/v1/2e50c6c7-openstack-base.svg" alt="Openstack Base icon" />
-                  </span>
-                  <span class="icon-list__title">
-                    OpenStack Base&nbsp;&rsaquo;
-                  </span>
-                </a>
-              </li>
-              <li class="p-list__item icon-list__item">
-                <a href="{{ url_for('jaasstore.details', charm_or_bundle_name='charmed-kubernetes') }}" class="icon-list__link">
-                  <span class="icon-list__image">
-                    <img src="https://assets.ubuntu.com/v1/3181c7b2-canonical-kubernetes.svg" alt="Charmed Kubernetes icon" />
-                  </span>
-                  <span class="icon-list__title">
-                    Charmed Kubernetes&nbsp;&rsaquo;
-                  </span>
-                </a>
-              </li>
-              <li class="p-list__item icon-list__item">
-                <a href="{{ url_for('jaasstore.details', charm_or_bundle_name='hadoop-spark') }}" class="icon-list__link">
-                  <span class="icon-list__image">
-                    <img src="https://assets.ubuntu.com/v1/40c3bc89-hadoop-spark.svg" alt="Hadoop Spark icon" />
-                  </span>
-                  <span class="icon-list__title">
-                    Hadoop Spark&nbsp;&rsaquo;
-                  </span>
-                </a>
-              </li>
-            </ul>
-          </div>
-          <div class="step-block__section">
-            <p><b>Charms</b> contain scripts that simplify the deployment and management of a service.</p>
-            <ul class="p-list icon-list">
-              <li class="p-list__item icon-list__item">
-                <a href="{{ url_for('jaasstore.details', charm_or_bundle_name='postgresql') }}" class="icon-list__link">
-                  <span class="icon-list__image">
-                    <img width="52" src="https://assets.ubuntu.com/v1/a854c8a7-postgresql-circle.svg" alt="Postgresql icon" />
-                  </span>
-                  <span class="icon-list__title">
-                    Postgresql&nbsp;&rsaquo;
-                  </span>
-                </a>
-              </li>
-              <li class="p-list__item icon-list__item">
-                <a href="{{ url_for('jaasstore.user_entity', username='prometheus-charmers', charm_or_bundle_name='prometheus') }}" class="icon-list__link">
-                  <span class="icon-list__image">
-                    <img width="52" src="https://assets.ubuntu.com/v1/804a5808-prometheus-circle.svg" alt="Prometheus" />
-                  </span>
-                  <span class="icon-list__title">
-                    Prometheus&nbsp;&rsaquo;
-                  </span>
-                </a>
-              </li>
-              <li class="p-list__item icon-list__item">
-                <a href="{{ url_for('jaasstore.details', charm_or_bundle_name='elasticsearch') }}" class="icon-list__link">
-                  <span class="icon-list__image">
-                    <img width="52" src="https://assets.ubuntu.com/v1/9842fcf6-elasticsearch-icon.svg" alt="Elasticsearch" />
-                  </span>
-                  <span class="icon-list__title">
-                    Elasticsearch&nbsp;&rsaquo;
-                  </span>
-                </a>
-              </li>
-            </ul>
-          </div>
-        </div>
-      </div>
-      <div class="col-4 p-divider__block">
-        <h2 class="row--stages__title">Model</h2>
-        <div class="step-block">
-          <div class="step-block__section">
-            <p>With Juju, relationships between linked charms are formed automatically.</p>
-            <p class="align-center">
-              {{
-                image(
-                  url="https://assets.ubuntu.com/v1/fc0ccef5-model-canvas-2x.png",
-                  alt="Linked charms",
-                  width="300",
-                  height="235",
-                  hi_def=True,
-                ) | safe
-              }}
-            </p>
-          </div>
-          <div class="step-block__section">
-            <p>Easily configure charms via the inspector.</p>
-            <p class="align-center">
-              {{
-                image(
-                  url="https://assets.ubuntu.com/v1/8d6efbaa-model-config-2x.png",
-                  alt="Inspector screenshot",
-                  width="307",
-                  height="247",
-                  hi_def=True,
-                ) | safe
-              }}
-            </p>
-          </div>
-        </div>
-      </div>
-      <div class="col-4 p-divider__block">
-        <h2 class="row--stages__title">Deploy</h2>
-        <div class="step-block">
-          <div class="step-block__section">
-            <p>Deploy and redeploy to all major public clouds or locally on your own hardware.</p>
-            <p class="align-center">
-              {{
-                image(
-                  url="https://assets.ubuntu.com/v1/78c1ad70-deploy-logos-2x.png",
-                  alt="Public cloud logos",
-                  width="326",
-                  height="235",
-                  hi_def=True,
-                ) | safe
-              }}
-            </p>
-          </div>
-          <div class="step-block__section">
-            <p>Monitor, maintain and scale on demand.</p>
-            <p class="align-center">
-              {{
-                image(
-                  url="https://assets.ubuntu.com/v1/ff83e81e-deploy-new-units-2x.png",
-                  alt="New units screenshot",
-                  width="326",
-                  height="235",
-                  hi_def=True,
-                ) | safe
-              }}
-            </p>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="row">
-      <div class="col-12">
-        <p class="u-align-text--center"><a href="{{ url_for('jaasstore.store') }}" class="p-button--neutral">Browse the store</a></p>
-      </div>
-    </div>
-  </div>
-
-  <div class="p-strip--suru-bottom is-dark" style="background-size: auto 100%, cover; background-position: right center; background-image: url('https://assets.ubuntu.com/v1/a9dab044-suru-right.svg'), linear-gradient(266deg, #044f66, #022935)">
-    <div class="row">
-      <div class="col-12">
-        <h2>Why use Juju?</h2>
-      </div>
-    </div>
-    <div class="row">
-      <div class="col-6 u-align-text--center">
+    <div class="col-4 is-flex">
+      <h5 class="u-no-padding--top">Or build it yourself</h5>
+      <p>Create your own solution in the GUI or browse the store to get started</p>
+      <div class="card-wrap">
         {{
-          image(
-            url="https://assets.ubuntu.com/v1/4c62db97-why-use-juju-diagram-left.svg",
-            alt="Diagram on 'Why use Juju (Part 1)",
-            width="440",
-            height="789",
-            hi_def=True,
-          ) | safe
+        image(
+        url="https://assets.ubuntu.com/v1/a728511e-build-it-yourself.png",
+        alt="Build it yourself example",
+        width="326",
+        height="108",
+        hi_def=True,
+        ) | safe
         }}
       </div>
-      <div class="col-6 u-align-text--center">
+      <p><a href="https://juju.is/docs/adding-a-model" class="p-button--neutral" style="margin-top:5px">Add a new
+          model</a></p>
+    </div>
+    <div class="col-4">
+      <h5 class="u-no-padding--top">JAAS is Juju as a service</h5>
+      <p>Managed Juju infrastructure, hosted by Canonical, the makers of Ubuntu.</p>
+      <div class="p-card u-align--center">
         {{
-          image(
-            url="https://assets.ubuntu.com/v1/a018d25e-why-use-juju-diagram-right.svg",
-            alt="Diagram on 'Why use Juju (Part 2)",
-            width="440",
-            height="779",
-            hi_def=True,
-          ) | safe
+        image(
+        url="https://assets.ubuntu.com/v1/5a2091ba-image+%281%29.svg",
+        alt="JAAS logo",
+        width="114",
+        height="64",
+        hi_def=True,
+        ) | safe
         }}
       </div>
+      <a href="{{ url_for('jaasai.jaas') }}" class="p-button--neutral" style="margin-top:-6px">About JAAS</a>
     </div>
-    <div class="p-strip is-shallow">
-      <div class="row">
-        <div class="col-8">
-          <p>Whether it involves <a href="{{ url_for('jaasai.kubernetes') }}" class="p-link--inverted p-link--strong">deep learning</a>, <a href="{{ url_for('jaasai.containers') }}" class="p-link--inverted p-link--strong">container orchestration</a>, <a href="{{ url_for('jaasai.big_data') }}" class="p-link--inverted p-link--strong">real-time big data</a> or <a href="{{ url_for('jaasai.openstack') }}" class="p-link--inverted p-link--strong">stream processing</a>, big software needs operations to be open source and automated.</p>
-          <p>Juju is the best way to encapsulate all the ops knowledge required to automate the behaviour of your application.</p>
+  </div>
+</div>
+
+<div class="p-strip is-bordered">
+  <div class="row">
+    <div class="col-12">
+      <h2>Juju at your command</h2>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-12">
+      <div class="row-cli__commands">$<span class="row-cli__commands-list js-cli"></span></div>
+      <div class="row-cli__comments js-cli-comments"></div>
+    </div>
+  </div>
+  <script src="{{ static_url('js/cli-typer.js') }}"></script>
+  <script>
+    window.app.cliTyper(
+      document.querySelector('.js-cli'),
+      document.querySelector('.js-cli-comments')
+    );
+  </script>
+
+  <div class="row">
+    <hr class="p-separator">
+  </div>
+
+  <div class="row p-divider">
+    <div class="col-4 p-divider__block">
+      <h2>Choose</h2>
+      <div class="step-block">
+        <div class="step-block__section">
+          <p><b>Bundles</b> are collections of charms that link services together, so you can deploy whole chunks of
+            infrastructure in one go.</p>
+          <ul class="p-list icon-list">
+            <li class="p-list__item icon-list__item">
+              <a href="{{ url_for('jaasstore.details', charm_or_bundle_name='openstack-base') }}"
+                class="icon-list__link">
+                <span class="icon-list__image">
+                  <img src="https://assets.ubuntu.com/v1/2e50c6c7-openstack-base.svg" alt="Openstack Base icon" />
+                </span>
+                <span class="icon-list__title">
+                  OpenStack Base&nbsp;&rsaquo;
+                </span>
+              </a>
+            </li>
+            <li class="p-list__item icon-list__item">
+              <a href="{{ url_for('jaasstore.details', charm_or_bundle_name='charmed-kubernetes') }}"
+                class="icon-list__link">
+                <span class="icon-list__image">
+                  <img src="https://assets.ubuntu.com/v1/3181c7b2-canonical-kubernetes.svg"
+                    alt="Charmed Kubernetes icon" />
+                </span>
+                <span class="icon-list__title">
+                  Charmed Kubernetes&nbsp;&rsaquo;
+                </span>
+              </a>
+            </li>
+            <li class="p-list__item icon-list__item">
+              <a href="{{ url_for('jaasstore.details', charm_or_bundle_name='hadoop-spark') }}" class="icon-list__link">
+                <span class="icon-list__image">
+                  <img src="https://assets.ubuntu.com/v1/40c3bc89-hadoop-spark.svg" alt="Hadoop Spark icon" />
+                </span>
+                <span class="icon-list__title">
+                  Hadoop Spark&nbsp;&rsaquo;
+                </span>
+              </a>
+            </li>
+          </ul>
+        </div>
+        <div class="step-block__section">
+          <p><b>Charms</b> contain scripts that simplify the deployment and management of a service.</p>
+          <ul class="p-list icon-list">
+            <li class="p-list__item icon-list__item">
+              <a href="{{ url_for('jaasstore.details', charm_or_bundle_name='postgresql') }}" class="icon-list__link">
+                <span class="icon-list__image">
+                  <img width="52" src="https://assets.ubuntu.com/v1/a854c8a7-postgresql-circle.svg"
+                    alt="Postgresql icon" />
+                </span>
+                <span class="icon-list__title">
+                  Postgresql&nbsp;&rsaquo;
+                </span>
+              </a>
+            </li>
+            <li class="p-list__item icon-list__item">
+              <a href="{{ url_for('jaasstore.user_entity', username='prometheus-charmers', charm_or_bundle_name='prometheus') }}"
+                class="icon-list__link">
+                <span class="icon-list__image">
+                  <img width="52" src="https://assets.ubuntu.com/v1/804a5808-prometheus-circle.svg" alt="Prometheus" />
+                </span>
+                <span class="icon-list__title">
+                  Prometheus&nbsp;&rsaquo;
+                </span>
+              </a>
+            </li>
+            <li class="p-list__item icon-list__item">
+              <a href="{{ url_for('jaasstore.details', charm_or_bundle_name='elasticsearch') }}"
+                class="icon-list__link">
+                <span class="icon-list__image">
+                  <img width="52" src="https://assets.ubuntu.com/v1/9842fcf6-elasticsearch-icon.svg"
+                    alt="Elasticsearch" />
+                </span>
+                <span class="icon-list__title">
+                  Elasticsearch&nbsp;&rsaquo;
+                </span>
+              </a>
+            </li>
+          </ul>
         </div>
       </div>
-      <div class="row">
-        <div class="col-12">
-          <p class="u-align-text--center"><a href="{{ url_for('jaasai.how_it_works') }}" class="p-button--neutral">How it works</a></p>
+    </div>
+    <div class="col-4 p-divider__block">
+      <h2 class="row--stages__title">Model</h2>
+      <div class="step-block">
+        <div class="step-block__section">
+          <p>With Juju, relationships between linked charms are formed automatically.</p>
+          <p class="align-center">
+            {{
+            image(
+            url="https://assets.ubuntu.com/v1/fc0ccef5-model-canvas-2x.png",
+            alt="Linked charms",
+            width="300",
+            height="235",
+            hi_def=True,
+            ) | safe
+            }}
+          </p>
+        </div>
+        <div class="step-block__section">
+          <p>Easily configure charms via the inspector.</p>
+          <p class="align-center">
+            {{
+            image(
+            url="https://assets.ubuntu.com/v1/8d6efbaa-model-config-2x.png",
+            alt="Inspector screenshot",
+            width="307",
+            height="247",
+            hi_def=True,
+            ) | safe
+            }}
+          </p>
+        </div>
+      </div>
+    </div>
+    <div class="col-4 p-divider__block">
+      <h2 class="row--stages__title">Deploy</h2>
+      <div class="step-block">
+        <div class="step-block__section">
+          <p>Deploy and redeploy to all major public clouds or locally on your own hardware.</p>
+          <p class="align-center">
+            {{
+            image(
+            url="https://assets.ubuntu.com/v1/78c1ad70-deploy-logos-2x.png",
+            alt="Public cloud logos",
+            width="326",
+            height="235",
+            hi_def=True,
+            ) | safe
+            }}
+          </p>
+        </div>
+        <div class="step-block__section">
+          <p>Monitor, maintain and scale on demand.</p>
+          <p class="align-center">
+            {{
+            image(
+            url="https://assets.ubuntu.com/v1/ff83e81e-deploy-new-units-2x.png",
+            alt="New units screenshot",
+            width="326",
+            height="235",
+            hi_def=True,
+            ) | safe
+            }}
+          </p>
         </div>
       </div>
     </div>
   </div>
+  <div class="row">
+    <div class="col-12">
+      <p class="u-align-text--center"><a href="{{ url_for('jaasstore.store') }}" class="p-button--neutral">Browse the
+          store</a></p>
+    </div>
+  </div>
+</div>
+
+<div class="p-strip--suru-bottom is-dark"
+  style="background-size: auto 100%, cover; background-position: right center; background-image: url('https://assets.ubuntu.com/v1/a9dab044-suru-right.svg'), linear-gradient(266deg, #044f66, #022935)">
+  <div class="row">
+    <div class="col-12">
+      <h2>Why use Juju?</h2>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-6 u-align-text--center">
+      {{
+      image(
+      url="https://assets.ubuntu.com/v1/4c62db97-why-use-juju-diagram-left.svg",
+      alt="Diagram on 'Why use Juju (Part 1)",
+      width="440",
+      height="789",
+      hi_def=True,
+      ) | safe
+      }}
+    </div>
+    <div class="col-6 u-align-text--center">
+      {{
+      image(
+      url="https://assets.ubuntu.com/v1/a018d25e-why-use-juju-diagram-right.svg",
+      alt="Diagram on 'Why use Juju (Part 2)",
+      width="440",
+      height="779",
+      hi_def=True,
+      ) | safe
+      }}
+    </div>
+  </div>
+  <div class="p-strip is-shallow">
+    <div class="row">
+      <div class="col-8">
+        <p>Whether it involves <a href="{{ url_for('jaasai.kubernetes') }}" class="p-link--inverted p-link--strong">deep
+            learning</a>, <a href="{{ url_for('jaasai.containers') }}" class="p-link--inverted p-link--strong">container
+            orchestration</a>, <a href="{{ url_for('jaasai.big_data') }}"
+            class="p-link--inverted p-link--strong">real-time big data</a> or <a
+            href="{{ url_for('jaasai.openstack') }}" class="p-link--inverted p-link--strong">stream processing</a>, big
+          software needs operations to be open source and automated.</p>
+        <p>Juju is the best way to encapsulate all the ops knowledge required to automate the behaviour of your
+          application.</p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-12">
+        <p class="u-align-text--center"><a href="{{ url_for('jaasai.how_it_works') }}" class="p-button--neutral">How it
+            works</a></p>
+      </div>
+    </div>
+  </div>
+</div>
 
 <div class="p-strip--accent is-slanted">
   <div class="row">
@@ -450,7 +486,8 @@
       <div>
         <div class="p-heading-icon">
           <div class="p-heading-icon__header">
-            <img class="p-heading-icon__img" src="https://assets.ubuntu.com/v1/61d83c7e-icon-github.svg" alt="GitHub logo">
+            <img class="p-heading-icon__img" src="https://assets.ubuntu.com/v1/61d83c7e-icon-github.svg"
+              alt="GitHub logo">
             <h3 class="p-heading-icon__title">
               <a href="https://github.com/juju">
                 Juju on GitHub
@@ -462,7 +499,8 @@
     </div>
     <div class="col-4 p-divider__block">
       <h4>Ask the community</h4>
-      <p>Find out more, get help or ask any question on our <a class="p-link--external" href="{{ external_urls.discourse }}">Discourse</a></p>
+      <p>Find out more, get help or ask any question on our <a class="p-link--external"
+          href="{{ external_urls.discourse }}">Discourse</a></p>
     </div>
   </div>
 </div>
@@ -479,10 +517,11 @@
   <div class="row">
     <div class="col-4">
       <blockquote class="p-pull-quote--small has-image">
-        <img loading="lazy" class="p-pull-quote__image" src="https://assets.ubuntu.com/v1/c7881d6c-spiculelogo-spacingx2-01.svg"
-          alt="Spicule logo">
+        <img loading="lazy" class="p-pull-quote__image"
+          src="https://assets.ubuntu.com/v1/c7881d6c-spiculelogo-spacingx2-01.svg" alt="Spicule logo">
         <p class="p-pull-quote__quote">Using the modelling ethos brought by Juju allows me to quickly run big data
-          applications in a multitude of places. Be it locally on my laptop, on bare metal or in the Cloud, Juju lets me reuse
+          applications in a multitude of places. Be it locally on my laptop, on bare metal or in the Cloud, Juju lets me
+          reuse
           the same models and code without changing any aspects of my deployment.</p>
         <cite class="p-pull-quote__citation">Tom Barber, Spicule LTD</cite>
       </blockquote>
@@ -491,15 +530,20 @@
       <blockquote class="p-pull-quote--small has-image">
         <img loading="lazy" class="p-pull-quote__image" src="https://assets.ubuntu.com/v1/f5a5d807-ghent-logo.svg"
           alt="Ghent University logo">
-        <p class="p-pull-quote__quote">Juju enables you to encapsulate each different part of your infrastructure and lets everything talk to each other. So if you have a web server that's managed by Chef and a database that's deployed by a Docker container, you can have
-        the web server talk to the database and the relations between these two very easily.</p>
+        <p class="p-pull-quote__quote">Juju enables you to encapsulate each different part of your infrastructure and
+          lets everything talk to each other. So if you have a web server that's managed by Chef and a database that's
+          deployed by a Docker container, you can have
+          the web server talk to the database and the relations between these two very easily.</p>
         <cite class="p-pull-quote__citation">Merlijn Sebrechts, Ghent University</cite>
       </blockquote>
     </div>
     <div class="col-4">
       <blockquote class="p-pull-quote--small has-image">
-        <img loading="lazy" class="p-pull-quote__image" src="https://assets.ubuntu.com/v1/393fe2c8-epam.svg" alt="Epam logo">
-        <p class="p-pull-quote__quote">Juju acts as a thin layer on top of your infrastructure that allows all your operational code to talk to each other. And because of this communication layer, a lot of the problems that conventional configuration management systems have just don't exist anymore.</p>
+        <img loading="lazy" class="p-pull-quote__image" src="https://assets.ubuntu.com/v1/393fe2c8-epam.svg"
+          alt="Epam logo">
+        <p class="p-pull-quote__quote">Juju acts as a thin layer on top of your infrastructure that allows all your
+          operational code to talk to each other. And because of this communication layer, a lot of the problems that
+          conventional configuration management systems have just don't exist anymore.</p>
         <cite class="p-pull-quote__citation">Konstantin Boudnik, EPAM Systems</cite>
       </blockquote>
     </div>
@@ -517,13 +561,13 @@
     </div>
     <div class="col-7 u-align--center u-hide--small">
       {{
-        image(
-          url="https://assets.ubuntu.com/v1/1d18743d-SpiculeWebinar.png",
-          alt="How to harness big data promo",
-          width="630",
-          height="355",
-          hi_def=True,
-        ) | safe
+      image(
+      url="https://assets.ubuntu.com/v1/1d18743d-SpiculeWebinar.png",
+      alt="How to harness big data promo",
+      width="630",
+      height="355",
+      hi_def=True,
+      ) | safe
       }}
     </div>
   </div>
@@ -536,37 +580,48 @@
       <h2 class="p-muted-heading u-align-text--center">Users and contributors</h2>
       <ul class="p-inline-images">
         <li class="p-inline-images__item">
-          <img class="p-inline-images__logo" loading="lazy" alt="ubuntu" src="https://assets.ubuntu.com/v1/9c911225-2018-logo-ubuntu.svg">
+          <img class="p-inline-images__logo" loading="lazy" alt="ubuntu"
+            src="https://assets.ubuntu.com/v1/9c911225-2018-logo-ubuntu.svg">
         </li>
         <li class="p-inline-images__item">
-          <img class="p-inline-images__logo" loading="lazy" alt="Deutsche Telekom" src="https://assets.ubuntu.com/v1/d199354d-2018-logo-deutsche-telekom.svg">
+          <img class="p-inline-images__logo" loading="lazy" alt="Deutsche Telekom"
+            src="https://assets.ubuntu.com/v1/d199354d-2018-logo-deutsche-telekom.svg">
         </li>
         <li class="p-inline-images__item">
-          <img class="p-inline-images__logo" loading="lazy" alt="IBM" src="https://assets.ubuntu.com/v1/9b1fe97b-2018-logo-IBM.svg">
+          <img class="p-inline-images__logo" loading="lazy" alt="IBM"
+            src="https://assets.ubuntu.com/v1/9b1fe97b-2018-logo-IBM.svg">
         </li>
         <li class="p-inline-images__item">
-          <img class="p-inline-images__logo" loading="lazy" alt="Intel" src="https://assets.ubuntu.com/v1/94ea495b-2018-logo-Intel.svg">
+          <img class="p-inline-images__logo" loading="lazy" alt="Intel"
+            src="https://assets.ubuntu.com/v1/94ea495b-2018-logo-Intel.svg">
         </li>
         <li class="p-inline-images__item">
-          <img class="p-inline-images__logo" loading="lazy" alt="Microsoft" src="https://assets.ubuntu.com/v1/6d027c12-2018-logo-Microsoft-Azure.svg">
+          <img class="p-inline-images__logo" loading="lazy" alt="Microsoft"
+            src="https://assets.ubuntu.com/v1/6d027c12-2018-logo-Microsoft-Azure.svg">
         </li>
         <li class="p-inline-images__item">
-          <img class="p-inline-images__logo" loading="lazy" alt="Cisco" src="https://assets.ubuntu.com/v1/8a4d26de-2018-logo-cisco.svg">
+          <img class="p-inline-images__logo" loading="lazy" alt="Cisco"
+            src="https://assets.ubuntu.com/v1/8a4d26de-2018-logo-cisco.svg">
         </li>
         <li class="p-inline-images__item">
-          <img class="p-inline-images__logo" loading="lazy" alt="China Telecom" src="https://assets.ubuntu.com/v1/34a1f30e-2018-logo-china-telecom.svg">
+          <img class="p-inline-images__logo" loading="lazy" alt="China Telecom"
+            src="https://assets.ubuntu.com/v1/34a1f30e-2018-logo-china-telecom.svg">
         </li>
         <li class="p-inline-images__item">
-          <img class="p-inline-images__logo" loading="lazy" alt="NEC" src="https://assets.ubuntu.com/v1/df2082a4-2018-logo-NEC.svg">
+          <img class="p-inline-images__logo" loading="lazy" alt="NEC"
+            src="https://assets.ubuntu.com/v1/df2082a4-2018-logo-NEC.svg">
         </li>
         <li class="p-inline-images__item">
-          <img class="p-inline-images__logo" loading="lazy" alt="HP" src="https://assets.ubuntu.com/v1/7ccf63c3-2018-logo-hp.svg">
+          <img class="p-inline-images__logo" loading="lazy" alt="HP"
+            src="https://assets.ubuntu.com/v1/7ccf63c3-2018-logo-hp.svg">
         </li>
         <li class="p-inline-images__item">
-          <img class="p-inline-images__logo" loading="lazy" alt="Yahoo Japan" src="https://assets.ubuntu.com/v1/cf17b55e-2018-logo-yahoo-japan.svg">
+          <img class="p-inline-images__logo" loading="lazy" alt="Yahoo Japan"
+            src="https://assets.ubuntu.com/v1/cf17b55e-2018-logo-yahoo-japan.svg">
         </li>
         <li class="p-inline-images__item">
-          <img class="p-inline-images__logo" loading="lazy" alt="Verizon" src="https://assets.ubuntu.com/v1/198d7b96-2018-logo-verizon.svg">
+          <img class="p-inline-images__logo" loading="lazy" alt="Verizon"
+            src="https://assets.ubuntu.com/v1/198d7b96-2018-logo-verizon.svg">
         </li>
       </ul>
     </div>
