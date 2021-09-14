@@ -61,6 +61,9 @@
           opacity: 1;
         }
 
+        background: none;
+        border-color: rgba(255, 255, 255, 0.2);
+
         .before {
           background-color: $color-navigation-active-bar;
           content: '';
