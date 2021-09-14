@@ -1,6 +1,7 @@
 **/*.yml
 **/*.txt
 **/*.html
+*.html
 Dockerfile
 run
 entrypoint
