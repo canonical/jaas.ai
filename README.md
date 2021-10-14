@@ -1,5 +1,5 @@
 # jaas.ai
-[![CircleCI build status](https://circleci.com/gh/canonical-web-and-design/jaas.ai.svg?style=shield)](https://circleci.com/gh/canonical-web-and-design/jaas.ai) [![Code coverage](https://codecov.io/gh/canonical-web-and-design/jaas.ai/branch/master/graph/badge.svg)](https://codecov.io/gh/canonical-web-and-design/jaas.ai)
+[![CircleCI build status](https://circleci.com/gh/canonical-web-and-design/jaas.ai.svg?style=shield)](https://circleci.com/gh/canonical-web-and-design/jaas.ai) [![Code coverage](https://codecov.io/gh/canonical-web-and-design/jaas.ai/branch/main/graph/badge.svg)](https://codecov.io/gh/canonical-web-and-design/jaas.ai)
 
 A prototype for what may become the new JAAS storefront, jaas.ai.
 
