@@ -1,4 +1,3 @@
-import requests
 from flask import Blueprint, abort, request, render_template, Response
 from jujubundlelib import references
 
