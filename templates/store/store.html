@@ -5,6 +5,19 @@
 {% block title %}Store{% endblock %}
 {% block description %}Browse Juju's entire repository of solutions and find Charms or Bundles for any problem, including OpenStack, Big Data, MongoDB and Elastic search.{% endblock %}
 
+{% block head_extra %}
+<!-- Twitter Opengraph tags -->
+<meta name="twitter:card" content="summary">
+<meta name="twitter:site" content="@juju_devops">
+<meta name="twitter:creator" content="@juju_devops">
+<meta name="twitter:domain" content="jaas.ai">
+<meta name="twitter:title" content="JAAS | Juju as a service">
+<meta name="twitter:description" content="Juju is an open source, application and service modelling tool from Canonical that helps you deploy, manage, and scale your applications on any cloud.">
+<meta name="twitter:image" content="https://assets.ubuntu.com/v1/01868685-juju-twitter.png">
+
+<link rel="canonical" href="https://charmhub.io" />
+{% endblock %}
+
 {% block content %}
 <div class="p-strip--suru-bottom has-accent is-dark" style="
 background-image: url('https://assets.ubuntu.com/v1/a9dab044-suru-right.svg'), linear-gradient(266deg, #044f66, #022935);
