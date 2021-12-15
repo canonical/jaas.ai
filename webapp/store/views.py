@@ -1,4 +1,11 @@
-from flask import Blueprint, abort, request, render_template, Response
+from flask import (
+    Blueprint,
+    abort,
+    redirect,
+    request,
+    render_template,
+    Response,
+)
 from jujubundlelib import references
 
 from webapp.experts import get_experts
@@ -131,18 +138,11 @@ def user_details(username):
 @jaasstore.route(
     "/u/<username>/<charm_or_bundle_name>/<series_or_version>/<version>"
 )
-def user_entity(
-    username, charm_or_bundle_name, series_or_version=None, version=None
-):
+def user_entity(username, charm_or_bundle_name):
     charmhub_url = (
         "https://charmhub.io/" + username + "-" + charm_or_bundle_name
     )
-    return details(
-        charm_or_bundle_name,
-        series_or_version=series_or_version,
-        version=version,
-        charmhub_url=charmhub_url,
-    )
+    return redirect(charmhub_url, code=301)
 
 
 @jaasstore.route("/<charm_or_bundle_name>")
@@ -150,8 +150,6 @@ def user_entity(
 @jaasstore.route("/<charm_or_bundle_name>/<series_or_version>/<version>")
 def details(
     charm_or_bundle_name,
-    series_or_version=None,
-    version=None,
     charmhub_url=None,
 ):
     reference = None
@@ -168,18 +166,7 @@ def details(
         if charmhub_url is None:
             charmhub_url = "https://charmhub.io/" + charm_or_bundle_name
 
-        template = "store/{}-details.html".format(
-            "charm" if entity.is_charm else "bundle"
-        )
-        return render_template(
-            template,
-            context={
-                "entity": entity,
-                "expert": get_experts(entity.owner),
-                "charm_bundle_name": charm_or_bundle_name,
-                "charmhub_url": charmhub_url,
-            },
-        )
+        return redirect(charmhub_url, code=301)
     else:
         return abort(404, "Entity not found {}".format(charm_or_bundle_name))
 
