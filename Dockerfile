@@ -10,7 +10,7 @@ RUN --mount=type=cache,target=/root/.cache/pip pip3 install --user --requirement
 
 # Build stage: Install yarn dependencies
 # ===
-FROM node:12 AS yarn-dependencies
+FROM node:13 AS yarn-dependencies
 WORKDIR /srv
 ADD package.json .
 RUN --mount=type=cache,target=/usr/local/share/.cache/yarn yarn install
@@ -18,7 +18,7 @@ RUN --mount=type=cache,target=/usr/local/share/.cache/yarn yarn install
 
 # Build stage: Build dashboard
 # ===
-FROM node:12 AS build-dashboard
+FROM node:13 AS build-dashboard
 WORKDIR /srv
 # A cache-busting line. .git/index should always be fresh, I hope
 ADD .git/index /dev/null
