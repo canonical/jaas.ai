@@ -150,6 +150,8 @@ def user_entity(username, charm_or_bundle_name):
 @jaasstore.route("/<charm_or_bundle_name>/<series_or_version>/<version>")
 def details(
     charm_or_bundle_name,
+    series_or_version,
+    version,
     charmhub_url=None,
 ):
     reference = None
