@@ -1,5 +1,11 @@
-from flask import Blueprint, abort, request, render_template, Response
-from jujubundlelib import references
+from flask import (
+    Blueprint,
+    abort,
+    redirect,
+    request,
+    render_template,
+    Response,
+)
 
 from webapp.experts import get_experts
 from webapp.store import models
@@ -131,57 +137,11 @@ def user_details(username):
 @jaasstore.route(
     "/u/<username>/<charm_or_bundle_name>/<series_or_version>/<version>"
 )
-def user_entity(
-    username, charm_or_bundle_name, series_or_version=None, version=None
-):
+def user_entity(username, charm_or_bundle_name):
     charmhub_url = (
         "https://charmhub.io/" + username + "-" + charm_or_bundle_name
     )
-    return details(
-        charm_or_bundle_name,
-        series_or_version=series_or_version,
-        version=version,
-        charmhub_url=charmhub_url,
-    )
-
-
-@jaasstore.route("/<charm_or_bundle_name>")
-@jaasstore.route("/<charm_or_bundle_name>/<series_or_version>")
-@jaasstore.route("/<charm_or_bundle_name>/<series_or_version>/<version>")
-def details(
-    charm_or_bundle_name,
-    series_or_version=None,
-    version=None,
-    charmhub_url=None,
-):
-    reference = None
-    try:
-        reference = references.Reference.from_jujucharms_url(request.path[1:])
-    except ValueError:
-        pass
-
-    entity = None
-    if reference:
-        entity = models.get_charm_or_bundle(reference)
-
-    if entity:
-        if charmhub_url is None:
-            charmhub_url = "https://charmhub.io/" + charm_or_bundle_name
-
-        template = "store/{}-details.html".format(
-            "charm" if entity.is_charm else "bundle"
-        )
-        return render_template(
-            template,
-            context={
-                "entity": entity,
-                "expert": get_experts(entity.owner),
-                "charm_bundle_name": charm_or_bundle_name,
-                "charmhub_url": charmhub_url,
-            },
-        )
-    else:
-        return abort(404, "Entity not found {}".format(charm_or_bundle_name))
+    return redirect(charmhub_url, code=301)
 
 
 @jaasstore.route("/terms/<string:name>")
@@ -192,3 +152,16 @@ def terms(name, revision=None):
         return Response(terms, mimetype="text/plain")
     else:
         return abort(404, "Terms not found {}".format(name))
+
+
+@jaasstore.route("/<charm_or_bundle_name>")
+@jaasstore.route("/<charm_or_bundle_name>/<series_or_version>")
+@jaasstore.route("/<charm_or_bundle_name>/<series_or_version>/<version>")
+def details(
+    charm_or_bundle_name,
+    series_or_version=None,
+    version=None,
+):
+
+    charmhub_url = "https://charmhub.io/" + charm_or_bundle_name
+    return redirect(charmhub_url, code=301)
