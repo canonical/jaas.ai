@@ -6,7 +6,6 @@ from flask import (
     render_template,
     Response,
 )
-from jujubundlelib import references
 
 from webapp.experts import get_experts
 from webapp.store import models
