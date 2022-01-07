@@ -137,7 +137,9 @@ def user_details(username):
 @jaasstore.route(
     "/u/<username>/<charm_or_bundle_name>/<series_or_version>/<version>"
 )
-def user_entity(username, charm_or_bundle_name):
+def user_entity(
+    username, charm_or_bundle_name, series_or_version=None, version=None
+):
     charmhub_url = (
         "https://charmhub.io/" + username + "-" + charm_or_bundle_name
     )
