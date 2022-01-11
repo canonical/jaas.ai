@@ -115,7 +115,7 @@ def search():
 
 @jaasstore.route("/u/<username>")
 def user_details(username):
-    return abort(404, "User not found: {}".format(username))
+    return abort(410, "User pages have been depricated")
 
 
 @jaasstore.route("/u/<username>/<charm_or_bundle_name>")
