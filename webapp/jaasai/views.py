@@ -11,9 +11,7 @@ from flask import (
     request,
     send_from_directory,
 )
-from jujubundlelib import references
 from webapp.experts import get_experts
-from webapp.store.models import cs
 
 jaasai = Blueprint(
     "jaasai", __name__, template_folder="/templates", static_folder="/static"
