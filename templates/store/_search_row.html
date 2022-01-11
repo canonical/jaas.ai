@@ -42,7 +42,7 @@
 
 <td>
   {% if entity.owner %}
-    <a href="{{ url_for('jaasstore.user_details', username=entity.owner) }}">{{ entity.owner }}</a>
+    {{ entity.owner }}
   {% else %}
     No owner
   {% endif %}
