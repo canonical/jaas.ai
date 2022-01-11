@@ -177,23 +177,9 @@ def sitemap_base():
             "jaasai.kubernetes",
             "jaasai.openstack",
             "jaasai.support",
-            "jaasstore.store",
-            "jaasstore.search",
         ]
     }
     return set_xml_content_type("sitemaps/sitemap-base.xml", context)
-
-
-@jaasai.route("/sitemap-store.xml")
-def sitemap_store():
-    results = cs.search("", limit=1000)
-    entities = []
-    for entity in results:
-        ref = references.Reference.from_string(entity.get("Id"))
-        entities.append(ref.jujucharms_id())
-    return set_xml_content_type(
-        "sitemaps/sitemap-store.xml", {"entities": entities}
-    )
 
 
 @jaasai.route("/_status/check")
