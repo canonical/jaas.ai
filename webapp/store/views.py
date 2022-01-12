@@ -115,21 +115,7 @@ def search():
 
 @jaasstore.route("/u/<username>")
 def user_details(username):
-    entities = models.get_user_entities(username)
-    if len(entities["charms"]) > 0 or len(entities["bundles"]) > 0:
-        return render_template(
-            "store/user-details.html",
-            context={
-                "bundles_count": len(entities["bundles"]),
-                "bundles": entities["bundles"],
-                "charms_count": len(entities["charms"]),
-                "charms": entities["charms"],
-                "entities": entities,
-                "username": username,
-            },
-        )
-    else:
-        return abort(404, "User not found: {}".format(username))
+    return abort(410, "User pages have been depricated")
 
 
 @jaasstore.route("/u/<username>/<charm_or_bundle_name>")

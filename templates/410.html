@@ -3,9 +3,13 @@
 {% block title %}410: Content deleted{% endblock %}
 
 {% block content %}
-<div class="p-strip--light">
+<div class="p-strip">
   <div class="row">
+    {% if error %}
+    <h1>{{ error }}</h1>
+    {% else %}
     <h1>410: Content deleted.</h1>
+    {% endif %}
     <p>Try a different URL, try searching for solutions or learn how to <a href="{{ external_urls.docs }}/authors-charm-writing" class="p-link--external">create your own solution</a>.</p>
     <nav>
       <ul class="p-inline-list">

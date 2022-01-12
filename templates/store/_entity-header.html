@@ -18,8 +18,7 @@
         {% if context.entity.owner %}
           <li class="p-inline-list__item">
             <span class="entity__user">
-              By <a
-                href="{{ url_for('jaasstore.user_details', username=context.entity.owner) }}">{{ context.entity.owner }}</a>
+              By {{ context.entity.owner }}
             </span>
           </li>
         {% endif %}
