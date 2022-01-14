@@ -2,20 +2,9 @@
 // Below this point, non-priority links will be hidden.
 $breakpoint-navigation: 980px;
 
-.p-search-box {
-  bottom: 3px;
-}
-
 .p-navigation_login {
   margin-right: 0.35rem;
   order: 2;
-}
-
-@media (min-width: $breakpoint-large) {
-  .p-navigation .p-search-box {
-    margin-right: 0;
-    max-width: 15rem;
-  }
 }
 
 @media (min-width: $breakpoint-medium) and (max-width: $breakpoint-navigation) {

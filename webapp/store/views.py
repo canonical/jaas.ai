@@ -17,39 +17,6 @@ jaasstore = Blueprint(
     static_folder="/static",
 )
 
-SERIES = [
-    "artful",
-    "bionic",
-    "centos7",
-    "cosmic",
-    "disco",
-    "eoan",
-    "kubernetes",
-    "oneiric",
-    "precise",
-    "quantal",
-    "raring",
-    "saucy",
-    "trusty",
-    "utopic",
-    "vivid",
-    "wily",
-    "win10",
-    "win2012",
-    "win2012hv",
-    "win2012hvr2",
-    "win2012r2",
-    "win2016",
-    "win2016hv",
-    "win2016nano",
-    "win7",
-    "win8",
-    "win81",
-    "xenial",
-    "yakkety",
-    "zesty",
-]
-
 
 @jaasstore.route("/store")
 def store():
@@ -61,56 +28,8 @@ def store():
 @jaasstore.route("/search")
 def search():
     query = request.args.get("q", "")
-    search_terms = query.replace("/", " ")
-    entity_type = request.args.get("type", None)
-    if entity_type not in ["charm", "bundle"]:
-        entity_type = None
-    series = request.args.get("series", None)
-    tags = request.args.get("tags", None)
-    sort = request.args.get("sort", None)
-    provides = request.args.get("provides", None)
-    requires = request.args.get("requires", None)
-    if provides:
-        results = models.fetch_provides(provides)
-    elif requires:
-        results = models.fetch_requires(requires)
-    else:
-        results = models.search_entities(
-            search_terms,
-            entity_type=entity_type,
-            tags=tags,
-            sort=sort,
-            series=series,
-            promulgated_only=False,
-        )
-    if len(results["recommended"]) + len(results["community"]) == 0:
-        # If there are no results then check to see if this string could be a
-        # bundle/charm id and do another search. This is something the
-        # charmstore should handle internally, but until it does, do it here.
-        reference = models.get_reference(query)
-        if reference is not None:
-            results = models.search_entities(
-                reference.name,
-                owner=reference.user,
-                entity_type=entity_type,
-                tags=tags,
-                sort=sort,
-                series=series,
-                promulgated_only=False,
-            )
-    return render_template(
-        "store/search.html",
-        context={
-            "all_series": SERIES,
-            "current_series": series,
-            "current_sort": sort,
-            "current_type": entity_type,
-            "results": results,
-            "results_count": len(results["recommended"])
-            + len(results["community"]),
-            "query": query,
-        },
-    )
+    charmhub_url = "https://charmhub.io/?q=" + query
+    return redirect(charmhub_url, code=301)
 
 
 @jaasstore.route("/u/<username>")

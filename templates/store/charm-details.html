@@ -50,7 +50,7 @@
         <ul class="p-inline-list">
           <li class="p-inline-list__item"><strong>Tags:</strong></li>
           {% for tag in context.entity.tags %}
-            <li class="p-inline-list__item"><a href="{{ url_for('jaasstore.search', tags=tag) }}">{{ tag }}&nbsp;&rsaquo;</a></li>
+            <li class="p-inline-list__item">{{ tag }}&nbsp;&rsaquo;</li>
           {% endfor %}
         </ul>
       {% endif %}
@@ -172,14 +172,14 @@
             {% if context.entity.requires %}
               {% for name, value in context.entity.requires.items() %}
                 <li class="p-list__item">
-                  <a href="{{ url_for('jaasstore.search', provides=value.Interface) }}" >{{ name }}: {{ value.Interface }}</a>
+                  {{ name }}: {{ value.Interface }}
                 </li>
               {% endfor %}
             {% endif %}
             {% if context.entity.provides %}
               {% for name, value in context.entity.provides.items() %}
                 <li class="p-list__item">
-                  <a href="{{ url_for('jaasstore.search', requires=value.Interface) }}" >{{ name }}: {{ value.Interface }}</a>
+                  {{ name }}: {{ value.Interface }}
                 </li>
               {% endfor %}
             {% endif %}
