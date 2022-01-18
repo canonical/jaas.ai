@@ -1,4 +1,4 @@
-from flask import Blueprint, redirect, request
+from flask import Blueprint, redirect, request, abort
 
 from webapp.external_urls import external_urls
 
@@ -56,4 +56,38 @@ def kubernetes_redirect():
 @jaasredirects.route("/openstack")
 def openstack_redirect():
     charmhub_url = "https://charmhub.io/?base=linux"
+    return redirect(charmhub_url, code=301)
+
+
+@jaasredirects.route("/u/<username>")
+def user_details_delete(username):
+    return abort(410, "User pages have been depricated")
+
+
+@jaasredirects.route("/u/<username>/<charm_or_bundle_name>")
+@jaasredirects.route(
+    "/u/<username>/<charm_or_bundle_name>/<series_or_version>"
+)
+@jaasredirects.route(
+    "/u/<username>/<charm_or_bundle_name>/<series_or_version>/<version>"
+)
+def user_entity_redirect(
+    username, charm_or_bundle_name, series_or_version=None, version=None
+):
+    charmhub_url = (
+        "https://charmhub.io/" + username + "-" + charm_or_bundle_name
+    )
+    return redirect(charmhub_url, code=301)
+
+
+@jaasredirects.route("/<charm_or_bundle_name>")
+@jaasredirects.route("/<charm_or_bundle_name>/<series_or_version>")
+@jaasredirects.route("/<charm_or_bundle_name>/<series_or_version>/<version>")
+def details_redirect(
+    charm_or_bundle_name,
+    series_or_version=None,
+    version=None,
+):
+
+    charmhub_url = "https://charmhub.io/" + charm_or_bundle_name
     return redirect(charmhub_url, code=301)

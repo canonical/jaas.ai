@@ -14,8 +14,6 @@ from webapp.external_urls import external_urls
 from webapp.handlers import add_headers
 from webapp.jaasai.views import jaasai
 from webapp.redirects.views import jaasredirects
-from webapp.store.models import cs
-from webapp.store.views import jaasstore
 from webapp.template_utils import current_url_with_query, static_url
 
 session = talisker.requests.get_session()
@@ -47,8 +45,6 @@ def create_app(testing=False):
     app.register_blueprint(
         build_blueprint(blog_views), url_prefix="/case-studies"
     )
-
-    talisker.requests.configure(cs.session)
 
     init_handler(app)
     init_blueprint(app)
@@ -114,7 +110,6 @@ def init_handler(app):
 def init_blueprint(app):
     app.register_blueprint(jaasai)
     app.register_blueprint(jaasredirects)
-    app.register_blueprint(jaasstore)
 
 
 def init_dashboard(app):

@@ -111,7 +111,7 @@ def get_experts(expert=None):
                     "<a class='link--light' href='{}'>Python Spark cluster</a>"
                 ).format(
                     url_for(
-                        "jaasstore.user_entity",
+                        "jaasredirects.user_entity_redirect",
                         username="tengu-team",
                         charm_or_bundle_name="automate-spark-jobs",
                     )
