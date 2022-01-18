@@ -9,7 +9,6 @@ from flask import (
     make_response,
     render_template,
     request,
-    redirect,
     send_from_directory,
 )
 from webapp.experts import get_experts
