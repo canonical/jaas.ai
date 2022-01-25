@@ -35,30 +35,6 @@ def blog_redirect():
     return redirect(external_urls["blog"], code=302)
 
 
-@jaasredirects.route("/big-data")
-def big_data_redirect():
-    charmhub_url = "https://charmhub.io/?base=all&filter=big-data"
-    return redirect(charmhub_url, code=301)
-
-
-@jaasredirects.route("/containers")
-def containers_redirect():
-    charmhub_url = "https://charmhub.io/?base=all&filter=containers"
-    return redirect(charmhub_url, code=301)
-
-
-@jaasredirects.route("/kubernetes")
-def kubernetes_redirect():
-    charmhub_url = "https://charmhub.io/?base=kubernetes"
-    return redirect(charmhub_url, code=301)
-
-
-@jaasredirects.route("/openstack")
-def openstack_redirect():
-    charmhub_url = "https://charmhub.io/?base=linux"
-    return redirect(charmhub_url, code=301)
-
-
 @jaasredirects.route("/u/<username>")
 def user_details_delete(username):
     return abort(410, "User pages have been depricated")

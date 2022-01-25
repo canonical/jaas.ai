@@ -29,7 +29,10 @@ def create_app(testing=False):
 
     app.testing = testing
     app.after_request(add_headers)
-    app.before_request(prepare_redirects())
+    app.before_request(prepare_redirects("redirects.yaml"))
+    app.before_request(
+        prepare_redirects("perminant_redirects.yaml", permanent=True)
+    )
     app.before_request(prepare_deleted())
 
     blog_views = BlogViews(
