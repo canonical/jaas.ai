@@ -31,7 +31,7 @@ def create_app(testing=False):
     app.after_request(add_headers)
     app.before_request(prepare_redirects("redirects.yaml"))
     app.before_request(
-        prepare_redirects("permanent_redirects.yaml", permanent=True)
+        prepare_redirects("permanent-redirects.yaml", permanent=True)
     )
     app.before_request(prepare_deleted())
 
