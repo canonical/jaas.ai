@@ -27,14 +27,6 @@ def search_redirect(path=None):
     return redirect("/search?{}".format("&".join(query_string)), code=302)
 
 
-@jaasredirects.route("/blog")
-def blog_redirect():
-    """
-    Redirect the blog page that existed on jujucharms.com.
-    """
-    return redirect(external_urls["blog"], code=302)
-
-
 @jaasredirects.route("/u/<username>")
 def user_details_delete(username):
     return abort(410, "User pages have been depricated")

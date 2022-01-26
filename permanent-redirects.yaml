@@ -5,3 +5,6 @@ big-data: https://charmhub.io/?base=all&filter=big-data
 containers: https://charmhub.io/?base=all&filter=containers
 kubernetes: https://charmhub.io/?base=kubernetes
 openstack: https://charmhub.io/?base=linux
+
+# Blog
+/blog: https://juju.is/blog
