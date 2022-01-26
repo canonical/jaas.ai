@@ -1,7 +1,5 @@
 from flask import Blueprint, redirect, request, abort
 
-from webapp.external_urls import external_urls
-
 
 jaasredirects = Blueprint(
     "jaasredirects",
