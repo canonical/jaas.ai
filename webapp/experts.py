@@ -82,37 +82,6 @@ def get_experts(expert=None):
                 "button_label": "Big data experts",
             },
         },
-        "tengu-team": {
-            "name": "Tengu",
-            "username": "tengu-team",
-            "page_url": url_for("jaasai.experts_tengu"),
-            "logo": "https://assets.ubuntu.com/v1/68b288f6-tengu.png",
-            "logo_invert": (
-                "https://assets.ubuntu.com/v1/" "8d87553b-tengu-white.png"
-            ),
-            "highlights": [
-                "Your own Big Data workspace",
-                "Use all Juju-charmed technologies",
-                "Machine Learning, IoT, Microservices",
-            ],
-            "website": "https://tengu.io",
-            "email": "info@tengu.io",
-            "phone_numbers": [
-                {
-                    "number": "+3293963202",
-                    "display": "+32 9 39 63 202",
-                    "location": "BE",
-                }
-            ],
-            "store_card": {
-                "heading": (
-                    "Big Data in minutes. Get started fast, with "
-                    "Tengu&rsquo;s "
-                    "<a class='link--light' href='{}'>Python Spark cluster</a>"
-                ).format(url_for("jaasai.experts_tengu")),
-                "button_label": "Big data now",
-            },
-        },
     }
     if expert:
         return experts.get(expert)

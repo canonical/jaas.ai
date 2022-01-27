@@ -19,5 +19,6 @@ reference/snapcraft-command: /docs
 snaps/philosophy: /docs
 community/cards:
   message: 'Juju cards is no longer supported'
-/u/(?P<username>.*):
-  message: 'User pages have been depricated'
+u/.*:
+  message: 'User pages are no longer supported'
+

@@ -13,6 +13,4 @@ blog: https://juju.is/blog
 /u/(?P<username>.*)/(?P<charm_or_bundle_name>.*): https://charmhub.io/{username}-{charm_or_bundle_name}
 /u/(?P<username>.*)/(?P<charm_or_bundle_name>.*)/(?P<series_or_version>.*): https://charmhub.io/{username}-{charm_or_bundle_name}
 /u/(?P<username>.*)/(?P<charm_or_bundle_name>.*)/(?P<series_or_version>.*)/(?P<version>.*): https://charmhub.io/{username}-{charm_or_bundle_name}
-/(?P<charm_or_bundle_name>.*): https://charmhub.io/{charm_or_bundle_name}
-/(?P<charm_or_bundle_name>.*)/(?P<series_or_version>.*): https://charmhub.io/{charm_or_bundle_name}
-/(?P<charm_or_bundle_name>.*)/(?P<series_or_version>.*)/(?P<version>.*): https://charmhub.io/{charm_or_bundle_name}
+

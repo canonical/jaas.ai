@@ -13,7 +13,6 @@ from canonicalwebteam import image_template
 from webapp.external_urls import external_urls
 from webapp.handlers import add_headers
 from webapp.jaasai.views import jaasai
-
 from webapp.template_utils import current_url_with_query, static_url
 
 session = talisker.requests.get_session()
@@ -49,39 +48,8 @@ def create_app(testing=False):
         build_blueprint(blog_views), url_prefix="/case-studies"
     )
 
-    init_handler(app)
-    init_blueprint(app)
-    init_dashboard(app)
-
-    @app.template_filter("pluralize")
-    def pluralize_filter(count):
-        if int(count) > 1:
-            return "s"
-        else:
-            return ""
-
-    @app.context_processor
-    def inject_utilities():
-        return {
-            "current_url_with_query": current_url_with_query,
-            "external_urls": external_urls,
-            "static_url": static_url,
-        }
-
-    @app.context_processor
-    def inject_today_date():
-        return {"current_year": datetime.date.today().year}
-
-    app.jinja_env.add_extension("jinja2.ext.do")
-
-    @app.context_processor
-    def utility_processor():
-        return {"image": image_template}
-
-    return app
-
-
-def init_handler(app):
+    # Handlers
+    # ===
     @app.errorhandler(404)
     def page_not_found(error):
         """
@@ -109,16 +77,12 @@ def init_handler(app):
 
         return flask.render_template("410.html", error=error), 410
 
-
-def init_blueprint(app):
+    # Blueprints
+    # ===
     app.register_blueprint(jaasai)
 
-
-def init_dashboard(app):
-    """
-    Add views for the dashboard
-    """
-
+    # Dashboard and redirect views
+    # ===
     @app.route("/models")
     @app.route("/models/<path:path>")
     @app.route("/controllers")
@@ -139,3 +103,62 @@ def init_dashboard(app):
         """
 
         return flask.render_template("dashboard" + flask.request.path)
+
+    @app.route("/q/")
+    @app.route("/q/<path:path>")
+    def search_redirect(path=None):
+        """
+        Handle redirects from jujucharms.com search URLS to the jaas.ai format.
+        e.g. /q/k8s/demo?sort=-name&series=xenial will redirect to
+        /search?q=k8s+demo&sort=-name&series=xenial
+        """
+        query_string = []
+        if path:
+            query_string.append("q={}".format(path.replace("/", "+")))
+        if flask.request.query_string:
+            query_string.append(str(flask.request.query_string, "utf-8"))
+        return flask.redirect(
+            "/search?{}".format("&".join(query_string)), code=302
+        )
+
+    @app.route("/<charm_or_bundle_name>")
+    @app.route("/<charm_or_bundle_name>/<series_or_version>")
+    @app.route("/<charm_or_bundle_name>/<series_or_version>/<version>")
+    def details_redirect(
+        charm_or_bundle_name,
+        series_or_version=None,
+        version=None,
+    ):
+
+        charmhub_url = "https://charmhub.io/" + charm_or_bundle_name
+        return flask.redirect(charmhub_url, code=301)
+
+    # Template filters
+    # ===
+    @app.template_filter("pluralize")
+    def pluralize_filter(count):
+        if int(count) > 1:
+            return "s"
+        else:
+            return ""
+
+    @app.context_processor
+    def inject_utilities():
+        return {
+            "current_url_with_query": current_url_with_query,
+            "external_urls": external_urls,
+            "static_url": static_url,
+        }
+
+    @app.context_processor
+    def inject_today_date():
+        return {"current_year": datetime.date.today().year}
+
+    app.jinja_env.add_extension("jinja2.ext.do")
+
+    @app.context_processor
+    def utility_processor():
+        return {"image": image_template}
+
+    return app
+
