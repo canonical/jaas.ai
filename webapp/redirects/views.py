@@ -25,11 +25,6 @@ def search_redirect(path=None):
     return redirect("/search?{}".format("&".join(query_string)), code=302)
 
 
-@jaasredirects.route("/u/<username>")
-def user_details_delete(username):
-    return abort(410, "User pages have been depricated")
-
-
 @jaasredirects.route("/u/<username>/<charm_or_bundle_name>")
 @jaasredirects.route(
     "/u/<username>/<charm_or_bundle_name>/<series_or_version>"
