@@ -109,13 +109,7 @@ def get_experts(expert=None):
                     "Big Data in minutes. Get started fast, with "
                     "Tengu&rsquo;s "
                     "<a class='link--light' href='{}'>Python Spark cluster</a>"
-                ).format(
-                    url_for(
-                        "jaasredirects.user_entity_redirect",
-                        username="tengu-team",
-                        charm_or_bundle_name="automate-spark-jobs",
-                    )
-                ),
+                ).format(url_for("jaasai.experts_tengu")),
                 "button_label": "Big data now",
             },
         },

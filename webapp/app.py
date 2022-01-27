@@ -13,7 +13,7 @@ from canonicalwebteam import image_template
 from webapp.external_urls import external_urls
 from webapp.handlers import add_headers
 from webapp.jaasai.views import jaasai
-from webapp.redirects.views import jaasredirects
+
 from webapp.template_utils import current_url_with_query, static_url
 
 session = talisker.requests.get_session()
@@ -112,7 +112,6 @@ def init_handler(app):
 
 def init_blueprint(app):
     app.register_blueprint(jaasai)
-    app.register_blueprint(jaasredirects)
 
 
 def init_dashboard(app):
