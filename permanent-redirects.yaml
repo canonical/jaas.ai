@@ -1,1 +1,16 @@
 static/img/logos/juju-logo.svg: https://assets.ubuntu.com/v1/7e21b535-logo-juju.svg
+
+# Topics pages
+big-data: https://charmhub.io/?base=all&filter=big-data
+containers: https://charmhub.io/?base=all&filter=containers
+kubernetes: https://charmhub.io/?base=kubernetes
+openstack: https://charmhub.io/?base=linux
+
+# Blog
+blog: https://juju.is/blog
+
+# Charm or bundle pages
+/u/(?P<username>.*)/(?P<charm_or_bundle_name>.*): https://charmhub.io/{username}-{charm_or_bundle_name}
+/u/(?P<username>.*)/(?P<charm_or_bundle_name>.*)/(?P<series_or_version>.*): https://charmhub.io/{username}-{charm_or_bundle_name}
+/u/(?P<username>.*)/(?P<charm_or_bundle_name>.*)/(?P<series_or_version>.*)/(?P<version>.*): https://charmhub.io/{username}-{charm_or_bundle_name}
+

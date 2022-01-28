@@ -16,10 +16,8 @@ class WebappViews(TestCase):
 
     def test_static_pages(self):
         pages = [
-            "big_data",
             "community_partners",
             "community",
-            "containers",
             "experts_spicule",
             "experts_tengu",
             "experts_thanks",
@@ -28,8 +26,6 @@ class WebappViews(TestCase):
             "how_it_works",
             "index",
             "jaas",
-            "kubernetes",
-            "openstack",
             "support",
         ]
         for page in pages:

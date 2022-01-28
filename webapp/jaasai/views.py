@@ -42,26 +42,6 @@ def jaas():
     return render_template("jaasai/jaas.html")
 
 
-@jaasai.route("/big-data")
-def big_data():
-    return render_template("jaasai/big-data.html")
-
-
-@jaasai.route("/containers")
-def containers():
-    return render_template("jaasai/containers.html")
-
-
-@jaasai.route("/kubernetes")
-def kubernetes():
-    return render_template("jaasai/kubernetes.html")
-
-
-@jaasai.route("/openstack")
-def openstack():
-    return render_template("jaasai/openstack.html")
-
-
 @jaasai.route("/experts")
 def experts():
     return render_template(
@@ -161,10 +141,8 @@ def sitemap():
 def sitemap_base():
     context = {
         "pages": [
-            "jaasai.big_data",
             "jaasai.community_partners",
             "jaasai.community",
-            "jaasai.containers",
             "jaasai.experts_spicule",
             "jaasai.experts_tengu",
             "jaasai.experts_thanks",
@@ -172,8 +150,6 @@ def sitemap_base():
             "jaasai.getting_started",
             "jaasai.how_it_works",
             "jaasai.jaas",
-            "jaasai.kubernetes",
-            "jaasai.openstack",
             "jaasai.support",
         ]
     }
