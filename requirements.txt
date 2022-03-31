@@ -1,4 +1,4 @@
-canonicalwebteam.flask_base==0.9.2
+canonicalwebteam.flask_base==1.0.3
 canonicalwebteam.blog==6.4.0
 canonicalwebteam.yaml-responses==1.2.0
 canonicalwebteam.discourse-docs==1.0.1
