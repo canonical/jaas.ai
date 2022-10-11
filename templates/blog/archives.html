@@ -7,7 +7,7 @@
     <div class="row">
       <div class="col-10">
         <h1>Case Study Archives</h1>
-        <p class="p-heading--four">
+        <p class="p-heading--4">
           {% if total_posts|length > 0 %}
             {{ total_posts }} post{{ total_posts|pluralize }}
           {% else %}
@@ -23,7 +23,7 @@
       <div class="col-7">
         {% for article in articles %}
           <article>
-            <h1 class="p-heading--three u-no-margin--bottom u-sv1">{{ article.title.rendered }}</h1>
+            <h1 class="p-heading--3 u-no-margin--bottom u-sv1">{{ article.title.rendered }}</h1>
             <p>{{ article.date }}</p>
             {{ article.content.rendered|safe }}
           </article>

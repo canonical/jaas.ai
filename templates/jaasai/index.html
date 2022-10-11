@@ -61,7 +61,7 @@
           <h1>Managed solutions from Canonical’s partners</h1>
           <p>Canonical partners with selected companies to provide specialised supported solutions. If you are an independent software vendor or bundle author, it's easy to apply.</p>
           <a href="{{ url_for('jaasai.experts') }}" class="p-button--positive">Join the programme</a>
-          <a href="{{ url_for('jaasai.experts_spicule') }}" class="p-button--neutral">Managed solutions</a>
+          <a href="{{ url_for('jaasai.experts_spicule') }}" class="p-button">Managed solutions</a>
         </div>
         <div class="col-6 u-vertically-center u-align--center u-hide--small">
           {{
@@ -186,7 +186,7 @@
             ) | safe
           }}
         </div>
-        <p><a href="https://juju.is/docs/adding-a-model" class="p-button--neutral" style="margin-top:5px">Add a new model</a></p>
+        <p><a href="https://juju.is/docs/adding-a-model" class="p-button" style="margin-top:5px">Add a new model</a></p>
       </div>
       <div class="col-4">
         <h5 class="u-no-padding--top">JAAS is Juju as a service</h5>
@@ -202,7 +202,7 @@
             ) | safe
           }}
         </div>
-        <a href="{{ url_for('jaasai.jaas') }}" class="p-button--neutral" style="margin-top:-6px">About JAAS</a>
+        <a href="{{ url_for('jaasai.jaas') }}" class="p-button" style="margin-top:-6px">About JAAS</a>
       </div>
     </div>
   </div>
@@ -376,7 +376,7 @@
     </div>
     <div class="row">
       <div class="col-12">
-        <p class="u-align-text--center"><a href="https://charmhub.io/" class="p-button--neutral">Browse the store</a></p>
+        <p class="u-align-text--center"><a href="https://charmhub.io/" class="p-button">Browse the store</a></p>
       </div>
     </div>
   </div>
@@ -420,7 +420,7 @@
       </div>
       <div class="row">
         <div class="col-12">
-          <p class="u-align-text--center"><a href="{{ url_for('jaasai.how_it_works') }}" class="p-button--neutral">How it works</a></p>
+          <p class="u-align-text--center"><a href="{{ url_for('jaasai.how_it_works') }}" class="p-button">How it works</a></p>
         </div>
       </div>
     </div>
@@ -504,7 +504,7 @@
       <h2 id="case-studies">Our case studies show how people are using Juju and JAAS</h2>
       <p>Read our case studies about Juju and JAAS on big data, containers, Kubernetes, public and private clouds.</p>
       <div>
-        <a href="/case-studies" class="p-button--neutral">Read our case studies</a>
+        <a href="/case-studies" class="p-button">Read our case studies</a>
       </div>
     </div>
     <div class="col-7 u-align--center u-hide--small">
@@ -521,48 +521,49 @@
   </div>
 </div>
 
-
 <div class="p-strip">
-  <div class="row">
-    <div class="col-12">
-      <h2 class="p-muted-heading u-align-text--center">Users and contributors</h2>
-      <ul class="p-inline-images">
-        <li class="p-inline-images__item">
-          <img class="p-inline-images__logo" loading="lazy" alt="ubuntu" src="https://assets.ubuntu.com/v1/9c911225-2018-logo-ubuntu.svg">
-        </li>
-        <li class="p-inline-images__item">
-          <img class="p-inline-images__logo" loading="lazy" alt="Deutsche Telekom" src="https://assets.ubuntu.com/v1/d199354d-2018-logo-deutsche-telekom.svg">
-        </li>
-        <li class="p-inline-images__item">
-          <img class="p-inline-images__logo" loading="lazy" alt="IBM" src="https://assets.ubuntu.com/v1/9b1fe97b-2018-logo-IBM.svg">
-        </li>
-        <li class="p-inline-images__item">
-          <img class="p-inline-images__logo" loading="lazy" alt="Intel" src="https://assets.ubuntu.com/v1/94ea495b-2018-logo-Intel.svg">
-        </li>
-        <li class="p-inline-images__item">
-          <img class="p-inline-images__logo" loading="lazy" alt="Microsoft" src="https://assets.ubuntu.com/v1/6d027c12-2018-logo-Microsoft-Azure.svg">
-        </li>
-        <li class="p-inline-images__item">
-          <img class="p-inline-images__logo" loading="lazy" alt="Cisco" src="https://assets.ubuntu.com/v1/8a4d26de-2018-logo-cisco.svg">
-        </li>
-        <li class="p-inline-images__item">
-          <img class="p-inline-images__logo" loading="lazy" alt="China Telecom" src="https://assets.ubuntu.com/v1/34a1f30e-2018-logo-china-telecom.svg">
-        </li>
-        <li class="p-inline-images__item">
-          <img class="p-inline-images__logo" loading="lazy" alt="NEC" src="https://assets.ubuntu.com/v1/df2082a4-2018-logo-NEC.svg">
-        </li>
-        <li class="p-inline-images__item">
-          <img class="p-inline-images__logo" loading="lazy" alt="HP" src="https://assets.ubuntu.com/v1/7ccf63c3-2018-logo-hp.svg">
-        </li>
-        <li class="p-inline-images__item">
-          <img class="p-inline-images__logo" loading="lazy" alt="Yahoo Japan" src="https://assets.ubuntu.com/v1/cf17b55e-2018-logo-yahoo-japan.svg">
-        </li>
-        <li class="p-inline-images__item">
-          <img class="p-inline-images__logo" loading="lazy" alt="Verizon" src="https://assets.ubuntu.com/v1/198d7b96-2018-logo-verizon.svg">
-        </li>
-      </ul>
+  <div class="u-fixed-width">
+  <div class="p-logo-section">
+    <p class="p-logo-section__title">
+      Users and contributors
+    </p>
+    <div class="p-logo-section__items">
+      <div class="p-logo-section__item">
+        <img class="p-logo-section__logo" loading="lazy" alt="ubuntu" src="https://assets.ubuntu.com/v1/9c911225-2018-logo-ubuntu.svg">
+      </div>
+      <div class="p-logo-section__item">
+        <img class="p-logo-section__logo" loading="lazy" alt="Deutsche Telekom" src="https://assets.ubuntu.com/v1/d199354d-2018-logo-deutsche-telekom.svg">
+      </div>
+      <div class="p-logo-section__item">
+        <img class="p-logo-section__logo" loading="lazy" alt="IBM" src="https://assets.ubuntu.com/v1/9b1fe97b-2018-logo-IBM.svg">
+      </div>
+      <div class="p-logo-section__item">
+        <img class="p-logo-section__logo" loading="lazy" alt="Intel" src="https://assets.ubuntu.com/v1/94ea495b-2018-logo-Intel.svg">
+      </div>
+      <div class="p-logo-section__item">
+        <img class="p-logo-section__logo" loading="lazy" alt="Microsoft" src="https://assets.ubuntu.com/v1/6d027c12-2018-logo-Microsoft-Azure.svg">
+      </div>
+      <div class="p-logo-section__item">
+        <img class="p-logo-section__logo" loading="lazy" alt="Cisco" src="https://assets.ubuntu.com/v1/8a4d26de-2018-logo-cisco.svg">
+      </div>
+      <div class="p-logo-section__item">
+        <img class="p-logo-section__logo" loading="lazy" alt="China Telecom" src="https://assets.ubuntu.com/v1/34a1f30e-2018-logo-china-telecom.svg">
+      </div>
+      <div class="p-logo-section__item">
+        <img class="p-logo-section__logo" loading="lazy" alt="NEC" src="https://assets.ubuntu.com/v1/df2082a4-2018-logo-NEC.svg">
+      </div>
+      <div class="p-logo-section__item">
+        <img class="p-logo-section__logo" loading="lazy" alt="HP" src="https://assets.ubuntu.com/v1/7ccf63c3-2018-logo-hp.svg">
+      </div>
+      <div class="p-logo-section__item">
+        <img class="p-logo-section__logo" loading="lazy" alt="Yahoo Japan" src="https://assets.ubuntu.com/v1/cf17b55e-2018-logo-yahoo-japan.svg">
+      </div>
+      <div class="p-logo-section__item">
+        <img class="p-logo-section__logo" loading="lazy" alt="Verizon" src="https://assets.ubuntu.com/v1/198d7b96-2018-logo-verizon.svg">
+      </div>
     </div>
   </div>
+    </div>
 </div>
 
 <script src="{{ static_url('js/tabpanel.js') }}"></script>
