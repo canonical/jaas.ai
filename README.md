@@ -1,17 +1,27 @@
 # jaas.ai
-[![CircleCI build status](https://circleci.com/gh/canonical-web-and-design/jaas.ai.svg?style=shield)](https://circleci.com/gh/canonical-web-and-design/jaas.ai) [![Code coverage](https://codecov.io/gh/canonical-web-and-design/jaas.ai/branch/main/graph/badge.svg)](https://codecov.io/gh/canonical-web-and-design/jaas.ai)
+
+[![Code coverage](https://codecov.io/gh/canonical/jaas.ai/branch/main/graph/badge.svg)](https://codecov.io/gh/canonical/jaas.ai)
 
 A prototype for what may become the new JAAS storefront, jaas.ai.
 
-## Usage
+## Local Development
 
-After [installing Docker](https://docs.docker.com/install/):
+The simplest way to run the site locally is using the [`dotrun`](https://github.com/canonical/dotrun/) snap. Please use the installation scripts [mentioned in the README](https://github.com/canonical/dotrun/blob/main/README.md#installation) to install `dotrun`.
+
+Once it's installed, run the project with:
 
 ```bash
-./run
+dotrun
 ```
 
-Now browse to http://localhost:8029.
+Once the server has started, you can visit <http://127.0.0.1:8029> in your browser.
 
-# Deploy
-You can find the deployment config in the deploy folder.
+### Upgrade the dashboard
+
+Update the current installed dashboard:
+
+```bash
+yarn run pull-jaas-dashboard
+```
+
+That's it! when the next time the project runs, it will regenerate the local files based on the new dashboard archive.
