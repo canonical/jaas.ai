@@ -5,7 +5,7 @@
 ## QA
 
 - Pull code
-- Run `./run clean && ./run serve`
+- Run `dotrun`
 - Open http://0.0.0.0:8029
 - [Add additional steps]
 

@@ -19,13 +19,12 @@ RUN --mount=type=cache,target=/usr/local/share/.cache/yarn yarn install --produc
 
 # Build stage: Build dashboard
 # ===
-FROM node:16 AS build-dashboard
+FROM ubuntu:focal AS build-dashboard
+RUN apt-get update && apt-get install -y wget
 WORKDIR /srv
-# A cache-busting line. .git/index should always be fresh, I hope
-ADD .git/index /dev/null
-RUN git clone https://github.com/canonical-web-and-design/jaas-dashboard /srv
-RUN yarn install
-RUN yarn build
+# Download the latest dashboard release from Github and extract it to /srv/build
+ADD scripts/pull-latest-jaas-dashboard.sh .
+RUN ./pull-latest-jaas-dashboard.sh ./build
 
 
 # Build stage: Run "yarn run build-js"
