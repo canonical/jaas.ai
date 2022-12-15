@@ -96,13 +96,16 @@ def create_app(testing=False):
 
     @app.route("/config.js")
     @app.route("/manifest.json")
+    @app.route("/version.json")
     @app.route("/ghost-bundle.svg")
     def dashboard_files():
         """
         Load dashboard files directly
         """
-
-        return flask.render_template("dashboard" + flask.request.path)
+        return flask.send_from_directory(
+            "../templates/dashboard",
+            flask.request.path.strip("/"),
+        )
 
     @app.route("/q/")
     @app.route("/q/<path:path>")
