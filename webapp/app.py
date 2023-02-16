@@ -132,7 +132,6 @@ def create_app(testing=False):
         series_or_version=None,
         version=None,
     ):
-
         charmhub_url = "https://charmhub.io/" + charm_or_bundle_name
         return flask.redirect(charmhub_url, code=301)
 
