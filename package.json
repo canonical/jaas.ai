@@ -43,7 +43,8 @@
     "vanilla-framework": "2.37.1",
     "watch-cli": "0.2.3",
     "webpack": "5.75.0",
-    "webpack-cli": "4.10.0"
+    "webpack-cli": "4.10.0",
+    "terser-webpack-plugin": "5.3.6"
   },
   "devDependencies": {
     "eslint": "7.32.0",
@@ -55,8 +56,7 @@
     "stylelint": "13.13.1",
     "stylelint-config-prettier": "8.0.2",
     "stylelint-config-standard": "20.0.0",
-    "stylelint-order": "4.1.0",
-    "terser-webpack-plugin": "5.3.6"
+    "stylelint-order": "4.1.0"
   },
   "resolutions": {
     "lodash": "^4.17.15",
