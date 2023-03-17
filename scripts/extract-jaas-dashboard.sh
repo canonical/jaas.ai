@@ -6,6 +6,7 @@ assets_folder=$2
 if [[ -d $dest ]]; then
   rm -rf $dest
 fi
+
 # extract
 mkdir $dest
 tar -xf *.tar.bz2 -C $dest
