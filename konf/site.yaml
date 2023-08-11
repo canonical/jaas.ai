@@ -1,6 +1,6 @@
 domain: jaas.ai
 
-image: prod-comms.docker-registry.canonical.com/jaas.ai
+image: prod-comms.ps5.docker-registry.canonical.com/jaas.ai
 
 useProxy: false
 
