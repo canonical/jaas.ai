@@ -40,11 +40,11 @@
     "postcss": "8.4.21",
     "postcss-cli": "8.3.1",
     "sass": "1.57.1",
-    "vanilla-framework": "2.37.1",
+    "terser-webpack-plugin": "5.3.6",
+    "vanilla-framework": "^4.3.0",
     "watch-cli": "0.2.3",
     "webpack": "5.75.0",
-    "webpack-cli": "4.10.0",
-    "terser-webpack-plugin": "5.3.6"
+    "webpack-cli": "4.10.0"
   },
   "devDependencies": {
     "eslint": "7.32.0",
