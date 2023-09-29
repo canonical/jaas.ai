@@ -18,7 +18,7 @@
 
 .entity {
   &__header {
-    @media (max-width: $breakpoint-medium) {
+    @media (max-width: $breakpoint-large - 1) {
       .series-tags {
         margin-bottom: 1rem;
       }

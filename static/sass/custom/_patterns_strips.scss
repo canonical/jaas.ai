@@ -163,7 +163,7 @@
     background-repeat: no-repeat;
     background-size: 50% 100%, 20% 100%, 100% 100%, cover;
 
-    @media (max-width: $breakpoint-medium) {
+    @media (max-width: $breakpoint-large - 1) {
       background: #f0f5f7;
     }
   }
@@ -192,7 +192,7 @@
     background-repeat: no-repeat;
     background-size: 40% 100%, 80% 60%, 100% 100%;
 
-    @media (max-width: $breakpoint-medium) {
+    @media (max-width: $breakpoint-large - 1) {
       background: rgb(240, 245, 247);
     }
   }

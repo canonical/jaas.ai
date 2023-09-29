@@ -182,7 +182,7 @@ $color-experts-highlight: #e95420;
 
 // p-strip with bg image
 .has-image-bg {
-  @media (max-width: $breakpoint-medium) {
+  @media (max-width: $breakpoint-large - 1) {
     background: none !important;
   }
 }
@@ -259,7 +259,7 @@ div .p-accordion__tab[aria-expanded] {
 }
 
 // Modelling steps on the homepage.
-@media (min-width: $breakpoint-small) and (max-width: $breakpoint-medium) {
+@media (min-width: $breakpoint-small) and (max-width: $breakpoint-large - 1) {
   .step-block {
     display: flex;
 
