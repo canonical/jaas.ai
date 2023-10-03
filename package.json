@@ -29,7 +29,7 @@
     "@babel/core": "7.20.12",
     "@babel/preset-env": "7.20.2",
     "@canonical/cookie-policy": "3.4.0",
-    "@canonical/global-nav": "2.7.0",
+    "@canonical/global-nav": "3.6.0",
     "@canonical/latest-news": "1.4.1",
     "@sentry/browser": "5.30.0",
     "autoprefixer": "10.4.13",

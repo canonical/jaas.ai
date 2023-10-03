@@ -46,9 +46,17 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 
 {% include 'shared/header.html' %}
 
+<script src="{{ versioned_static('js/navigation.js') }}"></script>
+<script src="/static/js/src/libs/global-nav/global-nav.js"></script>
+<script>
+  canonicalGlobalNav.createNav({ breakpoint: 900 });
+  initNavDropdowns(".p-navigation__item--dropdown-toggle");
+</script>
+
 <main id="main-content">
   {% block content %}{% endblock content %}
 </main>
+
 
 <script type="text/template" id="cookie-warning-template">
   <div class="cookie-policy" style="position: fixed; bottom: 0; width: 100%;">
