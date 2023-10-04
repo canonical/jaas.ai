@@ -66,6 +66,25 @@ $breakpoint-navigation-threshold: $breakpoint-large;
   }
 }
 
+.play-video-cta {
+  display: inline-block;
+  position: relative;
+
+  a {
+    padding-right: 2rem;
+  }
+
+  &::after {
+    content: url('https://assets.ubuntu.com/v1/0d85260e-play-icon.svg');
+    display: inline-block;
+    height: 1rem;
+    position: absolute;
+    right: 0.5rem;
+    top: 0.15rem;
+    width: 1rem;
+  }
+}
+
 .footer {
   background-color: #222;
 
@@ -98,24 +117,6 @@ $breakpoint-navigation-threshold: $breakpoint-large;
   background-image: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMDI0IiBoZWlnaHQ9Ijk5OSI+PHBhdGggZmlsbD0iI2ZmZiIgZmlsbC1ydWxlPSJldmVub2RkIiBkPSJNNTEyIDBDMjI5LjI1IDAgMCAyMjkuMjUgMCA1MTJjMCAyMjYuMjUgMTQ2LjY5IDQxOC4xMiAzNTAuMTYgNDg1LjgxIDI1LjU5IDQuNjkgMzQuOTMtMTEuMTIgMzQuOTMtMjQuNjIgMC0xMi4xOS0uNDctNTIuNTctLjcxLTk1LjMxQzI0MiA5MDguODEgMjExLjkxIDgxNy41IDIxMS45MSA4MTcuNWMtMjMuMzItNTkuMTItNTYuODUtNzQuODgtNTYuODUtNzQuODgtNDYuNTMtMzEuNzQgMy41My0zMS4xMiAzLjUzLTMxLjEyIDUxLjQxIDMuNTYgNzguNDcgNTIuNzUgNzguNDcgNTIuNzUgNDUuNjkgNzguMjUgMTE5Ljg4IDU1LjYzIDE0OSA0Mi41IDQuNjYtMzMgMTcuOTEtNTUuNjMgMzIuNS02OC4zNy0xMTMuNjUtMTIuOTQtMjMzLjIyLTU2Ljg4LTIzMy4yMi0yNTMuMDcgMC01NS45NCAxOS45Ny0xMDEuNTYgNTIuNjYtMTM3LjQtNS4yMi0xMy0yMi44NC02NS4xIDUuMDYtMTM1LjU3IDAgMCA0Mi45NC0xMy43NSAxNDAuODEgNTIuNSA0MC44Mi0xMS40IDg0LjYtMTcuMDMgMTI4LjEzLTE3LjIyIDQzLjUuMTkgODcuMzEgNS44OCAxMjguMTkgMTcuMjkgOTcuNjktNjYuMzIgMTQwLjY5LTUyLjUgMTQwLjY5LTUyLjUgMjggNzAuNTMgMTAuMzcgMTIyLjU2IDUuMTIgMTM1LjUgMzIuODEgMzUuODQgNTIuNjIgODEuNDcgNTIuNjIgMTM3LjQgMCAxOTYuNjktMTE5Ljc0IDI0MC0yMzMuODEgMjUyLjY5IDE4LjQ0IDE1Ljg4IDM0Ljc1IDQ3IDM0Ljc1IDk0Ljc1IDAgNjguNDQtLjY4IDEyMy42My0uNjggMTQwLjUgMCAxMy42MyA5LjMxIDI5LjU1IDM1LjI0IDI0LjU2Qzg3Ny40NCA5MzAgMTAyNCA3MzguMTIgMTAyNCA1MTIgMTAyNCAyMjkuMjUgNzk0Ljc1IDAgNTEyIDB6Ii8+PC9zdmc+Cg==");
 }
 
-.play-video-cta {
-  display: inline-block;
-  position: relative;
-
-  a {
-    padding-right: 2rem;
-  }
-
-  &::after {
-    content: url('https://assets.ubuntu.com/v1/0d85260e-play-icon.svg');
-    display: inline-block;
-    height: 1rem;
-    position: absolute;
-    right: 0.5rem;
-    top: 0.15rem;
-    width: 1rem;
-  }
-}
 
 // experts expert-cards
 $color-experts-highlight: #e95420;
