@@ -250,7 +250,7 @@
           </ul>
         </div>
       </div>
-      <div class="col-8">
+      <div class="col-8 homepage-tabs-content">
         <div class="row" id="view-models-and-controllers-details">
           {{ image(
               url="https://assets.ubuntu.com/v1/216e92c6-jass_side_navigation.svg",
@@ -259,12 +259,13 @@
               width="1031",
               hi_def=True,
               loading="auto",
-              attrs={
-                "class": "homepage-tabs-logo",
-              },
             ) | safe
           }}
           <p>Drill down to view the details of everything that is deployed inside a model, such as applications, integrations, units, and more.</p>
+        </div>
+        <div class="homepage-tabs-button u-align--right">
+          <button class="p-button has-icon" disabled data-js="previous-tab-button">&lsaquo; Previous</button>
+          <button class="p-button has-icon" data-js="next-tab-button">Next &rsaquo;</button>
         </div>
         <div class="row u-hide" id="run-actions">
           {{ image(
@@ -274,9 +275,6 @@
             width="1031",
             hi_def=True,
             loading="auto",
-            attrs={
-              "class": "homepage-tabs-logo",
-            },
           ) | safe
           }}
           <p>Execute Juju action from the UI and view the resulting logs to confirm their status.</p>
@@ -289,9 +287,6 @@
               width="1031",
               hi_def=True,
               loading="auto",
-              attrs={
-                "class": "homepage-tabs-logo",
-              },
             ) | safe
             }}
           <p>Perform common administrative operations and apply machine configurations.</p>
@@ -304,9 +299,6 @@
               width="1031",
               hi_def=True,
               loading="auto",
-              attrs={
-                "class": "homepage-tabs-logo",
-              },
             ) | safe
             }}
           <p>Onboard controllers and add, remove or manage user access to models and controllers.</p>
@@ -319,9 +311,6 @@
               width="1031",
               hi_def=True,
               loading="auto",
-              attrs={
-                "class": "homepage-tabs-logo",
-              },
             ) | safe
             }}
           <p>Access the logs from your deployment in a single, centralised location.</p>
@@ -334,9 +323,6 @@
               width="1031",
               hi_def=True,
               loading="auto",
-              attrs={
-                "class": "homepage-tabs-logo",
-              },
             ) | safe
             }}
           <p>Perform complex searches/filters through your entire deployment and share the result through a unique URL.</p>
@@ -528,24 +514,78 @@
 <script>
   const panelLinks = document.querySelectorAll("[data-js='panel-link']");
 
-  panelLinks.forEach((panelLink) => {
-    panelLink.addEventListener("click", (e) => {
-      e.preventDefault();
-
+  function activatePanel(panelLink) {
       const activePanelLink = document.querySelector("[data-js='panel-link'].is-active");
       const activePanel = document.querySelector(activePanelLink.getAttribute("href"));
 
-      if (activePanelLink === panelLink) {
-        return;
+      if (activePanelLink !== panelLink) {
+        const targetPanel = document.querySelector(panelLink.getAttribute("href"));
+        activePanelLink.classList.remove("is-active");
+        activePanel.classList.add("u-hide");
+        panelLink.classList.add("is-active");
+        targetPanel.classList.remove("u-hide");
       }
+    }
 
-      const targetPanel = document.querySelector(panelLink.getAttribute("href"));
-
-      activePanelLink.classList.remove("is-active");
-      activePanel.classList.add("u-hide");
-      panelLink.classList.add("is-active");
-      targetPanel.classList.remove("u-hide");
+    panelLinks.forEach((panelLink) => {
+      panelLink.addEventListener("click", (e) => {
+        e.preventDefault();
+        activatePanel(panelLink);
+      });
     });
-  });
+
+  const tabs = document.querySelectorAll('.homepage-tabs-content > .row:not(.homepage-tabs-button)');
+  const navItems = document.querySelectorAll('.p-side-navigation__item');
+  const images = [
+    'https://assets.ubuntu.com/v1/216e92c6-jass_side_navigation.svg',
+  ];
+
+  let currentTab = 0;
+
+  function showTab(index) {
+    tabs.forEach(tab => tab.classList.add('u-hide'));
+    tabs[index].classList.remove('u-hide');
+    updateNavigation(index);
+    updateButtonStatus();
+  }
+
+  function handlePrevious() {
+      if (currentTab > 0) {
+        currentTab--;
+        showTab(currentTab);
+
+        const targetPanelLink = document.querySelector(`[data-js='panel-link'][href='#${tabs[currentTab].id}']`);
+        activatePanel(targetPanelLink);
+      }
+    }
+
+  function handleNext() {
+      if (currentTab < tabs.length - 1) {
+        currentTab++;
+        showTab(currentTab);
+
+        const targetPanelLink = document.querySelector(`[data-js='panel-link'][href='#${tabs[currentTab].id}']`);
+        activatePanel(targetPanelLink);
+      }
+    }
+
+  function updateNavigation(index) {
+    navItems.forEach(item => item.classList.remove('is-active'));
+    navItems[index].classList.add('is-active');
+  }
+
+  function updateButtonStatus() {
+    const prevBtn = document.querySelector('[data-js="previous-tab-button"]');
+    const nextBtn = document.querySelector('[data-js="next-tab-button"]');
+    prevBtn.disabled = currentTab === 0;
+    nextBtn.disabled = currentTab === tabs.length - 1;
+  }
+
+  const prevBtn = document.querySelector('[data-js="previous-tab-button"]');
+  const nextBtn = document.querySelector('[data-js="next-tab-button"]');
+
+  prevBtn.addEventListener('click', handlePrevious);
+  nextBtn.addEventListener('click', handleNext);
+
 </script>
 {% endblock content %}
