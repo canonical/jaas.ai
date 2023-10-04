@@ -251,8 +251,21 @@
         </div>
       </div>
       <div class="col-8 homepage-tabs-content">
-        <div class="row" id="view-models-and-controllers-details">
-          {{ image(
+        <div class="tabs-content-wrapper">
+          <div class="row" id="view-models-and-controllers-details">
+            {{ image(
+                url="https://assets.ubuntu.com/v1/216e92c6-jass_side_navigation.svg",
+                alt="",
+                height="588",
+                width="1031",
+                hi_def=True,
+                loading="auto",
+              ) | safe
+            }}
+            <p>Drill down to view the details of everything that is deployed inside a model, such as applications, integrations, units, and more.</p>
+          </div>
+          <div class="row u-hide" id="run-actions">
+            {{ image(
               url="https://assets.ubuntu.com/v1/216e92c6-jass_side_navigation.svg",
               alt="",
               height="588",
@@ -260,72 +273,61 @@
               hi_def=True,
               loading="auto",
             ) | safe
-          }}
-          <p>Drill down to view the details of everything that is deployed inside a model, such as applications, integrations, units, and more.</p>
+            }}
+            <p>Execute Juju action from the UI and view the resulting logs to confirm their status.</p>
+          </div>
+          <div class="row u-hide" id="configure-applications">
+            {{ image(
+                url="https://assets.ubuntu.com/v1/216e92c6-jass_side_navigation.svg",
+                alt="",
+                height="588",
+                width="1031",
+                hi_def=True,
+                loading="auto",
+              ) | safe
+              }}
+            <p>Perform common administrative operations and apply machine configurations.</p>
+          </div>
+          <div class="row u-hide" id="onboard-controllers-and-manage-access">
+            {{ image(
+                url="https://assets.ubuntu.com/v1/216e92c6-jass_side_navigation.svg",
+                alt="",
+                height="588",
+                width="1031",
+                hi_def=True,
+                loading="auto",
+              ) | safe
+              }}
+            <p>Onboard controllers and add, remove or manage user access to models and controllers.</p>
+          </div>
+          <div class="row u-hide" id="run-audits-and-reports">
+            {{ image(
+                url="https://assets.ubuntu.com/v1/216e92c6-jass_side_navigation.svg",
+                alt="",
+                height="588",
+                width="1031",
+                hi_def=True,
+                loading="auto",
+              ) | safe
+              }}
+            <p>Access the logs from your deployment in a single, centralised location.</p>
+          </div>
+          <div class="row u-hide" id="search-and-filter">
+            {{ image(
+                url="https://assets.ubuntu.com/v1/216e92c6-jass_side_navigation.svg",
+                alt="",
+                height="588",
+                width="1031",
+                hi_def=True,
+                loading="auto",
+              ) | safe
+              }}
+            <p>Perform complex searches/filters through your entire deployment and share the result through a unique URL.</p>
+          </div>
         </div>
         <div class="homepage-tabs-button u-align--right">
           <button class="p-button has-icon" disabled data-js="previous-tab-button">&lsaquo; Previous</button>
           <button class="p-button has-icon" data-js="next-tab-button">Next &rsaquo;</button>
-        </div>
-        <div class="row u-hide" id="run-actions">
-          {{ image(
-            url="https://assets.ubuntu.com/v1/216e92c6-jass_side_navigation.svg",
-            alt="",
-            height="588",
-            width="1031",
-            hi_def=True,
-            loading="auto",
-          ) | safe
-          }}
-          <p>Execute Juju action from the UI and view the resulting logs to confirm their status.</p>
-        </div>
-        <div class="row u-hide" id="configure-applications">
-          {{ image(
-              url="https://assets.ubuntu.com/v1/216e92c6-jass_side_navigation.svg",
-              alt="",
-              height="588",
-              width="1031",
-              hi_def=True,
-              loading="auto",
-            ) | safe
-            }}
-          <p>Perform common administrative operations and apply machine configurations.</p>
-        </div>
-        <div class="row u-hide" id="onboard-controllers-and-manage-access">
-          {{ image(
-              url="https://assets.ubuntu.com/v1/216e92c6-jass_side_navigation.svg",
-              alt="",
-              height="588",
-              width="1031",
-              hi_def=True,
-              loading="auto",
-            ) | safe
-            }}
-          <p>Onboard controllers and add, remove or manage user access to models and controllers.</p>
-        </div>
-        <div class="row u-hide" id="run-audits-and-reports">
-          {{ image(
-              url="https://assets.ubuntu.com/v1/216e92c6-jass_side_navigation.svg",
-              alt="",
-              height="588",
-              width="1031",
-              hi_def=True,
-              loading="auto",
-            ) | safe
-            }}
-          <p>Access the logs from your deployment in a single, centralised location.</p>
-        </div>
-        <div class="row u-hide" id="search-and-filter">
-          {{ image(
-              url="https://assets.ubuntu.com/v1/216e92c6-jass_side_navigation.svg",
-              alt="",
-              height="588",
-              width="1031",
-              hi_def=True,
-              loading="auto",
-            ) | safe
-            }}
-          <p>Perform complex searches/filters through your entire deployment and share the result through a unique URL.</p>
         </div>
       </div>
     </div>
@@ -534,7 +536,7 @@
       });
     });
 
-  const tabs = document.querySelectorAll('.homepage-tabs-content > .row:not(.homepage-tabs-button)');
+  const tabs = document.querySelectorAll('.homepage-tabs-content .tabs-content-wrapper > .row');
   const navItems = document.querySelectorAll('.p-side-navigation__item');
   const images = [
     'https://assets.ubuntu.com/v1/216e92c6-jass_side_navigation.svg',
@@ -550,24 +552,24 @@
   }
 
   function handlePrevious() {
-      if (currentTab > 0) {
-        currentTab--;
-        showTab(currentTab);
+    if (currentTab > 0) {
+      currentTab--;
+      showTab(currentTab);
 
-        const targetPanelLink = document.querySelector(`[data-js='panel-link'][href='#${tabs[currentTab].id}']`);
-        activatePanel(targetPanelLink);
-      }
+      const targetPanelLink = document.querySelector(`[data-js='panel-link'][href='#${tabs[currentTab].id}']`);
+      activatePanel(targetPanelLink);
     }
+  }
 
   function handleNext() {
-      if (currentTab < tabs.length - 1) {
-        currentTab++;
-        showTab(currentTab);
+    if (currentTab < tabs.length - 1) {
+      currentTab++;
+      showTab(currentTab);
 
-        const targetPanelLink = document.querySelector(`[data-js='panel-link'][href='#${tabs[currentTab].id}']`);
-        activatePanel(targetPanelLink);
-      }
+      const targetPanelLink = document.querySelector(`[data-js='panel-link'][href='#${tabs[currentTab].id}']`);
+      activatePanel(targetPanelLink);
     }
+  }
 
   function updateNavigation(index) {
     navItems.forEach(item => item.classList.remove('is-active'));
@@ -586,6 +588,5 @@
 
   prevBtn.addEventListener('click', handlePrevious);
   nextBtn.addEventListener('click', handleNext);
-
 </script>
 {% endblock content %}
