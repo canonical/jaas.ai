@@ -513,75 +513,51 @@
 </main>
 <script>
   const panelLinks = document.querySelectorAll("[data-js='panel-link']");
+    const tabs = document.querySelectorAll('.homepage-tabs-content .tabs-content-wrapper > .row');
+    let currentTab = 0;
 
-  function activatePanel(panelLink) {
-      const activePanelLink = document.querySelector("[data-js='panel-link'].is-active");
-      const activePanel = document.querySelector(activePanelLink.getAttribute("href"));
-
-      if (activePanelLink !== panelLink) {
-        const targetPanel = document.querySelector(panelLink.getAttribute("href"));
-        activePanelLink.classList.remove("is-active");
-        activePanel.classList.add("u-hide");
-        panelLink.classList.add("is-active");
-        targetPanel.classList.remove("u-hide");
-      }
+    function showTab(index) {
+      tabs.forEach(tab => tab.classList.add('u-hide'));
+      tabs[index].classList.remove('u-hide');
+      updateNavigation(index);
+      updateButtonStatus();
     }
 
-    panelLinks.forEach((panelLink) => {
+    function updateNavigation(index) {
+      panelLinks.forEach(link => link.classList.remove('is-active'));
+      panelLinks[index].classList.add('is-active');
+    }
+
+    function updateButtonStatus() {
+      const prevBtn = document.querySelector('[data-js="previous-tab-button"]');
+      const nextBtn = document.querySelector('[data-js="next-tab-button"]');
+      prevBtn.disabled = currentTab === 0;
+      nextBtn.disabled = currentTab === tabs.length - 1;
+    }
+
+    panelLinks.forEach((panelLink, index) => {
       panelLink.addEventListener("click", (e) => {
         e.preventDefault();
-        activatePanel(panelLink);
+        currentTab = index;
+        showTab(currentTab);
       });
     });
 
-  const tabs = document.querySelectorAll('.homepage-tabs-content .tabs-content-wrapper > .row');
-  const navItems = document.querySelectorAll('.p-side-navigation__item');
-
-  let currentTab = 0;
-
-  function showTab(index) {
-    tabs.forEach(tab => tab.classList.add('u-hide'));
-    tabs[index].classList.remove('u-hide');
-    updateNavigation(index);
-    updateButtonStatus();
-  }
-
-  function handlePrevious() {
-    if (currentTab > 0) {
-      currentTab--;
-      showTab(currentTab);
-
-      const targetPanelLink = document.querySelector(`[data-js='panel-link'][href='#${tabs[currentTab].id}']`);
-      activatePanel(targetPanelLink);
-    }
-  }
-
-  function handleNext() {
-    if (currentTab < tabs.length - 1) {
-      currentTab++;
-      showTab(currentTab);
-
-      const targetPanelLink = document.querySelector(`[data-js='panel-link'][href='#${tabs[currentTab].id}']`);
-      activatePanel(targetPanelLink);
-    }
-  }
-
-  function updateNavigation(index) {
-    navItems.forEach(item => item.classList.remove('is-active'));
-    navItems[index].classList.add('is-active');
-  }
-
-  function updateButtonStatus() {
     const prevBtn = document.querySelector('[data-js="previous-tab-button"]');
     const nextBtn = document.querySelector('[data-js="next-tab-button"]');
-    prevBtn.disabled = currentTab === 0;
-    nextBtn.disabled = currentTab === tabs.length - 1;
-  }
 
-  const prevBtn = document.querySelector('[data-js="previous-tab-button"]');
-  const nextBtn = document.querySelector('[data-js="next-tab-button"]');
+    prevBtn.addEventListener('click', () => {
+      if (currentTab > 0) {
+        currentTab--;
+        showTab(currentTab);
+      }
+    });
 
-  prevBtn.addEventListener('click', handlePrevious);
-  nextBtn.addEventListener('click', handleNext);
+    nextBtn.addEventListener('click', () => {
+      if (currentTab < tabs.length - 1) {
+        currentTab++;
+        showTab(currentTab);
+      }
+    });
 </script>
 {% endblock content %}
