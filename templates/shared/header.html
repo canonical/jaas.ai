@@ -13,33 +13,46 @@
       <span class="u-off-screen">
         <a href="#main-content">Jump to main content</a>
       </span>
-      <ul class="p-navigation__links" role="menu">
-        <li class="p-navigation__link {% if active_section == 'store' %}is-selected{% endif %}" role="menuitem">
-            <a href="https://charmhub.io/">
-              Store
-            </a>
+      <ul class="p-navigation__items" role="menu">
+        <li class="p-navigation__item">
+          <a class="p-navigation__link" href="https://juju.is">Juju</a>
         </li>
-        <li class="p-navigation__link is-secondary-link {% if active_section == 'about' %}is-selected{% endif %}" role="menuitem">
-            <a href="{{ url_for('jaasai.jaas') }}">
-              About
-            </a>
+        <li class="p-navigation__item">
+          <a class="p-navigation__link" href="https://charmhub.io">Charmhub</a>
         </li>
-        <li class="p-navigation__link {% if active_section == 'how-it-works' %}is-selected{% endif %}" role="menuitem">
-            <a href="{{ url_for('jaasai.how_it_works') }}">
-              How it works
-            </a>
+        <li class="p-navigation__item--dropdown-toggle" id="learn-link">
+          <a class="p-navigation__link" href="#forum-link-menu" aria-controls="forum-link-menu">Community</a>
+          <ul class="p-navigation__dropdown" id="forum-link-menu" aria-hidden="true">
+            <li>
+              <a href="https://discourse.charmhub.io/" class="p-navigation__dropdown-item">Discourse forum</a>
+            </li>
+            <li>
+              <a href="https://chat.charmhub.io" class="p-navigation__dropdown-item">Mattermost chat</a>
+            </li>
+          </ul>
         </li>
-        <li class="p-navigation__link" role="menuitem">
-          <a class="p-link--external" href="{{ external_urls.discourse }}">Discourse</a>
+        <li class="p-navigation__item--dropdown-toggle" id="contribute-link">
+          <a class="p-navigation__link" href="#docs-link-menu" aria-controls="docs-link-menu">Docs</a>
+          <ul class="p-navigation__dropdown" id="docs-link-menu" aria-hidden="true">
+            <li>
+              <a href="/docs/juju" class="p-navigation__dropdown-item">Juju</a>
+            </li>
+            <li>
+              <a href="/docs/sdk" class="p-navigation__dropdown-item">Charm SDK</a>
+            </li>
+            <li>
+              <a href="/docs/dev" class="p-navigation__dropdown-item">Contribute to Juju</a>
+            </li>
+            <li>
+              <a href="/operator-day" class="p-navigation__dropdown-item">Operator Day</a>
+            </li>
+          </ul>
         </li>
-        <li class="p-navigation__link" role="menuitem">
-          <a class="p-link--external" href="{{ external_urls.docs }}" class="p-link--external">Docs</a>
+        <li class="p-navigation__item">
+          <a class="p-navigation__link" href="https://ubuntu.com/blog/tag/juju">Blog</a>
         </li>
       </ul>
-      <ul class="p-navigation__links p-navigation_login" role="menu">
-        <li class="p-navigation__link" role="menuitem">
-          <a href="/models">Your models</a>
-        </li>
+      <ul class="p-navigation__items p-navigation_login global-nav" role="menu">
       </ul>
     </nav>
   </div>

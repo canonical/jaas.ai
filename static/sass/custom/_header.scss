@@ -7,7 +7,7 @@ $breakpoint-navigation: 980px;
   order: 2;
 }
 
-@media (min-width: $breakpoint-medium) and (max-width: $breakpoint-navigation) {
+@media (min-width: 768px) and (max-width: $breakpoint-navigation) {
   .is-secondary-link {
     display: none !important;
   }

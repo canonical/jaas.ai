@@ -29,7 +29,7 @@
     "@babel/core": "7.20.12",
     "@babel/preset-env": "7.20.2",
     "@canonical/cookie-policy": "3.4.0",
-    "@canonical/global-nav": "2.7.0",
+    "@canonical/global-nav": "3.6.0",
     "@canonical/latest-news": "1.4.1",
     "@sentry/browser": "5.30.0",
     "autoprefixer": "10.4.13",
@@ -40,11 +40,11 @@
     "postcss": "8.4.21",
     "postcss-cli": "8.3.1",
     "sass": "1.57.1",
-    "vanilla-framework": "2.37.1",
+    "terser-webpack-plugin": "5.3.6",
+    "vanilla-framework": "^4.3.0",
     "watch-cli": "0.2.3",
     "webpack": "5.75.0",
-    "webpack-cli": "4.10.0",
-    "terser-webpack-plugin": "5.3.6"
+    "webpack-cli": "4.10.0"
   },
   "devDependencies": {
     "eslint": "7.32.0",
