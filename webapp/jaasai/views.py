@@ -17,9 +17,7 @@ session = talisker.requests.get_session()
 
 @jaasai.route("/")
 def index():
-    return render_template(
-        "index.html"
-    )
+    return render_template("index.html")
 
 
 @jaasai.route("/robots.txt")
@@ -42,10 +40,7 @@ def sitemap():
 
 @jaasai.route("/sitemap-base.xml")
 def sitemap_base():
-    context = {
-        "pages": [
-        ]
-    }
+    context = {"pages": []}
     return set_xml_content_type("sitemaps/sitemap-base.xml", context)
 
 
