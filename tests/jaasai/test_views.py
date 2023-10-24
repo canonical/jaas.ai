@@ -1,7 +1,5 @@
-import json
 from flask import url_for
 from flask_testing import TestCase
-from unittest.mock import patch, MagicMock
 
 from webapp.app import create_app
 
