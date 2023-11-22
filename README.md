@@ -14,14 +14,4 @@ Once it's installed, run the project with:
 dotrun
 ```
 
-Once the server has started, you can visit <http://127.0.0.1:8029> in your browser.
-
-### Upgrade the dashboard
-
-Update the current installed dashboard:
-
-```bash
-yarn run pull-jaas-dashboard
-```
-
-That's it! when the next time the project runs, it will regenerate the local files based on the new dashboard archive.
+Once the server has started, you can visit <http://127.0.0.1:8029> in your browser. That's it!

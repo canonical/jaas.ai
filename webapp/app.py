@@ -65,32 +65,6 @@ def create_app(testing=False):
     # ===
     app.register_blueprint(jaasai)
 
-    # Dashboard and redirect views
-    # ===
-    @app.route("/models")
-    @app.route("/models/<path:path>")
-    @app.route("/controllers")
-    @app.route("/controllers/<path:path>")
-    def dashboard_index(path=None):
-        """
-        Send /models and /controllers to the index page
-        """
-
-        return flask.render_template("dashboard/index.html")
-
-    @app.route("/config.js")
-    @app.route("/manifest.json")
-    @app.route("/version.json")
-    @app.route("/ghost-bundle.svg")
-    def dashboard_files():
-        """
-        Load dashboard files directly
-        """
-        return flask.send_from_directory(
-            "../templates/dashboard",
-            flask.request.path.strip("/"),
-        )
-
     @app.route("/q/")
     @app.route("/q/<path:path>")
     def search_redirect(path=None):
