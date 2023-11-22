@@ -1,9 +1,7 @@
 {
   "scripts": {
-    "start": "yarn run build && yarn run extract-dashboard-templates && yarn run serve",
+    "start": "yarn run build && yarn run serve",
     "build": "yarn run build-css && yarn run build-js",
-    "extract-dashboard-templates": "./scripts/extract-jaas-dashboard.sh templates/dashboard ./static",
-    "pull-jaas-dashboard": "./scripts/pull-jaas-dashboard.sh",
     "build-css": "sass static/sass/styles.scss static/css/styles.css --load-path=node_modules --style=compressed && postcss --map false --use autoprefixer --replace 'static/css/**/*.css'",
     "build-js": "webpack",
     "clean": "rm -rf node_modules yarn-error.log css static/css *.log *.sqlite _site/ build/ .jekyll-metadata .bundle",

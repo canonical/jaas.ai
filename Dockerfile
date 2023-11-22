@@ -17,14 +17,6 @@ ADD package.json .
 RUN --mount=type=cache,target=/usr/local/share/.cache/yarn yarn install --production
 
 
-# Build stage: Build dashboard
-# ===
-FROM ubuntu:focal AS build-dashboard
-WORKDIR /srv/build
-# extract the dashboard archive
-ADD *.tar.bz2 .
-
-
 # Build stage: Run "yarn run build-js"
 # ===
 FROM yarn-dependencies AS build-js
@@ -59,13 +51,8 @@ ENV PATH="/root/.local/bin:${PATH}"
 # Import code, build assets and mirror list
 ADD . .
 RUN rm -rf package.json yarn.lock .babelrc webpack.config.js .git/index
-COPY --from=build-dashboard /srv/build templates/dashboard
 COPY --from=build-js /srv/static/js static/js
 COPY --from=build-css /srv/static/css static/css
-RUN cp templates/dashboard/static/js/* static/js/.
-RUN cp templates/dashboard/static/css/* static/css/.
-RUN cp -r templates/dashboard/static/media static/.
-RUN rm -r templates/dashboard/static
 
 # Set build ID
 ARG BUILD_ID
