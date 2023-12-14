@@ -2,7 +2,6 @@ import flask
 import datetime
 
 import talisker
-from canonicalwebteam.blog import build_blueprint, BlogViews, BlogAPI
 from canonicalwebteam.flask_base.app import FlaskBase
 from canonicalwebteam.yaml_responses.flask_helpers import (
     prepare_deleted,
@@ -10,7 +9,6 @@ from canonicalwebteam.yaml_responses.flask_helpers import (
 )
 from canonicalwebteam import image_template
 
-from webapp.external_urls import external_urls
 from webapp.handlers import add_headers
 from webapp.jaasai.views import jaasai
 from webapp.template_utils import current_url_with_query, static_url
@@ -33,20 +31,6 @@ def create_app(testing=False):
         prepare_redirects("permanent-redirects.yaml", permanent=True)
     )
     app.before_request(prepare_deleted())
-
-    blog_views = BlogViews(
-        api=BlogAPI(
-            session=session,
-            thumbnail_width=354,
-            thumbnail_height=180,
-        ),
-        blog_title="JAAS Case Studies",
-        tag_ids=[3513],
-        feed_description="Case Studies from happy JAAS users",
-    )
-    app.register_blueprint(
-        build_blueprint(blog_views), url_prefix="/case-studies"
-    )
 
     # Handlers
     # ===
@@ -80,32 +64,6 @@ def create_app(testing=False):
     # Blueprints
     # ===
     app.register_blueprint(jaasai)
-
-    # Dashboard and redirect views
-    # ===
-    @app.route("/models")
-    @app.route("/models/<path:path>")
-    @app.route("/controllers")
-    @app.route("/controllers/<path:path>")
-    def dashboard_index(path=None):
-        """
-        Send /models and /controllers to the index page
-        """
-
-        return flask.render_template("dashboard/index.html")
-
-    @app.route("/config.js")
-    @app.route("/manifest.json")
-    @app.route("/version.json")
-    @app.route("/ghost-bundle.svg")
-    def dashboard_files():
-        """
-        Load dashboard files directly
-        """
-        return flask.send_from_directory(
-            "../templates/dashboard",
-            flask.request.path.strip("/"),
-        )
 
     @app.route("/q/")
     @app.route("/q/<path:path>")
@@ -148,7 +106,6 @@ def create_app(testing=False):
     def inject_utilities():
         return {
             "current_url_with_query": current_url_with_query,
-            "external_urls": external_urls,
             "static_url": static_url,
         }
 
