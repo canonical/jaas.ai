@@ -46,12 +46,14 @@ CSP = {
     ],
 }
 
+
 def get_csp_as_str(csp={}):
     csp_str = ""
     for key, values in csp.items():
         csp_value = " ".join(values)
         csp_str += f"{key} {csp_value}; "
     return csp_str.strip()
+
 
 def add_headers(response):
     """
@@ -88,13 +90,11 @@ def add_headers(response):
                     "stale-if-error=86400",
                 }
             )
-    
+
     response.headers["Content-Security-Policy"] = get_csp_as_str(CSP)
     response.headers["Referrer-Policy"] = "strict-origin-when-cross-origin"
     response.headers["Cross-Origin-Embedder-Policy"] = "credentialless"
-    response.headers["Cross-Origin-Opener-Policy"] = (
-        "same-origin-allow-popups"
-    )
+    response.headers["Cross-Origin-Opener-Policy"] = "same-origin-allow-popups"
     response.headers["Cross-Origin-Resource-Policy"] = "same-site"
     response.headers["X-Permitted-Cross-Domain-Policies"] = "none"
 
