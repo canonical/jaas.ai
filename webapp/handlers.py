@@ -16,6 +16,7 @@ CSP = {
     ],
     "script-src": [
         "'unsafe-inline'",
+        "blob:",
     ],
     "img-src": [
         "data: blob:",
