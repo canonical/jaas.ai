@@ -10,6 +10,7 @@ CSP = {
         "buttons.github.io",
         "www.googletagmanager.com",
         "w.usabilla.com",
+        "*.crazyegg.com",
         # This is necessary for Google Tag Manager to function properly.
         "'unsafe-inline'",
     ],
