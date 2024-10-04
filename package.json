@@ -24,7 +24,7 @@
     "@babel/preset-env": "7.20.2",
     "@canonical/cookie-policy": "^3.6.4",
     "@canonical/global-nav": "3.6.4",
-    "@sentry/browser": "5.30.0",
+    "@sentry/browser": "7.119.1",
     "autoprefixer": "10.4.13",
     "babel-loader": "8.3.0",
     "braces": "3.0.2",
