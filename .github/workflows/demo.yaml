@@ -52,8 +52,10 @@ jobs:
              sudo snap install konf
 
       - name: Configure kubectl
+        env:
+          KUBE_CONFIG: ${{ secrets.KUBE_CONFIG }}
         run: |
-          printf "%s" "${{ secrets.KUBE_CONFIG }}" > kubeconfig
+          echo "$KUBE_CONFIG" > kubeconfig
           export KUBECONFIG=kubeconfig
 
       - name: Deploy application
