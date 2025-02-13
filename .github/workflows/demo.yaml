@@ -55,11 +55,18 @@ jobs:
         env:
           KUBE_CONFIG: ${{ secrets.KUBE_CONFIG }}
         run: |
-          echo "$KUBE_CONFIG" > kubeconfig
-          export KUBECONFIG=kubeconfig
+          mkdir -p ~/.kube
+          echo "$KUBE_CONFIG" > ~/.kube/config
+          export KUBECONFIG=~/.kube/config
+      - name: verify kubectl
+        run: |
+          kubectl version --client
+          kubectl config view
+          kubectl cluster-info
 
       - name: Deploy application
         run: |
+          export KUBECONFIG=~/.kube/config
           epoch_time=$(date +%s)
           image_tag="${epoch_time}-${GITHUB_SHA::7}"
           image_name="${{ env.IMAGE_NAME }}:${image_tag}"
