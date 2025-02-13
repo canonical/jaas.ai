@@ -1,0 +1,61 @@
+name: Deploy
+
+on:
+  push:
+    branches:
+      - main
+      - demos-on-gh
+  workflow_dispatch:
+
+env:
+  IMAGE_NAME: ghcr.io/${{ github.repository }}
+
+jobs:
+  build-and-push:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      packages: write
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Log in to GHCR
+        run: echo "${{ secrets.GITHUB_TOKEN }}" | docker login ghcr.io -u ${{ github.actor }} --password-stdin
+
+      - name: Extract metadata (tags, labels)
+        id: meta
+        uses: docker/metadata-action@v5
+        with:
+          images: ${{ env.IMAGE_NAME }}
+
+      - name: Build and push Docker image
+        uses: docker/build-push-action@v5
+        with:
+          context: .
+          push: true
+          tags: ${{ steps.meta.outputs.tags }}
+          labels: ${{ steps.meta.outputs.labels }}
+
+      - name: Log out of GHCR
+        run: docker logout ghcr.io
+
+  deploy:
+    runs-on: [self-hosted, self-hosted-linux-amd64-jammy-private-endpoint-medium]
+    needs: build-and-push
+    steps:
+      - name: Install dependencies
+        run: |
+             sudo snap install kubectl --classic
+             sudo snap install konf
+
+      - name: Deploy application
+        run: |
+          epoch_time=$(date +%s)
+          image_tag="${epoch_time}-${GITHUB_SHA::7}"
+          image_name="${{ env.IMAGE_NAME }}:${image_tag}"
+          echo "Deploying image: $image_name"
+          konf production konf/site.yaml --tag $image_tag
+          kubectl rollout status deployment jaas-ai --namespace=staging
+          echo "Deployment successful!"
+
