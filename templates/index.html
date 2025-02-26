@@ -13,14 +13,14 @@
         <h1>Take control of your large-scale Juju deployments</h1>
       </div>
       <div class="col">
-        <p>Juju as a service (JAAS) provides a single location to interact, manage and audit your charmed applications using a dashboard or Juju CLI commands.</p>
+        <p>JAAS is Juju for enterprise.</p>
         <hr class="is-muted" />
         <button data-js="open-modal-control" class="p-button--positive">Contact us</button>
       </div>
     </div>
     <div class="p-image-container u-fixed-width u-hide--medium u-hide--small">
       {{ image(
-          url="https://assets.ubuntu.com/v1/f6850c0a-JAAS-arch-diagram.svg",
+          url="https://assets.ubuntu.com/v1/d7c20674-JAAS-arch-diagram.svg",
           alt="",
           height="933",
           width="1848",
@@ -33,21 +33,25 @@
   </section>
   <section class="p-section">
     <hr class="is-fixed-width">
-    <div class="row--50-50">
-      <div class="col p-section--shallow">
+    <div class="row">
+      <div class="col-6 p-section--shallow">
         <h2>Main JAAS components</h2>
       </div>
-      <div class="col">
-        <div class="row">
+      <div class="col-6 col-start-large-7">
+        <div class="row p-section--shallow">
           <div class="col-3">
-            <h3 class="p-text--small-caps">JIMM</h3>
+            <h3 class="p-text--small-caps">Backend API server (JIMM)</h3>
           </div>
           <div class="col-3">
-            <p> The Juju Infinite Model Manager is the backend service responsible for managing Juju controllers. Admins can interact with Jimm through the same Juju cli and Terraform provider.</p>
+            <p>
+              JAAS has a backend API server (JIMM) that is responsible for managing all interactions with the downstream, Juju controllers.
+              <br>
+              Admins and users can interact with this service through the same Juju CLI and Terraform Provider for Juju.
+            </p>
           </div>
         </div>
         <hr class="is-muted">
-        <div class="row">
+        <div class="row p-section--shallow">
           <div class="col-3">
             <h3 class="p-text--small-caps">Dashboard</h3>
           </div>
@@ -81,7 +85,7 @@
             <h3 class="p-heading--5">Need to meet tighter security and compliance requirements</h3>
           </div>
           <div class="col-6">
-            <p>JAAS offers additional security features like fine grained access control, an SSH proxy to reduce the attack surface area and comprehensive auditing functionalities</p>
+            <p>JAAS offers additional security features like single sign on (SSO) on both the dashboard and the cli, permission management, fine grained juju controller activity auditing and soon an SSH proxy and service accounts for the Terraform provider</p>
           </div>
         </div>
         <hr class="is-muted">
@@ -234,10 +238,14 @@
         <hr class="is-muted">
         <div class="row p-section--shallow">
           <div class="col-3">
-            <h3 class="p-heading--5">SSH Proxy</h3>
+            <h3 class="p-heading--5">SSH Proxy<br>(Coming soon)</h3>
           </div>
           <div class="col-6">
-            <p>Administrators can use JAAS to SSH into all units of managed controllers, reducing the need to grant access to vast areas of the network. SSH access can be granted through a fine grained entitlement and session logs are kept in a tamper proof audit log.</p>
+            <p>
+              Administrators can use JAAS to SSH into all units of managed controllers, reducing the need to grant access to vast areas of the network.
+              <br>
+              SSH access can be granted through a fine grained entitlement and session logs are kept in a tamper proof audit log.
+            </p>
           </div>
         </div>
         <hr class="is-muted">
@@ -247,15 +255,6 @@
           </div>
           <div class="col-6">
             <p>JAAS supports integration with external identity providers through OIDC, enforcing strong authentication on both the cli and the web dashboard</p>
-          </div>
-        </div>
-        <hr class="is-muted">
-        <div class="row">
-          <div class="col-3">
-            <h3 class="p-heading--5">Shallow learning curve</h3>
-          </div>
-          <div class="col-6">
-            <p>Users who are familiar with Juju will feel right at home with JAAS. Because JAAS can be can be controlled through the Juju cli and Terraform provider, administrators can get productive in no time.</p>
           </div>
         </div>
       </div>
@@ -281,20 +280,19 @@
     </div>
     <div class="row">
       <div class="col-6 p-section--shallow">
-        <h2>JAAS is available through <br />Ubuntu Pro</h2>
+<h2>JAAS is available<br>through Ubuntu Pro</h2>
       </div>
-      <div class="col-6">
-        <p>You can deploy JAAS on your infrastructure with an <a href="https://ubuntu.com/pro">Ubuntu Pro</a> subscription Ubuntu Pro is a comprehensive subscription from Canonical which includes:</p>
-        <div class="u-fixed-width">
-          <hr class="is-muted">
-        </div>
-        <ul class="p-list--divided">
-          <li class="p-list__item has-bullet">JAAS charms and sample Terraform plan</li>
-          <li class="p-list__item has-bullet">Access to our world-class technical team and knowledge base</li>
-          <li class="p-list__item has-bullet">Security patching for all your software</li>
-          <li class="p-list__item has-bullet">Option of a dedicated Canonical support engineer on your premises</li>
-          <li class="p-list__item has-bullet">24/7 phone, portal and email support (optional)</li>
-        </ul>
+      <div class="col-6 p-section--shallow">
+        <p>You can deploy JAAS on your infrastructure with an Ubuntu Pro subscription. Ubuntu Pro is a comprehensive subscription from Canonical which includes:</p>
+        <hr class="is-muted">
+          <ul class="p-list--divided">
+            <li class="p-list__item has-bullet">JAAS charms and sample Terraform plan</li>
+            <li class="p-list__item has-bullet">Access to our world-class technical team and knowledge base</li>
+            <li class="p-list__item has-bullet">Security patching for all your software</li>
+            <li class="p-list__item has-bullet">Option of a dedicated Canonical support engineer on your premises</li>
+            <li class="p-list__item has-bullet">24/7 phone, portal and email support (optional)</li>
+          </ul>
+        <hr class="is-muted"> 
         <button data-js="open-modal-control" class="p-button--positive">Contact us to get started</button>
       </div>
     </div>
@@ -304,7 +302,7 @@
       <hr>
     </div>
     <div class="u-fixed-width p-section--shallow">
-      <h2>Trusted by 10,000+ engineers at</h2>
+      <h2>Canonical products are trusted by 10,000+ engineers at</h2>
     </div>
     <div class="u-fixed-width">
       <div class="p-logo-section">
