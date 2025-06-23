@@ -1,0 +1,48 @@
+name: Pack and Deploy
+
+on:
+  push:
+    branches:
+      - main
+      - staging
+  workflow_dispatch:
+    inputs:
+      environment:
+        description: 'Environment (Production or Staging)'
+        required: true
+        type: choice
+        options:
+          - Production
+          - Staging
+jobs:
+  setup:
+    runs-on: ubuntu-latest
+    outputs:
+      environment: ${{ steps.set_env.outputs.environment }}
+    steps:
+      - name: Determine environment
+        id: set_env
+        run: |
+          if [[ -n "${{ github.event.inputs.environment }}" ]]; then
+            echo "environment=${{ github.event.inputs.environment }}" >> "$GITHUB_OUTPUT"
+          elif [[ "${GITHUB_REF}" == "refs/heads/main" ]]; then
+            echo "environment=Production" >> "$GITHUB_OUTPUT"
+          else
+            echo "environment=Staging" >> "$GITHUB_OUTPUT"
+          fi
+
+  deploy:
+    needs: setup
+    name: Deploy
+    uses: canonical/webteam-devops/.github/workflows/deploy.yaml@main
+    with:
+      charm_name: ${{ vars.CHARM_NAME }}
+      channel: ${{ vars.CHANNEL }}
+      juju_controller_name: ${{ vars.JUJU_CONTROLLER_NAME }}
+      juju_model_name: ${{ vars.JUJU_MODEL_NAME }}
+      environment: ${{ needs.setup.outputs.environment }}
+      environmentUrl: ${{ vars.ENVIRONMENT_URL }}
+    secrets:
+      VAULT_APPROLE_ROLE_ID: ${{ secrets.VAULT_APPROLE_ROLE_ID }}
+      VAULT_APPROLE_SECRET_ID: ${{ secrets.VAULT_APPROLE_SECRET_ID }}
+      CHARMHUB_TOKEN: ${{ secrets.CHARMHUB_TOKEN }}
