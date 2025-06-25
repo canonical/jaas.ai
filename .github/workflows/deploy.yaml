@@ -44,7 +44,6 @@ jobs:
     needs: setup
     name: Deploy
     uses: canonical/webteam-devops/.github/workflows/deploy.yaml@refactor-deploy-github-action
-    environment: ${{ needs.setup.outputs.environment }}
     with:
       charm_name: ${{ vars.CHARM_NAME }}
       channel: ${{ vars.CHANNEL }}
