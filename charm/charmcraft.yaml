@@ -5,8 +5,6 @@ type: charm
 base: ubuntu@22.04
 platforms:
   amd64:
-    build-on: [arm64]
-    build-for: [amd64]
 
 summary: The charm for the jaas.ai website
 
