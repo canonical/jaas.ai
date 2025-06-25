@@ -4,6 +4,7 @@ version: "0.1"
 summary: Rocked jaas.ai
 description: |
   This is the rockcraft for the jaas.ai website.
+
 platforms:
   amd64:
 
@@ -11,6 +12,21 @@ extensions:
   - flask-framework
 
 parts:
+  build-ui:
+    plugin: nil
+    source: .
+    source-type: local
+    build-snaps:
+      - node/22/stable
+    override-build: |
+      set -eux
+      # install dependencies
+      npm install -g yarn
+      yarn install
+      # build the UI
+      yarn run build
+      mkdir -p "$CRAFT_PART_INSTALL/flask/app"
+      cp -r static "$CRAFT_PART_INSTALL/flask/app/"
   flask-framework/install-app:
     prime:
       - flask/app/.env
