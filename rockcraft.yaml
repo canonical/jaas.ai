@@ -29,10 +29,11 @@ parts:
       cp -r static "$CRAFT_PART_INSTALL/flask/app/"
   flask-framework/install-app:
     prime:
+      - flask/app/static
+      - flask/app/templates
+      - flask/app/webapp
       - flask/app/.env
       - flask/app/app.py
-      - flask/app/webapp
-      - flask/app/templates
-      - flask/app/static
-      - flask/app/redirects.yaml
+      - flask/app/deleted.yaml
       - flask/app/permanent-redirects.yaml
+      - flask/app/redirects.yaml
