@@ -19,6 +19,7 @@ on:
 
 jobs:
   setup:
+    name: Setup
     runs-on: ubuntu-latest
     outputs:
       environment: ${{ steps.set_env.outputs.environment }}
@@ -31,7 +32,6 @@ jobs:
       - name: Determine environment
         id: set_env
         run: |
-          echo "GITHUB_REF: " && echo "${GITHUB_REF}"
           if [[ -n "${{ github.event.inputs.environment }}" ]]; then
             echo "environment=${{ github.event.inputs.environment }}" >> "$GITHUB_OUTPUT"
           elif [[ "${GITHUB_REF}" == "refs/heads/main" ]]; then
