@@ -6,10 +6,14 @@ base: ubuntu@22.04
 platforms:
   amd64:
 
+title: jaas.ai
 summary: The charm for the jaas.ai website
-
 description: |
   The charm for the jaas.ai website, built with the PaaS app charmer.
+links:
+  contact: Web Engineering @ canonical
+  website:
+  - https://jaas.ai
 
 extensions:
   - flask-framework
