@@ -18,8 +18,8 @@ on:
           - Staging
 
 jobs:
-  setup:
-    name: Setup
+  find-env:
+    name: Find environment
     runs-on: ubuntu-latest
     outputs:
       environment: ${{ steps.set_env.outputs.environment }}
@@ -40,21 +40,40 @@ jobs:
             echo "environment=Staging" >> "$GITHUB_OUTPUT"
           fi
 
+  setup:
+    name: Setup
+    runs-on: ubuntu-latest
+    needs: find-env
+    environment: ${{ needs.find-env.outputs.environment }}
+    outputs:
+      environment: ${{ steps.set.outputs.environment }}
+      environmentUrl: ${{ steps.set.outputs.environmentUrl }}
+      charm_name: ${{ steps.set.outputs.charm_name }}
+      channel: ${{ steps.set.outputs.channel }}
+      juju_controller_name: ${{ steps.set.outputs.juju_controller_name }}
+      juju_model_name: ${{ steps.set.outputs.juju_model_name }}
+    steps:
+      - id: set
+        run: |
+          echo "environment=${{ needs.find-env.outputs.environment }}" >> "$GITHUB_OUTPUT"
+          echo "environmentUrl=${{ vars.ENVIRONMENT_URL }}" >> "$GITHUB_OUTPUT"
+          echo "charm_name=${{ vars.CHARM_NAME }}" >> "$GITHUB_OUTPUT"
+          echo "channel=${{ vars.CHANNEL }}" >> "$GITHUB_OUTPUT"
+          echo "juju_controller_name=${{ vars.JUJU_CONTROLLER_NAME }}" >> "$GITHUB_OUTPUT"
+          echo "juju_model_name=${{ vars.JUJU_MODEL_NAME }}" >> "$GITHUB_OUTPUT"
+
   deploy:
     needs: setup
     name: Deploy
-    environment: ${{ needs.setup.outputs.environment }}
-    steps:
-      - id: deploy
-        uses: canonical/webteam-devops/.github/workflows/deploy.yaml@refactor-deploy-github-action
-        with:
-          environment: ${{ needs.setup.outputs.environment }}
-          environmentUrl: ${{ vars.ENVIRONMENT_URL }}
-          charm_name: ${{ vars.CHARM_NAME }}
-          channel: ${{ vars.CHANNEL }}
-          juju_controller_name: ${{ vars.JUJU_CONTROLLER_NAME }}
-          juju_model_name: ${{ vars.JUJU_MODEL_NAME }}
-        secrets:
-          VAULT_APPROLE_ROLE_ID: ${{ secrets.VAULT_APPROLE_ROLE_ID }}
-          VAULT_APPROLE_SECRET_ID: ${{ secrets.VAULT_APPROLE_SECRET_ID }}
-          CHARMHUB_TOKEN: ${{ secrets.CHARMHUB_TOKEN }}
+    uses: canonical/webteam-devops/.github/workflows/deploy.yaml@refactor-deploy-github-action
+    with:
+      environment: ${{ needs.setup.outputs.environment }}
+      environmentUrl: ${{ vars.ENVIRONMENT_URL }}
+      charm_name: ${{ vars.CHARM_NAME }}
+      channel: ${{ vars.CHANNEL }}
+      juju_controller_name: ${{ vars.JUJU_CONTROLLER_NAME }}
+      juju_model_name: ${{ vars.JUJU_MODEL_NAME }}
+    secrets:
+      VAULT_APPROLE_ROLE_ID: ${{ secrets.VAULT_APPROLE_ROLE_ID }}
+      VAULT_APPROLE_SECRET_ID: ${{ secrets.VAULT_APPROLE_SECRET_ID }}
+      CHARMHUB_TOKEN: ${{ secrets.CHARMHUB_TOKEN }}
