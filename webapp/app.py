@@ -121,4 +121,5 @@ def create_app(testing=False):
 
     return app
 
+
 app = create_app()
