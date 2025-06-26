@@ -5,8 +5,6 @@ on:
     branches:
       - main
       - staging
-      # to be deleted after testing
-      - charm-jaas
   workflow_dispatch:
     inputs:
       environment:
