@@ -68,11 +68,11 @@ jobs:
     uses: canonical/webteam-devops/.github/workflows/deploy.yaml@refactor-deploy-github-action
     with:
       environment: ${{ needs.setup.outputs.environment }}
-      environmentUrl: ${{ vars.ENVIRONMENT_URL }}
-      charm_name: ${{ vars.CHARM_NAME }}
-      channel: ${{ vars.CHANNEL }}
-      juju_controller_name: ${{ vars.JUJU_CONTROLLER_NAME }}
-      juju_model_name: ${{ vars.JUJU_MODEL_NAME }}
+      environmentUrl: ${{ needs.setup.outputs.environmentUrl }}
+      charm_name: ${{ needs.setup.outputs.charm_name }}
+      channel: ${{ needs.setup.outputs.channel }}
+      juju_controller_name: ${{ needs.setup.outputs.juju_controller_name }}
+      juju_model_name: ${{ needs.setup.outputs.juju_model_name }}
     secrets:
       VAULT_APPROLE_ROLE_ID: ${{ secrets.VAULT_APPROLE_ROLE_ID }}
       VAULT_APPROLE_SECRET_ID: ${{ secrets.VAULT_APPROLE_SECRET_ID }}
