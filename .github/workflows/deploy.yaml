@@ -45,7 +45,7 @@ jobs:
     environment: ${{ needs.find-env.outputs.environment }}
     outputs:
       environment: ${{ steps.set.outputs.environment }}
-      environmentUrl: ${{ steps.set.outputs.environmentUrl }}
+      environment_url: ${{ steps.set.outputs.environment_url }}
       charm_name: ${{ steps.set.outputs.charm_name }}
       channel: ${{ steps.set.outputs.channel }}
       juju_controller_name: ${{ steps.set.outputs.juju_controller_name }}
@@ -54,7 +54,7 @@ jobs:
       - id: set
         run: |
           echo "environment=${{ needs.find-env.outputs.environment }}" >> "$GITHUB_OUTPUT"
-          echo "environmentUrl=${{ vars.ENVIRONMENT_URL }}" >> "$GITHUB_OUTPUT"
+          echo "environment_url=${{ vars.ENVIRONMENT_URL }}" >> "$GITHUB_OUTPUT"
           echo "charm_name=${{ vars.CHARM_NAME }}" >> "$GITHUB_OUTPUT"
           echo "channel=${{ vars.CHANNEL }}" >> "$GITHUB_OUTPUT"
           echo "juju_controller_name=${{ vars.JUJU_CONTROLLER_NAME }}" >> "$GITHUB_OUTPUT"
@@ -66,7 +66,7 @@ jobs:
     uses: canonical/webteam-devops/.github/workflows/deploy.yaml@v1
     with:
       environment: ${{ needs.setup.outputs.environment }}
-      environmentUrl: ${{ needs.setup.outputs.environmentUrl }}
+      environment_url: ${{ needs.setup.outputs.environment_url }}
       charm_name: ${{ needs.setup.outputs.charm_name }}
       channel: ${{ needs.setup.outputs.channel }}
       juju_controller_name: ${{ needs.setup.outputs.juju_controller_name }}
