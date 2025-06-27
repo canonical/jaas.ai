@@ -120,3 +120,6 @@ def create_app(testing=False):
         return {"image": image_template}
 
     return app
+
+
+app = create_app()

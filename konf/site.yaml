@@ -1,3 +1,6 @@
+# This file is currently used by Demos (Jenkins)
+# Do not remove it
+
 domain: jaas.ai
 
 image: prod-comms.ps5.docker-registry.canonical.com/jaas.ai
