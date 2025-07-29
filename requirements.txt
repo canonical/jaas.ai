@@ -1,7 +1,7 @@
 canonicalwebteam.flask_base==2.5.0
 canonicalwebteam.image-template==1.5.0
 Flask-Testing==0.8.1
-requests==2.31.0
+requests==2.32.4
 responses==0.25.3
 zope.event==5.1
 setuptools==80.9.0
