@@ -26,32 +26,32 @@
     "@canonical/global-nav": "3.6.4",
     "@sentry/browser": "5.30.0",
     "autoprefixer": "10.4.13",
-    "babel-loader": "8.3.0",
+    "babel-loader": "10.0.0",
     "braces": "3.0.2",
-    "concurrently": "5.3.0",
+    "concurrently": "9.2.0",
     "postcss": "8.4.32",
-    "postcss-cli": "8.3.1",
+    "postcss-cli": "11.0.1",
     "sass": "1.79.0",
     "terser-webpack-plugin": "5.3.6",
     "vanilla-framework": "4.17.1",
     "watch-cli": "0.2.3",
     "webpack": "5.76.0",
-    "webpack-cli": "4.10.0"
+    "webpack-cli": "6.0.1"
   },
   "devDependencies": {
-    "eslint": "7.32.0",
-    "eslint-config-airbnb-base": "14.2.1",
-    "eslint-config-prettier": "7.2.0",
+    "eslint": "9.32.0",
+    "eslint-config-airbnb-base": "15.0.0",
+    "eslint-config-prettier": "10.1.8",
     "eslint-plugin-import": "2.27.5",
-    "jest": "26.6.3",
-    "prettier": "2.8.3",
-    "stylelint": "13.13.1",
-    "stylelint-config-prettier": "8.0.2",
-    "stylelint-config-standard": "20.0.0",
-    "stylelint-order": "4.1.0"
+    "jest": "30.0.5",
+    "prettier": "3.6.2",
+    "stylelint": "16.23.0",
+    "stylelint-config-prettier": "9.0.5",
+    "stylelint-config-standard": "39.0.0",
+    "stylelint-order": "7.0.0"
   },
   "resolutions": {
     "lodash": "^4.17.15",
-    "minimatch": "^3.0.2"
+    "minimatch": "^10.0.0"
   }
 }
