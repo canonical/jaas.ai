@@ -1501,9 +1501,9 @@
   integrity sha512-0hYQ8SB4Db5zvZB4axdMHGwEaQjkZzFjQiN9LVYvIFB2nSUHW9tYpxWriPrWDASIxiaXax83REcLxuSdnGPZtw==
 
 "@canonical/cookie-policy@^3.6.4":
-  version "3.6.4"
-  resolved "https://registry.yarnpkg.com/@canonical/cookie-policy/-/cookie-policy-3.6.4.tgz#895c3770f621b73d88b0d5843c43a32d99e4a462"
-  integrity sha512-kfwamTpAaBhtH5TzlMb8wE814a8lIbONUuSYnS7VPiHDfcdmw4NoBPNpldmNY1j3CAT5vMKOx5kulRTWpEXpag==
+  version "3.6.5"
+  resolved "https://registry.yarnpkg.com/@canonical/cookie-policy/-/cookie-policy-3.6.5.tgz#50d82df6da2970b6b5d78d066dd94fcc1317e591"
+  integrity sha512-CQJKSkuLXhSumkIIw4YPSjR7k9561hZ3EEdMPQTkAVTxXURhm3WzJm/uyrvcAuU/a//jzWa8ScltCaHFBdACew==
 
 "@canonical/global-nav@3.6.4":
   version "3.6.4"
@@ -8021,10 +8021,10 @@ validate-npm-package-license@^3.0.1:
     spdx-correct "^3.0.0"
     spdx-expression-parse "^3.0.0"
 
-vanilla-framework@4.17.1:
-  version "4.17.1"
-  resolved "https://registry.yarnpkg.com/vanilla-framework/-/vanilla-framework-4.17.1.tgz#8f0913e51bbe14ec3ed0686fe4f91ab7685eda41"
-  integrity sha512-vmjx08LnGnNC37GF4shnrknmWhjV1Xq2LciBvzIBZFy4zCVbDO7O2HJbPvXzLkWClgICk7zkpnKJMVBAUk4wjA==
+vanilla-framework@4.27.0:
+  version "4.27.0"
+  resolved "https://registry.yarnpkg.com/vanilla-framework/-/vanilla-framework-4.27.0.tgz#9d3da0f7df8a359b6eb5c81a94f5483817e4b35c"
+  integrity sha512-UX0k1W9YJJyosyy+mW/0WzInI8VZWPSIIh6Z6O6KFiFQvk23Nv9zSqbgqweoa3vm+JanwSQWXkIYldfxmh1xnA==
 
 vanilla-framework@4.9.0:
   version "4.9.0"
