@@ -1,5 +1,5 @@
-canonicalwebteam.flask_base==2.5.0
-canonicalwebteam.image-template==1.5.0
+canonicalwebteam.flask_base==2.6.1
+canonicalwebteam.image-template==1.8.0
 Flask-Testing==0.8.1
 requests==2.31.0
 responses==0.25.3
