@@ -27,7 +27,7 @@
     "@sentry/browser": "5.30.0",
     "autoprefixer": "10.4.13",
     "babel-loader": "8.3.0",
-    "braces": "3.0.2",
+    "braces": "3.0.3",
     "concurrently": "5.3.0",
     "postcss": "8.4.32",
     "postcss-cli": "8.3.1",
